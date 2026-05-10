@@ -1,0 +1,456 @@
+[
+  {
+    "id": "minimalism",
+    "name": "Minimalism",
+    "nameKr": "미니멀리즘",
+    "tagline": "Less is more",
+    "description": "극도로 절제된 요소. 넓은 여백, 깔끔한 타이포그래피, 단색 팔레트. 콘텐츠가 숨 쉴 수 있는 공간을 만든다.",
+    "keywords": ["whitespace", "typography", "monochrome", "grid", "restraint"],
+    "palette": ["#FFFFFF", "#1A1A1A", "#F5F5F5", "#E0E0E0"],
+    "examples": [
+      { "name": "Apple", "url": "https://www.apple.com" },
+      { "name": "Muji", "url": "https://www.muji.com" },
+      { "name": "Aesop", "url": "https://www.aesop.com" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "shop.png", "label": "쇼핑몰" },
+      { "file": "portfolio.png", "label": "Portfolio" }
+    ]
+  },
+  {
+    "id": "brutalism",
+    "name": "Brutalism",
+    "nameKr": "브루탈리즘",
+    "tagline": "Raw and unpolished",
+    "description": "의도적으로 거칠고 날것인 디자인. 시스템 폰트, 깨진 듯한 레이아웃, 강렬한 대비. 규칙을 거부하는 것이 규칙이다.",
+    "keywords": ["raw", "monospace", "broken-grid", "high-contrast", "anti-design"],
+    "palette": ["#FFFFFF", "#000000", "#FF0000", "#0000FF"],
+    "examples": [
+      { "name": "Bloomberg", "url": "https://www.bloomberg.com" },
+      { "name": "Craigslist", "url": "https://www.craigslist.org" },
+      { "name": "Brutalist Websites", "url": "https://brutalistwebsites.com" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "shop.png", "label": "쇼핑몰" },
+      { "file": "blog.png", "label": "Blog" }
+    ]
+  },
+  {
+    "id": "neumorphism",
+    "name": "Neumorphism",
+    "nameKr": "뉴모피즘",
+    "tagline": "Soft UI, extruded elements",
+    "description": "부드러운 그림자로 표면에서 솟아오르거나 눌린 듯한 UI. 배경과 같은 색상 계열을 사용해 일체감을 준다.",
+    "keywords": ["soft-shadow", "inset", "monochromatic", "subtle", "depth"],
+    "palette": ["#E0E5EC", "#FFFFFF", "#A3B1C6", "#6D7F99"],
+    "examples": [
+      { "name": "Neumorphism.io", "url": "https://neumorphism.io" },
+      { "name": "Dribbble Neumorphism", "url": "https://dribbble.com/tags/neumorphism" }
+    ],
+    "images": [
+      { "file": "dashboard.png", "label": "Dashboard" },
+      { "file": "login.png", "label": "Login Page" },
+      { "file": "music-player.png", "label": "Music Player" }
+    ]
+  },
+  {
+    "id": "glassmorphism",
+    "name": "Glassmorphism",
+    "nameKr": "글래스모피즘",
+    "tagline": "Frosted glass, translucent layers",
+    "description": "반투명 유리 효과(backdrop-filter: blur)를 핵심으로 한 디자인. 배경 그라디언트 위에 레이어가 겹쳐지는 깊이감.",
+    "keywords": ["blur", "transparency", "gradient-bg", "depth", "frosted"],
+    "palette": ["#7F5AF0", "#2CB67D", "#FFFFFF80", "#16161A"],
+    "examples": [
+      { "name": "Apple macOS", "url": "https://www.apple.com/macos" },
+      { "name": "Glassmorphism CSS", "url": "https://glassmorphism.com" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "card-ui.png", "label": "Card UI" },
+      { "file": "mobile-app.png", "label": "Mobile App" }
+    ]
+  },
+  {
+    "id": "skeuomorphism",
+    "name": "Skeuomorphism",
+    "nameKr": "스큐어모피즘",
+    "tagline": "Digital mimics physical",
+    "description": "현실 세계의 질감과 형태를 디지털에 재현. 가죽 텍스처, 금속 버튼, 종이 질감. iOS 6 이전의 Apple이 대표적.",
+    "keywords": ["texture", "realistic", "3D", "shadows", "physical-metaphor"],
+    "palette": ["#8B7355", "#C0C0C0", "#4A4A4A", "#F5E6CC"],
+    "examples": [
+      { "name": "iOS 6 Archive", "url": "https://www.theverge.com/2013/6/10/4415090/ios-7-design-comparison" },
+      { "name": "Skeuomorphism Collection", "url": "https://dribbble.com/tags/skeuomorphism" }
+    ],
+    "images": [
+      { "file": "calculator.png", "label": "Calculator App" },
+      { "file": "notepad.png", "label": "Notepad App" },
+      { "file": "bookshelf.png", "label": "Bookshelf UI" }
+    ]
+  },
+  {
+    "id": "flat-design",
+    "name": "Flat Design",
+    "nameKr": "플랫 디자인",
+    "tagline": "No gradients, no shadows",
+    "description": "그림자, 그라디언트, 3D 효과를 완전히 제거. 솔리드 컬러, 단순한 아이콘, 명확한 타이포그래피로 정보를 전달.",
+    "keywords": ["solid-color", "simple-icons", "clean", "2D", "bold-type"],
+    "palette": ["#3498DB", "#E74C3C", "#2ECC71", "#F39C12"],
+    "examples": [
+      { "name": "Windows 8 Metro", "url": "https://www.microsoft.com" },
+      { "name": "Stripe", "url": "https://stripe.com" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "dashboard.png", "label": "Dashboard" },
+      { "file": "mobile-app.png", "label": "Mobile App" }
+    ]
+  },
+  {
+    "id": "material-design",
+    "name": "Material Design",
+    "nameKr": "머티리얼 디자인",
+    "tagline": "Bold, graphic, intentional",
+    "description": "Google의 디자인 시스템. 물리적 종이와 잉크에 영감받아 elevation(고도), 그림자, 리플 효과, 대담한 컬러를 사용.",
+    "keywords": ["elevation", "ripple", "FAB", "card", "motion"],
+    "palette": ["#6200EE", "#03DAC6", "#FFFFFF", "#121212"],
+    "examples": [
+      { "name": "Google Material", "url": "https://m3.material.io" },
+      { "name": "Gmail", "url": "https://mail.google.com" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "email-app.png", "label": "Email App" },
+      { "file": "shop.png", "label": "쇼핑몰" }
+    ]
+  },
+  {
+    "id": "swiss-style",
+    "name": "Swiss / International Style",
+    "nameKr": "스위스 스타일",
+    "tagline": "Grid. Helvetica. Precision.",
+    "description": "수학적 그리드, 산세리프 서체(Helvetica/Akzidenz), 비대칭 레이아웃. 객관적이고 보편적인 시각 커뮤니케이션 추구.",
+    "keywords": ["grid", "helvetica", "asymmetry", "photography", "rationalism"],
+    "palette": ["#FFFFFF", "#000000", "#FF0000", "#F5F5F5"],
+    "examples": [
+      { "name": "Swiss in CSS", "url": "https://swissincss.com" },
+      { "name": "International Poster Gallery", "url": "https://www.internationalposter.com" }
+    ],
+    "images": [
+      { "file": "poster.png", "label": "Poster Layout" },
+      { "file": "corporate.png", "label": "Corporate Site" },
+      { "file": "magazine.png", "label": "Magazine Layout" }
+    ]
+  },
+  {
+    "id": "art-deco",
+    "name": "Art Deco",
+    "nameKr": "아르데코",
+    "tagline": "Geometric luxury",
+    "description": "1920-30년대의 기하학적 패턴, 금색·크롬 장식, 대칭적 구성. 럭셔리·고급스러움을 디지털에 재해석.",
+    "keywords": ["geometric", "gold", "symmetry", "ornament", "luxury"],
+    "palette": ["#1A1A2E", "#D4AF37", "#FFFFFF", "#16213E"],
+    "examples": [
+      { "name": "The Great Gatsby Site", "url": "https://www.thegreatgatsby.com" },
+      { "name": "Art Deco Society", "url": "https://www.artdeco.org" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "hotel.png", "label": "Hotel Site" },
+      { "file": "invitation.png", "label": "Event Invitation" }
+    ]
+  },
+  {
+    "id": "bauhaus",
+    "name": "Bauhaus",
+    "nameKr": "바우하우스",
+    "tagline": "Form follows function",
+    "description": "원, 삼각형, 사각형의 기본 도형. 빨강·파랑·노랑 원색. 기능이 형태를 결정하며 장식을 배제한 합리적 디자인.",
+    "keywords": ["primary-colors", "geometric", "functional", "sans-serif", "asymmetry"],
+    "palette": ["#DD1C1A", "#086788", "#F0C808", "#FFFFFF"],
+    "examples": [
+      { "name": "Bauhaus100", "url": "https://www.bauhaus100.com" },
+      { "name": "Bauhaus Museum", "url": "https://www.bauhausmuseum.com" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "gallery.png", "label": "Art Gallery" },
+      { "file": "shop.png", "label": "쇼핑몰" }
+    ]
+  },
+  {
+    "id": "memphis-design",
+    "name": "Memphis Design",
+    "nameKr": "멤피스 디자인",
+    "tagline": "Bold, playful, postmodern",
+    "description": "1980년대 이탈리아 멤피스 그룹. 원색·파스텔 혼합, 기하학 패턴, 비대칭, 의도적 불협화음. 재미와 반항의 디자인.",
+    "keywords": ["pattern", "bold-color", "postmodern", "playful", "clash"],
+    "palette": ["#FF6B6B", "#4ECDC4", "#FFE66D", "#2C2C54"],
+    "examples": [
+      { "name": "Memphis Milano", "url": "https://www.memphis-milano.com" },
+      { "name": "Dribbble Memphis", "url": "https://dribbble.com/tags/memphis_design" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "poster.png", "label": "Event Poster" },
+      { "file": "shop.png", "label": "쇼핑몰" }
+    ]
+  },
+  {
+    "id": "vaporwave",
+    "name": "Vaporwave",
+    "nameKr": "베이퍼웨이브",
+    "tagline": "Retro-futuristic nostalgia",
+    "description": "80-90년대 컴퓨터 그래픽, 로마 조각상, 핑크·시안·퍼플 네온. 소비문화에 대한 아이러니와 노스탤지어의 혼합.",
+    "keywords": ["neon", "retro", "glitch", "gradient", "nostalgia"],
+    "palette": ["#FF71CE", "#01CDFE", "#B967FF", "#1A1A2E"],
+    "examples": [
+      { "name": "Vaporwave Plaza", "url": "https://plaza.one" },
+      { "name": "Aesthetic Wiki", "url": "https://aesthetics.fandom.com/wiki/Vaporwave" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "music-player.png", "label": "Music Player" },
+      { "file": "shop.png", "label": "쇼핑몰" }
+    ]
+  },
+  {
+    "id": "y2k",
+    "name": "Y2K",
+    "nameKr": "Y2K",
+    "tagline": "Chrome, bubbles, cyber-optimism",
+    "description": "2000년 밀레니엄 전후의 디지털 유토피아. 메탈릭 질감, 버블 폰트, 홀로그램, 투명 소재. 미래에 대한 낙관주의.",
+    "keywords": ["chrome", "holographic", "bubble", "translucent", "millennium"],
+    "palette": ["#C0C0C0", "#FF69B4", "#00CED1", "#E8E8E8"],
+    "examples": [
+      { "name": "Y2K Aesthetic Institute", "url": "https://www.y2kaestheticinstitute.com" },
+      { "name": "Dribbble Y2K", "url": "https://dribbble.com/tags/y2k" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "fashion.png", "label": "Fashion Site" },
+      { "file": "mobile-app.png", "label": "Mobile App" }
+    ]
+  },
+  {
+    "id": "retro-vintage",
+    "name": "Retro / Vintage",
+    "nameKr": "레트로 / 빈티지",
+    "tagline": "Aged, warm, nostalgic",
+    "description": "바래진 컬러, 세리프 서체, 그레인 텍스처, 핸드드로잉 일러스트. 과거의 따뜻함과 정성을 디지털로 재현.",
+    "keywords": ["sepia", "serif", "grain", "illustration", "warmth"],
+    "palette": ["#D4A373", "#CCD5AE", "#FAEDCD", "#6B4226"],
+    "examples": [
+      { "name": "Mailchimp (old)", "url": "https://mailchimp.com" },
+      { "name": "Dribbble Vintage", "url": "https://dribbble.com/tags/vintage_web" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "cafe.png", "label": "Cafe Site" },
+      { "file": "poster.png", "label": "Event Poster" }
+    ]
+  },
+  {
+    "id": "dark-mode",
+    "name": "Dark Mode UI",
+    "nameKr": "다크 모드",
+    "tagline": "Dark canvas, vivid accents",
+    "description": "어두운 배경 위에 선명한 액센트 컬러. 눈의 피로를 줄이면서 콘텐츠에 집중시키는 현대적 UI 트렌드.",
+    "keywords": ["dark-bg", "contrast", "accent", "OLED", "modern"],
+    "palette": ["#121212", "#1E1E1E", "#BB86FC", "#03DAC6"],
+    "examples": [
+      { "name": "Spotify", "url": "https://open.spotify.com" },
+      { "name": "Discord", "url": "https://discord.com" },
+      { "name": "GitHub Dark", "url": "https://github.com" }
+    ],
+    "images": [
+      { "file": "dashboard.png", "label": "Dashboard" },
+      { "file": "streaming.png", "label": "Streaming App" },
+      { "file": "shop.png", "label": "쇼핑몰" }
+    ]
+  },
+  {
+    "id": "organic-design",
+    "name": "Organic / Biomorphic",
+    "nameKr": "오가닉 디자인",
+    "tagline": "Flowing, natural, alive",
+    "description": "자연에서 영감받은 유기적 곡선, 어스 톤 팔레트, 부드러운 blob 형태. 딱딱한 그리드를 벗어나 생동감을 부여.",
+    "keywords": ["blob", "curves", "earth-tones", "natural", "flowing"],
+    "palette": ["#606C38", "#283618", "#FEFAE0", "#DDA15E"],
+    "examples": [
+      { "name": "Headspace", "url": "https://www.headspace.com" },
+      { "name": "Dropbox Design", "url": "https://dropbox.design" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "wellness.png", "label": "Wellness App" },
+      { "file": "shop.png", "label": "쇼핑몰" }
+    ]
+  },
+  {
+    "id": "cyberpunk",
+    "name": "Cyberpunk",
+    "nameKr": "사이버펑크",
+    "tagline": "Neon-lit dystopia",
+    "description": "네온 조명, 어두운 배경, 글리치 효과, 미래 도시 이미지. '하이테크 + 로우라이프'의 디스토피아적 미학.",
+    "keywords": ["neon", "glitch", "dark", "futuristic", "dystopia"],
+    "palette": ["#0D0D0D", "#FF003C", "#00F0FF", "#BC13FE"],
+    "examples": [
+      { "name": "Cyberpunk 2077", "url": "https://www.cyberpunk.net" },
+      { "name": "Dribbble Cyberpunk", "url": "https://dribbble.com/tags/cyberpunk" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "game.png", "label": "Game UI" },
+      { "file": "shop.png", "label": "쇼핑몰" }
+    ]
+  },
+  {
+    "id": "maximalism",
+    "name": "Maximalism",
+    "nameKr": "맥시멀리즘",
+    "tagline": "More is more",
+    "description": "미니멀리즘의 정반대. 레이어, 패턴, 텍스처, 컬러를 최대한 쌓아 올리는 화려하고 복잡한 디자인.",
+    "keywords": ["layered", "pattern", "ornate", "colorful", "excess"],
+    "palette": ["#FF1493", "#FFD700", "#4169E1", "#32CD32"],
+    "examples": [
+      { "name": "Gucci", "url": "https://www.gucci.com" },
+      { "name": "Kenzo", "url": "https://www.kenzo.com" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "fashion.png", "label": "Fashion Site" },
+      { "file": "editorial.png", "label": "Editorial" }
+    ]
+  },
+  {
+    "id": "japandi",
+    "name": "Japandi",
+    "nameKr": "재팬디",
+    "tagline": "Japanese × Scandinavian calm",
+    "description": "일본의 와비사비 + 스칸디나비아의 휘게. 자연 소재, 뮤트 톤, 절제된 장식, 불완전함 속의 아름다움.",
+    "keywords": ["wabi-sabi", "hygge", "neutral", "natural-material", "calm"],
+    "palette": ["#D4C5A9", "#2C3639", "#F5F0E8", "#A27B5C"],
+    "examples": [
+      { "name": "Kinfolk", "url": "https://www.kinfolk.com" },
+      { "name": "Cereal Magazine", "url": "https://www.readcereal.com" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "interior.png", "label": "Interior Shop" },
+      { "file": "blog.png", "label": "Lifestyle Blog" }
+    ]
+  },
+  {
+    "id": "kawaii",
+    "name": "Kawaii",
+    "nameKr": "카와이",
+    "tagline": "Cute, round, pastel",
+    "description": "일본 카와이 문화의 디지털 표현. 파스텔 컬러, 둥근 모서리, 귀여운 캐릭터/아이콘, 작은 애니메이션.",
+    "keywords": ["pastel", "rounded", "cute", "character", "playful"],
+    "palette": ["#FFB7C5", "#B4F8C8", "#FBE7C6", "#A0E7E5"],
+    "examples": [
+      { "name": "Sanrio", "url": "https://www.sanrio.com" },
+      { "name": "LINE Friends", "url": "https://www.linefriends.com" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "shop.png", "label": "쇼핑몰" },
+      { "file": "mobile-app.png", "label": "Mobile App" }
+    ]
+  },
+  {
+    "id": "corporate-memphis",
+    "name": "Corporate Memphis",
+    "nameKr": "코퍼레이트 멤피스",
+    "tagline": "Flat people, SaaS vibes",
+    "description": "실리콘밸리 스타트업·SaaS의 표준 일러스트 스타일. 비례가 과장된 인물, 솔리드 컬러, 따뜻하고 친근한 톤.",
+    "keywords": ["flat-illustration", "SaaS", "friendly", "character", "tech"],
+    "palette": ["#6C63FF", "#FF6584", "#3F3D56", "#F2F2F2"],
+    "examples": [
+      { "name": "Slack", "url": "https://slack.com" },
+      { "name": "Notion", "url": "https://www.notion.so" },
+      { "name": "Figma", "url": "https://www.figma.com" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "SaaS Landing" },
+      { "file": "pricing.png", "label": "Pricing Page" },
+      { "file": "onboarding.png", "label": "Onboarding" }
+    ]
+  },
+  {
+    "id": "gradient-aurora",
+    "name": "Gradient / Aurora",
+    "nameKr": "그라디언트 / 오로라",
+    "tagline": "Vibrant color transitions",
+    "description": "메시 그라디언트, 오로라 배경, 부드럽게 흐르는 색상 전환. 최근 iOS·macOS 월페이퍼에서 대중화.",
+    "keywords": ["mesh-gradient", "aurora", "vibrant", "fluid", "color-blend"],
+    "palette": ["#667EEA", "#764BA2", "#F093FB", "#4FACFE"],
+    "examples": [
+      { "name": "Stripe Gradient", "url": "https://stripe.com" },
+      { "name": "Linear", "url": "https://linear.app" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "saas.png", "label": "SaaS Dashboard" },
+      { "file": "mobile-app.png", "label": "Mobile App" }
+    ]
+  },
+  {
+    "id": "claymorphism",
+    "name": "Claymorphism",
+    "nameKr": "클레이모피즘",
+    "tagline": "Soft 3D clay world",
+    "description": "부드러운 3D 클레이/점토 느낌의 UI. 둥글둥글한 모서리, 파스텔 톤, 입체적이지만 부드러운 그림자.",
+    "keywords": ["3D", "clay", "rounded", "pastel", "soft-shadow"],
+    "palette": ["#F0E6FF", "#FFE5EC", "#E8F5E9", "#FFF3E0"],
+    "examples": [
+      { "name": "Dribbble Claymorphism", "url": "https://dribbble.com/tags/claymorphism" },
+      { "name": "Spline", "url": "https://spline.design" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "app-icons.png", "label": "App Icons" },
+      { "file": "shop.png", "label": "쇼핑몰" }
+    ]
+  },
+  {
+    "id": "neo-brutalism",
+    "name": "Neo-Brutalism",
+    "nameKr": "네오 브루탈리즘",
+    "tagline": "Bold borders meet vibrant fills",
+    "description": "브루탈리즘의 진화형. 두꺼운 검정 테두리 + 비비드 컬러 채움 + 하드 그림자. Gumroad, Figma가 트렌드를 이끌었다.",
+    "keywords": ["thick-border", "hard-shadow", "vivid", "raw", "modern"],
+    "palette": ["#FF5733", "#FFC300", "#000000", "#FFFFFF"],
+    "examples": [
+      { "name": "Gumroad", "url": "https://gumroad.com" },
+      { "name": "Figma Community", "url": "https://www.figma.com/community" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "blog.png", "label": "Blog" },
+      { "file": "shop.png", "label": "쇼핑몰" }
+    ]
+  },
+  {
+    "id": "kinetic-typography",
+    "name": "Kinetic Typography",
+    "nameKr": "키네틱 타이포",
+    "tagline": "Text in motion",
+    "description": "타이포그래피 자체가 주인공. 스크롤/마우스에 반응하는 글자, 애니메이션 서체, 대형 타이틀이 화면을 지배.",
+    "keywords": ["motion", "large-type", "scroll-driven", "interactive", "bold"],
+    "palette": ["#000000", "#FFFFFF", "#FF4500", "#1E90FF"],
+    "examples": [
+      { "name": "Awwwards Typography", "url": "https://www.awwwards.com/websites/typography" },
+      { "name": "Locomotive", "url": "https://locomotive.ca" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "portfolio.png", "label": "Portfolio" },
+      { "file": "agency.png", "label": "Agency Site" }
+    ]
+  }
+]
