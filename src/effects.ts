@@ -3,7 +3,7 @@
   const EFFECT_GUIDE_BASE_URL = './assets/images/effects';
   const MOTION_QUERY = '(prefers-reduced-motion: reduce)';
 
-  type DemoType = 'bottom-sheet' | 'full-modal' | 'drawer' | 'sticky-cta' | 'scroll-reveal' | 'staggered-cards' | 'press-scale' | 'swipe-action' | 'skeleton' | 'toast' | 'segmented-control' | 'lightbox';
+  type DemoType = EffectsDemos.DemoType;
   interface EffectDemo { type: DemoType; label: string; }
   interface EffectGuide { file: string; alt: string; prompt: string; }
   interface UxEffect {
@@ -133,11 +133,10 @@
   function readDemo(value: unknown, effectId: string): EffectDemo {
     const record = asRecord(value, `${effectId}.demo`);
     const type = readString(record, 'type');
-    const demoTypes: DemoType[] = ['bottom-sheet', 'full-modal', 'drawer', 'sticky-cta', 'scroll-reveal', 'staggered-cards', 'press-scale', 'swipe-action', 'skeleton', 'toast', 'segmented-control', 'lightbox'];
-    if (!demoTypes.includes(type as DemoType)) {
+    if (!EffectsDemos.isDemoType(type)) {
       throw new Error(`${effectId}.demo.type is invalid`);
     }
-    return { type: type as DemoType, label: readString(record, 'label') };
+    return { type, label: readString(record, 'label') };
   }
 
   function readGuide(value: unknown, effectId: string): EffectGuide | null {
@@ -232,36 +231,8 @@
 
   function renderEffectDemo(effect: UxEffect): string {
     const type = effect.demo.type;
-    const body = demoMarkup(type);
+    const body = EffectsDemos.render(type);
     return `<div class="effect-demo effect-demo-${escapeAttr(type)}" aria-label="${escapeAttr(effect.demo.label)}"><div class="effect-phone">${body}</div></div>`;
-  }
-
-  function demoMarkup(type: DemoType): string {
-    switch (type) {
-      case 'bottom-sheet':
-        return '<span class="phone-line"></span><span class="phone-line short"></span><div class="demo-overlay"></div><div class="demo-sheet"><span class="phone-line"></span><span class="phone-pill"></span></div>';
-      case 'full-modal':
-        return '<span class="phone-line"></span><span class="phone-card"></span><div class="demo-overlay"></div><div class="demo-full"><span class="phone-line"></span><span class="phone-line short"></span><span class="phone-pill"></span></div>';
-      case 'drawer':
-        return '<span class="phone-line"></span><span class="phone-card"></span><div class="demo-overlay"></div><div class="demo-drawer"><span class="phone-line"></span><span class="phone-line short"></span><span class="phone-line"></span></div>';
-      case 'sticky-cta':
-        return '<span class="phone-line"></span><span class="phone-card"></span><span class="phone-card"></span><span class="phone-card"></span><div class="demo-sticky-bar"></div>';
-      case 'scroll-reveal':
-      case 'staggered-cards':
-        return '<span class="phone-line"></span><div class="demo-reveal-card"></div><div class="demo-reveal-card"></div><div class="demo-reveal-card"></div>';
-      case 'press-scale':
-        return '<span class="phone-line"></span><div class="demo-press-button"></div>';
-      case 'swipe-action':
-        return '<span class="phone-line"></span><div class="demo-swipe-action"><div class="demo-swipe-row"></div></div>';
-      case 'skeleton':
-        return '<div class="demo-skeleton-line"></div><div class="demo-skeleton-line"></div><div class="demo-skeleton-line"></div><div class="demo-skeleton-line"></div><div class="demo-skeleton-line"></div>';
-      case 'toast':
-        return '<span class="phone-line"></span><span class="phone-card"></span><div class="demo-toast"></div>';
-      case 'segmented-control':
-        return '<span class="phone-line"></span><div class="demo-segment"></div>';
-      case 'lightbox':
-        return '<span class="phone-line"></span><div class="demo-lightbox-thumb"></div>';
-    }
   }
 
   function setupCardObserver(grid: HTMLElement): void {
@@ -338,8 +309,9 @@
 
   function renderGuide(effect: UxEffect): string {
     if (!effect.guide) return '';
-    const src = `${EFFECT_GUIDE_BASE_URL}/${effect.id}/${effect.guide.file}`;
-    return `<figure class="effect-guide-frame"><img class="effect-guide-image" src="${escapeAttr(src)}" alt="${escapeAttr(effect.guide.alt)}" loading="lazy" decoding="async">
+    const pngSrc = `${EFFECT_GUIDE_BASE_URL}/${effect.id}/${effect.guide.file}`;
+    const webpSrc = pngSrc.replace('/images/effects/', '/images/thumbs/effects/').replace(/\.png$/i, '.webp');
+    return `<figure class="effect-guide-frame"><picture class="effect-guide-picture"><source srcset="${escapeAttr(webpSrc)}" type="image/webp"><img class="effect-guide-image" src="${escapeAttr(pngSrc)}" data-original-src="${escapeAttr(pngSrc)}" alt="${escapeAttr(effect.guide.alt)}" loading="lazy" decoding="async"></picture>
       <figcaption class="effect-guide-caption">${escapeHtml(effect.guide.alt)}
       <button class="effect-copy-prompt" type="button" data-prompt="${escapeAttr(effect.guide.prompt)}">프롬프트 복사</button></figcaption></figure>`;
   }
@@ -356,7 +328,7 @@
     }
     const image = target.closest('.effect-guide-image');
     if (image instanceof HTMLImageElement) {
-      openLightbox(image.currentSrc || image.src, image.alt, elements);
+      openLightbox(image.dataset.originalSrc || image.currentSrc || image.src, image.alt, elements);
       return;
     }
     const copyButton = target.closest('.effect-copy-prompt');
@@ -491,9 +463,7 @@
   }
 
   function escapeHtml(value: string): string {
-    return value
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+    return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   }
 
   function escapeAttr(value: string): string { return escapeHtml(value); }

@@ -1,6 +1,6 @@
 ---
 created: 2026-05-10
-status: planning
+status: implemented
 tags: [design-isms, motion, accessibility, performance]
 ---
 
@@ -12,11 +12,12 @@ tags: [design-isms, motion, accessibility, performance]
 
 ## Goal
 
-- [ ] 모든 애니메이션은 `transform`과 `opacity` 중심으로 구현한다.
-- [ ] `prefers-reduced-motion: reduce`에서 움직임을 끈다.
-- [ ] modal, drawer, bottom sheet는 keyboard close와 focus return을 지원한다.
-- [ ] touch target은 최소 44px를 유지한다.
-- [ ] guide image와 demo가 텍스트를 가리지 않는다.
+- [x] 모든 애니메이션은 `transform`과 `opacity` 중심으로 구현한다.
+- [x] `prefers-reduced-motion: reduce`에서 움직임을 끈다.
+- [x] modal, drawer, bottom sheet는 keyboard close와 focus return을 지원한다.
+- [x] touch target은 최소 44px를 유지한다.
+- [x] guide image와 demo가 텍스트를 가리지 않는다.
+- [x] 새로 확장한 34개 후보군에도 전용 demo animation을 추가한다.
 
 ## Motion Tokens
 
@@ -156,12 +157,13 @@ Swipe Action is a demo, not a destructive product interaction.
 
 ## Diff-Level Plan
 
-### MODIFY `assets/css/style.css`
+### MODIFY effect CSS files
 
 - Add motion tokens
 - Add `.effects-page` scoped styles
 - Add reduced-motion overrides
 - Add touch target minimums for effect controls
+- Keep new motion in `assets/css/effects.css`, `assets/css/effects-demos.css`, and `assets/css/effects-demos-candidates.css`.
 
 ### NEW in `src/effects.ts`
 

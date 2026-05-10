@@ -1,7 +1,7 @@
 # AGENTS.md — Design -isms 프로젝트 가이드
 
 ## 프로젝트 개요
-35개 디자인 ism의 시각적 레퍼런스 보드. GitHub Pages 배포.
+35개 디자인 ism의 시각적 레퍼런스 보드와 46개 모바일/데스크탑 프런트엔드 UI 후보군 카탈로그. GitHub Pages 배포.
 - **라이브**: https://lidge-jun.github.io/design-isms/
 - **스택**: 정적 HTML/CSS + TypeScript source → browser JS build
 - **이미지**: GPT Image 2 (gpt-image-2, 1536x1024, high quality)
@@ -16,8 +16,10 @@
 ├── assets/
 │   ├── css/style.css             # 전체 스타일
 │   ├── css/effects.css           # UX 효과 페이지 전용 스타일
-│   ├── css/effects-demos.css     # UX 효과 CSS demo/animation
+│   ├── css/effects-demos.css     # 초기 공통 UX demo/animation
+│   ├── css/effects-demos-candidates.css # 46개 후보군 전용 demo/animation
 │   ├── js/app.js                 # 메인 로직 (src/app.ts build 산출물)
+│   ├── js/effects-demos.js       # 효과 demo renderer (src/effects-demos.ts build 산출물)
 │   ├── js/effects.js             # 효과 페이지 로직 (src/effects.ts build 산출물)
 │   ├── data/isms.json            # 핵심 데이터 (35개 ism)
 │   ├── data/effects.json         # 프런트엔드 UI 후보군 데이터
@@ -26,10 +28,14 @@
 │       │   ├── landing.png
 │       │   ├── shop.png
 │       │   └── portfolio.png
+│       ├── thumbs/               # WebP thumbnail/preview 산출물
+│       │   ├── minimalism/
+│       │   └── effects/
 │       ├── brutalism/
 │       └── ...                   # 35개 폴더
 ├── src/
 │   ├── app.ts
+│   ├── effects-demos.ts
 │   └── effects.ts
 ├── structure/
 │   └── README.md                 # 현재 구조와 source-of-truth 요약
@@ -40,6 +46,36 @@
 └── .github/workflows/
     └── deploy.yml                # GitHub Pages 배포
 ```
+
+---
+
+## 현재 구현 불변 조건
+
+- README, `AGENTS.md`, `structure/README.md`, `devlog/`의 설명은 실제 구현과 어긋나면 안 된다.
+- 소스는 `src/*.ts`, 브라우저 산출물은 `assets/js/*.js`다. GitHub Pages가 static file을 직접 배포하므로 JS 산출물도 커밋 대상이다.
+- HTML은 non-module script를 사용한다. `effects.html`은 `assets/js/effects-demos.js`를 먼저, `assets/js/effects.js`를 나중에 로드해야 한다.
+- 신규 파일은 500줄 이하를 유지한다. 초과하면 역할별 파일로 분리한다.
+- 커밋/푸시는 사용자가 같은 턴에서 명시적으로 요청한 경우에만 실행한다.
+
+## 메인 ISM 모달 원칙
+
+- 카드 클릭 모달은 구현된 기능이다. `docs/PLAN-popup-detail.md`는 계획/설계 기록이며 현재 상태의 source of truth는 `src/app.ts`, `assets/js/app.js`, README, structure 문서다.
+- 모달 제목 바로 아래에 `history`를 표시한다.
+- 프롬프트는 메인 이미지 1개를 항상 노출하고, 나머지 이미지는 접이식 섹션에 둔다.
+- 예시 사이트는 링크만 사용한다. 썸네일을 추가하지 않는다.
+- 예시 사이트 10개는 처음 3개만 보이고 나머지는 더 보기로 펼친다.
+- 관련 ISM은 JSON에 저장하지 않고 keyword overlap으로 런타임 계산한다.
+- 이미지 preview는 WebP thumbnail을 우선 쓰고, lightbox 확대는 원본 PNG를 사용한다.
+
+## Effects 후보군 원칙
+
+- `effects.html`은 모바일 전용 목록이 아니라 모바일/데스크탑/공통 프런트엔드 UI 후보군 46개 카탈로그다.
+- `assets/data/effects.json`의 각 항목은 `demo.type`을 가져야 하며 값은 해당 effect `id`와 같아야 한다.
+- `src/effects-demos.ts` registry에는 46개 effect id가 모두 있어야 한다. 새 후보군을 기존 12개 seed animation에 재사용으로 연결하지 않는다.
+- 후보군마다 카드/모달에서 식별 가능한 전용 CSS demo animation을 둔다. 확장 demo 스타일은 `assets/css/effects-demos-candidates.css`에 둔다.
+- guide 원본은 `assets/images/effects/{effect-id}/guide.png`, WebP preview는 `assets/images/thumbs/effects/{effect-id}/guide.webp`다.
+- guide 이미지를 생성/교체하면 `npm run images:thumbs`로 WebP preview를 갱신하고 `npm run verify`를 통과시킨다.
+- 데스크탑과 모바일 모두에서 카드 수 46개, demo type 46개, horizontal overflow 없음, console error 없음까지 확인해야 완료로 보고한다.
 
 ---
 
@@ -150,6 +186,13 @@ git push
 1. 새 이미지를 `assets/images/{ism-id}/` 에 덮어쓰기
 2. 파일명은 `isms.json`의 `images[].file`과 일치해야 함
 3. 크기: 1536x1024, 형식: PNG
+4. `npm run images:thumbs`로 WebP thumbnail을 갱신해야 함
+
+### 프런트엔드 UI 후보군 guide 이미지
+1. 원본은 `assets/images/effects/{effect-id}/guide.png`
+2. WebP preview는 `assets/images/thumbs/effects/{effect-id}/guide.webp`
+3. `effects.html` modal은 WebP를 우선 로드하고 lightbox는 원본 PNG를 사용함
+4. guide 이미지를 바꾸면 `npm run images:thumbs`와 `npm run verify`를 함께 실행해야 함
 
 ### 설명/키워드 수정
 `isms.json`에서 직접 편집. 키워드 변경 시 필터 바의 popular 키워드 목록도 확인:
@@ -163,23 +206,18 @@ const popular = [
 
 ---
 
-## 팝업 기능 (미구현 — 계획 완료)
+## 메인 ISM 팝업 기능
 
-상세 계획: `docs/PLAN-popup-detail.md`
+구현 기준: `src/app.ts` → `assets/js/app.js`
+설계 기록: `docs/PLAN-popup-detail.md`
 
-### 핵심 결정사항
+### 현재 동작
 - **프롬프트**: 메인 1개 항상 펼침 + 나머지 접이식
 - **메인 라벨**: "ㅇㅇ 디자인 시안" (hero page 같은 라벨 제거)
-- **예시 사이트**: 링크만 (썸네일 없음)
+- **예시 사이트**: 링크만, 처음 3개 노출 + 더 보기로 나머지 표시
 - **역사/맥락**: 제목 바로 밑에 표시
 - **관련 ISM**: 키워드 겹침 기반 자동 계산 (런타임)
 - **URL hash**: `#minimalism` 형태 직링크 지원
-
-### 구현 시 필요한 작업
-1. `isms.json`에 `prompts` 배열 추가 (105개 프롬프트)
-2. `index.html`에 모달 HTML 추가
-3. `style.css`에 모달 CSS ~180줄
-4. `app.js`에 모달 JS ~150줄
 
 ---
 
@@ -196,6 +234,7 @@ const popular = [
 
 - GitHub Pages는 빌드 산출물 `assets/js/*.js`를 직접 로드
 - TypeScript source는 `src/*.ts`, browser script는 `assets/js/*.js`
+- 효과 후보군 demo type은 `assets/data/effects.json`의 `demo.type`과 `src/effects-demos.ts`의 registry가 일치해야 함
 - ES Module 문법 사용하지 않음 (script type="module" 아님)
 - CSS 변수는 `:root`에 정의, 일관되게 사용
 - 폰트: Pretendard (한국어), Outfit (영문 제목), SF Mono (코드)

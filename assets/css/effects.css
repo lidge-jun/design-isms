@@ -295,6 +295,7 @@ body.modal-open { overflow: hidden; }
   background: #fff;
 }
 .effect-guide-frame.is-missing { display: none; }
+.effect-guide-picture { display: block; }
 .effect-guide-image {
   display: block;
   width: 100%;
@@ -346,6 +347,19 @@ body.modal-open { overflow: hidden; }
   }
 }
 @media (max-width: 640px) {
+  .effects-page .site-header { padding: 0 12px; }
+  .effects-page .header-inner { gap: 10px; }
+  .effects-page .header-right {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px;
+    min-width: 0;
+  }
+  .effects-page .star-pill {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+  .effects-page .header-count { display: none; }
   .effects-main {
     padding-top: 12px;
     padding-bottom: 72px;

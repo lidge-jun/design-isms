@@ -1,6 +1,6 @@
 ---
 created: 2026-05-10
-status: active
+status: implemented
 tags: [design-isms, audit, employee-review]
 ---
 
@@ -62,7 +62,7 @@ The overall direction is feasible and appropriate for the static GitHub Pages pr
 | --- | --- | --- |
 | High | `src/effects.ts` could collide with `src/app.ts` global helpers because current TS files compile as scripts. | Added IIFE/no-global-collision rule to `02_ui_interaction.md`. |
 | High | Modal focus trap was described as optional. | Changed focus containment to v1 mandatory in `03_motion_accessibility.md`. |
-| Medium | `effects.json` and guide image schema were inconsistent. | Unified `EffectDemo` schema and image/imageAlt rules in `01_data_content.md` and `04_image_guide_pipeline.md`. |
+| Medium | `effects.json` and guide image schema were inconsistent. | Unified `demo` and `guide.file`/`guide.alt`/`guide.prompt` rules in `01_data_content.md` and `04_image_guide_pipeline.md`. |
 | Medium | The first 12 effects did not all have full implementation/accessibility/performance skeletons. | Added complete minimum content skeleton table to `01_data_content.md`. |
 | Medium | Static path rules were not explicit enough across docs. | Added exact `./...` path contract and forbidden paths to `02_ui_interaction.md`. |
 | Medium | Demo loops could be expensive if always running. | Added IntersectionObserver/offscreen pause/reduced-motion rules to `03_motion_accessibility.md`. |
@@ -72,16 +72,19 @@ The overall direction is feasible and appropriate for the static GitHub Pages pr
 
 ### Final Status
 
-After applying the review fixes above, the plan can be treated as conditionally approved for implementation.
+After applying the review fixes above, the plan was implemented and verified. The final implementation uses 46 effect candidates, 46 original PNG guide images, and 46 generated WebP previews.
 
-Implementation may proceed with:
+Implemented files:
 
 - `effects.html`
 - `assets/data/effects.json`
 - `src/effects.ts`
 - generated `assets/js/effects.js`
+- generated `assets/js/effects-demos.js`
 - scoped additions in `assets/css/effects.css` and `assets/css/effects-demos.css`
-- optional first 5 guide images
+- scoped additions in `assets/css/effects-demos-candidates.css`
+- 46 original guide PNG files
+- 46 generated guide WebP preview files
 
 Post-implementation user correction:
 
@@ -99,7 +102,9 @@ Still out of scope:
 
 ## Implementation Notes
 
-- Added `effects.html`, `assets/data/effects.json`, `src/effects.ts`, generated `assets/js/effects.js`, `assets/css/effects.css`, and `assets/css/effects-demos.css`.
+- Added `effects.html`, `assets/data/effects.json`, `src/effects.ts`, `src/effects-demos.ts`, generated `assets/js/effects.js`, generated `assets/js/effects-demos.js`, `assets/css/effects.css`, `assets/css/effects-demos.css`, and `assets/css/effects-demos-candidates.css`.
 - Added `structure/README.md` so README, AGENTS, devlog, and implementation have a current source-of-truth map.
 - Kept all effect asset paths relative with `./` in HTML and static data paths inside the browser runtime.
 - Preserved the GPT Pro decisions: IIFE TS scope, modal focus trap, lightbox focus trap, complete effect rows, reduced-motion rules, and offscreen card animation pause.
+- Added WebP preview loading for guide images while keeping original PNGs for lightbox zoom.
+- Added 46 unique demo types so newly added candidates no longer reuse the initial shared demo animations.

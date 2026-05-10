@@ -12,11 +12,12 @@ tags: [design-isms, verification, deploy, github-pages]
 
 ## Goal
 
-- [ ] TypeScript compile과 build 산출물이 일치한다.
-- [ ] `effects.html`이 상대 경로로 모든 asset을 로드한다.
-- [ ] 모바일/데스크톱에서 layout overflow가 없다.
-- [ ] modal, lightbox, toast, filter, search가 동작한다.
-- [ ] GitHub Pages 배포 후 직접 URL이 응답한다.
+- [x] TypeScript compile과 build 산출물이 일치한다.
+- [x] `effects.html`이 상대 경로로 모든 asset을 로드한다.
+- [x] 모바일/데스크톱에서 layout overflow가 없다.
+- [x] modal, lightbox, toast, filter, search가 동작한다.
+- [x] GitHub Pages 배포 후 직접 URL이 응답한다.
+- [x] effects guide WebP preview 46개가 생성된다.
 
 ## Required Commands
 
@@ -38,6 +39,7 @@ npm run verify
 | `./assets/js/effects.js` | `/assets/js/effects.js` |
 | `./assets/data/effects.json` | `/assets/data/effects.json` |
 | `./assets/images/effects/...` | `/images/effects/...` |
+| `./assets/images/thumbs/effects/...` | `/images/thumbs/effects/...` |
 
 ## Manual Browser QA
 
@@ -114,7 +116,9 @@ Result:
 
 - `npm run verify`: pass.
 - `effects.json`: 46 rows parsed successfully.
-- Guide images: 46 `guide.png` files generated and all are 1536x1024 PNG.
+- Guide originals: 46 `guide.png` files generated and all are 1536x1024 PNG.
+- Guide previews: 46 `guide.webp` files generated under `assets/images/thumbs/effects/`.
+- Size check: 46 original PNGs total about 61M; 46 WebP previews total about 1.0M.
 - `effects.html`: HTTP 200 from local static server.
 - Browser snapshot: 46 keyboard-activatable effect cards rendered.
 - Command Palette modal: opens from desktop candidate card.
@@ -127,19 +131,50 @@ Result:
   - `/Users/jun/.cli-jaw-3468/screenshots/screenshot_1778394147140.png`
   - `/Users/jun/.cli-jaw-3468/screenshots/screenshot_1778394973295.png`
 
+## Final Optimization Verification Result
+
+Executed after WebP preview optimization:
+
+```bash
+npm run images:thumbs
+npm run verify
+npm run verify
+node -e "...effects/json + image integrity..."
+cli-jaw browser navigate "http://127.0.0.1:4173/effects.html"
+cli-jaw browser console --json --clear --reload --duration 1500 --limit 20
+```
+
+Result:
+
+- `npm run images:thumbs`: 46 generated, 105 fresh, 151 total.
+- `npm run verify`: pass after WebP implementation.
+- Repeat `npm run verify`: pass after mobile overflow fix.
+- `effects.json`: 46 rows parsed successfully.
+- Guide originals: 46 PNG files, no missing file, all 1536x1024.
+- Guide previews: 46 WebP files under `assets/images/thumbs/effects/`.
+- Demo registry: 46 effects, 46 unique `demo.type` values, no mismatch between effect id and demo type.
+- Size check: PNG total 60.47MB, WebP total 0.94MB, about 98.5% smaller.
+- Browser DOM: 46 cards render.
+- Browser demo check: 46 cards expose 46 unique `.effect-demo-*` classes; no duplicate demo classes.
+- Browser animation samples: `mega-menu` uses `menuDrop`, `command-palette` uses `commandPop`, `data-table` uses `rowHighlight`, `kanban-board` uses `cardMove`, `notification-center` uses `notifySlide`, `file-dropzone` uses `dropPulse`.
+- Browser image check: modal preview `currentSrc` uses `assets/images/thumbs/effects/bottom-sheet/guide.webp`.
+- Browser lightbox check: lightbox opens `assets/images/effects/bottom-sheet/guide.png`.
+- Browser console after reload: empty.
+- Mobile 390x844: 46 cards, 46 unique demo classes, one grid column, `scrollWidth` equals viewport width, no horizontal overflow.
+
 ## Deploy Flow
 
 ```bash
 git status --short
 npm run verify
-git add effects.html index.html assets/css/effects.css assets/css/effects-demos.css assets/data/effects.json src/effects.ts assets/js/effects.js assets/images/effects/ README.md AGENTS.md structure/ devlog/260510_mobile_ux_effects/
+git add effects.html index.html assets/css/effects.css assets/css/effects-demos.css assets/css/effects-demos-candidates.css assets/data/effects.json src/effects.ts src/effects-demos.ts assets/js/effects.js assets/js/effects-demos.js assets/images/effects/ assets/images/thumbs/effects/ README.md AGENTS.md structure/ devlog/260510_mobile_ux_effects/
 git commit -m "[agent] feat: add mobile UX effects catalog"
 git push origin main
 ```
 
 Commit and push require explicit user approval in the same turn. This document only defines the future deploy flow.
 
-`assets/js/effects.js` is generated from `src/effects.ts`, but it must be committed because GitHub Pages publishes static files from the repository artifact.
+`assets/js/effects.js` and `assets/js/effects-demos.js` are generated from `src/effects.ts` and `src/effects-demos.ts`, but both must be committed because GitHub Pages publishes static files from the repository artifact.
 
 ## GitHub Pages Post-Deploy Checks
 
@@ -175,9 +210,12 @@ Changed:
 - effects.html
 - src/effects.ts
 - assets/js/effects.js
+- assets/js/effects-demos.js
+- src/effects-demos.ts
 - assets/data/effects.json
 - assets/css/effects.css
 - assets/css/effects-demos.css
+- assets/css/effects-demos-candidates.css
 
 Verified:
 - npm run verify: pass
@@ -186,6 +224,6 @@ Verified:
 - GitHub Pages URL: pass
 
 Known limits:
-- guide images only for 5 effects
 - no external animation library
+- commit/push require explicit user approval in the same turn
 ```

@@ -1,0 +1,454 @@
+/* ── Effects Page: extended candidate demos ── */
+.effect-demo-mega-menu .effect-phone,
+.effect-demo-command-palette .effect-phone,
+.effect-demo-split-pane .effect-phone,
+.effect-demo-resizable-sidebar .effect-phone,
+.effect-demo-data-table .effect-phone,
+.effect-demo-master-detail .effect-phone,
+.effect-demo-kanban-board .effect-phone,
+.effect-demo-sticky-table-header .effect-phone,
+.effect-demo-dashboard-kpi-cards .effect-phone,
+.effect-demo-filter-sidebar .effect-phone,
+.effect-demo-file-dropzone .effect-phone {
+  width: 168px;
+  height: 126px;
+  border-width: 5px;
+  border-radius: 18px;
+}
+.effect-demo-mega-menu .effect-phone::before,
+.effect-demo-command-palette .effect-phone::before,
+.effect-demo-split-pane .effect-phone::before,
+.effect-demo-resizable-sidebar .effect-phone::before,
+.effect-demo-data-table .effect-phone::before,
+.effect-demo-master-detail .effect-phone::before,
+.effect-demo-kanban-board .effect-phone::before,
+.effect-demo-sticky-table-header .effect-phone::before,
+.effect-demo-dashboard-kpi-cards .effect-phone::before,
+.effect-demo-filter-sidebar .effect-phone::before,
+.effect-demo-file-dropzone .effect-phone::before {
+  width: 30px;
+  top: 5px;
+}
+.demo-tabbar,
+.demo-stepper,
+.demo-pagination,
+.demo-wizard,
+.demo-tabs,
+.demo-progress-stepper {
+  position: absolute;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.demo-tabbar {
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  height: 34px;
+  justify-content: space-around;
+  border-radius: 16px;
+  background: #fff;
+}
+.demo-tabbar i,
+.demo-pagination i,
+.demo-wizard i,
+.demo-tabs i,
+.demo-progress-stepper i {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(34, 34, 34, 0.14);
+}
+.demo-tabbar i:nth-child(2),
+.demo-pagination i:nth-child(2),
+.demo-wizard i:nth-child(2),
+.demo-tabs i:nth-child(2) {
+  background: var(--accent);
+  animation: activePulse 2.4s ease-in-out infinite;
+}
+.demo-refresh {
+  position: absolute;
+  top: 34px;
+  left: 50%;
+  width: 26px;
+  height: 26px;
+  border: 3px solid rgba(192, 107, 43, 0.2);
+  border-top-color: var(--accent);
+  border-radius: 999px;
+  animation: refreshDrop 2.6s ease-in-out infinite;
+}
+.demo-fab,
+.demo-dot-button {
+  position: absolute;
+  right: 18px;
+  bottom: 20px;
+  width: 42px;
+  height: 42px;
+  border-radius: 16px;
+  background: var(--accent);
+  box-shadow: 0 12px 20px rgba(192, 107, 43, 0.28);
+  animation: fabFloat 2.2s ease-in-out infinite;
+}
+.demo-dot-button {
+  right: auto;
+  left: 43px;
+  top: 70px;
+  bottom: auto;
+  width: 34px;
+  height: 34px;
+}
+.demo-stepper,
+.demo-pagination,
+.demo-wizard,
+.demo-tabs,
+.demo-progress-stepper {
+  top: 34px;
+  left: 16px;
+  right: 16px;
+  justify-content: center;
+}
+.demo-stepper i,
+.demo-progress-stepper i {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(34, 34, 34, 0.12);
+}
+.demo-stepper i:first-child,
+.demo-progress-stepper i:first-child {
+  background: var(--accent);
+  animation: stepFill 2.7s ease-in-out infinite;
+}
+.demo-progress-stepper b {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  height: 3px;
+  background: rgba(192, 107, 43, 0.25);
+  transform: scaleX(0.35);
+  transform-origin: left;
+  animation: progressLine 2.7s ease-in-out infinite;
+}
+.demo-empty-icon,
+.demo-validation,
+.demo-tooltip,
+.demo-popover,
+.demo-context-menu,
+.demo-dialog {
+  position: absolute;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(34, 34, 34, 0.08);
+  box-shadow: 0 14px 24px rgba(34, 34, 34, 0.12);
+}
+.demo-empty-icon {
+  top: 50px;
+  left: 43px;
+  width: 42px;
+  height: 42px;
+  border-radius: 18px;
+  animation: emptyBreathe 2.4s ease-in-out infinite;
+}
+.demo-input {
+  position: absolute;
+  top: 68px;
+  left: 16px;
+  right: 16px;
+  height: 38px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(192, 43, 43, 0.36);
+  animation: inputShake 2.5s ease-in-out infinite;
+}
+.demo-validation {
+  left: 18px;
+  right: 34px;
+  top: 114px;
+  height: 12px;
+  background: rgba(47, 124, 87, 0.18);
+  box-shadow: none;
+}
+.demo-desktop-nav {
+  height: 20px;
+  margin: 18px 10px 0;
+  border-radius: 8px;
+  background: rgba(34, 34, 34, 0.1);
+}
+.demo-mega-menu,
+.demo-command,
+.demo-split,
+.demo-resizable,
+.demo-table,
+.demo-master-detail,
+.demo-kanban,
+.demo-sticky-table,
+.demo-kpi-grid,
+.demo-filter-layout,
+.demo-dropzone {
+  position: absolute;
+  inset: 42px 12px 12px;
+}
+.demo-mega-menu {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  padding: 8px;
+  border-radius: 14px;
+  background: #fff;
+  transform-origin: top;
+  animation: menuDrop 2.8s ease-in-out infinite;
+}
+.demo-mega-menu i,
+.demo-command i,
+.demo-table i,
+.demo-master-detail i,
+.demo-kanban i,
+.demo-sticky-table i,
+.demo-kpi-grid i,
+.demo-notification-panel i {
+  display: block;
+  border-radius: 9px;
+  background: rgba(34, 34, 34, 0.1);
+}
+.demo-command {
+  padding: 10px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 32px rgba(34, 34, 34, 0.18);
+  animation: commandPop 2.6s ease-in-out infinite;
+}
+.demo-command span {
+  display: block;
+  height: 16px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  background: rgba(192, 107, 43, 0.22);
+}
+.demo-command i { height: 12px; margin-top: 6px; }
+.demo-split,
+.demo-resizable,
+.demo-master-detail,
+.demo-filter-layout {
+  display: grid;
+  grid-template-columns: 0.45fr 8px 1fr;
+  gap: 6px;
+}
+.demo-split i,
+.demo-resizable i,
+.demo-master-detail i,
+.demo-filter-layout aside,
+.demo-filter-layout main {
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.82);
+}
+.demo-split b,
+.demo-resizable b {
+  border-radius: 999px;
+  background: var(--accent);
+  transform: scaleY(0.72);
+  animation: resizePulse 2.3s ease-in-out infinite;
+}
+.demo-resizable { grid-template-columns: 0.34fr 8px 1fr; animation: sidebarResize 2.8s ease-in-out infinite; }
+.demo-table,
+.demo-sticky-table,
+.demo-virtual-list {
+  display: grid;
+  gap: 7px;
+}
+.demo-table i,
+.demo-sticky-table i,
+.demo-virtual-list i {
+  height: 12px;
+}
+.demo-table i:nth-child(2),
+.demo-sticky-table b {
+  background: rgba(192, 107, 43, 0.24);
+  animation: rowHighlight 2.6s ease-in-out infinite;
+}
+.demo-master-detail { grid-template-columns: 0.55fr 0.55fr 1fr; }
+.demo-master-detail b {
+  border-radius: 12px;
+  background: rgba(192, 107, 43, 0.18);
+  animation: detailSwap 2.8s ease-in-out infinite;
+}
+.demo-kanban {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+}
+.demo-kanban i { min-height: 56px; }
+.demo-kanban i:nth-child(2) { animation: cardMove 2.8s ease-in-out infinite; background: rgba(192, 107, 43, 0.22); }
+.demo-breadcrumb {
+  display: flex;
+  gap: 6px;
+  margin: 32px 12px 0;
+}
+.demo-breadcrumb i {
+  width: 28px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(34, 34, 34, 0.12);
+}
+.demo-breadcrumb i:last-child { background: var(--accent); animation: activePulse 2.2s ease-in-out infinite; }
+.demo-context-menu {
+  top: 62px;
+  left: 48px;
+  width: 68px;
+  padding: 8px;
+  animation: contextPop 2.4s ease-in-out infinite;
+}
+.demo-context-menu i,
+.demo-popover i,
+.demo-dialog i {
+  display: block;
+  height: 8px;
+  margin-top: 7px;
+  border-radius: 999px;
+  background: rgba(34, 34, 34, 0.12);
+}
+.demo-tooltip {
+  top: 38px;
+  left: 24px;
+  width: 78px;
+  height: 28px;
+  animation: tooltipPop 2.3s ease-in-out infinite;
+}
+.demo-popover,
+.demo-dialog {
+  top: 46px;
+  left: 24px;
+  right: 24px;
+  padding: 10px;
+  animation: commandPop 2.5s ease-in-out infinite;
+}
+.demo-dialog {
+  top: 54px;
+  left: 20px;
+  right: 20px;
+}
+.demo-toast-stack,
+.demo-drag-list,
+.demo-virtual-list,
+.demo-notification-panel,
+.demo-accordion,
+.demo-carousel,
+.demo-calendar,
+.demo-dropzone {
+  position: absolute;
+  inset: 42px 14px 14px;
+}
+.demo-toast-stack i,
+.demo-drag-list i,
+.demo-accordion i {
+  display: block;
+  height: 24px;
+  margin-top: 7px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(34, 34, 34, 0.12);
+}
+.demo-toast-stack i { animation: toastFloat 2.6s ease-in-out infinite; }
+.demo-inline-edit {
+  position: absolute;
+  top: 72px;
+  left: 16px;
+  right: 16px;
+  height: 38px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(34, 34, 34, 0.08);
+  animation: editFocus 2.5s ease-in-out infinite;
+}
+.demo-inline-edit input {
+  width: 58px;
+  margin: 9px 0 0 12px;
+  border: 0;
+  color: transparent;
+  background: rgba(192, 107, 43, 0.22);
+}
+.demo-drag-list i:nth-child(2) {
+  background: rgba(192, 107, 43, 0.24);
+  animation: dragLift 2.7s ease-in-out infinite;
+}
+.demo-virtual-list { animation: virtualScroll 3s ease-in-out infinite; }
+.demo-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.demo-kpi-grid i { animation: activePulse 2.4s ease-in-out infinite; }
+.demo-filter-layout { grid-template-columns: 0.45fr 1fr; }
+.demo-filter-layout aside { animation: filterOpen 2.8s ease-in-out infinite; }
+.demo-pagination { bottom: 30px; top: auto; }
+.demo-tabs { top: 32px; }
+.demo-accordion i:nth-child(2) {
+  height: 48px;
+  background: rgba(192, 107, 43, 0.18);
+  animation: accordionOpen 2.6s ease-in-out infinite;
+}
+.demo-carousel {
+  display: flex;
+  gap: 10px;
+  overflow: hidden;
+}
+.demo-carousel i {
+  flex: 0 0 78px;
+  border-radius: 16px;
+  background: rgba(192, 107, 43, 0.22);
+  animation: carouselSlide 2.8s ease-in-out infinite;
+}
+.demo-calendar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+}
+.demo-calendar i {
+  border-radius: 10px;
+  background: rgba(34, 34, 34, 0.1);
+}
+.demo-calendar i:nth-child(5) { background: var(--accent); animation: activePulse 2.4s ease-in-out infinite; }
+.demo-dropzone {
+  border: 2px dashed rgba(192, 107, 43, 0.38);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  animation: dropPulse 2.4s ease-in-out infinite;
+}
+.demo-notification-panel {
+  position: absolute;
+  top: 34px;
+  right: 0;
+  bottom: 14px;
+  width: 82%;
+  padding: 9px;
+  background: #fff;
+  border-radius: 16px 0 0 16px;
+  transform: translateX(76%);
+  animation: notifySlide 2.8s ease-in-out infinite;
+}
+.demo-notification-panel i { height: 18px; margin-bottom: 8px; }
+@keyframes activePulse { 50% { transform: scale(1.12); } }
+@keyframes refreshDrop { 0%, 100% { transform: translate(-50%, -12px) rotate(0deg); opacity: 0; } 45%, 78% { transform: translate(-50%, 8px) rotate(240deg); opacity: 1; } }
+@keyframes fabFloat { 50% { transform: translateY(-8px) scale(1.04); } }
+@keyframes stepFill { 50% { transform: scale(1.18); box-shadow: 0 0 0 6px rgba(192, 107, 43, 0.14); } }
+@keyframes progressLine { 50% { transform: scaleX(1); } }
+@keyframes emptyBreathe { 50% { transform: translateY(-6px) scale(1.05); } }
+@keyframes inputShake { 48%, 58% { transform: translateX(-3px); } 53%, 63% { transform: translateX(3px); } }
+@keyframes menuDrop { 0%, 100% { opacity: 0; transform: scaleY(0.8); } 38%, 78% { opacity: 1; transform: scaleY(1); } }
+@keyframes commandPop { 0%, 100% { opacity: 0; transform: translateY(10px) scale(0.94); } 40%, 78% { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes resizePulse { 50% { transform: scaleY(1); } }
+@keyframes sidebarResize { 50% { transform: scaleX(1.08); transform-origin: left; } }
+@keyframes rowHighlight { 50% { transform: translateX(6px); } }
+@keyframes detailSwap { 50% { transform: scale(1.04); } }
+@keyframes cardMove { 50% { transform: translateX(36px) rotate(2deg); } }
+@keyframes contextPop { 0%, 100% { opacity: 0; transform: scale(0.9); } 45%, 78% { opacity: 1; transform: scale(1); } }
+@keyframes tooltipPop { 0%, 100% { opacity: 0; transform: translateY(8px); } 42%, 78% { opacity: 1; transform: translateY(0); } }
+@keyframes editFocus { 50% { border-color: rgba(192, 107, 43, 0.5); box-shadow: 0 0 0 4px rgba(192, 107, 43, 0.12); } }
+@keyframes dragLift { 50% { transform: translateY(-31px); box-shadow: 0 16px 22px rgba(34, 34, 34, 0.18); } }
+@keyframes virtualScroll { 50% { transform: translateY(-22px); } }
+@keyframes filterOpen { 50% { transform: scaleX(1.08); transform-origin: left; } }
+@keyframes accordionOpen { 0%, 100% { transform: scaleY(0.45); transform-origin: top; } 45%, 78% { transform: scaleY(1); } }
+@keyframes carouselSlide { 50% { transform: translateX(-52px); } }
+@keyframes dropPulse { 50% { transform: scale(1.03); background: rgba(192, 107, 43, 0.1); } }
+@keyframes notifySlide { 0%, 100% { transform: translateX(76%); } 42%, 78% { transform: translateX(0); } }
