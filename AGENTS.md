@@ -1,7 +1,7 @@
 # AGENTS.md — Design -isms 프로젝트 가이드
 
 ## 프로젝트 개요
-35개 디자인 ism의 시각적 레퍼런스 보드와 46개 모바일/데스크탑 프런트엔드 UI 후보군 카탈로그. GitHub Pages 배포.
+43개 디자인 ism의 시각적 레퍼런스 보드와 46개 모바일/데스크탑 프런트엔드 UI 후보군 카탈로그. GitHub Pages 배포.
 - **라이브**: https://lidge-jun.github.io/design-isms/
 - **스택**: 정적 HTML/CSS + TypeScript source → browser JS build
 - **이미지**: GPT Image 2 (gpt-image-2, 1536x1024, high quality)
@@ -11,7 +11,6 @@
 701_design-isms/
 ├── index.html                    # 메인 페이지
 ├── effects.html                  # 모바일/데스크탑 UI 후보군 페이지
-├── references.html               # ISM 후보/공식 레퍼런스 리서치 페이지
 ├── AGENTS.md                     # 이 파일
 ├── README.md
 ├── assets/
@@ -19,28 +18,23 @@
 │   ├── css/nav.css               # 공통 상단 메뉴 스타일
 │   ├── css/effects.css           # UX 효과 페이지 전용 스타일
 │   ├── css/effects-docs.css      # 효과별 장문 문서 섹션
-│   ├── css/references.css        # 레퍼런스 페이지 전용 스타일
 │   ├── css/effects-demos.css     # 초기 공통 UX demo/animation
 │   ├── css/effects-demos-candidates.css # 46개 후보군 전용 demo/animation
 │   ├── js/app.js                 # 메인 로직 (src/app.ts build 산출물)
 │   ├── js/effects-demos.js       # 효과 demo renderer (src/effects-demos.ts build 산출물)
 │   ├── js/effects-docs.js        # 효과 문서 renderer (src/effects-docs.ts build 산출물)
 │   ├── js/effects.js             # 효과 페이지 로직 (src/effects.ts build 산출물)
-│   ├── js/references.js          # 레퍼런스 페이지 로직 (src/references.ts build 산출물)
-│   ├── data/isms.json            # 핵심 데이터 (35개 ism)
+│   ├── data/isms.json            # 핵심 데이터 (43개 ism)
 │   ├── data/effects.json         # 프런트엔드 UI 후보군 데이터
 │   ├── data/effects-docs.json    # 효과별 배경/히스토리/사용 시점 문서
-│   ├── data/references.json      # ISM 후보와 공식 레퍼런스 backlog
 │   ├── data/research-prompts.json # Grok/ima2 프롬프트 레코드
 │   └── images/
 │       ├── minimalism/           # ism별 폴더
 │       │   ├── landing.png
 │       │   ├── shop.png
 │       │   └── portfolio.png
-│       ├── references/           # 공식 레퍼런스 overview PNG
 │       ├── thumbs/               # WebP thumbnail/preview 산출물
 │       │   ├── minimalism/
-│       │   ├── references/
 │       │   └── effects/
 │       ├── brutalism/
 │       └── ...                   # 35개 폴더
@@ -48,7 +42,6 @@
 │   ├── app.ts
 │   ├── effects-demos.ts
 │   ├── effects-docs.ts
-│   ├── references.ts
 │   └── effects.ts
 ├── structure/
 │   └── README.md                 # 현재 구조와 source-of-truth 요약
@@ -67,7 +60,7 @@
 - README, `AGENTS.md`, `structure/README.md`, `devlog/`의 설명은 실제 구현과 어긋나면 안 된다.
 - 소스는 `src/*.ts`, 브라우저 산출물은 `assets/js/*.js`다. GitHub Pages가 static file을 직접 배포하므로 JS 산출물도 커밋 대상이다.
 - HTML은 non-module script를 사용한다. `effects.html`은 `assets/js/effects-demos.js`를 먼저, `assets/js/effects.js`를 나중에 로드해야 한다.
-- 상단 메뉴는 `index.html`, `effects.html`, `references.html` 모두에서 `Isms / Effects / References / Guide / GitHub / Lang / Count` 축을 유지한다. static HTML이라 공통 컴포넌트가 없으므로 세 페이지를 함께 수정한다.
+- 상단 메뉴는 `index.html`, `effects.html` 모두에서 `Isms / Effects / GitHub / Lang / Count` 축을 유지한다. static HTML이라 공통 컴포넌트가 없으므로 두 페이지를 함께 수정한다.
 - 신규 파일은 500줄 이하를 유지한다. 초과하면 역할별 파일로 분리한다.
 - 커밋/푸시는 사용자가 같은 턴에서 명시적으로 요청한 경우에만 실행한다.
 
@@ -93,14 +86,14 @@
 - guide 이미지를 생성/교체하면 `npm run images:thumbs`로 WebP preview를 갱신하고 `npm run verify`를 통과시킨다.
 - 데스크탑과 모바일 모두에서 카드 수 46개, demo type 46개, horizontal overflow 없음, console error 없음까지 확인해야 완료로 보고한다.
 
-## References / 리서치 backlog 원칙
+## ISMS 확장 원칙
 
-- `references.html`은 최종 ISM 목록이 아니라 다음 확장 후보와 공식 레퍼런스를 검토하는 backlog page다.
-- `assets/data/references.json`의 `kind`가 `ISM Candidate`인 항목만 사용자 승인 후 `assets/data/isms.json`으로 승격할 수 있다.
-- `Official Reference` 항목은 Apple HIG, Material, Fluent, Carbon, Polaris, ARIA, MDN처럼 실제 디자인 시스템/가이드 기준으로 유지한다. 이것들을 시각 스타일 ISM으로 섞지 않는다.
+- 공개 사이트에는 별도 reference/backlog 페이지를 만들지 않는다.
+- ima2로 만든 시각 스타일 후보는 승인되면 `assets/data/isms.json`과 `assets/images/{ism-id}/`에 직접 편입한다.
+- 공식 디자인 시스템 자료는 effects 문서의 참고 링크로만 쓰고, 공개 ISMS 카드나 별도 reference 페이지로 전시하지 않는다.
 - Grok 리서치 프롬프트와 ima2 이미지 프롬프트는 `assets/data/research-prompts.json`과 `devlog/260510_nav_taxonomy_effect_docs/grok_research_prompts.md`에 같이 남긴다.
-- 새 reference/candidate 이미지는 PNG 원본을 보관하고 runtime에서는 `assets/images/thumbs/.../*.webp`를 우선 로드한다.
-- reference 페이지를 바꾸면 `src/references.ts`, `assets/js/references.js`, `assets/css/references.css`, `references.html`, `structure/README.md`, README를 함께 확인한다.
+- 새 ISM 이미지는 PNG 원본을 보관하고 runtime에서는 `assets/images/thumbs/{ism-id}/*.webp`를 우선 로드한다.
+- ISMS를 늘리면 `assets/data/isms.json`, 이미지 원본, WebP 썸네일, README, AGENTS, structure, devlog를 함께 확인한다.
 
 ## ima2 / WebP batch 원칙
 

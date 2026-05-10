@@ -1,4 +1,5 @@
-const DATA_URL = './assets/data/isms.json';
+const DATA_VERSION = '2026-05-10-ism43-effects46';
+const DATA_URL = `./assets/data/isms.json?v=${DATA_VERSION}`;
 const IMAGE_BASE_URL = './assets/images';
 const THUMB_BASE_URL = './assets/images/thumbs';
 

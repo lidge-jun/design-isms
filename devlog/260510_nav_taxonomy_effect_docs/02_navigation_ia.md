@@ -8,29 +8,28 @@ tags: [navigation, information-architecture, header]
 
 ## Goal
 
-`index.html`, `effects.html`, `references.html`의 상단 메뉴를 같은 정보 구조로 맞춘다. 사용자는 “스타일을 보고 싶다”, “UI 효과명을 찾고 싶다”, “레퍼런스 시스템을 보고 싶다”, “사용법/문서를 보고 싶다”를 상단에서 바로 이동할 수 있어야 한다.
+`index.html`, `effects.html`의 상단 메뉴를 같은 정보 구조로 맞춘다. 사용자는 “스타일을 보고 싶다”, “UI 효과명을 찾고 싶다”를 상단에서 바로 이동할 수 있어야 한다. 별도 reference/backlog 페이지는 공개 런타임에 두지 않는다.
 
 ## Implemented Header State
 
 | Page | Current Items | Missing |
 | --- | --- | --- |
-| `index.html` | logo link, `Isms`, `Effects`, `References`, `Guide`, GitHub, language toggle, count | none known |
-| `effects.html` | logo link, `Isms`, `Effects`, `References`, `Guide`, GitHub, language toggle, count | none known |
-| `references.html` | logo link, `Isms`, `Effects`, `References`, `Guide`, GitHub, language toggle, count | none known |
+| `index.html` | logo link, `Isms`, `Effects`, GitHub, language toggle, count | none known |
+| `effects.html` | logo link, `Isms`, `Effects`, GitHub, language toggle, count | none known |
 
 ## Proposed Shared Nav
 
 Desktop order:
 
 ```text
-Logo | Isms | Effects | References | Guide | GitHub | Lang | Count
+Logo | Isms | Effects | GitHub | Lang | Count
 ```
 
 Mobile order:
 
 ```text
 Logo
-horizontal scroll nav: Isms / Effects / References / Guide / GitHub / Lang / Count
+wrapped compact nav: Isms / Effects / GitHub / Lang / Count
 ```
 
 ## Nav Item Contract
@@ -39,15 +38,13 @@ horizontal scroll nav: Isms / Effects / References / Guide / GitHub / Lang / Cou
 | --- | --- | --- |
 | `Isms` | `./index.html` | `aria-current="page"` on index |
 | `Effects` | `./effects.html` | `aria-current="page"` on effects |
-| `References` | `./references.html` | `aria-current="page"` on references |
-| `Guide` | `#guide` on the current page where available | anchor link |
 | `GitHub` | repo external URL | `target="_blank" rel="noopener"` |
 | Language | current JS toggle | present on both pages |
 | Count | current page count | not a link |
 
 ## Recommendation
 
-`References` was promoted immediately because `references.json` has 16 entries and generated images. `Guide` remains an in-page anchor on each static page instead of a separate page.
+Correction: `References` was removed after user feedback. Generated visual-style candidates belong in `assets/data/isms.json`, and effect documentation belongs inside `effects.html` modals.
 
 ## HTML Diff Plan
 
@@ -56,7 +53,7 @@ horizontal scroll nav: Isms / Effects / References / Guide / GitHub / Lang / Cou
 - Convert `.header-right` div to `<nav class="header-right" aria-label="Primary navigation">`.
 - Make logo a link to `./index.html`.
 - Add `Isms` link with `aria-current="page"`.
-- Add `References` and `Guide` links after `Effects`.
+- Keep `Isms`, `Effects`, GitHub, language toggle, and count.
 - Keep GitHub link.
 - Keep language toggle.
 - Keep count.
@@ -64,7 +61,7 @@ horizontal scroll nav: Isms / Effects / References / Guide / GitHub / Lang / Cou
 `effects.html`:
 
 - Keep semantic `<nav>`.
-- Add `References` and `Guide`.
+- Keep `Isms`, `Effects`, GitHub, language toggle, and count.
 - Add language toggle using the same markup as index.
 - Keep count.
 

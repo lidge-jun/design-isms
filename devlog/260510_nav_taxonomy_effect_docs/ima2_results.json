@@ -21,13 +21,6 @@
     "stderr": ""
   },
   {
-    "id": "reference-atlassian-design-system-overview",
-    "target": "assets/images/references/atlassian-design-system/overview.png",
-    "code": 0,
-    "stdout": "{\"ok\":true,\"requestId\":\"req_ef755c4f-930f-4a1f-a1d9-a73faf7465c0\",\"elapsed\":\"68.0\",\"images\":[{\"path\":\"assets/images/references/atlassian-design-system/overview.png\",\"filename\":\"1778400048959_a0eeeb69_0.png\"}]}",
-    "stderr": ""
-  },
-  {
     "id": "ism-constructivism-shop",
     "target": "assets/images/constructivism/shop.png",
     "code": 0,
@@ -53,20 +46,6 @@
     "target": "assets/images/editorial-typography/shop.png",
     "code": 0,
     "stdout": "{\"ok\":true,\"requestId\":\"req_796522e4-0209-456b-9ed6-3f482d0fbe8d\",\"elapsed\":\"71.5\",\"images\":[{\"path\":\"assets/images/editorial-typography/shop.png\",\"filename\":\"1778400052429_0bbb0707_0.png\"}]}",
-    "stderr": ""
-  },
-  {
-    "id": "reference-carbon-design-system-overview",
-    "target": "assets/images/references/carbon-design-system/overview.png",
-    "code": 0,
-    "stdout": "{\"ok\":true,\"requestId\":\"req_a028cf30-fbcd-46b5-b515-0de30144dfba\",\"elapsed\":\"71.5\",\"images\":[{\"path\":\"assets/images/references/carbon-design-system/overview.png\",\"filename\":\"1778400052531_66155352_0.png\"}]}",
-    "stderr": ""
-  },
-  {
-    "id": "reference-material-design-3-overview",
-    "target": "assets/images/references/material-design-3/overview.png",
-    "code": 0,
-    "stdout": "{\"ok\":true,\"requestId\":\"req_711252a8-b3fc-41f4-a2ae-e99806293ac1\",\"elapsed\":\"71.8\",\"images\":[{\"path\":\"assets/images/references/material-design-3/overview.png\",\"filename\":\"1778400052748_9176ab65_0.png\"}]}",
     "stderr": ""
   },
   {
@@ -119,20 +98,6 @@
     "stderr": ""
   },
   {
-    "id": "reference-fluent-2-overview",
-    "target": "assets/images/references/fluent-2/overview.png",
-    "code": 0,
-    "stdout": "{\"ok\":true,\"requestId\":\"req_74981d7d-6505-45f1-ab6f-693ce2bc2403\",\"elapsed\":\"76.1\",\"images\":[{\"path\":\"assets/images/references/fluent-2/overview.png\",\"filename\":\"1778400057083_b3f72fd7_0.png\"}]}",
-    "stderr": ""
-  },
-  {
-    "id": "reference-apple-hig-overview",
-    "target": "assets/images/references/apple-hig/overview.png",
-    "code": 0,
-    "stdout": "{\"ok\":true,\"requestId\":\"req_2c9d2dfb-77cd-44b5-b46f-e7bb8bbddf4a\",\"elapsed\":\"76.5\",\"images\":[{\"path\":\"assets/images/references/apple-hig/overview.png\",\"filename\":\"1778400057428_7c0b3065_0.png\"}]}",
-    "stderr": ""
-  },
-  {
     "id": "ism-constructivism-dashboard",
     "target": "assets/images/constructivism/dashboard.png",
     "code": 0,
@@ -168,13 +133,6 @@
     "stderr": ""
   },
   {
-    "id": "reference-mdn-web-accessibility-overview",
-    "target": "assets/images/references/mdn-web-accessibility/overview.png",
-    "code": 0,
-    "stdout": "{\"ok\":true,\"requestId\":\"req_7b29ab9b-6657-4f9a-ac45-02fe72e6097c\",\"elapsed\":\"80.5\",\"images\":[{\"path\":\"assets/images/references/mdn-web-accessibility/overview.png\",\"filename\":\"1778400061509_54d5004c_0.png\"}]}",
-    "stderr": ""
-  },
-  {
     "id": "ism-monospace-terminal-ui-shop",
     "target": "assets/images/monospace-terminal-ui/shop.png",
     "code": 0,
@@ -193,20 +151,6 @@
     "target": "assets/images/art-nouveau/dashboard.png",
     "code": 0,
     "stdout": "{\"ok\":true,\"requestId\":\"req_c159949f-0a60-4b36-a969-2e8e0e9bbf17\",\"elapsed\":\"82.2\",\"images\":[{\"path\":\"assets/images/art-nouveau/dashboard.png\",\"filename\":\"1778400063096_f33ed639_0.png\"}]}",
-    "stderr": ""
-  },
-  {
-    "id": "reference-shopify-polaris-overview",
-    "target": "assets/images/references/shopify-polaris/overview.png",
-    "code": 0,
-    "stdout": "{\"ok\":true,\"requestId\":\"req_f9d41359-5b1b-41fd-bc41-175e0cb1f8b5\",\"elapsed\":\"87.0\",\"images\":[{\"path\":\"assets/images/references/shopify-polaris/overview.png\",\"filename\":\"1778400067975_9f7f9f80_0.png\"}]}",
-    "stderr": ""
-  },
-  {
-    "id": "reference-wai-aria-apg-overview",
-    "target": "assets/images/references/wai-aria-apg/overview.png",
-    "code": 0,
-    "stdout": "{\"ok\":true,\"requestId\":\"req_a9eab068-0c9b-42d7-b1d0-ab16fb0e6bf3\",\"elapsed\":\"104.4\",\"images\":[{\"path\":\"assets/images/references/wai-aria-apg/overview.png\",\"filename\":\"1778400085407_eb7cde98_0.png\"}]}",
     "stderr": ""
   },
   {

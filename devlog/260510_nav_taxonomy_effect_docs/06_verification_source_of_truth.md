@@ -14,7 +14,7 @@ tags: [verification, source-of-truth, docs]
 
 | File | Must Reflect |
 | --- | --- |
-| `README.md` | user-facing feature summary, new pages/data/image flow |
+| `README.md` | user-facing feature summary, ISMS/effects data/image flow |
 | `AGENTS.md` | implementation invariants for nav, docs, image generation, WebP |
 | `structure/README.md` | runtime pages, data files, source/build mapping |
 | `devlog/260510_nav_taxonomy_effect_docs/*` | plan, audit, verification evidence |
@@ -62,7 +62,7 @@ Desktop checks:
 - Open `http://127.0.0.1:4173/index.html`
 - Open `http://127.0.0.1:4173/effects.html`
 - Header links exist and active states are correct.
-- ISMS count is still 35 plus approved additions.
+- ISMS count is 43.
 - Effects count remains 46 unless deliberately changed.
 - Effects modal opens and docs sections render.
 - Console entries are empty.
@@ -91,13 +91,7 @@ curl -L -I https://lidge-jun.github.io/design-isms/effects.html
 curl -L -I https://lidge-jun.github.io/design-isms/assets/data/effects-docs.json
 ```
 
-If references page is added:
-
-```bash
-curl -L -I https://lidge-jun.github.io/design-isms/references.html
-```
-
-Current local implementation adds `references.html`, `assets/data/effects-docs.json`, `assets/data/references.json`, `assets/data/research-prompts.json`, 32 PNG originals, and matching WebP previews. Remote deploy checks are intentionally deferred until the user explicitly requests commit/push in the same turn.
+Current corrected implementation removes the public references page and keeps only `index.html` plus `effects.html` as runtime pages. The expansion adds `assets/data/effects-docs.json`, `assets/data/research-prompts.json`, 24 new ISM PNG originals, and matching WebP previews. Remote deploy checks are intentionally deferred until the user explicitly requests commit/push in the same turn.
 
 ## Completion Criteria
 
@@ -117,13 +111,12 @@ Static/data checks completed:
 - `npm run verify`
 - `git diff --check`
 - effects/docs join: 46 effects, 46 docs, 0 missing
-- references/image manifest: 16 references, 32 image jobs, 0 missing PNG/WebP files
+- ISMS image manifest: 24 image jobs, 0 missing PNG/WebP files
 
 Browser checks completed through `cli-jaw browser` against `http://127.0.0.1:4173/`:
 
-- `index.html`: 35 cards, active `Isms`, 6 nav controls, WebP card previews, no horizontal overflow at 390px, no console errors
+- `index.html`: 43 cards, active `Isms`, WebP card previews, no horizontal overflow at 390px, no console errors
 - `effects.html`: 46 cards, 46 unique demo classes, `EffectsDocs` loaded, modal docs rendered, guide image loads WebP after lazy-scroll, no horizontal overflow at 390px, no console errors
-- `references.html`: 16 cards, filters for `ISM Candidate` and `Official Reference`, search reduces to the expected result, active `References`, WebP card previews, 0 missing images, no horizontal overflow at 390px, no console errors
 
 One transient verification issue occurred: the local `cli-jaw browser` CDP session and Python static server had stopped, producing `connect ECONNREFUSED 127.0.0.1:9251`. Both verification-only processes were restarted and the checks above passed.
 

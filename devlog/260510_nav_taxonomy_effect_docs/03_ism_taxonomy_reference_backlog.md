@@ -64,7 +64,7 @@ Proposed high-level categories:
 
 ## Design System References — Prefer Separate Reference Catalog
 
-These are important, but not always “isms”. Recommended as `references.json` or `references.html`, not necessarily `isms.json`.
+These are important, but not always “isms”. They should be used as source/reference links inside effects documentation, not exposed as a separate public page.
 
 | Reference | Type | Role in Site |
 | --- | --- | --- |
@@ -122,7 +122,7 @@ Add to `isms.json` when:
 - It has enough real web examples.
 - It does not duplicate an existing ISM.
 
-Put in `references.json` when:
+Keep as source references only when:
 
 - It is an official product/platform design system.
 - It is primarily a component/pattern documentation source.

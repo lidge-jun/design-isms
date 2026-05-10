@@ -4,9 +4,9 @@ status: implemented
 tags: [design-isms, navigation, taxonomy, effects-docs, ima2, webp, jawdev]
 ---
 
-# Overview — Navigation, Taxonomy, Effects Docs Expansion
+# Overview — ISMS and Effects Docs Expansion
 
-이번 작업은 `design-isms`를 단순 스타일 모음에서 “디자인 스타일 + UI 효과 + 문서화된 레퍼런스 지식베이스”로 확장하기 위한 상세 계획이었고, 2026-05-10에 구현까지 진행했다.
+이번 작업은 `design-isms`를 “디자인 스타일 보드 + UI 효과 문서”로 확장하기 위한 상세 계획이었고, 2026-05-10에 구현까지 진행했다.
 
 사용자 결정:
 
@@ -18,8 +18,8 @@ tags: [design-isms, navigation, taxonomy, effects-docs, ima2, webp, jawdev]
 
 ## Goal
 
-- [x] `index.html`, `effects.html`, `references.html` 상단 메뉴의 누락 항목과 불일치를 정리한다.
-- [x] ISMS에 빠진 typography, classic design movement, design-system reference 축을 보완할 후보 목록을 만든다.
+- [x] `index.html`, `effects.html` 상단 메뉴의 누락 항목과 불일치를 정리한다.
+- [x] ISMS에 빠진 typography, classic design movement 축을 보완해 메인 ISMS에 편입한다.
 - [x] effects 46개 각각에 배경 해설, 사용 시점, 예시, 짧은 히스토리를 붙일 수 있는 문서 스키마를 구현한다.
 - [x] ima2 병렬 생성과 자료조사를 동시에 굴리는 실행 순서를 명확히 한다.
 - [x] WebP-first image loading 원칙을 모든 신규 이미지에도 적용한다.
@@ -29,21 +29,21 @@ tags: [design-isms, navigation, taxonomy, effects-docs, ima2, webp, jawdev]
 
 | Area | Current State | Gap |
 | --- | --- | --- |
-| Main page nav | `Effects`, GitHub, language toggle, count | `Isms` current link, guide/reference links, semantic `<nav>` 없음 |
-| Effects page nav | `Isms`, `Effects`, GitHub, count | language toggle, guide/reference links 없음 |
-| ISMS data | 35 styles in `assets/data/isms.json` | typography-led/classic/system-reference categories 부족 |
+| Main page nav | `Isms`, `Effects`, GitHub, language toggle, count | resolved |
+| Effects page nav | `Isms`, `Effects`, GitHub, language toggle, count | resolved |
+| ISMS data | 43 styles in `assets/data/isms.json` | 8 ima2-generated additions integrated |
 | Effects data | 46 candidates in `assets/data/effects.json` | compact fields only; long background/history docs 없음 |
 | Images | ISM thumbnails and effects guide WebP previews | next expansion needs batch manifest and async pipeline |
 | Source-of-truth | README/AGENTS/structure already aligned | next feature must update all docs together |
 
 ## Implemented Result
 
-- `references.html`을 새 static page로 추가했다.
-- `assets/data/references.json`에 8개 ISM 후보와 8개 공식 레퍼런스를 분리해 넣었다.
+- Public `references.html` page는 사용자 피드백에 따라 제거했다.
+- 8개 ISM 후보를 `assets/data/isms.json`에 직접 편입했다.
 - `assets/data/research-prompts.json`, `grok_research_prompts.md`, `image_jobs.jsonl`, `ima2_results.json`으로 Grok/ima2 제반 준비를 보존했다.
 - `assets/data/effects-docs.json`과 `src/effects-docs.ts`로 46개 effects 장문 문서를 모달 안에 렌더링한다.
-- ima2 병렬 실행으로 32개 PNG를 생성했고 `npm run images:thumbs`로 WebP preview를 만들었다.
-- `assets/css/nav.css`로 세 페이지의 공통 메뉴 상태를 맞췄고, reference 전용 UI는 `assets/css/references.css`에 분리했다.
+- ima2 병렬 실행으로 24개 신규 ISM PNG를 생성했고 `npm run images:thumbs`로 WebP preview를 만들었다.
+- `assets/css/nav.css`로 두 페이지의 공통 메뉴 상태를 맞췄다.
 
 ## Phase Map
 
@@ -61,34 +61,27 @@ tags: [design-isms, navigation, taxonomy, effects-docs, ima2, webp, jawdev]
 
 ```text
 701_design-isms/
-├── index.html                         # MODIFY: shared nav, references/guide anchors
+├── index.html                         # MODIFY: shared nav, 43 ISMS
 ├── effects.html                       # MODIFY: shared nav, language toggle
-├── references.html                    # NEW: design reference taxonomy page
 ├── assets/
 │   ├── css/nav.css                    # NEW: shared nav
 │   ├── css/effects-docs.css           # NEW: effects docs modal sections
-│   ├── css/references.css             # NEW: references page layout
 │   ├── data/
-│   │   ├── isms.json                  # unchanged: approved core ISMS only
-│   │   ├── references.json            # NEW: design-system/reference catalog
+│   │   ├── isms.json                  # MODIFY: 43 core ISMS
 │   │   ├── effects.json               # KEEP: compact operational fields
 │   │   ├── effects-docs.json          # NEW: long-form background/history/use examples
 │   │   └── research-prompts.json      # NEW: reusable Grok/ima2 prompt records
 │   ├── images/
-│   │   ├── {new-ism-id}/*.png         # NEW originals for candidate backlog
-│   │   ├── references/{ref-id}/*.png  # NEW originals for reference cards
+│   │   ├── {new-ism-id}/*.png         # NEW originals for ISMS additions
 │   │   └── thumbs/
 │   │       ├── {new-ism-id}/*.webp    # generated WebP previews
-│   │       └── references/{ref-id}/*.webp
 │   └── js/
 │       ├── app.js                     # GENERATED from src/app.ts
 │       ├── effects-docs.js            # GENERATED from src/effects-docs.ts
-│       ├── effects.js                 # GENERATED from src/effects.ts
-│       └── references.js              # GENERATED from src/references.ts
+│       └── effects.js                 # GENERATED from src/effects.ts
 ├── src/
 │   ├── app.ts                         # existing main runtime
 │   ├── effects-docs.ts                # NEW docs validation/render helpers
-│   ├── references.ts                  # NEW reference page runtime
 │   └── effects.ts                     # MODIFY to fetch/render effects-docs.json
 ├── structure/README.md                # MODIFY
 ├── README.md                          # MODIFY
@@ -106,7 +99,7 @@ tags: [design-isms, navigation, taxonomy, effects-docs, ima2, webp, jawdev]
 
 ## Decisions Resolved For This Pass
 
-1. New ISM additions remain backlog only; `assets/data/isms.json` is unchanged until explicit approval.
-2. `references.html` is a real static page.
+1. New ISM additions are included directly in `assets/data/isms.json`.
+2. `references.html` is not a runtime page.
 3. Effects long-form docs render inside the current effects modal.
-4. ima2 generated images for 8 ISM candidates and 8 official reference cards.
+4. ima2 generated images for 8 ISM additions only.

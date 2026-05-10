@@ -3533,5 +3533,814 @@
       }
     ],
     "descriptionEn": "Personal, handcrafted web revival. Custom HTML/CSS, quirky layouts, visible personality, and anti-platform ethos. GeoCities nostalgia meets modern web standards."
+  },
+  {
+    "id": "editorial-typography",
+    "name": "Editorial Typography",
+    "nameKr": "에디토리얼 타이포그래피",
+    "tagline": "Hierarchy, rhythm, and voice through type",
+    "description": "큰 제목, 본문 리듬, 여백, 컬럼 구조로 콘텐츠의 목소리를 만드는 타이포그래피 중심 스타일. 매거진, 뉴스, 브랜드 저널처럼 읽는 경험이 핵심인 화면에서 강한 인상을 만든다.",
+    "descriptionEn": "A type-led style built from headline scale, reading rhythm, spacing, and column structure. It works best when the page needs to feel like an editorial product rather than a generic marketing grid.",
+    "keywords": [
+      "typography",
+      "editorial",
+      "hierarchy",
+      "columns",
+      "reading-rhythm"
+    ],
+    "palette": [
+      "#F7F1E7",
+      "#1F1B18",
+      "#B44E2D",
+      "#D9C7A7"
+    ],
+    "examples": [
+      {
+        "name": "The New York Times",
+        "url": "https://www.nytimes.com"
+      },
+      {
+        "name": "The New Yorker",
+        "url": "https://www.newyorker.com"
+      },
+      {
+        "name": "The Atlantic",
+        "url": "https://www.theatlantic.com"
+      },
+      {
+        "name": "Bloomberg",
+        "url": "https://www.bloomberg.com"
+      },
+      {
+        "name": "Pitchfork",
+        "url": "https://pitchfork.com"
+      },
+      {
+        "name": "The Verge",
+        "url": "https://www.theverge.com"
+      },
+      {
+        "name": "Monocle",
+        "url": "https://monocle.com"
+      },
+      {
+        "name": "A24",
+        "url": "https://a24films.com"
+      },
+      {
+        "name": "The Pudding",
+        "url": "https://pudding.cool"
+      },
+      {
+        "name": "It's Nice That",
+        "url": "https://www.itsnicethat.com"
+      }
+    ],
+    "images": [
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      },
+      {
+        "file": "dashboard.png",
+        "label": "Dashboard"
+      }
+    ],
+    "history": "에디토리얼 타이포그래피는 신문, 잡지, 북 디자인의 조판 전통에서 출발해 Swiss Style과 디지털 퍼블리싱을 거치며 웹 레이아웃으로 확장됐다. 웹에서는 큰 display type, 명확한 column, 본문 line length 조절, pull quote 같은 편집 장치가 결합되며 브랜드 저널과 롱폼 콘텐츠의 핵심 언어가 됐다.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A Editorial Typography style landing page screenshot. Large editorial headlines, measured body rhythm, narrow and wide columns, pull-quote spacing, warm paper-like surfaces, restrained accent color. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A Editorial Typography style commerce product listing page screenshot. Large editorial headlines, measured body rhythm, narrow and wide columns, pull-quote spacing, warm paper-like surfaces, restrained accent color. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "dashboard.png",
+        "prompt": "A Editorial Typography style dashboard or product tool page screenshot. Large editorial headlines, measured body rhythm, narrow and wide columns, pull-quote spacing, warm paper-like surfaces, restrained accent color. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
+  },
+  {
+    "id": "variable-typography",
+    "name": "Variable Typography",
+    "nameKr": "가변 타이포그래피",
+    "tagline": "Responsive type with changing weight, width, and motion",
+    "description": "variable font 축과 responsive type scale을 활용해 화면 크기와 상태에 따라 글자의 표정이 변하는 웹 타이포그래피. 브랜드의 성격을 고정된 로고보다 살아 있는 글자 시스템으로 보여준다.",
+    "descriptionEn": "A web-native typography style where weight, width, optical size, or motion changes with viewport, state, or interaction. It turns type into a responsive interface material.",
+    "keywords": [
+      "variable-font",
+      "responsive",
+      "typography",
+      "motion",
+      "axis"
+    ],
+    "palette": [
+      "#F3F6F1",
+      "#151617",
+      "#1E7A69",
+      "#A8C7BD"
+    ],
+    "examples": [
+      {
+        "name": "Recursive",
+        "url": "https://www.recursive.design"
+      },
+      {
+        "name": "Google Fonts",
+        "url": "https://fonts.google.com"
+      },
+      {
+        "name": "v-fonts",
+        "url": "https://v-fonts.com"
+      },
+      {
+        "name": "Axis-Praxis",
+        "url": "https://www.axis-praxis.org"
+      },
+      {
+        "name": "Fontshare",
+        "url": "https://www.fontshare.com"
+      },
+      {
+        "name": "Future Fonts",
+        "url": "https://www.futurefonts.xyz"
+      },
+      {
+        "name": "Type Network",
+        "url": "https://typenetwork.com"
+      },
+      {
+        "name": "Dinamo",
+        "url": "https://abcdinamo.com"
+      },
+      {
+        "name": "Klim Type Foundry",
+        "url": "https://klim.co.nz"
+      },
+      {
+        "name": "Variable Fonts",
+        "url": "https://variablefonts.io"
+      }
+    ],
+    "images": [
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      },
+      {
+        "file": "dashboard.png",
+        "label": "Dashboard"
+      }
+    ],
+    "history": "Variable font는 OpenType Font Variations가 2016년에 공개되며 웹과 앱에서 본격적으로 쓰이기 시작했다. 이후 CSS font-variation-settings, responsive type scale, kinetic typography와 결합되며 정적인 조판을 넘어 상태와 화면 폭에 반응하는 표현 방식으로 확장됐다.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A Variable Typography style landing page screenshot. Variable font axis controls, responsive display type, animated width and weight shifts, specimen-like UI controls, clean type lab interface. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A Variable Typography style commerce product listing page screenshot. Variable font axis controls, responsive display type, animated width and weight shifts, specimen-like UI controls, clean type lab interface. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "dashboard.png",
+        "prompt": "A Variable Typography style dashboard or product tool page screenshot. Variable font axis controls, responsive display type, animated width and weight shifts, specimen-like UI controls, clean type lab interface. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
+  },
+  {
+    "id": "monospace-terminal-ui",
+    "name": "Monospace / Terminal UI",
+    "nameKr": "모노스페이스 터미널 UI",
+    "tagline": "Command-line clarity for product interfaces",
+    "description": "개발자 도구, AI 콘솔, 로그 뷰어처럼 고정폭 글꼴과 명령형 인터페이스 감각을 전면에 둔 디지털 스타일. 정보 밀도와 제어감을 동시에 보여줘야 하는 도구형 제품에 잘 맞는다.",
+    "descriptionEn": "A command-line-inspired UI style based on monospace type, panels, logs, prompts, and keyboard-first control. It makes dense technical systems feel precise and inspectable.",
+    "keywords": [
+      "monospace",
+      "terminal",
+      "developer-tools",
+      "command",
+      "logs"
+    ],
+    "palette": [
+      "#101214",
+      "#E8ECE7",
+      "#6EE7B7",
+      "#55606A"
+    ],
+    "examples": [
+      {
+        "name": "Warp",
+        "url": "https://www.warp.dev"
+      },
+      {
+        "name": "Replit",
+        "url": "https://replit.com"
+      },
+      {
+        "name": "Railway",
+        "url": "https://railway.com"
+      },
+      {
+        "name": "Fly.io",
+        "url": "https://fly.io"
+      },
+      {
+        "name": "Neon",
+        "url": "https://neon.tech"
+      },
+      {
+        "name": "Supabase",
+        "url": "https://supabase.com"
+      },
+      {
+        "name": "Modal",
+        "url": "https://modal.com"
+      },
+      {
+        "name": "Cursor",
+        "url": "https://cursor.com"
+      },
+      {
+        "name": "Vercel",
+        "url": "https://vercel.com"
+      },
+      {
+        "name": "Deno",
+        "url": "https://deno.com"
+      }
+    ],
+    "images": [
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      },
+      {
+        "file": "dashboard.png",
+        "label": "Dashboard"
+      }
+    ],
+    "history": "모노스페이스 UI는 터미널, 코드 편집기, 로그 콘솔의 기능적 제약에서 출발했다. SaaS 개발자 도구와 AI 제품이 성장하면서 command palette, terminal panel, structured log view가 브랜드 미감으로도 쓰이기 시작했다.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A Monospace / Terminal UI style landing page screenshot. Monospace interface, dark command panels, prompt rows, terminal cards, log streams, keyboard-first controls, crisp grid lines. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A Monospace / Terminal UI style commerce product listing page screenshot. Monospace interface, dark command panels, prompt rows, terminal cards, log streams, keyboard-first controls, crisp grid lines. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "dashboard.png",
+        "prompt": "A Monospace / Terminal UI style dashboard or product tool page screenshot. Monospace interface, dark command panels, prompt rows, terminal cards, log streams, keyboard-first controls, crisp grid lines. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
+  },
+  {
+    "id": "art-nouveau",
+    "name": "Art Nouveau",
+    "nameKr": "아르누보",
+    "tagline": "Organic curves, botanical ornament, and flowing frames",
+    "description": "유기적인 곡선, 식물적 장식, 장식적 프레임을 현대 웹 레이아웃으로 번역하는 역사적 디자인 운동. 브랜드, 전시, 뷰티, 프리미엄 이벤트 페이지에서 섬세하고 장식적인 인상을 만든다.",
+    "descriptionEn": "A decorative style built from organic curves, botanical motifs, ornamental borders, and flowing composition. It turns a page into a crafted frame rather than a neutral grid.",
+    "keywords": [
+      "ornamental",
+      "organic-line",
+      "botanical",
+      "historic",
+      "decorative"
+    ],
+    "palette": [
+      "#F4E8D1",
+      "#273A2D",
+      "#B77A45",
+      "#7A2D2A"
+    ],
+    "examples": [
+      {
+        "name": "Mucha Foundation",
+        "url": "https://www.muchafoundation.org"
+      },
+      {
+        "name": "Casa Batlló",
+        "url": "https://www.casabatllo.es/en/"
+      },
+      {
+        "name": "La Pedrera",
+        "url": "https://www.lapedrera.com/en"
+      },
+      {
+        "name": "The Met",
+        "url": "https://www.metmuseum.org"
+      },
+      {
+        "name": "Musée Horta",
+        "url": "https://www.hortamuseum.be"
+      },
+      {
+        "name": "Tiffany & Co.",
+        "url": "https://www.tiffany.com"
+      },
+      {
+        "name": "Victoria and Albert Museum",
+        "url": "https://www.vam.ac.uk"
+      },
+      {
+        "name": "Rijksmuseum",
+        "url": "https://www.rijksmuseum.nl/en"
+      },
+      {
+        "name": "Musée d’Orsay",
+        "url": "https://www.musee-orsay.fr/en"
+      },
+      {
+        "name": "Art Institute of Chicago",
+        "url": "https://www.artic.edu"
+      }
+    ],
+    "images": [
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      },
+      {
+        "file": "dashboard.png",
+        "label": "Dashboard"
+      }
+    ],
+    "history": "아르누보는 1890년대부터 1910년대 초반까지 유럽과 미국에서 건축, 포스터, 공예, 그래픽 디자인을 가로지르며 확산된 운동이다. Alphonse Mucha, Hector Guimard, Antoni Gaudí 등이 대표적이며, 산업화 시대의 기계적 형태 대신 자연 곡선과 통합 예술을 강조했다.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A Art Nouveau style landing page screenshot. Flowing botanical linework, ornamental frames, soft vintage paper, elongated typography, carved section dividers, premium exhibition feel. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A Art Nouveau style commerce product listing page screenshot. Flowing botanical linework, ornamental frames, soft vintage paper, elongated typography, carved section dividers, premium exhibition feel. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "dashboard.png",
+        "prompt": "A Art Nouveau style dashboard or product tool page screenshot. Flowing botanical linework, ornamental frames, soft vintage paper, elongated typography, carved section dividers, premium exhibition feel. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
+  },
+  {
+    "id": "de-stijl",
+    "name": "De Stijl",
+    "nameKr": "데 스틸",
+    "tagline": "Primary color, right angles, and reduced geometry",
+    "description": "수직/수평 격자, 원색 블록, 기하학적 축약으로 화면 구조를 강하게 드러내는 스타일. 단순한 카드나 대시보드도 명확한 구성 원리와 시각 리듬을 갖게 만든다.",
+    "descriptionEn": "A geometric style based on orthogonal grids, primary colors, black lines, and radical reduction. It makes structure visible and treats layout itself as the graphic language.",
+    "keywords": [
+      "grid",
+      "primary-color",
+      "geometry",
+      "modernism",
+      "orthogonal"
+    ],
+    "palette": [
+      "#F6F3E8",
+      "#111111",
+      "#D92525",
+      "#F2C230",
+      "#1D5FBF"
+    ],
+    "examples": [
+      {
+        "name": "Stedelijk Museum",
+        "url": "https://www.stedelijk.nl/en"
+      },
+      {
+        "name": "Mondriaanhuis",
+        "url": "https://www.mondriaanhuis.nl/en"
+      },
+      {
+        "name": "Kunstmuseum Den Haag",
+        "url": "https://www.kunstmuseum.nl/en"
+      },
+      {
+        "name": "Tate",
+        "url": "https://www.tate.org.uk"
+      },
+      {
+        "name": "MoMA",
+        "url": "https://www.moma.org"
+      },
+      {
+        "name": "Gerrit Rietveld Academie",
+        "url": "https://rietveldacademie.nl/en"
+      },
+      {
+        "name": "Centraal Museum",
+        "url": "https://www.centraalmuseum.nl/en"
+      },
+      {
+        "name": "Design Museum",
+        "url": "https://designmuseum.org"
+      },
+      {
+        "name": "Van Abbemuseum",
+        "url": "https://vanabbemuseum.nl/en"
+      },
+      {
+        "name": "Bauhaus Kooperation",
+        "url": "https://www.bauhauskooperation.com"
+      }
+    ],
+    "images": [
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      },
+      {
+        "file": "dashboard.png",
+        "label": "Dashboard"
+      }
+    ],
+    "history": "데 스틸은 1917년 네덜란드에서 Theo van Doesburg, Piet Mondrian 등을 중심으로 시작된 예술·디자인 운동이다. 수직과 수평, 원색과 무채색, 비대칭 균형을 통해 보편적 조형 질서를 추구했고 이후 그래픽 디자인과 모듈형 레이아웃에 큰 영향을 줬다.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A De Stijl style landing page screenshot. Orthogonal grid, black structural rules, primary-color panels, asymmetrical balance, reduced geometric product cards and dashboards. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A De Stijl style commerce product listing page screenshot. Orthogonal grid, black structural rules, primary-color panels, asymmetrical balance, reduced geometric product cards and dashboards. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "dashboard.png",
+        "prompt": "A De Stijl style dashboard or product tool page screenshot. Orthogonal grid, black structural rules, primary-color panels, asymmetrical balance, reduced geometric product cards and dashboards. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
+  },
+  {
+    "id": "constructivism",
+    "name": "Constructivism",
+    "nameKr": "구성주의",
+    "tagline": "Diagonal force, bold type, and activist composition",
+    "description": "대각선 구도, 강한 대비, 선언적 타이포그래피로 캠페인/에디토리얼 화면에 긴장을 주는 그래픽 언어. 이벤트, 선언문, 제품 런칭처럼 메시지의 힘이 중요한 페이지에 어울린다.",
+    "descriptionEn": "A forceful graphic style built from diagonals, red-black contrast, photomontage logic, and declarative typography. It is useful when the interface needs urgency and direction.",
+    "keywords": [
+      "diagonal",
+      "poster",
+      "red-black",
+      "photomontage",
+      "manifesto"
+    ],
+    "palette": [
+      "#F2E8D5",
+      "#111111",
+      "#C42021",
+      "#D6A13B"
+    ],
+    "examples": [
+      {
+        "name": "MoMA",
+        "url": "https://www.moma.org"
+      },
+      {
+        "name": "Tate",
+        "url": "https://www.tate.org.uk"
+      },
+      {
+        "name": "Guggenheim",
+        "url": "https://www.guggenheim.org"
+      },
+      {
+        "name": "Victoria and Albert Museum",
+        "url": "https://www.vam.ac.uk"
+      },
+      {
+        "name": "Design Museum",
+        "url": "https://designmuseum.org"
+      },
+      {
+        "name": "Poster House",
+        "url": "https://posterhouse.org"
+      },
+      {
+        "name": "Cooper Hewitt",
+        "url": "https://www.cooperhewitt.org"
+      },
+      {
+        "name": "The Met",
+        "url": "https://www.metmuseum.org"
+      },
+      {
+        "name": "Garage Museum",
+        "url": "https://garagemca.org/en"
+      },
+      {
+        "name": "Calvert Journal",
+        "url": "https://www.calvertjournal.com"
+      }
+    ],
+    "images": [
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      },
+      {
+        "file": "dashboard.png",
+        "label": "Dashboard"
+      }
+    ],
+    "history": "구성주의는 1910년대 후반 러시아 아방가르드에서 출발해 예술을 사회적 생산과 연결하려 한 운동이다. Alexander Rodchenko, El Lissitzky, Varvara Stepanova 등의 포스터, 전시, 출판 실험은 대각선 구도와 굵은 타이포그래피를 현대 그래픽 언어로 남겼다.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A Constructivism style landing page screenshot. Red and black poster blocks, diagonal composition, bold condensed type, propaganda-inspired layout, sharp campaign UI panels. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A Constructivism style commerce product listing page screenshot. Red and black poster blocks, diagonal composition, bold condensed type, propaganda-inspired layout, sharp campaign UI panels. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "dashboard.png",
+        "prompt": "A Constructivism style dashboard or product tool page screenshot. Red and black poster blocks, diagonal composition, bold condensed type, propaganda-inspired layout, sharp campaign UI panels. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
+  },
+  {
+    "id": "mid-century-modern",
+    "name": "Mid-century Modern",
+    "nameKr": "미드센추리 모던",
+    "tagline": "Warm geometry, optimistic illustration, and modern living",
+    "description": "따뜻한 색, 단순화된 기하 형태, 낙관적인 일러스트 감각을 현대 브랜드/랜딩에 적용하는 스타일. 가구, 라이프스타일, 브랜드 스토리, 제품 소개 화면에 잘 맞는다.",
+    "descriptionEn": "A warm modern style with simplified geometry, optimistic illustration, furniture-like proportions, and friendly editorial spacing.",
+    "keywords": [
+      "warm-modern",
+      "geometry",
+      "illustration",
+      "furniture",
+      "brand"
+    ],
+    "palette": [
+      "#F3D7A4",
+      "#28323A",
+      "#D65A31",
+      "#6E8B6B"
+    ],
+    "examples": [
+      {
+        "name": "Herman Miller",
+        "url": "https://www.hermanmiller.com"
+      },
+      {
+        "name": "MillerKnoll",
+        "url": "https://www.millerknoll.com"
+      },
+      {
+        "name": "Design Within Reach",
+        "url": "https://www.dwr.com"
+      },
+      {
+        "name": "Vitra",
+        "url": "https://www.vitra.com"
+      },
+      {
+        "name": "HAY",
+        "url": "https://www.hay.com"
+      },
+      {
+        "name": "Muuto",
+        "url": "https://www.muuto.com"
+      },
+      {
+        "name": "USM",
+        "url": "https://www.usm.com"
+      },
+      {
+        "name": "Article",
+        "url": "https://www.article.com"
+      },
+      {
+        "name": "Schoolhouse",
+        "url": "https://www.schoolhouse.com"
+      },
+      {
+        "name": "Design Museum",
+        "url": "https://designmuseum.org"
+      }
+    ],
+    "images": [
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      },
+      {
+        "file": "dashboard.png",
+        "label": "Dashboard"
+      }
+    ],
+    "history": "미드센추리 모던은 1940년대부터 1960년대까지 건축, 가구, 그래픽, 제품 디자인에서 발전한 현대주의 흐름이다. 기능주의와 대량생산, 따뜻한 생활 감각이 결합되었고, 웹에서는 브랜드 랜딩과 라이프스타일 커머스의 친근한 모던 톤으로 자주 번역된다.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A Mid-century Modern style landing page screenshot. Warm neutral canvas, simplified furniture-like blocks, geometric illustration, optimistic brand panels, rounded but restrained product cards. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A Mid-century Modern style commerce product listing page screenshot. Warm neutral canvas, simplified furniture-like blocks, geometric illustration, optimistic brand panels, rounded but restrained product cards. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "dashboard.png",
+        "prompt": "A Mid-century Modern style dashboard or product tool page screenshot. Warm neutral canvas, simplified furniture-like blocks, geometric illustration, optimistic brand panels, rounded but restrained product cards. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
+  },
+  {
+    "id": "pop-art",
+    "name": "Pop Art",
+    "nameKr": "팝아트",
+    "tagline": "Commercial color, halftone energy, and graphic punch",
+    "description": "상업 이미지, 만화적 색면, 하프톤과 강한 대비로 제품/프로모션 화면에 에너지를 주는 스타일. 캠페인, 굿즈, 음악, 프로모션 페이지처럼 즉시 시선을 끌어야 하는 곳에 강하다.",
+    "descriptionEn": "A loud commercial style using bold color, halftone texture, comic framing, product repetition, and high-contrast promotional layout.",
+    "keywords": [
+      "commercial",
+      "halftone",
+      "bold-color",
+      "comic",
+      "promotion"
+    ],
+    "palette": [
+      "#FFF04A",
+      "#111111",
+      "#E72E5B",
+      "#1E8CFF"
+    ],
+    "examples": [
+      {
+        "name": "The Andy Warhol Museum",
+        "url": "https://www.warhol.org"
+      },
+      {
+        "name": "Tate",
+        "url": "https://www.tate.org.uk"
+      },
+      {
+        "name": "MoMA",
+        "url": "https://www.moma.org"
+      },
+      {
+        "name": "LACMA",
+        "url": "https://www.lacma.org"
+      },
+      {
+        "name": "Kidrobot",
+        "url": "https://www.kidrobot.com"
+      },
+      {
+        "name": "Mondo",
+        "url": "https://mondoshop.com"
+      },
+      {
+        "name": "Superplastic",
+        "url": "https://superplastic.co"
+      },
+      {
+        "name": "MTV",
+        "url": "https://www.mtv.com"
+      },
+      {
+        "name": "Design Museum",
+        "url": "https://designmuseum.org"
+      },
+      {
+        "name": "Saatchi Gallery",
+        "url": "https://www.saatchigallery.com"
+      }
+    ],
+    "images": [
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      },
+      {
+        "file": "dashboard.png",
+        "label": "Dashboard"
+      }
+    ],
+    "history": "팝아트는 1950년대 영국과 1960년대 미국에서 대중매체, 광고, 소비재 이미지를 미술의 언어로 끌어오며 등장했다. Andy Warhol, Roy Lichtenstein, Richard Hamilton 등이 대표적이며, 웹에서는 프로모션과 문화 콘텐츠의 강한 색면·반복·만화적 표현으로 이어진다.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A Pop Art style landing page screenshot. Bold commercial color, halftone texture, comic panel framing, product repetition, sharp promotional banners and energetic cards. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A Pop Art style commerce product listing page screenshot. Bold commercial color, halftone texture, comic panel framing, product repetition, sharp promotional banners and energetic cards. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "dashboard.png",
+        "prompt": "A Pop Art style dashboard or product tool page screenshot. Bold commercial color, halftone texture, comic panel framing, product repetition, sharp promotional banners and energetic cards. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   }
 ]

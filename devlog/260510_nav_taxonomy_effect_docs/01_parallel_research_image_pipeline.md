@@ -31,7 +31,7 @@ tags: [ima2, webp, research, parallel-pipeline]
 
 | Stream | Runs First? | Owner | Output |
 | --- | --- | --- | --- |
-| A. Candidate manifest | yes | Boss | exact list of new ISMS/references/effects diagrams to generate |
+| A. Candidate manifest | yes | Boss | exact list of new ISMS/effects diagrams to generate |
 | B. ima2 batch generation | after manifest | image process | PNG originals in deterministic folders |
 | C. Research collection | parallel with B | Boss / researcher | source notes, history, usage examples |
 | D. Data drafting | parallel with B/C | Boss | JSON stubs with IDs, names, categories |
@@ -90,14 +90,13 @@ Default page-type mix:
 
 ### Set 2 — Reference System Images
 
-If `references.html` is approved, each reference card gets 1 guide image:
+Do not publish reference-system images in runtime. Official design systems remain source links for effects documentation only.
 
 ```text
-assets/images/references/{reference-id}/overview.png
-assets/images/thumbs/references/{reference-id}/overview.webp
+not used in runtime
 ```
 
-These should be explanatory, not brand-copying screenshots. The prompt must avoid official logos and exact proprietary screen replication.
+The previous public reference-card direction was removed after user correction.
 
 ### Set 3 — Effects Docs Diagrams
 

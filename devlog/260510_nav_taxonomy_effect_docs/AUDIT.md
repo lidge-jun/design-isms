@@ -25,7 +25,7 @@ The plan moved from planning to implementation. Runtime files, data, generated i
 | --- | --- | --- |
 | New nav overflows mobile header | poor UX | verify 390px layout before completion |
 | Too many ISM additions dilute quality | weak catalog | start with 8 high-signal additions |
-| Design systems treated as visual isms | conceptual confusion | use `references.json`/`references.html` |
+| Design systems treated as visual isms | conceptual confusion | keep them as source links in effects docs only |
 | Effects docs make modal too long | reduced scanability | collapsible long sections or grouped hierarchy |
 | `src/effects.ts` exceeds 500 lines | violates project rule | split docs helper with namespace pattern |
 | Image generation outputs inconsistent files | broken assets | use manifest and count checks |
@@ -34,7 +34,7 @@ The plan moved from planning to implementation. Runtime files, data, generated i
 
 ## Resolved Questions
 
-1. `References` became a real `references.html` page.
+1. Public `References` page was removed after user correction.
 2. The first ISM expansion remains an 8-item backlog, not automatic promotion into `isms.json`.
 3. Effects docs reuse the existing 46 guide image flow and add prose sections in the modal.
 4. Long-form effects docs render as structured modal sections after the core card data.
@@ -42,7 +42,7 @@ The plan moved from planning to implementation. Runtime files, data, generated i
 
 ## Pre-Build Checklist
 
-- [x] User direction resolved `references.html` as part of the all-at-once implementation.
+- [x] User correction resolved that `references.html` should not be public runtime.
 - [x] First ISM addition batch is backlog only; no `isms.json` promotion.
 - [x] Effects docs use text sections and existing guide images instead of new group diagrams.
 - [x] Candidate image manifest is written.

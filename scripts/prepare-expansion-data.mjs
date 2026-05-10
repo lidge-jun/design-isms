@@ -6,7 +6,7 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 const effects = JSON.parse(readFileSync(join(root, 'assets/data/effects.json'), 'utf8'));
 const outDir = join(root, 'devlog/260510_nav_taxonomy_effect_docs');
 
-const referenceEntries = [
+const ismCandidateEntries = [
   ref('editorial-typography', 'Editorial Typography', '에디토리얼 타이포그래피', 'ISM Candidate', 'P0',
     '큰 제목, 본문 리듬, 여백, 컬럼 구조로 콘텐츠의 목소리를 만드는 타이포그래피 중심 스타일.',
     ['typography', 'editorial', 'hierarchy', 'layout'], ''),
@@ -30,31 +30,7 @@ const referenceEntries = [
     ['warm-modern', 'geometry', 'illustration', 'brand'], ''),
   ref('pop-art', 'Pop Art', '팝아트', 'ISM Candidate', 'P0',
     '상업 이미지, 만화적 색면, 하프톤과 강한 대비로 제품/프로모션 화면에 에너지를 주는 스타일.',
-    ['commercial', 'halftone', 'bold-color', 'comic'], ''),
-  ref('apple-hig', 'Apple Human Interface Guidelines', 'Apple HIG', 'Official Reference', 'P0',
-    'Apple 플랫폼의 구조, 입력, 내비게이션, 시각 기준을 확인하는 1차 플랫폼 가이드.',
-    ['platform', 'mobile', 'desktop', 'guidelines'], 'https://developer.apple.com/design/human-interface-guidelines/'),
-  ref('material-design-3', 'Material Design 3', '머티리얼 디자인 3', 'Official Reference', 'P0',
-    'Google의 컬러, 타입, 모션, 컴포넌트 체계를 확인하는 Android/web 제품 UI 기준.',
-    ['design-system', 'components', 'motion', 'android'], 'https://m3.material.io/'),
-  ref('fluent-2', 'Microsoft Fluent 2', '마이크로소프트 플루언트 2', 'Official Reference', 'P0',
-    'Microsoft 생태계의 웹, iOS, Android, Windows 컴포넌트와 제품 UI 원칙을 보는 기준.',
-    ['design-system', 'enterprise', 'components', 'microsoft'], 'https://fluent2.microsoft.design/'),
-  ref('carbon-design-system', 'IBM Carbon Design System', 'IBM 카본 디자인 시스템', 'Official Reference', 'P0',
-    '엔터프라이즈 제품, 데이터 UI, 접근성 중심 컴포넌트 기준을 확인하는 IBM 오픈소스 디자인 시스템.',
-    ['enterprise', 'data-ui', 'accessibility', 'components'], 'https://carbondesignsystem.com/'),
-  ref('atlassian-design-system', 'Atlassian Design System', '아틀라시안 디자인 시스템', 'Official Reference', 'P1',
-    '협업 도구와 생산성 제품의 foundation, components, patterns, content 기준을 확인하는 레퍼런스.',
-    ['collaboration', 'patterns', 'content-design', 'product-ui'], 'https://atlassian.design/design-system'),
-  ref('shopify-polaris', 'Shopify Polaris', '쇼피파이 폴라리스', 'Official Reference', 'P1',
-    '상거래 관리자 화면, merchant workflow, web components 중심의 커머스 UI 기준.',
-    ['commerce', 'admin', 'web-components', 'forms'], 'https://shopify.dev/docs/api/app-home/web-components'),
-  ref('wai-aria-apg', 'WAI-ARIA Authoring Practices Guide', 'WAI-ARIA APG', 'Official Reference', 'P0',
-    'dialog, tabs, accordion 같은 상호작용 패턴의 키보드/ARIA 작동 기준을 검증하는 접근성 레퍼런스.',
-    ['accessibility', 'aria', 'patterns', 'keyboard'], 'https://www.w3.org/WAI/ARIA/apg/'),
-  ref('mdn-web-accessibility', 'MDN Web Accessibility', 'MDN 웹 접근성', 'Official Reference', 'P0',
-    '웹 플랫폼 role, attribute, interaction behavior를 확인하는 구현 레퍼런스.',
-    ['web-platform', 'accessibility', 'aria', 'implementation'], 'https://developer.mozilla.org/en-US/docs/Web/Accessibility')
+    ['commercial', 'halftone', 'bold-color', 'comic'], '')
 ];
 
 const refsByGroup = {
@@ -169,30 +145,24 @@ function buildResearchPrompts() {
     version: '2026-05-10',
     grokPrompts: {
       ismCandidate: 'For each candidate design style, return JSON: id, name, nameKr suggestion, category, definition, history, visualTraits, webUiInterpretation, keywords, paletteDirection, 10 real live website examples, risks, sourceUrls. Exclude Dribbble, Behance, Pinterest, and wiki-only sources.',
-      officialReference: 'For each official design-system reference, return JSON: name, officialUrl, maintainer, scope, bestFor, componentAreas, accessibilityGuidance, designTokens, whatToUseInDesignIsms, whatNotToCopy, sourceUrls.',
       effectDocs: 'For each UI effect/pattern, return JSON keyed by effect id: background, shortHistory, useWhen, examples, anatomy, misuse, implementationNotes, accessibilitySources, sourceUrls. Prefer official docs such as WAI-ARIA APG, MDN, Apple HIG, Material, Fluent, Carbon, Atlassian, and Polaris.',
       exampleSites: 'List 10 real, currently live websites that exemplify the given visual style. No Dribbble, Behance, Pinterest, or Wikipedia. Return JSON array with name, url, whyItFits, and visualTraits.'
     },
-    firstBatchTargets: referenceEntries.map(({ id, name, kind, researchPrompt, imagePrompt }) => ({ id, name, kind, researchPrompt, imagePrompt }))
+    firstBatchTargets: ismCandidateEntries.map(({ id, name, kind, researchPrompt, imagePrompt }) => ({ id, name, kind, researchPrompt, imagePrompt }))
   };
 }
 
 function buildImageJobs() {
   const jobs = [];
-  const ismEntries = referenceEntries.filter((entry) => entry.kind === 'ISM Candidate');
-  const refEntries = referenceEntries.filter((entry) => entry.kind === 'Official Reference');
   const imageSlots = [
     ['landing.png', 'landing page showing the style at full visual strength'],
     ['shop.png', 'commerce/product listing page testing cards, buttons, and pricing density'],
     ['dashboard.png', 'functional dashboard or tool surface testing controls, charts, and information hierarchy']
   ];
-  for (const entry of ismEntries) {
+  for (const entry of ismCandidateEntries) {
     for (const [file, role] of imageSlots) {
       jobs.push(imageJob(entry.id, 'ism', join('assets/images', entry.id, file), `${entry.imagePrompt} Composition: ${role}.`));
     }
-  }
-  for (const entry of refEntries) {
-    jobs.push(imageJob(entry.id, 'reference', join('assets/images/references', entry.id, 'overview.png'), entry.imagePrompt));
   }
   return jobs;
 }
@@ -239,14 +209,13 @@ const docsMap = Object.fromEntries(effects.map((effect) => [effect.id, docsFor(e
 const imageJobs = buildImageJobs();
 
 writeKeyedObjectLines('assets/data/effects-docs.json', docsMap);
-writeJson('assets/data/references.json', referenceEntries);
 writeJson('assets/data/research-prompts.json', buildResearchPrompts());
 writeText('devlog/260510_nav_taxonomy_effect_docs/image_jobs.jsonl', imageJobs.map((job) => JSON.stringify(job)).join('\n') + '\n');
-writeText('devlog/260510_nav_taxonomy_effect_docs/grok_research_prompts.md', renderPromptDoc(referenceEntries, imageJobs));
+writeText('devlog/260510_nav_taxonomy_effect_docs/grok_research_prompts.md', renderPromptDoc(ismCandidateEntries, imageJobs));
 
-console.log(`prepared effects-docs=${effects.length}, references=${referenceEntries.length}, imageJobs=${imageJobs.length}`);
+console.log(`prepared effects-docs=${effects.length}, ismCandidates=${ismCandidateEntries.length}, imageJobs=${imageJobs.length}`);
 
 function renderPromptDoc(entries, jobs) {
   const promptLines = entries.map((entry) => `### ${entry.name}\n\nGrok:\n\`\`\`text\n${entry.researchPrompt}\n\`\`\`\n\nima2:\n\`\`\`text\n${entry.imagePrompt}\n\`\`\``).join('\n\n');
-  return `---\ncreated: 2026-05-10\nstatus: implemented\ntags: [grok, ima2, prompts, manifest]\n---\n\n# Grok Research and ima2 Prompt Manifest\n\nThese prompts are the confirmed input text for the next design-isms research and image-generation pass.\n\n## Global Grok Prompt Rules\n\n- Return strict JSON, not prose.\n- Prefer official or primary sources.\n- Exclude Dribbble, Behance, Pinterest, and wiki-only evidence.\n- Include source URLs with every historical or usage claim.\n- Separate visual-style candidates from official design-system references.\n\n## Per-Target Prompts\n\n${promptLines}\n\n## ima2 Job Count\n\n- Total jobs: ${jobs.length}\n- ISM candidate jobs: ${jobs.filter((job) => job.kind === 'ism').length}\n- Reference overview jobs: ${jobs.filter((job) => job.kind === 'reference').length}\n\nSee \`image_jobs.jsonl\` for target paths and WebP output paths.\n`;
+  return `---\ncreated: 2026-05-10\nstatus: implemented\ntags: [grok, ima2, prompts, manifest]\n---\n\n# Grok Research and ima2 Prompt Manifest\n\nThese prompts are the confirmed input text for the next design-isms research and image-generation pass.\n\n## Global Grok Prompt Rules\n\n- Return strict JSON, not prose.\n- Prefer official or primary sources.\n- Exclude Dribbble, Behance, Pinterest, and wiki-only evidence.\n- Include source URLs with every historical or usage claim.\n- Keep visual-style candidates inside the ISMS catalog; do not publish a separate reference page.\n\n## Per-Target Prompts\n\n${promptLines}\n\n## ima2 Job Count\n\n- Total jobs: ${jobs.length}\n- ISM candidate jobs: ${jobs.filter((job) => job.kind === 'ism').length}\n- Reference overview jobs: 0\n\nSee \`image_jobs.jsonl\` for target paths and WebP output paths.\n`;
 }

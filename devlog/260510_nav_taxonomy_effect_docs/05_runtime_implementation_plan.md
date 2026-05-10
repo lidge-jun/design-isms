@@ -35,7 +35,7 @@ After:
 - Header uses semantic `<nav class="header-right" aria-label="Primary navigation">`.
 - Logo links to `./index.html`.
 - Adds `Isms` with `aria-current="page"`.
-- Adds `References` and `Guide` links.
+- Keeps compact `Isms`, `Effects`, GitHub, language toggle, and count links.
 - Keeps Effects, GitHub, language toggle, count.
 
 ### `effects.html` — MODIFY
@@ -49,7 +49,7 @@ After:
 
 - Same nav order as index.
 - Adds language toggle.
-- Adds References and Guide links.
+- Keeps compact `Isms`, `Effects`, GitHub, language toggle, and count links.
 - Keeps `effects-demos.js` before `effects.js`.
 
 ### `assets/css/nav.css` — NEW
@@ -108,9 +108,9 @@ Because pages are non-module scripts, the simplest safe split is a namespace pat
 - Generated from `src/effects.ts` via `npm run build`.
 - Must be committed when implementation is approved.
 
-### `assets/data/references.json` — IMPLEMENTED NEW
+### `assets/data/references.json` — REMOVED
 
-Implemented because `references.html` was promoted to a real page.
+Removed after user feedback. Visual-style candidates are part of `assets/data/isms.json`; official design-system references stay as source links inside effects docs only.
 
 ```json
 {
@@ -124,9 +124,9 @@ Implemented because `references.html` was promoted to a real page.
 }
 ```
 
-### `references.html` — IMPLEMENTED NEW
+### `references.html` — REMOVED
 
-Created as the references/research queue page.
+Removed from runtime after user feedback.
 
 ### `assets/data/isms.json` — MODIFY ONLY AFTER APPROVAL
 
