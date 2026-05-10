@@ -452,5 +452,185 @@
       { "file": "portfolio.png", "label": "Portfolio" },
       { "file": "agency.png", "label": "Agency Site" }
     ]
+  },
+  {
+    "id": "frutiger-aero",
+    "name": "Frutiger Aero",
+    "nameKr": "프루티거 에어로",
+    "tagline": "Glossy nature meets technology",
+    "description": "2006-2013년의 지배적 디자인 언어. 광택 있는 UI, 자연 이미지(물방울·잎·하늘), Frutiger 서체, 투명 유리 효과. Windows Vista/7, 초기 스마트폰 시대의 낙관적 기술 미학.",
+    "keywords": ["glossy", "nature", "translucent", "gradient", "optimism"],
+    "palette": ["#00A3E0", "#7BC043", "#FFFFFF", "#E8F5E9"],
+    "examples": [
+      { "name": "Frutiger Aero Wiki", "url": "https://aesthetics.fandom.com/wiki/Frutiger_Aero" },
+      { "name": "Windows Vista Design", "url": "https://www.microsoft.com" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "dashboard.png", "label": "Dashboard" },
+      { "file": "mobile-app.png", "label": "Mobile App" }
+    ]
+  },
+  {
+    "id": "bento-grid",
+    "name": "Bento Grid",
+    "nameKr": "벤토 그리드",
+    "tagline": "Apple-style modular boxes",
+    "description": "Apple이 대중화한 도시락 상자(弁当) 레이아웃. 다양한 크기의 둥근 모서리 카드가 그리드 안에서 각자의 콘텐츠를 담는다. 깔끔하고 모듈형.",
+    "keywords": ["grid", "modular", "rounded", "clean", "modern"],
+    "palette": ["#F5F5F7", "#1D1D1F", "#0071E3", "#FBFBFD"],
+    "examples": [
+      { "name": "Apple Features Page", "url": "https://www.apple.com/iphone" },
+      { "name": "Vercel", "url": "https://vercel.com" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Features Page" },
+      { "file": "dashboard.png", "label": "Dashboard" },
+      { "file": "shop.png", "label": "쇼핑몰" }
+    ]
+  },
+  {
+    "id": "dopamine-design",
+    "name": "Dopamine Design",
+    "nameKr": "도파민 디자인",
+    "tagline": "Joy-inducing hyper-color",
+    "description": "즐거움과 도파민 분비를 목표로 한 초고채도 디자인. 비비드 컬러 블록, 과장된 일러스트, 원형 모티프, 에너지 넘치는 레이아웃. Gen Z 타겟.",
+    "keywords": ["vivid", "playful", "bold-color", "rounded", "gen-z"],
+    "palette": ["#FF6F61", "#FFD700", "#00CED1", "#FF1493"],
+    "examples": [
+      { "name": "Headspace", "url": "https://www.headspace.com" },
+      { "name": "Duolingo", "url": "https://www.duolingo.com" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "mobile-app.png", "label": "Mobile App" },
+      { "file": "shop.png", "label": "쇼핑몰" }
+    ]
+  },
+  {
+    "id": "anti-design",
+    "name": "Anti-Design",
+    "nameKr": "안티 디자인",
+    "tagline": "Deliberately breaking every rule",
+    "description": "의도적으로 모든 디자인 규칙을 위반. 불쾌한 색 조합, 읽기 힘든 타이포, 깨진 정렬, 커서 변형. 디자인 관습 자체에 대한 반항.",
+    "keywords": ["anti-design", "broken-grid", "clash", "experimental", "raw"],
+    "palette": ["#CCFF00", "#FF00FF", "#000000", "#0000FF"],
+    "examples": [
+      { "name": "David Rudnick", "url": "https://davidrudnick.com" },
+      { "name": "Experimental Jetset", "url": "https://www.experimentaljetset.nl" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "portfolio.png", "label": "Portfolio" },
+      { "file": "poster.png", "label": "Event Poster" }
+    ]
+  },
+  {
+    "id": "psychedelic",
+    "name": "Psychedelic",
+    "nameKr": "사이케델릭",
+    "tagline": "Trippy, swirling, mind-bending",
+    "description": "1960-70년대 사이키델릭 록 문화에서 시작. 소용돌이 패턴, 과포화 컬러, 왜곡된 타이포그래피, 만화경 같은 대칭. 의식 확장의 시각적 표현.",
+    "keywords": ["swirl", "vivid", "retro", "pattern", "experimental"],
+    "palette": ["#FF6EC7", "#39FF14", "#FF4500", "#8B00FF"],
+    "examples": [
+      { "name": "Psychedelic Art Museum", "url": "https://dribbble.com/tags/psychedelic" },
+      { "name": "Festival Sites", "url": "https://www.coachella.com" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "music.png", "label": "Music Festival" },
+      { "file": "poster.png", "label": "Event Poster" }
+    ]
+  },
+  {
+    "id": "cottagecore",
+    "name": "Cottagecore",
+    "nameKr": "코티지코어",
+    "tagline": "Rural nostalgia, floral warmth",
+    "description": "시골 생활에 대한 낭만적 동경. 꽃무늬, 따뜻한 톤, 손글씨 서체, 빈티지 일러스트. 베이킹, 정원, 수공예의 소박한 아름다움.",
+    "keywords": ["floral", "warm", "handcraft", "natural", "nostalgic"],
+    "palette": ["#F5E6D3", "#8B6F47", "#D4A574", "#6B8E6B"],
+    "examples": [
+      { "name": "Cottagecore Wiki", "url": "https://aesthetics.fandom.com/wiki/Cottagecore" },
+      { "name": "Etsy Cottagecore", "url": "https://www.etsy.com" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "shop.png", "label": "쇼핑몰" },
+      { "file": "blog.png", "label": "Lifestyle Blog" }
+    ]
+  },
+  {
+    "id": "steampunk",
+    "name": "Steampunk",
+    "nameKr": "스팀펑크",
+    "tagline": "Victorian machinery meets fantasy",
+    "description": "빅토리아 시대 산업혁명 + 공상과학. 톱니바퀴, 증기기관, 황동 질감, 가죽, 고딕 서체. 과거의 기술로 상상한 미래.",
+    "keywords": ["gears", "brass", "victorian", "industrial", "fantasy"],
+    "palette": ["#8B7355", "#B8860B", "#2F1B0E", "#D4A574"],
+    "examples": [
+      { "name": "Steampunk Wiki", "url": "https://aesthetics.fandom.com/wiki/Steampunk" },
+      { "name": "Dribbble Steampunk", "url": "https://dribbble.com/tags/steampunk" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "dashboard.png", "label": "Dashboard" },
+      { "file": "shop.png", "label": "쇼핑몰" }
+    ]
+  },
+  {
+    "id": "solarpunk",
+    "name": "Solarpunk",
+    "nameKr": "솔라펑크",
+    "tagline": "Eco-utopia, green technology",
+    "description": "지속가능한 미래에 대한 낙관적 비전. 식물과 기술의 공존, 태양광 패널, 유기적 건축, 밝은 녹색과 금색. 사이버펑크의 밝은 대안.",
+    "keywords": ["eco", "green", "futuristic", "organic", "optimism"],
+    "palette": ["#2D6A4F", "#95D5B2", "#FFD60A", "#F0F4EF"],
+    "examples": [
+      { "name": "Solarpunk Wiki", "url": "https://aesthetics.fandom.com/wiki/Solarpunk" },
+      { "name": "Inhabitat", "url": "https://inhabitat.com" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "app.png", "label": "Eco App" },
+      { "file": "shop.png", "label": "쇼핑몰" }
+    ]
+  },
+  {
+    "id": "futurism",
+    "name": "Futurism",
+    "nameKr": "퓨처리즘",
+    "tagline": "Speed, dynamism, diagonal energy",
+    "description": "1909년 이탈리아에서 시작된 속도와 기계의 미학. 대각선, 방사형 구도, 역동적 타이포그래피, 운동감. 미래에 대한 극단적 열광.",
+    "keywords": ["diagonal", "dynamic", "speed", "geometric", "bold"],
+    "palette": ["#1A1A1A", "#FF4500", "#FFD700", "#FFFFFF"],
+    "examples": [
+      { "name": "Futurism Art", "url": "https://www.theartstory.org/movement/futurism" },
+      { "name": "Awwwards Dynamic", "url": "https://www.awwwards.com" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Landing Page" },
+      { "file": "portfolio.png", "label": "Portfolio" },
+      { "file": "poster.png", "label": "Event Poster" }
+    ]
+  },
+  {
+    "id": "indie-web",
+    "name": "Indie Web",
+    "nameKr": "인디 웹",
+    "tagline": "Handmade, personal, quirky",
+    "description": "대형 플랫폼에서 벗어난 개인 홈페이지 문화. 손그림 요소, 88x31 배지, 방문자 카운터, 자유로운 레이아웃. 2020년대 개인 웹 부활 운동.",
+    "keywords": ["personal", "handmade", "quirky", "retro", "authentic"],
+    "palette": ["#FFF8E7", "#333333", "#FF6B6B", "#4ECDC4"],
+    "examples": [
+      { "name": "IndieWeb.org", "url": "https://indieweb.org" },
+      { "name": "Neocities", "url": "https://neocities.org" }
+    ],
+    "images": [
+      { "file": "landing.png", "label": "Personal Homepage" },
+      { "file": "blog.png", "label": "Blog" },
+      { "file": "links.png", "label": "Link Garden" }
+    ]
   }
 ]
