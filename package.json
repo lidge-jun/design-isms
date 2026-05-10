@@ -1,0 +1,15 @@
+{
+  "name": "design-isms",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "images:thumbs": "node scripts/generate-thumbnails.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "verify": "npm run typecheck && npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}
