@@ -211,7 +211,30 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s, opacity 0.4s ease;
+  animation: cardFadeIn 0.4s ease both;
+}
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Skeleton Card ── */
+.ism-card--skeleton {
+  animation: none;
+}
+.ism-skeleton-images { padding: 12px 20px 20px; display: flex; flex-direction: column; gap: 8px; }
+.ism-skeleton-block {
+  background: linear-gradient(90deg, var(--bg-warm) 25%, var(--border) 50%, var(--bg-warm) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+  height: 160px;
+}
+.ism-skeleton-block.ism-skeleton-sm { height: 80px; }
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 .ism-card:hover {
   transform: translateY(-3px);
@@ -301,8 +324,10 @@ a { color: inherit; text-decoration: none; }
 }
 .ism-img-wrap img {
   width: 100%; display: block;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
 }
+.ism-img-wrap img[data-lazy] { opacity: 0; }
+.ism-img-wrap img:not([data-lazy]) { opacity: 1; }
 .ism-img-wrap:hover img { transform: scale(1.03); }
 .ism-img-label {
   position: absolute; bottom: 8px; left: 8px;

@@ -69,15 +69,61 @@ async function init() {
   setupModal();
   setupCardExamplesToggle();
   setupLangToggle();
+  setupImageLazy();
+  dismissLoading();
+}
 
-  requestAnimationFrame(function() {
-    document.body.classList.remove('is-loading');
-    var overlay = document.getElementById('loading-overlay');
-    overlay.classList.add('fade-out');
-    overlay.addEventListener('transitionend', function() {
-      overlay.remove();
+var imgObserver = null;
+function setupImageLazy() {
+  if (imgObserver) imgObserver.disconnect();
+  imgObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      var img = entry.target;
+      var lazySrc = img.getAttribute('data-lazy');
+      if (lazySrc) {
+        img.src = lazySrc;
+        img.removeAttribute('data-lazy');
+      }
+      imgObserver.unobserve(img);
     });
+  }, { rootMargin: '300px 0px' });
+
+  document.querySelectorAll('img[data-lazy]').forEach(function(img) {
+    imgObserver.observe(img);
   });
+}
+
+function dismissLoading() {
+  var firstImages = document.querySelectorAll('.ism-card:nth-child(-n+6) .ism-img-wrap img');
+  var loaded = 0;
+  var total = Math.min(firstImages.length, 6);
+  if (total === 0) { revealPage(); return; }
+
+  function check() {
+    loaded++;
+    if (loaded >= total) revealPage();
+  }
+
+  firstImages.forEach(function(img) {
+    if (img.complete) { check(); return; }
+    img.addEventListener('load', check);
+    img.addEventListener('error', check);
+  });
+
+  setTimeout(revealPage, 3000);
+}
+
+var pageRevealed = false;
+function revealPage() {
+  if (pageRevealed) return;
+  pageRevealed = true;
+  document.body.classList.remove('is-loading');
+  var overlay = document.getElementById('loading-overlay');
+  if (overlay) {
+    overlay.classList.add('fade-out');
+    overlay.addEventListener('transitionend', function() { overlay.remove(); });
+  }
 }
 
 function buildFilters() {
@@ -124,9 +170,13 @@ function matchFilter(ism) {
   return true;
 }
 
+var cardObserver = null;
+
 function render() {
   const grid = document.getElementById('masonry');
   const filtered = allIsms.filter(matchFilter);
+
+  if (cardObserver) { cardObserver.disconnect(); cardObserver = null; }
 
   if (filtered.length === 0) {
     grid.innerHTML = `
@@ -137,8 +187,61 @@ function render() {
     return;
   }
 
-  grid.innerHTML = filtered.map((ism, i) => cardHTML(ism, i)).join('');
+  var EAGER_COUNT = 6;
+  var html = '';
+  for (var i = 0; i < filtered.length; i++) {
+    if (i < EAGER_COUNT) {
+      html += cardHTML(filtered[i], i);
+    } else {
+      html += skeletonHTML(filtered[i], i);
+    }
+  }
+  grid.innerHTML = html;
   setupCardExamplesToggle();
+
+  if (filtered.length > EAGER_COUNT) {
+    cardObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        if (el.classList.contains('ism-card--loaded')) return;
+        var id = el.dataset.id;
+        var idx = parseInt(el.dataset.index, 10);
+        var ism = allIsms.find(function(x) { return x.id === id; });
+        if (!ism) return;
+        var temp = document.createElement('div');
+        temp.innerHTML = cardHTML(ism, idx);
+        var newCard = temp.firstElementChild;
+        newCard.classList.add('ism-card--loaded');
+        el.replaceWith(newCard);
+        setupCardExamplesToggle();
+        newCard.querySelectorAll('img[data-lazy]').forEach(function(img) {
+          imgObserver.observe(img);
+        });
+        cardObserver.unobserve(el);
+      });
+    }, { rootMargin: '200px 0px' });
+
+    grid.querySelectorAll('.ism-card--skeleton').forEach(function(el) {
+      cardObserver.observe(el);
+    });
+  }
+}
+
+function skeletonHTML(ism, index) {
+  var num = String(index + 1).padStart(2, '0');
+  return '<article class="ism-card ism-card--skeleton" data-id="' + ism.id + '" data-index="' + index + '">' +
+    '<div class="ism-card-header">' +
+    '<div class="ism-label-row"><span class="ism-number">' + num + '</span></div>' +
+    '<div class="ism-name">' + ism.name + '</div>' +
+    '<div class="ism-tagline">' + ism.tagline + '</div>' +
+    '</div>' +
+    '<div class="ism-skeleton-images">' +
+    '<div class="ism-skeleton-block"></div>' +
+    '<div class="ism-skeleton-block ism-skeleton-sm"></div>' +
+    '<div class="ism-skeleton-block ism-skeleton-sm"></div>' +
+    '</div>' +
+    '</article>';
 }
 
 function cardHTML(ism, index) {
@@ -150,9 +253,13 @@ function cardHTML(ism, index) {
 
   const imagesHTML = ism.images.map(img => {
     const src = `./assets/images/${ism.id}/${img.file}`;
+    const isEager = index < 6;
+    const imgAttr = isEager
+      ? `src="${src}"`
+      : `src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy="${src}"`;
     return `
       <div class="ism-img-wrap" data-src="${src}">
-        <img src="${src}" alt="${ism.name} - ${img.label}"
+        <img ${imgAttr} alt="${ism.name} - ${img.label}"
              loading="lazy"
              onerror="this.parentElement.outerHTML='<div class=\\'ism-img-placeholder\\'>${img.label} — generating...</div>'">
         <span class="ism-img-label">${img.label}</span>
