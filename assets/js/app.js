@@ -180,7 +180,7 @@ function render() {
 
   if (filtered.length === 0) {
     grid.innerHTML = `
-      <div class="empty-state" style="column-span:all">
+      <div class="empty-state" style="grid-column:1/-1">
         <h3>No matches</h3>
         <p>Try a different keyword or clear the search.</p>
       </div>`;

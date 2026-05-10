@@ -197,16 +197,16 @@ a { color: inherit; text-decoration: none; }
   padding: 8px clamp(16px, 4vw, 48px) 80px;
 }
 .masonry {
-  columns: 3;
-  column-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
-@media (max-width: 1024px) { .masonry { columns: 2; } }
-@media (max-width: 640px) { .masonry { columns: 1; } }
+@media (max-width: 1024px) { .masonry { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .masonry { grid-template-columns: 1fr; } }
 
 /* ── ISM Card ── */
 .ism-card {
   break-inside: avoid;
-  margin-bottom: 20px;
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
