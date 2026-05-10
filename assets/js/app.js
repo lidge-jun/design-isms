@@ -220,15 +220,22 @@ function renderModalContent(ism) {
   const subImages = ism.images.slice(1);
   const mainLabel = ism.name + ' 디자인 시안';
 
+  var mainPrompt = (ism.prompts && ism.prompts[0]) ? ism.prompts[0].prompt : '';
+
   var collapsiblesHTML = '';
   for (var i = 0; i < subImages.length; i++) {
     var img = subImages[i];
+    var subPrompt = (ism.prompts && ism.prompts[i + 1]) ? ism.prompts[i + 1].prompt : '';
+    var promptBlock = subPrompt
+      ? '<div class="modal-prompt"><span class="modal-prompt-label">Prompt</span>' + subPrompt + '</div>'
+      : '';
     collapsiblesHTML += '<div class="modal-collapsible">' +
       '<div class="modal-collapsible-header">' +
       '<span class="modal-collapsible-arrow">▶</span> ' + img.label +
       '</div>' +
       '<div class="modal-collapsible-body"><div class="modal-collapsible-inner">' +
       '<img src="./assets/images/' + ism.id + '/' + img.file + '" alt="' + ism.name + ' - ' + img.label + '" data-lightbox="true">' +
+      promptBlock +
       '</div></div></div>';
   }
 
@@ -287,6 +294,7 @@ function renderModalContent(ism) {
   html += '<div class="modal-desc">' + ism.description + '</div>' +
     '<div class="modal-main-image"><img src="./assets/images/' + ism.id + '/' + mainImg.file + '" alt="' + mainLabel + '" data-lightbox="true"></div>' +
     '<div class="modal-main-label">' + mainLabel + '</div>' +
+    (mainPrompt ? '<div class="modal-prompt modal-prompt-main"><span class="modal-prompt-label">Prompt</span>' + mainPrompt + '</div>' : '') +
     collapsiblesHTML +
     '<div class="modal-section-title">Color Palette</div>' +
     '<div class="modal-palette">' + paletteHTML + '</div>' +

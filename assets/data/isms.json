@@ -74,7 +74,30 @@
         "label": "Portfolio"
       }
     ],
-    "history": "1960년대 미술 운동에서 출발, Donald Judd·Frank Stella 등이 주도. 웹에서는 2010년대 Apple과 Google의 영향으로 주류가 됨. 스큐어모피즘의 반작용으로 부상했으며, Dieter Rams의 'Less, but better' 철학이 핵심."
+    "history": "1960년대 미술 운동에서 출발, Donald Judd·Frank Stella 등이 주도. 웹에서는 2010년대 Apple과 Google의 영향으로 주류가 됨. 스큐어모피즘의 반작용으로 부상했으며, Dieter Rams의 'Less, but better' 철학이 핵심.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A minimalist landing page screenshot. Expansive white space, thin sans-serif typography, single hero image with restrained color palette of white and charcoal. Clean grid layout, no decorative elements, content breathes in open space. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A minimalist e-commerce shop page. Product displayed on pure white background, minimal navigation, generous padding between elements. Monochrome color scheme with subtle gray accents. Single-column product grid, understated add-to-cart button. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "portfolio.png",
+        "prompt": "A minimalist portfolio website. Large typography for project titles, ample negative space, black and white photography. Grid-based layout with mathematical precision, no unnecessary ornamentation. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "brutalism",
@@ -151,7 +174,30 @@
         "label": "Blog"
       }
     ],
-    "history": "1950년대 건축 운동(Le Corbusier)에서 이름을 따옴. 웹 브루탈리즘은 2014년경 Pascal Deville의 brutalistwebsites.com에서 본격 시작. Bloomberg 2017 리디자인이 상업적 채택의 전환점."
+    "history": "1950년대 건축 운동(Le Corbusier)에서 이름을 따옴. 웹 브루탈리즘은 2014년경 Pascal Deville의 brutalistwebsites.com에서 본격 시작. Bloomberg 2017 리디자인이 상업적 채택의 전환점.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A brutalist landing page screenshot. Raw, unpolished design with system monospace fonts, broken asymmetric grid layout, stark black and white with aggressive red accents. Exposed HTML-like structure, deliberately crude aesthetics, high-contrast elements. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A brutalist e-commerce shop page. Black background with white monospace text, products displayed in raw grid with thick borders, no rounded corners, harsh red price tags. Anti-aesthetic product presentation, deliberately uncomfortable layout. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "blog.png",
+        "prompt": "A brutalist blog layout. Dense monospace text on white background, blue hyperlinks, no images, visible borders and harsh grid lines. Resembles early web pages, deliberately stripped of modern polish. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "neumorphism",
@@ -228,7 +274,30 @@
         "label": "Music Player"
       }
     ],
-    "history": "2019년 Dribbble에서 Alexander Plyuto의 컨셉으로 폭발적 인기. 스큐어모피즘과 플랫 디자인의 혼합. 접근성 문제(낮은 대비)로 전체 UI보다 부분 적용이 많음."
+    "history": "2019년 Dribbble에서 Alexander Plyuto의 컨셉으로 폭발적 인기. 스큐어모피즘과 플랫 디자인의 혼합. 접근성 문제(낮은 대비)로 전체 UI보다 부분 적용이 많음.",
+    "prompts": [
+      {
+        "file": "dashboard.png",
+        "prompt": "A neumorphic dashboard UI screenshot. Soft extruded elements on light gray (#E0E5EC) background, subtle outer and inset shadows creating depth. Rounded cards with statistics, progress bars with soft shadow effects, monochromatic color scheme. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "login.png",
+        "prompt": "A neumorphic login page. Centered card with soft shadow extrusion on pale gray background, input fields with inset shadows, rounded submit button with outer glow effect. Minimal color, depth created entirely through shadow manipulation. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "music-player.png",
+        "prompt": "A neumorphic music player interface. Soft extruded play/pause/skip buttons, circular progress indicator with inset track, volume slider with raised knob. All on light gray background with subtle shadow depth, no flat colors. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "glassmorphism",
@@ -305,7 +374,30 @@
         "label": "Mobile App"
       }
     ],
-    "history": "2020년 Apple이 macOS Big Sur에서 본격 도입. Microsoft의 Fluent Design System(Acrylic 소재)도 영향. backdrop-filter CSS 지원 확대와 함께 2021-2022년 트렌드로 정착."
+    "history": "2020년 Apple이 macOS Big Sur에서 본격 도입. Microsoft의 Fluent Design System(Acrylic 소재)도 영향. backdrop-filter CSS 지원 확대와 함께 2021-2022년 트렌드로 정착.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A glassmorphic landing page screenshot. Frosted glass cards floating over a vibrant purple-to-teal gradient background. Translucent white panels with backdrop blur effect, subtle white borders, depth layering. Content visible through semi-transparent layers. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "card-ui.png",
+        "prompt": "A glassmorphic card UI design. Multiple frosted glass cards overlapping on a colorful gradient background, each with varying transparency levels. Thin white borders, blurred backdrop showing through, floating effect with subtle shadows. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "mobile-app.png",
+        "prompt": "A glassmorphic mobile app interface. Translucent navigation bar and content cards on a vivid gradient background of purple and green. Frosted glass effect with backdrop blur, rounded corners, floating elements with depth. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "skeuomorphism",
@@ -382,7 +474,30 @@
         "label": "Bookshelf UI"
       }
     ],
-    "history": "2007-2013년 Apple iOS 1-6의 지배적 디자인 언어. Scott Forstall이 주도. 2013년 Jony Ive 체제에서 iOS 7 플랫 전환으로 퇴조. 2020년대 부분적 부활(뉴모피즘 등)."
+    "history": "2007-2013년 Apple iOS 1-6의 지배적 디자인 언어. Scott Forstall이 주도. 2013년 Jony Ive 체제에서 iOS 7 플랫 전환으로 퇴조. 2020년대 부분적 부활(뉴모피즘 등).",
+    "prompts": [
+      {
+        "file": "calculator.png",
+        "prompt": "A skeuomorphic calculator app interface. Realistic glossy buttons with 3D bevels, metallic brushed aluminum frame, subtle reflections and realistic shadows. Buttons that look physically pressable, LED-style display, textured background. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "notepad.png",
+        "prompt": "A skeuomorphic notepad application. Realistic torn paper edge at top, lined paper texture, leather-bound spine on left side, realistic pencil icon, subtle paper grain texture. Drop shadows creating physical depth illusion. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "bookshelf.png",
+        "prompt": "A skeuomorphic bookshelf UI. Realistic wooden shelves with grain texture, books with leather spines and embossed titles, subtle lighting from above, realistic shadows beneath each book. Rich textures mimicking physical materials. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "flat-design",
@@ -459,7 +574,30 @@
         "label": "Mobile App"
       }
     ],
-    "history": "2012년 Microsoft의 Metro UI(Windows 8)가 시초. 2013년 Apple iOS 7이 뒤따르며 글로벌 표준으로. Flat 2.0(미묘한 그림자·그라디언트 허용)으로 진화. Material Design이 이 흐름의 구조화된 버전."
+    "history": "2012년 Microsoft의 Metro UI(Windows 8)가 시초. 2013년 Apple iOS 7이 뒤따르며 글로벌 표준으로. Flat 2.0(미묘한 그림자·그라디언트 허용)으로 진화. Material Design이 이 흐름의 구조화된 버전.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A flat design landing page screenshot. Solid color blocks with no gradients or shadows, simple geometric icons, bold sans-serif typography. Vibrant blue, red, green, and orange color sections, 2D illustrations, clean minimal interface. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "dashboard.png",
+        "prompt": "A flat design dashboard interface. Color-coded cards with solid fills, simple line icons, bold statistics in large type. No shadows, no gradients, no 3D effects. Pure 2D geometric shapes, vivid primary colors on white background. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "mobile-app.png",
+        "prompt": "A flat design mobile app interface. Bright solid color header, simple outlined icons, flat buttons with solid fills, no depth or shadow effects. Clean typography, geometric shapes, minimal decorative elements, 2D illustration style. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "material-design",
@@ -536,7 +674,30 @@
         "label": "쇼핑몰"
       }
     ],
-    "history": "2014년 Google I/O에서 발표. Matías Duarte가 설계. 물리적 '종이와 잉크' 메타포에 기반한 체계적 디자인 시스템. 2018년 Material Theming, 2021년 Material You(Material 3)로 진화."
+    "history": "2014년 Google I/O에서 발표. Matías Duarte가 설계. 물리적 '종이와 잉크' 메타포에 기반한 체계적 디자인 시스템. 2018년 Material Theming, 2021년 Material You(Material 3)로 진화.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A Material Design landing page screenshot. Card-based layout with subtle elevation shadows, floating action button (FAB) in vibrant purple, ripple effect indicators. Bold typography, intentional color hierarchy with deep purple (#6200EE) and teal accents. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "email-app.png",
+        "prompt": "A Material Design email app interface. Inbox with card-style email items, subtle elevation layers, floating compose button (FAB) in accent teal, material icons, bottom navigation bar. Purple primary color, clean white cards with systematic spacing. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A Material Design e-commerce shop page. Product cards with elevation shadows, bold category headers, teal accent buttons, systematic 8dp grid spacing. Material icons, bottom navigation, floating cart button. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "swiss-style",
@@ -613,7 +774,30 @@
         "label": "Magazine Layout"
       }
     ],
-    "history": "1950년대 스위스 바젤·취리히에서 시작. Josef Müller-Brockmann, Armin Hofmann이 대표. Helvetica 탄생(1957)과 함께 성장. 그리드 시스템과 객관적 타이포그래피의 원조로, 현대 UI 디자인의 근간."
+    "history": "1950년대 스위스 바젤·취리히에서 시작. Josef Müller-Brockmann, Armin Hofmann이 대표. Helvetica 탄생(1957)과 함께 성장. 그리드 시스템과 객관적 타이포그래피의 원조로, 현대 UI 디자인의 근간.",
+    "prompts": [
+      {
+        "file": "poster.png",
+        "prompt": "A Swiss/International Style poster layout web page. Strict mathematical grid, Helvetica typography in various weights, asymmetric composition. Black, white, and red color scheme, high-quality black-and-white photography, clean rational hierarchy. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "corporate.png",
+        "prompt": "A Swiss/International Style corporate website. Rigid grid structure, Helvetica headings, asymmetric layout with strong horizontal and vertical lines. Minimal color (black, white, red accent), large-scale photography, rational information hierarchy. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "magazine.png",
+        "prompt": "A Swiss/International Style magazine layout web page. Multi-column grid, Helvetica typography, asymmetric balance of text and photography. Black and white with red accents, clean mathematical proportions, no decorative elements. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "art-deco",
@@ -690,7 +874,30 @@
         "label": "Event Invitation"
       }
     ],
-    "history": "1920-30년대 파리 만국박람회(1925)에서 정점. Chrysler Building, Empire State Building이 상징. 기하학적 패턴, 대칭, 금·크롬 소재. 웹에서는 럭셔리 호텔·패션 브랜드가 주로 차용."
+    "history": "1920-30년대 파리 만국박람회(1925)에서 정점. Chrysler Building, Empire State Building이 상징. 기하학적 패턴, 대칭, 금·크롬 소재. 웹에서는 럭셔리 호텔·패션 브랜드가 주로 차용.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "An Art Deco style landing page screenshot. Geometric patterns with gold (#D4AF37) on dark navy (#1A1A2E), symmetrical layout, ornamental borders and dividers. Tall serif typography, fan and sunburst motifs, luxurious feel with metallic accents. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "hotel.png",
+        "prompt": "An Art Deco hotel website. Gold and navy color scheme, geometric border patterns, symmetrical layout with ornate dividers. Elegant serif typography, chevron and zigzag motifs, photographs framed with geometric Art Deco borders. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "invitation.png",
+        "prompt": "An Art Deco event invitation page. Symmetrical geometric composition, gold metallic accents on dark navy, ornamental fan and sunburst patterns. Elegant tall serif typography, decorative borders, luxurious vintage aesthetic. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "bauhaus",
@@ -767,7 +974,30 @@
         "label": "쇼핑몰"
       }
     ],
-    "history": "1919년 Walter Gropius가 독일 바이마르에 설립한 학교. Kandinsky, Klee, Moholy-Nagy가 교수진. 1933년 나치에 의해 폐교. '형태는 기능을 따른다'는 원칙이 현대 디자인의 DNA가 됨."
+    "history": "1919년 Walter Gropius가 독일 바이마르에 설립한 학교. Kandinsky, Klee, Moholy-Nagy가 교수진. 1933년 나치에 의해 폐교. '형태는 기능을 따른다'는 원칙이 현대 디자인의 DNA가 됨.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A Bauhaus-inspired landing page screenshot. Primary colors (red, blue, yellow) on white background, geometric shapes (circles, triangles, squares), functional sans-serif typography. Asymmetric grid layout, form follows function, bold color blocks. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "gallery.png",
+        "prompt": "A Bauhaus-inspired art gallery website. Primary color accents, geometric composition with circles and rectangles, clean sans-serif typography. Asymmetric grid showcasing artwork, functional navigation, no decorative ornamentation. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A Bauhaus-inspired e-commerce shop. Bold primary color blocks (red, blue, yellow), geometric product cards, functional sans-serif labels. Clean grid layout, minimal ornamentation, every element serves a purpose. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "memphis-design",
@@ -844,7 +1074,30 @@
         "label": "쇼핑몰"
       }
     ],
-    "history": "1981년 이탈리아 밀라노에서 Ettore Sottsass가 결성한 Memphis Group. Bob Dylan의 'Stuck Inside of Mobile with the Memphis Blues Again'에서 이름 따옴. 포스트모더니즘 디자인의 아이콘. 2010년대 웹·패션에서 부활."
+    "history": "1981년 이탈리아 밀라노에서 Ettore Sottsass가 결성한 Memphis Group. Bob Dylan의 'Stuck Inside of Mobile with the Memphis Blues Again'에서 이름 따옴. 포스트모더니즘 디자인의 아이콘. 2010년대 웹·패션에서 부활.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A Memphis Design style landing page screenshot. Bold clashing colors (coral, teal, yellow), geometric patterns with squiggles and dots, playful postmodern composition. Chunky shapes, pattern-filled backgrounds, deliberately discordant color combinations. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "poster.png",
+        "prompt": "A Memphis Design event poster page. Vibrant clashing colors, geometric shapes scattered playfully, bold sans-serif and decorative typography. Zigzag patterns, polka dots, triangles and squiggles as decorative elements, postmodern irreverence. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A Memphis Design e-commerce shop. Bright coral, teal, and yellow color blocks, playful product cards with geometric pattern backgrounds, bold chunky buttons. Postmodern layout with clashing patterns, fun and irreverent aesthetic. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "vaporwave",
@@ -921,7 +1174,30 @@
         "label": "쇼핑몰"
       }
     ],
-    "history": "2010년 전후 인터넷 음악 장르로 시작. Macintosh Plus 'Floral Shoppe'(2011)가 시각적 정체성 확립. 80-90년대 일본 시티팝, 초기 컴퓨터 그래픽, 소비주의 아이러니의 혼합. Tumblr 미학의 핵심."
+    "history": "2010년 전후 인터넷 음악 장르로 시작. Macintosh Plus 'Floral Shoppe'(2011)가 시각적 정체성 확립. 80-90년대 일본 시티팝, 초기 컴퓨터 그래픽, 소비주의 아이러니의 혼합. Tumblr 미학의 핵심.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A vaporwave landing page screenshot. Neon pink and cyan colors on dark background, retro Greek statue imagery, glitch effects, gradient-heavy design. 80s/90s nostalgia aesthetic with Japanese text, grid patterns, purple-pink-blue color transitions. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "music-player.png",
+        "prompt": "A vaporwave music player interface. Neon gradient from pink to purple to blue, retro pixel-style controls, glitch art effects. Palm trees, sunset gradient, Japanese characters, old Windows-style UI elements reimagined with neon colors. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A vaporwave e-commerce shop. Neon pink and cyan product cards on dark purple background, retro-futuristic typography, gradient backgrounds. Glitch effects, nostalgic 90s computing aesthetics, marble textures mixed with neon accents. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "y2k",
@@ -998,7 +1274,30 @@
         "label": "Mobile App"
       }
     ],
-    "history": "1997-2004년의 디자인 시대. 밀레니엄 낙관주의, 초기 인터넷, iMac G3의 반투명 플라스틱이 시각 언어를 형성. 2020년대 Gen Z 사이에서 강력한 리바이벌 — TikTok과 패션에서 재유행."
+    "history": "1997-2004년의 디자인 시대. 밀레니엄 낙관주의, 초기 인터넷, iMac G3의 반투명 플라스틱이 시각 언어를 형성. 2020년대 Gen Z 사이에서 강력한 리바이벌 — TikTok과 패션에서 재유행.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A Y2K style landing page screenshot. Chrome/silver metallic elements, holographic gradients, translucent bubble shapes, cyber-optimistic aesthetic. Futuristic sans-serif fonts, metallic textures, iridescent colors, tech-utopia vibes from circa 2000. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "fashion.png",
+        "prompt": "A Y2K fashion website. Chrome text effects, hot pink and turquoise accents on silver background, holographic product frames, bubble-shaped UI elements. Futuristic millennium aesthetic with glossy translucent panels. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "mobile-app.png",
+        "prompt": "A Y2K mobile app interface. Holographic gradient backgrounds, chrome-finish buttons, translucent bubble shapes, iridescent color shifts. Futuristic millennium aesthetic with metallic silver base and pink-turquoise accents. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "retro-vintage",
@@ -1075,7 +1374,30 @@
         "label": "Event Poster"
       }
     ],
-    "history": "특정 시대가 아닌 '과거 향수'를 재현하는 범시대적 접근. 1950-70년대 광고 디자인, 활판인쇄 질감, 핸드레터링에서 주로 차용. Letterpress, 그레인 텍스처, 세피아 톤이 핵심 기법."
+    "history": "특정 시대가 아닌 '과거 향수'를 재현하는 범시대적 접근. 1950-70년대 광고 디자인, 활판인쇄 질감, 핸드레터링에서 주로 차용. Letterpress, 그레인 텍스처, 세피아 톤이 핵심 기법.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A retro/vintage landing page screenshot. Warm sepia tones, classic serif typography, subtle paper grain texture, hand-drawn illustration style. Muted earth tones (#D4A373, #6B4226), aged poster aesthetic, decorative borders, nostalgic warmth. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "cafe.png",
+        "prompt": "A retro/vintage cafe website. Warm brown and cream color scheme, hand-lettered style headings, aged paper texture backgrounds. Illustrated coffee elements, serif typography, ornamental dividers, cozy nostalgic atmosphere. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "poster.png",
+        "prompt": "A retro/vintage event poster web page. Warm sepia and earth tones, bold serif typography, woodcut-style illustrations. Grain texture overlay, aged paper effect, decorative vintage borders, classic poster composition. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "dark-mode",
@@ -1152,7 +1474,30 @@
         "label": "쇼핑몰"
       }
     ],
-    "history": "2019년 iOS 13·Android 10의 시스템 다크 모드 지원으로 대중화. OLED 배터리 절약 + 눈 부담 감소가 기술적 동기. Twitter(2016)가 웹 앱 선구자. 2020년대에는 기본 옵션으로 자리잡음."
+    "history": "2019년 iOS 13·Android 10의 시스템 다크 모드 지원으로 대중화. OLED 배터리 절약 + 눈 부담 감소가 기술적 동기. Twitter(2016)가 웹 앱 선구자. 2020년대에는 기본 옵션으로 자리잡음.",
+    "prompts": [
+      {
+        "file": "dashboard.png",
+        "prompt": "A dark mode dashboard interface. Deep charcoal (#121212) background with vivid purple (#BB86FC) and teal (#03DAC6) accent colors, high contrast text. Card-based layout with dark elevated surfaces, glowing accent indicators, OLED-friendly true blacks. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "streaming.png",
+        "prompt": "A dark mode streaming app interface. Near-black background, content thumbnails with subtle dark cards, vibrant accent highlights. Top navigation with dark surface elevation, smooth gradients, cinema-like dark atmosphere with vivid content colors. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A dark mode e-commerce shop. Dark charcoal background, product images on slightly elevated dark cards, teal and purple accent buttons. High-contrast white text, dark navigation bar, modern premium feel with strategic color accents. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "organic-design",
@@ -1229,7 +1574,30 @@
         "label": "쇼핑몰"
       }
     ],
-    "history": "1940년대 Charles & Ray Eames의 유기적 가구에서 시작. 자연의 곡선을 디지털에 적용. 2018-2020년 blob 형태·어스 톤 트렌드로 웹에서 부활. Headspace·Dropbox 리브랜딩이 대표적 채택 사례."
+    "history": "1940년대 Charles & Ray Eames의 유기적 가구에서 시작. 자연의 곡선을 디지털에 적용. 2018-2020년 blob 형태·어스 톤 트렌드로 웹에서 부활. Headspace·Dropbox 리브랜딩이 대표적 채택 사례.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "An organic/biomorphic landing page screenshot. Flowing blob shapes, natural earth tones (#606C38, #DDA15E), curved organic forms instead of rectangles. Nature-inspired color palette, soft flowing lines, plant-like decorative elements, warm and alive feeling. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "wellness.png",
+        "prompt": "An organic/biomorphic wellness app interface. Soft blob shapes as content containers, earthy green and sand color palette, curved navigation elements. Botanical illustrations, flowing organic lines, natural material textures, calming and grounded aesthetic. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "An organic/biomorphic e-commerce shop. Flowing curved product cards with blob shapes, earth tone color scheme with olive green and warm sand. Organic form buttons, nature-inspired layout that avoids rigid rectangles, soft natural shadows. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "cyberpunk",
@@ -1306,7 +1674,30 @@
         "label": "쇼핑몰"
       }
     ],
-    "history": "1980년대 SF 소설(William Gibson 'Neuromancer', 1984)에서 출발. Blade Runner(1982)가 시각적 원형. '하이테크, 로우라이프' — 네온·도시·어둠의 삼위일체. 2020년 Cyberpunk 2077이 게임 UI 트렌드를 견인."
+    "history": "1980년대 SF 소설(William Gibson 'Neuromancer', 1984)에서 출발. Blade Runner(1982)가 시각적 원형. '하이테크, 로우라이프' — 네온·도시·어둠의 삼위일체. 2020년 Cyberpunk 2077이 게임 UI 트렌드를 견인.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A cyberpunk landing page screenshot. Neon red (#FF003C) and cyan (#00F0FF) on near-black background, glitch distortion effects, futuristic HUD-style interface elements. Angular geometric shapes, scanline effects, dystopian tech aesthetic with electric purple accents. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "game.png",
+        "prompt": "A cyberpunk game UI interface. Dark background with neon red and cyan HUD elements, holographic displays, glitch effects, angular geometric frames. Health bars, minimap, inventory slots in futuristic dystopian style with electric glow effects. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A cyberpunk e-commerce shop. Near-black background with neon product highlighting in red and cyan, glitch text effects, angular card shapes. Futuristic price displays, electric glow borders, dystopian tech aesthetic with scanline overlays. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "maximalism",
@@ -1383,7 +1774,30 @@
         "label": "Editorial"
       }
     ],
-    "history": "미니멀리즘에 대한 반작용으로 반복 등장. Gucci(Alessandro Michele 시대, 2015-2022)가 패션에서 재정의. 웹에서는 스크롤 애니메이션·멀티미디어 실험의 도구. '더 많이, 더 대담하게'가 원칙."
+    "history": "미니멀리즘에 대한 반작용으로 반복 등장. Gucci(Alessandro Michele 시대, 2015-2022)가 패션에서 재정의. 웹에서는 스크롤 애니메이션·멀티미디어 실험의 도구. '더 많이, 더 대담하게'가 원칙.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A maximalist landing page screenshot. Layered patterns, multiple ornate decorative elements, bold clashing colors (hot pink, gold, royal blue, lime green). Rich textures, excessive ornamentation, every surface decorated, controlled visual chaos. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "fashion.png",
+        "prompt": "A maximalist fashion website. Overwhelming pattern-on-pattern layering, bold hot pink and gold color scheme, ornate typography mixing multiple decorative fonts. Collage-style imagery, lush textures, no empty space, deliberate visual excess. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "editorial.png",
+        "prompt": "A maximalist editorial web page. Dense layered layout with overlapping images and text, rich colors and patterns, ornate decorative borders. Multiple typefaces, gilded accents, botanical and geometric patterns filling every surface. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "japandi",
@@ -1460,7 +1874,30 @@
         "label": "Lifestyle Blog"
       }
     ],
-    "history": "2019-2020년 인테리어 트렌드로 부상. 일본 와비사비(불완전함의 아름다움) + 스칸디나비아 휘게(아늑함)의 융합. 자연 소재, 뮤트 팔레트, 절제된 장식. Kinfolk·Cereal Magazine이 디지털 표현의 선구자."
+    "history": "2019-2020년 인테리어 트렌드로 부상. 일본 와비사비(불완전함의 아름다움) + 스칸디나비아 휘게(아늑함)의 융합. 자연 소재, 뮤트 팔레트, 절제된 장식. Kinfolk·Cereal Magazine이 디지털 표현의 선구자.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A Japandi-style landing page screenshot. Muted neutral palette (#D4C5A9, #2C3639), clean composition with generous negative space, natural material textures (wood, linen, stone). Minimal but warm, combines Japanese wabi-sabi imperfection with Scandinavian functionality. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "interior.png",
+        "prompt": "A Japandi interior shop website. Warm neutral tones, natural wood and stone textures, clean grid layout with ample breathing room. Muted photography of minimal furniture, serene calm composition, earthy beige and dark charcoal color scheme. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "blog.png",
+        "prompt": "A Japandi lifestyle blog. Warm neutral color palette, clean serif and sans-serif typography pairing, natural material background textures. Generous whitespace, peaceful composition, muted earth tones with occasional warm brown accents. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "kawaii",
@@ -1537,7 +1974,30 @@
         "label": "Mobile App"
       }
     ],
-    "history": "1970년대 일본 산리오(Hello Kitty, 1974)에서 시작된 '귀여움' 문화. 하라주쿠 패션, 파스텔 팔레트, 둥근 캐릭터가 핵심. 웹에서는 LINE, 카카오 등 아시아 메신저 플랫폼이 글로벌 확산을 주도."
+    "history": "1970년대 일본 산리오(Hello Kitty, 1974)에서 시작된 '귀여움' 문화. 하라주쿠 패션, 파스텔 팔레트, 둥근 캐릭터가 핵심. 웹에서는 LINE, 카카오 등 아시아 메신저 플랫폼이 글로벌 확산을 주도.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A kawaii-style landing page screenshot. Soft pastel pink (#FFB7C5), mint green (#A0E7E5), and peach colors, rounded bubble shapes everywhere. Cute character mascots, oversized rounded buttons, sparkle and star decorations, adorable and sweet aesthetic. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A kawaii e-commerce shop page. Pastel color scheme with pink, mint, and light yellow, rounded product cards with cute character stamps. Bubbly typography, star and heart decorative elements, soft rounded buttons, playfully adorable layout. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "mobile-app.png",
+        "prompt": "A kawaii mobile app interface. Soft pastel palette, rounded UI elements with cute character icons, bubbly navigation with heart and star accents. Pink and mint color scheme, oversized rounded buttons, sweet and friendly aesthetic throughout. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "corporate-memphis",
@@ -1614,7 +2074,30 @@
         "label": "Onboarding"
       }
     ],
-    "history": "2017-2019년 실리콘밸리 테크 기업들의 마케팅에서 표준화. Alice Lee(Slack 일러스트), Buck Design이 스타일 정립. 비례가 과장된 인물·따뜻한 톤. 2022년부터 '너무 획일적'이라는 백래시 시작."
+    "history": "2017-2019년 실리콘밸리 테크 기업들의 마케팅에서 표준화. Alice Lee(Slack 일러스트), Buck Design이 스타일 정립. 비례가 과장된 인물·따뜻한 톤. 2022년부터 '너무 획일적'이라는 백래시 시작.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A Corporate Memphis SaaS landing page screenshot. Flat-style illustrations of diverse abstract human figures, purple (#6C63FF) and pink (#FF6584) color scheme. Clean layout with illustrated hero section, simple geometric character illustrations, modern tech startup aesthetic. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "pricing.png",
+        "prompt": "A Corporate Memphis pricing page. Three-column pricing tiers with flat character illustrations, purple accent buttons, clean white background with gray (#3F3D56) text. Abstract human figures demonstrating features, friendly corporate tech aesthetic. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "onboarding.png",
+        "prompt": "A Corporate Memphis onboarding flow. Step-by-step screens with flat geometric character illustrations, purple and pink accent colors, progress indicators. Friendly abstract human figures guiding users, clean SaaS startup aesthetic. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "gradient-aurora",
@@ -1691,7 +2174,30 @@
         "label": "Mobile App"
       }
     ],
-    "history": "2017년 Stripe가 움직이는 메시 그라디언트로 트렌드를 시작. iOS 14-16 월페이퍼, macOS 배경이 대중화를 견인. WebGL·CSS 그라디언트 기술 발전과 함께 2020년대 SaaS 브랜딩의 표준 배경으로 정착."
+    "history": "2017년 Stripe가 움직이는 메시 그라디언트로 트렌드를 시작. iOS 14-16 월페이퍼, macOS 배경이 대중화를 견인. WebGL·CSS 그라디언트 기술 발전과 함께 2020년대 SaaS 브랜딩의 표준 배경으로 정착.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A gradient/aurora landing page screenshot. Vibrant mesh gradient background flowing from purple (#764BA2) to blue (#667EEA) to pink (#F093FB). Fluid color transitions, ethereal aurora borealis-like color blending, white text floating over vivid gradient backdrop. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "saas.png",
+        "prompt": "A gradient/aurora SaaS dashboard. Vibrant gradient accent panels flowing from blue to purple to pink, mesh gradient cards, aurora-like color transitions on dark background. Fluid color blending for charts and indicators, ethereal modern tech aesthetic. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "mobile-app.png",
+        "prompt": "A gradient/aurora mobile app interface. Flowing mesh gradient background from blue to purple to pink, white UI elements floating over vibrant aurora colors. Fluid gradient buttons, ethereal color transitions, modern premium aesthetic. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "claymorphism",
@@ -1768,7 +2274,30 @@
         "label": "쇼핑몰"
       }
     ],
-    "history": "2021년 Michal Malewicz가 명명. Blender·Spline 같은 3D 도구의 대중화로 확산. Nintendo Switch UI, Headspace 3D 캐릭터가 영감. 뉴모피즘의 3D 확장판으로 볼 수 있음."
+    "history": "2021년 Michal Malewicz가 명명. Blender·Spline 같은 3D 도구의 대중화로 확산. Nintendo Switch UI, Headspace 3D 캐릭터가 영감. 뉴모피즘의 3D 확장판으로 볼 수 있음.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A claymorphic landing page screenshot. Soft 3D clay-like UI elements on pastel background, inflated rounded shapes with soft shadows, puffy button and card designs. Pastel colors (#F0E6FF, #FFE5EC, #E8F5E9), playful 3D rendered aesthetic, toy-like depth. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "app-icons.png",
+        "prompt": "Claymorphic app icons design. 3D clay-rendered icons with soft pastel colors, inflated rounded shapes, subtle soft shadows. Puffy toy-like aesthetic, each icon looks hand-sculpted from colored clay, warm playful depth on light background. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A claymorphic e-commerce shop. Soft 3D clay product cards on pastel background, puffy rounded buttons, inflated UI elements with gentle shadows. Toy-like 3D aesthetic with lavender, pink, and mint pastel tones, playful and tactile feeling. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "neo-brutalism",
@@ -1845,7 +2374,30 @@
         "label": "쇼핑몰"
       }
     ],
-    "history": "2020년 Gumroad 리디자인에서 트렌드 시작. Brutalism + 비비드 컬러 + 하드 그림자의 조합. Notion, Figma Community에서도 채택. 기존 브루탈리즘보다 접근 가능하고 밝은 톤. 인디 개발자·크리에이터 도구 사이에서 인기."
+    "history": "2020년 Gumroad 리디자인에서 트렌드 시작. Brutalism + 비비드 컬러 + 하드 그림자의 조합. Notion, Figma Community에서도 채택. 기존 브루탈리즘보다 접근 가능하고 밝은 톤. 인디 개발자·크리에이터 도구 사이에서 인기.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A neo-brutalist landing page screenshot. Thick black borders on every element, vivid fill colors (orange #FF5733, yellow #FFC300), hard offset box-shadows. Bold sans-serif typography, raw aesthetic combined with modern vibrant colors, deliberately unrefined but energetic. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "blog.png",
+        "prompt": "A neo-brutalist blog layout. Thick black-bordered article cards with vivid yellow and orange fills, hard black drop shadows offset to bottom-right. Bold chunky headings, raw grid layout, modern color palette with deliberately unpolished borders. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A neo-brutalist e-commerce shop. Products in thick black-bordered cards with bright fill colors, hard offset shadows, bold price typography. Vivid orange and yellow palette with black outlines, modern raw energy, chunky interactive elements. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "kinetic-typography",
@@ -1922,7 +2474,30 @@
         "label": "Agency Site"
       }
     ],
-    "history": "1959년 Alfred Hitchcock 'North by Northwest' 타이틀 시퀀스가 원조. 웹에서는 2018-2020년 Locomotive Scroll·GSAP 라이브러리 발전으로 폭발적 성장. 포트폴리오·에이전시 사이트의 핵심 차별화 요소."
+    "history": "1959년 Alfred Hitchcock 'North by Northwest' 타이틀 시퀀스가 원조. 웹에서는 2018-2020년 Locomotive Scroll·GSAP 라이브러리 발전으로 폭발적 성장. 포트폴리오·에이전시 사이트의 핵심 차별화 요소.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A kinetic typography landing page screenshot. Massive oversized text filling the viewport, bold black and white typography with selective red (#FF4500) and blue (#1E90FF) accents. Text as the primary visual element, letters overlapping and scaling dynamically, editorial type-driven design. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "portfolio.png",
+        "prompt": "A kinetic typography portfolio site. Large-scale animated-looking type compositions, words scaling from small to viewport-filling size. Black text on white with strategic orange and blue accents, scroll-driven text transformations implied in static layout. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "agency.png",
+        "prompt": "A kinetic typography agency website. Enormous display typography dominating the layout, overlapping text layers, bold black and white with vibrant accent colors. Dynamic diagonal text arrangements, editorial poster-like composition, type as art. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "frutiger-aero",
@@ -1999,7 +2574,30 @@
         "label": "Mobile App"
       }
     ],
-    "history": "2006-2013년 Windows Vista/7, iOS 1-6 시대의 지배적 디자인 언어. Adrian Frutiger의 Segoe UI/Frutiger 서체 + 에어로 유리 효과. 자연(물방울·하늘·잎)과 기술의 낙관적 융합. 2023년부터 Z세대 주도의 강력한 리바이벌."
+    "history": "2006-2013년 Windows Vista/7, iOS 1-6 시대의 지배적 디자인 언어. Adrian Frutiger의 Segoe UI/Frutiger 서체 + 에어로 유리 효과. 자연(물방울·하늘·잎)과 기술의 낙관적 융합. 2023년부터 Z세대 주도의 강력한 리바이벌.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A Frutiger Aero landing page screenshot. Glossy translucent UI elements, nature imagery (leaves, water, sky) blended with clean technology interface. Bright blue (#00A3E0) and green (#7BC043) color scheme, optimistic glass-like buttons, eco-tech harmony aesthetic circa 2006-2013. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "dashboard.png",
+        "prompt": "A Frutiger Aero dashboard interface. Glossy translucent panels over a nature-inspired background (sky, water), bright blue and green accents. Rounded glossy buttons, clean Frutiger-style typography, optimistic tech-meets-nature aesthetic with glass-like depth. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "mobile-app.png",
+        "prompt": "A Frutiger Aero mobile app interface. Glossy buttons with nature imagery (leaves, water droplets) integrated into the UI, bright blue and green accents. Translucent panels, eco-optimistic aesthetic, clean rounded shapes with glass-like reflections. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "bento-grid",
@@ -2076,7 +2674,30 @@
         "label": "쇼핑몰"
       }
     ],
-    "history": "2023년 Apple WWDC에서 대중화. 일본 도시락 상자(弁当)에서 착안한 모듈형 레이아웃. Vercel, Linear 등 SaaS가 즉시 채택. CSS Grid/Flexbox 기술 발전이 구현을 가능하게 함. 2024-2025년 가장 핫한 레이아웃 패턴."
+    "history": "2023년 Apple WWDC에서 대중화. 일본 도시락 상자(弁当)에서 착안한 모듈형 레이아웃. Vercel, Linear 등 SaaS가 즉시 채택. CSS Grid/Flexbox 기술 발전이 구현을 가능하게 함. 2024-2025년 가장 핫한 레이아웃 패턴.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A Bento Grid features page screenshot. Apple-style modular rounded rectangular boxes arranged in a grid, each containing a distinct feature with icon and description. Clean (#F5F5F7) background, subtle shadows, varied box sizes creating visual rhythm, modern premium layout. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "dashboard.png",
+        "prompt": "A Bento Grid dashboard interface. Modular rounded rectangular panels of varying sizes arranged in a clean grid, each showing different data visualizations and metrics. Apple-inspired design with subtle borders, near-white background, dark text, blue accents. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A Bento Grid e-commerce shop. Products displayed in modular rounded rectangular cards of varying sizes, Apple-style clean layout. Near-white background, subtle shadows, systematic grid spacing, premium minimalist aesthetic. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "dopamine-design",
@@ -2153,7 +2774,30 @@
         "label": "쇼핑몰"
       }
     ],
-    "history": "2022-2023년 Gen Z 타겟 브랜드에서 등장. '도파민 드레싱' 패션 트렌드에서 영감. Duolingo의 캐릭터 마케팅, Headspace의 컬러 시스템이 대표적. 팬데믹 이후 '기쁨을 주는 디자인'에 대한 수요가 배경."
+    "history": "2022-2023년 Gen Z 타겟 브랜드에서 등장. '도파민 드레싱' 패션 트렌드에서 영감. Duolingo의 캐릭터 마케팅, Headspace의 컬러 시스템이 대표적. 팬데믹 이후 '기쁨을 주는 디자인'에 대한 수요가 배경.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A Dopamine Design landing page screenshot. Hyper-vivid colors (coral #FF6F61, gold #FFD700, turquoise #00CED1, hot pink #FF1493), oversized rounded shapes, joy-inducing visual energy. Bold playful typography, Gen-Z aesthetic, every element radiating happiness and excitement. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "mobile-app.png",
+        "prompt": "A Dopamine Design mobile app interface. Hyper-saturated vivid colors, large rounded buttons and cards, playful bouncy aesthetic. Hot pink, turquoise, and gold color pops, oversized friendly typography, designed to trigger instant visual delight. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A Dopamine Design e-commerce shop. Vivid coral, gold, and turquoise product cards, oversized rounded buy buttons, bold playful price typography. Gen-Z hyper-color aesthetic, joy-inducing layout with maximum visual energy and happiness. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "anti-design",
@@ -2230,7 +2874,30 @@
         "label": "Event Poster"
       }
     ],
-    "history": "1960년대 이탈리아 Radical Design 운동(Archizoom, Superstudio)에서 시작. 웹에서는 2010년대 중반 David Rudnick, Experimental Jetset의 실험적 포트폴리오가 표본. 의도적 불편함과 규칙 파괴가 핵심."
+    "history": "1960년대 이탈리아 Radical Design 운동(Archizoom, Superstudio)에서 시작. 웹에서는 2010년대 중반 David Rudnick, Experimental Jetset의 실험적 포트폴리오가 표본. 의도적 불편함과 규칙 파괴가 핵심.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "An anti-design landing page screenshot. Deliberately broken grid, clashing neon yellow (#CCFF00) and magenta (#FF00FF) on black, mismatched typography. Rules intentionally violated, overlapping elements, chaotic but purposeful composition, experimental defiance of conventions. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "portfolio.png",
+        "prompt": "An anti-design portfolio website. Chaotic overlapping text and images, clashing neon colors, deliberately ugly typography mixing. Broken grid layout, elements rotated at random angles, intentional visual discomfort as artistic statement. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "poster.png",
+        "prompt": "An anti-design event poster page. Aggressive neon yellow and magenta clashing, broken typography, overlapping layers of text and geometric shapes. Deliberately disorienting composition, every design rule intentionally broken, experimental visual rebellion. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "psychedelic",
@@ -2307,7 +2974,30 @@
         "label": "Event Poster"
       }
     ],
-    "history": "1960년대 샌프란시스코 사이키델릭 록 포스터에서 시작. Wes Wilson, Victor Moscoso가 대표 아티스트. 만화경 패턴, 과포화 컬러, 왜곡된 타이포. 1990년대 레이브 문화, 2020년대 페스티벌 브랜딩에서 반복적으로 부활."
+    "history": "1960년대 샌프란시스코 사이키델릭 록 포스터에서 시작. Wes Wilson, Victor Moscoso가 대표 아티스트. 만화경 패턴, 과포화 컬러, 왜곡된 타이포. 1990년대 레이브 문화, 2020년대 페스티벌 브랜딩에서 반복적으로 부활.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A psychedelic landing page screenshot. Swirling organic patterns, vivid neon colors (pink #FF6EC7, green #39FF14, orange #FF4500, purple #8B00FF). Trippy distorted typography, flowing organic shapes, kaleidoscopic pattern backgrounds, mind-bending visual experience. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "music.png",
+        "prompt": "A psychedelic music festival website. Swirling colorful patterns, vivid neon rainbow gradients, distorted wavy typography. Kaleidoscopic backgrounds, flowing organic shapes, trippy color transitions from pink to green to purple, 60s-inspired visual explosion. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "poster.png",
+        "prompt": "A psychedelic event poster web page. Intense swirling patterns in vivid neon colors, distorted melting typography, flowing organic shapes. Kaleidoscopic symmetrical composition, trippy color blending of pink, green, orange, and purple, mind-expanding visual design. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "cottagecore",
@@ -2384,7 +3074,30 @@
         "label": "Lifestyle Blog"
       }
     ],
-    "history": "2018-2020년 Tumblr·TikTok에서 Z세대 주도로 부상. 팬데믹(2020) 중 '시골 생활 낭만화'로 폭발적 성장. Taylor Swift 'folklore'(2020)이 대중화에 기여. 꽃무늬, 빈티지 일러스트, 손글씨 서체가 핵심."
+    "history": "2018-2020년 Tumblr·TikTok에서 Z세대 주도로 부상. 팬데믹(2020) 중 '시골 생활 낭만화'로 폭발적 성장. Taylor Swift 'folklore'(2020)이 대중화에 기여. 꽃무늬, 빈티지 일러스트, 손글씨 서체가 핵심.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A cottagecore landing page screenshot. Warm cream (#F5E6D3) and soft brown tones, floral pattern accents, hand-drawn illustration style. Cozy rural aesthetic with wildflower decorations, soft serif typography, vintage lace-like borders, warm nostalgic pastoral feeling. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A cottagecore e-commerce shop. Warm cream and soft brown color scheme, floral-patterned product card backgrounds, handcraft aesthetic. Wildflower illustrations as decorative elements, soft rounded buttons, cozy warm typography, artisan pastoral feeling. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "blog.png",
+        "prompt": "A cottagecore lifestyle blog. Warm cream background with pressed flower decorations, soft brown serif typography, cozy editorial layout. Hand-drawn botanical illustrations, vintage-style dividers, pastoral photography, gentle nostalgic warmth throughout. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "steampunk",
@@ -2461,7 +3174,30 @@
         "label": "쇼핑몰"
       }
     ],
-    "history": "1980년대 SF 소설 장르(K.W. Jeter가 1987년 명명)에서 시작. 빅토리아 시대 + 증기기관 + 공상과학의 대체역사. Jules Verne, H.G. Wells의 문학적 뿌리. 웹에서는 톱니바퀴, 황동 텍스처, 고딕 서체로 표현."
+    "history": "1980년대 SF 소설 장르(K.W. Jeter가 1987년 명명)에서 시작. 빅토리아 시대 + 증기기관 + 공상과학의 대체역사. Jules Verne, H.G. Wells의 문학적 뿌리. 웹에서는 톱니바퀴, 황동 텍스처, 고딕 서체로 표현.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A steampunk landing page screenshot. Brass and copper metallic textures, gear and cog decorative elements, dark brown (#2F1B0E) Victorian industrial aesthetic. Ornate serif typography, clockwork mechanisms as UI elements, riveted metal panels, fantasy-industrial fusion. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "dashboard.png",
+        "prompt": "A steampunk dashboard interface. Brass-framed gauge displays, gear-shaped navigation elements, dark leather and copper textures. Victorian industrial instrument panel aesthetic, ornate serif typography, riveted metal borders, clockwork data visualization. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A steampunk e-commerce shop. Products displayed on aged leather and brass-bordered cards, gear motif decorative elements, dark brown Victorian industrial palette. Copper metallic accents, ornate serif typography, clockwork-inspired price displays. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "solarpunk",
@@ -2538,7 +3274,30 @@
         "label": "쇼핑몰"
       }
     ],
-    "history": "2010년대 초반 Tumblr에서 개념 형성. 사이버펑크의 디스토피아에 대한 낙관적 대안. Studio Ghibli 애니메이션(특히 천공의 성 라퓨타)이 시각적 영감. 식물+기술, 태양광, 유기적 건축이 핵심 모티프."
+    "history": "2010년대 초반 Tumblr에서 개념 형성. 사이버펑크의 디스토피아에 대한 낙관적 대안. Studio Ghibli 애니메이션(특히 천공의 성 라퓨타)이 시각적 영감. 식물+기술, 태양광, 유기적 건축이 핵심 모티프.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A solarpunk landing page screenshot. Lush green (#2D6A4F) and bright yellow (#FFD60A) eco-optimistic palette, nature and technology harmoniously integrated. Solar panel and plant motifs, clean sustainable-tech aesthetic, bright hopeful atmosphere, organic shapes with futuristic elements. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "app.png",
+        "prompt": "A solarpunk eco app interface. Green and yellow color scheme, plant-growth data visualizations, solar energy dashboards. Nature-integrated technology aesthetic, organic curved UI elements with sustainable-tech icons, optimistic bright eco-utopia feeling. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "A solarpunk e-commerce shop. Green and yellow eco-optimistic palette, products displayed with plant and nature integration, sustainable-tech aesthetic. Solar and botanical motifs, organic curved product cards, bright hopeful eco-utopia shopping experience. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "futurism",
@@ -2615,7 +3374,30 @@
         "label": "Event Poster"
       }
     ],
-    "history": "1909년 이탈리아 시인 Filippo Tommaso Marinetti가 선언문 발표. Umberto Boccioni, Giacomo Balla가 대표 아티스트. 속도, 기계, 역동성 찬양. 대각선·방사형 구도가 특징. 현대 모션 디자인과 역동적 타이포의 직접적 조상."
+    "history": "1909년 이탈리아 시인 Filippo Tommaso Marinetti가 선언문 발표. Umberto Boccioni, Giacomo Balla가 대표 아티스트. 속도, 기계, 역동성 찬양. 대각선·방사형 구도가 특징. 현대 모션 디자인과 역동적 타이포의 직접적 조상.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A Futurism-inspired landing page screenshot. Dynamic diagonal lines and angular geometric shapes, bold black (#1A1A1A) and orange-red (#FF4500) palette. Speed and motion implied through tilted compositions, sharp angular typography, energetic forward-thrust aesthetic. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "portfolio.png",
+        "prompt": "A Futurism-inspired portfolio website. Dynamic diagonal compositions, angular geometric overlapping shapes, bold typography at aggressive angles. Black background with vibrant orange-red and gold accents, speed-line decorative elements, energetic forward motion aesthetic. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "poster.png",
+        "prompt": "A Futurism-inspired event poster page. Sharp diagonal compositions, angular geometric shapes in motion, bold tilted typography. Black and white with orange-red and gold accents, implied speed and dynamism, aggressive angular energy throughout. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   },
   {
     "id": "indie-web",
@@ -2692,6 +3474,29 @@
         "label": "Link Garden"
       }
     ],
-    "history": "2010년대 '인디웹 운동'에서 시작. 대형 플랫폼(Facebook, Twitter)에서 벗어나 개인 도메인 소유를 주장. 2020년대 Neocities 부활, 개인 홈페이지 문화 재유행. 88x31 배지, 방문자 카운터, 웹링 등 초기 웹의 요소를 의도적으로 되살림."
+    "history": "2010년대 '인디웹 운동'에서 시작. 대형 플랫폼(Facebook, Twitter)에서 벗어나 개인 도메인 소유를 주장. 2020년대 Neocities 부활, 개인 홈페이지 문화 재유행. 88x31 배지, 방문자 카운터, 웹링 등 초기 웹의 요소를 의도적으로 되살림.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "An indie web personal homepage screenshot. Handmade quirky aesthetic on warm cream (#FFF8E7) background, hand-drawn doodles, personality-rich layout. Mix of playful fonts, retro web counter, guestbook link, 88x31 pixel buttons, authentic personal expression, deliberately non-corporate. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "blog.png",
+        "prompt": "An indie web blog layout. Personal quirky design on warm cream background, hand-drawn decorations, varied text sizes and colors. Sidebar with personal links and webrings, retro aesthetic with modern sensibility, authentic and non-templated feel. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "links.png",
+        "prompt": "An indie web link garden page. Curated collection of links on warm cream background, each with hand-written-style descriptions, quirky category headers. Retro pixel art decorations, coral and teal accent colors, personal curation aesthetic, cozy digital garden feel. Clean mockup, no browser chrome, realistic UI elements.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ]
   }
 ]
