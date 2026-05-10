@@ -3610,7 +3610,7 @@
         "label": "Dashboard"
       }
     ],
-    "history": "에디토리얼 타이포그래피는 신문, 잡지, 북 디자인의 조판 전통에서 출발해 Swiss Style과 디지털 퍼블리싱을 거치며 웹 레이아웃으로 확장됐다. 웹에서는 큰 display type, 명확한 column, 본문 line length 조절, pull quote 같은 편집 장치가 결합되며 브랜드 저널과 롱폼 콘텐츠의 핵심 언어가 됐다.",
+    "history": "에디토리얼 타이포그래피는 19세기 후반~20세기 신문·잡지 인쇄 문화에서 기원한 것으로, 대중매체 확산 시대적 맥락에서 정보 계층화와 시각적 서사를 강조했다. 핵심 인물은 Jan Tschichold(신 타이포그래피, 1928), Massimo Vignelli(뉴욕 지하철 사인), David Carson(Ray Gun 잡지 그런지 스타일)이다. 주요 전환점은 1950년대 국제 스타일과 1990년대 디지털 실험. 디지털/웹 디자인 도입 시점은 1990년대 CSS 폰트 스택과 2010년대 반응형 웹으로, 온라인 잡지 전환과 모바일 읽기 최적화가 계기였다. 현대 적용 사례로는 The New York Times 웹사이트의 정교한 헤더·본문 계층, Medium이나 Wired 온라인 에디션의 몰입형 타이포그래피, Substack 뉴스레터 디자인에서 볼 수 있다. 이 스타일은 읽기 경험을 예술로 승화시키는 디지털 콘텐츠 디자인의 기반이다.",
     "prompts": [
       {
         "file": "landing.png",
@@ -3711,7 +3711,7 @@
         "label": "Dashboard"
       }
     ],
-    "history": "Variable font는 OpenType Font Variations가 2016년에 공개되며 웹과 앱에서 본격적으로 쓰이기 시작했다. 이후 CSS font-variation-settings, responsive type scale, kinetic typography와 결합되며 정적인 조판을 넘어 상태와 화면 폭에 반응하는 표현 방식으로 확장됐다.",
+    "history": "가변 타이포그래피(Variable Font)는 2016년 OpenType 1.8 스펙으로 Adobe·Apple·Google·Microsoft 공동 발표하며 시작된 디지털 네이티브 기술로, 웹 성능 최적화 시대적 맥락에서 탄생했다. 핵심 인물은 John Hudson(마이크로소프트 타입 디렉터), 그리고 Adobe·Google 타입 팀이다. 주요 전환점은 2017년 브라우저 지원 확대와 단일 파일 다중 변형 지원. 디지털/웹 디자인 도입 시점은 2017~2018년 Chrome·Safari 네이티브 지원으로, 여러 웨이트 파일 대신 하나의 파일로 가변 축(axis) 제어가 계기였다. 현대 적용 사례로는 Google Fonts Variable Font 컬렉션(Inter 변수 폰트), 그리고 반응형 웹사이트(Netflix나 Figma)에서 텍스트 크기·두께를 실시간 조정하는 UI, 모바일 앱의 접근성 최적화에 활용된다. 이 기술은 파일 크기 절감과 디자인 유연성을 극대화해 현대 웹 타이포그래피의 표준이 되었다.",
     "prompts": [
       {
         "file": "landing.png",
@@ -3812,7 +3812,7 @@
         "label": "Dashboard"
       }
     ],
-    "history": "모노스페이스 UI는 터미널, 코드 편집기, 로그 콘솔의 기능적 제약에서 출발했다. SaaS 개발자 도구와 AI 제품이 성장하면서 command palette, terminal panel, structured log view가 브랜드 미감으로도 쓰이기 시작했다.",
+    "history": "모노스페이스/터미널 UI의 역사적 기원은 1960년대 미국 컴퓨터 터미널 시대에서 시작된다. 초기 펀치카드에서 CRT 모니터로 전환된 1970년대, DEC VT100(1978)이 대표적이며 냉전 시대 기술 경쟁과 컴퓨팅 대중화라는 시대적 맥락 속에서 탄생했다. 핵심 인물로는 유닉스 개발자 Ken Thompson(1969), Douglas Engelbart(1968 데모), 그리고 터미널 표준화에 기여한 DEC 엔지니어들이 있다. 주요 전환점은 1980년대 개인용 컴퓨터 보급과 CLI(Command Line Interface) 문화 확산이다. 디지털/웹 디자인 도입 시점은 1990년대 초 HTML <pre> 태그와 monospace 폰트(Courier 등) 사용으로, 해커 문화와 사이버펑크 미학(William Gibson 소설 영향)이 계기였다. 2010년대 들어 CSS로 CRT 글리치 효과를 재현하며 웹 디자인 트렌드로 자리 잡았다. 현대 적용 사례로는 VS Code 터미널 패널, GitHub의 코드 블록, 그리고 사이버펑크 테마 포트폴리오 사이트에서 사용된다. 이 스타일은 기능성과 복고적 미학을 결합해 개발자 중심 UI에서 여전히 강력하다.",
     "prompts": [
       {
         "file": "landing.png",
@@ -3914,7 +3914,7 @@
         "label": "Dashboard"
       }
     ],
-    "history": "픽셀 아트 UI는 초기 게임 콘솔과 제한된 그래픽 메모리에서 출발한 픽셀 그래픽 언어를 웹 인터페이스로 가져온 스타일이다. 8비트/16비트 게임 문화, demoscene, 인디 게임 툴, CSS 레트로 라이브러리를 거치며 현대 웹에서는 게임형 온보딩, 이벤트 사이트, 크리에이터 도구의 강한 캐릭터를 만드는 방식으로 쓰인다.",
+    "history": "픽셀 아트 UI는 1970년대 후반~1980년대 아케이드·콘솔 게임(1978 Space Invaders, Atari 2600)에서 기원한 것으로, 하드웨어 픽셀 제한이라는 기술적 시대적 맥락에서 미학으로 승화됐다. 핵심 인물로는 Nintendo의 Shigeru Miyamoto(슈퍼 마리오), Atari 아티스트, 그리고 현대 픽셀 아티스트 Paul Robertson이 있다. 주요 전환점은 1980년대 8비트 그래픽 황금기와 2000년대 디지털 복고. 디지털/웹 디자인 도입 시점은 1990년대 GIF·픽셀 폰트 웹사이트, 2010년대 CSS pixel-art revival로, indie 게임 붐과 레트로 게임 문화가 계기였다. 현대 적용 사례로는 indie 게임 UI(Celeste, Stardew Valley), retro 테마 웹 포트폴리오(itch.io), 그리고 NFT·메타버스 프로젝트의 8비트 스타일 인터페이스에서 사용된다. 이 스타일은 기술 제한을 창의성으로 전환한 디지털 노스탤지어의 상징이다.",
     "prompts": [
       {
         "file": "landing.png",
@@ -4016,7 +4016,7 @@
         "label": "Dashboard"
       }
     ],
-    "history": "데 스틸은 1917년 네덜란드에서 Theo van Doesburg, Piet Mondrian 등을 중심으로 시작된 예술·디자인 운동이다. 수직과 수평, 원색과 무채색, 비대칭 균형을 통해 보편적 조형 질서를 추구했고 이후 그래픽 디자인과 모듈형 레이아웃에 큰 영향을 줬다.",
+    "history": "데 스틸(De Stijl)은 1917년 네덜란드에서 시작된 추상 미술 운동으로, 제1차 세계대전 후 유토피아적 조화와 질서를 추구한 시대적 맥락에서 태어났다. Theo van Doesburg가 동명의 잡지를 창간하며 주도했으며, 핵심 인물로는 Piet Mondrian(그리드 추상), Gerrit Rietveld(붉은-파란 의자), Bart van der Leck가 있다. 주요 전환점은 1920년대 기하학적 구성과 원색 사용으로 순수 조형 추구, 1930년대 해체로 운동 종료. 디지털/웹 디자인 도입 시점은 1990년대 후반 미니멀 웹 디자인 붐으로, CSS 그리드와 플랫 디자인의 기초가 되었다. 계기는 디지털 화면의 픽셀 그리드와의 유사성, Bauhaus 영향. 현대 적용 사례로는 Google Material Design의 원색·그리드 레이아웃, Spotify나 Airbnb의 심플 랜딩 페이지에서 기하학적 균형을 활용한다. 이 스타일은 현대 UI의 미니멀리즘과 기능적 아름다움을 상징한다.",
     "prompts": [
       {
         "file": "landing.png",
@@ -4117,7 +4117,7 @@
         "label": "Dashboard"
       }
     ],
-    "history": "구성주의는 1910년대 후반 러시아 아방가르드에서 출발해 예술을 사회적 생산과 연결하려 한 운동이다. Alexander Rodchenko, El Lissitzky, Varvara Stepanova 등의 포스터, 전시, 출판 실험은 대각선 구도와 굵은 타이포그래피를 현대 그래픽 언어로 남겼다.",
+    "history": "구성주의(Constructivism)는 1915년경 러시아(소비에트 혁명 직후)에서 기원한 아방가르드 운동으로, 혁명 후 산업화와 사회주의 건설이라는 시대적 맥락에서 기능적 예술을 강조했다. 핵심 인물은 Vladimir Tatlin(타틀린 탑), Alexander Rodchenko(사진 몽타주), El Lissitzky(프롤린 디자인)이다. 주요 전환점은 1920년대 산업 재료 사용과 그래픽 포스터로의 확산, 1930년대 스탈린주의로 쇠퇴. 디지털/웹 디자인 도입 시점은 1990년대 초 웹 그래픽에서 볼드한 기하학·비대칭 레이아웃으로, 포스터 스타일의 디지털 리바이벌이 계기였다. 현대 적용 사례로는 정치·활동가 캠페인 사이트와 실험적 UI(Google Doodle 일부)에서 사용되며, Figma나 Adobe XD의 프로토타입에서 구성주의적 레이아웃을 볼 수 있다. 이 스타일은 사회적 메시지와 실용성을 결합한 현대 디지털 프로파간다 디자인의 원형이다.",
     "prompts": [
       {
         "file": "landing.png",
@@ -4219,7 +4219,7 @@
         "label": "Dashboard"
       }
     ],
-    "history": "아이소메트릭 3D UI는 기술 다이어그램, 게임 그래픽, 제품 일러스트레이션에서 발전한 등각 투시 표현을 디지털 제품 화면에 적용한 스타일이다. 2010년대 SaaS와 클라우드 제품이 복잡한 인프라·데이터 흐름을 설명하기 위해 3D 블록, 레이어, 노드 구조를 쓰면서 웹 랜딩과 대시보드 미감으로 확산됐다.",
+    "history": "아이소메트릭 3D UI는 1980년대 비디오 게임(1982 Zaxxon)에서 기원한 투시법으로, 기술 도면과 게임 산업의 시대적 맥락(8비트 그래픽 한계)에서 유래했다. 핵심 인물로는 Zaxxon 개발팀과 현대 UI 일러스트레이터들이 있으며, Apple Human Interface 가이드라인 영향도 크다. 주요 전환점은 2010년대 플랫 디자인에서 3D로의 복귀, WebGL·CSS 3D 등장. 디지털/웹 디자인 도입 시점은 2015년경 SVG·Three.js 보급으로, 모바일·대시보드의 공간감 표현 욕구가 계기였다. 현대 적용 사례로는 SaaS 대시보드(Notion이나 Figma의 3D 아이콘), 제품 마케팅 일러스트(Stripe나 Figma 웹사이트), 그리고 게임 UI(Among Us 스타일)에서 활용된다. 이 스타일은 2D 화면에 깊이를 더해 사용자 몰입을 높이는 현대 UI 트렌드의 핵심이다.",
     "prompts": [
       {
         "file": "landing.png",
@@ -4320,7 +4320,7 @@
         "label": "Dashboard"
       }
     ],
-    "history": "팝아트는 1950년대 영국과 1960년대 미국에서 대중매체, 광고, 소비재 이미지를 미술의 언어로 끌어오며 등장했다. Andy Warhol, Roy Lichtenstein, Richard Hamilton 등이 대표적이며, 웹에서는 프로모션과 문화 콘텐츠의 강한 색면·반복·만화적 표현으로 이어진다.",
+    "history": "팝아트(Pop Art)는 1950년대 후반 영국(Independent Group, Richard Hamilton 1956 작품)에서 시작해 1960년대 미국으로 확산된 미술 운동으로, 추상표현주의에 대한 반작용과 소비문화·대중매체 시대적 맥락에서 탄생했다. 핵심 인물은 Andy Warhol(캠벨 수프 캔), Roy Lichtenstein(만화 스타일), Richard Hamilton(Just what is it...)이다. 주요 전환점은 1960년대 상업 이미지 재사용과 반복, 1970년대 해체. 디지털/웹 디자인 도입 시점은 1990년대 디지털 콜라주와 GIF 애니메이션으로, 포토샵 보급과 인터넷 광고가 계기였다. 현대 적용 사례로는 Supreme 브랜드 웹사이트의 볼드 컬러·반복 그래픽, meme 문화 기반 마케팅, 그리고 TikTok UI의 팝적인 비주얼 요소에서 볼 수 있다. 팝아트는 소비주의를 비판하면서도 즐기는 현대 웹·앱 디자인의 아이콘이다.",
     "prompts": [
       {
         "file": "landing.png",
