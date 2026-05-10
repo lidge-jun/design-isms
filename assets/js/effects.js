@@ -1,6 +1,6 @@
 "use strict";
 (() => {
-    const DATA_VERSION = '2026-05-10-ism43-effects46';
+    const DATA_VERSION = '2026-05-10-ism43-curated-ui';
     const EFFECTS_DATA_URL = `./assets/data/effects.json?v=${DATA_VERSION}`;
     const EFFECT_GUIDE_BASE_URL = './assets/images/effects';
     const MOTION_QUERY = '(prefers-reduced-motion: reduce)';

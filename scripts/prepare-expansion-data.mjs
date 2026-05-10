@@ -16,18 +16,18 @@ const ismCandidateEntries = [
   ref('monospace-terminal-ui', 'Monospace / Terminal UI', '모노스페이스 터미널 UI', 'ISM Candidate', 'P0',
     '개발자 도구, AI 콘솔, 로그 뷰어처럼 고정폭 글꼴과 명령형 인터페이스 감각을 전면에 둔 디지털 스타일.',
     ['monospace', 'terminal', 'developer-tools', 'command'], ''),
-  ref('art-nouveau', 'Art Nouveau', '아르누보', 'ISM Candidate', 'P0',
-    '유기적인 곡선, 식물적 장식, 장식적 프레임을 현대 웹 레이아웃으로 번역하는 역사적 디자인 운동.',
-    ['ornamental', 'organic-line', 'historic', 'decorative'], ''),
+  ref('pixel-art-ui', 'Pixel Art UI', '픽셀 아트 UI', 'ISM Candidate', 'P0',
+    '8비트/16비트 픽셀 그래픽, 계단식 테두리, 제한된 팔레트로 게임과 레트로 디지털 감각을 전면에 두는 웹 UI 스타일.',
+    ['pixel-art', '8-bit', 'retro-game', 'grid', 'low-resolution'], ''),
   ref('de-stijl', 'De Stijl', '데 스틸', 'ISM Candidate', 'P0',
     '수직/수평 격자, 원색 블록, 기하학적 축약으로 화면 구조를 강하게 드러내는 스타일.',
     ['grid', 'primary-color', 'geometry', 'modernism'], ''),
   ref('constructivism', 'Constructivism', '구성주의', 'ISM Candidate', 'P0',
     '대각선 구도, 강한 대비, 선언적 타이포그래피로 캠페인/에디토리얼 화면에 긴장을 주는 그래픽 언어.',
     ['diagonal', 'propaganda', 'red-black', 'poster'], ''),
-  ref('mid-century-modern', 'Mid-century Modern', '미드센추리 모던', 'ISM Candidate', 'P0',
-    '따뜻한 색, 단순화된 기하 형태, 낙관적인 일러스트 감각을 현대 브랜드/랜딩에 적용하는 스타일.',
-    ['warm-modern', 'geometry', 'illustration', 'brand'], ''),
+  ref('isometric-3d-ui', 'Isometric 3D UI', '아이소메트릭 3D UI', 'ISM Candidate', 'P0',
+    '등각 투시, 블록형 공간, 제품/데이터 오브젝트를 깊이감 있게 배치해 복잡한 시스템을 시각적으로 설명하는 UI 스타일.',
+    ['isometric', '3d', 'spatial', 'systems', 'depth'], ''),
   ref('pop-art', 'Pop Art', '팝아트', 'ISM Candidate', 'P0',
     '상업 이미지, 만화적 색면, 하프톤과 강한 대비로 제품/프로모션 화면에 에너지를 주는 스타일.',
     ['commercial', 'halftone', 'bold-color', 'comic'], '')
@@ -86,8 +86,8 @@ function researchPromptFor(id, name, kind, officialUrl) {
 }
 
 function imagePromptFor(id, name, kind, summary) {
-  const mode = kind === 'ISM Candidate' ? 'three UI mockup images for a visual style card' : 'one neutral documentation-style overview image';
-  return `Use case: ui-mockup. Asset type: ${mode}. Primary request: ${name}. Context: ${summary} Style: crisp editorial UI documentation, realistic web/app interface, warm off-white canvas, charcoal text, muted amber accent, no real logos, no browser chrome, no people, no watermark.`;
+  const mode = kind === 'ISM Candidate' ? 'single production website or app screen mockup' : 'one neutral documentation-style overview image';
+  return `Use case: ui-mockup. Asset type: ${mode}. Primary request: ${name}. Context: ${summary} Render one finished production website or app screen, full-bleed as if captured from the product itself. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Show the style through real navigation, content sections, cards, controls, product/data surfaces, and responsive UI structure. No explanatory side labels, no outside annotations, no browser chrome, no real logos, no people, no watermark.`;
 }
 
 function groupFor(effectId) {

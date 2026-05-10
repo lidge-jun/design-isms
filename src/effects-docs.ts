@@ -1,5 +1,5 @@
 namespace EffectsDocs {
-  const DATA_VERSION = '2026-05-10-ism43-effects46';
+  const DATA_VERSION = '2026-05-10-ism43-curated-ui';
   const DATA_URL = `./assets/data/effects-docs.json?v=${DATA_VERSION}`;
 
   export interface EffectDocs {

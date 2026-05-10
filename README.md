@@ -21,7 +21,7 @@
 - 46 guide images under `assets/images/effects/`
 - 46 guide WebP previews under `assets/images/thumbs/effects/`
 - Long-form effect documentation in `assets/data/effects-docs.json`
-- 8 newly added ima2-generated ISM styles: Editorial Typography, Variable Typography, Monospace / Terminal UI, Art Nouveau, De Stijl, Constructivism, Mid-century Modern, and Pop Art
+- 8 newly added ima2-generated ISM styles: Editorial Typography, Variable Typography, Monospace / Terminal UI, Pixel Art UI, De Stijl, Constructivism, Isometric 3D UI, and Pop Art
 - Grok research prompts and ima2 prompt manifests for the ISM/effects expansion batch
 
 ## Implementation Principles

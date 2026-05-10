@@ -45,10 +45,10 @@ Proposed high-level categories:
 | `editorial-typography` | Editorial Typography | Typography | type scale, headline hierarchy, magazine/web editorial layouts are a major missing axis |
 | `variable-typography` | Variable Typography | Typography | modern responsive type expression; useful for web-specific design |
 | `monospace-terminal-ui` | Monospace / Terminal UI | Typography/Digital UI | developer tools, AI tools, dashboards, command interfaces |
-| `art-nouveau` | Art Nouveau | Movement | historically important, ornamental, organic linework |
+| `pixel-art-ui` | Pixel Art UI | Digital UI/Cultural Aesthetic | distinct 8-bit/16-bit interface language; less overlap than Art Nouveau |
 | `de-stijl` | De Stijl | Movement | grid, primary colors, geometric reduction |
 | `constructivism` | Constructivism | Movement | bold diagonal composition, red/black propaganda graphics |
-| `mid-century-modern` | Mid-century Modern | Movement | common brand/web visual reference; warm geometric editorial feel |
+| `isometric-3d-ui` | Isometric 3D UI | Digital UI/Layout | spatial product storytelling; distinct from retro and historical movement styles |
 | `pop-art` | Pop Art | Movement | bold commercial color, halftone, comic influence |
 
 ## P1 Additions — Good Fit, Needs Curation
@@ -143,10 +143,10 @@ ISM additions:
 1. Editorial Typography
 2. Variable Typography
 3. Monospace / Terminal UI
-4. Art Nouveau
+4. Pixel Art UI
 5. De Stijl
 6. Constructivism
-7. Mid-century Modern
+7. Isometric 3D UI
 8. Pop Art
 
 Reference cards:

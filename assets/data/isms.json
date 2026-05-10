@@ -3614,21 +3614,21 @@
     "prompts": [
       {
         "file": "landing.png",
-        "prompt": "A Editorial Typography style landing page screenshot. Large editorial headlines, measured body rhythm, narrow and wide columns, pull-quote spacing, warm paper-like surfaces, restrained accent color. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Editorial Typography landing page screenshot with one cohesive hero, navigation, CTA, and below-the-fold preview. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: large editorial headlines, narrow and wide text columns, pull quotes, measured body rhythm, magazine-grade spacing, warm paper surface, restrained amber accent. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
       },
       {
         "file": "shop.png",
-        "prompt": "A Editorial Typography style commerce product listing page screenshot. Large editorial headlines, measured body rhythm, narrow and wide columns, pull-quote spacing, warm paper-like surfaces, restrained accent color. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Editorial Typography commerce/product listing screenshot with filters, product cards, pricing, and checkout controls. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: large editorial headlines, narrow and wide text columns, pull quotes, measured body rhythm, magazine-grade spacing, warm paper surface, restrained amber accent. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
       },
       {
         "file": "dashboard.png",
-        "prompt": "A Editorial Typography style dashboard or product tool page screenshot. Large editorial headlines, measured body rhythm, narrow and wide columns, pull-quote spacing, warm paper-like surfaces, restrained accent color. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Editorial Typography dashboard/product tool screenshot with charts, tables, controls, and dense information hierarchy. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: large editorial headlines, narrow and wide text columns, pull quotes, measured body rhythm, magazine-grade spacing, warm paper surface, restrained amber accent. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
@@ -3715,21 +3715,21 @@
     "prompts": [
       {
         "file": "landing.png",
-        "prompt": "A Variable Typography style landing page screenshot. Variable font axis controls, responsive display type, animated width and weight shifts, specimen-like UI controls, clean type lab interface. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Variable Typography landing page screenshot with one cohesive hero, navigation, CTA, and below-the-fold preview. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: responsive variable-font axes, visible weight and width changes inside real UI components, type scale controls embedded as product settings, crisp type-lab product interface. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
       },
       {
         "file": "shop.png",
-        "prompt": "A Variable Typography style commerce product listing page screenshot. Variable font axis controls, responsive display type, animated width and weight shifts, specimen-like UI controls, clean type lab interface. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Variable Typography commerce/product listing screenshot with filters, product cards, pricing, and checkout controls. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: responsive variable-font axes, visible weight and width changes inside real UI components, type scale controls embedded as product settings, crisp type-lab product interface. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
       },
       {
         "file": "dashboard.png",
-        "prompt": "A Variable Typography style dashboard or product tool page screenshot. Variable font axis controls, responsive display type, animated width and weight shifts, specimen-like UI controls, clean type lab interface. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Variable Typography dashboard/product tool screenshot with charts, tables, controls, and dense information hierarchy. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: responsive variable-font axes, visible weight and width changes inside real UI components, type scale controls embedded as product settings, crisp type-lab product interface. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
@@ -3816,21 +3816,21 @@
     "prompts": [
       {
         "file": "landing.png",
-        "prompt": "A Monospace / Terminal UI style landing page screenshot. Monospace interface, dark command panels, prompt rows, terminal cards, log streams, keyboard-first controls, crisp grid lines. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Monospace / Terminal UI landing page screenshot with one cohesive hero, navigation, CTA, and below-the-fold preview. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: monospace type, dark command panels, terminal prompts, log streams, keyboard-first controls, crisp panel grid, developer-tool precision. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
       },
       {
         "file": "shop.png",
-        "prompt": "A Monospace / Terminal UI style commerce product listing page screenshot. Monospace interface, dark command panels, prompt rows, terminal cards, log streams, keyboard-first controls, crisp grid lines. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Monospace / Terminal UI commerce/product listing screenshot with filters, product cards, pricing, and checkout controls. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: monospace type, dark command panels, terminal prompts, log streams, keyboard-first controls, crisp panel grid, developer-tool precision. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
       },
       {
         "file": "dashboard.png",
-        "prompt": "A Monospace / Terminal UI style dashboard or product tool page screenshot. Monospace interface, dark command panels, prompt rows, terminal cards, log streams, keyboard-first controls, crisp grid lines. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Monospace / Terminal UI dashboard/product tool screenshot with charts, tables, controls, and dense information hierarchy. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: monospace type, dark command panels, terminal prompts, log streams, keyboard-first controls, crisp panel grid, developer-tool precision. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
@@ -3838,65 +3838,66 @@
     ]
   },
   {
-    "id": "art-nouveau",
-    "name": "Art Nouveau",
-    "nameKr": "아르누보",
-    "tagline": "Organic curves, botanical ornament, and flowing frames",
-    "description": "유기적인 곡선, 식물적 장식, 장식적 프레임을 현대 웹 레이아웃으로 번역하는 역사적 디자인 운동. 브랜드, 전시, 뷰티, 프리미엄 이벤트 페이지에서 섬세하고 장식적인 인상을 만든다.",
-    "descriptionEn": "A decorative style built from organic curves, botanical motifs, ornamental borders, and flowing composition. It turns a page into a crafted frame rather than a neutral grid.",
+    "id": "pixel-art-ui",
+    "name": "Pixel Art UI",
+    "nameKr": "픽셀 아트 UI",
+    "tagline": "8-bit grids, chunky controls, and playable nostalgia",
+    "description": "8비트/16비트 픽셀 그래픽, 계단식 테두리, 제한된 팔레트로 게임과 레트로 디지털 감각을 전면에 두는 웹 UI 스타일. 게임, 크리에이터 툴, 이벤트, 실험적 커머스처럼 즉각적인 캐릭터가 필요한 화면에 잘 맞는다.",
+    "descriptionEn": "A digital style built from 8-bit and 16-bit pixel graphics, stepped borders, limited palettes, low-resolution icons, and game-like interaction surfaces.",
     "keywords": [
-      "ornamental",
-      "organic-line",
-      "botanical",
-      "historic",
-      "decorative"
+      "pixel-art",
+      "8-bit",
+      "retro-game",
+      "grid",
+      "low-resolution"
     ],
     "palette": [
-      "#F4E8D1",
-      "#273A2D",
-      "#B77A45",
-      "#7A2D2A"
+      "#101018",
+      "#F7E26B",
+      "#EF3E4A",
+      "#37C4FF",
+      "#7CFF6B"
     ],
     "examples": [
       {
-        "name": "Mucha Foundation",
-        "url": "https://www.muchafoundation.org"
+        "name": "PICO-8",
+        "url": "https://www.lexaloffle.com/pico-8.php"
       },
       {
-        "name": "Casa Batlló",
-        "url": "https://www.casabatllo.es/en/"
+        "name": "Aseprite",
+        "url": "https://www.aseprite.org"
       },
       {
-        "name": "La Pedrera",
-        "url": "https://www.lapedrera.com/en"
+        "name": "Lospec",
+        "url": "https://lospec.com"
       },
       {
-        "name": "The Met",
-        "url": "https://www.metmuseum.org"
+        "name": "Piskel",
+        "url": "https://www.piskelapp.com"
       },
       {
-        "name": "Musée Horta",
-        "url": "https://www.hortamuseum.be"
+        "name": "itch.io",
+        "url": "https://itch.io"
       },
       {
-        "name": "Tiffany & Co.",
-        "url": "https://www.tiffany.com"
+        "name": "NES.css",
+        "url": "https://nostalgic-css.github.io/NES.css/"
       },
       {
-        "name": "Victoria and Albert Museum",
-        "url": "https://www.vam.ac.uk"
+        "name": "98.css",
+        "url": "https://jdan.github.io/98.css/"
       },
       {
-        "name": "Rijksmuseum",
-        "url": "https://www.rijksmuseum.nl/en"
+        "name": "Playdate",
+        "url": "https://play.date"
       },
       {
-        "name": "Musée d’Orsay",
-        "url": "https://www.musee-orsay.fr/en"
+        "name": "Bitsy",
+        "url": "https://bitsy.org"
       },
       {
-        "name": "Art Institute of Chicago",
-        "url": "https://www.artic.edu"
+        "name": "TIC-80",
+        "url": "https://tic80.com"
       }
     ],
     "images": [
@@ -3913,25 +3914,25 @@
         "label": "Dashboard"
       }
     ],
-    "history": "아르누보는 1890년대부터 1910년대 초반까지 유럽과 미국에서 건축, 포스터, 공예, 그래픽 디자인을 가로지르며 확산된 운동이다. Alphonse Mucha, Hector Guimard, Antoni Gaudí 등이 대표적이며, 산업화 시대의 기계적 형태 대신 자연 곡선과 통합 예술을 강조했다.",
+    "history": "픽셀 아트 UI는 초기 게임 콘솔과 제한된 그래픽 메모리에서 출발한 픽셀 그래픽 언어를 웹 인터페이스로 가져온 스타일이다. 8비트/16비트 게임 문화, demoscene, 인디 게임 툴, CSS 레트로 라이브러리를 거치며 현대 웹에서는 게임형 온보딩, 이벤트 사이트, 크리에이터 도구의 강한 캐릭터를 만드는 방식으로 쓰인다.",
     "prompts": [
       {
         "file": "landing.png",
-        "prompt": "A Art Nouveau style landing page screenshot. Flowing botanical linework, ornamental frames, soft vintage paper, elongated typography, carved section dividers, premium exhibition feel. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Pixel Art UI landing page screenshot with one cohesive hero, navigation, CTA, and below-the-fold preview. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: 8-bit and 16-bit pixel graphics, hard square edges, pixel borders, limited arcade palette, low-resolution icons, game-like buttons and inventory panels. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
       },
       {
         "file": "shop.png",
-        "prompt": "A Art Nouveau style commerce product listing page screenshot. Flowing botanical linework, ornamental frames, soft vintage paper, elongated typography, carved section dividers, premium exhibition feel. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Pixel Art UI commerce/product listing screenshot with filters, product cards, pricing, and checkout controls. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: 8-bit and 16-bit pixel graphics, hard square edges, pixel borders, limited arcade palette, low-resolution icons, game-like buttons and inventory panels. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
       },
       {
         "file": "dashboard.png",
-        "prompt": "A Art Nouveau style dashboard or product tool page screenshot. Flowing botanical linework, ornamental frames, soft vintage paper, elongated typography, carved section dividers, premium exhibition feel. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Pixel Art UI dashboard/product tool screenshot with charts, tables, controls, and dense information hierarchy. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: 8-bit and 16-bit pixel graphics, hard square edges, pixel borders, limited arcade palette, low-resolution icons, game-like buttons and inventory panels. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
@@ -4019,21 +4020,21 @@
     "prompts": [
       {
         "file": "landing.png",
-        "prompt": "A De Stijl style landing page screenshot. Orthogonal grid, black structural rules, primary-color panels, asymmetrical balance, reduced geometric product cards and dashboards. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A De Stijl landing page screenshot with one cohesive hero, navigation, CTA, and below-the-fold preview. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: orthogonal grid, black structural rules, primary red yellow blue blocks, asymmetrical balance, reduced geometric layout, visible modular structure. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
       },
       {
         "file": "shop.png",
-        "prompt": "A De Stijl style commerce product listing page screenshot. Orthogonal grid, black structural rules, primary-color panels, asymmetrical balance, reduced geometric product cards and dashboards. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A De Stijl commerce/product listing screenshot with filters, product cards, pricing, and checkout controls. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: orthogonal grid, black structural rules, primary red yellow blue blocks, asymmetrical balance, reduced geometric layout, visible modular structure. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
       },
       {
         "file": "dashboard.png",
-        "prompt": "A De Stijl style dashboard or product tool page screenshot. Orthogonal grid, black structural rules, primary-color panels, asymmetrical balance, reduced geometric product cards and dashboards. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A De Stijl dashboard/product tool screenshot with charts, tables, controls, and dense information hierarchy. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: orthogonal grid, black structural rules, primary red yellow blue blocks, asymmetrical balance, reduced geometric layout, visible modular structure. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
@@ -4120,21 +4121,21 @@
     "prompts": [
       {
         "file": "landing.png",
-        "prompt": "A Constructivism style landing page screenshot. Red and black poster blocks, diagonal composition, bold condensed type, propaganda-inspired layout, sharp campaign UI panels. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Constructivism landing page screenshot with one cohesive hero, navigation, CTA, and below-the-fold preview. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: diagonal composition, red black cream contrast, bold condensed type, poster-like campaign panels, sharp angular blocks, photomontage-inspired product imagery without real people. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
       },
       {
         "file": "shop.png",
-        "prompt": "A Constructivism style commerce product listing page screenshot. Red and black poster blocks, diagonal composition, bold condensed type, propaganda-inspired layout, sharp campaign UI panels. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Constructivism commerce/product listing screenshot with filters, product cards, pricing, and checkout controls. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: diagonal composition, red black cream contrast, bold condensed type, poster-like campaign panels, sharp angular blocks, photomontage-inspired product imagery without real people. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
       },
       {
         "file": "dashboard.png",
-        "prompt": "A Constructivism style dashboard or product tool page screenshot. Red and black poster blocks, diagonal composition, bold condensed type, propaganda-inspired layout, sharp campaign UI panels. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Constructivism dashboard/product tool screenshot with charts, tables, controls, and dense information hierarchy. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: diagonal composition, red black cream contrast, bold condensed type, poster-like campaign panels, sharp angular blocks, photomontage-inspired product imagery without real people. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
@@ -4142,65 +4143,66 @@
     ]
   },
   {
-    "id": "mid-century-modern",
-    "name": "Mid-century Modern",
-    "nameKr": "미드센추리 모던",
-    "tagline": "Warm geometry, optimistic illustration, and modern living",
-    "description": "따뜻한 색, 단순화된 기하 형태, 낙관적인 일러스트 감각을 현대 브랜드/랜딩에 적용하는 스타일. 가구, 라이프스타일, 브랜드 스토리, 제품 소개 화면에 잘 맞는다.",
-    "descriptionEn": "A warm modern style with simplified geometry, optimistic illustration, furniture-like proportions, and friendly editorial spacing.",
+    "id": "isometric-3d-ui",
+    "name": "Isometric 3D UI",
+    "nameKr": "아이소메트릭 3D UI",
+    "tagline": "Spatial product storytelling with angled systems and depth",
+    "description": "등각 투시, 블록형 공간, 제품/데이터 오브젝트를 깊이감 있게 배치해 복잡한 시스템을 시각적으로 설명하는 UI 스타일. SaaS, 클라우드, 데이터 제품, 툴 소개 화면에서 추상 기능을 이해 가능한 공간으로 바꾼다.",
+    "descriptionEn": "A spatial UI style using isometric perspective, floating blocks, system diagrams, soft shadows, and layered product objects to explain complex digital products.",
     "keywords": [
-      "warm-modern",
-      "geometry",
-      "illustration",
-      "furniture",
-      "brand"
+      "isometric",
+      "3d",
+      "spatial",
+      "systems",
+      "depth"
     ],
     "palette": [
-      "#F3D7A4",
-      "#28323A",
-      "#D65A31",
-      "#6E8B6B"
+      "#F3F7FF",
+      "#172033",
+      "#5B7CFA",
+      "#39C6B6",
+      "#F3B64A"
     ],
     "examples": [
       {
-        "name": "Herman Miller",
-        "url": "https://www.hermanmiller.com"
+        "name": "Spline",
+        "url": "https://spline.design"
       },
       {
-        "name": "MillerKnoll",
-        "url": "https://www.millerknoll.com"
+        "name": "Vectary",
+        "url": "https://www.vectary.com"
       },
       {
-        "name": "Design Within Reach",
-        "url": "https://www.dwr.com"
+        "name": "Sketchfab",
+        "url": "https://sketchfab.com"
       },
       {
-        "name": "Vitra",
-        "url": "https://www.vitra.com"
+        "name": "Three.js",
+        "url": "https://threejs.org"
       },
       {
-        "name": "HAY",
-        "url": "https://www.hay.com"
+        "name": "Stripe",
+        "url": "https://stripe.com"
       },
       {
-        "name": "Muuto",
-        "url": "https://www.muuto.com"
+        "name": "Pitch",
+        "url": "https://pitch.com"
       },
       {
-        "name": "USM",
-        "url": "https://www.usm.com"
+        "name": "Icons8 Illustrations",
+        "url": "https://icons8.com/illustrations"
       },
       {
-        "name": "Article",
-        "url": "https://www.article.com"
+        "name": "Shapr3D",
+        "url": "https://www.shapr3d.com"
       },
       {
-        "name": "Schoolhouse",
-        "url": "https://www.schoolhouse.com"
+        "name": "Vercel",
+        "url": "https://vercel.com"
       },
       {
-        "name": "Design Museum",
-        "url": "https://designmuseum.org"
+        "name": "Atlassian",
+        "url": "https://www.atlassian.com"
       }
     ],
     "images": [
@@ -4217,25 +4219,25 @@
         "label": "Dashboard"
       }
     ],
-    "history": "미드센추리 모던은 1940년대부터 1960년대까지 건축, 가구, 그래픽, 제품 디자인에서 발전한 현대주의 흐름이다. 기능주의와 대량생산, 따뜻한 생활 감각이 결합되었고, 웹에서는 브랜드 랜딩과 라이프스타일 커머스의 친근한 모던 톤으로 자주 번역된다.",
+    "history": "아이소메트릭 3D UI는 기술 다이어그램, 게임 그래픽, 제품 일러스트레이션에서 발전한 등각 투시 표현을 디지털 제품 화면에 적용한 스타일이다. 2010년대 SaaS와 클라우드 제품이 복잡한 인프라·데이터 흐름을 설명하기 위해 3D 블록, 레이어, 노드 구조를 쓰면서 웹 랜딩과 대시보드 미감으로 확산됐다.",
     "prompts": [
       {
         "file": "landing.png",
-        "prompt": "A Mid-century Modern style landing page screenshot. Warm neutral canvas, simplified furniture-like blocks, geometric illustration, optimistic brand panels, rounded but restrained product cards. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Isometric 3D UI landing page screenshot with one cohesive hero, navigation, CTA, and below-the-fold preview. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: isometric 3D blocks, floating product/data objects, spatial cards, soft shadows, angled grids, layered system diagrams, polished SaaS depth. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
       },
       {
         "file": "shop.png",
-        "prompt": "A Mid-century Modern style commerce product listing page screenshot. Warm neutral canvas, simplified furniture-like blocks, geometric illustration, optimistic brand panels, rounded but restrained product cards. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Isometric 3D UI commerce/product listing screenshot with filters, product cards, pricing, and checkout controls. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: isometric 3D blocks, floating product/data objects, spatial cards, soft shadows, angled grids, layered system diagrams, polished SaaS depth. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
       },
       {
         "file": "dashboard.png",
-        "prompt": "A Mid-century Modern style dashboard or product tool page screenshot. Warm neutral canvas, simplified furniture-like blocks, geometric illustration, optimistic brand panels, rounded but restrained product cards. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Isometric 3D UI dashboard/product tool screenshot with charts, tables, controls, and dense information hierarchy. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: isometric 3D blocks, floating product/data objects, spatial cards, soft shadows, angled grids, layered system diagrams, polished SaaS depth. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
@@ -4322,21 +4324,21 @@
     "prompts": [
       {
         "file": "landing.png",
-        "prompt": "A Pop Art style landing page screenshot. Bold commercial color, halftone texture, comic panel framing, product repetition, sharp promotional banners and energetic cards. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Pop Art landing page screenshot with one cohesive hero, navigation, CTA, and below-the-fold preview. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: bold commercial color, halftone texture, comic panel framing, speech-bubble accents, product repetition, high-contrast promotional layout. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
       },
       {
         "file": "shop.png",
-        "prompt": "A Pop Art style commerce product listing page screenshot. Bold commercial color, halftone texture, comic panel framing, product repetition, sharp promotional banners and energetic cards. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Pop Art commerce/product listing screenshot with filters, product cards, pricing, and checkout controls. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: bold commercial color, halftone texture, comic panel framing, speech-bubble accents, product repetition, high-contrast promotional layout. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
       },
       {
         "file": "dashboard.png",
-        "prompt": "A Pop Art style dashboard or product tool page screenshot. Bold commercial color, halftone texture, comic panel framing, product repetition, sharp promotional banners and energetic cards. Clean mockup, no browser chrome, realistic UI elements, no real logos, no people, no watermark.",
+        "prompt": "A Pop Art dashboard/product tool screenshot with charts, tables, controls, and dense information hierarchy. Render one finished production website or app screen, full-bleed as if captured from the product itself. Style traits: bold commercial color, halftone texture, comic panel framing, speech-bubble accents, product repetition, high-contrast promotional layout. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Do not place explanatory labels outside the UI. No browser chrome, no real logos, no people, no watermark. Realistic shippable UI elements, strong visual polish, 1536x1024.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
