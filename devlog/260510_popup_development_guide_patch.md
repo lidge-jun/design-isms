@@ -40,7 +40,7 @@ aliases: [팝업 개발 가이드 구현, Development Guide 패치, 컴포넌트
 - [x] desktop modal에서 개발 가이드가 related ISM 아래에 표시된다.
 - [x] mobile modal에서 개발 가이드가 1열로 표시된다.
 - [x] 기존 thumbnail/lightbox 동작이 유지된다.
-- [ ] GitHub Pages workflow가 성공한다.
+- [x] GitHub Pages workflow가 성공한다.
 
 ## 변경 기록
 
