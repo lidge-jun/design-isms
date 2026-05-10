@@ -5,18 +5,76 @@
     "nameKr": "미니멀리즘",
     "tagline": "Less is more",
     "description": "극도로 절제된 요소. 넓은 여백, 깔끔한 타이포그래피, 단색 팔레트. 콘텐츠가 숨 쉴 수 있는 공간을 만든다.",
-    "keywords": ["whitespace", "typography", "monochrome", "grid", "restraint"],
-    "palette": ["#FFFFFF", "#1A1A1A", "#F5F5F5", "#E0E0E0"],
+    "keywords": [
+      "whitespace",
+      "typography",
+      "monochrome",
+      "grid",
+      "restraint"
+    ],
+    "palette": [
+      "#FFFFFF",
+      "#1A1A1A",
+      "#F5F5F5",
+      "#E0E0E0"
+    ],
     "examples": [
-      { "name": "Apple", "url": "https://www.apple.com" },
-      { "name": "Muji", "url": "https://www.muji.com" },
-      { "name": "Aesop", "url": "https://www.aesop.com" }
+      {
+        "name": "Apple",
+        "url": "https://www.apple.com"
+      },
+      {
+        "name": "Away",
+        "url": "https://www.awaytravel.com"
+      },
+      {
+        "name": "Everlane",
+        "url": "https://www.everlane.com"
+      },
+      {
+        "name": "Nécessaire",
+        "url": "https://necessaire.com"
+      },
+      {
+        "name": "Toteme",
+        "url": "https://toteme.com"
+      },
+      {
+        "name": "Stripe",
+        "url": "https://stripe.com"
+      },
+      {
+        "name": "Linear",
+        "url": "https://linear.app"
+      },
+      {
+        "name": "Calm",
+        "url": "https://www.calm.com"
+      },
+      {
+        "name": "Dropbox",
+        "url": "https://www.dropbox.com"
+      },
+      {
+        "name": "Negative Underwear",
+        "url": "https://negativeunderwear.com"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "shop.png", "label": "쇼핑몰" },
-      { "file": "portfolio.png", "label": "Portfolio" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      },
+      {
+        "file": "portfolio.png",
+        "label": "Portfolio"
+      }
+    ],
+    "history": "1960년대 미술 운동에서 출발, Donald Judd·Frank Stella 등이 주도. 웹에서는 2010년대 Apple과 Google의 영향으로 주류가 됨. 스큐어모피즘의 반작용으로 부상했으며, Dieter Rams의 'Less, but better' 철학이 핵심."
   },
   {
     "id": "brutalism",
@@ -24,18 +82,76 @@
     "nameKr": "브루탈리즘",
     "tagline": "Raw and unpolished",
     "description": "의도적으로 거칠고 날것인 디자인. 시스템 폰트, 깨진 듯한 레이아웃, 강렬한 대비. 규칙을 거부하는 것이 규칙이다.",
-    "keywords": ["raw", "monospace", "broken-grid", "high-contrast", "anti-design"],
-    "palette": ["#FFFFFF", "#000000", "#FF0000", "#0000FF"],
+    "keywords": [
+      "raw",
+      "monospace",
+      "broken-grid",
+      "high-contrast",
+      "anti-design"
+    ],
+    "palette": [
+      "#FFFFFF",
+      "#000000",
+      "#FF0000",
+      "#0000FF"
+    ],
     "examples": [
-      { "name": "Bloomberg", "url": "https://www.bloomberg.com" },
-      { "name": "Craigslist", "url": "https://www.craigslist.org" },
-      { "name": "Brutalist Websites", "url": "https://brutalistwebsites.com" }
+      {
+        "name": "Studio Brot",
+        "url": "https://www.studiobrot.de/"
+      },
+      {
+        "name": "Hot Buro",
+        "url": "https://www.hotburo.com/"
+      },
+      {
+        "name": "Ezekiel Aquino",
+        "url": "https://ezekielaquino.com/"
+      },
+      {
+        "name": "Secession",
+        "url": "https://secession.at/"
+      },
+      {
+        "name": "MrBeast",
+        "url": "https://mrbeast.basement.studio/"
+      },
+      {
+        "name": "Chrissie Abbott",
+        "url": "https://chrissieabbott.com/"
+      },
+      {
+        "name": "CHRLS.DSGN",
+        "url": "https://www.chrls.design/"
+      },
+      {
+        "name": "Studio Job",
+        "url": "https://www.studio-job.com/"
+      },
+      {
+        "name": "Bloomberg",
+        "url": "https://www.bloomberg.com"
+      },
+      {
+        "name": "Craigslist",
+        "url": "https://www.craigslist.org"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "shop.png", "label": "쇼핑몰" },
-      { "file": "blog.png", "label": "Blog" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      },
+      {
+        "file": "blog.png",
+        "label": "Blog"
+      }
+    ],
+    "history": "1950년대 건축 운동(Le Corbusier)에서 이름을 따옴. 웹 브루탈리즘은 2014년경 Pascal Deville의 brutalistwebsites.com에서 본격 시작. Bloomberg 2017 리디자인이 상업적 채택의 전환점."
   },
   {
     "id": "neumorphism",
@@ -43,17 +159,76 @@
     "nameKr": "뉴모피즘",
     "tagline": "Soft UI, extruded elements",
     "description": "부드러운 그림자로 표면에서 솟아오르거나 눌린 듯한 UI. 배경과 같은 색상 계열을 사용해 일체감을 준다.",
-    "keywords": ["soft-shadow", "inset", "monochromatic", "subtle", "depth"],
-    "palette": ["#E0E5EC", "#FFFFFF", "#A3B1C6", "#6D7F99"],
+    "keywords": [
+      "soft-shadow",
+      "inset",
+      "monochromatic",
+      "subtle",
+      "depth"
+    ],
+    "palette": [
+      "#E0E5EC",
+      "#FFFFFF",
+      "#A3B1C6",
+      "#6D7F99"
+    ],
     "examples": [
-      { "name": "Neumorphism.io", "url": "https://neumorphism.io" },
-      { "name": "Dribbble Neumorphism", "url": "https://dribbble.com/tags/neumorphism" }
+      {
+        "name": "Flow Ninja",
+        "url": "https://www.flow.ninja/"
+      },
+      {
+        "name": "Productside",
+        "url": "https://productside.com/"
+      },
+      {
+        "name": "N26",
+        "url": "https://n26.com/"
+      },
+      {
+        "name": "Huly",
+        "url": "https://huly.io/"
+      },
+      {
+        "name": "Cleanmeter",
+        "url": "https://www.cleanmeter.app/"
+      },
+      {
+        "name": "Sony",
+        "url": "https://www.sony.com"
+      },
+      {
+        "name": "Nike",
+        "url": "https://www.nike.com"
+      },
+      {
+        "name": "Reddit",
+        "url": "https://www.reddit.com"
+      },
+      {
+        "name": "Apple",
+        "url": "https://www.apple.com"
+      },
+      {
+        "name": "Stripe",
+        "url": "https://stripe.com"
+      }
     ],
     "images": [
-      { "file": "dashboard.png", "label": "Dashboard" },
-      { "file": "login.png", "label": "Login Page" },
-      { "file": "music-player.png", "label": "Music Player" }
-    ]
+      {
+        "file": "dashboard.png",
+        "label": "Dashboard"
+      },
+      {
+        "file": "login.png",
+        "label": "Login Page"
+      },
+      {
+        "file": "music-player.png",
+        "label": "Music Player"
+      }
+    ],
+    "history": "2019년 Dribbble에서 Alexander Plyuto의 컨셉으로 폭발적 인기. 스큐어모피즘과 플랫 디자인의 혼합. 접근성 문제(낮은 대비)로 전체 UI보다 부분 적용이 많음."
   },
   {
     "id": "glassmorphism",
@@ -61,17 +236,76 @@
     "nameKr": "글래스모피즘",
     "tagline": "Frosted glass, translucent layers",
     "description": "반투명 유리 효과(backdrop-filter: blur)를 핵심으로 한 디자인. 배경 그라디언트 위에 레이어가 겹쳐지는 깊이감.",
-    "keywords": ["blur", "transparency", "gradient-bg", "depth", "frosted"],
-    "palette": ["#7F5AF0", "#2CB67D", "#FFFFFF80", "#16161A"],
+    "keywords": [
+      "blur",
+      "transparency",
+      "gradient-bg",
+      "depth",
+      "frosted"
+    ],
+    "palette": [
+      "#7F5AF0",
+      "#2CB67D",
+      "#FFFFFF80",
+      "#16161A"
+    ],
     "examples": [
-      { "name": "Apple macOS", "url": "https://www.apple.com/macos" },
-      { "name": "Glassmorphism CSS", "url": "https://glassmorphism.com" }
+      {
+        "name": "Raycast",
+        "url": "https://www.raycast.com/"
+      },
+      {
+        "name": "Reflect",
+        "url": "https://reflect.app/"
+      },
+      {
+        "name": "Tomorrow.io",
+        "url": "https://www.tomorrow.io/"
+      },
+      {
+        "name": "Framer",
+        "url": "https://www.framer.com/"
+      },
+      {
+        "name": "Linear",
+        "url": "https://linear.app"
+      },
+      {
+        "name": "Robinhood",
+        "url": "https://robinhood.com"
+      },
+      {
+        "name": "Vercel",
+        "url": "https://vercel.com/"
+      },
+      {
+        "name": "Stripe",
+        "url": "https://stripe.com"
+      },
+      {
+        "name": "Huly",
+        "url": "https://huly.io/"
+      },
+      {
+        "name": "Lightrun",
+        "url": "https://lightrun.com/"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "card-ui.png", "label": "Card UI" },
-      { "file": "mobile-app.png", "label": "Mobile App" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "card-ui.png",
+        "label": "Card UI"
+      },
+      {
+        "file": "mobile-app.png",
+        "label": "Mobile App"
+      }
+    ],
+    "history": "2020년 Apple이 macOS Big Sur에서 본격 도입. Microsoft의 Fluent Design System(Acrylic 소재)도 영향. backdrop-filter CSS 지원 확대와 함께 2021-2022년 트렌드로 정착."
   },
   {
     "id": "skeuomorphism",
@@ -79,17 +313,76 @@
     "nameKr": "스큐어모피즘",
     "tagline": "Digital mimics physical",
     "description": "현실 세계의 질감과 형태를 디지털에 재현. 가죽 텍스처, 금속 버튼, 종이 질감. iOS 6 이전의 Apple이 대표적.",
-    "keywords": ["texture", "realistic", "3D", "shadows", "physical-metaphor"],
-    "palette": ["#8B7355", "#C0C0C0", "#4A4A4A", "#F5E6CC"],
+    "keywords": [
+      "texture",
+      "realistic",
+      "3D",
+      "shadows",
+      "physical-metaphor"
+    ],
+    "palette": [
+      "#8B7355",
+      "#C0C0C0",
+      "#4A4A4A",
+      "#F5E6CC"
+    ],
     "examples": [
-      { "name": "iOS 6 Archive", "url": "https://www.theverge.com/2013/6/10/4415090/ios-7-design-comparison" },
-      { "name": "Skeuomorphism Collection", "url": "https://dribbble.com/tags/skeuomorphism" }
+      {
+        "name": "Burger King",
+        "url": "https://www.bk.com/"
+      },
+      {
+        "name": "PostHog",
+        "url": "https://posthog.com/"
+      },
+      {
+        "name": "ChainZoku",
+        "url": "https://chainzoku.io/"
+      },
+      {
+        "name": "Sony",
+        "url": "https://www.sony.com"
+      },
+      {
+        "name": "Nike",
+        "url": "https://www.nike.com"
+      },
+      {
+        "name": "Apple",
+        "url": "https://www.apple.com"
+      },
+      {
+        "name": "MrBeast",
+        "url": "https://mrbeast.basement.studio/"
+      },
+      {
+        "name": "Away",
+        "url": "https://www.awaytravel.com"
+      },
+      {
+        "name": "Negative Underwear",
+        "url": "https://negativeunderwear.com"
+      },
+      {
+        "name": "Sergio Diaz",
+        "url": "https://www.sergiodiazschiaffino.com/"
+      }
     ],
     "images": [
-      { "file": "calculator.png", "label": "Calculator App" },
-      { "file": "notepad.png", "label": "Notepad App" },
-      { "file": "bookshelf.png", "label": "Bookshelf UI" }
-    ]
+      {
+        "file": "calculator.png",
+        "label": "Calculator App"
+      },
+      {
+        "file": "notepad.png",
+        "label": "Notepad App"
+      },
+      {
+        "file": "bookshelf.png",
+        "label": "Bookshelf UI"
+      }
+    ],
+    "history": "2007-2013년 Apple iOS 1-6의 지배적 디자인 언어. Scott Forstall이 주도. 2013년 Jony Ive 체제에서 iOS 7 플랫 전환으로 퇴조. 2020년대 부분적 부활(뉴모피즘 등)."
   },
   {
     "id": "flat-design",
@@ -97,17 +390,76 @@
     "nameKr": "플랫 디자인",
     "tagline": "No gradients, no shadows",
     "description": "그림자, 그라디언트, 3D 효과를 완전히 제거. 솔리드 컬러, 단순한 아이콘, 명확한 타이포그래피로 정보를 전달.",
-    "keywords": ["solid-color", "simple-icons", "clean", "2D", "bold-type"],
-    "palette": ["#3498DB", "#E74C3C", "#2ECC71", "#F39C12"],
+    "keywords": [
+      "solid-color",
+      "simple-icons",
+      "clean",
+      "2D",
+      "bold-type"
+    ],
+    "palette": [
+      "#3498DB",
+      "#E74C3C",
+      "#2ECC71",
+      "#F39C12"
+    ],
     "examples": [
-      { "name": "Windows 8 Metro", "url": "https://www.microsoft.com" },
-      { "name": "Stripe", "url": "https://stripe.com" }
+      {
+        "name": "Stripe",
+        "url": "https://stripe.com"
+      },
+      {
+        "name": "Gogoro",
+        "url": "https://www.gogoro.com/"
+      },
+      {
+        "name": "Mila",
+        "url": "https://www.mila.direct/"
+      },
+      {
+        "name": "2Create",
+        "url": "https://2create.io/"
+      },
+      {
+        "name": "Tala",
+        "url": "https://www.gettala.com/"
+      },
+      {
+        "name": "Dropbox",
+        "url": "https://www.dropbox.com"
+      },
+      {
+        "name": "Mailchimp",
+        "url": "https://mailchimp.com"
+      },
+      {
+        "name": "Intercom",
+        "url": "https://www.intercom.com"
+      },
+      {
+        "name": "Figma",
+        "url": "https://www.figma.com"
+      },
+      {
+        "name": "Slack",
+        "url": "https://slack.com"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "dashboard.png", "label": "Dashboard" },
-      { "file": "mobile-app.png", "label": "Mobile App" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "dashboard.png",
+        "label": "Dashboard"
+      },
+      {
+        "file": "mobile-app.png",
+        "label": "Mobile App"
+      }
+    ],
+    "history": "2012년 Microsoft의 Metro UI(Windows 8)가 시초. 2013년 Apple iOS 7이 뒤따르며 글로벌 표준으로. Flat 2.0(미묘한 그림자·그라디언트 허용)으로 진화. Material Design이 이 흐름의 구조화된 버전."
   },
   {
     "id": "material-design",
@@ -115,17 +467,76 @@
     "nameKr": "머티리얼 디자인",
     "tagline": "Bold, graphic, intentional",
     "description": "Google의 디자인 시스템. 물리적 종이와 잉크에 영감받아 elevation(고도), 그림자, 리플 효과, 대담한 컬러를 사용.",
-    "keywords": ["elevation", "ripple", "FAB", "card", "motion"],
-    "palette": ["#6200EE", "#03DAC6", "#FFFFFF", "#121212"],
+    "keywords": [
+      "elevation",
+      "ripple",
+      "FAB",
+      "card",
+      "motion"
+    ],
+    "palette": [
+      "#6200EE",
+      "#03DAC6",
+      "#FFFFFF",
+      "#121212"
+    ],
     "examples": [
-      { "name": "Google Material", "url": "https://m3.material.io" },
-      { "name": "Gmail", "url": "https://mail.google.com" }
+      {
+        "name": "Google Store",
+        "url": "https://store.google.com"
+      },
+      {
+        "name": "Dropbox Business",
+        "url": "https://www.dropbox.com/business/"
+      },
+      {
+        "name": "Waaark",
+        "url": "https://waaark.com/"
+      },
+      {
+        "name": "Podia",
+        "url": "https://www.podia.com/"
+      },
+      {
+        "name": "Shopify",
+        "url": "https://www.shopify.com"
+      },
+      {
+        "name": "Asphalte",
+        "url": "https://www.asphalte.com/"
+      },
+      {
+        "name": "Railsware",
+        "url": "https://railsware.com"
+      },
+      {
+        "name": "FireHydrant",
+        "url": "https://firehydrant.io"
+      },
+      {
+        "name": "Pastel",
+        "url": "https://usepastel.com"
+      },
+      {
+        "name": "Gmail",
+        "url": "https://mail.google.com"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "email-app.png", "label": "Email App" },
-      { "file": "shop.png", "label": "쇼핑몰" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "email-app.png",
+        "label": "Email App"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      }
+    ],
+    "history": "2014년 Google I/O에서 발표. Matías Duarte가 설계. 물리적 '종이와 잉크' 메타포에 기반한 체계적 디자인 시스템. 2018년 Material Theming, 2021년 Material You(Material 3)로 진화."
   },
   {
     "id": "swiss-style",
@@ -133,17 +544,76 @@
     "nameKr": "스위스 스타일",
     "tagline": "Grid. Helvetica. Precision.",
     "description": "수학적 그리드, 산세리프 서체(Helvetica/Akzidenz), 비대칭 레이아웃. 객관적이고 보편적인 시각 커뮤니케이션 추구.",
-    "keywords": ["grid", "helvetica", "asymmetry", "photography", "rationalism"],
-    "palette": ["#FFFFFF", "#000000", "#FF0000", "#F5F5F5"],
+    "keywords": [
+      "grid",
+      "helvetica",
+      "asymmetry",
+      "photography",
+      "rationalism"
+    ],
+    "palette": [
+      "#FFFFFF",
+      "#000000",
+      "#FF0000",
+      "#F5F5F5"
+    ],
     "examples": [
-      { "name": "Swiss in CSS", "url": "https://swissincss.com" },
-      { "name": "International Poster Gallery", "url": "https://www.internationalposter.com" }
+      {
+        "name": "Apple",
+        "url": "https://www.apple.com"
+      },
+      {
+        "name": "Medium",
+        "url": "https://medium.com"
+      },
+      {
+        "name": "IKEA",
+        "url": "https://www.ikea.com"
+      },
+      {
+        "name": "Microsoft",
+        "url": "https://www.microsoft.com"
+      },
+      {
+        "name": "IBM",
+        "url": "https://www.ibm.com"
+      },
+      {
+        "name": "Zuerich",
+        "url": "https://www.zuerich.com"
+      },
+      {
+        "name": "Notion",
+        "url": "https://www.notion.so"
+      },
+      {
+        "name": "Figma",
+        "url": "https://www.figma.com"
+      },
+      {
+        "name": "Linear",
+        "url": "https://linear.app"
+      },
+      {
+        "name": "Frontify",
+        "url": "https://www.frontify.com"
+      }
     ],
     "images": [
-      { "file": "poster.png", "label": "Poster Layout" },
-      { "file": "corporate.png", "label": "Corporate Site" },
-      { "file": "magazine.png", "label": "Magazine Layout" }
-    ]
+      {
+        "file": "poster.png",
+        "label": "Poster Layout"
+      },
+      {
+        "file": "corporate.png",
+        "label": "Corporate Site"
+      },
+      {
+        "file": "magazine.png",
+        "label": "Magazine Layout"
+      }
+    ],
+    "history": "1950년대 스위스 바젤·취리히에서 시작. Josef Müller-Brockmann, Armin Hofmann이 대표. Helvetica 탄생(1957)과 함께 성장. 그리드 시스템과 객관적 타이포그래피의 원조로, 현대 UI 디자인의 근간."
   },
   {
     "id": "art-deco",
@@ -151,17 +621,76 @@
     "nameKr": "아르데코",
     "tagline": "Geometric luxury",
     "description": "1920-30년대의 기하학적 패턴, 금색·크롬 장식, 대칭적 구성. 럭셔리·고급스러움을 디지털에 재해석.",
-    "keywords": ["geometric", "gold", "symmetry", "ornament", "luxury"],
-    "palette": ["#1A1A2E", "#D4AF37", "#FFFFFF", "#16213E"],
+    "keywords": [
+      "geometric",
+      "gold",
+      "symmetry",
+      "ornament",
+      "luxury"
+    ],
+    "palette": [
+      "#1A1A2E",
+      "#D4AF37",
+      "#FFFFFF",
+      "#16213E"
+    ],
     "examples": [
-      { "name": "The Great Gatsby Site", "url": "https://www.thegreatgatsby.com" },
-      { "name": "Art Deco Society", "url": "https://www.artdeco.org" }
+      {
+        "name": "Fontainebleau Miami",
+        "url": "https://www.fontainebleau.com/"
+      },
+      {
+        "name": "Hotel Imperial Prague",
+        "url": "https://www.hotel-imperial.cz/"
+      },
+      {
+        "name": "Hotel Le Doge",
+        "url": "https://www.hotelledoge.com/"
+      },
+      {
+        "name": "Cavalier South Beach",
+        "url": "https://cavaliersouthbeach.com/"
+      },
+      {
+        "name": "Delano Miami",
+        "url": "https://www.delano-miami.com/"
+      },
+      {
+        "name": "The Breakers",
+        "url": "https://www.thebreakers.com/"
+      },
+      {
+        "name": "Colony Hotel Palm Beach",
+        "url": "https://www.thecolonypalmbeach.com/"
+      },
+      {
+        "name": "The Edmon",
+        "url": "https://www.theedmon.com"
+      },
+      {
+        "name": "LAFC",
+        "url": "https://www.lafc.com"
+      },
+      {
+        "name": "Edison Hotel NYC",
+        "url": "https://www.edisonhotelnyc.com"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "hotel.png", "label": "Hotel Site" },
-      { "file": "invitation.png", "label": "Event Invitation" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "hotel.png",
+        "label": "Hotel Site"
+      },
+      {
+        "file": "invitation.png",
+        "label": "Event Invitation"
+      }
+    ],
+    "history": "1920-30년대 파리 만국박람회(1925)에서 정점. Chrysler Building, Empire State Building이 상징. 기하학적 패턴, 대칭, 금·크롬 소재. 웹에서는 럭셔리 호텔·패션 브랜드가 주로 차용."
   },
   {
     "id": "bauhaus",
@@ -169,17 +698,76 @@
     "nameKr": "바우하우스",
     "tagline": "Form follows function",
     "description": "원, 삼각형, 사각형의 기본 도형. 빨강·파랑·노랑 원색. 기능이 형태를 결정하며 장식을 배제한 합리적 디자인.",
-    "keywords": ["primary-colors", "geometric", "functional", "sans-serif", "asymmetry"],
-    "palette": ["#DD1C1A", "#086788", "#F0C808", "#FFFFFF"],
+    "keywords": [
+      "primary-colors",
+      "geometric",
+      "functional",
+      "sans-serif",
+      "asymmetry"
+    ],
+    "palette": [
+      "#DD1C1A",
+      "#086788",
+      "#F0C808",
+      "#FFFFFF"
+    ],
     "examples": [
-      { "name": "Bauhaus100", "url": "https://www.bauhaus100.com" },
-      { "name": "Bauhaus Museum", "url": "https://www.bauhausmuseum.com" }
+      {
+        "name": "Vitra",
+        "url": "https://www.vitra.com/"
+      },
+      {
+        "name": "Knoll",
+        "url": "https://www.knoll.com/"
+      },
+      {
+        "name": "Herman Miller",
+        "url": "https://www.hermanmiller.com/"
+      },
+      {
+        "name": "MOO",
+        "url": "https://www.moo.com/"
+      },
+      {
+        "name": "Design Within Reach",
+        "url": "https://www.dwr.com/"
+      },
+      {
+        "name": "Thonet",
+        "url": "https://www.thonet.de/"
+      },
+      {
+        "name": "Artek",
+        "url": "https://www.artek.fi/"
+      },
+      {
+        "name": "Braun",
+        "url": "https://www.braun.com"
+      },
+      {
+        "name": "Bauhaus Dessau",
+        "url": "https://www.bauhaus-dessau.de"
+      },
+      {
+        "name": "Lammhults",
+        "url": "https://www.lammhults.se/"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "gallery.png", "label": "Art Gallery" },
-      { "file": "shop.png", "label": "쇼핑몰" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "gallery.png",
+        "label": "Art Gallery"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      }
+    ],
+    "history": "1919년 Walter Gropius가 독일 바이마르에 설립한 학교. Kandinsky, Klee, Moholy-Nagy가 교수진. 1933년 나치에 의해 폐교. '형태는 기능을 따른다'는 원칙이 현대 디자인의 DNA가 됨."
   },
   {
     "id": "memphis-design",
@@ -187,17 +775,76 @@
     "nameKr": "멤피스 디자인",
     "tagline": "Bold, playful, postmodern",
     "description": "1980년대 이탈리아 멤피스 그룹. 원색·파스텔 혼합, 기하학 패턴, 비대칭, 의도적 불협화음. 재미와 반항의 디자인.",
-    "keywords": ["pattern", "bold-color", "postmodern", "playful", "clash"],
-    "palette": ["#FF6B6B", "#4ECDC4", "#FFE66D", "#2C2C54"],
+    "keywords": [
+      "pattern",
+      "bold-color",
+      "postmodern",
+      "playful",
+      "clash"
+    ],
+    "palette": [
+      "#FF6B6B",
+      "#4ECDC4",
+      "#FFE66D",
+      "#2C2C54"
+    ],
     "examples": [
-      { "name": "Memphis Milano", "url": "https://www.memphis-milano.com" },
-      { "name": "Dribbble Memphis", "url": "https://dribbble.com/tags/memphis_design" }
+      {
+        "name": "MoneyFarm",
+        "url": "https://moneyfarm.com/"
+      },
+      {
+        "name": "The Trainline",
+        "url": "https://thetrainline.com/"
+      },
+      {
+        "name": "GetEddie",
+        "url": "https://geteddie.co.uk/"
+      },
+      {
+        "name": "Slack",
+        "url": "https://slack.com/"
+      },
+      {
+        "name": "Salesforce",
+        "url": "https://salesforce.com/"
+      },
+      {
+        "name": "Robinhood",
+        "url": "https://robinhood.com/"
+      },
+      {
+        "name": "WeTransfer",
+        "url": "https://wetransfer.com/"
+      },
+      {
+        "name": "Google Fi",
+        "url": "https://fi.google.com/"
+      },
+      {
+        "name": "Kroger",
+        "url": "https://www.kroger.com/"
+      },
+      {
+        "name": "Duolingo",
+        "url": "https://www.duolingo.com/"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "poster.png", "label": "Event Poster" },
-      { "file": "shop.png", "label": "쇼핑몰" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "poster.png",
+        "label": "Event Poster"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      }
+    ],
+    "history": "1981년 이탈리아 밀라노에서 Ettore Sottsass가 결성한 Memphis Group. Bob Dylan의 'Stuck Inside of Mobile with the Memphis Blues Again'에서 이름 따옴. 포스트모더니즘 디자인의 아이콘. 2010년대 웹·패션에서 부활."
   },
   {
     "id": "vaporwave",
@@ -205,17 +852,76 @@
     "nameKr": "베이퍼웨이브",
     "tagline": "Retro-futuristic nostalgia",
     "description": "80-90년대 컴퓨터 그래픽, 로마 조각상, 핑크·시안·퍼플 네온. 소비문화에 대한 아이러니와 노스탤지어의 혼합.",
-    "keywords": ["neon", "retro", "glitch", "gradient", "nostalgia"],
-    "palette": ["#FF71CE", "#01CDFE", "#B967FF", "#1A1A2E"],
+    "keywords": [
+      "neon",
+      "retro",
+      "glitch",
+      "gradient",
+      "nostalgia"
+    ],
+    "palette": [
+      "#FF71CE",
+      "#01CDFE",
+      "#B967FF",
+      "#1A1A2E"
+    ],
     "examples": [
-      { "name": "Vaporwave Plaza", "url": "https://plaza.one" },
-      { "name": "Aesthetic Wiki", "url": "https://aesthetics.fandom.com/wiki/Vaporwave" }
+      {
+        "name": "Vapor95",
+        "url": "https://vapor95.com/"
+      },
+      {
+        "name": "Catori Clothing",
+        "url": "https://catoriclothing.com"
+      },
+      {
+        "name": "Palm Treat",
+        "url": "https://palmtreat.design/"
+      },
+      {
+        "name": "Public Space",
+        "url": "https://www.publicspace.xyz/"
+      },
+      {
+        "name": "POPKILLER",
+        "url": "https://www.popkiller.us"
+      },
+      {
+        "name": "Ishihara Design",
+        "url": "https://ishiharadesign.com/"
+      },
+      {
+        "name": "In Control Clothing",
+        "url": "https://www.incontrolclothing.com/"
+      },
+      {
+        "name": "Staycool",
+        "url": "https://www.staycoolnyc.com/"
+      },
+      {
+        "name": "Pink Dolphin",
+        "url": "https://www.pinkdolphinonline.com/"
+      },
+      {
+        "name": "Neon Talk",
+        "url": "https://neontalk.com/"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "music-player.png", "label": "Music Player" },
-      { "file": "shop.png", "label": "쇼핑몰" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "music-player.png",
+        "label": "Music Player"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      }
+    ],
+    "history": "2010년 전후 인터넷 음악 장르로 시작. Macintosh Plus 'Floral Shoppe'(2011)가 시각적 정체성 확립. 80-90년대 일본 시티팝, 초기 컴퓨터 그래픽, 소비주의 아이러니의 혼합. Tumblr 미학의 핵심."
   },
   {
     "id": "y2k",
@@ -223,17 +929,76 @@
     "nameKr": "Y2K",
     "tagline": "Chrome, bubbles, cyber-optimism",
     "description": "2000년 밀레니엄 전후의 디지털 유토피아. 메탈릭 질감, 버블 폰트, 홀로그램, 투명 소재. 미래에 대한 낙관주의.",
-    "keywords": ["chrome", "holographic", "bubble", "translucent", "millennium"],
-    "palette": ["#C0C0C0", "#FF69B4", "#00CED1", "#E8E8E8"],
+    "keywords": [
+      "chrome",
+      "holographic",
+      "bubble",
+      "translucent",
+      "millennium"
+    ],
+    "palette": [
+      "#C0C0C0",
+      "#FF69B4",
+      "#00CED1",
+      "#E8E8E8"
+    ],
     "examples": [
-      { "name": "Y2K Aesthetic Institute", "url": "https://www.y2kaestheticinstitute.com" },
-      { "name": "Dribbble Y2K", "url": "https://dribbble.com/tags/y2k" }
+      {
+        "name": "Ryan Haskins",
+        "url": "https://www.ryanhaskins.com/"
+      },
+      {
+        "name": "Nasir Studio",
+        "url": "https://www.nasir.studio/"
+      },
+      {
+        "name": "Brendon Nguyen",
+        "url": "https://www.brendonnguyen.net/"
+      },
+      {
+        "name": "Spacehey",
+        "url": "https://spacehey.com/"
+      },
+      {
+        "name": "Olivia Rodrigo",
+        "url": "https://www.oliviarodrigo.com/"
+      },
+      {
+        "name": "Boys Club",
+        "url": "https://boysclub.vip/"
+      },
+      {
+        "name": "Byline",
+        "url": "https://www.bylinebyline.com/"
+      },
+      {
+        "name": "Pasha Ink",
+        "url": "https://pashaink.com/"
+      },
+      {
+        "name": "Griffo House",
+        "url": "https://www.griffo.house/"
+      },
+      {
+        "name": "Byooooob",
+        "url": "https://www.byooooob.com/"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "fashion.png", "label": "Fashion Site" },
-      { "file": "mobile-app.png", "label": "Mobile App" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "fashion.png",
+        "label": "Fashion Site"
+      },
+      {
+        "file": "mobile-app.png",
+        "label": "Mobile App"
+      }
+    ],
+    "history": "1997-2004년의 디자인 시대. 밀레니엄 낙관주의, 초기 인터넷, iMac G3의 반투명 플라스틱이 시각 언어를 형성. 2020년대 Gen Z 사이에서 강력한 리바이벌 — TikTok과 패션에서 재유행."
   },
   {
     "id": "retro-vintage",
@@ -241,17 +1006,76 @@
     "nameKr": "레트로 / 빈티지",
     "tagline": "Aged, warm, nostalgic",
     "description": "바래진 컬러, 세리프 서체, 그레인 텍스처, 핸드드로잉 일러스트. 과거의 따뜻함과 정성을 디지털로 재현.",
-    "keywords": ["sepia", "serif", "grain", "illustration", "warmth"],
-    "palette": ["#D4A373", "#CCD5AE", "#FAEDCD", "#6B4226"],
+    "keywords": [
+      "sepia",
+      "serif",
+      "grain",
+      "illustration",
+      "warmth"
+    ],
+    "palette": [
+      "#D4A373",
+      "#CCD5AE",
+      "#FAEDCD",
+      "#6B4226"
+    ],
     "examples": [
-      { "name": "Mailchimp (old)", "url": "https://mailchimp.com" },
-      { "name": "Dribbble Vintage", "url": "https://dribbble.com/tags/vintage_web" }
+      {
+        "name": "Caava Design",
+        "url": "https://caavadesign.com/"
+      },
+      {
+        "name": "Poolsuite",
+        "url": "https://poolsuite.net/"
+      },
+      {
+        "name": "Basement Studio",
+        "url": "https://basement.studio/"
+      },
+      {
+        "name": "Harvard Film Archive",
+        "url": "https://harvardfilmarchive.org/"
+      },
+      {
+        "name": "Sugarfire Pie",
+        "url": "https://sugarfirepie.com/"
+      },
+      {
+        "name": "Abel's on Queen",
+        "url": "https://www.abelsonqueen.com/"
+      },
+      {
+        "name": "Resp",
+        "url": "https://resp.tv/"
+      },
+      {
+        "name": "We Luv Video",
+        "url": "https://www.weluvvideo.org/"
+      },
+      {
+        "name": "Boogie Lover Band",
+        "url": "https://boogieloverband.com/"
+      },
+      {
+        "name": "Virtual Gas Museum",
+        "url": "https://wmgaz.pl/"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "cafe.png", "label": "Cafe Site" },
-      { "file": "poster.png", "label": "Event Poster" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "cafe.png",
+        "label": "Cafe Site"
+      },
+      {
+        "file": "poster.png",
+        "label": "Event Poster"
+      }
+    ],
+    "history": "특정 시대가 아닌 '과거 향수'를 재현하는 범시대적 접근. 1950-70년대 광고 디자인, 활판인쇄 질감, 핸드레터링에서 주로 차용. Letterpress, 그레인 텍스처, 세피아 톤이 핵심 기법."
   },
   {
     "id": "dark-mode",
@@ -259,18 +1083,76 @@
     "nameKr": "다크 모드",
     "tagline": "Dark canvas, vivid accents",
     "description": "어두운 배경 위에 선명한 액센트 컬러. 눈의 피로를 줄이면서 콘텐츠에 집중시키는 현대적 UI 트렌드.",
-    "keywords": ["dark-bg", "contrast", "accent", "OLED", "modern"],
-    "palette": ["#121212", "#1E1E1E", "#BB86FC", "#03DAC6"],
+    "keywords": [
+      "dark-bg",
+      "contrast",
+      "accent",
+      "OLED",
+      "modern"
+    ],
+    "palette": [
+      "#121212",
+      "#1E1E1E",
+      "#BB86FC",
+      "#03DAC6"
+    ],
     "examples": [
-      { "name": "Spotify", "url": "https://open.spotify.com" },
-      { "name": "Discord", "url": "https://discord.com" },
-      { "name": "GitHub Dark", "url": "https://github.com" }
+      {
+        "name": "Spotify",
+        "url": "https://open.spotify.com/"
+      },
+      {
+        "name": "Discord",
+        "url": "https://discord.com/"
+      },
+      {
+        "name": "Netflix",
+        "url": "https://www.netflix.com/"
+      },
+      {
+        "name": "GitHub",
+        "url": "https://github.com/"
+      },
+      {
+        "name": "Linear",
+        "url": "https://linear.app/"
+      },
+      {
+        "name": "Steam",
+        "url": "https://store.steampowered.com/"
+      },
+      {
+        "name": "Qase",
+        "url": "https://qase.io/"
+      },
+      {
+        "name": "Cosmos Studio",
+        "url": "https://www.cosmos.studio/"
+      },
+      {
+        "name": "Teletech",
+        "url": "https://teletech.com/"
+      },
+      {
+        "name": "Isabel Moranta",
+        "url": "https://isabelmoranta.com/"
+      }
     ],
     "images": [
-      { "file": "dashboard.png", "label": "Dashboard" },
-      { "file": "streaming.png", "label": "Streaming App" },
-      { "file": "shop.png", "label": "쇼핑몰" }
-    ]
+      {
+        "file": "dashboard.png",
+        "label": "Dashboard"
+      },
+      {
+        "file": "streaming.png",
+        "label": "Streaming App"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      }
+    ],
+    "history": "2019년 iOS 13·Android 10의 시스템 다크 모드 지원으로 대중화. OLED 배터리 절약 + 눈 부담 감소가 기술적 동기. Twitter(2016)가 웹 앱 선구자. 2020년대에는 기본 옵션으로 자리잡음."
   },
   {
     "id": "organic-design",
@@ -278,17 +1160,76 @@
     "nameKr": "오가닉 디자인",
     "tagline": "Flowing, natural, alive",
     "description": "자연에서 영감받은 유기적 곡선, 어스 톤 팔레트, 부드러운 blob 형태. 딱딱한 그리드를 벗어나 생동감을 부여.",
-    "keywords": ["blob", "curves", "earth-tones", "natural", "flowing"],
-    "palette": ["#606C38", "#283618", "#FEFAE0", "#DDA15E"],
+    "keywords": [
+      "blob",
+      "curves",
+      "earth-tones",
+      "natural",
+      "flowing"
+    ],
+    "palette": [
+      "#606C38",
+      "#283618",
+      "#FEFAE0",
+      "#DDA15E"
+    ],
     "examples": [
-      { "name": "Headspace", "url": "https://www.headspace.com" },
-      { "name": "Dropbox Design", "url": "https://dropbox.design" }
+      {
+        "name": "Bloom & Wild",
+        "url": "https://bloomandwild.com"
+      },
+      {
+        "name": "Bouqs Company",
+        "url": "https://bouqs.com"
+      },
+      {
+        "name": "Headspace",
+        "url": "https://headspace.com"
+      },
+      {
+        "name": "Package Free Shop",
+        "url": "https://packagefreeshop.com"
+      },
+      {
+        "name": "Made Goods",
+        "url": "https://madegoods.com"
+      },
+      {
+        "name": "David Trubridge",
+        "url": "https://davidtrubridge.com"
+      },
+      {
+        "name": "FTD",
+        "url": "https://ftd.com"
+      },
+      {
+        "name": "Mind the Gap",
+        "url": "https://mindthegap.com"
+      },
+      {
+        "name": "Silphium Design",
+        "url": "https://silphiumdesign.com"
+      },
+      {
+        "name": "Strawbridge Pools",
+        "url": "https://strawbridgepools.com"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "wellness.png", "label": "Wellness App" },
-      { "file": "shop.png", "label": "쇼핑몰" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "wellness.png",
+        "label": "Wellness App"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      }
+    ],
+    "history": "1940년대 Charles & Ray Eames의 유기적 가구에서 시작. 자연의 곡선을 디지털에 적용. 2018-2020년 blob 형태·어스 톤 트렌드로 웹에서 부활. Headspace·Dropbox 리브랜딩이 대표적 채택 사례."
   },
   {
     "id": "cyberpunk",
@@ -296,17 +1237,76 @@
     "nameKr": "사이버펑크",
     "tagline": "Neon-lit dystopia",
     "description": "네온 조명, 어두운 배경, 글리치 효과, 미래 도시 이미지. '하이테크 + 로우라이프'의 디스토피아적 미학.",
-    "keywords": ["neon", "glitch", "dark", "futuristic", "dystopia"],
-    "palette": ["#0D0D0D", "#FF003C", "#00F0FF", "#BC13FE"],
+    "keywords": [
+      "neon",
+      "glitch",
+      "dark",
+      "futuristic",
+      "dystopia"
+    ],
+    "palette": [
+      "#0D0D0D",
+      "#FF003C",
+      "#00F0FF",
+      "#BC13FE"
+    ],
     "examples": [
-      { "name": "Cyberpunk 2077", "url": "https://www.cyberpunk.net" },
-      { "name": "Dribbble Cyberpunk", "url": "https://dribbble.com/tags/cyberpunk" }
+      {
+        "name": "Cyberpunk 2077",
+        "url": "https://www.cyberpunk.net"
+      },
+      {
+        "name": "N-O-D-E",
+        "url": "https://n-o-d-e.net"
+      },
+      {
+        "name": "Neon Dystopia",
+        "url": "https://neondystopia.com"
+      },
+      {
+        "name": "PWNK Digital",
+        "url": "https://pwnkdigital.com"
+      },
+      {
+        "name": "Blast Galaxy",
+        "url": "https://blastgalaxy.nl"
+      },
+      {
+        "name": "Box Bay",
+        "url": "https://box-bay.com"
+      },
+      {
+        "name": "Zach.dev",
+        "url": "https://zach.dev"
+      },
+      {
+        "name": "The Geek Designer",
+        "url": "https://thegeekdesigner.com"
+      },
+      {
+        "name": "Quentin.xyz",
+        "url": "https://quentin.xyz"
+      },
+      {
+        "name": "Sarmat",
+        "url": "https://sarmat.com"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "game.png", "label": "Game UI" },
-      { "file": "shop.png", "label": "쇼핑몰" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "game.png",
+        "label": "Game UI"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      }
+    ],
+    "history": "1980년대 SF 소설(William Gibson 'Neuromancer', 1984)에서 출발. Blade Runner(1982)가 시각적 원형. '하이테크, 로우라이프' — 네온·도시·어둠의 삼위일체. 2020년 Cyberpunk 2077이 게임 UI 트렌드를 견인."
   },
   {
     "id": "maximalism",
@@ -314,17 +1314,76 @@
     "nameKr": "맥시멀리즘",
     "tagline": "More is more",
     "description": "미니멀리즘의 정반대. 레이어, 패턴, 텍스처, 컬러를 최대한 쌓아 올리는 화려하고 복잡한 디자인.",
-    "keywords": ["layered", "pattern", "ornate", "colorful", "excess"],
-    "palette": ["#FF1493", "#FFD700", "#4169E1", "#32CD32"],
+    "keywords": [
+      "layered",
+      "pattern",
+      "ornate",
+      "colorful",
+      "excess"
+    ],
+    "palette": [
+      "#FF1493",
+      "#FFD700",
+      "#4169E1",
+      "#32CD32"
+    ],
     "examples": [
-      { "name": "Gucci", "url": "https://www.gucci.com" },
-      { "name": "Kenzo", "url": "https://www.kenzo.com" }
+      {
+        "name": "Ellen Porteus",
+        "url": "https://www.ellenporteus.com"
+      },
+      {
+        "name": "Choreus",
+        "url": "https://choreus.co"
+      },
+      {
+        "name": "Pest Stop Boys",
+        "url": "https://peststopboys.co.uk"
+      },
+      {
+        "name": "Slosh Seltzer",
+        "url": "https://sloshseltzer.com"
+      },
+      {
+        "name": "Glitché",
+        "url": "https://glitche.com"
+      },
+      {
+        "name": "PIN-UP Magazine",
+        "url": "https://pinupmagazine.org"
+      },
+      {
+        "name": "DIKO",
+        "url": "https://www.diko.co"
+      },
+      {
+        "name": "Dopple Press",
+        "url": "https://dopplepress.com"
+      },
+      {
+        "name": "Laurenz Marsau",
+        "url": "https://laurenzmarsau.com"
+      },
+      {
+        "name": "Hattie Stewart",
+        "url": "https://hattiestewart.com"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "fashion.png", "label": "Fashion Site" },
-      { "file": "editorial.png", "label": "Editorial" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "fashion.png",
+        "label": "Fashion Site"
+      },
+      {
+        "file": "editorial.png",
+        "label": "Editorial"
+      }
+    ],
+    "history": "미니멀리즘에 대한 반작용으로 반복 등장. Gucci(Alessandro Michele 시대, 2015-2022)가 패션에서 재정의. 웹에서는 스크롤 애니메이션·멀티미디어 실험의 도구. '더 많이, 더 대담하게'가 원칙."
   },
   {
     "id": "japandi",
@@ -332,17 +1391,76 @@
     "nameKr": "재팬디",
     "tagline": "Japanese × Scandinavian calm",
     "description": "일본의 와비사비 + 스칸디나비아의 휘게. 자연 소재, 뮤트 톤, 절제된 장식, 불완전함 속의 아름다움.",
-    "keywords": ["wabi-sabi", "hygge", "neutral", "natural-material", "calm"],
-    "palette": ["#D4C5A9", "#2C3639", "#F5F0E8", "#A27B5C"],
+    "keywords": [
+      "wabi-sabi",
+      "hygge",
+      "neutral",
+      "natural-material",
+      "calm"
+    ],
+    "palette": [
+      "#D4C5A9",
+      "#2C3639",
+      "#F5F0E8",
+      "#A27B5C"
+    ],
     "examples": [
-      { "name": "Kinfolk", "url": "https://www.kinfolk.com" },
-      { "name": "Cereal Magazine", "url": "https://www.readcereal.com" }
+      {
+        "name": "Nkuku",
+        "url": "https://www.nkuku.com"
+      },
+      {
+        "name": "Wearth London",
+        "url": "https://www.wearthlondon.com"
+      },
+      {
+        "name": "MUJI",
+        "url": "https://muji.com"
+      },
+      {
+        "name": "Rikumo",
+        "url": "https://rikumo.com"
+      },
+      {
+        "name": "Tortoise General Store",
+        "url": "https://tortoisegeneralstore.com"
+      },
+      {
+        "name": "Nalata Nalata",
+        "url": "https://shop.nalatanalata.com"
+      },
+      {
+        "name": "Kave Home",
+        "url": "https://kavehome.com"
+      },
+      {
+        "name": "Kinfolk",
+        "url": "https://www.kinfolk.com"
+      },
+      {
+        "name": "Cereal Magazine",
+        "url": "https://www.readcereal.com"
+      },
+      {
+        "name": "Form Shop",
+        "url": "https://form-shop.com"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "interior.png", "label": "Interior Shop" },
-      { "file": "blog.png", "label": "Lifestyle Blog" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "interior.png",
+        "label": "Interior Shop"
+      },
+      {
+        "file": "blog.png",
+        "label": "Lifestyle Blog"
+      }
+    ],
+    "history": "2019-2020년 인테리어 트렌드로 부상. 일본 와비사비(불완전함의 아름다움) + 스칸디나비아 휘게(아늑함)의 융합. 자연 소재, 뮤트 팔레트, 절제된 장식. Kinfolk·Cereal Magazine이 디지털 표현의 선구자."
   },
   {
     "id": "kawaii",
@@ -350,17 +1468,76 @@
     "nameKr": "카와이",
     "tagline": "Cute, round, pastel",
     "description": "일본 카와이 문화의 디지털 표현. 파스텔 컬러, 둥근 모서리, 귀여운 캐릭터/아이콘, 작은 애니메이션.",
-    "keywords": ["pastel", "rounded", "cute", "character", "playful"],
-    "palette": ["#FFB7C5", "#B4F8C8", "#FBE7C6", "#A0E7E5"],
+    "keywords": [
+      "pastel",
+      "rounded",
+      "cute",
+      "character",
+      "playful"
+    ],
+    "palette": [
+      "#FFB7C5",
+      "#B4F8C8",
+      "#FBE7C6",
+      "#A0E7E5"
+    ],
     "examples": [
-      { "name": "Sanrio", "url": "https://www.sanrio.com" },
-      { "name": "LINE Friends", "url": "https://www.linefriends.com" }
+      {
+        "name": "Sanrio",
+        "url": "https://www.sanrio.com"
+      },
+      {
+        "name": "Korekawaii",
+        "url": "https://korekawaii.com"
+      },
+      {
+        "name": "Kawaii Babe",
+        "url": "https://kawaiibabe.com"
+      },
+      {
+        "name": "The Kawaii Shoppu",
+        "url": "https://thekawaiishoppu.com"
+      },
+      {
+        "name": "Subtle Asian Treats",
+        "url": "https://subtleasiantreats.com"
+      },
+      {
+        "name": "Tattly",
+        "url": "https://tattly.com"
+      },
+      {
+        "name": "Moth Chicago",
+        "url": "https://mothchicago.com"
+      },
+      {
+        "name": "Mjölk",
+        "url": "https://www.mjolk.ca"
+      },
+      {
+        "name": "Bruna Zolet",
+        "url": "https://brunazolet.com"
+      },
+      {
+        "name": "LINE Friends",
+        "url": "https://www.linefriends.com"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "shop.png", "label": "쇼핑몰" },
-      { "file": "mobile-app.png", "label": "Mobile App" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      },
+      {
+        "file": "mobile-app.png",
+        "label": "Mobile App"
+      }
+    ],
+    "history": "1970년대 일본 산리오(Hello Kitty, 1974)에서 시작된 '귀여움' 문화. 하라주쿠 패션, 파스텔 팔레트, 둥근 캐릭터가 핵심. 웹에서는 LINE, 카카오 등 아시아 메신저 플랫폼이 글로벌 확산을 주도."
   },
   {
     "id": "corporate-memphis",
@@ -368,18 +1545,76 @@
     "nameKr": "코퍼레이트 멤피스",
     "tagline": "Flat people, SaaS vibes",
     "description": "실리콘밸리 스타트업·SaaS의 표준 일러스트 스타일. 비례가 과장된 인물, 솔리드 컬러, 따뜻하고 친근한 톤.",
-    "keywords": ["flat-illustration", "SaaS", "friendly", "character", "tech"],
-    "palette": ["#6C63FF", "#FF6584", "#3F3D56", "#F2F2F2"],
+    "keywords": [
+      "flat-illustration",
+      "SaaS",
+      "friendly",
+      "character",
+      "tech"
+    ],
+    "palette": [
+      "#6C63FF",
+      "#FF6584",
+      "#3F3D56",
+      "#F2F2F2"
+    ],
     "examples": [
-      { "name": "Slack", "url": "https://slack.com" },
-      { "name": "Notion", "url": "https://www.notion.so" },
-      { "name": "Figma", "url": "https://www.figma.com" }
+      {
+        "name": "Slack",
+        "url": "https://slack.com"
+      },
+      {
+        "name": "WeTransfer",
+        "url": "https://wetransfer.com"
+      },
+      {
+        "name": "Robinhood",
+        "url": "https://robinhood.com"
+      },
+      {
+        "name": "Salesforce",
+        "url": "https://salesforce.com"
+      },
+      {
+        "name": "Airbnb",
+        "url": "https://airbnb.com"
+      },
+      {
+        "name": "Asana",
+        "url": "https://asana.com"
+      },
+      {
+        "name": "Zendesk",
+        "url": "https://zendesk.com"
+      },
+      {
+        "name": "Lyft",
+        "url": "https://lyft.com"
+      },
+      {
+        "name": "Duolingo",
+        "url": "https://duolingo.com"
+      },
+      {
+        "name": "Hinge",
+        "url": "https://hinge.co"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "SaaS Landing" },
-      { "file": "pricing.png", "label": "Pricing Page" },
-      { "file": "onboarding.png", "label": "Onboarding" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "SaaS Landing"
+      },
+      {
+        "file": "pricing.png",
+        "label": "Pricing Page"
+      },
+      {
+        "file": "onboarding.png",
+        "label": "Onboarding"
+      }
+    ],
+    "history": "2017-2019년 실리콘밸리 테크 기업들의 마케팅에서 표준화. Alice Lee(Slack 일러스트), Buck Design이 스타일 정립. 비례가 과장된 인물·따뜻한 톤. 2022년부터 '너무 획일적'이라는 백래시 시작."
   },
   {
     "id": "gradient-aurora",
@@ -387,17 +1622,76 @@
     "nameKr": "그라디언트 / 오로라",
     "tagline": "Vibrant color transitions",
     "description": "메시 그라디언트, 오로라 배경, 부드럽게 흐르는 색상 전환. 최근 iOS·macOS 월페이퍼에서 대중화.",
-    "keywords": ["mesh-gradient", "aurora", "vibrant", "fluid", "color-blend"],
-    "palette": ["#667EEA", "#764BA2", "#F093FB", "#4FACFE"],
+    "keywords": [
+      "mesh-gradient",
+      "aurora",
+      "vibrant",
+      "fluid",
+      "color-blend"
+    ],
+    "palette": [
+      "#667EEA",
+      "#764BA2",
+      "#F093FB",
+      "#4FACFE"
+    ],
     "examples": [
-      { "name": "Stripe Gradient", "url": "https://stripe.com" },
-      { "name": "Linear", "url": "https://linear.app" }
+      {
+        "name": "Stripe",
+        "url": "https://stripe.com"
+      },
+      {
+        "name": "Vercel",
+        "url": "https://vercel.com"
+      },
+      {
+        "name": "Linear",
+        "url": "https://linear.app"
+      },
+      {
+        "name": "Reflect",
+        "url": "https://reflect.app"
+      },
+      {
+        "name": "Onima",
+        "url": "https://www.onima.bio"
+      },
+      {
+        "name": "Wope",
+        "url": "https://wope.com"
+      },
+      {
+        "name": "Evmos",
+        "url": "https://evmos.org"
+      },
+      {
+        "name": "Apple",
+        "url": "https://apple.com"
+      },
+      {
+        "name": "Spotify",
+        "url": "https://spotify.com"
+      },
+      {
+        "name": "Cohere",
+        "url": "https://cohere.com"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "saas.png", "label": "SaaS Dashboard" },
-      { "file": "mobile-app.png", "label": "Mobile App" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "saas.png",
+        "label": "SaaS Dashboard"
+      },
+      {
+        "file": "mobile-app.png",
+        "label": "Mobile App"
+      }
+    ],
+    "history": "2017년 Stripe가 움직이는 메시 그라디언트로 트렌드를 시작. iOS 14-16 월페이퍼, macOS 배경이 대중화를 견인. WebGL·CSS 그라디언트 기술 발전과 함께 2020년대 SaaS 브랜딩의 표준 배경으로 정착."
   },
   {
     "id": "claymorphism",
@@ -405,17 +1699,76 @@
     "nameKr": "클레이모피즘",
     "tagline": "Soft 3D clay world",
     "description": "부드러운 3D 클레이/점토 느낌의 UI. 둥글둥글한 모서리, 파스텔 톤, 입체적이지만 부드러운 그림자.",
-    "keywords": ["3D", "clay", "rounded", "pastel", "soft-shadow"],
-    "palette": ["#F0E6FF", "#FFE5EC", "#E8F5E9", "#FFF3E0"],
+    "keywords": [
+      "3D",
+      "clay",
+      "rounded",
+      "pastel",
+      "soft-shadow"
+    ],
+    "palette": [
+      "#F0E6FF",
+      "#FFE5EC",
+      "#E8F5E9",
+      "#FFF3E0"
+    ],
     "examples": [
-      { "name": "Dribbble Claymorphism", "url": "https://dribbble.com/tags/claymorphism" },
-      { "name": "Spline", "url": "https://spline.design" }
+      {
+        "name": "Pitch",
+        "url": "https://pitch.com"
+      },
+      {
+        "name": "Toggl",
+        "url": "https://toggl.com"
+      },
+      {
+        "name": "Send Potion",
+        "url": "https://www.sendpotion.com"
+      },
+      {
+        "name": "Bison Studio",
+        "url": "https://bison.studio"
+      },
+      {
+        "name": "Thibaud Allie",
+        "url": "https://www.thibaudallie.com"
+      },
+      {
+        "name": "Mouthwash",
+        "url": "https://mouthwash.co"
+      },
+      {
+        "name": "Van Holtz Co",
+        "url": "https://vanholtz.co"
+      },
+      {
+        "name": "Jon Way Studio",
+        "url": "https://www.jonway.studio"
+      },
+      {
+        "name": "Corentin Bernadou",
+        "url": "https://www.corentinbernadou.co"
+      },
+      {
+        "name": "Spline",
+        "url": "https://spline.design"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "app-icons.png", "label": "App Icons" },
-      { "file": "shop.png", "label": "쇼핑몰" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "app-icons.png",
+        "label": "App Icons"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      }
+    ],
+    "history": "2021년 Michal Malewicz가 명명. Blender·Spline 같은 3D 도구의 대중화로 확산. Nintendo Switch UI, Headspace 3D 캐릭터가 영감. 뉴모피즘의 3D 확장판으로 볼 수 있음."
   },
   {
     "id": "neo-brutalism",
@@ -423,17 +1776,76 @@
     "nameKr": "네오 브루탈리즘",
     "tagline": "Bold borders meet vibrant fills",
     "description": "브루탈리즘의 진화형. 두꺼운 검정 테두리 + 비비드 컬러 채움 + 하드 그림자. Gumroad, Figma가 트렌드를 이끌었다.",
-    "keywords": ["thick-border", "hard-shadow", "vivid", "raw", "modern"],
-    "palette": ["#FF5733", "#FFC300", "#000000", "#FFFFFF"],
+    "keywords": [
+      "thick-border",
+      "hard-shadow",
+      "vivid",
+      "raw",
+      "modern"
+    ],
+    "palette": [
+      "#FF5733",
+      "#FFC300",
+      "#000000",
+      "#FFFFFF"
+    ],
     "examples": [
-      { "name": "Gumroad", "url": "https://gumroad.com" },
-      { "name": "Figma Community", "url": "https://www.figma.com/community" }
+      {
+        "name": "Gumroad",
+        "url": "https://gumroad.com"
+      },
+      {
+        "name": "Roze Bunker",
+        "url": "https://rozebunker.nl"
+      },
+      {
+        "name": "Problem Studio",
+        "url": "https://problem.studio"
+      },
+      {
+        "name": "Curry Cafe",
+        "url": "https://curry.cafe"
+      },
+      {
+        "name": "Ilya Money",
+        "url": "https://ilya.money"
+      },
+      {
+        "name": "American Millennial",
+        "url": "http://americanmillenni.al"
+      },
+      {
+        "name": "Arrc",
+        "url": "http://arrc.site"
+      },
+      {
+        "name": "Effecava",
+        "url": "http://effecava.xyz"
+      },
+      {
+        "name": "Figma Community",
+        "url": "https://www.figma.com/community"
+      },
+      {
+        "name": "Zavidova",
+        "url": "http://zavidova.com"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "blog.png", "label": "Blog" },
-      { "file": "shop.png", "label": "쇼핑몰" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "blog.png",
+        "label": "Blog"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      }
+    ],
+    "history": "2020년 Gumroad 리디자인에서 트렌드 시작. Brutalism + 비비드 컬러 + 하드 그림자의 조합. Notion, Figma Community에서도 채택. 기존 브루탈리즘보다 접근 가능하고 밝은 톤. 인디 개발자·크리에이터 도구 사이에서 인기."
   },
   {
     "id": "kinetic-typography",
@@ -441,17 +1853,76 @@
     "nameKr": "키네틱 타이포",
     "tagline": "Text in motion",
     "description": "타이포그래피 자체가 주인공. 스크롤/마우스에 반응하는 글자, 애니메이션 서체, 대형 타이틀이 화면을 지배.",
-    "keywords": ["motion", "large-type", "scroll-driven", "interactive", "bold"],
-    "palette": ["#000000", "#FFFFFF", "#FF4500", "#1E90FF"],
+    "keywords": [
+      "motion",
+      "large-type",
+      "scroll-driven",
+      "interactive",
+      "bold"
+    ],
+    "palette": [
+      "#000000",
+      "#FFFFFF",
+      "#FF4500",
+      "#1E90FF"
+    ],
     "examples": [
-      { "name": "Awwwards Typography", "url": "https://www.awwwards.com/websites/typography" },
-      { "name": "Locomotive", "url": "https://locomotive.ca" }
+      {
+        "name": "Thibaud Allie",
+        "url": "https://www.thibaudallie.com"
+      },
+      {
+        "name": "Diego Funken",
+        "url": "http://diegofunken.com"
+      },
+      {
+        "name": "Mouthwash",
+        "url": "https://mouthwash.co"
+      },
+      {
+        "name": "Sam Phlix",
+        "url": "https://sam-phlix.com"
+      },
+      {
+        "name": "Editorial New",
+        "url": "https://editorialnew.com"
+      },
+      {
+        "name": "BASIC Moves",
+        "url": "https://moves.basicagency.com"
+      },
+      {
+        "name": "100 Days of Poetry",
+        "url": "https://100daysofpoetry.gallery"
+      },
+      {
+        "name": "Locomotive",
+        "url": "https://locomotive.ca"
+      },
+      {
+        "name": "Van Holtz Co",
+        "url": "https://vanholtz.co"
+      },
+      {
+        "name": "Jon Way Studio",
+        "url": "https://www.jonway.studio"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "portfolio.png", "label": "Portfolio" },
-      { "file": "agency.png", "label": "Agency Site" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "portfolio.png",
+        "label": "Portfolio"
+      },
+      {
+        "file": "agency.png",
+        "label": "Agency Site"
+      }
+    ],
+    "history": "1959년 Alfred Hitchcock 'North by Northwest' 타이틀 시퀀스가 원조. 웹에서는 2018-2020년 Locomotive Scroll·GSAP 라이브러리 발전으로 폭발적 성장. 포트폴리오·에이전시 사이트의 핵심 차별화 요소."
   },
   {
     "id": "frutiger-aero",
@@ -459,17 +1930,76 @@
     "nameKr": "프루티거 에어로",
     "tagline": "Glossy nature meets technology",
     "description": "2006-2013년의 지배적 디자인 언어. 광택 있는 UI, 자연 이미지(물방울·잎·하늘), Frutiger 서체, 투명 유리 효과. Windows Vista/7, 초기 스마트폰 시대의 낙관적 기술 미학.",
-    "keywords": ["glossy", "nature", "translucent", "gradient", "optimism"],
-    "palette": ["#00A3E0", "#7BC043", "#FFFFFF", "#E8F5E9"],
+    "keywords": [
+      "glossy",
+      "nature",
+      "translucent",
+      "gradient",
+      "optimism"
+    ],
+    "palette": [
+      "#00A3E0",
+      "#7BC043",
+      "#FFFFFF",
+      "#E8F5E9"
+    ],
     "examples": [
-      { "name": "Frutiger Aero Wiki", "url": "https://aesthetics.fandom.com/wiki/Frutiger_Aero" },
-      { "name": "Windows Vista Design", "url": "https://www.microsoft.com" }
+      {
+        "name": "Skeuoss",
+        "url": "https://skeuoss.net"
+      },
+      {
+        "name": "Apple",
+        "url": "https://www.apple.com"
+      },
+      {
+        "name": "Frutiger Aero Archive",
+        "url": "https://frutigeraeroarchive.org"
+      },
+      {
+        "name": "Lurk",
+        "url": "https://lurk.me"
+      },
+      {
+        "name": "Frutiger Aero Org",
+        "url": "https://frutigeraero.org"
+      },
+      {
+        "name": "Perfect Hue",
+        "url": "https://www.perfecthue.co"
+      },
+      {
+        "name": "Frutiger Aero Neocities",
+        "url": "https://frutiger-aero.neocities.org"
+      },
+      {
+        "name": "Aero Website",
+        "url": "https://aerowebsite.neocities.org"
+      },
+      {
+        "name": "Frutiger Aero Fans",
+        "url": "https://frutigeraero-fans.pi.fyi"
+      },
+      {
+        "name": "Frutiger Aero Community",
+        "url": "https://frutigeraero.neocities.org"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "dashboard.png", "label": "Dashboard" },
-      { "file": "mobile-app.png", "label": "Mobile App" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "dashboard.png",
+        "label": "Dashboard"
+      },
+      {
+        "file": "mobile-app.png",
+        "label": "Mobile App"
+      }
+    ],
+    "history": "2006-2013년 Windows Vista/7, iOS 1-6 시대의 지배적 디자인 언어. Adrian Frutiger의 Segoe UI/Frutiger 서체 + 에어로 유리 효과. 자연(물방울·하늘·잎)과 기술의 낙관적 융합. 2023년부터 Z세대 주도의 강력한 리바이벌."
   },
   {
     "id": "bento-grid",
@@ -477,17 +2007,76 @@
     "nameKr": "벤토 그리드",
     "tagline": "Apple-style modular boxes",
     "description": "Apple이 대중화한 도시락 상자(弁当) 레이아웃. 다양한 크기의 둥근 모서리 카드가 그리드 안에서 각자의 콘텐츠를 담는다. 깔끔하고 모듈형.",
-    "keywords": ["grid", "modular", "rounded", "clean", "modern"],
-    "palette": ["#F5F5F7", "#1D1D1F", "#0071E3", "#FBFBFD"],
+    "keywords": [
+      "grid",
+      "modular",
+      "rounded",
+      "clean",
+      "modern"
+    ],
+    "palette": [
+      "#F5F5F7",
+      "#1D1D1F",
+      "#0071E3",
+      "#FBFBFD"
+    ],
     "examples": [
-      { "name": "Apple Features Page", "url": "https://www.apple.com/iphone" },
-      { "name": "Vercel", "url": "https://vercel.com" }
+      {
+        "name": "Apple",
+        "url": "https://www.apple.com"
+      },
+      {
+        "name": "Vercel",
+        "url": "https://vercel.com"
+      },
+      {
+        "name": "Next.js",
+        "url": "https://nextjs.org"
+      },
+      {
+        "name": "Notion",
+        "url": "https://notion.so"
+      },
+      {
+        "name": "DJI",
+        "url": "https://www.dji.com"
+      },
+      {
+        "name": "Linear",
+        "url": "https://linear.app"
+      },
+      {
+        "name": "Supabase",
+        "url": "https://supabase.com"
+      },
+      {
+        "name": "Framer",
+        "url": "https://framer.com"
+      },
+      {
+        "name": "Stripe",
+        "url": "https://stripe.com"
+      },
+      {
+        "name": "Walmart",
+        "url": "https://www.walmart.com"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Features Page" },
-      { "file": "dashboard.png", "label": "Dashboard" },
-      { "file": "shop.png", "label": "쇼핑몰" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Features Page"
+      },
+      {
+        "file": "dashboard.png",
+        "label": "Dashboard"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      }
+    ],
+    "history": "2023년 Apple WWDC에서 대중화. 일본 도시락 상자(弁当)에서 착안한 모듈형 레이아웃. Vercel, Linear 등 SaaS가 즉시 채택. CSS Grid/Flexbox 기술 발전이 구현을 가능하게 함. 2024-2025년 가장 핫한 레이아웃 패턴."
   },
   {
     "id": "dopamine-design",
@@ -495,17 +2084,76 @@
     "nameKr": "도파민 디자인",
     "tagline": "Joy-inducing hyper-color",
     "description": "즐거움과 도파민 분비를 목표로 한 초고채도 디자인. 비비드 컬러 블록, 과장된 일러스트, 원형 모티프, 에너지 넘치는 레이아웃. Gen Z 타겟.",
-    "keywords": ["vivid", "playful", "bold-color", "rounded", "gen-z"],
-    "palette": ["#FF6F61", "#FFD700", "#00CED1", "#FF1493"],
+    "keywords": [
+      "vivid",
+      "playful",
+      "bold-color",
+      "rounded",
+      "gen-z"
+    ],
+    "palette": [
+      "#FF6F61",
+      "#FFD700",
+      "#00CED1",
+      "#FF1493"
+    ],
     "examples": [
-      { "name": "Headspace", "url": "https://www.headspace.com" },
-      { "name": "Duolingo", "url": "https://www.duolingo.com" }
+      {
+        "name": "Lush",
+        "url": "https://www.lush.com"
+      },
+      {
+        "name": "Headspace",
+        "url": "https://www.headspace.com"
+      },
+      {
+        "name": "Starface",
+        "url": "https://starface.world"
+      },
+      {
+        "name": "Graza",
+        "url": "https://graza.co"
+      },
+      {
+        "name": "Duolingo",
+        "url": "https://www.duolingo.com"
+      },
+      {
+        "name": "Urban Outfitters",
+        "url": "https://www.urbanoutfitters.com"
+      },
+      {
+        "name": "Adult Swim",
+        "url": "https://www.adultswim.com"
+      },
+      {
+        "name": "Superthing Coffee",
+        "url": "https://superthingcoffee.com"
+      },
+      {
+        "name": "Tiny Tracks",
+        "url": "https://tinytracks.app"
+      },
+      {
+        "name": "Mango Marketing",
+        "url": "https://mangomarketingco.com"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "mobile-app.png", "label": "Mobile App" },
-      { "file": "shop.png", "label": "쇼핑몰" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "mobile-app.png",
+        "label": "Mobile App"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      }
+    ],
+    "history": "2022-2023년 Gen Z 타겟 브랜드에서 등장. '도파민 드레싱' 패션 트렌드에서 영감. Duolingo의 캐릭터 마케팅, Headspace의 컬러 시스템이 대표적. 팬데믹 이후 '기쁨을 주는 디자인'에 대한 수요가 배경."
   },
   {
     "id": "anti-design",
@@ -513,17 +2161,76 @@
     "nameKr": "안티 디자인",
     "tagline": "Deliberately breaking every rule",
     "description": "의도적으로 모든 디자인 규칙을 위반. 불쾌한 색 조합, 읽기 힘든 타이포, 깨진 정렬, 커서 변형. 디자인 관습 자체에 대한 반항.",
-    "keywords": ["anti-design", "broken-grid", "clash", "experimental", "raw"],
-    "palette": ["#CCFF00", "#FF00FF", "#000000", "#0000FF"],
+    "keywords": [
+      "anti-design",
+      "broken-grid",
+      "clash",
+      "experimental",
+      "raw"
+    ],
+    "palette": [
+      "#CCFF00",
+      "#FF00FF",
+      "#000000",
+      "#0000FF"
+    ],
     "examples": [
-      { "name": "David Rudnick", "url": "https://davidrudnick.com" },
-      { "name": "Experimental Jetset", "url": "https://www.experimentaljetset.nl" }
+      {
+        "name": "Kitchen 154",
+        "url": "https://kitchen154.com"
+      },
+      {
+        "name": "Visual Matter",
+        "url": "https://visualmatter.co.uk"
+      },
+      {
+        "name": "Spicato",
+        "url": "https://spicato.com"
+      },
+      {
+        "name": "Scrib3",
+        "url": "https://scrib3.co"
+      },
+      {
+        "name": "Terradactyl",
+        "url": "https://terradactyl.xyz"
+      },
+      {
+        "name": "Be The Buzz",
+        "url": "https://bethebuzz.co"
+      },
+      {
+        "name": "David Rudnick",
+        "url": "https://davidrudnick.com"
+      },
+      {
+        "name": "Experimental Jetset",
+        "url": "https://www.experimentaljetset.nl"
+      },
+      {
+        "name": "Adult Swim",
+        "url": "https://www.adultswim.com"
+      },
+      {
+        "name": "Urban Outfitters",
+        "url": "https://www.urbanoutfitters.com"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "portfolio.png", "label": "Portfolio" },
-      { "file": "poster.png", "label": "Event Poster" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "portfolio.png",
+        "label": "Portfolio"
+      },
+      {
+        "file": "poster.png",
+        "label": "Event Poster"
+      }
+    ],
+    "history": "1960년대 이탈리아 Radical Design 운동(Archizoom, Superstudio)에서 시작. 웹에서는 2010년대 중반 David Rudnick, Experimental Jetset의 실험적 포트폴리오가 표본. 의도적 불편함과 규칙 파괴가 핵심."
   },
   {
     "id": "psychedelic",
@@ -531,17 +2238,76 @@
     "nameKr": "사이케델릭",
     "tagline": "Trippy, swirling, mind-bending",
     "description": "1960-70년대 사이키델릭 록 문화에서 시작. 소용돌이 패턴, 과포화 컬러, 왜곡된 타이포그래피, 만화경 같은 대칭. 의식 확장의 시각적 표현.",
-    "keywords": ["swirl", "vivid", "retro", "pattern", "experimental"],
-    "palette": ["#FF6EC7", "#39FF14", "#FF4500", "#8B00FF"],
+    "keywords": [
+      "swirl",
+      "vivid",
+      "retro",
+      "pattern",
+      "experimental"
+    ],
+    "palette": [
+      "#FF6EC7",
+      "#39FF14",
+      "#FF4500",
+      "#8B00FF"
+    ],
     "examples": [
-      { "name": "Psychedelic Art Museum", "url": "https://dribbble.com/tags/psychedelic" },
-      { "name": "Festival Sites", "url": "https://www.coachella.com" }
+      {
+        "name": "Falling Falling",
+        "url": "https://fallingfalling.com"
+      },
+      {
+        "name": "Zoom Quilt",
+        "url": "https://zoomquilt.org"
+      },
+      {
+        "name": "Audiograph",
+        "url": "https://audiograph.xyz"
+      },
+      {
+        "name": "Cache Monet",
+        "url": "https://cachemonet.com"
+      },
+      {
+        "name": "Trippy",
+        "url": "https://trippy.me"
+      },
+      {
+        "name": "Stone Techno",
+        "url": "https://www.stone-techno.com"
+      },
+      {
+        "name": "Threyda",
+        "url": "https://www.threyda.com"
+      },
+      {
+        "name": "Balenciaga",
+        "url": "https://www.balenciaga.com"
+      },
+      {
+        "name": "Bleach London",
+        "url": "https://bleachlondon.co.uk"
+      },
+      {
+        "name": "Coachella",
+        "url": "https://www.coachella.com"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "music.png", "label": "Music Festival" },
-      { "file": "poster.png", "label": "Event Poster" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "music.png",
+        "label": "Music Festival"
+      },
+      {
+        "file": "poster.png",
+        "label": "Event Poster"
+      }
+    ],
+    "history": "1960년대 샌프란시스코 사이키델릭 록 포스터에서 시작. Wes Wilson, Victor Moscoso가 대표 아티스트. 만화경 패턴, 과포화 컬러, 왜곡된 타이포. 1990년대 레이브 문화, 2020년대 페스티벌 브랜딩에서 반복적으로 부활."
   },
   {
     "id": "cottagecore",
@@ -549,17 +2315,76 @@
     "nameKr": "코티지코어",
     "tagline": "Rural nostalgia, floral warmth",
     "description": "시골 생활에 대한 낭만적 동경. 꽃무늬, 따뜻한 톤, 손글씨 서체, 빈티지 일러스트. 베이킹, 정원, 수공예의 소박한 아름다움.",
-    "keywords": ["floral", "warm", "handcraft", "natural", "nostalgic"],
-    "palette": ["#F5E6D3", "#8B6F47", "#D4A574", "#6B8E6B"],
+    "keywords": [
+      "floral",
+      "warm",
+      "handcraft",
+      "natural",
+      "nostalgic"
+    ],
+    "palette": [
+      "#F5E6D3",
+      "#8B6F47",
+      "#D4A574",
+      "#6B8E6B"
+    ],
     "examples": [
-      { "name": "Cottagecore Wiki", "url": "https://aesthetics.fandom.com/wiki/Cottagecore" },
-      { "name": "Etsy Cottagecore", "url": "https://www.etsy.com" }
+      {
+        "name": "Adored Vintage",
+        "url": "https://www.adoredvintage.com/"
+      },
+      {
+        "name": "LoveShackFancy",
+        "url": "https://www.loveshackfancy.com/"
+      },
+      {
+        "name": "Selkie Collection",
+        "url": "https://selkiecollection.com/"
+      },
+      {
+        "name": "Hill House Home",
+        "url": "https://hillhousehome.com/"
+      },
+      {
+        "name": "Moon and Cottage",
+        "url": "https://moonandcottage.com/"
+      },
+      {
+        "name": "LaceMade",
+        "url": "https://lacemade.com/"
+      },
+      {
+        "name": "Jessakae",
+        "url": "https://jessakae.com/"
+      },
+      {
+        "name": "Hopeless Romantic",
+        "url": "https://hopelessromantictrading.com/"
+      },
+      {
+        "name": "Atelette",
+        "url": "https://www.atelette.com/"
+      },
+      {
+        "name": "A Cottage in the City",
+        "url": "https://www.acottageinthecity.com/"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "shop.png", "label": "쇼핑몰" },
-      { "file": "blog.png", "label": "Lifestyle Blog" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      },
+      {
+        "file": "blog.png",
+        "label": "Lifestyle Blog"
+      }
+    ],
+    "history": "2018-2020년 Tumblr·TikTok에서 Z세대 주도로 부상. 팬데믹(2020) 중 '시골 생활 낭만화'로 폭발적 성장. Taylor Swift 'folklore'(2020)이 대중화에 기여. 꽃무늬, 빈티지 일러스트, 손글씨 서체가 핵심."
   },
   {
     "id": "steampunk",
@@ -567,17 +2392,76 @@
     "nameKr": "스팀펑크",
     "tagline": "Victorian machinery meets fantasy",
     "description": "빅토리아 시대 산업혁명 + 공상과학. 톱니바퀴, 증기기관, 황동 질감, 가죽, 고딕 서체. 과거의 기술로 상상한 미래.",
-    "keywords": ["gears", "brass", "victorian", "industrial", "fantasy"],
-    "palette": ["#8B7355", "#B8860B", "#2F1B0E", "#D4A574"],
+    "keywords": [
+      "gears",
+      "brass",
+      "victorian",
+      "industrial",
+      "fantasy"
+    ],
+    "palette": [
+      "#8B7355",
+      "#B8860B",
+      "#2F1B0E",
+      "#D4A574"
+    ],
     "examples": [
-      { "name": "Steampunk Wiki", "url": "https://aesthetics.fandom.com/wiki/Steampunk" },
-      { "name": "Dribbble Steampunk", "url": "https://dribbble.com/tags/steampunk" }
+      {
+        "name": "Arthrobots",
+        "url": "https://arthrobots.com/"
+      },
+      {
+        "name": "Abney Park",
+        "url": "https://abneypark.com/"
+      },
+      {
+        "name": "Keith Thompson Art",
+        "url": "https://keiththompsonart.com/"
+      },
+      {
+        "name": "Steampunk Explorer",
+        "url": "https://steampunk-explorer.com/"
+      },
+      {
+        "name": "3232 Design",
+        "url": "https://3232design.com/"
+      },
+      {
+        "name": "Key City Steampunk",
+        "url": "https://keycitysteampunk.com/"
+      },
+      {
+        "name": "Airovale",
+        "url": "https://airovale.com/"
+      },
+      {
+        "name": "Steam Trek",
+        "url": "https://steam-trek.com/"
+      },
+      {
+        "name": "Chicago Steampunk",
+        "url": "https://chicagosteampunkexpo.com/"
+      },
+      {
+        "name": "Steampunk Store",
+        "url": "https://steampunkstore.fr/"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "dashboard.png", "label": "Dashboard" },
-      { "file": "shop.png", "label": "쇼핑몰" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "dashboard.png",
+        "label": "Dashboard"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      }
+    ],
+    "history": "1980년대 SF 소설 장르(K.W. Jeter가 1987년 명명)에서 시작. 빅토리아 시대 + 증기기관 + 공상과학의 대체역사. Jules Verne, H.G. Wells의 문학적 뿌리. 웹에서는 톱니바퀴, 황동 텍스처, 고딕 서체로 표현."
   },
   {
     "id": "solarpunk",
@@ -585,17 +2469,76 @@
     "nameKr": "솔라펑크",
     "tagline": "Eco-utopia, green technology",
     "description": "지속가능한 미래에 대한 낙관적 비전. 식물과 기술의 공존, 태양광 패널, 유기적 건축, 밝은 녹색과 금색. 사이버펑크의 밝은 대안.",
-    "keywords": ["eco", "green", "futuristic", "organic", "optimism"],
-    "palette": ["#2D6A4F", "#95D5B2", "#FFD60A", "#F0F4EF"],
+    "keywords": [
+      "eco",
+      "green",
+      "futuristic",
+      "organic",
+      "optimism"
+    ],
+    "palette": [
+      "#2D6A4F",
+      "#95D5B2",
+      "#FFD60A",
+      "#F0F4EF"
+    ],
     "examples": [
-      { "name": "Solarpunk Wiki", "url": "https://aesthetics.fandom.com/wiki/Solarpunk" },
-      { "name": "Inhabitat", "url": "https://inhabitat.com" }
+      {
+        "name": "Slrpnk",
+        "url": "https://slrpnk.net/"
+      },
+      {
+        "name": "Solar Low Tech Magazine",
+        "url": "https://solar.lowtechmagazine.com/"
+      },
+      {
+        "name": "Compost Party",
+        "url": "https://compost.party/"
+      },
+      {
+        "name": "Solarpunk Cities",
+        "url": "https://solarpunkcities.com/"
+      },
+      {
+        "name": "Earthaven Ecovillage",
+        "url": "https://earthaven.org/"
+      },
+      {
+        "name": "Appropedia",
+        "url": "https://www.appropedia.org/"
+      },
+      {
+        "name": "Dark Matter Labs",
+        "url": "https://provocations.darkmatterlabs.org/"
+      },
+      {
+        "name": "WeeCasa Tiny Homes",
+        "url": "https://weecasa.com/"
+      },
+      {
+        "name": "Community First Village",
+        "url": "https://communityfirstvillage.org/"
+      },
+      {
+        "name": "Inhabitat",
+        "url": "https://inhabitat.com"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "app.png", "label": "Eco App" },
-      { "file": "shop.png", "label": "쇼핑몰" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "app.png",
+        "label": "Eco App"
+      },
+      {
+        "file": "shop.png",
+        "label": "쇼핑몰"
+      }
+    ],
+    "history": "2010년대 초반 Tumblr에서 개념 형성. 사이버펑크의 디스토피아에 대한 낙관적 대안. Studio Ghibli 애니메이션(특히 천공의 성 라퓨타)이 시각적 영감. 식물+기술, 태양광, 유기적 건축이 핵심 모티프."
   },
   {
     "id": "futurism",
@@ -603,17 +2546,76 @@
     "nameKr": "퓨처리즘",
     "tagline": "Speed, dynamism, diagonal energy",
     "description": "1909년 이탈리아에서 시작된 속도와 기계의 미학. 대각선, 방사형 구도, 역동적 타이포그래피, 운동감. 미래에 대한 극단적 열광.",
-    "keywords": ["diagonal", "dynamic", "speed", "geometric", "bold"],
-    "palette": ["#1A1A1A", "#FF4500", "#FFD700", "#FFFFFF"],
+    "keywords": [
+      "diagonal",
+      "dynamic",
+      "speed",
+      "geometric",
+      "bold"
+    ],
+    "palette": [
+      "#1A1A1A",
+      "#FF4500",
+      "#FFD700",
+      "#FFFFFF"
+    ],
     "examples": [
-      { "name": "Futurism Art", "url": "https://www.theartstory.org/movement/futurism" },
-      { "name": "Awwwards Dynamic", "url": "https://www.awwwards.com" }
+      {
+        "name": "Lusion",
+        "url": "https://lusion.co/"
+      },
+      {
+        "name": "The Digital Panda",
+        "url": "https://thedigitalpanda.com/"
+      },
+      {
+        "name": "Martin Ehrlich",
+        "url": "https://martinehrlich.com/"
+      },
+      {
+        "name": "Genesis",
+        "url": "https://genesis.com/"
+      },
+      {
+        "name": "Dotto Dot",
+        "url": "https://dottodot.es/"
+      },
+      {
+        "name": "Loaf Agency",
+        "url": "https://loaf.agency/"
+      },
+      {
+        "name": "iLab Solutions",
+        "url": "https://ilabsolutions.it/"
+      },
+      {
+        "name": "Asmobius",
+        "url": "https://asmobius.co.jp/"
+      },
+      {
+        "name": "Kriss Real Estate",
+        "url": "https://krissrealestate.com/"
+      },
+      {
+        "name": "Downtown Philly",
+        "url": "https://downtown-philly.com/"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Landing Page" },
-      { "file": "portfolio.png", "label": "Portfolio" },
-      { "file": "poster.png", "label": "Event Poster" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "portfolio.png",
+        "label": "Portfolio"
+      },
+      {
+        "file": "poster.png",
+        "label": "Event Poster"
+      }
+    ],
+    "history": "1909년 이탈리아 시인 Filippo Tommaso Marinetti가 선언문 발표. Umberto Boccioni, Giacomo Balla가 대표 아티스트. 속도, 기계, 역동성 찬양. 대각선·방사형 구도가 특징. 현대 모션 디자인과 역동적 타이포의 직접적 조상."
   },
   {
     "id": "indie-web",
@@ -621,16 +2623,75 @@
     "nameKr": "인디 웹",
     "tagline": "Handmade, personal, quirky",
     "description": "대형 플랫폼에서 벗어난 개인 홈페이지 문화. 손그림 요소, 88x31 배지, 방문자 카운터, 자유로운 레이아웃. 2020년대 개인 웹 부활 운동.",
-    "keywords": ["personal", "handmade", "quirky", "retro", "authentic"],
-    "palette": ["#FFF8E7", "#333333", "#FF6B6B", "#4ECDC4"],
+    "keywords": [
+      "personal",
+      "handmade",
+      "quirky",
+      "retro",
+      "authentic"
+    ],
+    "palette": [
+      "#FFF8E7",
+      "#333333",
+      "#FF6B6B",
+      "#4ECDC4"
+    ],
     "examples": [
-      { "name": "IndieWeb.org", "url": "https://indieweb.org" },
-      { "name": "Neocities", "url": "https://neocities.org" }
+      {
+        "name": "Aaron Parecki",
+        "url": "https://aaronparecki.com/"
+      },
+      {
+        "name": "Lynn and Tonic",
+        "url": "https://lynnandtonic.com/"
+      },
+      {
+        "name": "Ciechanowski",
+        "url": "https://ciechanow.ski/"
+      },
+      {
+        "name": "SJ Land",
+        "url": "https://sj.land/"
+      },
+      {
+        "name": "Pastel Hello",
+        "url": "https://pastelhello.com/"
+      },
+      {
+        "name": "Baguete",
+        "url": "https://baguete.es/"
+      },
+      {
+        "name": "Pomelo",
+        "url": "https://pomelo.lol/"
+      },
+      {
+        "name": "IndieWeb.org",
+        "url": "https://indieweb.org"
+      },
+      {
+        "name": "Neocities",
+        "url": "https://neocities.org"
+      },
+      {
+        "name": "Jeya Austen",
+        "url": "https://jeyausten.com/"
+      }
     ],
     "images": [
-      { "file": "landing.png", "label": "Personal Homepage" },
-      { "file": "blog.png", "label": "Blog" },
-      { "file": "links.png", "label": "Link Garden" }
-    ]
+      {
+        "file": "landing.png",
+        "label": "Personal Homepage"
+      },
+      {
+        "file": "blog.png",
+        "label": "Blog"
+      },
+      {
+        "file": "links.png",
+        "label": "Link Garden"
+      }
+    ],
+    "history": "2010년대 '인디웹 운동'에서 시작. 대형 플랫폼(Facebook, Twitter)에서 벗어나 개인 도메인 소유를 주장. 2020년대 Neocities 부활, 개인 홈페이지 문화 재유행. 88x31 배지, 방문자 카운터, 웹링 등 초기 웹의 요소를 의도적으로 되살림."
   }
 ]
