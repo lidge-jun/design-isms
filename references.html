@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>References — Design -isms</title>
+<meta name="description" content="타이포그래피, 디자인 운동, 공식 디자인 시스템 레퍼런스를 정리한 Design -isms 확장 준비 페이지.">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/css/style.css">
+<link rel="stylesheet" href="./assets/css/nav.css">
+<link rel="stylesheet" href="./assets/css/references.css">
+</head>
+<body class="references-page is-loading">
+
+<div class="loading-overlay" id="loading-overlay">
+  <div class="loading-inner">
+    <div class="loading-logo">✦</div>
+    <div class="loading-text">References</div>
+    <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo logo-link" href="./index.html" aria-label="Design -isms home">
+      <div class="logo-sketch">✦</div>
+      Design -isms
+    </a>
+    <nav class="header-right" aria-label="Primary navigation">
+      <a class="star-pill" href="./index.html">Isms</a>
+      <a class="star-pill" href="./effects.html">Effects</a>
+      <a class="star-pill" href="./references.html" aria-current="page">References</a>
+      <a class="star-pill" href="#guide">Guide</a>
+      <a class="star-pill" href="https://github.com/lidge-jun/design-isms" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/></svg>
+        Give me a star
+      </a>
+      <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">KR</button>
+      <span class="header-count">16 refs</span>
+    </nav>
+  </div>
+</header>
+
+<main class="references-main">
+  <section class="references-intro" aria-labelledby="references-title">
+    <p class="references-eyebrow">Research queue</p>
+    <h1 id="references-title">타이포그래피와 공식 디자인 레퍼런스</h1>
+    <p>ISMS로 확장할 후보와 별도 reference로 둘 디자인 시스템을 분리했습니다. Grok 리서치 프롬프트와 ima2 이미지 프롬프트까지 같은 데이터에 고정해 다음 배치를 바로 실행할 수 있습니다.</p>
+  </section>
+
+  <section class="references-toolbar" aria-label="Reference filters">
+    <div class="references-filter-row" id="references-filter-row"></div>
+    <label class="references-search-label">
+      <span class="sr-only">레퍼런스 검색</span>
+      <input type="text" class="search-input references-search" id="references-search" placeholder="typography, Material, ARIA..." autocomplete="off">
+    </label>
+  </section>
+
+  <section class="references-grid-section" aria-labelledby="references-grid-title">
+    <div class="references-grid-heading">
+      <h2 id="references-grid-title">Reference backlog</h2>
+      <p id="references-result-count">Loading references...</p>
+    </div>
+    <div class="references-grid" id="references-grid"></div>
+  </section>
+
+  <section class="references-guide" id="guide" aria-labelledby="guide-title">
+    <p class="references-eyebrow">Guide</p>
+    <h2 id="guide-title">실행 순서</h2>
+    <ol>
+      <li>Grok 리서치 프롬프트로 후보의 정의, 히스토리, 실제 사이트, 공식 출처를 먼저 확정한다.</li>
+      <li>ima2 job manifest의 target path로 PNG 원본을 생성한다.</li>
+      <li><code>npm run images:thumbs</code>로 WebP preview를 만든다.</li>
+      <li>승인된 ISM만 <code>assets/data/isms.json</code>에 편입하고, 공식 시스템은 references로 유지한다.</li>
+      <li>README, AGENTS, structure, devlog가 같은 구현 상태를 말하는지 확인한다.</li>
+    </ol>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span>Design -isms References</span>
+  <span>Typography, movements, and official systems</span>
+</footer>
+
+<script src="./assets/js/references.js"></script>
+</body>
+</html>

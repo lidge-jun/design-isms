@@ -11,31 +11,44 @@
 701_design-isms/
 ├── index.html                    # 메인 페이지
 ├── effects.html                  # 모바일/데스크탑 UI 후보군 페이지
+├── references.html               # ISM 후보/공식 레퍼런스 리서치 페이지
 ├── AGENTS.md                     # 이 파일
 ├── README.md
 ├── assets/
 │   ├── css/style.css             # 전체 스타일
+│   ├── css/nav.css               # 공통 상단 메뉴 스타일
 │   ├── css/effects.css           # UX 효과 페이지 전용 스타일
+│   ├── css/effects-docs.css      # 효과별 장문 문서 섹션
+│   ├── css/references.css        # 레퍼런스 페이지 전용 스타일
 │   ├── css/effects-demos.css     # 초기 공통 UX demo/animation
 │   ├── css/effects-demos-candidates.css # 46개 후보군 전용 demo/animation
 │   ├── js/app.js                 # 메인 로직 (src/app.ts build 산출물)
 │   ├── js/effects-demos.js       # 효과 demo renderer (src/effects-demos.ts build 산출물)
+│   ├── js/effects-docs.js        # 효과 문서 renderer (src/effects-docs.ts build 산출물)
 │   ├── js/effects.js             # 효과 페이지 로직 (src/effects.ts build 산출물)
+│   ├── js/references.js          # 레퍼런스 페이지 로직 (src/references.ts build 산출물)
 │   ├── data/isms.json            # 핵심 데이터 (35개 ism)
 │   ├── data/effects.json         # 프런트엔드 UI 후보군 데이터
+│   ├── data/effects-docs.json    # 효과별 배경/히스토리/사용 시점 문서
+│   ├── data/references.json      # ISM 후보와 공식 레퍼런스 backlog
+│   ├── data/research-prompts.json # Grok/ima2 프롬프트 레코드
 │   └── images/
 │       ├── minimalism/           # ism별 폴더
 │       │   ├── landing.png
 │       │   ├── shop.png
 │       │   └── portfolio.png
+│       ├── references/           # 공식 레퍼런스 overview PNG
 │       ├── thumbs/               # WebP thumbnail/preview 산출물
 │       │   ├── minimalism/
+│       │   ├── references/
 │       │   └── effects/
 │       ├── brutalism/
 │       └── ...                   # 35개 폴더
 ├── src/
 │   ├── app.ts
 │   ├── effects-demos.ts
+│   ├── effects-docs.ts
+│   ├── references.ts
 │   └── effects.ts
 ├── structure/
 │   └── README.md                 # 현재 구조와 source-of-truth 요약
@@ -54,6 +67,7 @@
 - README, `AGENTS.md`, `structure/README.md`, `devlog/`의 설명은 실제 구현과 어긋나면 안 된다.
 - 소스는 `src/*.ts`, 브라우저 산출물은 `assets/js/*.js`다. GitHub Pages가 static file을 직접 배포하므로 JS 산출물도 커밋 대상이다.
 - HTML은 non-module script를 사용한다. `effects.html`은 `assets/js/effects-demos.js`를 먼저, `assets/js/effects.js`를 나중에 로드해야 한다.
+- 상단 메뉴는 `index.html`, `effects.html`, `references.html` 모두에서 `Isms / Effects / References / Guide / GitHub / Lang / Count` 축을 유지한다. static HTML이라 공통 컴포넌트가 없으므로 세 페이지를 함께 수정한다.
 - 신규 파일은 500줄 이하를 유지한다. 초과하면 역할별 파일로 분리한다.
 - 커밋/푸시는 사용자가 같은 턴에서 명시적으로 요청한 경우에만 실행한다.
 
@@ -71,11 +85,30 @@
 
 - `effects.html`은 모바일 전용 목록이 아니라 모바일/데스크탑/공통 프런트엔드 UI 후보군 46개 카탈로그다.
 - `assets/data/effects.json`의 각 항목은 `demo.type`을 가져야 하며 값은 해당 effect `id`와 같아야 한다.
+- 긴 배경 설명, 히스토리, 사용 시점, 예시는 `assets/data/effects-docs.json`에 둔다. `effects.json`은 카드/데모/운영 필드 중심으로 작게 유지한다.
+- 효과 문서는 `src/effects-docs.ts`의 `EffectsDocs` namespace로 로드/검증/렌더링하고, `effects.html`에서 `assets/js/effects-docs.js`를 `assets/js/effects.js`보다 먼저 로드한다.
 - `src/effects-demos.ts` registry에는 46개 effect id가 모두 있어야 한다. 새 후보군을 기존 12개 seed animation에 재사용으로 연결하지 않는다.
 - 후보군마다 카드/모달에서 식별 가능한 전용 CSS demo animation을 둔다. 확장 demo 스타일은 `assets/css/effects-demos-candidates.css`에 둔다.
 - guide 원본은 `assets/images/effects/{effect-id}/guide.png`, WebP preview는 `assets/images/thumbs/effects/{effect-id}/guide.webp`다.
 - guide 이미지를 생성/교체하면 `npm run images:thumbs`로 WebP preview를 갱신하고 `npm run verify`를 통과시킨다.
 - 데스크탑과 모바일 모두에서 카드 수 46개, demo type 46개, horizontal overflow 없음, console error 없음까지 확인해야 완료로 보고한다.
+
+## References / 리서치 backlog 원칙
+
+- `references.html`은 최종 ISM 목록이 아니라 다음 확장 후보와 공식 레퍼런스를 검토하는 backlog page다.
+- `assets/data/references.json`의 `kind`가 `ISM Candidate`인 항목만 사용자 승인 후 `assets/data/isms.json`으로 승격할 수 있다.
+- `Official Reference` 항목은 Apple HIG, Material, Fluent, Carbon, Polaris, ARIA, MDN처럼 실제 디자인 시스템/가이드 기준으로 유지한다. 이것들을 시각 스타일 ISM으로 섞지 않는다.
+- Grok 리서치 프롬프트와 ima2 이미지 프롬프트는 `assets/data/research-prompts.json`과 `devlog/260510_nav_taxonomy_effect_docs/grok_research_prompts.md`에 같이 남긴다.
+- 새 reference/candidate 이미지는 PNG 원본을 보관하고 runtime에서는 `assets/images/thumbs/.../*.webp`를 우선 로드한다.
+- reference 페이지를 바꾸면 `src/references.ts`, `assets/js/references.js`, `assets/css/references.css`, `references.html`, `structure/README.md`, README를 함께 확인한다.
+
+## ima2 / WebP batch 원칙
+
+- 이미지 생성 전 `ima2 ping`으로 local server와 provider 상태를 확인한다.
+- 현재 확인된 생성 명령은 `ima2 gen --stdin -q high -s 1536x1024 -o <target.png> --json --timeout 300`이다.
+- 여러 job은 deterministic manifest에서 target path를 먼저 확정한 뒤 병렬 실행한다.
+- 생성 후 `npm run images:thumbs`로 WebP preview를 만들고 원본 PNG와 WebP preview 존재 여부를 모두 검증한다.
+- runtime grid/card/modal preview는 WebP 우선이다. PNG는 lightbox/source asset 용도다.
 
 ---
 

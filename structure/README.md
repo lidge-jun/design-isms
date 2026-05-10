@@ -15,14 +15,17 @@
 | Page | Purpose | Script | Data |
 | --- | --- | --- | --- |
 | `index.html` | 35개 디자인 ism 레퍼런스 보드 | `assets/js/app.js` | `assets/data/isms.json` |
-| `effects.html` | 모바일/데스크탑 프런트엔드 UI 후보군 보드 | `assets/js/effects-demos.js`, `assets/js/effects.js` | `assets/data/effects.json` |
+| `effects.html` | 모바일/데스크탑 프런트엔드 UI 후보군 보드와 효과별 문서 모달 | `assets/js/effects-demos.js`, `assets/js/effects-docs.js`, `assets/js/effects.js` | `assets/data/effects.json`, `assets/data/effects-docs.json` |
+| `references.html` | ISM 후보와 공식 디자인 레퍼런스 research queue | `assets/js/references.js` | `assets/data/references.json` |
 
 ## Source and Build
 
 ```text
-src/app.ts      -> assets/js/app.js
+src/app.ts           -> assets/js/app.js
 src/effects-demos.ts -> assets/js/effects-demos.js
-src/effects.ts  -> assets/js/effects.js
+src/effects-docs.ts  -> assets/js/effects-docs.js
+src/effects.ts       -> assets/js/effects.js
+src/references.ts    -> assets/js/references.js
 ```
 
 - TypeScript source is the editable logic layer.
@@ -37,19 +40,27 @@ assets/images/{ism-id}/*.png
 assets/images/thumbs/{ism-id}/*.webp
 assets/images/effects/{effect-id}/guide.png
 assets/images/thumbs/effects/{effect-id}/guide.webp
+assets/images/references/{reference-id}/overview.png
+assets/images/thumbs/references/{reference-id}/overview.webp
 ```
 
 - ISM cards use generated thumbnails and original PNG lightbox views.
 - Effects cards use CSS demos.
 - Effects demo registry provides one dedicated demo type per 46 candidates.
-- Effects modal guide previews use WebP and keep original PNGs for lightbox zoom.
-- Effect demo styling is split between `assets/css/effects.css`, `assets/css/effects-demos.css`, and `assets/css/effects-demos-candidates.css`.
+- Effects modal guide previews and reference page previews use WebP and keep original PNGs for source/lightbox use.
+- Effect demo styling is split between `assets/css/effects.css`, `assets/css/effects-docs.css`, `assets/css/effects-demos.css`, and `assets/css/effects-demos-candidates.css`.
+- Shared static navigation styling lives in `assets/css/nav.css`.
+- Reference page styling lives in `assets/css/references.css`.
 - Effects guide images are generated for all 46 candidates and shown in the modal only.
+- The current reference expansion batch generated 24 candidate UI mockups and 8 official reference overview PNGs, plus matching WebP previews.
 
 ## Current Feature Contracts
 
 - Main ISM modal: title, tagline, history, description, WebP preview image, always-open main prompt, collapsible secondary prompts, 3 visible example links plus expand button, keyword-derived related ISMs, and PNG lightbox.
-- Effects catalog: 46 entries, 46 unique `demo.type` values, 46 registry entries in `src/effects-demos.ts`, 46 original PNG guide images, and 46 generated WebP guide previews.
+- Effects catalog: 46 entries, 46 unique `demo.type` values, 46 registry entries in `src/effects-demos.ts`, 46 original PNG guide images, 46 generated WebP guide previews, and 46 long-form docs records in `assets/data/effects-docs.json`.
+- References catalog: 16 entries, split between 8 `ISM Candidate` records and 8 `Official Reference` records. This page is backlog/research, not automatic promotion into `assets/data/isms.json`.
+- Prompt data: `assets/data/research-prompts.json`, `devlog/260510_nav_taxonomy_effect_docs/grok_research_prompts.md`, `image_jobs.jsonl`, and `ima2_results.json` record the current Grok/ima2 batch.
+- Shared navigation: `index.html`, `effects.html`, and `references.html` expose Isms, Effects, References, Guide, GitHub, language toggle, and count where applicable.
 - Verification for visual changes: `npm run verify`, plus browser desktop/mobile checks for card count, unique demo classes, horizontal overflow, and console errors.
 - Verification for image changes: `npm run images:thumbs` before `npm run verify`.
 
@@ -64,6 +75,21 @@ devlog/260510_mobile_ux_effects/
 ├── 04_image_guide_pipeline.md
 ├── 05_verification_deploy.md
 └── AUDIT.md
+
+devlog/260510_nav_taxonomy_effect_docs/
+├── 00_overview.md
+├── 01_parallel_research_image_pipeline.md
+├── 02_navigation_ia.md
+├── 03_ism_taxonomy_reference_backlog.md
+├── 04_effects_docs_schema.md
+├── 05_runtime_implementation_plan.md
+├── 06_verification_source_of_truth.md
+├── grok_research_prompts.md
+├── image_jobs.jsonl
+├── ima2_results.json
+└── AUDIT.md
 ```
 
 This phase folder records the Jawdev/PABCD-style plan, GPT Pro review result, and final verification notes for the Frontend UI Candidates release.
+
+The `260510_nav_taxonomy_effect_docs` folder records the follow-up implementation that added shared navigation, `references.html`, long-form effects docs, Grok/ima2 prompt artifacts, and the 32-image research/reference batch.

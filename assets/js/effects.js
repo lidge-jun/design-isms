@@ -4,6 +4,7 @@
     const EFFECT_GUIDE_BASE_URL = './assets/images/effects';
     const MOTION_QUERY = '(prefers-reduced-motion: reduce)';
     let allEffects = [];
+    let effectDocs = new Map();
     let activeCategory = 'all';
     let searchQuery = '';
     let cardObserver = null;
@@ -18,6 +19,7 @@
         setupStaticInteractions(elements);
         try {
             allEffects = await loadEffects();
+            effectDocs = await EffectsDocs.load();
             renderFilters(elements);
             renderEffectCards(elements);
             hydrateHash(elements);
@@ -162,6 +164,25 @@
         }, { passive: true });
         window.addEventListener('hashchange', () => hydrateHash(elements));
         document.addEventListener('keydown', (event) => handleGlobalKeydown(event, elements));
+        setupLangToggle();
+    }
+    function setupLangToggle() {
+        const toggle = document.querySelector('#lang-toggle');
+        if (!toggle)
+            return;
+        let currentLang = localStorage.getItem('design-isms-lang') === 'en' ? 'en' : 'ko';
+        const sync = () => {
+            document.documentElement.lang = currentLang;
+            toggle.querySelectorAll('.lang-option').forEach((option) => {
+                option.classList.toggle('active', option.dataset.lang === currentLang);
+            });
+        };
+        toggle.addEventListener('click', () => {
+            currentLang = currentLang === 'ko' ? 'en' : 'ko';
+            localStorage.setItem('design-isms-lang', currentLang);
+            sync();
+        });
+        sync();
     }
     function renderFilters(elements) {
         const categories = Array.from(new Set(allEffects.map((effect) => effect.category)));
@@ -258,7 +279,8 @@
       ${renderCheckCard('언제 쓰나', effect.bestFor)}${renderCheckCard('피해야 할 때', effect.avoidWhen)}</div>
       ${renderCollapsible('implementation', '구현 방법', effect.implementation, true)}
       ${renderCollapsible('accessibility', '접근성 체크', effect.accessibility, false)}
-      ${renderCollapsible('performance', '성능 체크', effect.performance, false)}${renderGuide(effect)}`;
+      ${renderCollapsible('performance', '성능 체크', effect.performance, false)}
+      ${EffectsDocs.render(effect.id, effectDocs.get(effect.id) ?? null)}${renderGuide(effect)}`;
     }
     function renderChips(items) { return items.map((item) => `<span class="effect-chip">${escapeHtml(item)}</span>`).join(''); }
     function renderCheckCard(title, items) { return `<section class="effect-check-card"><h3>${escapeHtml(title)}</h3>${renderList(items)}</section>`; }
