@@ -1,0 +1,273 @@
+/* ── Effects Page: phone demos ── */
+.effect-demo {
+  position: relative;
+  min-height: 214px;
+  padding: 18px;
+  background:
+    linear-gradient(145deg, rgba(34, 34, 34, 0.04), rgba(255, 255, 255, 0.62)),
+    var(--bg-warm);
+  border-bottom: 1px solid var(--border);
+}
+.effect-phone {
+  position: relative;
+  width: 128px;
+  height: 178px;
+  margin: 0 auto;
+  border: 7px solid #262626;
+  border-radius: 28px;
+  background: #f8f6f0;
+  overflow: hidden;
+  box-shadow: 0 18px 32px rgba(34, 34, 34, 0.16);
+}
+.effect-phone::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 38px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(34, 34, 34, 0.28);
+  transform: translateX(-50%);
+  z-index: 4;
+}
+.phone-line,
+.phone-card,
+.phone-pill {
+  display: block;
+  border-radius: 999px;
+  background: rgba(34, 34, 34, 0.12);
+}
+.phone-line { height: 7px; margin: 22px 14px 0; }
+.phone-line.short { width: 48%; }
+.phone-card {
+  height: 34px;
+  margin: 12px 14px 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(34, 34, 34, 0.08);
+}
+.phone-pill {
+  width: 52px;
+  height: 18px;
+  margin: 12px 14px 0;
+  background: rgba(192, 107, 43, 0.2);
+}
+.effect-card .effect-demo *,
+.effect-card .effect-demo *::before,
+.effect-card .effect-demo *::after {
+  animation-play-state: paused;
+}
+.effect-card.is-visible .effect-demo *,
+.effect-card.is-visible .effect-demo *::before,
+.effect-card.is-visible .effect-demo *::after,
+.effect-modal-container .effect-demo *,
+.effect-modal-container .effect-demo *::before,
+.effect-modal-container .effect-demo *::after {
+  animation-play-state: running;
+}
+.demo-sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 14px 12px 12px;
+  background: #fff;
+  border-radius: 18px 18px 0 0;
+  transform: translateY(54%);
+  animation: sheetRise 2.8s ease-in-out infinite;
+}
+.demo-sheet::before {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 4px;
+  margin: 0 auto 12px;
+  border-radius: 999px;
+  background: rgba(34, 34, 34, 0.22);
+}
+.demo-sheet .phone-pill { width: 74%; margin: 8px auto 0; background: var(--accent); }
+.demo-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(34, 34, 34, 0.34);
+  opacity: 0;
+  animation: fadeOverlay 2.8s ease-in-out infinite;
+}
+.demo-full {
+  position: absolute;
+  inset: 18px 10px 10px;
+  border-radius: 18px;
+  background: #fff;
+  padding-top: 28px;
+  transform: scale(0.9);
+  opacity: 0;
+  animation: modalPop 2.9s ease-in-out infinite;
+}
+.demo-drawer {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 74%;
+  padding-top: 34px;
+  background: #fff;
+  transform: translateX(-84%);
+  animation: drawerSlide 3s ease-in-out infinite;
+}
+.demo-sticky-bar {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  height: 38px;
+  border-radius: 16px;
+  background: var(--ink);
+  box-shadow: 0 10px 18px rgba(34, 34, 34, 0.18);
+}
+.demo-reveal-card {
+  height: 32px;
+  margin: 12px 14px 0;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(34, 34, 34, 0.08);
+  opacity: 0;
+  transform: translateY(18px);
+  animation: revealUp 2.8s ease-in-out infinite;
+}
+.demo-reveal-card:nth-child(2) { animation-delay: 0.12s; }
+.demo-reveal-card:nth-child(3) { animation-delay: 0.24s; }
+.demo-press-button {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 74px;
+  height: 42px;
+  border-radius: 14px;
+  background: var(--accent);
+  box-shadow: 0 12px 0 rgba(166, 83, 31, 0.2);
+  animation: pressScale 1.7s ease-in-out infinite;
+}
+.demo-swipe-action {
+  position: absolute;
+  top: 70px;
+  left: 12px;
+  right: 12px;
+  height: 46px;
+  border-radius: 14px;
+  background: #2f7c57;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+.demo-swipe-row {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(34, 34, 34, 0.08);
+  transform: translateX(0);
+  animation: swipeReveal 2.6s ease-in-out infinite;
+}
+.demo-skeleton-line {
+  position: relative;
+  height: 10px;
+  margin: 18px 14px 0;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(34, 34, 34, 0.12);
+}
+.demo-skeleton-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.72), transparent);
+  transform: translateX(-100%);
+  animation: shimmerMove 1.6s ease-in-out infinite;
+}
+.demo-toast {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 20px;
+  height: 30px;
+  border-radius: 10px;
+  background: var(--ink);
+  opacity: 0;
+  transform: translateY(12px);
+  animation: toastFloat 2.4s ease-in-out infinite;
+}
+.demo-segment {
+  position: absolute;
+  top: 64px;
+  left: 16px;
+  right: 16px;
+  height: 38px;
+  border-radius: 14px;
+  background: rgba(34, 34, 34, 0.08);
+}
+.demo-segment::before {
+  content: '';
+  position: absolute;
+  width: 45%;
+  height: 28px;
+  left: 5px;
+  top: 5px;
+  border-radius: 11px;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(34, 34, 34, 0.12);
+  animation: segmentShift 2.5s ease-in-out infinite;
+}
+.demo-lightbox-thumb {
+  position: absolute;
+  width: 56px;
+  height: 46px;
+  left: 34px;
+  top: 58px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #c06b2b, #f5d3a2);
+  transform-origin: center;
+  animation: lightboxZoom 2.8s ease-in-out infinite;
+}
+@keyframes sheetRise {
+  0%, 22% { transform: translateY(54%); }
+  48%, 78% { transform: translateY(0); }
+  100% { transform: translateY(54%); }
+}
+@keyframes fadeOverlay {
+  0%, 22%, 100% { opacity: 0; }
+  48%, 78% { opacity: 1; }
+}
+@keyframes modalPop {
+  0%, 22%, 100% { opacity: 0; transform: scale(0.9); }
+  48%, 78% { opacity: 1; transform: scale(1); }
+}
+@keyframes drawerSlide {
+  0%, 20%, 100% { transform: translateX(-84%); }
+  46%, 76% { transform: translateX(0); }
+}
+@keyframes revealUp {
+  0%, 18% { opacity: 0; transform: translateY(18px); }
+  42%, 84% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(0); }
+}
+@keyframes pressScale {
+  0%, 36%, 100% { transform: translateY(0) scale(1); }
+  52%, 68% { transform: translateY(2px) scale(0.96); }
+}
+@keyframes swipeReveal {
+  0%, 26%, 100% { transform: translateX(0); }
+  48%, 76% { transform: translateX(-42px); }
+}
+@keyframes shimmerMove {
+  to { transform: translateX(100%); }
+}
+@keyframes toastFloat {
+  0%, 20%, 100% { opacity: 0; transform: translateY(12px); }
+  42%, 78% { opacity: 1; transform: translateY(0); }
+}
+@keyframes segmentShift {
+  0%, 34%, 100% { transform: translateX(0); }
+  54%, 78% { transform: translateX(58px); }
+}
+@keyframes lightboxZoom {
+  0%, 24%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(34, 34, 34, 0); }
+  52%, 78% { transform: scale(1.45); box-shadow: 0 18px 26px rgba(34, 34, 34, 0.22); }
+}

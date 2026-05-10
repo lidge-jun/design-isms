@@ -3,19 +3,24 @@
 ## 프로젝트 개요
 35개 디자인 ism의 시각적 레퍼런스 보드. GitHub Pages 배포.
 - **라이브**: https://lidge-jun.github.io/design-isms/
-- **스택**: 순수 HTML/CSS/JS (빌드 도구 없음)
+- **스택**: 정적 HTML/CSS + TypeScript source → browser JS build
 - **이미지**: GPT Image 2 (gpt-image-2, 1536x1024, high quality)
 
 ## 디렉토리 구조
 ```
 701_design-isms/
 ├── index.html                    # 메인 페이지
+├── effects.html                  # 모바일/데스크탑 UI 후보군 페이지
 ├── AGENTS.md                     # 이 파일
 ├── README.md
 ├── assets/
 │   ├── css/style.css             # 전체 스타일
-│   ├── js/app.js                 # 메인 로직
+│   ├── css/effects.css           # UX 효과 페이지 전용 스타일
+│   ├── css/effects-demos.css     # UX 효과 CSS demo/animation
+│   ├── js/app.js                 # 메인 로직 (src/app.ts build 산출물)
+│   ├── js/effects.js             # 효과 페이지 로직 (src/effects.ts build 산출물)
 │   ├── data/isms.json            # 핵심 데이터 (35개 ism)
+│   ├── data/effects.json         # 프런트엔드 UI 후보군 데이터
 │   └── images/
 │       ├── minimalism/           # ism별 폴더
 │       │   ├── landing.png
@@ -23,8 +28,13 @@
 │       │   └── portfolio.png
 │       ├── brutalism/
 │       └── ...                   # 35개 폴더
-├── docs/
-│   └── PLAN-popup-detail.md      # 팝업 기능 구현 계획
+├── src/
+│   ├── app.ts
+│   └── effects.ts
+├── structure/
+│   └── README.md                 # 현재 구조와 source-of-truth 요약
+├── devlog/
+│   └── 260510_mobile_ux_effects/ # UI 후보군 phase docs
 ├── scripts/
 │   └── update-isms.mjs           # JSON 업데이트 스크립트
 └── .github/workflows/
@@ -176,7 +186,7 @@ const popular = [
 ## 배포
 
 - **호스팅**: GitHub Pages (lidge-jun/design-isms)
-- **빌드**: 없음 (static files)
+- **빌드**: `npm run build`로 `src/*.ts`를 `assets/js/*.js`에 생성
 - **배포**: `main` 브랜치 push → `.github/workflows/deploy.yml` 자동 실행
 - **URL**: https://lidge-jun.github.io/design-isms/
 
@@ -184,7 +194,8 @@ const popular = [
 
 ## 코딩 규칙
 
-- 빌드 도구 없음 — 순수 HTML/CSS/JS만
+- GitHub Pages는 빌드 산출물 `assets/js/*.js`를 직접 로드
+- TypeScript source는 `src/*.ts`, browser script는 `assets/js/*.js`
 - ES Module 문법 사용하지 않음 (script type="module" 아님)
 - CSS 변수는 `:root`에 정의, 일관되게 사용
 - 폰트: Pretendard (한국어), Outfit (영문 제목), SF Mono (코드)

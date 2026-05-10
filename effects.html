@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frontend UI Candidates — Design -isms</title>
+<meta name="description" content="모바일과 데스크탑 프런트엔드 UI 후보군을 이름, 별칭, 데모, 구현 체크로 훑는 레퍼런스 페이지.">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/css/style.css">
+<link rel="stylesheet" href="./assets/css/effects.css">
+<link rel="stylesheet" href="./assets/css/effects-demos.css">
+</head>
+<body class="effects-page is-loading">
+
+<div class="loading-overlay" id="loading-overlay">
+  <div class="loading-inner">
+    <div class="loading-logo">✦</div>
+    <div class="loading-text">Frontend UI Candidates</div>
+    <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo logo-link" href="./index.html" aria-label="Design -isms home">
+      <div class="logo-sketch">✦</div>
+      Design -isms
+    </a>
+    <nav class="header-right" aria-label="Primary navigation">
+      <a class="star-pill" href="./index.html">Isms</a>
+      <a class="star-pill" href="./effects.html" aria-current="page">Effects</a>
+      <a class="star-pill" href="https://github.com/lidge-jun/design-isms" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/></svg>
+        Give me a star
+      </a>
+      <span class="header-count">46 candidates</span>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content" class="effects-main">
+  <section class="effects-compact-intro" aria-labelledby="effects-title">
+    <div>
+      <p class="effects-eyebrow">Frontend UI candidates</p>
+      <h1 id="effects-title">모바일 / 데스크탑 UI 후보군</h1>
+    </div>
+    <p class="effects-subcopy">상단 설명보다 후보군을 바로 훑는 용도입니다. Mobile, Desktop, Shared로 나눠 46개 패턴을 정리했습니다.</p>
+  </section>
+
+  <section class="effects-toolbar" aria-label="Effect filters">
+    <div class="effects-filter-row" id="effects-filter-row"></div>
+    <label class="effects-search-label">
+      <span class="sr-only">효과 검색</span>
+      <input type="text" class="search-input effects-search" id="effects-search" placeholder="아래 팝업, 스와이프, 로딩..." autocomplete="off">
+    </label>
+  </section>
+
+  <section class="effects-grid-section" aria-labelledby="effects-grid-title">
+    <div class="effects-grid-heading">
+      <h2 id="effects-grid-title">Effect catalog</h2>
+      <p id="effects-result-count">Loading effects...</p>
+    </div>
+    <div class="effects-grid" id="effects-grid"></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span>Design -isms Frontend UI Candidates</span>
+  <span>Mobile, desktop, and shared UI pattern references</span>
+</footer>
+
+<div class="modal-overlay effect-modal-overlay" id="effect-modal-overlay" aria-hidden="true">
+  <div class="modal-container effect-modal-container" id="effect-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="effect-modal-title" tabindex="-1">
+    <button class="modal-close effect-modal-close" id="effect-modal-close" aria-label="Close">✕</button>
+    <div class="modal-scroll effect-modal-scroll" id="effect-modal-content"></div>
+  </div>
+</div>
+
+<div class="lightbox effect-lightbox" id="effect-lightbox" role="dialog" aria-modal="true" aria-label="Guide image preview" aria-hidden="true">
+  <button class="lightbox-close" id="effect-lightbox-close" aria-label="Close">✕</button>
+  <img id="effect-lightbox-image" src="" alt="">
+</div>
+
+<div class="toast" id="effect-toast" role="status" aria-live="polite"></div>
+
+<button class="scroll-top" id="effects-scroll-top" aria-label="Scroll to top">
+  <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+</button>
+
+<script src="./assets/js/effects.js"></script>
+</body>
+</html>
