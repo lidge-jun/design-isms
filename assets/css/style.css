@@ -1,5 +1,51 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* ── Loading Overlay ── */
+.loading-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.loading-overlay.fade-out { opacity: 0; visibility: hidden; }
+.loading-inner { text-align: center; }
+.loading-logo {
+  width: 48px; height: 48px;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin: 0 auto 12px;
+  animation: loading-pulse 1.2s ease-in-out infinite;
+}
+.loading-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px; font-weight: 700;
+  letter-spacing: -0.5px; color: #2C2C2C;
+  margin-bottom: 16px;
+}
+.loading-bar {
+  width: 120px; height: 3px;
+  background: #E0DBD3; border-radius: 2px;
+  overflow: hidden; margin: 0 auto;
+}
+.loading-bar-fill {
+  width: 0%; height: 100%;
+  background: #E8642C; border-radius: 2px;
+  animation: loading-fill 1.5s ease-out forwards;
+}
+@keyframes loading-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.7; }
+}
+@keyframes loading-fill {
+  0% { width: 0%; }
+  60% { width: 70%; }
+  100% { width: 90%; }
+}
+body.is-loading .grid-container,
+body.is-loading .filter-bar { opacity: 0; }
+.grid-container, .filter-bar { transition: opacity 0.4s ease 0.1s; }
+
 :root {
   --bg: #FAF8F5;
   --bg-warm: #F5F0E8;
@@ -64,6 +110,9 @@ a { color: inherit; text-decoration: none; }
   display: flex; align-items: center; justify-content: center;
   font-size: 14px;
 }
+.header-right {
+  display: flex; align-items: center; gap: 10px;
+}
 .header-count {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -73,6 +122,27 @@ a { color: inherit; text-decoration: none; }
   border-radius: 20px;
   border: 1px solid var(--border);
 }
+.lang-toggle {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 12px;
+  cursor: pointer;
+  display: flex; align-items: center; gap: 3px;
+  transition: border-color 0.2s;
+}
+.lang-toggle:hover { border-color: var(--accent); }
+.lang-option {
+  color: var(--ink-muted);
+  transition: color 0.2s, font-weight 0.2s;
+}
+.lang-option.active {
+  color: var(--accent);
+  font-weight: 700;
+}
+.lang-divider { color: var(--border); }
 
 /* ── Filter Bar ── */
 .filter-bar {

@@ -11,7 +11,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./assets/css/style.css">
 </head>
-<body>
+<body class="is-loading">
+
+<div class="loading-overlay" id="loading-overlay">
+  <div class="loading-inner">
+    <div class="loading-logo">✦</div>
+    <div class="loading-text">Design -isms</div>
+    <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+  </div>
+</div>
 
 <header class="site-header">
   <div class="header-inner">
@@ -19,7 +27,14 @@
       <div class="logo-sketch">✦</div>
       Design -isms
     </div>
-    <span class="header-count">35 isms</span>
+    <div class="header-right">
+      <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language">
+        <span class="lang-option" data-lang="ko">한</span>
+        <span class="lang-divider">/</span>
+        <span class="lang-option" data-lang="en">EN</span>
+      </button>
+      <span class="header-count">35 isms</span>
+    </div>
   </div>
 </header>
 

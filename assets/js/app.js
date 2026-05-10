@@ -3,6 +3,60 @@ const DATA_URL = './assets/data/isms.json';
 let allIsms = [];
 let activeFilter = 'all';
 let searchQuery = '';
+let currentLang = localStorage.getItem('design-isms-lang') || 'ko';
+
+var UI_STRINGS = {
+  ko: {
+    search: 'ISM 검색...',
+    moreSites: '+ {n}개 더 보기',
+    showLess: '− 접기',
+    colorPalette: '컬러 팔레트',
+    keywords: '키워드',
+    exampleSites: '예시 사이트',
+    relatedIsms: '관련 ISM',
+    designMockup: '{name} 디자인 시안',
+    footerTitle: 'Design -isms 레퍼런스 보드',
+    footerGen: 'GPT Image 2로 생성'
+  },
+  en: {
+    search: 'Search isms...',
+    moreSites: '+ {n} more sites',
+    showLess: '− show less',
+    colorPalette: 'Color Palette',
+    keywords: 'Keywords',
+    exampleSites: 'Example Sites',
+    relatedIsms: 'Related ISMs',
+    designMockup: '{name} Design Mockup',
+    footerTitle: 'Design -isms Reference Board',
+    footerGen: 'Images generated with GPT Image 2'
+  }
+};
+
+function t(key, vars) {
+  var str = UI_STRINGS[currentLang][key] || UI_STRINGS['en'][key] || key;
+  if (vars) {
+    Object.keys(vars).forEach(function(k) {
+      str = str.replace('{' + k + '}', vars[k]);
+    });
+  }
+  return str;
+}
+
+function getDesc(ism) {
+  return currentLang === 'en' && ism.descriptionEn ? ism.descriptionEn : ism.description;
+}
+
+function getHistory(ism) {
+  return ism.history || '';
+}
+
+function getName(ism) {
+  return currentLang === 'en' ? ism.name : ism.name;
+}
+
+function getSubName(ism) {
+  return currentLang === 'en' ? ism.nameKr : '';
+}
 
 async function init() {
   const res = await fetch(DATA_URL);
@@ -14,6 +68,16 @@ async function init() {
   setupScrollTop();
   setupModal();
   setupCardExamplesToggle();
+  setupLangToggle();
+
+  requestAnimationFrame(function() {
+    document.body.classList.remove('is-loading');
+    var overlay = document.getElementById('loading-overlay');
+    overlay.classList.add('fade-out');
+    overlay.addEventListener('transitionend', function() {
+      overlay.remove();
+    });
+  });
 }
 
 function buildFilters() {
@@ -108,9 +172,13 @@ function cardHTML(ism, index) {
     </a>`;
   }).join('');
 
-  const toggleBtn = ism.examples.length > visibleCount
-    ? `<button class="ism-examples-toggle" data-ism="${ism.id}">+ ${ism.examples.length - visibleCount} more sites</button>`
+  const remaining = ism.examples.length - visibleCount;
+  const toggleBtn = remaining > 0
+    ? `<button class="ism-examples-toggle" data-ism="${ism.id}">${t('moreSites', {n: remaining})}</button>`
     : '';
+
+  const subName = currentLang === 'en' ? ism.nameKr : '';
+  const desc = getDesc(ism);
 
   return `
     <article class="ism-card" data-id="${ism.id}">
@@ -118,9 +186,9 @@ function cardHTML(ism, index) {
         <div class="ism-label-row">
           <span class="ism-number">${num}</span>
         </div>
-        <div class="ism-name">${ism.name}<span class="ism-name-kr">${ism.nameKr}</span></div>
+        <div class="ism-name">${ism.name}${subName ? '<span class="ism-name-kr">' + subName + '</span>' : ''}</div>
         <div class="ism-tagline">${ism.tagline}</div>
-        <p class="ism-desc">${ism.description}</p>
+        <p class="ism-desc">${desc}</p>
       </div>
       <div class="ism-palette">${paletteHTML}</div>
       <div class="ism-images">${imagesHTML}</div>
@@ -218,7 +286,9 @@ function renderModalContent(ism) {
   const related = getRelatedIsms(ism);
   const mainImg = ism.images[0];
   const subImages = ism.images.slice(1);
-  const mainLabel = ism.name + ' 디자인 시안';
+  const mainLabel = t('designMockup', {name: ism.name});
+  const modalDesc = getDesc(ism);
+  const modalHistory = getHistory(ism);
 
   var mainPrompt = (ism.prompts && ism.prompts[0]) ? ism.prompts[0].prompt : '';
 
@@ -283,28 +353,29 @@ function renderModalContent(ism) {
       '<div class="modal-related-tagline">' + r.tagline + '</div></div>';
   }
 
+  var subNameHtml = currentLang === 'en' ? '<span class="modal-title-kr">' + ism.nameKr + '</span>' : '';
   var html = '<div class="modal-number">' + num + '</div>' +
-    '<div class="modal-title">' + ism.name + '<span class="modal-title-kr">' + ism.nameKr + '</span></div>' +
+    '<div class="modal-title">' + ism.name + subNameHtml + '</div>' +
     '<div class="modal-tagline">' + ism.tagline + '</div>';
 
-  if (ism.history) {
-    html += '<div class="modal-history">' + ism.history + '</div>';
+  if (modalHistory) {
+    html += '<div class="modal-history">' + modalHistory + '</div>';
   }
 
-  html += '<div class="modal-desc">' + ism.description + '</div>' +
+  html += '<div class="modal-desc">' + modalDesc + '</div>' +
     '<div class="modal-main-image"><img src="./assets/images/' + ism.id + '/' + mainImg.file + '" alt="' + mainLabel + '" data-lightbox="true"></div>' +
     '<div class="modal-main-label">' + mainLabel + '</div>' +
     (mainPrompt ? '<div class="modal-prompt modal-prompt-main"><span class="modal-prompt-label">Prompt</span>' + mainPrompt + '</div>' : '') +
     collapsiblesHTML +
-    '<div class="modal-section-title">Color Palette</div>' +
+    '<div class="modal-section-title">' + t('colorPalette') + '</div>' +
     '<div class="modal-palette">' + paletteHTML + '</div>' +
-    '<div class="modal-section-title">Keywords</div>' +
+    '<div class="modal-section-title">' + t('keywords') + '</div>' +
     '<div class="modal-keywords">' + kwHTML + '</div>' +
-    '<div class="modal-section-title">Example Sites</div>' +
+    '<div class="modal-section-title">' + t('exampleSites') + '</div>' +
     examplesSection;
 
   if (related.length > 0) {
-    html += '<div class="modal-section-title">Related ISMs</div>' +
+    html += '<div class="modal-section-title">' + t('relatedIsms') + '</div>' +
       '<div class="modal-related">' + relatedHTML + '</div>';
   }
 
@@ -415,5 +486,35 @@ function setupModal() {
   if (location.hash && location.hash.length > 1) {
     var id = location.hash.slice(1);
     setTimeout(function() { openModal(id); }, 400);
+  }
+}
+
+function setupLangToggle() {
+  var toggle = document.getElementById('lang-toggle');
+  updateLangUI();
+
+  toggle.addEventListener('click', function() {
+    currentLang = currentLang === 'ko' ? 'en' : 'ko';
+    localStorage.setItem('design-isms-lang', currentLang);
+    updateLangUI();
+    render();
+    document.querySelector('.search-input').placeholder = t('search');
+    var footer = document.querySelector('.site-footer');
+    footer.children[0].textContent = t('footerTitle');
+    footer.children[1].textContent = t('footerGen');
+    document.documentElement.lang = currentLang;
+  });
+}
+
+function updateLangUI() {
+  document.querySelectorAll('.lang-option').forEach(function(el) {
+    el.classList.toggle('active', el.dataset.lang === currentLang);
+  });
+  document.querySelector('.search-input').placeholder = t('search');
+  document.documentElement.lang = currentLang;
+  var footer = document.querySelector('.site-footer');
+  if (footer) {
+    footer.children[0].textContent = t('footerTitle');
+    footer.children[1].textContent = t('footerGen');
   }
 }
