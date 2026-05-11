@@ -1,0 +1,1722 @@
+{
+  "minimalism": {
+    "layout": {
+      "grid": "단순 그리드 시스템 (1-2 컬럼 중심)",
+      "columns": "유연한 12컬럼",
+      "gutter": "24px",
+      "margins": "5vw 이상",
+      "spacing": "32px~64px",
+      "symmetry": "비대칭 또는 중심 대칭",
+      "geometry": "직선적이고 최소한의 형태"
+    },
+    "typography": {
+      "fontPairing": "sans-serif (Inter + system-ui)",
+      "sizeHierarchy": "H1: 48px / H2: 32px / body: 16px",
+      "lineHeight": "1.6",
+      "letterSpacing": "-0.02em",
+      "weightStrategy": "heading: bold(700), body: regular(400)"
+    },
+    "color": {
+      "usage": "중립색 중심, 제한된 팔레트 (1~2 accent)",
+      "bgFg": "white 배경 + black 전경 (또는 반대)",
+      "contrast": "고대비 (4.5:1 이상, WCAG AA)"
+    },
+    "motion": {
+      "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "duration": "300ms",
+      "hover": "opacity 0.8 또는 scale(1.02)",
+      "scroll": "fade-in (opacity 0 → 1)",
+      "transition": "all 300ms cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    "dos": [
+      "여백을 극대화하여 집중도 높이기",
+      "필요한 요소만 최소화",
+      "타이포그래피로 강한 계층 표현"
+    ],
+    "donts": [
+      "과도한 장식 요소 추가",
+      "다채로운 색상 남용",
+      "복잡한 애니메이션 과용"
+    ]
+  },
+  "bauhaus": {
+    "layout": {
+      "grid": "모듈러 그리드 시스템",
+      "columns": "4~8 컬럼",
+      "gutter": "16px",
+      "margins": "24px",
+      "spacing": "24px",
+      "symmetry": "비대칭",
+      "geometry": "원, 사각형, 삼각형 등 기본 기하학 형태"
+    },
+    "typography": {
+      "fontPairing": "기하학적 sans-serif (Futura + sans-serif)",
+      "sizeHierarchy": "H1: 60px / H2: 36px / body: 18px",
+      "lineHeight": "1.4",
+      "letterSpacing": "0.05em",
+      "weightStrategy": "heavy weight (700~900)"
+    },
+    "color": {
+      "usage": "원색 (red, yellow, blue) + black/white",
+      "bgFg": "white 배경 + primary color 전경",
+      "contrast": "강한 원색 대비"
+    },
+    "motion": {
+      "easing": "ease-out",
+      "duration": "250ms",
+      "hover": "transform: translateY(-4px)",
+      "scroll": "기하학 요소 회전 또는 이동",
+      "transition": "transform 250ms ease-out"
+    },
+    "dos": [
+      "기하학적 형태 적극 활용",
+      "기능 중심의 단순 디자인",
+      "원색 팔레트로 강조"
+    ],
+    "donts": [
+      "복잡한 패턴이나 장식",
+      "부드러운 그라데이션",
+      "현실적 3D 효과"
+    ]
+  },
+  "flat-design": {
+    "layout": {
+      "grid": "깨끗한 2D 그리드",
+      "columns": "12컬럼",
+      "gutter": "20px",
+      "margins": "32px",
+      "spacing": "16px",
+      "symmetry": "대칭 중심",
+      "geometry": "평면 사각형과 아이콘"
+    },
+    "typography": {
+      "fontPairing": "sans-serif (Roboto + sans-serif)",
+      "sizeHierarchy": "H1: 40px / H2: 28px / body: 16px",
+      "lineHeight": "1.5",
+      "letterSpacing": "0",
+      "weightStrategy": "medium(500) for UI, bold for title"
+    },
+    "color": {
+      "usage": "밝고 단순한 색상, 제한적",
+      "bgFg": "white 또는 밝은 bg + vivid fg",
+      "contrast": "높은 대비 (3:1 이상)"
+    },
+    "motion": {
+      "easing": "linear",
+      "duration": "200ms",
+      "hover": "background-color 변화",
+      "scroll": "간단 slide-in",
+      "transition": "all 200ms linear"
+    },
+    "dos": [
+      "2D 평면 요소 사용",
+      "명확한 아이콘 디자인",
+      "단순한 색상 조합"
+    ],
+    "donts": [
+      "그림자나 3D 효과",
+      "복잡한 텍스처",
+      "과도한 애니메이션"
+    ]
+  },
+  "material-design": {
+    "layout": {
+      "grid": "반응형 12컬럼 그리드",
+      "columns": "12컬럼 (Material Grid)",
+      "gutter": "16px",
+      "margins": "16px~24px",
+      "spacing": "8px (baseline grid)",
+      "symmetry": "대칭",
+      "geometry": "둥근 모서리 (border-radius 4px~16px)"
+    },
+    "typography": {
+      "fontPairing": "Roboto (display + body)",
+      "sizeHierarchy": "H1: 96px / H2: 60px / body: 16px",
+      "lineHeight": "1.5 (body), 1.2 (heading)",
+      "letterSpacing": "0.0125em (body)",
+      "weightStrategy": "500 (medium) 중심"
+    },
+    "color": {
+      "usage": "동적 컬러 시스템 (primary, secondary)",
+      "bgFg": "#F5F5F5 bg + #212121 fg",
+      "contrast": "WCAG AAA (4.5:1+)"
+    },
+    "motion": {
+      "easing": "cubic-bezier(0.4, 0, 0.2, 1) (standard easing)",
+      "duration": "300ms (standard)",
+      "hover": "elevation (shadow 2dp → 8dp)",
+      "scroll": "ripple effect",
+      "transition": "all 300ms cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    "dos": [
+      "elevation과 shadow 활용",
+      "Material Components 사용",
+      "ripple 효과로 피드백"
+    ],
+    "donts": [
+      "평면적 디자인만",
+      "과도한 커스텀 shadow",
+      "느린 애니메이션"
+    ]
+  },
+  "art-deco": {
+    "layout": {
+      "grid": "기하학적 대칭 그리드",
+      "columns": "2~3 컬럼",
+      "gutter": "32px",
+      "margins": "40px",
+      "spacing": "24px",
+      "symmetry": "강한 대칭",
+      "geometry": "기하학 패턴 (zigzag, sunburst)"
+    },
+    "typography": {
+      "fontPairing": "ornate serif (Playfair Display) + sans",
+      "sizeHierarchy": "H1: 72px / H2: 48px / body: 18px",
+      "lineHeight": "1.3",
+      "letterSpacing": "0.1em",
+      "weightStrategy": "bold + decorative"
+    },
+    "color": {
+      "usage": "럭셔리 팔레트 (gold, black, emerald)",
+      "bgFg": "black bg + gold fg",
+      "contrast": "강한 명암 대비"
+    },
+    "motion": {
+      "easing": "ease-in",
+      "duration": "400ms",
+      "hover": "scale(1.1) + rotate(2deg)",
+      "scroll": "glitter-like fade",
+      "transition": "transform 400ms ease-in"
+    },
+    "dos": [
+      "기하학 패턴과 금색 활용",
+      "대칭 레이아웃",
+      "장식적 타이포그래피"
+    ],
+    "donts": [
+      "현대적 미니멀 요소",
+      "부드러운 파스텔",
+      "평범한 sans-serif"
+    ]
+  },
+  "swiss-style": {
+    "layout": {
+      "grid": "모듈러 비대칭 그리드",
+      "columns": "엄격한 12컬럼",
+      "gutter": "20px",
+      "margins": "40px",
+      "spacing": "24px",
+      "symmetry": "비대칭",
+      "geometry": "정렬된 직선 레이아웃"
+    },
+    "typography": {
+      "fontPairing": "Helvetica 또는 sans-serif (Akzidenz-Grotesk)",
+      "sizeHierarchy": "H1: 36px / H2: 24px / body: 16px",
+      "lineHeight": "1.4",
+      "letterSpacing": "0",
+      "weightStrategy": "regular ~ bold"
+    },
+    "color": {
+      "usage": "black/white + 1 accent",
+      "bgFg": "white bg + black fg",
+      "contrast": "최대 대비"
+    },
+    "motion": {
+      "easing": "linear",
+      "duration": "200ms",
+      "hover": "underline 또는 color shift",
+      "scroll": "grid alignment animation",
+      "transition": "all 200ms linear"
+    },
+    "dos": [
+      "그리드 엄격 준수",
+      "white space 활용",
+      "타이포그래피 중심"
+    ],
+    "donts": [
+      "장식적 요소",
+      "색상 과다 사용",
+      "비정렬 레이아웃"
+    ]
+  },
+  "brutalism": {
+    "layout": {
+      "grid": "비정형 raw 그리드",
+      "columns": "불규칙 컬럼",
+      "gutter": "8px",
+      "margins": "16px",
+      "spacing": "8px",
+      "symmetry": "강한 비대칭",
+      "geometry": "거친 직사각형"
+    },
+    "typography": {
+      "fontPairing": "system monospace + bold sans",
+      "sizeHierarchy": "H1: 64px / H2: 40px / body: 18px",
+      "lineHeight": "1.2",
+      "letterSpacing": "0.1em",
+      "weightStrategy": "ultra-bold (900)"
+    },
+    "color": {
+      "usage": "모노크롬 또는 clashing (black/red)",
+      "bgFg": "#111 bg + #fff fg",
+      "contrast": "극단적 대비"
+    },
+    "motion": {
+      "easing": "step-end",
+      "duration": "150ms",
+      "hover": "instant color flash",
+      "scroll": "no smooth scroll",
+      "transition": "all 150ms step-end"
+    },
+    "dos": [
+      "raw한 느낌 강조",
+      "oversized typography",
+      "의도적 불완전"
+    ],
+    "donts": [
+      "부드러운 shadow",
+      "세련된 애니메이션",
+      "미니멀 white space"
+    ]
+  },
+  "skeuomorphism": {
+    "layout": {
+      "grid": "현실적 3D 그리드",
+      "columns": "12컬럼 with depth",
+      "gutter": "24px",
+      "margins": "32px",
+      "spacing": "16px",
+      "symmetry": "대칭",
+      "geometry": "3D-like 버튼과 패널"
+    },
+    "typography": {
+      "fontPairing": "serif 또는 realistic sans",
+      "sizeHierarchy": "H1: 52px / H2: 34px / body: 17px",
+      "lineHeight": "1.5",
+      "letterSpacing": "normal",
+      "weightStrategy": "medium with emboss"
+    },
+    "color": {
+      "usage": "현실적 질감 색상 (wood, metal)",
+      "bgFg": "beige bg + dark fg",
+      "contrast": "중간 대비 + texture"
+    },
+    "motion": {
+      "easing": "ease-in-out",
+      "duration": "350ms",
+      "hover": "press effect (translateY 4px)",
+      "scroll": "parallax depth",
+      "transition": "box-shadow 350ms cubic-bezier(0.25, 0.1, 0.25, 1)"
+    },
+    "dos": [
+      "현실 물체 모방",
+      "texture와 shadow",
+      "3D depth 활용"
+    ],
+    "donts": [
+      "완전 평면 디자인",
+      "현대적 flat 요소",
+      "추상적 형태"
+    ]
+  },
+  "dark-mode": {
+    "layout": {
+      "grid": "표준 그리드 (dark variant)",
+      "columns": "12컬럼",
+      "gutter": "24px",
+      "margins": "32px",
+      "spacing": "24px",
+      "symmetry": "대칭",
+      "geometry": "표준 + dark elevation"
+    },
+    "typography": {
+      "fontPairing": "sans-serif (system-ui)",
+      "sizeHierarchy": "H1: 44px / H2: 30px / body: 16px",
+      "lineHeight": "1.7",
+      "letterSpacing": "-0.01em",
+      "weightStrategy": "medium(500) for readability"
+    },
+    "color": {
+      "usage": "dark palette (#121212 bg)",
+      "bgFg": "#121212 bg + #e0e0e0 fg",
+      "contrast": "고대비 (4.5:1+)"
+    },
+    "motion": {
+      "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "duration": "250ms",
+      "hover": "brightness(1.1)",
+      "scroll": "smooth dark overlay",
+      "transition": "background-color 250ms cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    "dos": [
+      "#121212 배경 사용",
+      "텍스트 가독성 높이기",
+      "accent color로 강조"
+    ],
+    "donts": [
+      "pure black #000 사용",
+      "낮은 대비",
+      "밝은 색 과다"
+    ]
+  },
+  "retro-vintage": {
+    "layout": {
+      "grid": "빈티지 스타일 그리드",
+      "columns": "2~4 컬럼",
+      "gutter": "28px",
+      "margins": "36px",
+      "spacing": "20px",
+      "symmetry": "대칭",
+      "geometry": "빈티지 프레임과 texture"
+    },
+    "typography": {
+      "fontPairing": "script + serif (Playfair + Courier)",
+      "sizeHierarchy": "H1: 56px / H2: 32px / body: 17px",
+      "lineHeight": "1.45",
+      "letterSpacing": "0.03em",
+      "weightStrategy": "bold with vintage feel"
+    },
+    "color": {
+      "usage": "muted earth tones + pastel (70s~90s)",
+      "bgFg": "#f4e4c1 bg + #3d2b1f fg",
+      "contrast": "중간 대비 + sepia"
+    },
+    "motion": {
+      "easing": "ease-in",
+      "duration": "450ms",
+      "hover": "vignette effect",
+      "scroll": "film grain animation",
+      "transition": "filter 450ms ease-in"
+    },
+    "dos": [
+      "빈티지 texture overlay",
+      "script font 사용",
+      "warm color 팔레트"
+    ],
+    "donts": [
+      "현대적 clean 디자인",
+      "neon color",
+      "빠른 모던 motion"
+    ]
+  },
+  "futurism": {
+    "layout": {
+      "grid": "비대칭 그리드",
+      "columns": "12열",
+      "gutter": "24px",
+      "margins": "48px",
+      "spacing": "비대칭 32px",
+      "symmetry": "비대칭",
+      "geometry": "다이아고널 선, 기하학적 파편"
+    },
+    "typography": {
+      "fontPairing": "기하학적 sans-serif (display) + sans-serif (body)",
+      "sizeHierarchy": "H1: 72px, H2: 48px, body: 18px",
+      "lineHeight": "1.1",
+      "letterSpacing": "-2px",
+      "weightStrategy": "bold 700-900"
+    },
+    "color": {
+      "usage": "강렬한 네온과 다크 배경",
+      "bgFg": "#111111 배경, #00ffcc 전경",
+      "contrast": "고대비"
+    },
+    "motion": {
+      "easing": "ease-out",
+      "duration": "400ms",
+      "hover": "scale(1.05) + neon glow",
+      "scroll": "parallax with diagonal lines",
+      "transition": "transform 400ms cubic-bezier(0.25, 0.1, 0.25, 1)"
+    },
+    "dos": [
+      "다이나믹한 다이아고널 레이아웃 사용",
+      "네온 효과 강조",
+      "속도감 있는 모션 적용"
+    ],
+    "donts": [
+      "대칭적 레이아웃 피하기",
+      "부드러운 곡선 과용",
+      "저대비 색상 사용"
+    ]
+  },
+  "memphis-design": {
+    "layout": {
+      "grid": "볼드 기하 그리드",
+      "columns": "반복 패턴",
+      "gutter": "16px",
+      "margins": "32px",
+      "spacing": "클래싱 24px",
+      "symmetry": "비대칭 패턴",
+      "geometry": "기하학적 모양, 추상 패턴"
+    },
+    "typography": {
+      "fontPairing": "볼드 블록 폰트 (display) + sans-serif (body)",
+      "sizeHierarchy": "H1: 56px, H2: 36px, body: 16px",
+      "lineHeight": "1.3",
+      "letterSpacing": "0px",
+      "weightStrategy": "900 bold"
+    },
+    "color": {
+      "usage": "밝은 파스텔과 네온 클래싱",
+      "bgFg": "#ffffff 또는 #111111 배경, #ff00ff/#00ffff 전경",
+      "contrast": "중간 대비"
+    },
+    "motion": {
+      "easing": "ease-in-out",
+      "duration": "250ms",
+      "hover": "scale + color shift",
+      "scroll": "패턴 슬라이드",
+      "transition": "transform 250ms ease-in-out"
+    },
+    "dos": [
+      "기하학적 패턴 bold 사용",
+      "클래싱 컬러 조합",
+      "재미있는 추상 요소 추가"
+    ],
+    "donts": [
+      "미니멀 디자인",
+      "부드러운 그라디언트",
+      "단조로운 색상"
+    ]
+  },
+  "cyberpunk": {
+    "layout": {
+      "grid": "HUD 스타일 그리드",
+      "columns": "8-12열",
+      "gutter": "8px",
+      "margins": "16px",
+      "spacing": "tight 12px",
+      "symmetry": "비대칭",
+      "geometry": "글리치, 네온 라인"
+    },
+    "typography": {
+      "fontPairing": "모노스페이스 + futuristic sans",
+      "sizeHierarchy": "H1: 52px, H2: 32px, body: 14px",
+      "lineHeight": "1.4",
+      "letterSpacing": "1px",
+      "weightStrategy": "light 300 + bold"
+    },
+    "color": {
+      "usage": "다크 + 네온",
+      "bgFg": "#0a0a0a 배경, #ff00ff/#00ffff 전경",
+      "contrast": "극대비"
+    },
+    "motion": {
+      "easing": "linear",
+      "duration": "200ms",
+      "hover": "glitch effect",
+      "scroll": "scanline",
+      "transition": "filter 200ms linear"
+    },
+    "dos": [
+      "네온 글로우 효과",
+      "글리치 애니메이션",
+      "다크 테마 유지"
+    ],
+    "donts": [
+      "밝은 배경",
+      "부드러운 전환",
+      "전통 serif"
+    ]
+  },
+  "psychedelic": {
+    "layout": {
+      "grid": "밀도 높은 패턴 그리드",
+      "columns": "유기적",
+      "gutter": "10px",
+      "margins": "20px",
+      "spacing": "swirl 40px",
+      "symmetry": "비대칭",
+      "geometry": "유기 곡선, 광학 일루전"
+    },
+    "typography": {
+      "fontPairing": "왜곡된 decorative (display) + sans-serif",
+      "sizeHierarchy": "H1: 60px, H2: 38px, body: 17px",
+      "lineHeight": "1.2",
+      "letterSpacing": "2px",
+      "weightStrategy": "extra bold"
+    },
+    "color": {
+      "usage": "고채도 레인보우",
+      "bgFg": "vibrant 배경, contrasting 전경",
+      "contrast": "극대비"
+    },
+    "motion": {
+      "easing": "ease-in",
+      "duration": "500ms",
+      "hover": "morphing scale",
+      "scroll": "swirling parallax",
+      "transition": "transform 500ms ease-in"
+    },
+    "dos": [
+      "강렬한 패턴 레이어",
+      "광학 효과 활용",
+      "채도 높은 컬러"
+    ],
+    "donts": [
+      "클린 미니멀",
+      "단색",
+      "느린 모션"
+    ]
+  },
+  "vaporwave": {
+    "layout": {
+      "grid": "레트로 그리드, isometric",
+      "columns": "12열",
+      "gutter": "24px",
+      "margins": "40px",
+      "spacing": "pastel 28px",
+      "symmetry": "대칭적",
+      "geometry": "그리스 조각, 레트로 UI"
+    },
+    "typography": {
+      "fontPairing": "픽셀 + retro sans",
+      "sizeHierarchy": "H1: 44px, H2: 28px, body: 16px",
+      "lineHeight": "1.5",
+      "letterSpacing": "0.5px",
+      "weightStrategy": "regular 400"
+    },
+    "color": {
+      "usage": "파스텔 + 네온",
+      "bgFg": "pastel pink/cyan 배경, dark 전경",
+      "contrast": "중대비"
+    },
+    "motion": {
+      "easing": "ease",
+      "duration": "600ms",
+      "hover": "slow glitch",
+      "scroll": "VHS fade",
+      "transition": "opacity 600ms ease"
+    },
+    "dos": [
+      "레트로 80s 요소",
+      "그라디언트 + 체크",
+      "일본어 텍스트 옵션"
+    ],
+    "donts": [
+      "현대적 미니멀",
+      "강한 네온 과용",
+      "빠른 모션"
+    ]
+  },
+  "y2k": {
+    "layout": {
+      "grid": "볼드 버블 그리드",
+      "columns": "flex",
+      "gutter": "20px",
+      "margins": "30px",
+      "spacing": "chunky 25px",
+      "symmetry": "비대칭",
+      "geometry": "버블, 메탈릭 3D"
+    },
+    "typography": {
+      "fontPairing": "chunky rounded sans (display) + techno (body)",
+      "sizeHierarchy": "H1: 68px, H2: 42px, body: 18px",
+      "lineHeight": "1.2",
+      "letterSpacing": "-1px",
+      "weightStrategy": "bold 900"
+    },
+    "color": {
+      "usage": "전기 블루, 핑크, 메탈릭",
+      "bgFg": "bright gradient 배경, metallic 전경",
+      "contrast": "고대비"
+    },
+    "motion": {
+      "easing": "cubic-bezier(0.68, -0.55, 0.27, 1.55)",
+      "duration": "300ms",
+      "hover": "bouncy scale + shine",
+      "scroll": "holographic tilt",
+      "transition": "all 300ms cubic-bezier(0.68, -0.55, 0.27, 1.55)"
+    },
+    "dos": [
+      "메탈릭 그라데이션",
+      "버블 형태 활용",
+      "Y2K 아이콘 추가"
+    ],
+    "donts": [
+      "평평한 디자인",
+      "어두운 색상",
+      "정적 모션"
+    ]
+  },
+  "maximalism": {
+    "layout": {
+      "grid": "레이어드 복잡 그리드",
+      "columns": "다중 오버랩",
+      "gutter": "12px",
+      "margins": "24px",
+      "spacing": "dense 18px",
+      "symmetry": "비대칭",
+      "geometry": "레이어드, 예상치 못한 배치"
+    },
+    "typography": {
+      "fontPairing": "eclectic mix (display) + expressive sans (body)",
+      "sizeHierarchy": "H1: 80px, H2: 52px, body: 16px",
+      "lineHeight": "1.05",
+      "letterSpacing": "0px",
+      "weightStrategy": "various weights mix"
+    },
+    "color": {
+      "usage": "풍부하고 클래싱",
+      "bgFg": "rich multi bg, bold fg",
+      "contrast": "다중 대비"
+    },
+    "motion": {
+      "easing": "ease-in-out",
+      "duration": "450ms",
+      "hover": "layer pop",
+      "scroll": "parallax layers",
+      "transition": "opacity 450ms ease-in-out"
+    },
+    "dos": [
+      "요소 레이어 중첩",
+      "풍부한 패턴",
+      "예상치 못한 조합"
+    ],
+    "donts": [
+      "빈 공간",
+      "단순화",
+      "단조로운 컬러"
+    ]
+  },
+  "steampunk": {
+    "layout": {
+      "grid": "빅토리아 + 기계 그리드",
+      "columns": "12열",
+      "gutter": "28px",
+      "margins": "40px",
+      "spacing": "ornate 36px",
+      "symmetry": "대칭",
+      "geometry": "기어, 브라스 프레임"
+    },
+    "typography": {
+      "fontPairing": "ornate serif (display) + industrial sans (body)",
+      "sizeHierarchy": "H1: 58px, H2: 36px, body: 17px",
+      "lineHeight": "1.3",
+      "letterSpacing": "1px",
+      "weightStrategy": "bold 700"
+    },
+    "color": {
+      "usage": "브라운, 브라스 메탈릭",
+      "bgFg": "sepia dark 배경, gold 전경",
+      "contrast": "중대비"
+    },
+    "motion": {
+      "easing": "ease-out",
+      "duration": "550ms",
+      "hover": "gear rotate",
+      "scroll": "mechanical slide",
+      "transition": "transform 550ms ease-out"
+    },
+    "dos": [
+      "기계 요소 추가",
+      "메탈릭 텍스처",
+      "빅토리아 장식"
+    ],
+    "donts": [
+      "현대적 클린",
+      "네온 컬러",
+      "빠른 디지털 모션"
+    ]
+  },
+  "glassmorphism": {
+    "layout": {
+      "grid": "오버랩 카드 그리드",
+      "columns": "12열",
+      "gutter": "20px",
+      "margins": "32px",
+      "spacing": "transparent 24px",
+      "symmetry": "비대칭",
+      "geometry": "rounded cards over bg"
+    },
+    "typography": {
+      "fontPairing": "clean sans-serif (display + body)",
+      "sizeHierarchy": "H1: 48px, H2: 32px, body: 16px",
+      "lineHeight": "1.4",
+      "letterSpacing": "0px",
+      "weightStrategy": "medium 500"
+    },
+    "color": {
+      "usage": "투명 + vibrant bg",
+      "bgFg": "rgba(255,255,255,0.15) 카드, vibrant 배경",
+      "contrast": "backdrop 대비"
+    },
+    "motion": {
+      "easing": "ease",
+      "duration": "300ms",
+      "hover": "lift + blur",
+      "scroll": "parallax bg",
+      "transition": "all 300ms ease"
+    },
+    "dos": [
+      "backdrop-filter: blur(12px) 사용",
+      "투명도 0.1-0.25 rgba",
+      "rounded 16-24px"
+    ],
+    "donts": [
+      "불투명 배경",
+      "강한 그림자",
+      "저대비 텍스트"
+    ]
+  },
+  "neumorphism": {
+    "layout": {
+      "grid": "soft extruded 그리드",
+      "columns": "12열",
+      "gutter": "24px",
+      "margins": "32px",
+      "spacing": "soft 28px",
+      "symmetry": "대칭",
+      "geometry": "부드러운 3D 엑스트루드"
+    },
+    "typography": {
+      "fontPairing": "clean sans-serif (display + body)",
+      "sizeHierarchy": "H1: 44px, H2: 28px, body: 16px",
+      "lineHeight": "1.5",
+      "letterSpacing": "0px",
+      "weightStrategy": "medium 500"
+    },
+    "color": {
+      "usage": "모노크롬 soft",
+      "bgFg": "#e0e0e0 배경/카드",
+      "contrast": "저대비"
+    },
+    "motion": {
+      "easing": "ease-in-out",
+      "duration": "200ms",
+      "hover": "inset press",
+      "scroll": "soft lift",
+      "transition": "box-shadow 200ms ease-in-out"
+    },
+    "dos": [
+      "box-shadow inset/outset soft",
+      "bg와 동일 컬러",
+      "low contrast 유지"
+    ],
+    "donts": [
+      "강한 대비",
+      "네온/글로우",
+      "복잡한 패턴"
+    ]
+  },
+  "corporate-memphis": {
+    "layout": {
+      "grid": "비대칭 기하학적 그리드",
+      "columns": "12 컬럼",
+      "gutter": "32px",
+      "margins": "48px",
+      "spacing": "24px",
+      "symmetry": "비대칭",
+      "geometry": "원, 직사각형, 삼각형 등 기본 기하학 형태"
+    },
+    "typography": {
+      "fontPairing": "기하학적 sans-serif (Futura 계열) + sans-serif",
+      "sizeHierarchy": "H1: 56px / H2: 32px / body: 18px",
+      "lineHeight": "1.5",
+      "letterSpacing": "-0.02em",
+      "weightStrategy": "bold display, medium body"
+    },
+    "color": {
+      "usage": "밝은 파스텔과 원색의 플랫 컬러",
+      "bgFg": "화이트/라이트 BG + 다채로운 FG",
+      "contrast": "높은 대비의 밝은 액센트"
+    },
+    "motion": {
+      "easing": "ease-out",
+      "duration": "300ms",
+      "hover": "scale(1.05) + rotate(2deg)",
+      "scroll": "가벼운 parallax",
+      "transition": "cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    "dos": [
+      "평면 벡터 일러스트와 왜곡된 인물 사용",
+      "대담한 기하학 패턴 적용",
+      "재미있는 동작 포즈의 캐릭터"
+    ],
+    "donts": [
+      "현실적인 그림자나 그라데이션 사용",
+      "복잡한 디테일 추가",
+      "어두운 무거운 컬러 팔레트"
+    ]
+  },
+  "neo-brutalism": {
+    "layout": {
+      "grid": "블록키 강한 구조 그리드",
+      "columns": "12 컬럼",
+      "gutter": "16px",
+      "margins": "24px",
+      "spacing": "8px",
+      "symmetry": "강한 대칭 또는 블록 배치",
+      "geometry": "직선, 각진 형태, thick borders"
+    },
+    "typography": {
+      "fontPairing": "bold sans-serif (Impact 계열 또는 시스템 폰트) + sans-serif",
+      "sizeHierarchy": "H1: 64px / H2: 40px / body: 20px",
+      "lineHeight": "1.2",
+      "letterSpacing": "-0.05em",
+      "weightStrategy": "extra bold for headlines"
+    },
+    "color": {
+      "usage": "high contrast black, off-white, bright yellow/pink",
+      "bgFg": "black 또는 offwhite BG + bold accents",
+      "contrast": "극강 대비"
+    },
+    "motion": {
+      "easing": "cubic-bezier(0.25, 0.1, 0.25, 1)",
+      "duration": "200ms",
+      "hover": "강한 shadow 변화",
+      "scroll": "minimal",
+      "transition": "linear or abrupt"
+    },
+    "dos": [
+      "두꺼운 아웃라인과 보더 사용",
+      "대담한 타이포그래피",
+      "raw unpolished 요소"
+    ],
+    "donts": [
+      "부드러운 그림자나 그라데이션",
+      "미니멀한 중립색",
+      "과도한 부드러움"
+    ]
+  },
+  "gradient-aurora": {
+    "layout": {
+      "grid": "플렉시블 풀스크린 그리드",
+      "columns": "유연 4-6 컬럼",
+      "gutter": "24px",
+      "margins": "0px (full bleed)",
+      "spacing": "32px",
+      "symmetry": "대칭 또는 유기적",
+      "geometry": "부드러운 그라데이션 블렌드와 블러"
+    },
+    "typography": {
+      "fontPairing": "clean sans-serif (Inter 계열) + sans-serif",
+      "sizeHierarchy": "H1: 72px / H2: 48px / body: 18px",
+      "lineHeight": "1.6",
+      "letterSpacing": "0em",
+      "weightStrategy": "medium for all"
+    },
+    "color": {
+      "usage": "blurred multi-color aurora gradients (purple, blue, green, pink)",
+      "bgFg": "dark gradient BG + light FG",
+      "contrast": "중간 대비 (backdrop-filter blur)"
+    },
+    "motion": {
+      "easing": "ease-in-out",
+      "duration": "800ms",
+      "hover": "gradient shift",
+      "scroll": "slow mesh animation",
+      "transition": "cubic-bezier(0.45, 0.05, 0.55, 0.95)"
+    },
+    "dos": [
+      "여러 radial-gradient 레이어 사용",
+      "backdrop-filter: blur(20px) 적용",
+      "천천히 움직이는 그라데이션"
+    ],
+    "donts": [
+      "단색 플랫 배경",
+      "강한 대비 텍스트",
+      "빠른 애니메이션"
+    ]
+  },
+  "bento-grid": {
+    "layout": {
+      "grid": "모듈러 변형 크기 그리드 (bento box)",
+      "columns": "12 컬럼",
+      "gutter": "24px",
+      "margins": "32px",
+      "spacing": "16px",
+      "symmetry": "비대칭 모듈 배치",
+      "geometry": "직사각형 카드, 다양한 span"
+    },
+    "typography": {
+      "fontPairing": "sans-serif (Inter) + sans-serif",
+      "sizeHierarchy": "H1: 48px / H2: 28px / body: 16px",
+      "lineHeight": "1.4",
+      "letterSpacing": "-0.01em",
+      "weightStrategy": "semibold headings"
+    },
+    "color": {
+      "usage": "neutral tones with subtle accents",
+      "bgFg": "white/cream BG + card FG",
+      "contrast": "중간 대비"
+    },
+    "motion": {
+      "easing": "ease-out",
+      "duration": "250ms",
+      "hover": "scale(1.02) + lift",
+      "scroll": "stagger fade-in",
+      "transition": "cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    "dos": [
+      "카드 크기 다양하게 span 적용",
+      "일관된 gap 24px 유지",
+      "rounded corners 16px"
+    ],
+    "donts": [
+      "균일한 동일 크기 카드",
+      "과도한 간격",
+      "복잡한 중첩"
+    ]
+  },
+  "kawaii": {
+    "layout": {
+      "grid": "플레이풀 카드 그리드",
+      "columns": "4-6 컬럼",
+      "gutter": "20px",
+      "margins": "32px",
+      "spacing": "16px",
+      "symmetry": "비대칭 귀여운 배치",
+      "geometry": "고도로 rounded, bubbly shapes"
+    },
+    "typography": {
+      "fontPairing": "bubbly rounded font (Comic Sans-like or Poppins) + sans",
+      "sizeHierarchy": "H1: 52px / H2: 28px / body: 17px",
+      "lineHeight": "1.6",
+      "letterSpacing": "0.05em",
+      "weightStrategy": "light and bold mix"
+    },
+    "color": {
+      "usage": "pastel pink, blue, mint, yellow",
+      "bgFg": "light pastel BG + bright FG",
+      "contrast": "soft low contrast"
+    },
+    "motion": {
+      "easing": "ease-out",
+      "duration": "400ms",
+      "hover": "bounce scale(1.1)",
+      "scroll": "float up",
+      "transition": "cubic-bezier(0.68, -0.55, 0.27, 1.55)"
+    },
+    "dos": [
+      "큰 rounded corners (24px+)",
+      "귀여운 아이콘과 일러스트",
+      "부드러운 pastel 팔레트"
+    ],
+    "donts": [
+      "sharp edges",
+      "강한 대비",
+      "dark mode 강제"
+    ]
+  },
+  "japandi": {
+    "layout": {
+      "grid": "minimal clean grid",
+      "columns": "12 컬럼",
+      "gutter": "24px",
+      "margins": "48px",
+      "spacing": "32px",
+      "symmetry": "균형 잡힌 대칭",
+      "geometry": "clean straight lines with soft curves"
+    },
+    "typography": {
+      "fontPairing": "clean sans-serif (Inter) + light serif",
+      "sizeHierarchy": "H1: 44px / H2: 28px / body: 17px",
+      "lineHeight": "1.7",
+      "letterSpacing": "0em",
+      "weightStrategy": "light to medium"
+    },
+    "color": {
+      "usage": "neutral earth tones, beiges, muted greens",
+      "bgFg": "warm off-white BG + dark FG",
+      "contrast": "low to medium"
+    },
+    "motion": {
+      "easing": "ease-in-out",
+      "duration": "350ms",
+      "hover": "subtle scale(1.03)",
+      "scroll": "smooth fade",
+      "transition": "cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    "dos": [
+      "자연스러운 whitespace",
+      "earth tone 팔레트",
+      "minimal decoration"
+    ],
+    "donts": [
+      "bright accent colors",
+      "복잡한 패턴",
+      "heavy shadows"
+    ]
+  },
+  "organic-design": {
+    "layout": {
+      "grid": "fluid anti-grid",
+      "columns": "유연 free-flow",
+      "gutter": "0px",
+      "margins": "32px",
+      "spacing": "40px",
+      "symmetry": "비대칭 유기적",
+      "geometry": "biomorphic curves and blobs"
+    },
+    "typography": {
+      "fontPairing": "organic rounded sans (Satoshi) + sans",
+      "sizeHierarchy": "H1: 60px / H2: 36px / body: 18px",
+      "lineHeight": "1.5",
+      "letterSpacing": "-0.03em",
+      "weightStrategy": "medium weight"
+    },
+    "color": {
+      "usage": "natural muted tones and soft gradients",
+      "bgFg": "light neutral BG + warm FG",
+      "contrast": "soft contrast"
+    },
+    "motion": {
+      "easing": "ease-in-out",
+      "duration": "500ms",
+      "hover": "morph shape",
+      "scroll": "fluid reveal",
+      "transition": "cubic-bezier(0.34, 1.56, 0.64, 1)"
+    },
+    "dos": [
+      "clip-path나 SVG blob shape 사용",
+      "curved borders",
+      "자연스러운 흐름"
+    ],
+    "donts": [
+      "직선 그리드",
+      "sharp corners",
+      "기하학 과다"
+    ]
+  },
+  "kinetic-typography": {
+    "layout": {
+      "grid": "text-centered or full bleed",
+      "columns": "single column focus",
+      "gutter": "0px",
+      "margins": "24px",
+      "spacing": "48px",
+      "symmetry": "중앙 집중",
+      "geometry": "text as visual element"
+    },
+    "typography": {
+      "fontPairing": "bold variable font + sans-serif",
+      "sizeHierarchy": "H1: 80px / H2: 48px / body: 20px",
+      "lineHeight": "1.1",
+      "letterSpacing": "-0.08em",
+      "weightStrategy": "variable font weight animation"
+    },
+    "color": {
+      "usage": "high contrast or gradient text",
+      "bgFg": "dark BG + vibrant text",
+      "contrast": "극대화"
+    },
+    "motion": {
+      "easing": "ease-in-out",
+      "duration": "600ms",
+      "hover": "letter scramble or scale",
+      "scroll": "scroll-triggered animation (GSAP)",
+      "transition": "cubic-bezier(0.23, 1, 0.32, 1)"
+    },
+    "dos": [
+      "CSS @keyframes나 GSAP 사용",
+      "transform/opacity only",
+      "scroll-driven text movement"
+    ],
+    "donts": [
+      "과도한 color change",
+      "heavy JS lag",
+      "static text"
+    ]
+  },
+  "frutiger-aero": {
+    "layout": {
+      "grid": "skeuomorphic card grid",
+      "columns": "4 컬럼",
+      "gutter": "28px",
+      "margins": "32px",
+      "spacing": "24px",
+      "symmetry": "대칭",
+      "geometry": "glass-like rounded rectangles, bubbles"
+    },
+    "typography": {
+      "fontPairing": "humanist sans (Frutiger/Segoe) + sans",
+      "sizeHierarchy": "H1: 52px / H2: 32px / body: 17px",
+      "lineHeight": "1.4",
+      "letterSpacing": "0em",
+      "weightStrategy": "regular to medium"
+    },
+    "color": {
+      "usage": "soft blue/green gradients, glossy tertiary",
+      "bgFg": "light sky BG + glass FG",
+      "contrast": "soft glossy"
+    },
+    "motion": {
+      "easing": "ease-out",
+      "duration": "450ms",
+      "hover": "gloss shine reflection",
+      "scroll": "subtle bubble float",
+      "transition": "cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    "dos": [
+      "glassmorphism backdrop-filter",
+      "soft gradients and highlights",
+      "nature motif icons"
+    ],
+    "donts": [
+      "flat matte",
+      "sharp edges",
+      "dark heavy tones"
+    ]
+  },
+  "claymorphism": {
+    "layout": {
+      "grid": "soft floating card grid",
+      "columns": "4-5 컬럼",
+      "gutter": "32px",
+      "margins": "40px",
+      "spacing": "24px",
+      "symmetry": "비대칭 soft",
+      "geometry": "high rounded squircle blobs"
+    },
+    "typography": {
+      "fontPairing": "rounded sans-serif + sans",
+      "sizeHierarchy": "H1: 48px / H2: 30px / body: 17px",
+      "lineHeight": "1.5",
+      "letterSpacing": "-0.01em",
+      "weightStrategy": "medium"
+    },
+    "color": {
+      "usage": "vibrant pastel matte clay tones",
+      "bgFg": "light BG + puffy FG",
+      "contrast": "soft 3D"
+    },
+    "motion": {
+      "easing": "ease-out",
+      "duration": "350ms",
+      "hover": "squish scale(0.95)",
+      "scroll": "soft bounce",
+      "transition": "cubic-bezier(0.68, -0.55, 0.27, 1.55)"
+    },
+    "dos": [
+      "inset + outer shadow 조합",
+      "border-radius: 9999px",
+      "pastel matte colors"
+    ],
+    "donts": [
+      "flat no shadow",
+      "sharp edges",
+      "high gloss"
+    ]
+  },
+  "dopamine-design": {
+    "layout": {
+      "grid": "유연한 벤토 그리드",
+      "columns": "12 컬럼",
+      "gutter": "24px",
+      "margins": "48px",
+      "spacing": "16px~32px",
+      "symmetry": "비대칭",
+      "geometry": "곡선과 blob 형태"
+    },
+    "typography": {
+      "fontPairing": "볼드 디스플레이 sans + 현대 sans",
+      "sizeHierarchy": "H1: 80px, H2: 48px, body: 18px",
+      "lineHeight": "1.2 (H), 1.6 (body)",
+      "letterSpacing": "-0.03em",
+      "weightStrategy": "700-900, variable font"
+    },
+    "color": {
+      "usage": "고채도 네온, 그라데이션 액센트",
+      "bgFg": "밝은 배경 + 생생 FG",
+      "contrast": "4.5:1 이상 고대비"
+    },
+    "motion": {
+      "easing": "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+      "duration": "250ms",
+      "hover": "scale(1.1) + bounce",
+      "scroll": "kinetic typography",
+      "transition": "all 250ms cubic-bezier"
+    },
+    "dos": [
+      "놀라운 마이크로-인터랙션 추가",
+      "도파민 색상으로 CTA 강조",
+      "레이어드 시각 효과 활용"
+    ],
+    "donts": [
+      "단색 미니멀리즘",
+      "느린 전환",
+      "낮은 에너지 모션"
+    ]
+  },
+  "anti-design": {
+    "layout": {
+      "grid": "그리드 무시",
+      "columns": "불규칙",
+      "gutter": "0px",
+      "margins": "변동",
+      "spacing": "혼란스러운",
+      "symmetry": "비대칭 극대화",
+      "geometry": "겹침과 왜곡"
+    },
+    "typography": {
+      "fontPairing": "mismatched 여러 폰트",
+      "sizeHierarchy": "H1: 72px, H2: 24px, body: 16px",
+      "lineHeight": "1.2",
+      "letterSpacing": "0.1em",
+      "weightStrategy": "극단적 bold와 thin 혼합"
+    },
+    "color": {
+      "usage": "clashing colors 혼합",
+      "bgFg": "형광 배경, 검정 텍스트",
+      "contrast": "의도적 저/과대비"
+    },
+    "motion": {
+      "easing": "linear",
+      "duration": "100ms",
+      "hover": "distort 효과",
+      "scroll": "janky scroll",
+      "transition": "abrupt"
+    },
+    "dos": [
+      "의도적 chaos 생성",
+      "clashing color 사용",
+      "asymmetry 활용"
+    ],
+    "donts": [
+      "정렬된 그리드",
+      "부드러운 motion",
+      "전통적 hierarchy"
+    ]
+  },
+  "cottagecore": {
+    "layout": {
+      "grid": "유기적 그리드",
+      "columns": "8 컬럼",
+      "gutter": "32px",
+      "margins": "64px",
+      "spacing": "24px",
+      "symmetry": "부드러운 대칭",
+      "geometry": "자연스러운 곡선, 꽃 모티브"
+    },
+    "typography": {
+      "fontPairing": "세리프 디스플레이 + 핸드라이팅 body",
+      "sizeHierarchy": "H1: 42px, H2: 28px, body: 16px",
+      "lineHeight": "1.7",
+      "letterSpacing": "0em",
+      "weightStrategy": "400-600 regular"
+    },
+    "color": {
+      "usage": "파스텔 톤 자연색",
+      "bgFg": "크림 배경 + 따뜻한 FG",
+      "contrast": "중간 대비"
+    },
+    "motion": {
+      "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "duration": "400ms",
+      "hover": "gentle scale",
+      "scroll": "soft fade",
+      "transition": "all 400ms ease-in-out"
+    },
+    "dos": [
+      "자연 요소 이미지 사용",
+      "부드러운 색상 팔레트",
+      "코지 whitespace"
+    ],
+    "donts": [
+      "네온 색상",
+      "급격한 motion",
+      "산업적 기하학"
+    ]
+  },
+  "solarpunk": {
+    "layout": {
+      "grid": "유기적 모듈러",
+      "columns": "12 컬럼",
+      "gutter": "20px",
+      "margins": "40px",
+      "spacing": "24px",
+      "symmetry": "조화로운",
+      "geometry": "유기적 형태, 자연 패턴"
+    },
+    "typography": {
+      "fontPairing": "현대 sans + variable",
+      "sizeHierarchy": "H1: 52px, H2: 34px, body: 17px",
+      "lineHeight": "1.5",
+      "letterSpacing": "-0.01em",
+      "weightStrategy": "500-700"
+    },
+    "color": {
+      "usage": "그린, 옐로우, 에코 톤",
+      "bgFg": "자연 gradient 배경, 밝은 텍스트",
+      "contrast": "접근성 높은"
+    },
+    "motion": {
+      "easing": "cubic-bezier(0.25, 0.1, 0.25, 1)",
+      "duration": "350ms",
+      "hover": "grow with leaf animation",
+      "scroll": "parallax nature",
+      "transition": "all 350ms ease"
+    },
+    "dos": [
+      "지속가능 요소 강조",
+      "자연 색상 팔레트",
+      "커뮤니티 느낌 디자인"
+    ],
+    "donts": [
+      "다크 테마 과도",
+      "플라스틱 같은 모션",
+      "오염된 색상"
+    ]
+  },
+  "indie-web": {
+    "layout": {
+      "grid": "자유로운 레이아웃",
+      "columns": "가변",
+      "gutter": "16px",
+      "margins": "32px",
+      "spacing": "24px",
+      "symmetry": "비대칭",
+      "geometry": "핸드메이드 느낌"
+    },
+    "typography": {
+      "fontPairing": "시스템 폰트 + quirky display",
+      "sizeHierarchy": "H1: 36px, H2: 24px, body: 16px",
+      "lineHeight": "1.6",
+      "letterSpacing": "0.02em",
+      "weightStrategy": "혼합 weight"
+    },
+    "color": {
+      "usage": "개인적 색상 혼합",
+      "bgFg": "다양한 bg, black fg",
+      "contrast": "기본"
+    },
+    "motion": {
+      "easing": "ease-in-out",
+      "duration": "200ms",
+      "hover": "simple underline",
+      "scroll": "none or minimal",
+      "transition": "all 200ms"
+    },
+    "dos": [
+      "개인적 터치 추가",
+      "low-fi 요소",
+      "DIY 느낌"
+    ],
+    "donts": [
+      "기업적 polished",
+      "과도한 애니메이션",
+      "템플릿 느낌"
+    ]
+  },
+  "editorial-typography": {
+    "layout": {
+      "grid": "클래식 12 컬럼",
+      "columns": "12",
+      "gutter": "28px",
+      "margins": "60px",
+      "spacing": "32px",
+      "symmetry": "대칭",
+      "geometry": "깔끔한 사각"
+    },
+    "typography": {
+      "fontPairing": "세리프 display + serif body",
+      "sizeHierarchy": "H1: 64px, H2: 36px, body: 18px",
+      "lineHeight": "1.4",
+      "letterSpacing": "-0.04em",
+      "weightStrategy": "300-700"
+    },
+    "color": {
+      "usage": "고전적 black/white",
+      "bgFg": "white bg, dark fg",
+      "contrast": "최고"
+    },
+    "motion": {
+      "easing": "ease",
+      "duration": "300ms",
+      "hover": "fade",
+      "scroll": "smooth scroll",
+      "transition": "opacity 300ms"
+    },
+    "dos": [
+      "강한 계층 구조",
+      "whitespace 풍부",
+      "타이포 중심"
+    ],
+    "donts": [
+      "pixelated",
+      "bright neon",
+      "과도 motion"
+    ]
+  },
+  "variable-typography": {
+    "layout": {
+      "grid": "표준 그리드",
+      "columns": "12",
+      "gutter": "16px",
+      "margins": "40px",
+      "spacing": "20px",
+      "symmetry": "유연",
+      "geometry": "동적"
+    },
+    "typography": {
+      "fontPairing": "variable font display + body",
+      "sizeHierarchy": "H1: 56px, H2: 32px, body: 16px",
+      "lineHeight": "1.5",
+      "letterSpacing": "font-variation-settings 사용",
+      "weightStrategy": "variable axes 조정"
+    },
+    "color": {
+      "usage": "타이포 중심 neutral",
+      "bgFg": "neutral bg fg",
+      "contrast": "고대비"
+    },
+    "motion": {
+      "easing": "cubic-bezier(0.4,0,0.2,1)",
+      "duration": "150ms",
+      "hover": "font variation change",
+      "scroll": "axis morph",
+      "transition": "font-variation-settings 150ms"
+    },
+    "dos": [
+      "variable font axes 활용",
+      "동적 텍스트 변화",
+      "CSS font-variation-settings"
+    ],
+    "donts": [
+      "고정 폰트만",
+      "복잡한 변화",
+      "성능 무시"
+    ]
+  },
+  "monospace-terminal-ui": {
+    "layout": {
+      "grid": "블록 그리드",
+      "columns": "1 or fixed",
+      "gutter": "8px",
+      "margins": "16px",
+      "spacing": "4px",
+      "symmetry": "그리드 기반",
+      "geometry": "직사각형"
+    },
+    "typography": {
+      "fontPairing": "monospace display + body",
+      "sizeHierarchy": "H1: 24px, H2: 18px, body: 14px",
+      "lineHeight": "1.3",
+      "letterSpacing": "0.05em",
+      "weightStrategy": "400 regular"
+    },
+    "color": {
+      "usage": "그린 on black",
+      "bgFg": "#000 bg, #00FF00 fg",
+      "contrast": "terminal style"
+    },
+    "motion": {
+      "easing": "step-end",
+      "duration": "50ms",
+      "hover": "blink",
+      "scroll": "terminal scroll",
+      "transition": "none"
+    },
+    "dos": [
+      "monospace 폰트 사용",
+      "CRT 효과",
+      "command line 느낌"
+    ],
+    "donts": [
+      "serif",
+      "색상 과다",
+      "부드러운 curve"
+    ]
+  },
+  "pixel-art-ui": {
+    "layout": {
+      "grid": "픽셀 정렬 그리드",
+      "columns": "8 or 16",
+      "gutter": "1px",
+      "margins": "8px",
+      "spacing": "1px",
+      "symmetry": "그리드",
+      "geometry": "픽셀 블록"
+    },
+    "typography": {
+      "fontPairing": "pixel font",
+      "sizeHierarchy": "H1: 32px, H2: 16px, body: 12px",
+      "lineHeight": "1",
+      "letterSpacing": "0",
+      "weightStrategy": "pixel style"
+    },
+    "color": {
+      "usage": "제한된 16색 팔레트",
+      "bgFg": "dark bg, bright fg",
+      "contrast": "pixel contrast"
+    },
+    "motion": {
+      "easing": "step",
+      "duration": "100ms",
+      "hover": "pixel shift",
+      "scroll": "none",
+      "transition": "image-rendering pixelated"
+    },
+    "dos": [
+      "image-rendering: pixelated",
+      "low res 요소",
+      "8bit palette"
+    ],
+    "donts": [
+      "smooth anti-alias",
+      "high res",
+      "현대 curve"
+    ]
+  },
+  "de-stijl": {
+    "layout": {
+      "grid": "엄격한 직선 그리드",
+      "columns": "8",
+      "gutter": "20px",
+      "margins": "40px",
+      "spacing": "0px",
+      "symmetry": "비대칭",
+      "geometry": "수평 수직 직사각형"
+    },
+    "typography": {
+      "fontPairing": "sans bold",
+      "sizeHierarchy": "H1: 48px, H2: 24px, body: 16px",
+      "lineHeight": "1.4",
+      "letterSpacing": "0.1em",
+      "weightStrategy": "bold"
+    },
+    "color": {
+      "usage": "primary red blue yellow black white",
+      "bgFg": "white bg, primary fg",
+      "contrast": "강렬"
+    },
+    "motion": {
+      "easing": "ease",
+      "duration": "300ms",
+      "hover": "color shift",
+      "scroll": "minimal",
+      "transition": "all 300ms"
+    },
+    "dos": [
+      "primary color 제한",
+      "직선 geometry",
+      "asymmetric composition"
+    ],
+    "donts": [
+      "곡선",
+      "다색",
+      "복잡 pattern"
+    ]
+  },
+  "constructivism": {
+    "layout": {
+      "grid": "동적 대각선",
+      "columns": "변동",
+      "gutter": "16px",
+      "margins": "32px",
+      "spacing": "12px",
+      "symmetry": "비대칭",
+      "geometry": "기하학적 각도"
+    },
+    "typography": {
+      "fontPairing": "bold sans",
+      "sizeHierarchy": "H1: 60px, H2: 36px, body: 16px",
+      "lineHeight": "1.2",
+      "letterSpacing": "0.05em",
+      "weightStrategy": "ultra bold"
+    },
+    "color": {
+      "usage": "red black white",
+      "bgFg": "white or red bg, black text",
+      "contrast": "강한"
+    },
+    "motion": {
+      "easing": "cubic-bezier(0.6, 0, 0.4, 1)",
+      "duration": "200ms",
+      "hover": "tilt",
+      "scroll": "dynamic",
+      "transition": "transform 200ms"
+    },
+    "dos": [
+      "bold geometry",
+      "propaganda style",
+      "red accent"
+    ],
+    "donts": [
+      "pastel",
+      "soft motion",
+      "minimal whitespace"
+    ]
+  },
+  "isometric-3d-ui": {
+    "layout": {
+      "grid": "isometric grid",
+      "columns": "isometric tiles",
+      "gutter": "0",
+      "margins": "40px",
+      "spacing": "40px",
+      "symmetry": "isometric",
+      "geometry": "30도 각도"
+    },
+    "typography": {
+      "fontPairing": "sans",
+      "sizeHierarchy": "H1: 40px, H2: 28px, body: 16px",
+      "lineHeight": "1.5",
+      "letterSpacing": "0",
+      "weightStrategy": "medium"
+    },
+    "color": {
+      "usage": "muted tones with depth",
+      "bgFg": "light bg, shaded fg",
+      "contrast": "shadow contrast"
+    },
+    "motion": {
+      "easing": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+      "duration": "400ms",
+      "hover": "rotate 3d",
+      "scroll": "parallax 3d",
+      "transition": "transform 400ms"
+    },
+    "dos": [
+      "CSS 3D transform 사용",
+      "isometric shadow",
+      "depth illusion"
+    ],
+    "donts": [
+      "flat 2d",
+      "no perspective",
+      "과도한 rotation"
+    ]
+  },
+  "pop-art": {
+    "layout": {
+      "grid": "bold block",
+      "columns": "6 or 12",
+      "gutter": "16px",
+      "margins": "32px",
+      "spacing": "24px",
+      "symmetry": "반복",
+      "geometry": "bold outlines"
+    },
+    "typography": {
+      "fontPairing": "comic bold sans",
+      "sizeHierarchy": "H1: 68px, H2: 40px, body: 18px",
+      "lineHeight": "1.3",
+      "letterSpacing": "-0.05em",
+      "weightStrategy": "900 ultra bold"
+    },
+    "color": {
+      "usage": "vibrant primary bright",
+      "bgFg": "yellow bg, red fg",
+      "contrast": "최대"
+    },
+    "motion": {
+      "easing": "ease-out",
+      "duration": "250ms",
+      "hover": "pop scale",
+      "scroll": "comic panel",
+      "transition": "all 250ms"
+    },
+    "dos": [
+      "bright color",
+      "bold outlines",
+      "repetitive motif"
+    ],
+    "donts": [
+      "subtle tones",
+      "minimal",
+      "soft edges"
+    ]
+  }
+}
