@@ -1,6 +1,7 @@
 "use strict";
-const DATA_VERSION = '2026-05-10-ism43-curated-ui';
+const DATA_VERSION = '2026-05-11-guide-splitview';
 const DATA_URL = `./assets/data/isms.json?v=${DATA_VERSION}`;
+const GUIDE_URL = `./assets/data/dev-guides.json?v=${DATA_VERSION}`;
 const IMAGE_BASE_URL = './assets/images';
 const THUMB_BASE_URL = './assets/images/thumbs';
 const UI_STRINGS = {
@@ -17,6 +18,16 @@ const UI_STRINGS = {
         devGuideBuild: '구현 방법',
         devGuideChecks: '검증 포인트',
         designMockup: '{name} 디자인 시안',
+        guideBtn: 'Design Guide',
+        guideLayout: 'Layout',
+        guideTypo: 'Typography',
+        guideColor: 'Color',
+        guideMotion: 'Motion',
+        guideDo: 'Do',
+        guideDont: "Don't",
+        guideLoading: '가이드 로딩 중...',
+        guideError: '가이드를 불러오지 못했습니다.',
+        guidePending: '가이드 준비 중',
         footerTitle: 'Design -isms 레퍼런스 보드',
         footerGen: 'GPT Image 2로 생성'
     },
@@ -33,6 +44,16 @@ const UI_STRINGS = {
         devGuideBuild: 'Build Method',
         devGuideChecks: 'Verification Points',
         designMockup: '{name} Design Mockup',
+        guideBtn: 'Design Guide',
+        guideLayout: 'Layout',
+        guideTypo: 'Typography',
+        guideColor: 'Color',
+        guideMotion: 'Motion',
+        guideDo: 'Do',
+        guideDont: "Don't",
+        guideLoading: 'Loading guide...',
+        guideError: 'Failed to load guide.',
+        guidePending: 'Guide coming soon',
         footerTitle: 'Design -isms Reference Board',
         footerGen: 'Images generated with GPT Image 2'
     }
@@ -256,6 +277,8 @@ let currentLang = localStorage.getItem('design-isms-lang') === 'en' ? 'en' : 'ko
 let imgObserver = null;
 let pageRevealed = false;
 let cardObserver = null;
+let guideCache = null;
+let guideFetchPromise = null;
 const toastTimers = new WeakMap();
 function t(key, vars = {}) {
     let str = UI_STRINGS[currentLang][key] || UI_STRINGS.en[key] || key;
@@ -409,6 +432,73 @@ function getDevelopmentGuide(ism) {
 }
 function listHTML(items, className) {
     return '<ul class="' + className + '">' + items.map(item => '<li>' + escapeHTML(item) + '</li>').join('') + '</ul>';
+}
+async function loadGuides() {
+    if (guideCache)
+        return guideCache;
+    if (guideFetchPromise)
+        return guideFetchPromise;
+    guideFetchPromise = fetch(GUIDE_URL)
+        .then(res => { if (!res.ok)
+        throw new Error('guide fetch failed'); return res.json(); })
+        .then(raw => { guideCache = raw; return guideCache; })
+        .catch(() => null);
+    return guideFetchPromise;
+}
+function renderGuideRow(label, value) {
+    return '<div class="guide-row"><span class="guide-row-label">' + escapeHTML(label) + '</span><span class="guide-row-value">' + escapeHTML(value) + '</span></div>';
+}
+function renderGuidePanel(guide) {
+    const l = guide.layout;
+    const ty = guide.typography;
+    const c = guide.color;
+    const m = guide.motion;
+    let html = '<div class="guide-section"><h3 class="guide-section-title">' + t('guideLayout') + '</h3>' +
+        renderGuideRow('Grid', l.grid) + renderGuideRow('Columns', l.columns) +
+        renderGuideRow('Gutter', l.gutter) + renderGuideRow('Margins', l.margins) +
+        renderGuideRow('Spacing', l.spacing) + renderGuideRow('Symmetry', l.symmetry) +
+        renderGuideRow('Geometry', l.geometry) + '</div>';
+    html += '<div class="guide-section"><h3 class="guide-section-title">' + t('guideTypo') + '</h3>' +
+        renderGuideRow('Font Pairing', ty.fontPairing) + renderGuideRow('Size Hierarchy', ty.sizeHierarchy) +
+        renderGuideRow('Line Height', ty.lineHeight) + renderGuideRow('Letter Spacing', ty.letterSpacing) +
+        renderGuideRow('Weight', ty.weightStrategy) + '</div>';
+    html += '<div class="guide-section"><h3 class="guide-section-title">' + t('guideColor') + '</h3>' +
+        renderGuideRow('Usage', c.usage) + renderGuideRow('BG / FG', c.bgFg) +
+        renderGuideRow('Contrast', c.contrast) + '</div>';
+    html += '<div class="guide-section"><h3 class="guide-section-title">' + t('guideMotion') + '</h3>' +
+        renderGuideRow('Easing', m.easing) + renderGuideRow('Duration', m.duration) +
+        renderGuideRow('Hover', m.hover) + renderGuideRow('Scroll', m.scroll) +
+        renderGuideRow('Transition', m.transition) + '</div>';
+    html += '<div class="guide-section guide-do-dont"><div class="guide-do"><h3 class="guide-section-title guide-do-title">' + t('guideDo') + '</h3>' +
+        '<ul class="guide-list guide-list-do">' + guide.dos.map(d => '<li>' + escapeHTML(d) + '</li>').join('') + '</ul></div>' +
+        '<div class="guide-dont"><h3 class="guide-section-title guide-dont-title">' + t('guideDont') + '</h3>' +
+        '<ul class="guide-list guide-list-dont">' + guide.donts.map(d => '<li>' + escapeHTML(d) + '</li>').join('') + '</ul></div></div>';
+    return html;
+}
+async function toggleGuidePanel(ismId) {
+    const overlay = document.getElementById('modal-overlay');
+    const panel = document.getElementById('guide-panel');
+    const container = overlay?.querySelector('.modal-container');
+    if (!overlay || !panel || !container)
+        return;
+    if (container.classList.contains('expanded')) {
+        container.classList.remove('expanded');
+        panel.innerHTML = '';
+        return;
+    }
+    panel.innerHTML = '<div class="guide-loading">' + t('guideLoading') + '</div>';
+    container.classList.add('expanded');
+    const guides = await loadGuides();
+    if (!guides) {
+        panel.innerHTML = '<div class="guide-error">' + t('guideError') + '</div>';
+        return;
+    }
+    const guide = guides[ismId];
+    if (!guide) {
+        panel.innerHTML = '<div class="guide-error">' + t('guidePending') + '</div>';
+        return;
+    }
+    panel.innerHTML = '<div class="guide-panel-header">' + t('guideBtn') + '</div>' + renderGuidePanel(guide);
 }
 function renderDevelopmentGuide(ism) {
     const guide = getDevelopmentGuide(ism);
@@ -853,6 +943,9 @@ function renderModalContent(ism) {
             '<div class="modal-related">' + relatedHTML + '</div>';
     }
     html += renderDevelopmentGuide(ism);
+    html += '<button class="guide-toggle-btn" id="guide-toggle-btn" data-ism-id="' + ism.id + '">' +
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg> ' +
+        t('guideBtn') + '</button>';
     return html;
 }
 function openModal(ismId) {
@@ -898,6 +991,14 @@ function openModal(ismId) {
             }
         });
     });
+    const guideBtn = document.getElementById('guide-toggle-btn');
+    if (guideBtn instanceof HTMLButtonElement) {
+        guideBtn.addEventListener('click', () => {
+            const id = guideBtn.dataset.ismId;
+            if (id)
+                void toggleGuidePanel(id);
+        });
+    }
     const exToggle = document.getElementById('modal-ex-toggle');
     const exHidden = document.getElementById('modal-ex-hidden');
     if (exToggle instanceof HTMLButtonElement && exHidden instanceof HTMLElement) {
@@ -916,6 +1017,10 @@ function openModal(ismId) {
 function closeModal() {
     const overlay = getRequired('modal-overlay');
     overlay.classList.remove('active');
+    overlay.querySelector('.modal-container')?.classList.remove('expanded');
+    const panel = document.getElementById('guide-panel');
+    if (panel)
+        panel.innerHTML = '';
     document.body.style.overflow = '';
     history.replaceState(null, '', location.pathname + location.search);
 }
