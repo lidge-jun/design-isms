@@ -1,10 +1,22 @@
 # Design -isms
 
+[![Deploy to GitHub Pages](https://github.com/lidge-jun/design-isms/actions/workflows/deploy.yml/badge.svg)](https://github.com/lidge-jun/design-isms/actions/workflows/deploy.yml)
+![Isms](https://img.shields.io/badge/design--isms-43-E8642C)
+![UI candidates](https://img.shields.io/badge/UI%20candidates-46-2C2C2C)
+
 43개 디자인 ism을 한 번에 훑어보는 시각 레퍼런스 보드입니다. 각 스타일은 AI mockup 이미지, 역사/맥락, 컬러 팔레트, 실제 사이트 예시, 이미지 생성 프롬프트, 관련 ISM, 그리고 팝업 하단의 개발 가이드까지 함께 제공합니다.
 
 별도 페이지 `effects.html`에서는 모바일과 데스크탑 프런트엔드 UI 후보군을 이름을 몰라도 찾아볼 수 있게 정리합니다. 카드별 미니 데모, 상세 모달, 접근성 체크, 성능 체크, 46개 전체 ima2 guide 이미지와 WebP preview, 그리고 효과별 배경/히스토리/사용 시점 문서를 포함합니다.
 
-[Live Site](https://lidge-jun.github.io/design-isms/) · [Repository](https://github.com/lidge-jun/design-isms)
+[Live Site](https://lidge-jun.github.io/design-isms/) · [Effects](https://lidge-jun.github.io/design-isms/effects.html) · [FAQ](https://lidge-jun.github.io/design-isms/faq.html) · [Repository](https://github.com/lidge-jun/design-isms)
+
+## Status
+
+- Source of truth counts: `assets/data/isms.json` = 43 design isms, `assets/data/effects.json` = 46 frontend UI candidates.
+- GitHub Pages deploys from the repository root through `.github/workflows/deploy.yml`.
+- The deployment workflow runs `npm ci` and `npm run verify` before uploading the Pages artifact.
+- No root `LICENSE` file is currently declared, so this README intentionally does not advertise an open-source license badge.
+- Repository description metadata may lag behind the data files; trust the JSON counts and this README for current counts.
 
 ## What It Shows
 
@@ -93,6 +105,14 @@ The browser entry files are generated for GitHub Pages:
 
 - Edit `src/app.ts`, then run `npm run build` for `assets/js/app.js`.
 - Edit `src/effects-demos.ts`, `src/effects-docs.ts`, or `src/effects.ts`, then run `npm run build` for `assets/js/effects-demos.js`, `assets/js/effects-docs.js`, and `assets/js/effects.js`.
+
+## Verification Policy
+
+- Run `npm run verify` after any TypeScript, data, or HTML change.
+- Run `npm run images:thumbs` before `npm run verify` after adding or replacing PNG guide/mockup images.
+- Check `index.html`, `effects.html`, and `faq.html` locally before publishing because GitHub Pages serves static files directly.
+- Do not claim new ISM/effect counts until the matching JSON files and UI counts agree.
+- Keep `README.md`, `AGENTS.md`, `structure/README.md`, and public page copy aligned with the shipped behavior.
 
 ## Image Pipeline
 
