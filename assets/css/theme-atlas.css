@@ -230,16 +230,11 @@ a { color: inherit; }
   margin-top: 6px;
 }
 
-/* ── Asymmetric 12-column specimen catalog ── */
+/* ── Equal 3-column specimen catalog ── */
 @media (min-width: 1025px) {
   .masonry {
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
-  .masonry .ism-card { grid-column: span 4; }
-  .masonry .ism-card:nth-child(6n + 1) { grid-column: span 5; }
-  .masonry .ism-card:nth-child(6n + 3) { grid-column: span 3; }
-  .masonry .ism-card:nth-child(6n + 4) { grid-column: span 3; }
-  .masonry .ism-card:nth-child(6n + 6) { grid-column: span 5; }
 }
 
 /* keywords read as annotation text, not decorative pills */
