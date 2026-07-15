@@ -2162,15 +2162,15 @@
       },
       {
         "name": "American Millennial",
-        "url": "http://americanmillenni.al"
+        "url": "https://americanmillenni.al"
       },
       {
         "name": "Arrc",
-        "url": "http://arrc.site"
+        "url": "https://arrc.site"
       },
       {
         "name": "Effecava",
-        "url": "http://effecava.xyz"
+        "url": "https://effecava.xyz"
       },
       {
         "name": "Figma Community",
@@ -2178,7 +2178,7 @@
       },
       {
         "name": "Zavidova",
-        "url": "http://zavidova.com"
+        "url": "https://zavidova.com"
       }
     ],
     "images": [
@@ -2752,7 +2752,7 @@
       },
       {
         "name": "Diego Funken",
-        "url": "http://diegofunken.com"
+        "url": "https://diegofunken.com"
       },
       {
         "name": "Mouthwash",
@@ -4344,5 +4344,717 @@
         "size": "1536x1024"
       }
     ]
+  },
+  {
+    "id": "ai-slop",
+    "kind": "anti-pattern",
+    "name": "AI Slop",
+    "nameKr": "AI 슬롭",
+    "tagline": "Generation without judgment",
+    "description": "AI 슬롭은 생성 도구 자체가 아니라 판단 없이 조합된 화면에서 드러나는 품질 실패를 가리킨다. 상투적 그라데이션, 무관한 아이콘, 약한 정보 위계, 근거 없는 깊이와 서로 다른 시각 언어를 진단하고, 목적·콘텐츠·상태에 맞춰 덜어내고 다시 정렬하도록 돕는 안티패턴이다.",
+    "descriptionEn": "AI Slop is a quality failure found in screens assembled without editorial judgment, not a criticism of generative tools. Generic gradients, unrelated icons, weak hierarchy, false depth, and conflicting visual languages become diagnostic signals to remove, rationalize, and rebuild around purpose, content, and state.",
+    "keywords": [
+      "synthetic-clutter",
+      "generic-gradient",
+      "false-depth",
+      "random-iconography",
+      "weak-hierarchy",
+      "inconsistent-style"
+    ],
+    "palette": [
+      "#7C3AED",
+      "#22D3EE",
+      "#F97316",
+      "#625B57"
+    ],
+    "examples": [
+      {
+        "name": "The Crit",
+        "url": "https://thecrit.co/resources/does-your-ai-built-app-look-vibe-coded"
+      },
+      {
+        "name": "Microsoft Research",
+        "url": "https://www.microsoft.com/en-us/research/publication/interrogating-design-homogenization-in-web-vibe-coding/"
+      },
+      {
+        "name": "Wunderlandmedia",
+        "url": "https://wunderlandmedia.com/every-ai-website-looks-the-same-competitive-advantage"
+      },
+      {
+        "name": "r/vibecoding",
+        "url": "https://www.reddit.com/r/vibecoding/comments/1o18bb4/why_do_all_ai_generated_websites_look_the_same/"
+      },
+      {
+        "name": "10Web",
+        "url": "https://10web.io/"
+      },
+      {
+        "name": "Durable",
+        "url": "https://durable.com/"
+      },
+      {
+        "name": "Beautiful.ai",
+        "url": "https://www.beautiful.ai/"
+      },
+      {
+        "name": "Decktopus",
+        "url": "https://www.decktopus.com/"
+      },
+      {
+        "name": "Lovable",
+        "url": "https://lovable.dev/"
+      },
+      {
+        "name": "Bolt",
+        "url": "https://bolt.new/"
+      }
+    ],
+    "images": [
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "saas.png",
+        "label": "SaaS Page"
+      },
+      {
+        "file": "dashboard.png",
+        "label": "Dashboard"
+      }
+    ],
+    "history": "AI 슬롭은 특정 미술 운동에서 나온 말이 아니라, 생성형 도구로 빠르게 만든 콘텐츠와 인터페이스에서 반복되는 저품질 결과를 설명하기 위해 최근 널리 쓰이기 시작한 동시대적 안티패턴 명칭이다. 디지털 화면에서는 보라색 그라데이션, 맥락 없는 3D 아이콘, 유리 카드, 과장된 문구와 제각각인 간격이 목적이나 정보 구조보다 먼저 등장하는 상태를 뜻한다. 이는 AI를 활용한 모든 작업과 같지 않으며, 기존의 맥시멀리즘처럼 의도된 밀도나 글래스모피즘처럼 일관된 재료 규칙을 가진 스타일과도 다르다. 현재는 AI 웹 빌더 결과를 검수하고 디자인 균질화를 토론하는 진단 언어로 유용하다. 다만 사람·도구·집단을 조롱하는 낙인이 아니라, 출처 확인, 위계 재설계, 아이콘 통일, 장식 제거 같은 교정 판단을 가르치는 기준으로만 써야 한다.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A generic AI-generated startup landing page for a vague productivity SaaS: centered hero with purple-to-cyan gradient, oversized bold headline making an inflated claim, three identical rounded feature cards with mismatched generic 3D icons, glassmorphic panels floating without purpose, random sparkle decorations, inconsistent button styles and spacing, muddy neutral footer. The screen is an instructional anti-pattern specimen. Make the failure modes specific and readable, not merely ugly: conflicting visual languages, generic purple gradient hero, unrelated 3D icons, inflated claims, inconsistent spacing, and decorative glass cards without hierarchy. Keep text legible so a novice can diagnose the problems. Do not imitate an identifiable product or artist. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "saas.png",
+        "prompt": "A generic AI-generated SaaS marketing page: gradient blob background, equal-width pricing cards with emoji-like icons, testimonial cards with obviously synthetic names, conflicting corner radii, three different shades of purple accent, decorative chart that plots nothing meaningful, inconsistent typography mixing three font families. The screen is an instructional anti-pattern specimen. Make the failure modes specific and readable, not merely ugly: conflicting visual languages, generic purple gradient hero, unrelated 3D icons, inflated claims, inconsistent spacing, and decorative glass cards without hierarchy. Keep text legible so a novice can diagnose the problems. Do not imitate an identifiable product or artist. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "dashboard.png",
+        "prompt": "A generic AI-generated analytics dashboard: dark theme with neon purple-cyan gradient charts that lack axis labels, KPI cards with random icons and fake precision numbers, glass cards over a gradient background reducing contrast, inconsistent paddings, decorative world map with meaningless glowing dots. The screen is an instructional anti-pattern specimen. Make the failure modes specific and readable, not merely ugly: conflicting visual languages, generic purple gradient hero, unrelated 3D icons, inflated claims, inconsistent spacing, and decorative glass cards without hierarchy. Keep text legible so a novice can diagnose the problems. Do not imitate an identifiable product or artist. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Microsoft Research — design homogenization",
+        "url": "https://www.microsoft.com/en-us/research/publication/interrogating-design-homogenization-in-web-vibe-coding/"
+      },
+      {
+        "label": "The Crit — vibe-coded appearance",
+        "url": "https://thecrit.co/resources/does-your-ai-built-app-look-vibe-coded"
+      },
+      {
+        "label": "Wunderlandmedia — AI website sameness",
+        "url": "https://wunderlandmedia.com/every-ai-website-looks-the-same-competitive-advantage"
+      }
+    ],
+    "reviewedOn": "2026-07-15"
+  },
+  {
+    "id": "refractive-glass-ui",
+    "kind": "style",
+    "name": "Refractive Glass UI",
+    "nameKr": "굴절 유리 UI",
+    "tagline": "Interfaces shaped by light",
+    "description": "굴절 유리 UI는 배경을 흐리게 비치는 카드에 머물지 않고, 가장자리의 굴절·확대·반사광과 움직임에 따른 재료 변화를 정보 계층으로 사용한다. 명확한 대비 보정과 깊이 규칙을 함께 설계해 내비게이션과 제어가 빛에 반응하는 하나의 재료처럼 느껴지게 한다.",
+    "descriptionEn": "Refractive Glass UI goes beyond a blurred translucent card by using edge refraction, magnification, specular light, and motion-responsive material behavior as information hierarchy. Contrast treatments and depth rules keep navigation and controls legible while the interface behaves like one light-shaped material system.",
+    "keywords": [
+      "refraction",
+      "translucency",
+      "specular",
+      "layered-depth",
+      "adaptive-material",
+      "soft-motion"
+    ],
+    "palette": [
+      "#F4FAFF",
+      "#C7E7F2",
+      "#B89CFF",
+      "#172033"
+    ],
+    "examples": [
+      {
+        "name": "Apple Liquid Glass",
+        "url": "https://developer.apple.com/documentation/technologyoverviews/liquid-glass"
+      },
+      {
+        "name": "BYD Global",
+        "url": "https://www.byd.com/en"
+      },
+      {
+        "name": "Apple Vision Pro",
+        "url": "https://www.apple.com/apple-vision-pro/"
+      },
+      {
+        "name": "Silica Plugin",
+        "url": "https://silicaplugin.com/"
+      },
+      {
+        "name": "Liquid Glass HQ",
+        "url": "https://liquidglasshq.com/"
+      },
+      {
+        "name": "GlassUI",
+        "url": "https://glassui.dev/"
+      },
+      {
+        "name": "Kube",
+        "url": "https://kube.io/blog/liquid-glass-css-svg/"
+      },
+      {
+        "name": "design.dev Liquid Glass Generator",
+        "url": "https://design.dev/tools/liquid-glass-generator/"
+      },
+      {
+        "name": "Liquid Glass Pro",
+        "url": "https://www.liquid-glass.pro/examples"
+      },
+      {
+        "name": "liquidGL",
+        "url": "https://liquidgl.naughtyduk.com/"
+      }
+    ],
+    "images": [
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "mobile-app.png",
+        "label": "Mobile App"
+      },
+      {
+        "file": "dashboard.png",
+        "label": "Dashboard"
+      }
+    ],
+    "history": "굴절 유리 UI라는 이름은 역사적 운동보다 최근의 플랫폼 재료 시스템과 웹 구현을 묶어 설명하는 동시대적 분류다. 반투명 패널과 블러는 오래전부터 디지털 인터페이스에 쓰였지만, 최근 접근은 콘텐츠 뒤의 빛을 가장자리에서 굴절·확대하고 반사광과 모션으로 층의 위치를 드러내는 데 초점을 둔다. 따라서 정적인 반투명 카드와 배경 블러만 사용하는 글래스모피즘과 달리, 재료가 주변 색과 움직임에 적응하면서도 텍스트 대비를 보정해야 한다. 현재는 운영체제 내비게이션, 미디어 제어, 제품 랜딩과 데이터 위젯에서 떠 있는 제어면을 연결하는 데 쓰인다. 다만 투명도와 왜곡이 과하면 가독성·성능·멀미 문제가 생길 수 있으므로, 핵심 정보에는 안정된 불투명 면과 reduced-motion 대안을 함께 제공해야 한다.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A premium consumer audio product landing page in a refractive liquid-glass design language: a floating translucent navigation pill that visibly bends and magnifies the imagery behind it with specular edge highlights, layered frosted panels with light refraction at the edges, clear/ice neutral palette with one spectral highlight, dark readable ink text on light surfaces, product photo as the stage. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "mobile-app.png",
+        "prompt": "A mobile music player app screen in a refractive liquid-glass design language: translucent playback controls that refract the album art behind them, layered glass sheets with soft specular rims and depth blur, floating tab bar with light-bending edges, clear/ice neutrals with a single spectral accent, crisp readable typography over the material. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "dashboard.png",
+        "prompt": "A weather and home-control dashboard in a refractive liquid-glass design language: translucent widget tiles refracting a soft photographic background, legible dark ink data over frosted layers, specular highlights along panel edges, one spectral gradient accent used sparingly, clear visual hierarchy despite the translucency. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Apple Developer — Liquid Glass",
+        "url": "https://developer.apple.com/documentation/technologyoverviews/liquid-glass"
+      },
+      {
+        "label": "Rocking Tech — Liquid Glass web design",
+        "url": "https://rockingtech.co.uk/blog/liquid-glass-web-design-2025"
+      },
+      {
+        "label": "Kube — Liquid Glass with CSS and SVG",
+        "url": "https://kube.io/blog/liquid-glass-css-svg/"
+      }
+    ],
+    "reviewedOn": "2026-07-15"
+  },
+  {
+    "id": "spatial-ui",
+    "kind": "style",
+    "name": "Spatial UI",
+    "nameKr": "공간형 UI",
+    "tagline": "Place information in depth",
+    "description": "공간형 UI는 콘텐츠와 제어를 서로 다른 깊이에 고정하고, 거리·가림·초점·앵커를 탐색 단서로 삼는다. 등각 일러스트를 장식하는 방식이 아니라 사용자가 어느 평면에 있고 무엇이 가까운 행동인지 이해하도록 공간 자체를 정보 구조로 설계한다.",
+    "descriptionEn": "Spatial UI anchors content and controls at distinct depths, using distance, occlusion, focus, and placement as navigation cues. It is not decorative isometric illustration; space itself becomes information architecture so users understand their current plane and the nearest available action.",
+    "keywords": [
+      "depth",
+      "anchoring",
+      "occlusion",
+      "spatial-navigation",
+      "layered-canvas",
+      "environmental-ui"
+    ],
+    "palette": [
+      "#111827",
+      "#334155",
+      "#60A5FA",
+      "#F97316"
+    ],
+    "examples": [
+      {
+        "name": "Apple visionOS Spatial Layout",
+        "url": "https://developer.apple.com/design/human-interface-guidelines/spatial-layout"
+      },
+      {
+        "name": "Apple Vision Pro",
+        "url": "https://www.apple.com/apple-vision-pro/"
+      },
+      {
+        "name": "ShapesXR",
+        "url": "https://www.shapesxr.com/"
+      },
+      {
+        "name": "Spatial",
+        "url": "https://www.spatial.io/"
+      },
+      {
+        "name": "JigSpace",
+        "url": "https://www.jig.com/"
+      },
+      {
+        "name": "Immersed",
+        "url": "https://immersed.com/"
+      },
+      {
+        "name": "Arthur",
+        "url": "https://arthur.digital/"
+      },
+      {
+        "name": "8th Wall",
+        "url": "https://8thwall.org/"
+      },
+      {
+        "name": "WebXR Samples",
+        "url": "https://immersive-web.github.io/webxr-samples/"
+      },
+      {
+        "name": "Plateau",
+        "url": "https://plateau.ar/"
+      }
+    ],
+    "images": [
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "dashboard.png",
+        "label": "Dashboard"
+      },
+      {
+        "file": "portfolio.png",
+        "label": "Portfolio"
+      }
+    ],
+    "history": "공간형 UI는 원근법, 3D 그래픽, 가상현실 인터페이스의 계보를 잇지만, 현재의 명칭은 공간 컴퓨팅과 WebXR 환경에서 정보 배치를 설명하기 위한 동시대적 분류에 가깝다. 디지털 해석에서는 창과 제어를 z축의 서로 다른 위치에 고정하고, 가림·거리·그림자·초점 변화로 현재 맥락과 이동 경로를 전달한다. 일정한 30도 투시로 오브젝트를 그리는 아이소메트릭 3D UI와 달리, 사용자가 실제로 깊이를 따라 탐색하고 가까운 제어에 행동할 수 있어야 한다. 현재는 헤드셋 업무 공간, 협업 보드, 3D 제품 도구와 몰입형 포트폴리오에서 활용된다. 다만 과도한 깊이 이동은 방향 상실과 피로를 만들 수 있으므로 안정된 앵커, 예측 가능한 복귀 경로, 읽기 가능한 거리, 2D 대체 흐름을 설계해야 한다.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A landing page for a spatial-computing workspace product where the interface itself demonstrates spatial UI: floating translucent app windows arranged at different depths in a softly lit room, nearer panels occluding farther ones with realistic shadows, depth-of-field cues, an anchored control bar in the foreground, deep neutral space palette with one orange action signal. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "dashboard.png",
+        "prompt": "A spatial task dashboard as seen inside a headset: multiple translucent panels anchored at different distances around the viewer, clear occlusion between layers, a near control ornament with eye-target highlights, spatially separated columns for tasks, calendar, and metrics, deep neutral environment with one distance-cue color and one action accent. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "portfolio.png",
+        "prompt": "A designer portfolio site organized as navigable depth layers: project cards floating on separate z-planes receding into a dim studio space, front layer sharp and interactive, rear layers dimmed and blurred by distance, spatial breadcrumb showing current depth, deep neutral palette with a single warm action signal. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Apple HIG — Spatial layout",
+        "url": "https://developer.apple.com/design/human-interface-guidelines/spatial-layout"
+      },
+      {
+        "label": "Apple Developer — 3D content in visionOS",
+        "url": "https://developer.apple.com/documentation/visionos/adding-3d-content-to-your-app"
+      },
+      {
+        "label": "W3C — WebXR Device API",
+        "url": "https://www.w3.org/TR/webxr/"
+      }
+    ],
+    "reviewedOn": "2026-07-15"
+  },
+  {
+    "id": "human-crafted-web",
+    "kind": "style",
+    "name": "Human-crafted Web",
+    "nameKr": "휴먼 크래프티드 웹",
+    "tagline": "Leave evidence of the maker",
+    "description": "휴먼 크래프티드 웹은 종이·잉크·사진·손글씨·수정 흔적처럼 만든 사람의 과정이 보이는 재료를 읽기 쉬운 제품 구조 안에 남긴다. 무작위 스티커 콜라주가 아니라 출처와 손맛이 있는 요소를 반복 가능한 규칙으로 엮어 개성과 신뢰를 만든다.",
+    "descriptionEn": "Human-crafted Web leaves evidence of making—paper, ink, photography, handwriting, and revisions—inside a readable product structure. It is not a random sticker scrapbook; sourced materials and visible process are organized into repeatable rules that create personality and trust.",
+    "keywords": [
+      "texture",
+      "imperfection",
+      "handmade-type",
+      "materiality",
+      "collage",
+      "process"
+    ],
+    "palette": [
+      "#F2E5C4",
+      "#27211B",
+      "#D65A3A",
+      "#A89B7A"
+    ],
+    "examples": [
+      {
+        "name": "byhand.website",
+        "url": "https://byhand.website/"
+      },
+      {
+        "name": "Handmade Web",
+        "url": "https://handmade-web.net/"
+      },
+      {
+        "name": "HTML Energy",
+        "url": "https://html.energy/"
+      },
+      {
+        "name": "IndieWeb",
+        "url": "https://indieweb.org/"
+      },
+      {
+        "name": "Neocities",
+        "url": "https://neocities.org/"
+      },
+      {
+        "name": "sadgrl.online",
+        "url": "https://sadgrl.online/"
+      },
+      {
+        "name": "Chia Amisola",
+        "url": "https://chia.design/"
+      },
+      {
+        "name": "LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/"
+      },
+      {
+        "name": "webring.fun",
+        "url": "https://webring.fun/"
+      },
+      {
+        "name": "The Handcrafted Web",
+        "url": "https://handcraftedweb.eu/"
+      }
+    ],
+    "images": [
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "shop.png",
+        "label": "Shop"
+      },
+      {
+        "file": "portfolio.png",
+        "label": "Portfolio"
+      }
+    ],
+    "history": "휴먼 크래프티드 웹은 단일 역사 운동이라기보다 초기 개인 웹, zine 문화, 인디 출판과 ‘handmade web’ 담론을 오늘의 제품 화면에 잇는 동시대적 방향이다. 디지털 해석에서는 스캔한 종이, 잉크 번짐, 직접 찍은 작업 사진, 손으로 고친 글자와 제작 메모를 사용하되 내비게이션·상품 정보·행동 구조는 명확히 유지한다. 이는 장식용 스티커를 무작위로 붙이는 스크랩북 스타일이나 의도 없이 거친 브루탈리즘과 다르며, 각 재료가 실제 제작 과정과 연결되어야 한다. 현재는 독립 스튜디오, 공예 상점, 개인 포트폴리오와 저에너지 웹 출판에서 정체성과 과정의 신뢰를 보여주는 데 쓰인다. 다만 손맛을 흉내 낸 텍스처가 콘텐츠를 가리거나 접근성을 낮추지 않도록 대체 텍스트, 대비, 파일 용량과 읽기 순서를 함께 관리해야 한다.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A landing page for an independent print studio that celebrates handmade quality: scanned paper texture background, hand-drawn arrows and underlines, letterpress-style imperfect typography mixed with a readable body font, taped-on photographs of real work, visible process notes in the margin, warm paper and ink palette with one imperfect spot color. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "shop.png",
+        "prompt": "An online shop page for handmade ceramics with a human-crafted web aesthetic: product photos on textured paper cards with hand-written price labels, slightly irregular grid, ink-stamped category marks, marginalia doodles, a hand-drawn cart icon, warm paper tones, one imperfect red-orange spot color, readable product structure. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "portfolio.png",
+        "prompt": "A personal portfolio site with visible maker process: collaged sketchbook pages, taped photos, hand-annotated screenshots of past work, typewriter-style captions with corrections, a hand-drawn navigation ribbon, warm paper and ink palette, one imperfect spot color, personality without sacrificing readability. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Handmade Web statement",
+        "url": "https://luckysoap.com/statements/handmadeweb.html"
+      },
+      {
+        "label": "IndieWeb",
+        "url": "https://indieweb.org/"
+      },
+      {
+        "label": "byhand.website",
+        "url": "https://byhand.website/"
+      },
+      {
+        "label": "The Handcrafted Web",
+        "url": "https://handcraftedweb.eu/"
+      }
+    ],
+    "reviewedOn": "2026-07-15"
+  },
+  {
+    "id": "generative-identity",
+    "kind": "style",
+    "name": "Generative Identity",
+    "nameKr": "제너러티브 아이덴티티",
+    "tagline": "One system, many expressions",
+    "description": "제너러티브 아이덴티티는 하나의 로고를 반복하는 대신, 고정된 규칙과 매개변수로 서로 닮은 표식·패턴·레이아웃을 생성한다. 무작위 추상 그라데이션이 아니라 변형 전후에도 알아볼 수 있는 브랜드 앵커와 통제된 변화 범위를 함께 보여준다.",
+    "descriptionEn": "Generative Identity replaces repetition of one fixed logo with related marks, patterns, and layouts produced by shared rules and parameters. Unlike random abstract gradients, every variation retains recognizable brand anchors and stays within a controlled range.",
+    "keywords": [
+      "rule-based",
+      "variable-system",
+      "parametric",
+      "data-driven",
+      "modular-mark",
+      "controlled-variation"
+    ],
+    "palette": [
+      "#111827",
+      "#F8FAFC",
+      "#2563EB",
+      "#E879F9"
+    ],
+    "examples": [
+      {
+        "name": "CLEVER°FRANKE ADC",
+        "url": "https://www.cleverfranke.com/project/adc-brand-identity"
+      },
+      {
+        "name": "CLEVER°FRANKE Arity",
+        "url": "https://www.cleverfranke.com/project/arity-branding/toolkit/design-support-%26-art-direction"
+      },
+      {
+        "name": "Patrik Hübner BRUTE",
+        "url": "https://www.patrik-huebner.com/generative-design/brute-data-driven-wine-brand/"
+      },
+      {
+        "name": "FIELD Adidas REAL/RAW/FAST",
+        "url": "https://field.io/work/real-raw-fast-identity-system"
+      },
+      {
+        "name": "FIELD Instagram Gradient",
+        "url": "https://field.io/work/instagram-global-gradient-toolkit"
+      },
+      {
+        "name": "FIELD IBM Quantum",
+        "url": "https://field.io/work/ibm-quantum"
+      },
+      {
+        "name": "FIELD Nike Rise",
+        "url": "https://field.io/work/nike-rise-intelligent-retail-system"
+      },
+      {
+        "name": "FIELD Scalable Storytelling",
+        "url": "https://field.io/explorations/scalable-storytelling"
+      },
+      {
+        "name": "FIELD Meta Brand System",
+        "url": "https://field.io/work/meta-brand-system"
+      },
+      {
+        "name": "Cotton Design Boundary Analytics",
+        "url": "https://www.commarts.com/project/37399/boundary-analytics"
+      }
+    ],
+    "images": [
+      {
+        "file": "agency.png",
+        "label": "Agency"
+      },
+      {
+        "file": "pricing.png",
+        "label": "Pricing"
+      },
+      {
+        "file": "portfolio.png",
+        "label": "Portfolio"
+      }
+    ],
+    "history": "제너러티브 아이덴티티는 모듈러 그래픽, 시스템 디자인, 컴퓨터 아트와 데이터 시각화의 흐름에서 발전했으며, 오늘의 명칭은 코드와 실시간 데이터를 브랜드 운영에 연결하는 동시대적 분류다. 디지털 환경에서는 로고의 골격, 그리드, 색상 앵커는 유지하고 위치·밀도·형태·데이터 입력 같은 매개변수만 바꾸어 여러 접점에 맞는 결과를 만든다. 따라서 보기 좋은 추상 이미지나 매번 다른 랜덤 그라데이션과 달리, 사용자가 변형 사이의 공통 규칙을 알아볼 수 있어야 한다. 현재는 문화 기관, 기술 브랜드, 캠페인과 대규모 콘텐츠 시스템에서 채널별 표현을 확장하는 데 쓰인다. 다만 변형 폭이 너무 넓으면 인지성과 저작권 관리가 약해질 수 있으므로 허용 범위, 실패 조건, 정적 fallback과 재현 가능한 seed를 명시해야 한다.",
+    "prompts": [
+      {
+        "file": "agency.png",
+        "prompt": "A brand agency website whose identity is visibly rule-based: a modular logo mark shown in several algorithmic variations across the header and project cards, each variation clearly derived from the same geometric rule with different parameters, consistent grid and typography anchoring the variation, stable ink palette plus a generated color range strip. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "pricing.png",
+        "prompt": "A SaaS pricing page for a generative brand platform: three pricing tiers whose card backgrounds each show a parameter variation of the same generative pattern, a visible slider or parameter readout suggesting the rule, consistent typography and spacing while the pattern varies, stable brand anchors with controlled variable color range. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "portfolio.png",
+        "prompt": "A creative-coding studio portfolio where every project thumbnail is a variation of one generative system: same underlying rule rendered with different data inputs, a small caption showing the parameters used, coherent grid and stable typography, brand anchors constant while the generated marks vary. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Generative Visual Identities research",
+        "url": "https://arxiv.org/abs/2209.03420"
+      },
+      {
+        "label": "FIELD — Scalable Storytelling",
+        "url": "https://field.io/explorations/scalable-storytelling"
+      },
+      {
+        "label": "CLEVER°FRANKE — ADC Brand Identity",
+        "url": "https://www.cleverfranke.com/research/adc-brand-identity"
+      }
+    ],
+    "reviewedOn": "2026-07-15"
+  },
+  {
+    "id": "technical-blueprint",
+    "kind": "style",
+    "name": "Technical Blueprint",
+    "nameKr": "테크니컬 블루프린트",
+    "tagline": "Explain the system visibly",
+    "description": "테크니컬 블루프린트는 치수선, 주석, 연결선, 분해도와 고정폭 데이터로 제품이나 과정의 작동 원리를 화면에 드러낸다. 파란 단색 테마가 아니라 측정과 설명이 실제 정보 구조를 맡아 사용자가 부품 관계·상태·순서를 추적하게 한다.",
+    "descriptionEn": "Technical Blueprint exposes how a product or process works through dimensions, annotations, connectors, exploded views, and monospaced data. It is more than a blue monochrome theme: measurement and explanation carry the information structure so users can trace relationships, states, and sequence.",
+    "keywords": [
+      "schematic",
+      "annotation",
+      "measurement",
+      "diagram",
+      "monospace",
+      "process-visualization"
+    ],
+    "palette": [
+      "#EAF1E6",
+      "#153B5B",
+      "#4F7895",
+      "#F97316"
+    ],
+    "examples": [
+      {
+        "name": "Teenage Engineering",
+        "url": "https://teenage.engineering/"
+      },
+      {
+        "name": "Nothing",
+        "url": "https://nothing.tech/"
+      },
+      {
+        "name": "Work Louder",
+        "url": "https://worklouder.cc/"
+      },
+      {
+        "name": "Naya Create",
+        "url": "https://naya.tech/"
+      },
+      {
+        "name": "Explode2View",
+        "url": "https://www.explode2view.com/en/"
+      },
+      {
+        "name": "threesixty.at",
+        "url": "https://www.threesixty.at/en/products/product-viewer/"
+      },
+      {
+        "name": "Oxide Computer",
+        "url": "https://oxide.computer/"
+      },
+      {
+        "name": "Webshop AI",
+        "url": "https://www.webshop.ai/integrated-add-ons/exploded-view"
+      },
+      {
+        "name": "CA Design Form",
+        "url": "https://www.cadesignform.com/services/3d-visualization/3d-images/exploded-view-cut-through"
+      },
+      {
+        "name": "Sana Commerce",
+        "url": "https://www.sana-commerce.com/blog/exploded-view/"
+      }
+    ],
+    "images": [
+      {
+        "file": "landing.png",
+        "label": "Landing Page"
+      },
+      {
+        "file": "blog.png",
+        "label": "Blog"
+      },
+      {
+        "file": "dashboard.png",
+        "label": "Dashboard"
+      }
+    ],
+    "history": "테크니컬 블루프린트는 건축·기계 도면, 청사진 복제법, 공학 매뉴얼과 분해도의 시각 언어를 디지털 제품 설명에 옮긴 스타일이다. 현재의 웹 분류명은 동시대적이지만, 선 굵기·치수·부품 번호·주석으로 복잡한 구조를 전달하는 관습은 오래된 기술 커뮤니케이션에 뿌리를 둔다. 디지털 화면에서는 실제 제품 구조, 시스템 연결, 단계와 상태를 측정선·리더선·고정폭 수치로 설명한다. 단순한 파란색 모노톤이나 장식용 격자와 달리, 모든 선과 번호가 사용자가 추적할 수 있는 정보 역할을 해야 한다. 현재는 하드웨어 랜딩, 엔지니어링 문서, 제품 구성기와 운영 대시보드에서 투명성과 정밀성을 보여주는 데 쓰인다. 다만 주석이 지나치면 핵심 행동이 묻히므로 줌 단계, 범례, 선별 표시와 모바일용 단순화를 제공해야 한다.",
+    "prompts": [
+      {
+        "file": "landing.png",
+        "prompt": "A hardware product landing page in a technical blueprint aesthetic: annotated exploded view of the product with dimension lines and measurement callouts, monospaced annotation labels, thin schematic rules on pale technical paper, numbered part references connected by leader lines, one orange status cue, engineering precision as the visual identity. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "blog.png",
+        "prompt": "An engineering blog article page in a technical blueprint aesthetic: schematic diagrams embedded in the article with measured dimension lines, monospaced figure captions and margin annotations, a table of contents drawn like a technical index, pale technical paper background with thin ink rules and one orange highlight for the current section. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      },
+      {
+        "file": "dashboard.png",
+        "prompt": "An operations dashboard in a technical blueprint aesthetic: system architecture diagram with live status annotations, measured gauges with dimension-style tick labels, monospaced data readouts, thin schematic connectors between service nodes, pale technical paper background, ink rules, one orange status cue for alerts. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "model": "gpt-image-2",
+        "quality": "high",
+        "size": "1536x1024"
+      }
+    ],
+    "sources": [
+      {
+        "label": "CA Design Form — Exploded View",
+        "url": "https://www.cadesignform.com/services/3d-visualization/3d-images/exploded-view-cut-through"
+      },
+      {
+        "label": "Sana Commerce — Exploded View",
+        "url": "https://www.sana-commerce.com/blog/exploded-view/"
+      },
+      {
+        "label": "A1 Gallery — Hardware",
+        "url": "https://a1.gallery/category/hardware"
+      }
+    ],
+    "reviewedOn": "2026-07-15"
   }
 ]

@@ -1,7 +1,7 @@
 # AGENTS.md — Design -isms 프로젝트 가이드
 
 ## 프로젝트 개요
-43개 디자인 ism의 시각적 레퍼런스 보드와 46개 모바일/데스크탑 프런트엔드 UI 후보군 카탈로그. GitHub Pages 배포.
+49개 디자인 ism의 시각적 레퍼런스 보드와 46개 모바일/데스크탑 프런트엔드 UI 후보군 카탈로그. GitHub Pages 배포.
 - **라이브**: https://lidge-jun.github.io/design-isms/
 - **스택**: 정적 HTML/CSS + TypeScript source → browser JS build
 - **이미지**: GPT Image 2 (gpt-image-2, 1536x1024, high quality)
@@ -24,7 +24,7 @@
 │   ├── js/effects-demos.js       # 효과 demo renderer (src/effects-demos.ts build 산출물)
 │   ├── js/effects-docs.js        # 효과 문서 renderer (src/effects-docs.ts build 산출물)
 │   ├── js/effects.js             # 효과 페이지 로직 (src/effects.ts build 산출물)
-│   ├── data/isms.json            # 핵심 데이터 (43개 ism)
+│   ├── data/isms.json            # 핵심 데이터 (49개 ism)
 │   ├── data/effects.json         # 프런트엔드 UI 후보군 데이터
 │   ├── data/effects-docs.json    # 효과별 배경/히스토리/사용 시점 문서
 │   ├── data/research-prompts.json # Grok/ima2 프롬프트 레코드
@@ -98,6 +98,8 @@
 - Grok 리서치 프롬프트와 ima2 이미지 프롬프트는 `assets/data/research-prompts.json`과 `devlog/260510_nav_taxonomy_effect_docs/grok_research_prompts.md`에 같이 남긴다.
 - 새 ISM 이미지는 PNG 원본을 보관하고 runtime에서는 `assets/images/thumbs/{ism-id}/*.webp`를 우선 로드한다.
 - ISMS를 늘리면 `assets/data/isms.json`, 이미지 원본, WebP 썸네일, README, AGENTS, structure, devlog를 함께 확인한다.
+- ISM 스키마 확장 필드: `kind`(`style`|`anti-pattern`, 생략 시 style), `sources`(신규 항목은 https 소스 2개 이상), `reviewedOn`(YYYY-MM-DD). `anti-pattern`은 `ai-slop` 하나만 허용되고 추천/관련 ISM에 절대 노출되지 않는다. 카운트 불변 조건은 49 ISMs / 46 effects (interim)이며 `npm run verify:isms`가 강제한다.
+- ISM 구현 가이드의 단일 SoT는 `assets/data/dev-guides.json`(`implementation` 블록 포함)이다. `src/app.ts`에 가이드 데이터를 임베드하지 않는다(1050줄 상한).
 
 ## ima2 / WebP batch 원칙
 

@@ -14,7 +14,7 @@
 
 | Page | Purpose | Script | Data |
 | --- | --- | --- | --- |
-| `index.html` | 43개 디자인 ism 레퍼런스 보드 | `assets/js/app.js` | `assets/data/isms.json` |
+| `index.html` | 49개 디자인 ism 레퍼런스 보드 | `assets/js/app.js` | `assets/data/isms.json` |
 | `effects.html` | 모바일/데스크탑 프런트엔드 UI 후보군 보드와 효과별 문서 모달 | `assets/js/effects-demos.js`, `assets/js/effects-docs.js`, `assets/js/effects.js` | `assets/data/effects.json`, `assets/data/effects-docs.json` |
 
 ## Source and Build
@@ -49,6 +49,8 @@ assets/images/thumbs/effects/{effect-id}/guide.webp
 - Atlas shell tokens and shared primitives live in `assets/css/theme-atlas.css` (after `style.css`, before `nav.css`).
 - FAQ page: `assets/data/faq.json` (data), `src/faq.ts` → `assets/js/faq.js` (renderer), `assets/css/faq.css` (styles), `assets/icons/faq-*.svg` (category icons).
 - Dialog accessibility: `src/app-dialog.ts` → `assets/js/app-dialog.js` (global `AppDialogA11y`), loaded before `assets/js/app.js` in `index.html`.
+- ISM guide data: `src/app-guides.ts` → `assets/js/app-guides.js` (global `AppGuides`), loaded before `assets/js/app.js`; `assets/data/dev-guides.json` (49 keys, each with layout/typography/color/motion/dos/donts/implementation) is the single guide SoT.
+- ISM catalog validator: `scripts/verify-isms.mjs` (`npm run verify:isms`) — 49 entries/guides, 147 image pairs, sourcing, anti-pattern uniqueness, `src/app.ts` ≤1050 lines.
 - Brand mark: `assets/icons/atlas-mark.svg` (currentColor line mark; no emoji glyphs in shell UI).
 - Effects guide images are generated for all 46 candidates and shown in the modal only.
 - The current ISMS expansion generated 24 candidate UI mockups for 8 newly added ISMS, plus matching WebP previews.

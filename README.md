@@ -1,6 +1,6 @@
 # Design -isms
 
-43개 디자인 ism을 한 번에 훑어보는 시각 레퍼런스 보드입니다. 각 스타일은 AI mockup 이미지, 역사/맥락, 컬러 팔레트, 실제 사이트 예시, 이미지 생성 프롬프트, 관련 ISM, 그리고 팝업 하단의 개발 가이드까지 함께 제공합니다.
+49개 디자인 ism을 한 번에 훑어보는 시각 레퍼런스 보드입니다. 각 스타일은 AI mockup 이미지, 역사/맥락, 컬러 팔레트, 실제 사이트 예시, 이미지 생성 프롬프트, 관련 ISM, 그리고 팝업 하단의 개발 가이드까지 함께 제공합니다.
 
 별도 페이지 `effects.html`에서는 모바일과 데스크탑 프런트엔드 UI 후보군을 이름을 몰라도 찾아볼 수 있게 정리합니다. 카드별 미니 데모, 상세 모달, 접근성 체크, 성능 체크, 46개 전체 ima2 guide 이미지와 WebP preview, 그리고 효과별 배경/히스토리/사용 시점 문서를 포함합니다.
 
@@ -8,9 +8,9 @@
 
 ## What It Shows
 
-- 43 design -isms from Minimalism to Pop Art
-- 129 AI-generated ISM mockup images
-- 129 lightweight ISM WebP thumbnails for fast card/modal loading
+- 49 design -isms from Minimalism to the AI Slop anti-pattern diagnosis
+- 147 AI-generated ISM mockup images
+- 147 lightweight ISM WebP thumbnails for fast card/modal loading
 - Original PNG lightbox only when the user clicks an image
 - 10 real website examples per ism, initially collapsed to 3
 - Modal detail view with history, prompts, palette, keywords, related ISMs

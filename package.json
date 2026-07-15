@@ -10,7 +10,8 @@
     "images:contact-sheet": "node scripts/build-effect-guide-contact-sheet.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "verify:nav": "node scripts/verify-nav.mjs",
-    "verify": "npm run typecheck && npm run build && npm run verify:nav"
+    "verify:isms": "node scripts/verify-isms.mjs",
+    "verify": "npm run typecheck && npm run build && npm run verify:nav && npm run verify:isms"
   },
   "devDependencies": {
     "sharp": "^0.35.3",
