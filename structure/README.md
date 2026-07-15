@@ -42,7 +42,7 @@ assets/images/thumbs/effects/{effect-id}/guide.webp
 
 - ISM cards use generated thumbnails and original PNG lightbox views.
 - Effects cards use CSS demos.
-- Effects demo registry provides one dedicated demo type per 46 candidates.
+- Effects demo registry provides one dedicated demo type per 64 entries (46 patterns + 18 visual effects).
 - Effects modal guide previews and ISM card previews use WebP and keep original PNGs for source/lightbox use.
 - Effect demo styling is split between `assets/css/effects.css`, `assets/css/effects-docs.css`, `assets/css/effects-demos.css`, and `assets/css/effects-demos-candidates.css`.
 - Shared static navigation styling lives in `assets/css/nav.css`.
@@ -52,13 +52,13 @@ assets/images/thumbs/effects/{effect-id}/guide.webp
 - ISM guide data: `src/app-guides.ts` → `assets/js/app-guides.js` (global `AppGuides`), loaded before `assets/js/app.js`; `assets/data/dev-guides.json` (49 keys, each with layout/typography/color/motion/dos/donts/implementation) is the single guide SoT.
 - ISM catalog validator: `scripts/verify-isms.mjs` (`npm run verify:isms`) — 49 entries/guides, 147 image pairs, sourcing, anti-pattern uniqueness, `src/app.ts` ≤1050 lines.
 - Brand mark: `assets/icons/atlas-mark.svg` (currentColor line mark; no emoji glyphs in shell UI).
-- Effects guide images are generated for all 46 candidates and shown in the modal only.
+- Effects guide images are generated for all 64 entries and shown in the modal only.
 - The current ISMS expansion generated 24 candidate UI mockups for 8 newly added ISMS, plus matching WebP previews.
 
 ## Current Feature Contracts
 
 - Main ISM modal: title, tagline, history, description, WebP preview image, always-open main prompt, collapsible secondary prompts, 3 visible example links plus expand button, keyword-derived related ISMs, and PNG lightbox.
-- Effects catalog: 46 entries, 46 unique `demo.type` values, 46 registry entries in `src/effects-demos.ts`, 46 original PNG guide images, 46 generated WebP guide previews, and 46 long-form docs records in `assets/data/effects-docs.json`.
+- Effects catalog: 64 entries (46 patterns + 18 visual effects), 64 unique `demo.type` values, 64 registry entries in `src/effects-demos.ts`, 64 original PNG guide images, 64 generated WebP guide previews, and 64 long-form docs records in `assets/data/effects-docs.json`; family axis with 7 values, family/device/q URL persistence via `src/effects-filters.ts`, delegated demo interactions via `src/effects-interactions.ts`, validator `scripts/verify-effects.mjs` (`npm run verify:effects`).
 - ISMS expansion: 8 generated styles are now part of `assets/data/isms.json`; there is no public reference/backlog page.
 - Prompt data: `assets/data/research-prompts.json`, `devlog/260510_nav_taxonomy_effect_docs/grok_research_prompts.md`, `image_jobs.jsonl`, and `ima2_results.json` record the current 24-job Grok/ima2 ISM batch.
 - Shared navigation: `index.html`, `effects.html`, and `faq.html` expose the six axes Isms / Effects / FAQ / GitHub / Lang / Count in identical order; `scripts/verify-nav.mjs` (via `npm run verify:nav`) enforces order, single `aria-current`, GitHub disclosure, typed lang button, count labels, skip link, and main landmark.

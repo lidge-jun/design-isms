@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="./assets/css/effects.css?v=20260715-atlas2">
 <link rel="stylesheet" href="./assets/css/effects-docs.css?v=20260715-atlas2">
 <link rel="stylesheet" href="./assets/css/effects-demos.css">
+<link rel="stylesheet" href="./assets/css/effects-demos-patterns.css?v=20260715-atlas3">
 <link rel="stylesheet" href="./assets/css/effects-demos-candidates.css">
 </head>
 <body class="effects-page is-loading">
@@ -48,7 +49,7 @@
         <span class="lang-divider" aria-hidden="true">/</span>
         <span class="lang-option" data-lang="en">EN</span>
       </button>
-      <span class="header-count" data-nav-axis="count">46 effects</span>
+      <span class="header-count" data-nav-axis="count">64 effects</span>
     </nav>
   </div>
 </header>
@@ -59,11 +60,18 @@
       <p class="effects-eyebrow">Frontend UI candidates</p>
       <h1 id="effects-title">모바일 / 데스크탑 UI 후보군</h1>
     </div>
-    <p class="effects-subcopy">상단 설명보다 후보군을 바로 훑는 용도입니다. Mobile, Desktop, Shared로 나눠 46개 패턴을 정리했습니다.</p>
+    <p class="effects-subcopy">상단 설명보다 후보군을 바로 훑는 용도입니다. Interface Pattern부터 View Transition까지 7개 family, 64개 패턴/이펙트를 정리했습니다.</p>
   </section>
 
   <section class="effects-toolbar" aria-label="Effect filters">
-    <div class="effects-filter-row" id="effects-filter-row"></div>
+    <div class="effects-filter-group">
+      <span class="effects-filter-label">Family</span>
+      <div class="effects-filter-row" id="effects-family-filter" role="group" aria-label="Effect family"></div>
+    </div>
+    <div class="effects-filter-group">
+      <span class="effects-filter-label">Device</span>
+      <div class="effects-filter-row" id="effects-device-filter" role="group" aria-label="Device fit"></div>
+    </div>
     <label class="effects-search-label">
       <span class="sr-only">효과 검색</span>
       <input type="text" class="search-input effects-search" id="effects-search" placeholder="아래 팝업, 스와이프, 로딩..." autocomplete="off">
@@ -102,8 +110,11 @@
   <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
 </button>
 
-<script src="./assets/js/effects-demos.js?v=20260715-atlas2"></script>
-<script src="./assets/js/effects-docs.js?v=20260715-atlas2"></script>
-<script src="./assets/js/effects.js?v=20260715-atlas2"></script>
+<script src="./assets/js/app-dialog.js?v=20260715-atlas3"></script>
+<script src="./assets/js/effects-filters.js?v=20260715-atlas3"></script>
+<script src="./assets/js/effects-interactions.js?v=20260715-atlas3"></script>
+<script src="./assets/js/effects-demos.js?v=20260715-atlas3"></script>
+<script src="./assets/js/effects-docs.js?v=20260715-atlas3"></script>
+<script src="./assets/js/effects.js?v=20260715-atlas3"></script>
 </body>
 </html>

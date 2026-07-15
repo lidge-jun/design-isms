@@ -189,6 +189,47 @@ a { color: inherit; }
 }
 .ism-name-btn:hover { color: var(--atlas-signal); }
 
+/* anti-pattern semantics (ai-slop) */
+.ism-kind-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--atlas-signal);
+  border: 1px solid var(--atlas-signal);
+  border-radius: var(--atlas-radius-xs);
+  display: inline-block;
+  padding: 2px 6px;
+  margin-bottom: 6px;
+}
+.ism-card[data-kind="anti-pattern"] { border-style: dashed; }
+.modal-antipattern-warning {
+  border: 1px solid var(--atlas-signal);
+  border-left-width: 4px;
+  border-radius: var(--atlas-radius-sm);
+  background: var(--atlas-signal-soft);
+  color: var(--atlas-ink);
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 12px 14px;
+  margin: 12px 0;
+}
+.modal-sources {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+}
+.modal-sources a { color: var(--atlas-cobalt); }
+.modal-reviewed {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--atlas-muted);
+  margin-top: 6px;
+}
+
 /* ── Asymmetric 12-column specimen catalog ── */
 @media (min-width: 1025px) {
   .masonry {

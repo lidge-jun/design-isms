@@ -1,5 +1,5 @@
 (() => {
-  const DATA_VERSION = '2026-05-10-ism43-curated-ui';
+  const DATA_VERSION = '2026-07-15-atlas64';
   const EFFECTS_DATA_URL = `./assets/data/effects.json?v=${DATA_VERSION}`;
   const EFFECT_GUIDE_BASE_URL = './assets/images/effects';
   const MOTION_QUERY = '(prefers-reduced-motion: reduce)';
@@ -8,12 +8,12 @@
   interface EffectDemo { type: DemoType; label: string; }
   interface EffectGuide { file: string; alt: string; prompt: string; }
   interface UxEffect {
-    id: string; name: string; nameKr: string; category: string; priority: string; summary: string;
+    id: string; name: string; nameKr: string; family: string; category: string; priority: string; summary: string;
     alsoCalled: string[]; bestFor: string[]; avoidWhen: string[]; implementation: string[];
     accessibility: string[]; performance: string[]; demo: EffectDemo; guide: EffectGuide | null;
   }
   interface PageElements {
-    filterRow: HTMLElement; searchInput: HTMLInputElement; grid: HTMLElement; resultCount: HTMLElement;
+    familyRow: HTMLElement; deviceRow: HTMLElement; searchInput: HTMLInputElement; grid: HTMLElement; resultCount: HTMLElement;
     modalOverlay: HTMLElement; modalDialog: HTMLElement; modalClose: HTMLButtonElement; modalContent: HTMLElement;
     lightbox: HTMLElement; lightboxClose: HTMLButtonElement; lightboxImage: HTMLImageElement;
     toast: HTMLElement; scrollTop: HTMLButtonElement;
@@ -21,11 +21,10 @@
 
   let allEffects: UxEffect[] = [];
   let effectDocs: EffectsDocs.DocsMap = new Map();
-  let activeCategory = 'all';
-  let searchQuery = '';
+  let filtersController: EffectsFilters.Controller | null = null;
+  let filterState: EffectsFilters.State = { family: 'all', device: 'all', query: '' };
+  let interactions: EffectsInteractions.Controller | null = null;
   let cardObserver: IntersectionObserver | null = null;
-  let modalPreviousFocus: HTMLElement | null = null;
-  let lightboxPreviousFocus: HTMLElement | null = null;
   let toastTimer = 0;
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -39,7 +38,14 @@
     try {
       allEffects = await loadEffects();
       effectDocs = await EffectsDocs.load();
-      renderFilters(elements);
+      filtersController = EffectsFilters.create(
+        allEffects,
+        { familyRow: elements.familyRow, deviceRow: elements.deviceRow },
+        state => { filterState = state; renderEffectCards(elements); }
+      );
+      filterState = filtersController.getState();
+      elements.searchInput.value = filterState.query;
+      interactions = EffectsInteractions.mount(elements.grid);
       renderEffectCards(elements);
       hydrateHash(elements);
     } catch (error) {
@@ -52,7 +58,8 @@
 
   function getPageElements(): PageElements {
     return {
-      filterRow: getRequiredElement<HTMLElement>('#effects-filter-row'),
+      familyRow: getRequiredElement<HTMLElement>('#effects-family-filter'),
+      deviceRow: getRequiredElement<HTMLElement>('#effects-device-filter'),
       searchInput: getRequiredElement<HTMLInputElement>('#effects-search'),
       grid: getRequiredElement<HTMLElement>('#effects-grid'),
       resultCount: getRequiredElement<HTMLElement>('#effects-result-count'),
@@ -102,7 +109,7 @@
     const id = readString(record, 'id');
     return {
       id, name: readString(record, 'name'), nameKr: readString(record, 'nameKr'),
-      category: readString(record, 'category'), priority: readString(record, 'priority'),
+      family: readString(record, 'family'), category: readString(record, 'category'), priority: readString(record, 'priority'),
       summary: readString(record, 'summary'), alsoCalled: readStringArray(record, 'alsoCalled'),
       bestFor: readStringArray(record, 'bestFor'), avoidWhen: readStringArray(record, 'avoidWhen'),
       implementation: readStringArray(record, 'implementation'), accessibility: readStringArray(record, 'accessibility'),
@@ -139,6 +146,9 @@
     if (!EffectsDemos.isDemoType(type)) {
       throw new Error(`${effectId}.demo.type is invalid`);
     }
+    if (type !== effectId) {
+      throw new Error(`${effectId}.demo.type must equal id; received ${type}`);
+    }
     return { type, label: readString(record, 'label') };
   }
 
@@ -151,19 +161,8 @@
   }
 
   function setupStaticInteractions(elements: PageElements): void {
-    elements.filterRow.addEventListener('click', (event) => {
-      const target = event.target;
-      if (!(target instanceof Element)) return;
-      const button = target.closest('[data-category]');
-      if (!(button instanceof HTMLButtonElement)) return;
-      activeCategory = button.dataset.category ?? 'all';
-      renderFilters(elements);
-      renderEffectCards(elements);
-    });
-
     elements.searchInput.addEventListener('input', () => {
-      searchQuery = elements.searchInput.value.trim().toLowerCase();
-      renderEffectCards(elements);
+      filtersController?.setQuery(elements.searchInput.value);
     });
 
     elements.grid.addEventListener('click', (event) => openCardFromEvent(event, elements));
@@ -173,22 +172,15 @@
       openCardFromEvent(event, elements);
     });
 
-    elements.modalOverlay.addEventListener('click', (event) => {
-      if (event.target === elements.modalOverlay) closeEffectModal(elements);
-    });
     elements.modalClose.addEventListener('click', () => closeEffectModal(elements));
     elements.modalContent.addEventListener('click', (event) => handleModalContentClick(event, elements));
     elements.modalContent.addEventListener('error', handleGuideImageError, true);
     elements.lightboxClose.addEventListener('click', () => closeLightbox(elements));
-    elements.lightbox.addEventListener('click', (event) => {
-      if (event.target === elements.lightbox) closeLightbox(elements);
-    });
     elements.scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     window.addEventListener('scroll', () => {
       elements.scrollTop.classList.toggle('visible', window.scrollY > 560);
     }, { passive: true });
     window.addEventListener('hashchange', () => hydrateHash(elements));
-    document.addEventListener('keydown', (event) => handleGlobalKeydown(event, elements));
     setupLangToggle();
   }
 
@@ -210,34 +202,22 @@
     sync();
   }
 
-  function renderFilters(elements: PageElements): void {
-    const categories = Array.from(new Set(allEffects.map((effect) => effect.category)));
-    const buttons = [renderFilterButton('all', 'All'), ...categories.map((category) => renderFilterButton(category, category))];
-    elements.filterRow.innerHTML = buttons.join('');
-  }
-
-  function renderFilterButton(category: string, label: string): string {
-    const activeClass = activeCategory === category ? ' active' : '';
-    return `<button class="filter-btn${activeClass}" type="button" data-category="${escapeAttr(category)}">${escapeHtml(label)}</button>`;
-  }
-
   function renderEffectCards(elements: PageElements): void {
-    const visibleEffects = allEffects.filter(matchesEffect);
-    elements.resultCount.textContent = `${visibleEffects.length} effects`;
+    const visibleEffects = allEffects.filter(effect => EffectsFilters.matches(effect, filterState));
+    elements.resultCount.textContent = `${visibleEffects.length} of ${allEffects.length} effects`;
 
     if (visibleEffects.length === 0) {
-      elements.grid.innerHTML = '<div class="effects-empty">검색 결과가 없습니다. "팝업", "로딩", "스와이프"처럼 기억나는 단어로 다시 찾아보세요.</div>';
+      elements.grid.innerHTML = '<div class="effects-empty">검색 결과가 없습니다. "팝업", "로딩", "스와이프"처럼 기억나는 단어로 다시 찾아보세요. <button type="button" class="filter-btn" id="effects-filter-reset">필터 초기화</button></div>';
+      document.getElementById('effects-filter-reset')?.addEventListener('click', () => {
+        elements.searchInput.value = '';
+        filtersController?.reset();
+      });
       return;
     }
 
     elements.grid.innerHTML = visibleEffects.map((effect, index) => renderEffectCard(effect, index)).join('');
     setupCardObserver(elements.grid);
-  }
-
-  function matchesEffect(effect: UxEffect): boolean {
-    const categoryMatches = activeCategory === 'all' || effect.category === activeCategory;
-    const haystack = [effect.name, effect.nameKr, effect.category, effect.summary, ...effect.alsoCalled, ...effect.bestFor].join(' ').toLowerCase();
-    return categoryMatches && (!searchQuery || haystack.includes(searchQuery));
+    interactions?.refresh();
   }
 
   function renderEffectCard(effect: UxEffect, index: number): string {
@@ -278,6 +258,7 @@
   function openCardFromEvent(event: Event, elements: PageElements): void {
     const target = event.target;
     if (!(target instanceof Element)) return;
+    if (target.closest('[data-demo-action]')) return; // interactive demo controls stay in-card
     const card = target.closest('.effect-card');
     if (!(card instanceof HTMLElement)) return;
     const effectId = card.dataset.effectId;
@@ -287,20 +268,20 @@
   function openEffectModal(effectId: string, elements: PageElements): void {
     const effect = allEffects.find((item) => item.id === effectId);
     if (!effect) return;
-    if (!elements.modalOverlay.classList.contains('active')) {
-      modalPreviousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    }
     elements.modalContent.innerHTML = renderEffectModal(effect);
     elements.modalOverlay.classList.add('active');
-    elements.modalOverlay.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
     if (window.location.hash !== `#${effect.id}`) {
       history.replaceState(null, '', `#${effect.id}`);
     }
-    requestAnimationFrame(() => {
-      const title = elements.modalContent.querySelector<HTMLElement>('#effect-modal-title');
-      (title ?? elements.modalDialog).focus();
-    });
+    if (!AppDialogA11y.isOpen(elements.modalOverlay)) {
+      AppDialogA11y.open({
+        overlay: elements.modalOverlay,
+        dialog: elements.modalDialog,
+        initialFocus: elements.modalContent.querySelector<HTMLElement>('#effect-modal-title') ?? elements.modalDialog,
+        onRequestClose: () => closeEffectModal(elements)
+      });
+    }
   }
 
   function renderEffectModal(effect: UxEffect): string {
@@ -381,80 +362,31 @@
     if (!elements.modalOverlay.classList.contains('active')) return;
     closeLightbox(elements);
     elements.modalOverlay.classList.remove('active');
-    elements.modalOverlay.setAttribute('aria-hidden', 'true');
     elements.modalContent.innerHTML = '';
     document.body.classList.remove('modal-open');
     if (window.location.hash) {
       history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
     }
-    if (modalPreviousFocus && document.contains(modalPreviousFocus)) {
-      modalPreviousFocus.focus();
-    }
-    modalPreviousFocus = null;
+    AppDialogA11y.close(elements.modalOverlay);
   }
 
   function openLightbox(src: string, alt: string, elements: PageElements): void {
-    lightboxPreviousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     elements.lightboxImage.src = src;
     elements.lightboxImage.alt = alt;
     elements.lightbox.classList.add('active');
-    elements.lightbox.setAttribute('aria-hidden', 'false');
-    elements.lightboxClose.focus();
+    AppDialogA11y.open({
+      overlay: elements.lightbox,
+      initialFocus: elements.lightboxClose,
+      onRequestClose: () => closeLightbox(elements)
+    });
   }
 
   function closeLightbox(elements: PageElements): void {
     if (!elements.lightbox.classList.contains('active')) return;
     elements.lightbox.classList.remove('active');
-    elements.lightbox.setAttribute('aria-hidden', 'true');
     elements.lightboxImage.removeAttribute('src');
     elements.lightboxImage.alt = '';
-    if (lightboxPreviousFocus && document.contains(lightboxPreviousFocus)) {
-      lightboxPreviousFocus.focus();
-    }
-    lightboxPreviousFocus = null;
-  }
-
-  function handleGlobalKeydown(event: KeyboardEvent, elements: PageElements): void {
-    if (elements.lightbox.classList.contains('active')) {
-      if (event.key === 'Escape') closeLightbox(elements);
-      trapFocus(event, elements.lightbox);
-      return;
-    }
-    if (elements.modalOverlay.classList.contains('active')) {
-      if (event.key === 'Escape') closeEffectModal(elements);
-      trapFocus(event, elements.modalDialog);
-    }
-  }
-
-  function trapFocus(event: KeyboardEvent, container: HTMLElement): void {
-    if (event.key !== 'Tab') return;
-    const focusableElements = getFocusableElements(container);
-    const first = focusableElements[0];
-    const last = focusableElements[focusableElements.length - 1];
-    if (!first || !last) {
-      event.preventDefault();
-      container.focus();
-      return;
-    }
-    const active = document.activeElement;
-    if (event.shiftKey && active === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && active === last) {
-      event.preventDefault();
-      first.focus();
-    } else if (active instanceof Element && !container.contains(active)) {
-      event.preventDefault();
-      first.focus();
-    }
-  }
-
-  function getFocusableElements(container: HTMLElement): HTMLElement[] {
-    const selector = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
-    return Array.from(container.querySelectorAll<HTMLElement>(selector)).filter((element) => {
-      const rect = element.getBoundingClientRect();
-      return rect.width > 0 && rect.height > 0;
-    });
+    AppDialogA11y.close(elements.lightbox);
   }
 
   function hydrateHash(elements: PageElements): void {

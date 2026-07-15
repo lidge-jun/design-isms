@@ -24,10 +24,8 @@ const results = [];
 
 const ids = effects.map((e) => e.id);
 if (new Set(ids).size !== ids.length) errors.push('duplicate effect ids in effects.json');
-const expectedCount = 46;
-if (effects.length !== expectedCount) {
-  errors.push(`effects.json has ${effects.length} entries; phase 030 expects ${expectedCount}`);
-}
+// The catalog count gate lives in verify-effects.mjs; this audit derives the
+// expected set from effects.json itself and validates every pair it declares.
 for (const effect of effects) {
   if (!effect.demo || effect.demo.type !== effect.id) {
     errors.push(`${effect.id}: demo.type mismatch`);
