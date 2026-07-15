@@ -4,30 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Design -isms — Visual Reference Board</title>
-<meta name="description" content="43개 디자인 ism의 시각적 레퍼런스 보드. Minimalism부터 Pop Art까지.">
-<link rel="canonical" href="https://lidge-jun.github.io/design-isms/">
+<meta name="description" content="49개 디자인 ism의 시각적 레퍼런스 보드. Minimalism부터 AI Slop 진단까지.">
 <link rel="icon" type="image/svg+xml" href="./favicon.svg">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Design -isms — Visual Reference Board">
-<meta property="og:description" content="43개 디자인 ism과 46개 프런트엔드 UI 후보군을 이미지, 예시, 프롬프트, 구현 가이드로 훑는 정적 레퍼런스 보드.">
-<meta property="og:url" content="https://lidge-jun.github.io/design-isms/">
-<meta property="og:image" content="https://lidge-jun.github.io/design-isms/assets/images/thumbs/minimalism/landing.webp">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Design -isms">
-<meta name="twitter:description" content="43개 디자인 ism과 46개 UI 후보군을 한 번에 훑는 시각 레퍼런스 보드.">
-<meta name="twitter:image" content="https://lidge-jun.github.io/design-isms/assets/images/thumbs/minimalism/landing.webp">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/css/style.css?v=20260511-guide-splitview">
-<link rel="stylesheet" href="./assets/css/nav.css?v=20260511-guide-splitview">
+<link rel="stylesheet" href="./assets/css/style.css?v=20260715-export">
+<link rel="stylesheet" href="./assets/css/theme-atlas.css?v=20260715-export">
+<link rel="stylesheet" href="./assets/css/nav.css?v=20260715-export">
+<link rel="stylesheet" href="./assets/css/export.css?v=20260715-export">
+<link rel="stylesheet" href="./assets/css/finder.css?v=20260715-export">
 </head>
 <body class="is-loading">
 
+<a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
+
 <div class="loading-overlay" id="loading-overlay">
   <div class="loading-inner">
-    <div class="loading-logo">✦</div>
+    <div class="loading-logo"><img src="./assets/icons/atlas-mark.svg" alt="" aria-hidden="true" width="22" height="22"></div>
     <div class="loading-text">Design -isms</div>
     <div class="loading-bar"><div class="loading-bar-fill"></div></div>
   </div>
@@ -36,28 +31,36 @@
 <header class="site-header">
   <div class="header-inner">
     <a class="logo logo-link" href="./index.html" aria-label="Design -isms home">
-      <div class="logo-sketch">✦</div>
+      <div class="logo-sketch"><img src="./assets/icons/atlas-mark.svg" alt="" aria-hidden="true" width="14" height="14"></div>
       Design -isms
     </a>
     <nav class="header-right" aria-label="Primary navigation">
-      <a class="star-pill" href="./index.html" aria-current="page">Isms</a>
-      <a class="star-pill" href="./effects.html">Effects</a>
-      <a class="star-pill" href="./faq.html">FAQ</a>
-      <a class="star-pill" href="https://github.com/lidge-jun/design-isms" target="_blank" rel="noopener">
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/></svg>
-        Give me a star
+      <a class="nav-link" data-nav-axis="isms" href="./index.html" aria-current="page">Isms</a>
+      <a class="nav-link" data-nav-axis="effects" href="./effects.html">Effects</a>
+      <a class="nav-link" data-nav-axis="faq" href="./faq.html">FAQ</a>
+      <a class="nav-link nav-link--external" data-nav-axis="github" href="https://github.com/lidge-jun/design-isms" target="_blank" rel="noopener">
+        GitHub <span aria-hidden="true">↗</span>
       </a>
-      <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language">
+      <button class="lang-toggle" data-nav-axis="lang" id="lang-toggle" type="button" aria-label="언어 전환 / Switch language">
         <span class="lang-option" data-lang="ko">한</span>
-        <span class="lang-divider">/</span>
+        <span class="lang-divider" aria-hidden="true">/</span>
         <span class="lang-option" data-lang="en">EN</span>
       </button>
-      <span class="header-count">43 isms</span>
+      <span class="header-count" data-nav-axis="count">49 isms</span>
     </nav>
   </div>
 </header>
 
-<div class="filter-bar">
+<main id="main-content">
+<section class="style-finder" id="style-finder" aria-labelledby="style-finder-title">
+  <header class="style-finder-header">
+    <p class="atlas-kicker">Decision aid · 03 questions</p>
+    <h1 id="style-finder-title">Find a visual direction</h1>
+    <p>Choose the job, the feeling, and the light level. We will explain three starting points.</p>
+  </header>
+  <div id="style-finder-mount" aria-busy="true"></div>
+</section>
+<div class="filter-bar" id="catalog">
   <div class="filter-row">
     <button class="filter-btn active" data-keyword="all">All</button>
     <input type="text" class="search-input" placeholder="Search isms...">
@@ -67,31 +70,36 @@
 <div class="grid-container">
   <div class="masonry" id="masonry"></div>
 </div>
+</main>
 
 <footer class="site-footer">
   <span>Design -isms Reference Board</span>
   <span>Images generated with GPT Image 2</span>
 </footer>
 
-<div class="lightbox" id="lightbox">
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="이미지 확대 보기" aria-hidden="true" tabindex="-1">
   <button class="lightbox-close" aria-label="Close">✕</button>
   <img src="" alt="Enlarged view">
 </div>
 
-<div class="modal-overlay" id="modal-overlay">
-  <div class="modal-container">
+<div class="modal-overlay" id="modal-overlay" aria-hidden="true">
+  <div class="modal-container" id="ism-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="ism-modal-title" tabindex="-1">
     <button class="modal-close" aria-label="Close">✕</button>
     <div class="modal-scroll" id="modal-content"></div>
     <div class="modal-guide-panel" id="guide-panel"></div>
   </div>
 </div>
 
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <button class="scroll-top" aria-label="Scroll to top">
   <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
 </button>
 
-<script src="./assets/js/app.js?v=20260511-guide-splitview"></script>
+<script src="./assets/js/app-dialog.js?v=20260715-export"></script>
+<script src="./assets/js/app-guides.js?v=20260715-export"></script>
+<script src="./assets/js/app-export.js?v=20260715-export"></script>
+<script src="./assets/js/finder.js?v=20260715-export"></script>
+<script src="./assets/js/app.js?v=20260715-export"></script>
 </body>
 </html>

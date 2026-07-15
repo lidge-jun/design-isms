@@ -37,7 +37,27 @@
       "과도한 장식 요소 추가",
       "다채로운 색상 남용",
       "복잡한 애니메이션 과용"
-    ]
+    ],
+    "implementation": {
+      "summary": "정보 위계를 여백, 타이포그래피, 단일 행동으로 만드는 스타일이다. 컴포넌트 수를 줄이고 상태 표현을 아주 절제한다.",
+      "components": [
+        "단일 CTA hero",
+        "Editorial article",
+        "Pricing table",
+        "Product detail",
+        "Minimal nav"
+      ],
+      "build": [
+        "section 간격을 먼저 정하고 border는 마지막에 쓴다.",
+        "컬러는 본문, 보조 텍스트, CTA의 3단계로 제한한다.",
+        "이미지 없이도 headline과 CTA만으로 흐름이 읽히게 만든다."
+      ],
+      "checks": [
+        "모바일에서 첫 화면의 주요 행동이 하나만 보인다.",
+        "카드나 섹션이 장식 없이 간격만으로 구분된다.",
+        "회색 텍스트 대비가 접근성 기준을 해치지 않는다."
+      ]
+    }
   },
   "bauhaus": {
     "layout": {
@@ -77,7 +97,27 @@
       "복잡한 패턴이나 장식",
       "부드러운 그라데이션",
       "현실적 3D 효과"
-    ]
+    ],
+    "implementation": {
+      "summary": "기하학, 원색, 기능주의를 컴포넌트 구조에 그대로 드러내는 방식이다. 버튼과 패널은 장식보다 형태 대비로 구분한다.",
+      "components": [
+        "Geometric hero",
+        "Poster grid",
+        "Course card",
+        "Gallery index",
+        "Primary-color controls"
+      ],
+      "build": [
+        "원, 사각형, 선을 실제 레이아웃 축으로 사용한다.",
+        "빨강, 파랑, 노랑은 상태가 아니라 구조적 강조에 배치한다.",
+        "비대칭 그리드라도 baseline과 column 규칙은 유지한다."
+      ],
+      "checks": [
+        "장식 도형이 콘텐츠를 가리지 않는다.",
+        "원색 면적이 CTA와 충돌하지 않는다.",
+        "텍스트 정렬 기준선이 화면 전체에서 유지된다."
+      ]
+    }
   },
   "flat-design": {
     "layout": {
@@ -117,7 +157,27 @@
       "그림자나 3D 효과",
       "복잡한 텍스처",
       "과도한 애니메이션"
-    ]
+    ],
+    "implementation": {
+      "summary": "평면 색면과 단순 아이콘으로 빠르게 읽히는 인터페이스를 만든다. 복잡한 질감 대신 명확한 상태와 큰 터치 영역이 중요하다.",
+      "components": [
+        "Icon dashboard",
+        "Feature grid",
+        "Mobile onboarding",
+        "Settings list",
+        "Status banner"
+      ],
+      "build": [
+        "그림자 대신 색상 대비와 공간으로 계층을 만든다.",
+        "아이콘은 한 stroke/fill 체계로 통일한다.",
+        "hover, active, disabled 상태를 색면 변화로 명확히 둔다."
+      ],
+      "checks": [
+        "아이콘만으로 의미가 전달되지 않는 곳에는 label이 있다.",
+        "버튼과 카드의 radius가 일관된다.",
+        "색상 대비가 너무 낮은 pastel 조합을 피한다."
+      ]
+    }
   },
   "material-design": {
     "layout": {
@@ -157,7 +217,27 @@
       "평면적 디자인만",
       "과도한 커스텀 shadow",
       "느린 애니메이션"
-    ]
+    ],
+    "implementation": {
+      "summary": "표면, elevation, motion을 명확한 시스템으로 다루는 스타일이다. 컴포넌트는 카드와 FAB처럼 역할이 분명해야 한다.",
+      "components": [
+        "App shell",
+        "FAB action",
+        "Card feed",
+        "Dialog",
+        "Form field stack"
+      ],
+      "build": [
+        "surface와 background 색을 분리한다.",
+        "elevation 단계는 2-3개만 사용한다.",
+        "motion은 entrance보다 상태 전환 설명에 쓴다."
+      ],
+      "checks": [
+        "FAB가 화면의 최우선 행동과 연결된다.",
+        "카드 안 interactive 요소의 touch target이 충분하다.",
+        "focus, hover, pressed 상태가 모두 구분된다."
+      ]
+    }
   },
   "art-deco": {
     "layout": {
@@ -197,7 +277,27 @@
       "현대적 미니멀 요소",
       "부드러운 파스텔",
       "평범한 sans-serif"
-    ]
+    ],
+    "implementation": {
+      "summary": "대칭, 금속성 대비, 장식 테두리로 고급스러운 인상을 만든다. 정보 UI보다는 예약, 초대, 브랜드 페이지에 강하다.",
+      "components": [
+        "Luxury landing",
+        "Invitation card",
+        "Hotel booking panel",
+        "Membership tier",
+        "Event schedule"
+      ],
+      "build": [
+        "중앙 정렬과 좌우 대칭을 기본 뼈대로 잡는다.",
+        "금색은 border, divider, icon에 얇게 사용한다.",
+        "장식 패턴은 content frame 바깥에 둔다."
+      ],
+      "checks": [
+        "장식이 본문 가독성을 낮추지 않는다.",
+        "gold 계열 색이 과포화되지 않는다.",
+        "모바일에서 대칭 구조가 좁은 폭에 맞게 단순화된다."
+      ]
+    }
   },
   "swiss-style": {
     "layout": {
@@ -237,7 +337,27 @@
       "장식적 요소",
       "색상 과다 사용",
       "비정렬 레이아웃"
-    ]
+    ],
+    "implementation": {
+      "summary": "그리드, 산세리프, 사진과 타이포의 질서로 설득력을 만든다. 모든 컴포넌트는 column과 baseline에 묶인다.",
+      "components": [
+        "Editorial index",
+        "Case-study page",
+        "Poster hero",
+        "Data table",
+        "Corporate nav"
+      ],
+      "build": [
+        "12-column 또는 6-column grid를 먼저 고정한다.",
+        "이미지는 crop보다 정보 역할을 기준으로 배치한다.",
+        "굵기와 크기 대비로만 hierarchy를 만든다."
+      ],
+      "checks": [
+        "임의의 중앙 정렬이 섞이지 않는다.",
+        "텍스트 블록의 line length가 과하지 않다.",
+        "grid를 벗어난 요소에는 의도된 이유가 있다."
+      ]
+    }
   },
   "brutalism": {
     "layout": {
@@ -277,7 +397,27 @@
       "부드러운 shadow",
       "세련된 애니메이션",
       "미니멀 white space"
-    ]
+    ],
+    "implementation": {
+      "summary": "원시적인 구조, 강한 대비, 노출된 UI 뼈대로 에너지를 만든다. 단, 사용성까지 무너뜨리면 anti-pattern이 된다.",
+      "components": [
+        "Raw landing",
+        "Directory list",
+        "Manifesto page",
+        "Command button",
+        "High-contrast form"
+      ],
+      "build": [
+        "border, monospace, hard contrast를 명확히 사용한다.",
+        "불규칙 배치는 hero나 feature 일부로 제한한다.",
+        "링크와 버튼은 과장되더라도 역할을 분명히 한다."
+      ],
+      "checks": [
+        "클릭 가능한 요소가 시각적으로 즉시 보인다.",
+        "broken grid가 reading order를 깨지 않는다.",
+        "고대비 조합이 눈부심을 만들지 않는다."
+      ]
+    }
   },
   "skeuomorphism": {
     "layout": {
@@ -317,7 +457,27 @@
       "완전 평면 디자인",
       "현대적 flat 요소",
       "추상적 형태"
-    ]
+    ],
+    "implementation": {
+      "summary": "실제 물체의 질감과 은유로 조작 방법을 직관적으로 보여준다. 생산성 앱에서는 affordance가 강점이다.",
+      "components": [
+        "Calculator keypad",
+        "Bookshelf library",
+        "Notebook editor",
+        "Audio knob",
+        "Ticket card"
+      ],
+      "build": [
+        "질감은 interactive affordance가 있는 부위에 집중한다.",
+        "그림자 방향과 광원을 전체 화면에서 통일한다.",
+        "물리 은유가 실제 기능과 맞는지 먼저 확인한다."
+      ],
+      "checks": [
+        "장식 질감이 텍스트 대비를 방해하지 않는다.",
+        "버튼의 pressed 상태가 물리적으로 납득된다.",
+        "레티나 화면에서 texture가 흐릿하지 않다."
+      ]
+    }
   },
   "dark-mode": {
     "layout": {
@@ -357,7 +517,27 @@
       "pure black #000 사용",
       "낮은 대비",
       "밝은 색 과다"
-    ]
+    ],
+    "implementation": {
+      "summary": "어두운 배경 위에서 대비와 accent를 정교하게 조절하는 스타일이다. 검정 하나가 아니라 surface 층위가 필요하다.",
+      "components": [
+        "Analytics dashboard",
+        "Streaming card",
+        "Code panel",
+        "Settings surface",
+        "Command palette"
+      ],
+      "build": [
+        "background, surface, elevated surface를 분리한다.",
+        "accent는 CTA와 status에만 제한한다.",
+        "border는 밝은 선보다 투명도 낮은 light stroke를 쓴다."
+      ],
+      "checks": [
+        "회색 본문이 너무 어둡지 않다.",
+        "danger, success 상태가 accent와 혼동되지 않는다.",
+        "OLED black과 카드 surface가 구분된다."
+      ]
+    }
   },
   "retro-vintage": {
     "layout": {
@@ -397,7 +577,27 @@
       "현대적 clean 디자인",
       "neon color",
       "빠른 모던 motion"
-    ]
+    ],
+    "implementation": {
+      "summary": "종이, grain, serif, 따뜻한 색감으로 오래된 브랜드 감각을 만든다. 메뉴판, 카페, 포스터형 페이지에 잘 맞는다.",
+      "components": [
+        "Cafe menu",
+        "Poster hero",
+        "Editorial card",
+        "Stamp badge",
+        "Product label"
+      ],
+      "build": [
+        "serif heading과 readable sans body를 조합한다.",
+        "grain은 배경에 약하게만 적용한다.",
+        "badge와 divider로 시대감을 만든다."
+      ],
+      "checks": [
+        "빈티지 질감이 저화질처럼 보이지 않는다.",
+        "본문 크기가 장식 폰트에 끌려 작아지지 않는다.",
+        "색감이 sepia 한 톤으로만 갇히지 않는다."
+      ]
+    }
   },
   "futurism": {
     "layout": {
@@ -437,7 +637,27 @@
       "대칭적 레이아웃 피하기",
       "부드러운 곡선 과용",
       "저대비 색상 사용"
-    ]
+    ],
+    "implementation": {
+      "summary": "사선, 속도감, 기술적 대비로 미래적 인상을 만든다. 랜딩과 캠페인에서는 강하지만 폼 UI는 절제해야 한다.",
+      "components": [
+        "Tech hero",
+        "Feature rail",
+        "Spec panel",
+        "Launch countdown",
+        "Diagonal CTA"
+      ],
+      "build": [
+        "사선 shape를 section separator로 사용한다.",
+        "속도감 있는 type scale을 hero에 집중한다.",
+        "기능 설명 영역은 grid로 다시 안정화한다."
+      ],
+      "checks": [
+        "사선 레이아웃이 모바일에서 잘리지 않는다.",
+        "동적 효과 없이도 정보가 읽힌다.",
+        "CTA가 배경 그래픽에 묻히지 않는다."
+      ]
+    }
   },
   "memphis-design": {
     "layout": {
@@ -477,7 +697,27 @@
       "미니멀 디자인",
       "부드러운 그라디언트",
       "단조로운 색상"
-    ]
+    ],
+    "implementation": {
+      "summary": "패턴, 충돌하는 색, 장난스러운 도형으로 친근한 에너지를 만든다. 과하면 CTA 집중도가 떨어진다.",
+      "components": [
+        "Playful hero",
+        "Product tile",
+        "Promo banner",
+        "Sticker button",
+        "Category grid"
+      ],
+      "build": [
+        "패턴은 corner나 background layer에 제한한다.",
+        "컴포넌트 내부 텍스트 영역은 단색으로 보호한다.",
+        "도형의 z-index 규칙을 명확히 둔다."
+      ],
+      "checks": [
+        "패턴이 링크와 버튼을 가리지 않는다.",
+        "색 조합이 브랜드 메시지와 충돌하지 않는다.",
+        "모바일에서 장식 도형이 제거되어도 화면이 성립한다."
+      ]
+    }
   },
   "cyberpunk": {
     "layout": {
@@ -517,7 +757,27 @@
       "밝은 배경",
       "부드러운 전환",
       "전통 serif"
-    ]
+    ],
+    "implementation": {
+      "summary": "어두운 표면, neon accent, glitch 감각으로 긴장감을 만든다. 게임, 이벤트, 음악 페이지에서 효과가 크다.",
+      "components": [
+        "Game landing",
+        "Neon nav",
+        "Terminal card",
+        "Event ticket",
+        "Status HUD"
+      ],
+      "build": [
+        "neon은 외곽선과 active 상태에 집중한다.",
+        "glitch는 제목이나 transition 일부로 제한한다.",
+        "정보 패널은 dark surface 위에 얇은 border로 쌓는다."
+      ],
+      "checks": [
+        "neon glow가 텍스트를 흐리게 만들지 않는다.",
+        "애니메이션을 끈 상태에서도 사용 가능하다.",
+        "빨강/초록 상태가 배경과 충분히 분리된다."
+      ]
+    }
   },
   "psychedelic": {
     "layout": {
@@ -557,7 +817,27 @@
       "클린 미니멀",
       "단색",
       "느린 모션"
-    ]
+    ],
+    "implementation": {
+      "summary": "소용돌이, 강한 색, 실험적 형태로 몰입감을 만든다. 콘텐츠 UI보다 음악, 페스티벌, 포스터성 화면에 맞다.",
+      "components": [
+        "Festival hero",
+        "Album page",
+        "Poster stack",
+        "Animated marquee",
+        "Ticket CTA"
+      ],
+      "build": [
+        "복잡한 배경 위에는 solid text plate를 둔다.",
+        "색 대비는 의도적으로 강하게 쓰되 CTA 색은 고정한다.",
+        "패턴 motion은 prefers-reduced-motion을 고려한다."
+      ],
+      "checks": [
+        "본문 영역과 그래픽 영역이 분리된다.",
+        "움직임이 과도한 현기증을 만들지 않는다.",
+        "CTA가 패턴 속에서 사라지지 않는다."
+      ]
+    }
   },
   "vaporwave": {
     "layout": {
@@ -597,7 +877,27 @@
       "현대적 미니멀",
       "강한 네온 과용",
       "빠른 모션"
-    ]
+    ],
+    "implementation": {
+      "summary": "retro digital, gradient, neon, nostalgia를 섞어 인터넷 문화 감각을 만든다. 음악 플레이어와 컬렉션 UI에 잘 맞는다.",
+      "components": [
+        "Music player",
+        "Collection grid",
+        "Retro hero",
+        "Media card",
+        "Neon tab"
+      ],
+      "build": [
+        "gradient 배경 위에 카드 surface를 분리한다.",
+        "chrome 또는 grid motif는 wrapper에만 둔다.",
+        "본문은 nostalgia 폰트보다 readable font를 우선한다."
+      ],
+      "checks": [
+        "gradient가 한 톤으로 뭉개지지 않는다.",
+        "카드와 배경의 대비가 충분하다.",
+        "retro 효과가 실제 조작을 방해하지 않는다."
+      ]
+    }
   },
   "y2k": {
     "layout": {
@@ -637,7 +937,27 @@
       "평평한 디자인",
       "어두운 색상",
       "정적 모션"
-    ]
+    ],
+    "implementation": {
+      "summary": "chrome, bubble, translucent surface로 2000년대 디지털 감각을 만든다. 패션, 커뮤니티, 모바일 UI에 어울린다.",
+      "components": [
+        "Fashion landing",
+        "Bubble nav",
+        "Profile card",
+        "Sticker modal",
+        "Mobile launcher"
+      ],
+      "build": [
+        "translucent surface에는 반드시 readable backdrop을 둔다.",
+        "bubble radius와 glossy highlight를 컴포넌트 단위로 반복한다.",
+        "아이콘은 chunky하고 명확하게 만든다."
+      ],
+      "checks": [
+        "투명 카드 뒤 텍스트가 겹치지 않는다.",
+        "gloss highlight가 버튼 label을 방해하지 않는다.",
+        "모바일에서 장식이 터치 영역을 침범하지 않는다."
+      ]
+    }
   },
   "maximalism": {
     "layout": {
@@ -677,7 +997,27 @@
       "빈 공간",
       "단순화",
       "단조로운 컬러"
-    ]
+    ],
+    "implementation": {
+      "summary": "많은 레이어, 강한 색, 풍부한 패턴으로 브랜드 세계관을 만든다. 구조를 잡지 않으면 화면이 쉽게 무너진다.",
+      "components": [
+        "Editorial cover",
+        "Fashion grid",
+        "Campaign hero",
+        "Layered product card",
+        "Lookbook carousel"
+      ],
+      "build": [
+        "콘텐츠 우선순위를 1, 2, 3단계로 고정한다.",
+        "패턴과 이미지는 section 단위로 나누어 충돌을 줄인다.",
+        "CTA 주변만큼은 충분한 빈 공간을 남긴다."
+      ],
+      "checks": [
+        "첫 화면에서 가장 중요한 문장이 즉시 보인다.",
+        "레이어가 많아도 tab 순서가 자연스럽다.",
+        "이미지 lazy loading이 적용된다."
+      ]
+    }
   },
   "steampunk": {
     "layout": {
@@ -717,7 +1057,27 @@
       "현대적 클린",
       "네온 컬러",
       "빠른 디지털 모션"
-    ]
+    ],
+    "implementation": {
+      "summary": "brass, gear, victorian ornament로 기계적 판타지를 만든다. 게임, 수집품, 스토리형 제품 페이지에 잘 맞는다.",
+      "components": [
+        "Inventory panel",
+        "Map interface",
+        "Product artifact card",
+        "Mechanical toggle",
+        "Lore timeline"
+      ],
+      "build": [
+        "금속 질감은 frame과 control에 집중한다.",
+        "gear 장식은 실제 상태 변화와 연결하면 설득력이 커진다.",
+        "본문은 장식 serif보다 읽기 쉬운 조합을 쓴다."
+      ],
+      "checks": [
+        "갈색/금색이 한 덩어리로 뭉치지 않는다.",
+        "장식 frame이 좁은 화면에서 사라져도 기능이 남는다.",
+        "버튼의 enabled 상태가 분명하다."
+      ]
+    }
   },
   "glassmorphism": {
     "layout": {
@@ -757,7 +1117,27 @@
       "불투명 배경",
       "강한 그림자",
       "저대비 텍스트"
-    ]
+    ],
+    "implementation": {
+      "summary": "blur, transparency, light border로 떠 있는 표면을 만든다. 배경과 카드 대비를 안전하게 설계해야 한다.",
+      "components": [
+        "Glass login",
+        "Floating card",
+        "Mobile control panel",
+        "Weather widget",
+        "Pricing overlay"
+      ],
+      "build": [
+        "backdrop blur 뒤에는 충분히 단순한 배경을 둔다.",
+        "glass surface마다 border와 subtle shadow를 함께 둔다.",
+        "투명도는 텍스트 영역보다 wrapper에 적용한다."
+      ],
+      "checks": [
+        "blur 미지원 브라우저에서도 텍스트가 읽힌다.",
+        "카드 뒤 이미지가 본문과 충돌하지 않는다.",
+        "contrast fallback 색이 있다."
+      ]
+    }
   },
   "neumorphism": {
     "layout": {
@@ -797,7 +1177,27 @@
       "강한 대비",
       "네온/글로우",
       "복잡한 패턴"
-    ]
+    ],
+    "implementation": {
+      "summary": "부드러운 inset/outset shadow로 표면을 눌러 만든다. 낮은 대비 때문에 접근성 검증이 특히 중요하다.",
+      "components": [
+        "Music control",
+        "Login panel",
+        "Toggle group",
+        "Slider",
+        "Soft dashboard widget"
+      ],
+      "build": [
+        "배경색과 카드색을 거의 같게 두고 shadow로만 계층을 만든다.",
+        "pressed 상태는 inset shadow로 표현한다.",
+        "텍스트와 icon contrast는 별도 기준으로 확보한다."
+      ],
+      "checks": [
+        "버튼 경계가 색각/저시력 환경에서도 보인다.",
+        "disabled와 pressed 상태가 혼동되지 않는다.",
+        "shadow만으로 필수 정보를 전달하지 않는다."
+      ]
+    }
   },
   "corporate-memphis": {
     "layout": {
@@ -837,7 +1237,27 @@
       "현실적인 그림자나 그라데이션 사용",
       "복잡한 디테일 추가",
       "어두운 무거운 컬러 팔레트"
-    ]
+    ],
+    "implementation": {
+      "summary": "친근한 일러스트와 SaaS 구조를 결합해 부담 없는 제품 설명을 만든다. 운영 도구에서는 장식을 절제해야 한다.",
+      "components": [
+        "SaaS hero",
+        "Onboarding stepper",
+        "Pricing card",
+        "Feature illustration row",
+        "Empty state"
+      ],
+      "build": [
+        "일러스트는 feature 설명 옆 보조 역할로 둔다.",
+        "카드는 정보 비교가 가능한 동일 높이로 맞춘다.",
+        "캐릭터는 empty/error state에 제한하면 좋다."
+      ],
+      "checks": [
+        "일러스트가 제품 화면보다 더 중요해 보이지 않는다.",
+        "가격/기능 비교가 스캔 가능하다.",
+        "B2B tone이 너무 유치해지지 않는다."
+      ]
+    }
   },
   "neo-brutalism": {
     "layout": {
@@ -877,7 +1297,27 @@
       "부드러운 그림자나 그라데이션",
       "미니멀한 중립색",
       "과도한 부드러움"
-    ]
+    ],
+    "implementation": {
+      "summary": "두꺼운 border, hard shadow, vivid color로 즉각적인 힘을 만든다. 카드와 버튼이 명확한 제품 UI에 잘 맞는다.",
+      "components": [
+        "Hard-shadow card",
+        "Signup hero",
+        "Shop tile",
+        "Quiz block",
+        "Bold form"
+      ],
+      "build": [
+        "border 두께와 shadow offset을 토큰으로 고정한다.",
+        "hover는 translate보다 shadow 방향 변화로 준다.",
+        "색은 loud하게 쓰되 텍스트 plate는 단순하게 둔다."
+      ],
+      "checks": [
+        "hard shadow가 layout overflow를 만들지 않는다.",
+        "border 두께가 모바일에서 과하지 않다.",
+        "CTA와 일반 카드가 명확히 구분된다."
+      ]
+    }
   },
   "gradient-aurora": {
     "layout": {
@@ -917,7 +1357,27 @@
       "단색 플랫 배경",
       "강한 대비 텍스트",
       "빠른 애니메이션"
-    ]
+    ],
+    "implementation": {
+      "summary": "mesh gradient와 유동적인 색 흐름으로 부드러운 미래감을 만든다. SaaS hero와 모바일 앱 소개에 강하다.",
+      "components": [
+        "Aurora hero",
+        "SaaS feature card",
+        "Mobile preview",
+        "Signup panel",
+        "Metric strip"
+      ],
+      "build": [
+        "gradient는 배경 레이어로 두고 텍스트 surface를 분리한다.",
+        "색 흐름은 2-4개 핵심 색으로 제한한다.",
+        "blurred shape 대신 실제 gradient bitmap이나 CSS mesh를 선택한다."
+      ],
+      "checks": [
+        "텍스트가 gradient 밝은 영역과 겹치지 않는다.",
+        "저사양 모바일에서 animation이 과하지 않다.",
+        "브랜드 컬러가 gradient 안에서 유지된다."
+      ]
+    }
   },
   "bento-grid": {
     "layout": {
@@ -957,7 +1417,27 @@
       "균일한 동일 크기 카드",
       "과도한 간격",
       "복잡한 중첩"
-    ]
+    ],
+    "implementation": {
+      "summary": "모듈형 카드 배치로 여러 기능을 한 화면에서 빠르게 비교하게 만든다. 각 tile의 역할과 크기 규칙이 핵심이다.",
+      "components": [
+        "Feature bento",
+        "Dashboard overview",
+        "Product showcase grid",
+        "Metric card",
+        "Media tile"
+      ],
+      "build": [
+        "tile size를 content priority에 맞춰 정한다.",
+        "각 카드의 header, media, action 위치를 통일한다.",
+        "모바일에서는 bento를 단일 column 순서로 풀어낸다."
+      ],
+      "checks": [
+        "카드 크기가 hover나 이미지 로딩으로 흔들리지 않는다.",
+        "중요 tile이 첫 viewport 안에 들어온다.",
+        "모바일 순서가 의미 순서와 일치한다."
+      ]
+    }
   },
   "kawaii": {
     "layout": {
@@ -997,7 +1477,27 @@
       "sharp edges",
       "강한 대비",
       "dark mode 강제"
-    ]
+    ],
+    "implementation": {
+      "summary": "pastel, rounded shape, 작은 캐릭터 요소로 귀여운 친밀감을 만든다. 입력/구매 흐름에서는 명확성을 잃지 않아야 한다.",
+      "components": [
+        "Mascot onboarding",
+        "Pastel shop card",
+        "Sticker badge",
+        "Rounded tab bar",
+        "Friendly empty state"
+      ],
+      "build": [
+        "radius와 padding을 넉넉하게 둔다.",
+        "캐릭터는 안내나 보상 상태에 배치한다.",
+        "pastel 위 텍스트 대비를 별도로 확인한다."
+      ],
+      "checks": [
+        "귀여운 장식이 오류 메시지를 약하게 만들지 않는다.",
+        "버튼 label이 작은 화면에서 줄바꿈된다.",
+        "캐릭터가 form field를 가리지 않는다."
+      ]
+    }
   },
   "japandi": {
     "layout": {
@@ -1037,7 +1537,27 @@
       "bright accent colors",
       "복잡한 패턴",
       "heavy shadows"
-    ]
+    ],
+    "implementation": {
+      "summary": "차분한 자연 소재, 넓은 여백, 낮은 대비로 안정감을 만든다. 라이프스타일, 인테리어, 웰니스 UI에 맞다.",
+      "components": [
+        "Interior landing",
+        "Journal card",
+        "Product story",
+        "Calm booking form",
+        "Gallery detail"
+      ],
+      "build": [
+        "neutral palette에 한 가지 warm accent만 둔다.",
+        "이미지 비율과 여백을 일정하게 유지한다.",
+        "border보다 배경 톤 차이로 grouping한다."
+      ],
+      "checks": [
+        "저대비 텍스트가 너무 흐리지 않다.",
+        "이미지 crop이 제품/공간 정보를 잃지 않는다.",
+        "모바일에서 여백이 과해 정보가 밀리지 않는다."
+      ]
+    }
   },
   "organic-design": {
     "layout": {
@@ -1077,7 +1597,27 @@
       "직선 그리드",
       "sharp corners",
       "기하학 과다"
-    ]
+    ],
+    "implementation": {
+      "summary": "곡선, blob, 자연 색감으로 부드러운 흐름을 만든다. 건강, 웰니스, 친환경 제품에 잘 맞는다.",
+      "components": [
+        "Wellness hero",
+        "Blob card",
+        "Ingredient section",
+        "Curved CTA band",
+        "Flowing testimonial"
+      ],
+      "build": [
+        "곡선 shape를 section boundary에 사용한다.",
+        "카드는 rounded하되 내부 alignment는 안정적으로 둔다.",
+        "earth tone 안에 CTA 대비색을 하나 둔다."
+      ],
+      "checks": [
+        "blob이 텍스트 영역을 침범하지 않는다.",
+        "곡선 때문에 layout 기준선이 사라지지 않는다.",
+        "자연색 팔레트가 한 톤으로 뭉치지 않는다."
+      ]
+    }
   },
   "kinetic-typography": {
     "layout": {
@@ -1117,7 +1657,27 @@
       "과도한 color change",
       "heavy JS lag",
       "static text"
-    ]
+    ],
+    "implementation": {
+      "summary": "큰 글자와 움직임으로 메시지를 전면에 세운다. portfolio, agency, campaign hero에서 강하게 작동한다.",
+      "components": [
+        "Type hero",
+        "Marquee section",
+        "Scroll-driven headline",
+        "Agency case card",
+        "Word-based nav"
+      ],
+      "build": [
+        "motion이 없는 상태의 static layout을 먼저 만든다.",
+        "큰 글자 주변에 충분한 collision-safe 영역을 둔다.",
+        "scroll effect는 headline 단위로 제한한다."
+      ],
+      "checks": [
+        "prefers-reduced-motion에서 정보가 사라지지 않는다.",
+        "긴 단어가 모바일 너비를 넘지 않는다.",
+        "움직이는 텍스트가 CTA를 가리지 않는다."
+      ]
+    }
   },
   "frutiger-aero": {
     "layout": {
@@ -1157,7 +1717,27 @@
       "flat matte",
       "sharp edges",
       "dark heavy tones"
-    ]
+    ],
+    "implementation": {
+      "summary": "glossy surface, 자연 이미지, 낙관적 gradient로 2000년대 친환경 디지털 감각을 만든다.",
+      "components": [
+        "Glossy dashboard",
+        "Nature hero",
+        "Weather widget",
+        "Aqua button",
+        "Translucent panel"
+      ],
+      "build": [
+        "gloss highlight와 translucent panel을 함께 쓴다.",
+        "자연 이미지는 실제 정보 배경으로 과하게 어둡히지 않는다.",
+        "rounded glossy button의 상태를 명확히 둔다."
+      ],
+      "checks": [
+        "광택이 텍스트를 가리지 않는다.",
+        "배경 이미지 위 panel 대비가 충분하다.",
+        "nostalgia가 오래된 UI처럼 보이는 수준에 머물지 않는다."
+      ]
+    }
   },
   "claymorphism": {
     "layout": {
@@ -1197,7 +1777,27 @@
       "flat no shadow",
       "sharp edges",
       "high gloss"
-    ]
+    ],
+    "implementation": {
+      "summary": "말랑한 3D clay 형태로 친근한 제품 UI를 만든다. 아이콘, onboarding, shop card에서 효과가 좋다.",
+      "components": [
+        "3D icon grid",
+        "Onboarding card",
+        "Soft shop tile",
+        "Achievement badge",
+        "Playful CTA"
+      ],
+      "build": [
+        "clay object와 실제 UI control을 구분한다.",
+        "shadow와 highlight 방향을 통일한다.",
+        "rounded geometry를 icon과 card에 반복한다."
+      ],
+      "checks": [
+        "3D 장식이 클릭 가능한 요소처럼 오해되지 않는다.",
+        "이미지 로딩 전에도 레이아웃 크기가 고정된다.",
+        "pastel 배경에서 텍스트 대비가 충분하다."
+      ]
+    }
   },
   "dopamine-design": {
     "layout": {
@@ -1237,7 +1837,27 @@
       "단색 미니멀리즘",
       "느린 전환",
       "낮은 에너지 모션"
-    ]
+    ],
+    "implementation": {
+      "summary": "강한 색, 둥근 형태, 빠른 보상감을 통해 활기찬 제품 경험을 만든다. 쇼핑, Gen-Z 앱, 캠페인에 잘 맞다.",
+      "components": [
+        "Colorful hero",
+        "Reward badge",
+        "Product tile",
+        "Swipe card",
+        "Celebration state"
+      ],
+      "build": [
+        "색상은 많아도 action color는 하나로 고정한다.",
+        "rounded card와 큰 icon으로 스캔 속도를 높인다.",
+        "micro interaction은 보상 상태에 집중한다."
+      ],
+      "checks": [
+        "색이 많아도 구매/가입 버튼이 가장 먼저 보인다.",
+        "애니메이션 없이도 보상 상태가 이해된다.",
+        "모바일에서 컬러 블록이 세로로 과밀하지 않다."
+      ]
+    }
   },
   "anti-design": {
     "layout": {
@@ -1277,7 +1897,27 @@
       "정렬된 그리드",
       "부드러운 motion",
       "전통적 hierarchy"
-    ]
+    ],
+    "implementation": {
+      "summary": "규칙을 일부러 깨며 긴장감과 실험성을 만든다. 그래도 사용자가 길을 잃지 않도록 최소한의 anchor가 필요하다.",
+      "components": [
+        "Experimental portfolio",
+        "Broken poster",
+        "Asymmetric nav",
+        "Manifesto block",
+        "Raw link list"
+      ],
+      "build": [
+        "읽기 순서와 클릭 target은 유지한 채 visual rule만 깬다.",
+        "clash color는 section 단위로 제한한다.",
+        "핵심 CTA는 의외로 단순한 위치에 둔다."
+      ],
+      "checks": [
+        "키보드 탐색 순서가 시각 배치와 충돌하지 않는다.",
+        "의도적 깨짐과 실제 버그가 구분된다.",
+        "사용자가 다음 행동을 찾을 수 있다."
+      ]
+    }
   },
   "cottagecore": {
     "layout": {
@@ -1317,7 +1957,27 @@
       "네온 색상",
       "급격한 motion",
       "산업적 기하학"
-    ]
+    ],
+    "implementation": {
+      "summary": "꽃, 수공예, 따뜻한 종이 감성으로 아늑한 경험을 만든다. 블로그, 상점, 레시피 UI에 잘 맞는다.",
+      "components": [
+        "Recipe card",
+        "Handmade shop tile",
+        "Floral blog",
+        "Journal entry",
+        "Warm newsletter form"
+      ],
+      "build": [
+        "floral 장식은 corner와 divider에 배치한다.",
+        "본문은 readable serif/sans 조합으로 유지한다.",
+        "warm background 위 CTA 대비를 충분히 둔다."
+      ],
+      "checks": [
+        "장식 패턴이 입력 필드와 겹치지 않는다.",
+        "nostalgic tone이 흐릿한 UI가 되지 않는다.",
+        "상품 정보가 감성 이미지에 묻히지 않는다."
+      ]
+    }
   },
   "solarpunk": {
     "layout": {
@@ -1357,7 +2017,27 @@
       "다크 테마 과도",
       "플라스틱 같은 모션",
       "오염된 색상"
-    ]
+    ],
+    "implementation": {
+      "summary": "친환경 미래, 자연과 기술의 조화, 밝은 낙관성을 표현한다. sustainability 제품과 도시/에너지 서비스에 어울린다.",
+      "components": [
+        "Eco hero",
+        "Impact metric card",
+        "Green product tile",
+        "Community map",
+        "Solar dashboard"
+      ],
+      "build": [
+        "green palette에 technology accent를 더한다.",
+        "자연 이미지와 데이터 카드를 같은 grid에 배치한다.",
+        "impact metric을 시각적 중심으로 만든다."
+      ],
+      "checks": [
+        "친환경 이미지가 실제 제품 설명을 대체하지 않는다.",
+        "green 색만으로 상태를 구분하지 않는다.",
+        "미래적 장식과 정보 카드의 대비가 균형 잡힌다."
+      ]
+    }
   },
   "indie-web": {
     "layout": {
@@ -1397,7 +2077,27 @@
       "기업적 polished",
       "과도한 애니메이션",
       "템플릿 느낌"
-    ]
+    ],
+    "implementation": {
+      "summary": "개인적이고 손맛 있는 구조로 독립 웹의 진정성을 만든다. 블로그, 링크 페이지, 개인 프로젝트에 잘 맞다.",
+      "components": [
+        "Personal homepage",
+        "Link garden",
+        "Blog index",
+        "Now page",
+        "Tiny guestbook"
+      ],
+      "build": [
+        "완벽한 grid보다 직접 만든 듯한 rhythm을 살린다.",
+        "작은 link와 note component를 명확히 구분한다.",
+        "과한 framework 느낌을 줄이고 HTML 구조를 드러낸다."
+      ],
+      "checks": [
+        "quirky함이 링크 식별성을 해치지 않는다.",
+        "모바일에서 작은 텍스트가 너무 작지 않다.",
+        "개인적 톤과 접근성이 함께 유지된다."
+      ]
+    }
   },
   "editorial-typography": {
     "layout": {
@@ -1437,7 +2137,27 @@
       "pixelated",
       "bright neon",
       "과도 motion"
-    ]
+    ],
+    "implementation": {
+      "summary": "제목, 리드, 본문, 캡션의 편집 리듬이 화면 구조를 만든다. 그리드보다 먼저 읽기 순서와 행 길이를 고정한다.",
+      "components": [
+        "Feature essay",
+        "Magazine index",
+        "Pull quote",
+        "Article card",
+        "Issue navigation"
+      ],
+      "build": [
+        "본문 measure를 60~75자로 제한한다.",
+        "display와 body의 역할을 분리하고 baseline을 맞춘다.",
+        "모바일에서는 컬럼을 합치되 제목의 강약을 보존한다."
+      ],
+      "checks": [
+        "제목과 본문 사이 위계가 색 없이도 읽힌다.",
+        "긴 본문의 line-height와 문단 간격이 안정적이다.",
+        "장식용 대문자나 이탤릭이 스크린리더 순서를 해치지 않는다."
+      ]
+    }
   },
   "variable-typography": {
     "layout": {
@@ -1477,7 +2197,27 @@
       "고정 폰트만",
       "복잡한 변화",
       "성능 무시"
-    ]
+    ],
+    "implementation": {
+      "summary": "가변 폰트 축을 콘텐츠 상태와 화면 조건에 연결한다. 움직임 자체보다 읽기와 반응형 적합성을 우선한다.",
+      "components": [
+        "Responsive hero",
+        "Axis sampler",
+        "Variable nav",
+        "Data label",
+        "Kinetic headline"
+      ],
+      "build": [
+        "지원 축과 허용 범위를 CSS 변수로 선언한다.",
+        "viewport가 아니라 실제 컨테이너 폭에 type scale을 맞춘다.",
+        "fallback 폰트에서도 레이아웃이 무너지지 않게 metric을 조정한다."
+      ],
+      "checks": [
+        "축 변화 중 글자 폭이 버튼을 밀어내지 않는다.",
+        "prefers-reduced-motion에서 정적 값으로 멈춘다.",
+        "폰트 파일 subset과 preload가 과도하지 않다."
+      ]
+    }
   },
   "monospace-terminal-ui": {
     "layout": {
@@ -1517,7 +2257,27 @@
       "serif",
       "색상 과다",
       "부드러운 curve"
-    ]
+    ],
+    "implementation": {
+      "summary": "고정폭 정렬과 명령형 흐름을 실제 데이터 탐색에 사용한다. CRT 장식보다 입력, 출력, 상태의 구분이 먼저다.",
+      "components": [
+        "Command palette",
+        "Log stream",
+        "Query editor",
+        "Status table",
+        "Inline prompt"
+      ],
+      "build": [
+        "토큰 색상은 역할별로 제한하고 텍스트 label을 병행한다.",
+        "긴 로그는 virtualize하고 줄바꿈 옵션을 제공한다.",
+        "입력 prompt, 결과, 오류의 focus 순서를 고정한다."
+      ],
+      "checks": [
+        "키보드만으로 명령 실행과 기록 탐색이 가능하다.",
+        "깜박임과 scanline을 끌 수 있다.",
+        "14px 이하 본문과 순수 녹색 장문을 피한다."
+      ]
+    }
   },
   "pixel-art-ui": {
     "layout": {
@@ -1557,7 +2317,27 @@
       "smooth anti-alias",
       "high res",
       "현대 curve"
-    ]
+    ],
+    "implementation": {
+      "summary": "픽셀 단위를 자산, 테두리, 간격에 일관되게 적용하되 제품 정보는 현대적 접근성을 유지한다.",
+      "components": [
+        "Pixel button",
+        "Inventory grid",
+        "Quest card",
+        "Status meter",
+        "Dialog frame"
+      ],
+      "build": [
+        "기준 픽셀 배수를 정하고 정수 배율로 확대한다.",
+        "sprite와 아이콘에 image-rendering 규칙을 통일한다.",
+        "텍스트는 읽기 가능한 pixel font 또는 보조 sans로 분리한다."
+      ],
+      "checks": [
+        "서로 다른 DPR에서도 선이 흐려지지 않는다.",
+        "focus ring과 상태 색이 픽셀 장식에 묻히지 않는다.",
+        "모바일 터치 영역은 시각 픽셀 크기보다 충분히 크다."
+      ]
+    }
   },
   "de-stijl": {
     "layout": {
@@ -1597,7 +2377,27 @@
       "곡선",
       "다색",
       "복잡 pattern"
-    ]
+    ],
+    "implementation": {
+      "summary": "수직·수평선과 원색 면을 실제 콘텐츠 구획으로 사용한다. 비대칭이어도 그리드 접점은 정확해야 한다.",
+      "components": [
+        "Primary-grid hero",
+        "Color-block nav",
+        "Exhibition index",
+        "Modular gallery",
+        "Geometric footer"
+      ],
+      "build": [
+        "검정 선의 두께와 접점을 토큰으로 고정한다.",
+        "원색 면마다 하나의 콘텐츠 역할만 배치한다.",
+        "모바일 재배치에서도 수직·수평 관계를 유지한다."
+      ],
+      "checks": [
+        "곡선과 임의 색이 시스템에 섞이지 않는다.",
+        "빨강·노랑·파랑 면이 CTA 상태와 혼동되지 않는다.",
+        "DOM 읽기 순서가 시각적 비대칭과 일치한다."
+      ]
+    }
   },
   "constructivism": {
     "layout": {
@@ -1637,7 +2437,27 @@
       "pastel",
       "soft motion",
       "minimal whitespace"
-    ]
+    ],
+    "implementation": {
+      "summary": "대각선과 선언적 활자를 캠페인의 방향성과 행동 흐름에 연결한다. 포스터 효과 안에서도 본문과 제어는 안정적으로 둔다.",
+      "components": [
+        "Manifesto hero",
+        "Campaign banner",
+        "Event timeline",
+        "Angular card",
+        "Action rail"
+      ],
+      "build": [
+        "대각선은 배경 장식이 아니라 섹션 이동 축으로 쓴다.",
+        "빨강·검정·크림의 면적 비율을 먼저 정한다.",
+        "본문은 수평 읽기 영역에 두고 압축 서체를 제목에 제한한다."
+      ],
+      "checks": [
+        "기울어진 요소가 모바일 overflow를 만들지 않는다.",
+        "대문자 제목이 로케일별로 잘리지 않는다.",
+        "강한 빨강이 오류 상태와 혼동되지 않는다."
+      ]
+    }
   },
   "isometric-3d-ui": {
     "layout": {
@@ -1677,7 +2497,27 @@
       "flat 2d",
       "no perspective",
       "과도한 rotation"
-    ]
+    ],
+    "implementation": {
+      "summary": "등각 오브젝트를 시스템 관계 설명에 사용한다. 상호작용 제어와 데이터는 평면 레이어에서 분명하게 분리한다.",
+      "components": [
+        "System map",
+        "Product stack",
+        "Isometric feature card",
+        "Resource cluster",
+        "Depth legend"
+      ],
+      "build": [
+        "30도 축과 광원 방향을 모든 오브젝트에 통일한다.",
+        "깊이 단계별 그림자와 색 명도를 토큰화한다.",
+        "복잡한 3D 장면에는 목록형 대체 표현을 제공한다."
+      ],
+      "checks": [
+        "오브젝트 관계가 장식 없이도 설명 가능하다.",
+        "hover 회전이 pointer target을 움직이지 않는다.",
+        "spatial UI처럼 실제 z축 탐색을 암시하지 않는다."
+      ]
+    }
   },
   "pop-art": {
     "layout": {
@@ -1717,6 +2557,386 @@
       "subtle tones",
       "minimal",
       "soft edges"
-    ]
+    ],
+    "implementation": {
+      "summary": "하프톤, 굵은 윤곽, 반복 이미지를 프로모션의 정보 계층에 배치한다. 에너지는 높이되 행동 상태는 단순하게 유지한다.",
+      "components": [
+        "Promo hero",
+        "Comic product card",
+        "Halftone banner",
+        "Sticker CTA",
+        "Campaign carousel"
+      ],
+      "build": [
+        "하프톤은 raster 또는 CSS 패턴 한 방식으로 통일한다.",
+        "검정 윤곽 두께와 offset shadow를 토큰화한다.",
+        "강한 색면마다 제목·가격·행동 중 하나만 강조한다."
+      ],
+      "checks": [
+        "색 조합이 텍스트 대비를 충족한다.",
+        "반복 모티프가 상품 구분을 방해하지 않는다.",
+        "scale 애니메이션이 레이아웃 이동을 만들지 않는다."
+      ]
+    }
+  },
+  "ai-slop": {
+    "layout": {
+      "grid": "콘텐츠 우선 진단 그리드",
+      "columns": "12",
+      "gutter": "24px",
+      "margins": "32px",
+      "spacing": "24px",
+      "symmetry": "의도된 위계",
+      "geometry": "교정 전후가 읽히는 단순 블록"
+    },
+    "typography": {
+      "fontPairing": "system sans-serif 한 계열",
+      "sizeHierarchy": "H1: 48px / H2: 28px / body: 16px",
+      "lineHeight": "1.55",
+      "letterSpacing": "-0.01em",
+      "weightStrategy": "제목 700, 본문 400, 라벨 600"
+    },
+    "color": {
+      "usage": "증상 팔레트는 진단 표시에만 사용",
+      "bgFg": "밝은 중립 배경 + 짙은 전경",
+      "contrast": "본문·행동 대비 4.5:1 이상"
+    },
+    "motion": {
+      "easing": "ease-out",
+      "duration": "180ms",
+      "hover": "장식 대신 상태 변화",
+      "scroll": "진단 항목 순차 강조",
+      "transition": "color, opacity 180ms"
+    },
+    "dos": [
+      "가장 중요한 사용자 목표부터 다시 정렬",
+      "아이콘과 radius를 한 체계로 통일",
+      "근거 없는 장식·문구를 제거"
+    ],
+    "donts": [
+      "상투적 보라-청록 그라데이션을 기본값으로 사용",
+      "맥락 없는 3D 아이콘과 유리 카드를 혼합",
+      "간격·타입·버튼 규칙을 화면마다 변경"
+    ],
+    "implementation": {
+      "summary": "실패 신호를 재현하는 데서 끝내지 않고, 사용자 목표를 기준으로 화면을 de-slop하는 진단 가이드다.",
+      "components": [
+        "Symptom audit hero",
+        "Hierarchy repair panel",
+        "Icon consistency sheet",
+        "Claim evidence card",
+        "Before-after checklist"
+      ],
+      "build": [
+        "콘텐츠 목적과 주요 행동을 한 문장으로 고정한 뒤 위계를 다시 짠다.",
+        "중복 카드·장식·아이콘을 제거하고 남은 요소의 토큰을 통일한다.",
+        "모든 주장, 차트, testimonial에 실제 근거와 상태 label을 연결한다."
+      ],
+      "checks": [
+        "그라데이션과 장식을 꺼도 읽기 순서가 분명하다.",
+        "아이콘·radius·간격·타입이 하나의 시스템을 따른다.",
+        "진단 문구가 사람이나 도구를 비하하지 않고 교정 행동을 제시한다."
+      ]
+    }
+  },
+  "refractive-glass-ui": {
+    "layout": {
+      "grid": "빛과 깊이를 따르는 레이어 그리드",
+      "columns": "12",
+      "gutter": "24px",
+      "margins": "32px",
+      "spacing": "24px",
+      "symmetry": "중심축 + 부유 제어",
+      "geometry": "굴절 가장자리와 안정된 콘텐츠 면"
+    },
+    "typography": {
+      "fontPairing": "clean sans-serif",
+      "sizeHierarchy": "H1: 56px / H2: 32px / body: 16px",
+      "lineHeight": "1.5",
+      "letterSpacing": "-0.02em",
+      "weightStrategy": "제목 650, 본문 400"
+    },
+    "color": {
+      "usage": "ice neutral + spectral accent",
+      "bgFg": "밝은 유리 면 + dark ink",
+      "contrast": "재료 위 텍스트 4.5:1 이상"
+    },
+    "motion": {
+      "easing": "soft spring",
+      "duration": "320ms",
+      "hover": "specular highlight 이동",
+      "scroll": "층별 완만한 parallax",
+      "transition": "transform, filter 320ms"
+    },
+    "dos": [
+      "굴절은 가장자리와 이동에 반응",
+      "텍스트 뒤에는 대비 보정 면 제공",
+      "reduced-motion에서 재료를 안정화"
+    ],
+    "donts": [
+      "blur만으로 재료를 표현",
+      "배경에 따라 텍스트 대비 방치",
+      "모든 패널을 투명하게 처리"
+    ],
+    "implementation": {
+      "summary": "굴절·반사광·주변색 적응을 하나의 재료 규칙으로 묶고, 불투명 대비층으로 정보 가독성을 지킨다.",
+      "components": [
+        "Refractive nav pill",
+        "Adaptive control sheet",
+        "Specular media card",
+        "Layered data widget",
+        "Opaque fallback panel"
+      ],
+      "build": [
+        "배경 샘플에 따라 굴절 강도와 텍스트 scrim을 함께 계산한다.",
+        "가장자리 specular와 내부 blur를 별도 레이어로 구현한다.",
+        "reduced-motion과 저성능 환경에서는 안정된 반투명 면으로 전환한다."
+      ],
+      "checks": [
+        "단순 backdrop blur가 아니라 가장자리 굴절이 보인다.",
+        "밝고 어두운 배경 모두에서 본문 대비가 유지된다.",
+        "재료 이동이 콘텐츠 위치나 터치 target을 바꾸지 않는다."
+      ]
+    }
+  },
+  "spatial-ui": {
+    "layout": {
+      "grid": "z축 앵커 기반 공간 그리드",
+      "columns": "깊이별 3~5 planes",
+      "gutter": "32px",
+      "margins": "48px",
+      "spacing": "40px",
+      "symmetry": "비대칭 공간 균형",
+      "geometry": "가림과 거리로 구분된 평면"
+    },
+    "typography": {
+      "fontPairing": "spatial sans-serif",
+      "sizeHierarchy": "H1: 52px / H2: 30px / body: 17px",
+      "lineHeight": "1.5",
+      "letterSpacing": "-0.015em",
+      "weightStrategy": "거리별 크기·무게 보정"
+    },
+    "color": {
+      "usage": "deep neutral + depth/action cues",
+      "bgFg": "어두운 환경 + 밝은 평면",
+      "contrast": "거리와 무관하게 4.5:1 이상"
+    },
+    "motion": {
+      "easing": "spatial ease-out",
+      "duration": "400ms",
+      "hover": "가까운 면 focus",
+      "scroll": "앵커 사이 짧은 이동",
+      "transition": "transform, opacity 400ms"
+    },
+    "dos": [
+      "복귀 가능한 고정 앵커 제공",
+      "가림·크기·초점으로 거리 표현",
+      "2D 대체 탐색 흐름 제공"
+    ],
+    "donts": [
+      "등각 일러스트만 공간 UI로 취급",
+      "깊이 이동을 장식처럼 반복",
+      "뒤쪽 콘텐츠를 읽기 어렵게 축소"
+    ],
+    "implementation": {
+      "summary": "평면별 깊이, 고정 앵커, 가림 관계를 탐색 모델로 만든다. 모든 공간 이동에는 현재 위치와 복귀점이 있다.",
+      "components": [
+        "Depth-layer workspace",
+        "Anchored control bar",
+        "Spatial breadcrumb",
+        "Occlusion-aware panel",
+        "2D fallback navigator"
+      ],
+      "build": [
+        "각 plane의 거리·크기·focus 상태를 명시적 토큰으로 둔다.",
+        "전경 행동과 후경 맥락이 가림 규칙으로 구분되게 배치한다.",
+        "키보드와 2D 화면에서도 같은 정보 순서를 탐색하게 만든다."
+      ],
+      "checks": [
+        "등각 그림 없이도 깊이별 정보 구조가 작동한다.",
+        "사용자가 항상 현재 plane과 돌아갈 앵커를 알 수 있다.",
+        "과도한 이동·blur·scale을 줄이는 옵션이 있다."
+      ]
+    }
+  },
+  "human-crafted-web": {
+    "layout": {
+      "grid": "재료가 드러나는 편집 그리드",
+      "columns": "6~12",
+      "gutter": "20px",
+      "margins": "32px",
+      "spacing": "28px",
+      "symmetry": "통제된 불규칙",
+      "geometry": "종이 조각·사진·잉크 선"
+    },
+    "typography": {
+      "fontPairing": "handmade display + readable serif/sans",
+      "sizeHierarchy": "H1: 54px / H2: 30px / body: 17px",
+      "lineHeight": "1.6",
+      "letterSpacing": "-0.01em",
+      "weightStrategy": "손글씨는 짧은 강조에만"
+    },
+    "color": {
+      "usage": "paper, ink, spot color",
+      "bgFg": "따뜻한 종이 + 짙은 잉크",
+      "contrast": "질감 위 본문 4.5:1 이상"
+    },
+    "motion": {
+      "easing": "hand-tuned ease",
+      "duration": "240ms",
+      "hover": "작은 종이 들림",
+      "scroll": "사진·메모 순차 등장",
+      "transition": "transform, opacity 240ms"
+    },
+    "dos": [
+      "실제 제작 과정의 재료 사용",
+      "상품·내비게이션 구조는 명확히 유지",
+      "텍스처 파일을 최적화"
+    ],
+    "donts": [
+      "무작위 스티커로 손맛을 대체",
+      "긴 본문 전체를 손글씨로 처리",
+      "질감 때문에 링크와 상태를 숨김"
+    ],
+    "implementation": {
+      "summary": "실제 제작 재료와 수정 흔적을 콘텐츠 provenance로 사용하면서 상품·작업·행동 구조는 또렷하게 유지한다.",
+      "components": [
+        "Process-note hero",
+        "Material product card",
+        "Taped photo gallery",
+        "Maker annotation",
+        "Hand-stamped filter"
+      ],
+      "build": [
+        "직접 만든 종이·잉크·사진 자산의 출처와 용도를 기록한다.",
+        "불규칙 배치는 기준 그리드 안에서 제한된 offset만 사용한다.",
+        "손글씨는 짧은 주석에 쓰고 거래·본문 정보는 읽기 쉬운 글꼴로 둔다."
+      ],
+      "checks": [
+        "스티커를 제거해도 제작 과정과 제품 구조가 남는다.",
+        "텍스처 압축 후에도 종이·잉크의 차이가 식별된다.",
+        "장식의 대체 텍스트와 DOM 읽기 순서가 적절하다."
+      ]
+    }
+  },
+  "generative-identity": {
+    "layout": {
+      "grid": "규칙과 변형을 공유하는 모듈 그리드",
+      "columns": "12",
+      "gutter": "20px",
+      "margins": "32px",
+      "spacing": "24px",
+      "symmetry": "규칙적 변주",
+      "geometry": "동일 골격의 가변 모듈"
+    },
+    "typography": {
+      "fontPairing": "stable brand sans + data mono",
+      "sizeHierarchy": "H1: 56px / H2: 32px / body: 16px",
+      "lineHeight": "1.5",
+      "letterSpacing": "-0.02em",
+      "weightStrategy": "브랜드 타입은 고정"
+    },
+    "color": {
+      "usage": "stable anchors + variable range",
+      "bgFg": "중립 면 + 생성 색상",
+      "contrast": "변형마다 텍스트 대비 유지"
+    },
+    "motion": {
+      "easing": "parameter easing",
+      "duration": "300ms",
+      "hover": "한 축만 변화",
+      "scroll": "seed 기반 변형 전환",
+      "transition": "custom properties 300ms"
+    },
+    "dos": [
+      "공통 생성 규칙을 설명 가능하게 유지",
+      "고정 브랜드 앵커를 모든 변형에 보존",
+      "seed와 허용 범위를 기록"
+    ],
+    "donts": [
+      "무작위 그라데이션을 시스템으로 포장",
+      "변형마다 로고 골격까지 변경",
+      "접근성 검증 없이 색을 생성"
+    ],
+    "implementation": {
+      "summary": "고정 브랜드 앵커와 매개변수 범위를 분리해, 여러 결과가 하나의 규칙에서 나왔음을 증명하는 시스템이다.",
+      "components": [
+        "Parametric brand mark",
+        "Seeded pattern field",
+        "Variable campaign card",
+        "Rule preview control",
+        "Static identity fallback"
+      ],
+      "build": [
+        "불변 골격, 가변 축, 허용 범위를 설계 토큰으로 문서화한다.",
+        "seed와 입력 데이터가 같은 결과를 재현하도록 생성 함수를 고정한다.",
+        "로고·패턴 변형마다 대비와 최소 크기 규칙을 적용한다."
+      ],
+      "checks": [
+        "세 변형을 나란히 봤을 때 공통 규칙을 설명할 수 있다.",
+        "랜덤 입력에도 브랜드 앵커가 사라지지 않는다.",
+        "생성이 실패해도 승인된 정적 자산이 표시된다."
+      ]
+    }
+  },
+  "technical-blueprint": {
+    "layout": {
+      "grid": "주석 가능한 기술 도면 그리드",
+      "columns": "12",
+      "gutter": "16px",
+      "margins": "32px",
+      "spacing": "20px",
+      "symmetry": "도면 축 중심",
+      "geometry": "치수선·리더선·분해 구조"
+    },
+    "typography": {
+      "fontPairing": "monospace + readable sans",
+      "sizeHierarchy": "H1: 44px / H2: 28px / body: 16px",
+      "lineHeight": "1.5",
+      "letterSpacing": "0.01em",
+      "weightStrategy": "수치 500, 본문 400"
+    },
+    "color": {
+      "usage": "technical paper + ink + status orange",
+      "bgFg": "옅은 종이 + 짙은 청색 잉크",
+      "contrast": "가느다란 선도 3:1 이상"
+    },
+    "motion": {
+      "easing": "linear",
+      "duration": "200ms",
+      "hover": "연결선 강조",
+      "scroll": "단계별 경로 reveal",
+      "transition": "stroke, opacity 200ms"
+    },
+    "dos": [
+      "주석을 실제 정보와 연결",
+      "줌 단계별 정보 밀도 조절",
+      "모바일에서는 핵심 경로만 남김"
+    ],
+    "donts": [
+      "파란색만 입혀 도면처럼 보이기",
+      "의미 없는 치수·번호 추가",
+      "CTA와 경고를 도면 선에 묻기"
+    ],
+    "implementation": {
+      "summary": "치수, 주석, 연결선이 제품 구조와 상태를 실제로 설명하도록 만드는 정보 중심의 도면 UI다.",
+      "components": [
+        "Exploded product hero",
+        "Measured system diagram",
+        "Annotated article figure",
+        "Status schematic",
+        "Zoomable parts index"
+      ],
+      "build": [
+        "모든 번호·치수·연결선을 실제 데이터 또는 설명에 연결한다.",
+        "줌 레벨별로 주석 밀도와 선 굵기를 단계화한다.",
+        "모바일에서는 핵심 부품 경로와 범례를 순차 목록으로 변환한다."
+      ],
+      "checks": [
+        "파란색을 제거해도 도면의 설명 구조가 유지된다.",
+        "주석과 leader line이 어느 대상을 가리키는지 명확하다.",
+        "경고와 CTA가 일반 측정선보다 강하게 구분된다."
+      ]
+    }
   }
 }

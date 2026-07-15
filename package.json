@@ -6,10 +6,18 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "images:thumbs": "node scripts/generate-thumbnails.mjs",
+    "images:audit": "node scripts/audit-effect-guides.mjs",
+    "images:contact-sheet": "node scripts/build-effect-guide-contact-sheet.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "verify": "npm run typecheck && npm run build"
+    "verify:nav": "node scripts/verify-nav.mjs",
+    "verify:isms": "node scripts/verify-isms.mjs",
+    "verify:effects": "node scripts/verify-effects.mjs",
+    "verify": "npm run typecheck && npm run build && npm run verify:nav && npm run verify:isms && npm run verify:effects && npm run verify:snippets && npm run verify:finder",
+    "verify:snippets": "node scripts/verify-snippets.mjs",
+    "verify:finder": "node scripts/verify-finder.mjs"
   },
   "devDependencies": {
+    "sharp": "^0.35.3",
     "typescript": "^6.0.3"
   }
 }

@@ -20,18 +20,23 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/css/style.css?v=20260510-ism43-curated-ui">
-<link rel="stylesheet" href="./assets/css/nav.css?v=20260510-ism43-curated-ui">
-<link rel="stylesheet" href="./assets/css/effects.css?v=20260510-ism43-curated-ui">
-<link rel="stylesheet" href="./assets/css/effects-docs.css?v=20260510-ism43-curated-ui">
+<link rel="stylesheet" href="./assets/css/style.css?v=20260715-export">
+<link rel="stylesheet" href="./assets/css/theme-atlas.css?v=20260715-export">
+<link rel="stylesheet" href="./assets/css/nav.css?v=20260715-export">
+<link rel="stylesheet" href="./assets/css/effects.css?v=20260715-export">
+<link rel="stylesheet" href="./assets/css/effects-docs.css?v=20260715-export">
 <link rel="stylesheet" href="./assets/css/effects-demos.css">
+<link rel="stylesheet" href="./assets/css/effects-demos-patterns.css?v=20260715-export">
+<link rel="stylesheet" href="./assets/css/export.css?v=20260715-export">
 <link rel="stylesheet" href="./assets/css/effects-demos-candidates.css">
 </head>
 <body class="effects-page is-loading">
 
+<a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
+
 <div class="loading-overlay" id="loading-overlay">
   <div class="loading-inner">
-    <div class="loading-logo">✦</div>
+    <div class="loading-logo"><img src="./assets/icons/atlas-mark.svg" alt="" aria-hidden="true" width="22" height="22"></div>
     <div class="loading-text">Frontend UI Candidates</div>
     <div class="loading-bar"><div class="loading-bar-fill"></div></div>
   </div>
@@ -40,23 +45,22 @@
 <header class="site-header">
   <div class="header-inner">
     <a class="logo logo-link" href="./index.html" aria-label="Design -isms home">
-      <div class="logo-sketch">✦</div>
+      <div class="logo-sketch"><img src="./assets/icons/atlas-mark.svg" alt="" aria-hidden="true" width="14" height="14"></div>
       Design -isms
     </a>
     <nav class="header-right" aria-label="Primary navigation">
-      <a class="star-pill" href="./index.html">Isms</a>
-      <a class="star-pill" href="./effects.html" aria-current="page">Effects</a>
-      <a class="star-pill" href="./faq.html">FAQ</a>
-      <a class="star-pill" href="https://github.com/lidge-jun/design-isms" target="_blank" rel="noopener">
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/></svg>
-        Give me a star
+      <a class="nav-link" data-nav-axis="isms" href="./index.html">Isms</a>
+      <a class="nav-link" data-nav-axis="effects" href="./effects.html" aria-current="page">Effects</a>
+      <a class="nav-link" data-nav-axis="faq" href="./faq.html">FAQ</a>
+      <a class="nav-link nav-link--external" data-nav-axis="github" href="https://github.com/lidge-jun/design-isms" target="_blank" rel="noopener">
+        GitHub <span aria-hidden="true">↗</span>
       </a>
-      <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language">
+      <button class="lang-toggle" data-nav-axis="lang" id="lang-toggle" type="button" aria-label="언어 전환 / Switch language">
         <span class="lang-option" data-lang="ko">한</span>
-        <span class="lang-divider">/</span>
+        <span class="lang-divider" aria-hidden="true">/</span>
         <span class="lang-option" data-lang="en">EN</span>
       </button>
-      <span class="header-count">46 candidates</span>
+      <span class="header-count" data-nav-axis="count">64 effects</span>
     </nav>
   </div>
 </header>
@@ -67,11 +71,18 @@
       <p class="effects-eyebrow">Frontend UI candidates</p>
       <h1 id="effects-title">모바일 / 데스크탑 UI 후보군</h1>
     </div>
-    <p class="effects-subcopy">상단 설명보다 후보군을 바로 훑는 용도입니다. Mobile, Desktop, Shared로 나눠 46개 패턴을 정리했습니다.</p>
+    <p class="effects-subcopy">상단 설명보다 후보군을 바로 훑는 용도입니다. Interface Pattern부터 View Transition까지 7개 family, 64개 패턴/이펙트를 정리했습니다.</p>
   </section>
 
   <section class="effects-toolbar" aria-label="Effect filters">
-    <div class="effects-filter-row" id="effects-filter-row"></div>
+    <div class="effects-filter-group">
+      <span class="effects-filter-label">Family</span>
+      <div class="effects-filter-row" id="effects-family-filter" role="group" aria-label="Effect family"></div>
+    </div>
+    <div class="effects-filter-group">
+      <span class="effects-filter-label">Device</span>
+      <div class="effects-filter-row" id="effects-device-filter" role="group" aria-label="Device fit"></div>
+    </div>
     <label class="effects-search-label">
       <span class="sr-only">효과 검색</span>
       <input type="text" class="search-input effects-search" id="effects-search" placeholder="아래 팝업, 스와이프, 로딩..." autocomplete="off">
@@ -110,8 +121,12 @@
   <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
 </button>
 
-<script src="./assets/js/effects-demos.js?v=20260510-ism43-curated-ui"></script>
-<script src="./assets/js/effects-docs.js?v=20260510-ism43-curated-ui"></script>
-<script src="./assets/js/effects.js?v=20260510-ism43-curated-ui"></script>
+<script src="./assets/js/app-dialog.js?v=20260715-export"></script>
+<script src="./assets/js/app-export.js?v=20260715-export"></script>
+<script src="./assets/js/effects-filters.js?v=20260715-export"></script>
+<script src="./assets/js/effects-interactions.js?v=20260715-export"></script>
+<script src="./assets/js/effects-demos.js?v=20260715-export"></script>
+<script src="./assets/js/effects-docs.js?v=20260715-export"></script>
+<script src="./assets/js/effects.js?v=20260715-export"></script>
 </body>
 </html>

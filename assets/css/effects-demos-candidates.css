@@ -1,454 +1,437 @@
-/* ── Effects Page: extended candidate demos ── */
-.effect-demo-mega-menu .effect-phone,
-.effect-demo-command-palette .effect-phone,
-.effect-demo-split-pane .effect-phone,
-.effect-demo-resizable-sidebar .effect-phone,
-.effect-demo-data-table .effect-phone,
-.effect-demo-master-detail .effect-phone,
-.effect-demo-kanban-board .effect-phone,
-.effect-demo-sticky-table-header .effect-phone,
-.effect-demo-dashboard-kpi-cards .effect-phone,
-.effect-demo-filter-sidebar .effect-phone,
-.effect-demo-file-dropzone .effect-phone {
+/* ── Effects Page: visual-effect candidate demos ── */
+.effect-demo-scroll-progress-indicator .effect-phone,
+.effect-demo-layered-parallax .effect-phone,
+.effect-demo-horizontal-scroll-gallery .effect-phone,
+.effect-demo-split-text-reveal .effect-phone,
+.effect-demo-text-scramble .effect-phone,
+.effect-demo-number-ticker .effect-phone,
+.effect-demo-aurora-mesh-background .effect-phone,
+.effect-demo-spotlight-grid-background .effect-phone,
+.effect-demo-grain-noise-drift .effect-phone,
+.effect-demo-magnetic-button .effect-phone,
+.effect-demo-cursor-trail .effect-phone,
+.effect-demo-tilt-hover-card .effect-phone,
+.effect-demo-crossfade-view-transition .effect-phone,
+.effect-demo-shared-element-transition .effect-phone,
+.effect-demo-route-wipe-transition .effect-phone,
+.effect-demo-favorite-burst .effect-phone,
+.effect-demo-success-checkmark .effect-phone,
+.effect-demo-copy-confirmation .effect-phone {
   width: 168px;
   height: 126px;
   border-width: 5px;
   border-radius: 18px;
 }
-.effect-demo-mega-menu .effect-phone::before,
-.effect-demo-command-palette .effect-phone::before,
-.effect-demo-split-pane .effect-phone::before,
-.effect-demo-resizable-sidebar .effect-phone::before,
-.effect-demo-data-table .effect-phone::before,
-.effect-demo-master-detail .effect-phone::before,
-.effect-demo-kanban-board .effect-phone::before,
-.effect-demo-sticky-table-header .effect-phone::before,
-.effect-demo-dashboard-kpi-cards .effect-phone::before,
-.effect-demo-filter-sidebar .effect-phone::before,
-.effect-demo-file-dropzone .effect-phone::before {
-  width: 30px;
-  top: 5px;
-}
-.demo-tabbar,
-.demo-stepper,
-.demo-pagination,
-.demo-wizard,
-.demo-tabs,
-.demo-progress-stepper {
+.demo-visual-stage {
   position: absolute;
-  display: flex;
-  gap: 8px;
-  align-items: center;
+  inset: 18px 10px 10px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #f1eee6;
 }
-.demo-tabbar {
-  left: 8px;
-  right: 8px;
-  bottom: 8px;
-  height: 34px;
-  justify-content: space-around;
-  border-radius: 16px;
-  background: #fff;
-}
-.demo-tabbar i,
-.demo-pagination i,
-.demo-wizard i,
-.demo-tabs i,
-.demo-progress-stepper i {
-  display: block;
-  width: 18px;
-  height: 18px;
-  border-radius: 999px;
-  background: rgba(34, 34, 34, 0.14);
-}
-.demo-tabbar i:nth-child(2),
-.demo-pagination i:nth-child(2),
-.demo-wizard i:nth-child(2),
-.demo-tabs i:nth-child(2) {
-  background: var(--accent);
-  animation: activePulse 2.4s ease-in-out infinite;
-}
-.demo-refresh {
+.demo-scroll-track {
   position: absolute;
-  top: 34px;
-  left: 50%;
-  width: 26px;
-  height: 26px;
-  border: 3px solid rgba(192, 107, 43, 0.2);
-  border-top-color: var(--accent);
-  border-radius: 999px;
-  animation: refreshDrop 2.6s ease-in-out infinite;
-}
-.demo-fab,
-.demo-dot-button {
-  position: absolute;
-  right: 18px;
-  bottom: 20px;
-  width: 42px;
-  height: 42px;
-  border-radius: 16px;
-  background: var(--accent);
-  box-shadow: 0 12px 20px rgba(192, 107, 43, 0.28);
-  animation: fabFloat 2.2s ease-in-out infinite;
-}
-.demo-dot-button {
-  right: auto;
-  left: 43px;
-  top: 70px;
-  bottom: auto;
-  width: 34px;
-  height: 34px;
-}
-.demo-stepper,
-.demo-pagination,
-.demo-wizard,
-.demo-tabs,
-.demo-progress-stepper {
-  top: 34px;
-  left: 16px;
-  right: 16px;
-  justify-content: center;
-}
-.demo-stepper i,
-.demo-progress-stepper i {
-  display: block;
-  width: 18px;
-  height: 18px;
+  top: 8px;
+  left: 10px;
+  right: 10px;
+  height: 5px;
+  overflow: hidden;
   border-radius: 999px;
   background: rgba(34, 34, 34, 0.12);
 }
-.demo-stepper i:first-child,
-.demo-progress-stepper i:first-child {
-  background: var(--accent);
-  animation: stepFill 2.7s ease-in-out infinite;
-}
-.demo-progress-stepper b {
+.demo-scroll-progress {
   position: absolute;
-  left: 20px;
-  right: 20px;
-  height: 3px;
-  background: rgba(192, 107, 43, 0.25);
-  transform: scaleX(0.35);
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0.08);
   transform-origin: left;
-  animation: progressLine 2.7s ease-in-out infinite;
+  animation: visualProgress 2.8s ease-in-out infinite;
 }
-.demo-empty-icon,
-.demo-validation,
-.demo-tooltip,
-.demo-popover,
-.demo-context-menu,
-.demo-dialog {
-  position: absolute;
-  border-radius: 14px;
-  background: #fff;
-  border: 1px solid rgba(34, 34, 34, 0.08);
-  box-shadow: 0 14px 24px rgba(34, 34, 34, 0.12);
-}
-.demo-empty-icon {
-  top: 50px;
-  left: 43px;
-  width: 42px;
-  height: 42px;
-  border-radius: 18px;
-  animation: emptyBreathe 2.4s ease-in-out infinite;
-}
-.demo-input {
-  position: absolute;
-  top: 68px;
-  left: 16px;
-  right: 16px;
-  height: 38px;
-  border-radius: 12px;
-  background: #fff;
-  border: 1px solid rgba(192, 43, 43, 0.36);
-  animation: inputShake 2.5s ease-in-out infinite;
-}
-.demo-validation {
-  left: 18px;
-  right: 34px;
-  top: 114px;
-  height: 12px;
-  background: rgba(47, 124, 87, 0.18);
-  box-shadow: none;
-}
-.demo-desktop-nav {
-  height: 20px;
-  margin: 18px 10px 0;
-  border-radius: 8px;
-  background: rgba(34, 34, 34, 0.1);
-}
-.demo-mega-menu,
-.demo-command,
-.demo-split,
-.demo-resizable,
-.demo-table,
-.demo-master-detail,
-.demo-kanban,
-.demo-sticky-table,
-.demo-kpi-grid,
-.demo-filter-layout,
-.demo-dropzone {
-  position: absolute;
-  inset: 42px 12px 12px;
-}
-.demo-mega-menu {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 7px;
-  padding: 8px;
-  border-radius: 14px;
-  background: #fff;
-  transform-origin: top;
-  animation: menuDrop 2.8s ease-in-out infinite;
-}
-.demo-mega-menu i,
-.demo-command i,
-.demo-table i,
-.demo-master-detail i,
-.demo-kanban i,
-.demo-sticky-table i,
-.demo-kpi-grid i,
-.demo-notification-panel i {
-  display: block;
-  border-radius: 9px;
-  background: rgba(34, 34, 34, 0.1);
-}
-.demo-command {
-  padding: 10px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 18px 32px rgba(34, 34, 34, 0.18);
-  animation: commandPop 2.6s ease-in-out infinite;
-}
-.demo-command span {
-  display: block;
-  height: 16px;
-  margin-bottom: 8px;
-  border-radius: 8px;
-  background: rgba(192, 107, 43, 0.22);
-}
-.demo-command i { height: 12px; margin-top: 6px; }
-.demo-split,
-.demo-resizable,
-.demo-master-detail,
-.demo-filter-layout {
-  display: grid;
-  grid-template-columns: 0.45fr 8px 1fr;
-  gap: 6px;
-}
-.demo-split i,
-.demo-resizable i,
-.demo-master-detail i,
-.demo-filter-layout aside,
-.demo-filter-layout main {
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.82);
-}
-.demo-split b,
-.demo-resizable b {
-  border-radius: 999px;
-  background: var(--accent);
-  transform: scaleY(0.72);
-  animation: resizePulse 2.3s ease-in-out infinite;
-}
-.demo-resizable { grid-template-columns: 0.34fr 8px 1fr; animation: sidebarResize 2.8s ease-in-out infinite; }
-.demo-table,
-.demo-sticky-table,
-.demo-virtual-list {
-  display: grid;
-  gap: 7px;
-}
-.demo-table i,
-.demo-sticky-table i,
-.demo-virtual-list i {
-  height: 12px;
-}
-.demo-table i:nth-child(2),
-.demo-sticky-table b {
-  background: rgba(192, 107, 43, 0.24);
-  animation: rowHighlight 2.6s ease-in-out infinite;
-}
-.demo-master-detail { grid-template-columns: 0.55fr 0.55fr 1fr; }
-.demo-master-detail b {
-  border-radius: 12px;
-  background: rgba(192, 107, 43, 0.18);
-  animation: detailSwap 2.8s ease-in-out infinite;
-}
-.demo-kanban {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 7px;
-}
-.demo-kanban i { min-height: 56px; }
-.demo-kanban i:nth-child(2) { animation: cardMove 2.8s ease-in-out infinite; background: rgba(192, 107, 43, 0.22); }
-.demo-breadcrumb {
-  display: flex;
-  gap: 6px;
-  margin: 32px 12px 0;
-}
-.demo-breadcrumb i {
-  width: 28px;
-  height: 10px;
-  border-radius: 999px;
-  background: rgba(34, 34, 34, 0.12);
-}
-.demo-breadcrumb i:last-child { background: var(--accent); animation: activePulse 2.2s ease-in-out infinite; }
-.demo-context-menu {
-  top: 62px;
-  left: 48px;
-  width: 68px;
-  padding: 8px;
-  animation: contextPop 2.4s ease-in-out infinite;
-}
-.demo-context-menu i,
-.demo-popover i,
-.demo-dialog i {
+.demo-scroll-copy { width: 78%; }
+.demo-scroll-copy i {
   display: block;
   height: 8px;
-  margin-top: 7px;
+  margin: 9px 0;
   border-radius: 999px;
-  background: rgba(34, 34, 34, 0.12);
+  background: rgba(34, 34, 34, 0.13);
 }
-.demo-tooltip {
-  top: 38px;
-  left: 24px;
+.demo-scroll-copy i:nth-child(2) { width: 72%; }
+.demo-parallax-scene { background: #dce4dc; }
+.demo-parallax-layer {
+  position: absolute;
+  border-radius: 999px 999px 12px 12px;
+}
+.demo-parallax-layer.back {
+  width: 110px;
+  height: 56px;
+  bottom: 12px;
+  background: #9eb7a1;
+  animation: visualDriftBack 5s ease-in-out infinite;
+}
+.demo-parallax-layer.mid {
   width: 78px;
-  height: 28px;
-  animation: tooltipPop 2.3s ease-in-out infinite;
+  height: 64px;
+  bottom: 2px;
+  background: #66846d;
+  animation: visualDriftMid 3.8s ease-in-out infinite;
 }
-.demo-popover,
-.demo-dialog {
-  top: 46px;
-  left: 24px;
-  right: 24px;
-  padding: 10px;
-  animation: commandPop 2.5s ease-in-out infinite;
-}
-.demo-dialog {
-  top: 54px;
-  left: 20px;
-  right: 20px;
-}
-.demo-toast-stack,
-.demo-drag-list,
-.demo-virtual-list,
-.demo-notification-panel,
-.demo-accordion,
-.demo-carousel,
-.demo-calendar,
-.demo-dropzone {
-  position: absolute;
-  inset: 42px 14px 14px;
-}
-.demo-toast-stack i,
-.demo-drag-list i,
-.demo-accordion i {
-  display: block;
-  height: 24px;
-  margin-top: 7px;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 8px 18px rgba(34, 34, 34, 0.12);
-}
-.demo-toast-stack i { animation: toastFloat 2.6s ease-in-out infinite; }
-.demo-inline-edit {
-  position: absolute;
-  top: 72px;
-  left: 16px;
-  right: 16px;
-  height: 38px;
-  border-radius: 12px;
-  background: #fff;
-  border: 1px solid rgba(34, 34, 34, 0.08);
-  animation: editFocus 2.5s ease-in-out infinite;
-}
-.demo-inline-edit input {
-  width: 58px;
-  margin: 9px 0 0 12px;
-  border: 0;
-  color: transparent;
-  background: rgba(192, 107, 43, 0.22);
-}
-.demo-drag-list i:nth-child(2) {
-  background: rgba(192, 107, 43, 0.24);
-  animation: dragLift 2.7s ease-in-out infinite;
-}
-.demo-virtual-list { animation: virtualScroll 3s ease-in-out infinite; }
-.demo-kpi-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
-}
-.demo-kpi-grid i { animation: activePulse 2.4s ease-in-out infinite; }
-.demo-filter-layout { grid-template-columns: 0.45fr 1fr; }
-.demo-filter-layout aside { animation: filterOpen 2.8s ease-in-out infinite; }
-.demo-pagination { bottom: 30px; top: auto; }
-.demo-tabs { top: 32px; }
-.demo-accordion i:nth-child(2) {
+.demo-parallax-layer.front {
+  width: 46px;
   height: 48px;
-  background: rgba(192, 107, 43, 0.18);
-  animation: accordionOpen 2.6s ease-in-out infinite;
+  bottom: -3px;
+  background: #294b39;
+  animation: visualDriftFront 2.8s ease-in-out infinite;
 }
-.demo-carousel {
+.demo-gallery-window { display: block; padding: 16px 0 20px; }
+.demo-gallery-track {
   display: flex;
-  gap: 10px;
-  overflow: hidden;
+  gap: 8px;
+  width: max-content;
+  animation: visualGallery 3.4s ease-in-out infinite;
 }
-.demo-carousel i {
-  flex: 0 0 78px;
-  border-radius: 16px;
-  background: rgba(192, 107, 43, 0.22);
-  animation: carouselSlide 2.8s ease-in-out infinite;
+.demo-gallery-track i {
+  width: 82px;
+  height: 72px;
+  border-radius: 12px;
+  background: #d7b18e;
 }
-.demo-calendar {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 7px;
-}
-.demo-calendar i {
-  border-radius: 10px;
-  background: rgba(34, 34, 34, 0.1);
-}
-.demo-calendar i:nth-child(5) { background: var(--accent); animation: activePulse 2.4s ease-in-out infinite; }
-.demo-dropzone {
-  border: 2px dashed rgba(192, 107, 43, 0.38);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.72);
-  animation: dropPulse 2.4s ease-in-out infinite;
-}
-.demo-notification-panel {
+.demo-gallery-track i:nth-child(2) { background: #799c8b; }
+.demo-gallery-track i:nth-child(3) { background: #65728e; }
+.demo-gallery-dots {
   position: absolute;
-  top: 34px;
-  right: 0;
-  bottom: 14px;
-  width: 82%;
-  padding: 9px;
-  background: #fff;
-  border-radius: 16px 0 0 16px;
-  transform: translateX(76%);
-  animation: notifySlide 2.8s ease-in-out infinite;
+  bottom: 7px;
+  left: 50%;
+  display: flex;
+  gap: 5px;
+  transform: translateX(-50%);
 }
-.demo-notification-panel i { height: 18px; margin-bottom: 8px; }
-@keyframes activePulse { 50% { transform: scale(1.12); } }
-@keyframes refreshDrop { 0%, 100% { transform: translate(-50%, -12px) rotate(0deg); opacity: 0; } 45%, 78% { transform: translate(-50%, 8px) rotate(240deg); opacity: 1; } }
-@keyframes fabFloat { 50% { transform: translateY(-8px) scale(1.04); } }
-@keyframes stepFill { 50% { transform: scale(1.18); box-shadow: 0 0 0 6px rgba(192, 107, 43, 0.14); } }
-@keyframes progressLine { 50% { transform: scaleX(1); } }
-@keyframes emptyBreathe { 50% { transform: translateY(-6px) scale(1.05); } }
-@keyframes inputShake { 48%, 58% { transform: translateX(-3px); } 53%, 63% { transform: translateX(3px); } }
-@keyframes menuDrop { 0%, 100% { opacity: 0; transform: scaleY(0.8); } 38%, 78% { opacity: 1; transform: scaleY(1); } }
-@keyframes commandPop { 0%, 100% { opacity: 0; transform: translateY(10px) scale(0.94); } 40%, 78% { opacity: 1; transform: translateY(0) scale(1); } }
-@keyframes resizePulse { 50% { transform: scaleY(1); } }
-@keyframes sidebarResize { 50% { transform: scaleX(1.08); transform-origin: left; } }
-@keyframes rowHighlight { 50% { transform: translateX(6px); } }
-@keyframes detailSwap { 50% { transform: scale(1.04); } }
-@keyframes cardMove { 50% { transform: translateX(36px) rotate(2deg); } }
-@keyframes contextPop { 0%, 100% { opacity: 0; transform: scale(0.9); } 45%, 78% { opacity: 1; transform: scale(1); } }
-@keyframes tooltipPop { 0%, 100% { opacity: 0; transform: translateY(8px); } 42%, 78% { opacity: 1; transform: translateY(0); } }
-@keyframes editFocus { 50% { border-color: rgba(192, 107, 43, 0.5); box-shadow: 0 0 0 4px rgba(192, 107, 43, 0.12); } }
-@keyframes dragLift { 50% { transform: translateY(-31px); box-shadow: 0 16px 22px rgba(34, 34, 34, 0.18); } }
-@keyframes virtualScroll { 50% { transform: translateY(-22px); } }
-@keyframes filterOpen { 50% { transform: scaleX(1.08); transform-origin: left; } }
-@keyframes accordionOpen { 0%, 100% { transform: scaleY(0.45); transform-origin: top; } 45%, 78% { transform: scaleY(1); } }
-@keyframes carouselSlide { 50% { transform: translateX(-52px); } }
-@keyframes dropPulse { 50% { transform: scale(1.03); background: rgba(192, 107, 43, 0.1); } }
-@keyframes notifySlide { 0%, 100% { transform: translateX(76%); } 42%, 78% { transform: translateX(0); } }
+.demo-gallery-dots i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(34, 34, 34, 0.2);
+}
+.demo-gallery-dots i:nth-child(2) { background: var(--accent); }
+.demo-split-copy {
+  display: flex;
+  gap: 6px;
+  overflow: hidden;
+  padding: 5px;
+  font: 700 15px/1 Outfit, sans-serif;
+}
+.demo-split-copy span {
+  transform: translateY(120%);
+  animation: visualWordRise 2.8s ease-in-out infinite;
+}
+.demo-split-copy span:nth-child(2) { animation-delay: 0.14s; }
+.demo-split-copy span:nth-child(3) { animation-delay: 0.28s; }
+.demo-scramble-glyphs {
+  font: 700 20px/1 "SF Mono", monospace;
+  letter-spacing: 3px;
+  animation: visualGlyphFlicker 1.8s steps(6, end) infinite;
+}
+.demo-ticker-window {
+  height: 38px;
+  overflow: hidden;
+  font: 700 34px/38px Outfit, sans-serif;
+}
+.demo-ticker-column {
+  display: flex;
+  flex-direction: column;
+  animation: visualDigitRoll 3s steps(5, end) infinite;
+}
+.demo-ticker-column span { height: 38px; }
+.demo-aurora-stage { background: #172330; }
+.demo-aurora-blob {
+  position: absolute;
+  width: 112px;
+  height: 86px;
+  border-radius: 50%;
+  opacity: 0.72;
+  background: radial-gradient(circle, rgba(77, 231, 190, 0.8), rgba(126, 93, 222, 0.38) 52%, transparent 72%);
+  animation: visualAurora 6s ease-in-out infinite;
+}
+.demo-grid-stage {
+  background-color: #172027;
+  background-image:
+    linear-gradient(rgba(255,255,255,.11) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.11) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+.demo-grid-spotlight {
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 220, 146, 0.68), transparent 68%);
+  animation: visualSpotlight 3.8s ease-in-out infinite;
+}
+.demo-grain-stage { background: #332f2b; }
+.demo-grain {
+  position: absolute;
+  inset: -20px;
+  opacity: 0.42;
+  background-image: repeating-radial-gradient(circle at 20% 30%, #fff 0 1px, transparent 1px 4px);
+  background-size: 7px 7px;
+  animation: visualGrain 0.8s steps(4, end) infinite;
+}
+.demo-magnetic {
+  border: 0;
+  padding: 0;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  cursor: pointer;
+}
+.demo-magnetic span {
+  display: block;
+  padding: 11px 22px;
+  transform: translate(3px, -2px);
+  transition: transform 180ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .demo-magnetic:hover span { transform: translate(5px, -3px); }
+}
+.demo-cursor-path {
+  position: absolute;
+  width: 92px;
+  height: 52px;
+  border: 1px dashed rgba(34,34,34,.2);
+  border-radius: 50%;
+}
+.demo-cursor-dot {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0;
+  animation: visualTrail 2.4s ease-in-out infinite;
+}
+.demo-cursor-dot:nth-child(2) { animation-delay: .18s; }
+.demo-cursor-dot:nth-child(3) { animation-delay: .36s; }
+.demo-cursor-dot:nth-child(4) { animation-delay: .54s; }
+.demo-tilt-card {
+  width: 94px;
+  height: 70px;
+  padding: 12px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 8px 10px 0 rgba(192,107,43,.22);
+  transform: rotate3d(1, -1, 0, 8deg);
+  transition: transform 220ms ease;
+}
+.demo-tilt-card i {
+  display: block;
+  height: 8px;
+  margin-bottom: 9px;
+  border-radius: 999px;
+  background: rgba(34,34,34,.14);
+}
+@media (hover: hover) and (pointer: fine) {
+  .demo-tilt-stage:hover .demo-tilt-card { transform: rotate3d(-1, 1, 0, 4deg) translateY(-2px); }
+}
+.demo-crossfade-panel {
+  position: absolute;
+  inset: 18px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: #be7952;
+  color: #fff;
+  font-weight: 700;
+  animation: visualCrossfadeA 3.2s ease-in-out infinite;
+}
+.demo-crossfade-panel.next {
+  background: #476f68;
+  animation-name: visualCrossfadeB;
+}
+.demo-shared-small,
+.demo-shared-large {
+  position: absolute;
+  border: 2px solid var(--accent);
+  background: rgba(192,107,43,.15);
+  animation: visualShared 3.4s ease-in-out infinite;
+}
+.demo-shared-small {
+  width: 38px;
+  height: 30px;
+  border-radius: 8px;
+}
+.demo-shared-large {
+  width: 104px;
+  height: 76px;
+  border-radius: 15px;
+  opacity: .25;
+}
+.demo-route-page {
+  position: absolute;
+  inset: 10px;
+  border-radius: 10px;
+  background: #fff;
+}
+.demo-route-wipe {
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  opacity: .34;
+}
+.demo-favorite-core {
+  position: relative;
+  z-index: 2;
+  font-size: 30px;
+  color: #b84747;
+  border: 0;
+  background: none;
+  padding: 4px;
+  cursor: pointer;
+  animation: visualHeart 2.4s ease-in-out infinite;
+}
+.demo-burst-particle {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0;
+  animation: visualBurst 2.4s ease-out infinite;
+}
+.demo-burst-particle:nth-child(2) { --burst-x: 34px; --burst-y: 0; }
+.demo-burst-particle:nth-child(3) { --burst-x: -34px; --burst-y: 0; }
+.demo-burst-particle:nth-child(4) { --burst-x: 0; --burst-y: 32px; }
+.demo-burst-particle:nth-child(5) { --burst-x: 0; --burst-y: -32px; }
+.demo-success-ring {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  border: 3px solid #3b8b62;
+  border-radius: 50%;
+  transform: scale(.92);
+  animation: visualSuccessPop 2.6s ease-in-out infinite;
+}
+.demo-success-ring::before,
+.demo-success-ring::after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  border-radius: 999px;
+  background: #3b8b62;
+  transform-origin: left;
+  clip-path: inset(0);
+}
+.demo-success-ring::before { width: 19px; left: 13px; top: 31px; transform: rotate(43deg); }
+.demo-success-ring::after { width: 31px; left: 25px; top: 38px; transform: rotate(-48deg); animation-delay: .12s; }
+.demo-copy-confirm {
+  min-width: 92px;
+  border: 0;
+  padding: 11px 18px;
+  border-radius: 10px;
+  background: var(--ink);
+  color: #fff;
+  cursor: pointer;
+}
+.demo-copy-label,
+.demo-copied-label {
+  display: block;
+  animation: visualCopyLabel 3s ease-in-out infinite;
+}
+.demo-copied-label {
+  position: absolute;
+  opacity: 0;
+  animation-name: visualCopiedLabel;
+}
+@supports (clip-path: inset(0)) {
+  .demo-route-wipe {
+    opacity: 1;
+    clip-path: inset(0 100% 0 0);
+    animation: visualWipe 3s ease-in-out infinite;
+  }
+  .demo-success-ring::before,
+  .demo-success-ring::after {
+    clip-path: inset(0 100% 0 0);
+    animation: visualCheckDraw 2.6s ease-in-out infinite;
+  }
+  .demo-success-ring::after { animation-delay: .12s; }
+}
+@keyframes visualProgress { 0%, 12% { transform: scaleX(.08); } 72%, 88% { transform: scaleX(1); } 100% { transform: scaleX(.08); } }
+@keyframes visualDriftBack { 50% { transform: translateX(13px); } }
+@keyframes visualDriftMid { 50% { transform: translateX(-11px) translateY(-4px); } }
+@keyframes visualDriftFront { 50% { transform: translateX(8px) translateY(-7px); } }
+@keyframes visualGallery { 0%, 18% { transform: translateX(10px); } 55%, 75% { transform: translateX(-70px); } 100% { transform: translateX(10px); } }
+@keyframes visualWordRise { 0%, 18%, 100% { transform: translateY(120%); opacity: 0; } 42%, 80% { transform: translateY(0); opacity: 1; } }
+@keyframes visualGlyphFlicker { 0% { opacity: .35; transform: translateX(-2px); } 45% { opacity: 1; transform: translateX(2px); } 100% { opacity: .7; transform: translateX(0); } }
+@keyframes visualDigitRoll { 0%, 15% { transform: translateY(0); } 85%, 100% { transform: translateY(-190px); } }
+@keyframes visualAurora { 0%, 100% { transform: translate(-24px, 10px) scale(.9); } 50% { transform: translate(24px, -10px) scale(1.18); } }
+@keyframes visualSpotlight { 0%, 100% { transform: translate(-52px, -25px); } 50% { transform: translate(50px, 24px); } }
+@keyframes visualGrain { 0% { transform: translate(0,0); } 50% { transform: translate(5px,-7px); } 100% { transform: translate(-6px,4px); } }
+@keyframes visualTrail { 0% { opacity: 0; transform: translate(-42px,18px) scale(.4); } 45% { opacity: .85; } 100% { opacity: 0; transform: translate(42px,-18px) scale(1); } }
+@keyframes visualCrossfadeA { 0%, 35% { opacity: 1; } 55%, 85% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes visualCrossfadeB { 0%, 35% { opacity: 0; } 55%, 85% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes visualShared { 0%, 18%, 100% { transform: translate(-32px, 22px) scale(.45); opacity: 1; } 55%, 82% { transform: translate(0,0) scale(1); opacity: .7; } }
+@keyframes visualWipe { 0%, 15% { clip-path: inset(0 100% 0 0); } 55%, 72% { clip-path: inset(0); } 100% { clip-path: inset(0 0 0 100%); } }
+@keyframes visualHeart { 45% { transform: scale(1.28); } }
+@keyframes visualBurst { 24% { opacity: 0; transform: translate(0,0) scale(.4); } 46% { opacity: 1; } 75%, 100% { opacity: 0; transform: translate(var(--burst-x), var(--burst-y)) scale(1); } }
+@keyframes visualSuccessPop { 0%, 22% { transform: scale(.72); opacity: .3; } 48%, 88% { transform: scale(1); opacity: 1; } 100% { transform: scale(.92); opacity: .8; } }
+@keyframes visualCheckDraw { 0%, 30% { clip-path: inset(0 100% 0 0); } 58%, 90% { clip-path: inset(0); } 100% { clip-path: inset(0 100% 0 0); } }
+@keyframes visualCopyLabel { 0%, 38%, 100% { opacity: 1; transform: translateY(0); } 52%, 82% { opacity: 0; transform: translateY(-8px); } }
+@keyframes visualCopiedLabel { 0%, 38%, 100% { opacity: 0; transform: translateY(8px); } 52%, 82% { opacity: 1; transform: translateY(0); } }
+@media (hover: none), (pointer: coarse) {
+  .demo-magnetic span { transform: translate(3px, -2px); }
+  .demo-tilt-card { transform: rotate3d(1, -1, 0, 8deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .effect-demo-scroll-progress-indicator .demo-scroll-progress { animation: none; transform: scaleX(1); }
+  .effect-demo-layered-parallax .demo-parallax-layer { animation: none; }
+  .effect-demo-horizontal-scroll-gallery .demo-gallery-track { animation: none; transform: translateX(-40px); }
+  .effect-demo-split-text-reveal .demo-split-copy span { animation: none; opacity: 1; transform: none; }
+  .effect-demo-text-scramble .demo-scramble-glyphs { animation: none; opacity: 1; transform: none; }
+  .effect-demo-number-ticker .demo-ticker-column { animation: none; transform: translateY(-190px); }
+  .effect-demo-aurora-mesh-background .demo-aurora-blob { animation: none; transform: scale(1.12); }
+  .effect-demo-spotlight-grid-background .demo-grid-spotlight { animation: none; transform: none; }
+  .effect-demo-grain-noise-drift .demo-grain { animation: none; transform: none; }
+  .effect-demo-cursor-trail .demo-cursor-dot { animation: none; opacity: .65; transform: none; }
+  .effect-demo-crossfade-view-transition .demo-crossfade-panel { animation: none; }
+  .effect-demo-crossfade-view-transition .demo-crossfade-panel:first-child { opacity: 0; }
+  .effect-demo-crossfade-view-transition .demo-crossfade-panel.next { opacity: 1; }
+  .effect-demo-shared-element-transition .demo-shared-small { animation: none; transform: scale(1.8); opacity: .8; }
+  .effect-demo-shared-element-transition .demo-shared-large { animation: none; }
+  .effect-demo-route-wipe-transition .demo-route-wipe { animation: none; clip-path: inset(0 0 0 72%); }
+  .effect-demo-favorite-burst .demo-favorite-core { animation: none; transform: scale(1.18); }
+  .effect-demo-favorite-burst .demo-burst-particle { animation: none; opacity: .8; transform: translate(var(--burst-x), var(--burst-y)); }
+  .effect-demo-success-checkmark .demo-success-ring,
+  .effect-demo-success-checkmark .demo-success-ring::before,
+  .effect-demo-success-checkmark .demo-success-ring::after { animation: none; opacity: 1; clip-path: inset(0); transform-origin: left; }
+  /* reduced motion keeps the honest pre-click state; .is-copied stays the trigger */
+  .effect-demo-copy-confirmation .demo-copy-label { animation: none; opacity: 1; transform: none; }
+  .effect-demo-copy-confirmation .demo-copied-label { animation: none; opacity: 0; }
+  .effect-demo-copy-confirmation .demo-copy-confirm.is-copied .demo-copy-label { opacity: 0; }
+  .effect-demo-copy-confirmation .demo-copy-confirm.is-copied .demo-copied-label { opacity: 1; transform: none; }
+  .demo-magnetic span,
+  .demo-magnetic:hover span { transition: none; transform: translate(3px, -2px); }
+  .demo-tilt-card,
+  .demo-tilt-stage:hover .demo-tilt-card { transition: none; transform: rotate3d(1, -1, 0, 8deg); }
+}
+
+/* Ambient pause: continuous demo animations only run while the card is on screen.
+   EffectsInteractions toggles .is-demo-active via IntersectionObserver. */
+.effect-card:not(.is-demo-active) .effect-demo *,
+.effect-card:not(.is-demo-active) .effect-demo *::before,
+.effect-card:not(.is-demo-active) .effect-demo *::after,
+.effect-card:not(.is-demo-active) .effect-demo::before,
+.effect-card:not(.is-demo-active) .effect-demo::after {
+  animation-play-state: paused;
+}
+
+/* Interactive feedback states driven by EffectsInteractions */
+.demo-favorite-core[aria-pressed="true"] { color: var(--accent); transform: scale(1.18); }
+.demo-success-label {
+  position: absolute;
+  bottom: 10px;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  color: var(--ink, #222);
+}
+.demo-copy-confirm.is-copied .demo-copy-label { opacity: 0; transform: translateY(-8px); animation: none; }
+.demo-copy-confirm.is-copied .demo-copied-label { opacity: 1; transform: translateY(0); animation: none; }

@@ -1,5 +1,5 @@
 {
-  "version": "2026-05-10",
+  "version": "2026-07-15",
   "grokPrompts": {
     "ismCandidate": "For each candidate design style, return JSON: id, name, nameKr suggestion, category, definition, history, visualTraits, webUiInterpretation, keywords, paletteDirection, 10 real live website examples, risks, sourceUrls. Exclude Dribbble, Behance, Pinterest, and wiki-only sources.",
     "effectDocs": "For each UI effect/pattern, return JSON keyed by effect id: background, shortHistory, useWhen, examples, anatomy, misuse, implementationNotes, accessibilitySources, sourceUrls. Prefer official docs such as WAI-ARIA APG, MDN, Apple HIG, Material, Fluent, Carbon, Atlassian, and Polaris.",
@@ -61,6 +61,72 @@
       "kind": "ISM Candidate",
       "researchPrompt": "Research Pop Art for the design-isms catalog. Kind: ISM Candidate. Find primary or high-quality sources before using summaries. Return JSON with: definition, short history, visual traits, web UI interpretation, 5 keywords, add_or_reference decision, risks, and 6-10 real source URLs. Avoid Dribbble, Behance, Pinterest, and wiki-only evidence.",
       "imagePrompt": "Use case: ui-mockup. Asset type: single production website or app screen mockup. Primary request: Pop Art. Context: 상업 이미지, 만화적 색면, 하프톤과 강한 대비로 제품/프로모션 화면에 에너지를 주는 스타일. Render one finished production website or app screen, full-bleed as if captured from the product itself. Do not make a style guide, canvas board, moodboard, poster sheet, or multiple labeled variants. Show the style through real navigation, content sections, cards, controls, product/data surfaces, and responsive UI structure. No explanatory side labels, no outside annotations, no browser chrome, no real logos, no people, no watermark."
+    },
+    {
+      "id": "ai-slop",
+      "name": "AI Slop",
+      "kind": "ISM Anti-pattern",
+      "researchPrompt": "Research AI Slop for the design-isms catalog as an anti-pattern diagnosis. Distinguish it from adjacent catalog entries, verify 10 live examples, cite primary or high-quality sources, and return definition, context, traits, web interpretation, risks, and source URLs.",
+      "imagePromptFiles": [
+        ".tmp/ism-prompts/ai-slop__landing.txt",
+        ".tmp/ism-prompts/ai-slop__saas.txt",
+        ".tmp/ism-prompts/ai-slop__dashboard.txt"
+      ]
+    },
+    {
+      "id": "refractive-glass-ui",
+      "name": "Refractive Glass UI",
+      "kind": "ISM Candidate",
+      "researchPrompt": "Research Refractive Glass UI for the design-isms catalog as an emerging design direction. Distinguish it from adjacent catalog entries, verify 10 live examples, cite primary or high-quality sources, and return definition, context, traits, web interpretation, risks, and source URLs.",
+      "imagePromptFiles": [
+        ".tmp/ism-prompts/refractive-glass-ui__landing.txt",
+        ".tmp/ism-prompts/refractive-glass-ui__mobile-app.txt",
+        ".tmp/ism-prompts/refractive-glass-ui__dashboard.txt"
+      ]
+    },
+    {
+      "id": "spatial-ui",
+      "name": "Spatial UI",
+      "kind": "ISM Candidate",
+      "researchPrompt": "Research Spatial UI for the design-isms catalog as an emerging design direction. Distinguish it from adjacent catalog entries, verify 10 live examples, cite primary or high-quality sources, and return definition, context, traits, web interpretation, risks, and source URLs.",
+      "imagePromptFiles": [
+        ".tmp/ism-prompts/spatial-ui__landing.txt",
+        ".tmp/ism-prompts/spatial-ui__dashboard.txt",
+        ".tmp/ism-prompts/spatial-ui__portfolio.txt"
+      ]
+    },
+    {
+      "id": "human-crafted-web",
+      "name": "Human-crafted Web",
+      "kind": "ISM Candidate",
+      "researchPrompt": "Research Human-crafted Web for the design-isms catalog as an emerging design direction. Distinguish it from adjacent catalog entries, verify 10 live examples, cite primary or high-quality sources, and return definition, context, traits, web interpretation, risks, and source URLs.",
+      "imagePromptFiles": [
+        ".tmp/ism-prompts/human-crafted-web__landing.txt",
+        ".tmp/ism-prompts/human-crafted-web__shop.txt",
+        ".tmp/ism-prompts/human-crafted-web__portfolio.txt"
+      ]
+    },
+    {
+      "id": "generative-identity",
+      "name": "Generative Identity",
+      "kind": "ISM Candidate",
+      "researchPrompt": "Research Generative Identity for the design-isms catalog as an emerging design direction. Distinguish it from adjacent catalog entries, verify 10 live examples, cite primary or high-quality sources, and return definition, context, traits, web interpretation, risks, and source URLs.",
+      "imagePromptFiles": [
+        ".tmp/ism-prompts/generative-identity__agency.txt",
+        ".tmp/ism-prompts/generative-identity__pricing.txt",
+        ".tmp/ism-prompts/generative-identity__portfolio.txt"
+      ]
+    },
+    {
+      "id": "technical-blueprint",
+      "name": "Technical Blueprint",
+      "kind": "ISM Candidate",
+      "researchPrompt": "Research Technical Blueprint for the design-isms catalog as an emerging design direction. Distinguish it from adjacent catalog entries, verify 10 live examples, cite primary or high-quality sources, and return definition, context, traits, web interpretation, risks, and source URLs.",
+      "imagePromptFiles": [
+        ".tmp/ism-prompts/technical-blueprint__landing.txt",
+        ".tmp/ism-prompts/technical-blueprint__blog.txt",
+        ".tmp/ism-prompts/technical-blueprint__dashboard.txt"
+      ]
     }
   ]
 }

@@ -11,7 +11,12 @@ var EffectsDemos;
         'modal-dialog', 'toast-stack', 'inline-edit', 'drag-reorder', 'virtual-list',
         'sticky-table-header', 'dashboard-kpi-cards', 'filter-sidebar', 'pagination',
         'desktop-wizard', 'tabs', 'accordion', 'carousel', 'date-picker', 'file-dropzone',
-        'progress-stepper', 'notification-center'
+        'progress-stepper', 'notification-center',
+        'scroll-progress-indicator', 'layered-parallax', 'horizontal-scroll-gallery',
+        'split-text-reveal', 'text-scramble', 'number-ticker', 'aurora-mesh-background',
+        'spotlight-grid-background', 'grain-noise-drift', 'magnetic-button', 'cursor-trail',
+        'tilt-hover-card', 'crossfade-view-transition', 'shared-element-transition',
+        'route-wipe-transition', 'favorite-burst', 'success-checkmark', 'copy-confirmation'
     ];
     function isDemoType(value) {
         return EffectsDemos.demoTypes.includes(value);
@@ -65,6 +70,24 @@ var EffectsDemos;
             case 'file-dropzone': return '<div class="demo-dropzone"><i></i><span></span></div>';
             case 'progress-stepper': return '<div class="demo-progress-stepper"><i></i><i></i><i></i><b></b></div>';
             case 'notification-center': return '<div class="demo-notification-panel"><i></i><i></i><i></i></div>';
+            case 'scroll-progress-indicator': return '<div class="demo-visual-stage demo-scroll-indicator"><div class="demo-scroll-track" aria-hidden="true"><div class="demo-scroll-progress"></div></div><article class="demo-scroll-copy" aria-label="Reading progress preview"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i></article></div>';
+            case 'layered-parallax': return '<div class="demo-visual-stage demo-parallax-scene"><i class="demo-parallax-layer back" aria-hidden="true"></i><i class="demo-parallax-layer mid" aria-hidden="true"></i><i class="demo-parallax-layer front" aria-hidden="true"></i></div>';
+            case 'horizontal-scroll-gallery': return '<div class="demo-visual-stage demo-gallery-window"><div class="demo-gallery-track" aria-hidden="true"><i></i><i></i><i></i></div><div class="demo-gallery-dots" aria-hidden="true"><i></i><i></i><i></i></div></div>';
+            case 'split-text-reveal': return '<div class="demo-visual-stage demo-split-reveal"><p class="demo-split-copy"><span>Design</span><span>in</span><span>motion</span></p></div>';
+            case 'text-scramble': return '<div class="demo-visual-stage demo-text-scramble"><span class="demo-scramble-glyphs" aria-label="Loading">L0ΛD!NG</span></div>';
+            case 'number-ticker': return '<div class="demo-visual-stage demo-number-ticker"><div class="demo-ticker-window" aria-label="Count 5"><div class="demo-ticker-column" aria-hidden="true"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div></div>';
+            case 'aurora-mesh-background': return '<div class="demo-visual-stage demo-aurora-stage"><i class="demo-aurora-blob" aria-hidden="true"></i></div>';
+            case 'spotlight-grid-background': return '<div class="demo-visual-stage demo-grid-stage"><i class="demo-grid-spotlight" aria-hidden="true"></i></div>';
+            case 'grain-noise-drift': return '<div class="demo-visual-stage demo-grain-stage"><i class="demo-grain" aria-hidden="true"></i></div>';
+            case 'magnetic-button': return '<div class="demo-visual-stage demo-magnetic-stage"><button class="demo-magnetic" type="button"><span>Open menu</span></button></div>';
+            case 'cursor-trail': return '<div class="demo-visual-stage demo-cursor-trail"><i class="demo-cursor-path" aria-hidden="true"></i><i class="demo-cursor-dot" aria-hidden="true"></i><i class="demo-cursor-dot" aria-hidden="true"></i><i class="demo-cursor-dot" aria-hidden="true"></i><i class="demo-cursor-dot" aria-hidden="true"></i></div>';
+            case 'tilt-hover-card': return '<div class="demo-visual-stage demo-tilt-stage"><article class="demo-tilt-card" aria-label="Interactive card"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i></article></div>';
+            case 'crossfade-view-transition': return '<div class="demo-visual-stage demo-crossfade-stage"><div class="demo-crossfade-panel">View A</div><div class="demo-crossfade-panel next">View B</div></div>';
+            case 'shared-element-transition': return '<div class="demo-visual-stage demo-shared-stage"><i class="demo-shared-large" aria-hidden="true"></i><i class="demo-shared-small" aria-hidden="true"></i></div>';
+            case 'route-wipe-transition': return '<div class="demo-visual-stage demo-route-stage"><div class="demo-route-page" aria-label="Route preview"></div><i class="demo-route-wipe" aria-hidden="true"></i></div>';
+            case 'favorite-burst': return '<div class="demo-visual-stage demo-favorite-stage"><button class="demo-favorite-core" type="button" aria-pressed="false" data-demo-action="favorite" aria-label="즐겨찾기 토글">♥</button><i class="demo-burst-particle" aria-hidden="true"></i><i class="demo-burst-particle" aria-hidden="true"></i><i class="demo-burst-particle" aria-hidden="true"></i><i class="demo-burst-particle" aria-hidden="true"></i></div>';
+            case 'success-checkmark': return '<div class="demo-visual-stage demo-success-stage"><i class="demo-success-ring" aria-hidden="true"></i><span class="demo-success-label">완료</span></div>';
+            case 'copy-confirmation': return '<div class="demo-visual-stage demo-copy-stage"><button class="demo-copy-confirm" type="button" data-demo-action="copy"><span class="demo-copy-label">Copy code</span><span class="demo-copied-label">Copied</span></button><span class="sr-only" aria-live="polite"></span></div>';
         }
     }
     EffectsDemos.render = render;
