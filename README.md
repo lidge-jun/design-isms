@@ -40,7 +40,8 @@
 - Every effects guide image keeps the original PNG at `assets/images/effects/{effect-id}/guide.png` and uses a generated WebP preview at `assets/images/thumbs/effects/{effect-id}/guide.webp`.
 - New ISM images keep originals at `assets/images/{ism-id}/` and runtime previews under `assets/images/thumbs/{ism-id}/`.
 - Do not publish a separate reference/backlog page; generated visual styles belong in the ISMS catalog or the Effects catalog.
-- Any visual or image pipeline change must run `npm run verify`; image changes must also run `npm run images:thumbs`.
+- Any visual or image pipeline change must run `npm run verify`; image changes must also run `npm run images:thumbs` (sharp-based, `--force` / `--scope effects|isms|all`) and pass `npm run images:audit`.
+- Effect guide regeneration is provenance-tracked: audit ledger `devlog/260715_production_upgrade/031_effect_guide_audit.csv`, manifest `devlog/260715_production_upgrade/032_effect_guide_manifest.jsonl`.
 
 ## Project Structure
 

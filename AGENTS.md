@@ -87,6 +87,7 @@
 - 후보군마다 카드/모달에서 식별 가능한 전용 CSS demo animation을 둔다. 확장 demo 스타일은 `assets/css/effects-demos-candidates.css`에 둔다.
 - guide 원본은 `assets/images/effects/{effect-id}/guide.png`, WebP preview는 `assets/images/thumbs/effects/{effect-id}/guide.webp`다.
 - guide 이미지를 생성/교체하면 `npm run images:thumbs`로 WebP preview를 갱신하고 `npm run verify`를 통과시킨다.
+- guide 재생성은 감사 기록을 남긴다: `devlog/260715_production_upgrade/031_effect_guide_audit.csv`에 감사 행, `032_effect_guide_manifest.jsonl`에 프롬프트/명령/해시 provenance 행을 추가하고 `npm run images:audit`를 통과시킨다. 썸네일 파이프라인은 sharp 기반(`--force`, `--scope effects|isms|all`)이며 시스템 `cwebp` 의존은 제거됐다.
 - 데스크탑과 모바일 모두에서 카드 수 46개, demo type 46개, horizontal overflow 없음, console error 없음까지 확인해야 완료로 보고한다.
 
 ## ISMS 확장 원칙

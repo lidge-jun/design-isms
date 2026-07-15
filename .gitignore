@@ -1,0 +1,8 @@
+# dependencies
+node_modules/
+
+# local temp / review artifacts (contact sheets, prompt files, verify output)
+.tmp/
+
+# OS metadata
+.DS_Store

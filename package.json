@@ -6,11 +6,14 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "images:thumbs": "node scripts/generate-thumbnails.mjs",
+    "images:audit": "node scripts/audit-effect-guides.mjs",
+    "images:contact-sheet": "node scripts/build-effect-guide-contact-sheet.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "verify:nav": "node scripts/verify-nav.mjs",
     "verify": "npm run typecheck && npm run build && npm run verify:nav"
   },
   "devDependencies": {
+    "sharp": "^0.35.3",
     "typescript": "^6.0.3"
   }
 }

@@ -63,6 +63,7 @@ assets/images/thumbs/effects/{effect-id}/guide.webp
 - FAQ: 3 categories × 6 items = 18 bilingual answers with per-item sources and review dates in `assets/data/faq.json`; renderer validates counts/locales/URLs and fails visibly.
 - Verification for visual changes: `npm run verify`, plus browser desktop/mobile checks for card count, unique demo classes, horizontal overflow, and console errors.
 - Verification for image changes: `npm run images:thumbs` before `npm run verify`.
+- Image pipeline: `scripts/generate-thumbnails.mjs` (sharp, 768×512 WebP, `--force`/`--scope`), `scripts/audit-effect-guides.mjs` (`npm run images:audit`, dimensions/freshness/hash/orphan gate), `scripts/build-effect-guide-contact-sheet.mjs` (disposable `.tmp/` review sheet).
 
 ## Documentation
 

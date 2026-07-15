@@ -1,13 +1,39 @@
-import { spawnSync } from 'node:child_process';
-import { mkdirSync, readdirSync, statSync } from 'node:fs';
+/**
+ * generate-thumbnails.mjs — deterministic WebP preview pipeline (sharp).
+ * Mirrors every PNG under assets/images into assets/images/thumbs as 768×512 WebP.
+ *
+ * Flags:
+ *   --force           rebuild every preview
+ *   --scope <name>    effects | isms | all (default all)
+ */
+import { mkdirSync, readdirSync, statSync, renameSync, existsSync } from 'node:fs';
 import { basename, dirname, extname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import sharp from 'sharp';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const sourceDir = join(root, 'assets/images');
 const outputDir = join(sourceDir, 'thumbs');
-const width = process.env.THUMB_WIDTH || '768';
-const quality = process.env.THUMB_QUALITY || '58';
+const width = Number(process.env.THUMB_WIDTH ?? 768);
+const height = Number(process.env.THUMB_HEIGHT ?? 512);
+const quality = Number(process.env.THUMB_QUALITY ?? 72);
+
+const args = process.argv.slice(2);
+const force = args.includes('--force');
+const scopeIndex = args.indexOf('--scope');
+const scope = scopeIndex !== -1 ? (args[scopeIndex + 1] ?? 'all') : 'all';
+if (!['effects', 'isms', 'all'].includes(scope)) {
+  console.error(`unknown --scope "${scope}" (expected effects | isms | all)`);
+  process.exit(1);
+}
+
+function inScope(sourcePath) {
+  const rel = relative(sourceDir, sourcePath);
+  const isEffects = rel.startsWith('effects/');
+  if (scope === 'effects') return isEffects;
+  if (scope === 'isms') return !isEffects;
+  return true;
+}
 
 function collectPngs(dir, acc = []) {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
@@ -17,7 +43,6 @@ function collectPngs(dir, acc = []) {
       collectPngs(fullPath, acc);
       continue;
     }
-
     if (entry.isFile() && entry.name.toLowerCase().endsWith('.png')) {
       acc.push(fullPath);
     }
@@ -28,8 +53,7 @@ function collectPngs(dir, acc = []) {
 function outputPathFor(sourcePath) {
   const rel = relative(sourceDir, sourcePath);
   const ext = extname(rel);
-  const folder = join(outputDir, dirname(rel));
-  return join(folder, basename(rel, ext) + '.webp');
+  return join(outputDir, dirname(rel), basename(rel, ext) + '.webp');
 }
 
 function isFresh(sourcePath, outputPath) {
@@ -40,30 +64,40 @@ function isFresh(sourcePath, outputPath) {
   }
 }
 
-const images = collectPngs(sourceDir);
+const images = collectPngs(sourceDir).filter(inScope).sort();
 let generated = 0;
 let skipped = 0;
+let encodedBytes = 0;
+const concurrency = 4;
 
-for (const sourcePath of images) {
+async function processOne(sourcePath) {
   const outputPath = outputPathFor(sourcePath);
-  if (isFresh(sourcePath, outputPath)) {
+  if (!force && isFresh(sourcePath, outputPath)) {
     skipped += 1;
-    continue;
+    return;
   }
-
+  const meta = await sharp(sourcePath, { failOn: 'error' }).metadata();
+  if ((meta.width ?? 0) < width || (meta.height ?? 0) < height) {
+    throw new Error(`refusing to upscale ${relative(root, sourcePath)} (${meta.width}x${meta.height} < ${width}x${height})`);
+  }
   mkdirSync(dirname(outputPath), { recursive: true });
-  const result = spawnSync('cwebp', [
-    '-quiet',
-    '-q', quality,
-    '-resize', width, '0',
-    sourcePath,
-    '-o', outputPath
-  ], { stdio: 'inherit' });
-
-  if (result.status !== 0) {
-    throw new Error('cwebp failed for ' + sourcePath);
-  }
+  const tempPath = outputPath + '.tmp';
+  await sharp(sourcePath, { failOn: 'error' })
+    .resize({ width, height, fit: 'cover', position: 'centre' })
+    .webp({ quality, effort: 6, smartSubsample: true })
+    .toFile(tempPath);
+  renameSync(tempPath, outputPath);
+  encodedBytes += statSync(outputPath).size;
   generated += 1;
 }
 
-console.log(`thumbnails ok: ${generated} generated, ${skipped} fresh, ${images.length} total`);
+const queue = [...images];
+async function worker() {
+  while (queue.length > 0) {
+    const next = queue.shift();
+    if (next) await processOne(next);
+  }
+}
+await Promise.all(Array.from({ length: concurrency }, worker));
+
+console.log(`thumbnails ok: ${generated} generated, ${skipped} fresh, ${images.length} total, ${encodedBytes} bytes encoded (scope=${scope})`);
