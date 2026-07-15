@@ -64,6 +64,7 @@ let searchQuery = '';
 let currentLang = localStorage.getItem('design-isms-lang') === 'en' ? 'en' : 'ko';
 let imgObserver = null;
 let pageRevealed = false;
+let finderController = null;
 let cardObserver = null;
 const toastTimers = new WeakMap();
 function t(key, vars = {}) {
@@ -261,6 +262,9 @@ async function init() {
     setupCardExamplesToggle();
     setupLangToggle();
     setupImageLazy();
+    const fRoot = document.getElementById('style-finder-mount');
+    if (fRoot)
+        finderController = DesignFinder.mount({ root: fRoot, isms: allIsms, guides: (await AppGuides.load(GUIDE_URL)), getLang: () => currentLang, openModal });
     dismissLoading();
 }
 function setupImageLazy() {
@@ -731,16 +735,11 @@ function openModal(ismId, trigger) {
             onRequestClose: closeModal
         });
     }
-    content.querySelectorAll('.modal-collapsible-header').forEach(header => {
-        header.addEventListener('click', () => {
-            header.parentElement?.classList.toggle('open');
-        });
+    content.querySelectorAll('.modal-collapsible-header').forEach(h => {
+        h.addEventListener('click', () => { h.parentElement?.classList.toggle('open'); });
     });
-    content.querySelectorAll('img[data-lightbox]').forEach(image => {
-        image.addEventListener('click', event => {
-            event.stopPropagation();
-            openLightbox(image.dataset.src || image.src);
-        });
+    content.querySelectorAll('img[data-lightbox]').forEach(img => {
+        img.addEventListener('click', e => { e.stopPropagation(); openLightbox(img.dataset.src || img.src); });
     });
     content.querySelectorAll('.modal-swatch').forEach(swatch => {
         swatch.addEventListener('click', () => {
@@ -855,6 +854,7 @@ function setupLangToggle() {
         localStorage.setItem('design-isms-lang', currentLang);
         updateLangUI();
         render();
+        finderController?.setLang(currentLang);
     });
 }
 function updateLangUI() {

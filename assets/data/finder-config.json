@@ -1,0 +1,224 @@
+{
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "project",
+      "legend": {
+        "ko": "무엇을 디자인하나요?",
+        "en": "What are you designing?"
+      },
+      "options": [
+        {
+          "id": "portfolio",
+          "label": { "ko": "포트폴리오", "en": "Portfolio" },
+          "hint": {
+            "ko": "작품과 경험을 선명하게 보여주는 개인 사이트",
+            "en": "A personal site that clearly showcases work and experience"
+          },
+          "keywords": ["typography", "editorial", "personal", "variable-system"],
+          "guideTerms": ["portfolio", "gallery", "case-study", "typography"],
+          "boostIds": ["editorial-typography", "human-crafted-web", "brutalism", "generative-identity"],
+          "conflictIds": []
+        },
+        {
+          "id": "editorial",
+          "label": { "ko": "에디토리얼", "en": "Editorial" },
+          "hint": {
+            "ko": "긴 글과 이미지의 흐름이 중요한 출판형 화면",
+            "en": "Publication-like pages shaped by long-form text and imagery"
+          },
+          "keywords": ["editorial", "typography", "hierarchy", "columns", "grid"],
+          "guideTerms": ["editorial", "columns", "typography", "article"],
+          "boostIds": ["swiss-style", "editorial-typography", "variable-typography", "technical-blueprint"],
+          "conflictIds": []
+        },
+        {
+          "id": "commerce",
+          "label": { "ko": "커머스", "en": "Commerce" },
+          "hint": {
+            "ko": "상품 탐색부터 구매 결정까지 이어지는 쇼핑 경험",
+            "en": "A shopping experience from product discovery to purchase"
+          },
+          "keywords": ["commercial", "promotion", "clean", "luxury", "modular"],
+          "guideTerms": ["product", "pricing", "CTA", "cards"],
+          "boostIds": ["minimalism", "art-deco", "human-crafted-web", "bento-grid"],
+          "conflictIds": []
+        },
+        {
+          "id": "saas",
+          "label": { "ko": "SaaS 제품", "en": "SaaS" },
+          "hint": {
+            "ko": "대시보드, 도구, 반복 업무를 다루는 제품 화면",
+            "en": "Product screens for dashboards, tools, and recurring workflows"
+          },
+          "keywords": ["developer-tools", "grid", "modular", "clean", "systems"],
+          "guideTerms": ["dashboard", "grid", "table", "navigation"],
+          "boostIds": ["minimalism", "material-design", "bento-grid", "technical-blueprint"],
+          "conflictIds": []
+        },
+        {
+          "id": "event",
+          "label": { "ko": "이벤트·캠페인", "en": "Event" },
+          "hint": {
+            "ko": "짧은 기간에 메시지와 참여를 끌어내는 캠페인 화면",
+            "en": "A campaign page built to attract attention and participation quickly"
+          },
+          "keywords": ["promotion", "motion", "bold-color", "interactive", "commercial"],
+          "guideTerms": ["campaign", "poster", "motion", "color"],
+          "boostIds": ["constructivism", "kinetic-typography", "pop-art", "generative-identity"],
+          "conflictIds": []
+        },
+        {
+          "id": "community",
+          "label": { "ko": "커뮤니티", "en": "Community" },
+          "hint": {
+            "ko": "사람들의 참여와 개성이 쌓이는 모임 공간",
+            "en": "A shared space where participation and personality can grow"
+          },
+          "keywords": ["personal", "authentic", "quirky", "playful", "handcraft"],
+          "guideTerms": ["community", "cards", "content", "navigation"],
+          "boostIds": ["indie-web", "neo-brutalism", "human-crafted-web", "kawaii"],
+          "conflictIds": []
+        }
+      ]
+    },
+    {
+      "id": "mood",
+      "legend": {
+        "ko": "어떤 인상을 원하나요?",
+        "en": "What should it feel like?"
+      },
+      "options": [
+        {
+          "id": "calm",
+          "label": { "ko": "차분한", "en": "Calm" },
+          "hint": {
+            "ko": "여백과 절제된 색으로 편안하게 집중되는 인상",
+            "en": "A focused, restful feel with space and restrained color"
+          },
+          "keywords": ["restraint", "neutral", "calm", "subtle", "soft-motion"],
+          "guideTerms": ["spacing", "neutral", "subtle", "calm"],
+          "boostIds": ["minimalism", "japandi", "organic-design", "refractive-glass-ui"],
+          "conflictIds": []
+        },
+        {
+          "id": "bold",
+          "label": { "ko": "강렬한", "en": "Bold" },
+          "hint": {
+            "ko": "큰 형태와 선명한 대비로 즉시 시선을 끄는 인상",
+            "en": "An immediate visual impact through large forms and sharp contrast"
+          },
+          "keywords": ["high-contrast", "raw", "vivid", "bold-color", "diagonal"],
+          "guideTerms": ["bold", "contrast", "headline", "border"],
+          "boostIds": ["brutalism", "neo-brutalism", "constructivism", "maximalism"],
+          "conflictIds": []
+        },
+        {
+          "id": "playful",
+          "label": { "ko": "유쾌한", "en": "Playful" },
+          "hint": {
+            "ko": "색, 캐릭터, 움직임으로 친근하고 즐거운 인상",
+            "en": "A friendly, joyful feel created with color, character, and motion"
+          },
+          "keywords": ["playful", "cute", "quirky", "bold-color", "rounded"],
+          "guideTerms": ["playful", "color", "rounded", "motion"],
+          "boostIds": ["memphis-design", "kawaii", "dopamine-design", "pop-art"],
+          "conflictIds": []
+        },
+        {
+          "id": "luxury",
+          "label": { "ko": "고급스러운", "en": "Luxury" },
+          "hint": {
+            "ko": "정교한 소재감과 여유 있는 구성의 세련된 인상",
+            "en": "A refined feel with polished material cues and generous composition"
+          },
+          "keywords": ["luxury", "gold", "ornament", "translucency", "specular"],
+          "guideTerms": ["luxury", "gold", "typography", "spacing"],
+          "boostIds": ["art-deco", "minimalism", "glassmorphism", "refractive-glass-ui"],
+          "conflictIds": []
+        },
+        {
+          "id": "technical",
+          "label": { "ko": "기술적인", "en": "Technical" },
+          "hint": {
+            "ko": "구조, 데이터, 작동 원리가 명확히 드러나는 인상",
+            "en": "A precise feel that makes structure, data, and operation visible"
+          },
+          "keywords": ["monospace", "diagram", "schematic", "systems", "developer-tools"],
+          "guideTerms": ["technical", "monospace", "diagram", "annotation"],
+          "boostIds": ["monospace-terminal-ui", "technical-blueprint", "spatial-ui", "isometric-3d-ui"],
+          "conflictIds": []
+        },
+        {
+          "id": "organic",
+          "label": { "ko": "자연스러운", "en": "Organic" },
+          "hint": {
+            "ko": "자연의 곡선과 질감에서 온 부드럽고 생기 있는 인상",
+            "en": "A soft, lively feel inspired by natural curves and textures"
+          },
+          "keywords": ["organic", "natural", "flowing", "earth-tones", "green"],
+          "guideTerms": ["organic", "natural", "texture", "curves"],
+          "boostIds": ["organic-design", "solarpunk", "cottagecore", "human-crafted-web"],
+          "conflictIds": []
+        }
+      ]
+    },
+    {
+      "id": "brightness",
+      "legend": {
+        "ko": "화면의 빛과 대비는?",
+        "en": "What light level fits?"
+      },
+      "options": [
+        {
+          "id": "light",
+          "label": { "ko": "밝은", "en": "Light" },
+          "hint": {
+            "ko": "밝은 배경과 넉넉한 여백이 중심인 화면",
+            "en": "A bright canvas led by open space and clear content"
+          },
+          "keywords": ["whitespace", "neutral", "clean", "soft-motion"],
+          "guideTerms": ["white", "light", "background", "contrast"],
+          "boostIds": ["minimalism", "swiss-style", "japandi", "human-crafted-web", "technical-blueprint"],
+          "conflictIds": ["dark-mode", "cyberpunk"]
+        },
+        {
+          "id": "dark",
+          "label": { "ko": "어두운", "en": "Dark" },
+          "hint": {
+            "ko": "어두운 배경에서 콘텐츠와 강조색이 떠오르는 화면",
+            "en": "A dark canvas where content and accent colors come forward"
+          },
+          "keywords": ["dark-bg", "dark", "neon", "OLED", "depth"],
+          "guideTerms": ["dark", "black", "neon", "contrast"],
+          "boostIds": ["dark-mode", "cyberpunk", "vaporwave", "spatial-ui"],
+          "conflictIds": ["japandi"]
+        },
+        {
+          "id": "high-contrast",
+          "label": { "ko": "고대비", "en": "High contrast" },
+          "hint": {
+            "ko": "밝고 어두운 요소를 강하게 맞붙여 선명한 화면",
+            "en": "A crisp canvas with strongly separated light and dark elements"
+          },
+          "keywords": ["high-contrast", "contrast", "thick-border", "hard-shadow", "red-black"],
+          "guideTerms": ["contrast", "border", "black", "white"],
+          "boostIds": ["brutalism", "neo-brutalism", "de-stijl", "constructivism"],
+          "conflictIds": ["neumorphism"]
+        },
+        {
+          "id": "mixed",
+          "label": { "ko": "혼합", "en": "Mixed" },
+          "hint": {
+            "ko": "밝고 어두운 영역과 다채로운 강조색을 함께 쓰는 화면",
+            "en": "A varied canvas combining light, dark, and colorful accents"
+          },
+          "keywords": ["gradient", "color-blend", "controlled-variation", "modular", "vibrant"],
+          "guideTerms": ["gradient", "palette", "color", "accent"],
+          "boostIds": ["generative-identity", "bento-grid", "refractive-glass-ui", "gradient-aurora"],
+          "conflictIds": []
+        }
+      ]
+    }
+  ]
+}

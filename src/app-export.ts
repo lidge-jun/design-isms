@@ -449,7 +449,19 @@
      bindTabs(container);
    }
  
-   /* ── tab registration for wp6 (prompt packs) ───────────────────── */
+   /* ── palette classification for finder ────────────────────────── */
+  export type BrightnessClass = 'light' | 'dark' | 'high-contrast' | 'mixed';
+  export function classifyPalette(palette: string[], bgFg: string): BrightnessClass {
+    const sem = deriveSemanticColors(palette, bgFg);
+    const bgLum = srgbLuminance(sem.background);
+    const cr = sem.contrastRatio;
+    if (cr >= 7) return 'high-contrast';
+    if (bgLum <= 0.20) return 'dark';
+    if (bgLum >= 0.70) return 'light';
+    return 'mixed';
+  }
+
+    /* ── tab registration for wp6 (prompt packs) ───────────────────── */
    export function registerIsmTab(reg: IsmTabRegistration): void {
      if (!extraTabs.some(t => t.id === reg.id)) {
        extraTabs.push(reg);

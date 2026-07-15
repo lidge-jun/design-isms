@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="./assets/css/theme-atlas.css?v=20260715-export">
 <link rel="stylesheet" href="./assets/css/nav.css?v=20260715-export">
 <link rel="stylesheet" href="./assets/css/export.css?v=20260715-export">
+<link rel="stylesheet" href="./assets/css/finder.css?v=20260715-export">
 </head>
 <body class="is-loading">
 
@@ -51,7 +52,15 @@
 </header>
 
 <main id="main-content">
-<div class="filter-bar">
+<section class="style-finder" id="style-finder" aria-labelledby="style-finder-title">
+  <header class="style-finder-header">
+    <p class="atlas-kicker">Decision aid · 03 questions</p>
+    <h1 id="style-finder-title">Find a visual direction</h1>
+    <p>Choose the job, the feeling, and the light level. We will explain three starting points.</p>
+  </header>
+  <div id="style-finder-mount" aria-busy="true"></div>
+</section>
+<div class="filter-bar" id="catalog">
   <div class="filter-row">
     <button class="filter-btn active" data-keyword="all">All</button>
     <input type="text" class="search-input" placeholder="Search isms...">
@@ -90,6 +99,7 @@
 <script src="./assets/js/app-dialog.js?v=20260715-export"></script>
 <script src="./assets/js/app-guides.js?v=20260715-export"></script>
 <script src="./assets/js/app-export.js?v=20260715-export"></script>
+<script src="./assets/js/finder.js?v=20260715-export"></script>
 <script src="./assets/js/app.js?v=20260715-export"></script>
 </body>
 </html>

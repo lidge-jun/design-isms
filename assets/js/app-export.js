@@ -430,6 +430,19 @@ var DesignExport;
         bindTabs(container);
     }
     DesignExport.mountEffect = mountEffect;
+    function classifyPalette(palette, bgFg) {
+        const sem = deriveSemanticColors(palette, bgFg);
+        const bgLum = srgbLuminance(sem.background);
+        const cr = sem.contrastRatio;
+        if (cr >= 7)
+            return 'high-contrast';
+        if (bgLum <= 0.20)
+            return 'dark';
+        if (bgLum >= 0.70)
+            return 'light';
+        return 'mixed';
+    }
+    DesignExport.classifyPalette = classifyPalette;
     /* ── tab registration for wp6 (prompt packs) ───────────────────── */
     function registerIsmTab(reg) {
         if (!extraTabs.some(t => t.id === reg.id)) {

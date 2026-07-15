@@ -121,6 +121,7 @@ let searchQuery = '';
 let currentLang: Lang = localStorage.getItem('design-isms-lang') === 'en' ? 'en' : 'ko';
 let imgObserver: IntersectionObserver | null = null;
 let pageRevealed = false;
+let finderController: { setLang: (lang: Lang) => void } | null = null;
 let cardObserver: IntersectionObserver | null = null;
 
 const toastTimers = new WeakMap<HTMLElement, number>();
@@ -341,6 +342,8 @@ async function init(): Promise<void> {
   setupCardExamplesToggle();
   setupLangToggle();
   setupImageLazy();
+  const fRoot = document.getElementById('style-finder-mount');
+  if (fRoot) finderController = DesignFinder.mount({ root: fRoot, isms: allIsms as unknown as Parameters<typeof DesignFinder.mount>[0]['isms'], guides: (await AppGuides.load(GUIDE_URL)) as unknown as Record<string, Record<string, unknown>> | null, getLang: () => currentLang, openModal });
   dismissLoading();
 }
 
@@ -740,8 +743,7 @@ function renderModalContent(ism: DesignIsm): string {
 
   const subImages = ism.images.slice(1);
   const mainLabel = t('designMockup', { name: ism.name });
-  const modalDesc = getDesc(ism);
-  const modalHistory = getHistory(ism);
+  const modalDesc = getDesc(ism); const modalHistory = getHistory(ism);
   const mainPrompt = ism.prompts?.[0]?.prompt ?? '';
 
   let collapsiblesHTML = '';
@@ -888,17 +890,12 @@ function openModal(ismId: string, trigger?: HTMLElement | null): void {
     });
   }
 
-  content.querySelectorAll<HTMLElement>('.modal-collapsible-header').forEach(header => {
-    header.addEventListener('click', () => {
-      header.parentElement?.classList.toggle('open');
-    });
+  content.querySelectorAll<HTMLElement>('.modal-collapsible-header').forEach(h => {
+    h.addEventListener('click', () => { h.parentElement?.classList.toggle('open'); });
   });
 
-  content.querySelectorAll<HTMLImageElement>('img[data-lightbox]').forEach(image => {
-    image.addEventListener('click', event => {
-      event.stopPropagation();
-      openLightbox(image.dataset.src || image.src);
-    });
+  content.querySelectorAll<HTMLImageElement>('img[data-lightbox]').forEach(img => {
+    img.addEventListener('click', e => { e.stopPropagation(); openLightbox(img.dataset.src || img.src); });
   });
 
   content.querySelectorAll<HTMLElement>('.modal-swatch').forEach(swatch => {
@@ -1025,6 +1022,7 @@ function setupLangToggle(): void {
     localStorage.setItem('design-isms-lang', currentLang);
     updateLangUI();
     render();
+    finderController?.setLang(currentLang);
   });
 }
 

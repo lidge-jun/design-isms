@@ -1,0 +1,224 @@
+ /* finder.css — Style Finder layout (Phase 070) */
+ 
+ .style-finder {
+   border-bottom: 1px solid var(--atlas-rule, #d0cdc6);
+   padding: 2rem 0 2.5rem;
+   margin-bottom: 2rem;
+ }
+ .style-finder-header {
+   max-width: 36rem;
+   margin-bottom: 1.5rem;
+ }
+ .style-finder-header .atlas-kicker {
+   font-family: 'SF Mono', monospace;
+   font-size: 0.6875rem;
+   letter-spacing: 0.08em;
+   text-transform: uppercase;
+   color: var(--atlas-ink-muted, #7a7a7a);
+   margin: 0 0 0.25rem;
+ }
+ .style-finder-header h1 {
+   font-family: 'Outfit', sans-serif;
+   font-size: 1.5rem;
+   font-weight: 700;
+   margin: 0 0 0.375rem;
+   color: var(--atlas-ink, #1a1a1a);
+ }
+ .style-finder-header p {
+   margin: 0;
+   font-size: 0.875rem;
+   color: var(--atlas-ink-muted, #7a7a7a);
+   line-height: 1.5;
+ }
+ 
+ /* ── form ────────────────────────────────────────────────────── */
+ .finder-form {
+   display: grid;
+   gap: 1.5rem;
+ }
+ .finder-fieldset {
+   border: none;
+   margin: 0;
+   padding: 0;
+ }
+ .finder-legend {
+   font-family: 'Outfit', sans-serif;
+   font-size: 0.8125rem;
+   font-weight: 600;
+   letter-spacing: 0.04em;
+   text-transform: uppercase;
+   color: var(--atlas-ink, #1a1a1a);
+   margin-bottom: 0.625rem;
+   display: block;
+ }
+ .finder-options {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 0.5rem;
+ }
+ @media (max-width: 1024px) {
+   .finder-options { grid-template-columns: repeat(2, 1fr); }
+ }
+ @media (max-width: 640px) {
+   .finder-options { grid-template-columns: 1fr; }
+ }
+ 
+ .finder-option {
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+   min-height: 44px;
+   padding: 0.5rem 0.75rem;
+   border: 1px solid var(--atlas-rule, #d0cdc6);
+   cursor: pointer;
+   transition: border-color 0.15s;
+ }
+ .finder-option:hover {
+   border-color: var(--atlas-ink-muted, #7a7a7a);
+ }
+ .finder-radio {
+   flex-shrink: 0;
+   width: 1rem;
+   height: 1rem;
+   accent-color: var(--atlas-accent, #FF4D1F);
+ }
+ .finder-radio:focus-visible + .finder-option-label {
+   outline: 2px solid var(--atlas-accent, #FF4D1F);
+   outline-offset: 2px;
+ }
+ .finder-option-label {
+   font-size: 0.8125rem;
+   font-weight: 600;
+   color: var(--atlas-ink, #1a1a1a);
+ }
+ .finder-option-hint {
+   font-size: 0.75rem;
+   color: var(--atlas-ink-muted, #7a7a7a);
+   margin-left: auto;
+ }
+ .finder-radio:checked ~ .finder-option-label {
+   color: var(--atlas-accent, #FF4D1F);
+ }
+ 
+ /* ── actions ─────────────────────────────────────────────────── */
+ .finder-actions {
+   display: flex;
+   gap: 0.75rem;
+   align-items: center;
+ }
+ .finder-submit {
+   font-family: 'Outfit', sans-serif;
+   font-size: 0.8125rem;
+   font-weight: 600;
+   letter-spacing: 0.04em;
+   text-transform: uppercase;
+   padding: 0.625rem 1.5rem;
+   background: var(--atlas-ink, #1a1a1a);
+   color: var(--atlas-paper, #f3f0e8);
+   border: none;
+   cursor: pointer;
+   transition: background 0.15s;
+ }
+ .finder-submit:hover:not(:disabled) { background: var(--atlas-accent, #FF4D1F); }
+ .finder-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+ .finder-submit:focus-visible { outline: 2px solid var(--atlas-accent, #FF4D1F); outline-offset: 2px; }
+ .finder-reset {
+   font-family: 'Outfit', sans-serif;
+   font-size: 0.75rem;
+   font-weight: 600;
+   padding: 0.5rem 1rem;
+   background: none;
+   border: 1px solid var(--atlas-rule, #d0cdc6);
+   color: var(--atlas-ink-muted, #7a7a7a);
+   cursor: pointer;
+ }
+ .finder-reset:hover { border-color: var(--atlas-ink, #1a1a1a); color: var(--atlas-ink, #1a1a1a); }
+ 
+ /* ── results ─────────────────────────────────────────────────── */
+ .finder-summary {
+   font-family: 'Outfit', sans-serif;
+   font-size: 0.8125rem;
+   font-weight: 600;
+   letter-spacing: 0.04em;
+   text-transform: uppercase;
+   color: var(--atlas-ink-muted, #7a7a7a);
+   margin: 1.5rem 0 0.75rem;
+ }
+ .finder-result {
+   display: flex;
+   gap: 1rem;
+   padding: 1rem 0;
+   border-top: 1px solid var(--atlas-rule, #d0cdc6);
+ }
+ .finder-result-num {
+   font-family: 'SF Mono', monospace;
+   font-size: 0.875rem;
+   font-weight: 700;
+   color: var(--atlas-accent, #FF4D1F);
+   flex-shrink: 0;
+   width: 2rem;
+ }
+ .finder-result-body { flex: 1; min-width: 0; }
+ .finder-result-name {
+   font-family: 'Outfit', sans-serif;
+   font-size: 1rem;
+   font-weight: 700;
+   color: var(--atlas-ink, #1a1a1a);
+   margin-bottom: 0.25rem;
+ }
+ .finder-result-confidence {
+   font-size: 0.6875rem;
+   font-weight: 600;
+   text-transform: uppercase;
+   letter-spacing: 0.06em;
+   color: var(--atlas-accent, #FF4D1F);
+   margin-bottom: 0.375rem;
+ }
+ .finder-result-why {
+   font-size: 0.8125rem;
+   color: var(--atlas-ink, #1a1a1a);
+   line-height: 1.5;
+   margin-bottom: 0.375rem;
+ }
+ .finder-result-caution {
+   font-size: 0.75rem;
+   color: var(--atlas-ink-muted, #7a7a7a);
+   font-style: italic;
+   margin-bottom: 0.5rem;
+ }
+ .finder-result-open {
+   font-family: 'Outfit', sans-serif;
+   font-size: 0.75rem;
+   font-weight: 600;
+   padding: 0.375rem 1rem;
+   background: var(--atlas-ink, #1a1a1a);
+   color: var(--atlas-paper, #f3f0e8);
+   border: none;
+   cursor: pointer;
+ }
+ .finder-result-open:hover { background: var(--atlas-accent, #FF4D1F); }
+ .finder-result-open:focus-visible { outline: 2px solid var(--atlas-accent, #FF4D1F); outline-offset: 2px; }
+ 
+ /* ── error/retry ─────────────────────────────────────────────── */
+ .finder-error { text-align: center; padding: 2rem 0; }
+ .finder-error p { margin: 0 0 0.5rem; font-size: 0.875rem; color: var(--atlas-ink-muted, #7a7a7a); }
+ .finder-retry-btn {
+   font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 600;
+   padding: 0.375rem 1rem; background: var(--atlas-ink, #1a1a1a);
+   color: var(--atlas-paper, #f3f0e8); border: none; cursor: pointer;
+ }
+ 
+ /* ── reduced motion ──────────────────────────────────────────── */
+ @media (prefers-reduced-motion: reduce) {
+   .finder-option, .finder-submit, .finder-result-open { transition: none; }
+ }
+ /* ── print ───────────────────────────────────────────────────── */
+ @media print {
+   .finder-form { display: none; }
+   .finder-submit, .finder-reset, .finder-result-open { display: none; }
+ }
+ /* ── forced-colors ──────────────────────────────────────────── */
+ @media (forced-colors: active) {
+   .finder-option { border-color: ButtonText; }
+   .finder-submit, .finder-result-open { background: ButtonFace; color: ButtonText; border: 1px solid ButtonText; }
+ }
