@@ -855,6 +855,8 @@ function renderModalContent(ism: DesignIsm): string {
 
   html += AppGuides.renderDevSection(ism.id, key => t(key as UIStringKey));
 
+  html += '<section class="ism-export-mount" id="ism-export-mount" aria-label="Style code export"></section>';
+
   html += '<button class="guide-toggle-btn" id="guide-toggle-btn" data-ism-id="' + ism.id + '">' +
     '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg> ' +
     t('guideBtn') + '</button>';
@@ -902,11 +904,7 @@ function openModal(ismId: string, trigger?: HTMLElement | null): void {
   content.querySelectorAll<HTMLElement>('.modal-swatch').forEach(swatch => {
     swatch.addEventListener('click', () => {
       const color = swatch.dataset.color;
-      if (!color) {
-        return;
-      }
-      void navigator.clipboard.writeText(color);
-      showToast('Copied ' + color);
+      if (color) void DesignExport.copyText(color, 'Copied ' + color);
     });
   });
 
@@ -939,6 +937,16 @@ function openModal(ismId: string, trigger?: HTMLElement | null): void {
         exToggle.textContent = t('showLess');
       }
     });
+  }
+
+  // Mount ISM export panel
+  const exportMount = content.querySelector<HTMLElement>("#ism-export-mount");
+  if (exportMount) {
+    const guide = AppGuides.get(ism.id);
+    if (guide) {
+      const gi = guide as unknown as DesignExport.GuideInput;
+      DesignExport.mountIsm(exportMount, { id: ism.id, name: ism.name, palette: ism.palette }, gi);
+    }
   }
 }
 

@@ -10,7 +10,6 @@
     let filterState = { family: 'all', device: 'all', query: '' };
     let interactions = null;
     let cardObserver = null;
-    let toastTimer = 0;
     document.addEventListener('DOMContentLoaded', () => {
         void initEffectsPage();
     });
@@ -248,6 +247,9 @@
                 onRequestClose: () => closeEffectModal(elements)
             });
         }
+        const codeMount = elements.modalContent.querySelector('#effect-code-mount');
+        if (codeMount)
+            void DesignExport.mountEffect(codeMount, effect.id);
     }
     function renderEffectModal(effect) {
         return `<div class="effect-modal-hero"><div>
@@ -259,7 +261,7 @@
       ${renderCollapsible('implementation', '구현 방법', effect.implementation, true)}
       ${renderCollapsible('accessibility', '접근성 체크', effect.accessibility, false)}
       ${renderCollapsible('performance', '성능 체크', effect.performance, false)}
-      ${EffectsDocs.render(effect.id, effectDocs.get(effect.id) ?? null)}${renderGuide(effect)}`;
+      ${EffectsDocs.render(effect.id, effectDocs.get(effect.id) ?? null)}${renderGuide(effect)}<section class="effect-code-mount" id="effect-code-mount" aria-label="Implementation code"></section>`;
     }
     function renderChips(items) { return items.map((item) => `<span class="effect-chip">${escapeHtml(item)}</span>`).join(''); }
     function renderCheckCard(title, items) { return `<section class="effect-check-card"><h3>${escapeHtml(title)}</h3>${renderList(items)}</section>`; }
@@ -307,15 +309,8 @@
             target.closest('.effect-guide-frame')?.classList.add('is-missing');
         }
     }
-    async function copyPrompt(prompt, elements) {
-        try {
-            await navigator.clipboard.writeText(prompt);
-            showToast('프롬프트를 복사했습니다.', elements);
-        }
-        catch (error) {
-            console.error('[effects] copy failed', error);
-            showToast('복사할 수 없습니다. 프롬프트를 직접 선택해 주세요.', elements);
-        }
+    async function copyPrompt(prompt, _elements) {
+        void DesignExport.copyText(prompt, '프롬프트를 복사했습니다.');
     }
     function closeEffectModal(elements) {
         if (!elements.modalOverlay.classList.contains('active'))
@@ -361,12 +356,6 @@
     function renderError(elements, message) {
         elements.resultCount.textContent = 'Error';
         elements.grid.innerHTML = `<div class="effects-empty">${escapeHtml(message)}</div>`;
-    }
-    function showToast(message, elements) {
-        window.clearTimeout(toastTimer);
-        elements.toast.textContent = message;
-        elements.toast.classList.add('show');
-        toastTimer = window.setTimeout(() => elements.toast.classList.remove('show'), 2200);
     }
     function revealPage() {
         window.setTimeout(() => {
