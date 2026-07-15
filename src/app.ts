@@ -343,7 +343,13 @@ async function init(): Promise<void> {
   setupLangToggle();
   setupImageLazy();
   const fRoot = document.getElementById('style-finder-mount');
-  if (fRoot) finderController = DesignFinder.mount({ root: fRoot, isms: allIsms as unknown as Parameters<typeof DesignFinder.mount>[0]['isms'], guides: (await AppGuides.load(GUIDE_URL)) as unknown as Record<string, Record<string, unknown>> | null, getLang: () => currentLang, openModal });
+  const fDlg = document.getElementById('finder-dialog') as HTMLDialogElement | null;
+  if (fRoot && fDlg) {
+    finderController = DesignFinder.mount({ root: fRoot, isms: allIsms as unknown as Parameters<typeof DesignFinder.mount>[0]['isms'], guides: (await AppGuides.load(GUIDE_URL)) as unknown as Record<string, Record<string, unknown>> | null, getLang: () => currentLang, openModal });
+    document.getElementById('finder-trigger')?.addEventListener('click', () => fDlg.showModal());
+    document.getElementById('finder-dialog-close')?.addEventListener('click', () => fDlg.close());
+    fDlg.addEventListener('click', (e: MouseEvent) => { if (e.target === fDlg) fDlg.close(); });
+  }
   dismissLoading();
 }
 
@@ -906,12 +912,7 @@ function openModal(ismId: string, trigger?: HTMLElement | null): void {
   });
 
   content.querySelectorAll<HTMLElement>('.modal-related-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const relatedId = card.dataset.relatedId;
-      if (relatedId) {
-        openModal(relatedId);
-      }
-    });
+    card.addEventListener('click', () => { const id = card.dataset.relatedId; if (id) openModal(id); });
   });
 
   const guideBtn = document.getElementById('guide-toggle-btn');

@@ -263,8 +263,14 @@ async function init() {
     setupLangToggle();
     setupImageLazy();
     const fRoot = document.getElementById('style-finder-mount');
-    if (fRoot)
+    const fDlg = document.getElementById('finder-dialog');
+    if (fRoot && fDlg) {
         finderController = DesignFinder.mount({ root: fRoot, isms: allIsms, guides: (await AppGuides.load(GUIDE_URL)), getLang: () => currentLang, openModal });
+        document.getElementById('finder-trigger')?.addEventListener('click', () => fDlg.showModal());
+        document.getElementById('finder-dialog-close')?.addEventListener('click', () => fDlg.close());
+        fDlg.addEventListener('click', (e) => { if (e.target === fDlg)
+            fDlg.close(); });
+    }
     dismissLoading();
 }
 function setupImageLazy() {
@@ -749,12 +755,8 @@ function openModal(ismId, trigger) {
         });
     });
     content.querySelectorAll('.modal-related-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const relatedId = card.dataset.relatedId;
-            if (relatedId) {
-                openModal(relatedId);
-            }
-        });
+        card.addEventListener('click', () => { const id = card.dataset.relatedId; if (id)
+            openModal(id); });
     });
     const guideBtn = document.getElementById('guide-toggle-btn');
     if (guideBtn instanceof HTMLButtonElement) {

@@ -52,17 +52,21 @@
 </header>
 
 <main id="main-content">
-<section class="style-finder" id="style-finder" aria-labelledby="style-finder-title">
-  <header class="style-finder-header">
-    <p class="atlas-kicker">Decision aid · 03 questions</p>
-    <h1 id="style-finder-title">Find a visual direction</h1>
-    <p>Choose the job, the feeling, and the light level. We will explain three starting points.</p>
-  </header>
-  <div id="style-finder-mount" aria-busy="true"></div>
-</section>
+<dialog class="finder-dialog" id="finder-dialog" aria-labelledby="style-finder-title">
+  <div class="finder-dialog-inner">
+    <div class="finder-dialog-header">
+      <div>
+        <p class="atlas-kicker">Decision aid · 03 questions</p>
+        <h2 id="style-finder-title">Find a visual direction</h2>
+      </div>
+      <button class="finder-dialog-close" id="finder-dialog-close" type="button" aria-label="Close">×</button>
+    </div>
+    <div id="style-finder-mount"></div>
+  </div>
+</dialog>
 <div class="filter-bar" id="catalog">
   <div class="filter-row">
-    <button class="filter-btn active" data-keyword="all">All</button>
+    <button class="finder-trigger" id="finder-trigger" type="button">Find a style</button><button class="filter-btn active" data-keyword="all">All</button>
     <input type="text" class="search-input" placeholder="Search isms...">
   </div>
 </div>
