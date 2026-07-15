@@ -135,7 +135,9 @@ Do not call an effect a “candidate” in one page header and an “effect” i
 
 The three FAQ icons must:
 
-- use a `24 24` viewBox, `fill="none"`, `stroke="currentColor"`;
+- use a `24 24` viewBox, `fill="none"`, and an explicit brand stroke color (cobalt `#2B50E8`
+  for FAQ category icons, ink `#11120F` for the atlas mark) because the icons load via
+  `<img>`, where `currentColor` cannot inherit from CSS;
 - contain no text, gradients, filter effects, masks, emoji, external references, or brand marks;
 - be included as `<img alt="" aria-hidden="true">` because the adjacent heading names the category;
 - remain legible at 20px and 24px.

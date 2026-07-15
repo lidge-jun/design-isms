@@ -7,7 +7,8 @@
     "build": "tsc -p tsconfig.json",
     "images:thumbs": "node scripts/generate-thumbnails.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "verify": "npm run typecheck && npm run build"
+    "verify:nav": "node scripts/verify-nav.mjs",
+    "verify": "npm run typecheck && npm run build && npm run verify:nav"
   },
   "devDependencies": {
     "typescript": "^6.0.3"

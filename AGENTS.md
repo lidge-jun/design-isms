@@ -60,7 +60,10 @@
 - README, `AGENTS.md`, `structure/README.md`, `devlog/`의 설명은 실제 구현과 어긋나면 안 된다.
 - 소스는 `src/*.ts`, 브라우저 산출물은 `assets/js/*.js`다. GitHub Pages가 static file을 직접 배포하므로 JS 산출물도 커밋 대상이다.
 - HTML은 non-module script를 사용한다. `effects.html`은 `assets/js/effects-demos.js`를 먼저, `assets/js/effects.js`를 나중에 로드해야 한다.
-- 상단 메뉴는 `index.html`, `effects.html` 모두에서 `Isms / Effects / GitHub / Lang / Count` 축을 유지한다. static HTML이라 공통 컴포넌트가 없으므로 두 페이지를 함께 수정한다.
+- 상단 메뉴는 `index.html`, `effects.html`, `faq.html` 세 페이지에서 `Isms / Effects / FAQ / GitHub / Lang / Count` 6축을 같은 순서로 유지한다. static HTML이라 공통 컴포넌트가 없으므로 세 페이지를 함께 수정하고, `npm run verify:nav`(`scripts/verify-nav.mjs`)가 축 순서/단일 `aria-current`/count 라벨/skip link를 검증한다.
+- 페이지 전용 CSS는 inline `<style>`이 아니라 `assets/css/*.css` 파일로 둔다. FAQ는 `assets/data/faq.json` + `src/faq.ts` + `assets/css/faq.css`로 렌더링하며 `faq.html`은 thin entry 문서다.
+- 셸 토큰은 `assets/css/theme-atlas.css`가 소유한다(로드 순서: `style.css` → `theme-atlas.css` → `nav.css` → 페이지 CSS). 셸 UI에 이모지 글리프를 쓰지 않는다(브랜드 마크는 `assets/icons/atlas-mark.svg`).
+- `index.html`은 `assets/js/app-dialog.js`(전역 `AppDialogA11y`)를 `assets/js/app.js`보다 먼저 로드해야 한다.
 - 신규 파일은 500줄 이하를 유지한다. 초과하면 역할별 파일로 분리한다.
 - 커밋/푸시는 사용자가 같은 턴에서 명시적으로 요청한 경우에만 실행한다.
 

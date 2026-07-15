@@ -757,12 +757,12 @@ function cardHTML(ism, index) {
     const subName = currentLang === 'en' ? ism.nameKr : '';
     const desc = getDesc(ism);
     return `
-    <article class="ism-card" data-id="${ism.id}">
+    <article class="ism-card" data-id="${ism.id}" data-specimen-index="${num}">
       <div class="ism-card-header">
         <div class="ism-label-row">
           <span class="ism-number">${num}</span>
         </div>
-        <div class="ism-name">${ism.name}${subName ? '<span class="ism-name-kr">' + subName + '</span>' : ''}</div>
+        <button type="button" class="ism-name ism-name-btn" aria-haspopup="dialog">${ism.name}${subName ? '<span class="ism-name-kr">' + subName + '</span>' : ''}</button>
         <div class="ism-tagline">${ism.tagline}</div>
         <p class="ism-desc">${desc}</p>
       </div>
@@ -799,28 +799,43 @@ function setupCardExamplesToggle() {
 }
 function setupLightbox() {
     const lightbox = getRequired('lightbox');
-    const lightboxImage = queryRequired('img', lightbox);
     document.addEventListener('click', event => {
         const target = eventElement(event);
         const wrap = target?.closest('.ism-img-wrap') ?? null;
         if (wrap && !target?.closest('.modal-overlay')) {
             const src = wrap.dataset.src;
             if (src) {
-                lightboxImage.src = src;
-                lightbox.classList.add('active');
+                openLightbox(src);
             }
         }
     });
-    lightbox.addEventListener('click', () => {
-        lightbox.classList.remove('active');
-        lightboxImage.src = '';
-    });
-    document.addEventListener('keydown', event => {
-        if (event.key === 'Escape' && lightbox.classList.contains('active')) {
-            lightbox.classList.remove('active');
-            lightboxImage.src = '';
+    lightbox.addEventListener('click', event => {
+        const target = eventElement(event);
+        if (event.target === lightbox || target?.closest('.lightbox-close')) {
+            closeLightbox();
         }
     });
+}
+function openLightbox(src) {
+    const lightbox = getRequired('lightbox');
+    const lightboxImage = queryRequired('img', lightbox);
+    lightboxImage.src = src;
+    lightbox.classList.add('active');
+    AppDialogA11y.open({
+        overlay: lightbox,
+        onRequestClose: closeLightbox,
+        backdropClose: false,
+        initialFocus: lightbox.querySelector('.lightbox-close')
+    });
+}
+function closeLightbox() {
+    const lightbox = getRequired('lightbox');
+    if (!lightbox.classList.contains('active')) {
+        return;
+    }
+    lightbox.classList.remove('active');
+    queryRequired('img', lightbox).src = '';
+    AppDialogA11y.close(lightbox);
 }
 function setupScrollTop() {
     const btn = queryRequired('.scroll-top');
@@ -922,7 +937,7 @@ function renderModalContent(ism) {
     });
     const subNameHtml = currentLang === 'en' ? '<span class="modal-title-kr">' + ism.nameKr + '</span>' : '';
     let html = '<div class="modal-number">' + num + '</div>' +
-        '<div class="modal-title">' + ism.name + subNameHtml + '</div>' +
+        '<div class="modal-title" id="ism-modal-title">' + ism.name + subNameHtml + '</div>' +
         '<div class="modal-tagline">' + ism.tagline + '</div>';
     if (modalHistory) {
         html += '<div class="modal-history">' + modalHistory + '</div>';
@@ -948,7 +963,7 @@ function renderModalContent(ism) {
         t('guideBtn') + '</button>';
     return html;
 }
-function openModal(ismId) {
+function openModal(ismId, trigger) {
     const ism = allIsms.find(candidate => candidate.id === ismId);
     if (!ism) {
         return;
@@ -958,8 +973,16 @@ function openModal(ismId) {
     content.innerHTML = renderModalContent(ism);
     content.scrollTop = 0;
     overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
     history.replaceState(null, '', '#' + ismId);
+    if (!AppDialogA11y.isOpen(overlay)) {
+        AppDialogA11y.open({
+            overlay,
+            dialog: document.getElementById('ism-modal-dialog') ?? overlay,
+            initialFocus: overlay.querySelector('.modal-close'),
+            trigger: trigger ?? null,
+            onRequestClose: closeModal
+        });
+    }
     content.querySelectorAll('.modal-collapsible-header').forEach(header => {
         header.addEventListener('click', () => {
             header.parentElement?.classList.toggle('open');
@@ -968,9 +991,7 @@ function openModal(ismId) {
     content.querySelectorAll('img[data-lightbox]').forEach(image => {
         image.addEventListener('click', event => {
             event.stopPropagation();
-            const lightbox = getRequired('lightbox');
-            queryRequired('img', lightbox).src = image.dataset.src || image.src;
-            lightbox.classList.add('active');
+            openLightbox(image.dataset.src || image.src);
         });
     });
     content.querySelectorAll('.modal-swatch').forEach(swatch => {
@@ -1021,7 +1042,7 @@ function closeModal() {
     const panel = document.getElementById('guide-panel');
     if (panel)
         panel.innerHTML = '';
-    document.body.style.overflow = '';
+    AppDialogA11y.close(overlay);
     history.replaceState(null, '', location.pathname + location.search);
 }
 function showToast(msg) {
@@ -1040,17 +1061,7 @@ function showToast(msg) {
 }
 function setupModal() {
     const overlay = getRequired('modal-overlay');
-    overlay.addEventListener('click', event => {
-        if (event.target === overlay) {
-            closeModal();
-        }
-    });
     queryRequired('.modal-close', overlay).addEventListener('click', closeModal);
-    document.addEventListener('keydown', event => {
-        if (event.key === 'Escape' && overlay.classList.contains('active')) {
-            closeModal();
-        }
-    });
     document.addEventListener('click', event => {
         const target = eventElement(event);
         if (!target) {
@@ -1074,7 +1085,7 @@ function setupModal() {
         const card = target.closest('.ism-card');
         const id = card?.dataset.id;
         if (id) {
-            openModal(id);
+            openModal(id, card?.querySelector('.ism-name-btn') ?? card);
         }
     });
     if (location.hash.length > 1) {

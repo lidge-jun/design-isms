@@ -29,7 +29,10 @@
 - README, `AGENTS.md`, `structure/README.md`, and `devlog/` must stay aligned with the shipped behavior.
 - `src/*.ts` is the editable source; `assets/js/*.js` is generated output and still committed because GitHub Pages serves static files directly.
 - The site uses plain static scripts, not `script type="module"`. Keep script order explicit in HTML.
-- The shared top navigation is duplicated in static HTML and must stay consistent across `index.html` and `effects.html`.
+- The shared top navigation is duplicated in static HTML across `index.html`, `effects.html`, and `faq.html`; all three expose the same six axes (Isms / Effects / FAQ / GitHub / Lang / Count) in identical order, validated by `npm run verify:nav`.
+- FAQ content lives in `assets/data/faq.json` (bilingual, source-linked, 18 answers) and renders through `src/faq.ts` → `assets/js/faq.js`; `faq.html` is a thin entry document with no inline styles or scripts.
+- The visual shell uses the Annotated Specimen Atlas system: shared tokens live in `assets/css/theme-atlas.css`, loaded after `style.css` and before `nav.css` on every page.
+- The ISM modal on `index.html` uses `AppDialogA11y` (`src/app-dialog.ts`) for focus trap, Escape layering, scroll lock, and focus restore; `assets/js/app-dialog.js` must load before `assets/js/app.js`.
 - The ISM modal is implemented: history appears under the title, the main prompt is always visible, secondary prompts are collapsible, example sites show 3 first and expand to the rest, and related ISMs are computed from keyword overlap.
 - The effects page is a 46-candidate catalog across mobile, desktop, and shared frontend UI patterns.
 - Every effects candidate must have a dedicated `demo.type` equal to its effect `id`, and that type must exist in `src/effects-demos.ts`. Do not reuse a generic seed demo for a new candidate.

@@ -63,8 +63,10 @@ Representative load order:
 ### 1.2 File-size and ownership limits
 
 - Every **new authored file** must be below 500 physical lines.
-- `src/app.ts` may remain at its 1,342-line baseline through wp2, then must reach ≤1,050
-  in wp3 when the embedded guide map is extracted.
+- `src/app.ts` may sit at ≤1,370 through wp2 (wp1 actual: 1,366 — dialog mechanics were
+  extracted to `app-dialog.ts` but keyboard card activation and lightbox layering, both
+  missing accessibility behavior, were added), then must reach ≤1,050 in wp3 when the
+  ~212-line embedded guide map is extracted.
 - `src/effects.ts` should end below its current 493 lines after filters/interactions/export code are extracted.
 - `assets/css/style.css` should not grow beyond its current 992 lines; new visual systems go into dedicated files.
 - Generated JS line count is not used as an architecture metric, but generated output must be deterministic.

@@ -1,4 +1,4 @@
-/* ── Shared Navigation ── */
+/* ── Shared Navigation (atlas shell) ── */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -18,19 +18,14 @@
 
 .header-right {
   min-width: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
 }
 
-.star-pill[aria-current="page"] {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: #fff;
-}
-
-.star-pill[aria-current="page"] svg {
-  color: #fff;
-}
-
-.star-pill:active,
+.nav-link:active,
 .lang-toggle:active {
   transform: translateY(1px);
 }
@@ -44,13 +39,9 @@
     gap: 10px;
   }
 
-  .header-right {
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 6px;
-  }
+  .header-right { gap: 6px; }
 
-  .star-pill,
+  .nav-link,
   .lang-toggle,
   .header-count {
     padding: 4px 8px;
@@ -58,15 +49,35 @@
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 640px) {
   .header-inner {
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 10px 0;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding-block: 10px;
   }
 
   .header-right {
     justify-content: flex-start;
     width: 100%;
+  }
+
+  /* toolbar/search leaves the header plane and flows after it */
+  .filter-bar,
+  .effects-toolbar {
+    position: static;
+  }
+
+  .search-input,
+  .search-input:focus {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link:active,
+  .lang-toggle:active {
+    transform: none;
   }
 }

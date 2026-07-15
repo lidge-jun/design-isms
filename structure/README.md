@@ -46,6 +46,10 @@ assets/images/thumbs/effects/{effect-id}/guide.webp
 - Effects modal guide previews and ISM card previews use WebP and keep original PNGs for source/lightbox use.
 - Effect demo styling is split between `assets/css/effects.css`, `assets/css/effects-docs.css`, `assets/css/effects-demos.css`, and `assets/css/effects-demos-candidates.css`.
 - Shared static navigation styling lives in `assets/css/nav.css`.
+- Atlas shell tokens and shared primitives live in `assets/css/theme-atlas.css` (after `style.css`, before `nav.css`).
+- FAQ page: `assets/data/faq.json` (data), `src/faq.ts` → `assets/js/faq.js` (renderer), `assets/css/faq.css` (styles), `assets/icons/faq-*.svg` (category icons).
+- Dialog accessibility: `src/app-dialog.ts` → `assets/js/app-dialog.js` (global `AppDialogA11y`), loaded before `assets/js/app.js` in `index.html`.
+- Brand mark: `assets/icons/atlas-mark.svg` (currentColor line mark; no emoji glyphs in shell UI).
 - Effects guide images are generated for all 46 candidates and shown in the modal only.
 - The current ISMS expansion generated 24 candidate UI mockups for 8 newly added ISMS, plus matching WebP previews.
 
@@ -55,7 +59,8 @@ assets/images/thumbs/effects/{effect-id}/guide.webp
 - Effects catalog: 46 entries, 46 unique `demo.type` values, 46 registry entries in `src/effects-demos.ts`, 46 original PNG guide images, 46 generated WebP guide previews, and 46 long-form docs records in `assets/data/effects-docs.json`.
 - ISMS expansion: 8 generated styles are now part of `assets/data/isms.json`; there is no public reference/backlog page.
 - Prompt data: `assets/data/research-prompts.json`, `devlog/260510_nav_taxonomy_effect_docs/grok_research_prompts.md`, `image_jobs.jsonl`, and `ima2_results.json` record the current 24-job Grok/ima2 ISM batch.
-- Shared navigation: `index.html` and `effects.html` expose Isms, Effects, GitHub, language toggle, and count where applicable.
+- Shared navigation: `index.html`, `effects.html`, and `faq.html` expose the six axes Isms / Effects / FAQ / GitHub / Lang / Count in identical order; `scripts/verify-nav.mjs` (via `npm run verify:nav`) enforces order, single `aria-current`, GitHub disclosure, typed lang button, count labels, skip link, and main landmark.
+- FAQ: 3 categories × 6 items = 18 bilingual answers with per-item sources and review dates in `assets/data/faq.json`; renderer validates counts/locales/URLs and fails visibly.
 - Verification for visual changes: `npm run verify`, plus browser desktop/mobile checks for card count, unique demo classes, horizontal overflow, and console errors.
 - Verification for image changes: `npm run images:thumbs` before `npm run verify`.
 

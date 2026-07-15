@@ -7,12 +7,6 @@
   color: var(--ink);
   text-decoration: none;
 }
-.effects-page .header-right .star-pill[aria-current="page"] {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: #fff;
-}
-.effects-page .header-right .star-pill[aria-current="page"] svg { color: #fff; }
 .effects-main {
   max-width: 1440px;
   margin: 0 auto;
@@ -355,11 +349,10 @@ body.modal-open { overflow: hidden; }
     gap: 6px;
     min-width: 0;
   }
-  .effects-page .star-pill {
+  .effects-page .nav-link {
     padding: 4px 8px;
     font-size: 11px;
   }
-  .effects-page .header-count { display: none; }
   .effects-main {
     padding-top: 12px;
     padding-bottom: 72px;

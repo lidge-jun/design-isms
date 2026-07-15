@@ -943,12 +943,12 @@ function cardHTML(ism: DesignIsm, index: number): string {
   const desc = getDesc(ism);
 
   return `
-    <article class="ism-card" data-id="${ism.id}">
+    <article class="ism-card" data-id="${ism.id}" data-specimen-index="${num}">
       <div class="ism-card-header">
         <div class="ism-label-row">
           <span class="ism-number">${num}</span>
         </div>
-        <div class="ism-name">${ism.name}${subName ? '<span class="ism-name-kr">' + subName + '</span>' : ''}</div>
+        <button type="button" class="ism-name ism-name-btn" aria-haspopup="dialog">${ism.name}${subName ? '<span class="ism-name-kr">' + subName + '</span>' : ''}</button>
         <div class="ism-tagline">${ism.tagline}</div>
         <p class="ism-desc">${desc}</p>
       </div>
@@ -987,7 +987,6 @@ function setupCardExamplesToggle(): void {
 
 function setupLightbox(): void {
   const lightbox = getRequired<HTMLElement>('lightbox');
-  const lightboxImage = queryRequired<HTMLImageElement>('img', lightbox);
 
   document.addEventListener('click', event => {
     const target = eventElement(event);
@@ -995,23 +994,40 @@ function setupLightbox(): void {
     if (wrap && !target?.closest('.modal-overlay')) {
       const src = wrap.dataset.src;
       if (src) {
-        lightboxImage.src = src;
-        lightbox.classList.add('active');
+        openLightbox(src);
       }
     }
   });
 
-  lightbox.addEventListener('click', () => {
-    lightbox.classList.remove('active');
-    lightboxImage.src = '';
-  });
-
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && lightbox.classList.contains('active')) {
-      lightbox.classList.remove('active');
-      lightboxImage.src = '';
+  lightbox.addEventListener('click', event => {
+    const target = eventElement(event);
+    if (event.target === lightbox || target?.closest('.lightbox-close')) {
+      closeLightbox();
     }
   });
+}
+
+function openLightbox(src: string): void {
+  const lightbox = getRequired<HTMLElement>('lightbox');
+  const lightboxImage = queryRequired<HTMLImageElement>('img', lightbox);
+  lightboxImage.src = src;
+  lightbox.classList.add('active');
+  AppDialogA11y.open({
+    overlay: lightbox,
+    onRequestClose: closeLightbox,
+    backdropClose: false,
+    initialFocus: lightbox.querySelector<HTMLElement>('.lightbox-close')
+  });
+}
+
+function closeLightbox(): void {
+  const lightbox = getRequired<HTMLElement>('lightbox');
+  if (!lightbox.classList.contains('active')) {
+    return;
+  }
+  lightbox.classList.remove('active');
+  queryRequired<HTMLImageElement>('img', lightbox).src = '';
+  AppDialogA11y.close(lightbox);
 }
 
 function setupScrollTop(): void {
@@ -1126,7 +1142,7 @@ function renderModalContent(ism: DesignIsm): string {
 
   const subNameHtml = currentLang === 'en' ? '<span class="modal-title-kr">' + ism.nameKr + '</span>' : '';
   let html = '<div class="modal-number">' + num + '</div>' +
-    '<div class="modal-title">' + ism.name + subNameHtml + '</div>' +
+    '<div class="modal-title" id="ism-modal-title">' + ism.name + subNameHtml + '</div>' +
     '<div class="modal-tagline">' + ism.tagline + '</div>';
 
   if (modalHistory) {
@@ -1159,7 +1175,7 @@ function renderModalContent(ism: DesignIsm): string {
   return html;
 }
 
-function openModal(ismId: string): void {
+function openModal(ismId: string, trigger?: HTMLElement | null): void {
   const ism = allIsms.find(candidate => candidate.id === ismId);
   if (!ism) {
     return;
@@ -1171,8 +1187,17 @@ function openModal(ismId: string): void {
   content.scrollTop = 0;
 
   overlay.classList.add('active');
-  document.body.style.overflow = 'hidden';
   history.replaceState(null, '', '#' + ismId);
+
+  if (!AppDialogA11y.isOpen(overlay)) {
+    AppDialogA11y.open({
+      overlay,
+      dialog: document.getElementById('ism-modal-dialog') ?? overlay,
+      initialFocus: overlay.querySelector<HTMLElement>('.modal-close'),
+      trigger: trigger ?? null,
+      onRequestClose: closeModal
+    });
+  }
 
   content.querySelectorAll<HTMLElement>('.modal-collapsible-header').forEach(header => {
     header.addEventListener('click', () => {
@@ -1183,9 +1208,7 @@ function openModal(ismId: string): void {
   content.querySelectorAll<HTMLImageElement>('img[data-lightbox]').forEach(image => {
     image.addEventListener('click', event => {
       event.stopPropagation();
-      const lightbox = getRequired<HTMLElement>('lightbox');
-      queryRequired<HTMLImageElement>('img', lightbox).src = image.dataset.src || image.src;
-      lightbox.classList.add('active');
+      openLightbox(image.dataset.src || image.src);
     });
   });
 
@@ -1238,7 +1261,7 @@ function closeModal(): void {
   overlay.querySelector('.modal-container')?.classList.remove('expanded');
   const panel = document.getElementById('guide-panel');
   if (panel) panel.innerHTML = '';
-  document.body.style.overflow = '';
+  AppDialogA11y.close(overlay);
   history.replaceState(null, '', location.pathname + location.search);
 }
 
@@ -1262,19 +1285,7 @@ function showToast(msg: string): void {
 function setupModal(): void {
   const overlay = getRequired<HTMLElement>('modal-overlay');
 
-  overlay.addEventListener('click', event => {
-    if (event.target === overlay) {
-      closeModal();
-    }
-  });
-
   queryRequired<HTMLButtonElement>('.modal-close', overlay).addEventListener('click', closeModal);
-
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && overlay.classList.contains('active')) {
-      closeModal();
-    }
-  });
 
   document.addEventListener('click', event => {
     const target = eventElement(event);
@@ -1300,7 +1311,7 @@ function setupModal(): void {
     const card = target.closest<HTMLElement>('.ism-card');
     const id = card?.dataset.id;
     if (id) {
-      openModal(id);
+      openModal(id, card?.querySelector<HTMLElement>('.ism-name-btn') ?? card);
     }
   });
 
