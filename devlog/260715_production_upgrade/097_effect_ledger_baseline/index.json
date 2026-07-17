@@ -1,0 +1,15 @@
+{
+  "runId": "design-isms-20260717-02",
+  "files": [
+    {
+      "name": "031.before.csv",
+      "sha256": "881173f97ddc49b4249fed314fd657974ec7a36e239222a2b553d828ac441fa4",
+      "bytes": 8479
+    },
+    {
+      "name": "032.before.jsonl",
+      "sha256": "15befeca431cd1d0cf7c5f2e6965946478b3b30efa5fc80c31e6231c590d193c",
+      "bytes": 96917
+    }
+  ]
+}

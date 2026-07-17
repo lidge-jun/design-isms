@@ -1,4 +1,4 @@
-const DATA_VERSION = '2026-07-15-atlas49';
+const DATA_VERSION = '2026-07-17-production', IMAGE_VERSION = '2026-07-17-quality';
 const DATA_URL = `./assets/data/isms.json?v=${DATA_VERSION}`;
 const GUIDE_URL = `./assets/data/dev-guides.json?v=${DATA_VERSION}`;
 const IMAGE_BASE_URL = './assets/images';
@@ -109,7 +109,7 @@ const UI_STRINGS: Record<Lang, Record<UIStringKey, string>> = {
     guideDont: "Don't",
     guideLoading: 'Loading guide...',
     guideError: 'Failed to load guide.',
-    guidePending: 'Guide coming soon',
+    guidePending: 'Guide unavailable',
     footerTitle: 'Design -isms Reference Board',
     footerGen: 'Images generated with GPT Image 2'
   }
@@ -118,11 +118,12 @@ const UI_STRINGS: Record<Lang, Record<UIStringKey, string>> = {
 let allIsms: DesignIsm[] = [];
 let activeFilter = 'all';
 let searchQuery = '';
-let currentLang: Lang = localStorage.getItem('design-isms-lang') === 'en' ? 'en' : 'ko';
+let currentLang: Lang = AppRuntime.readStorage('design-isms-lang') === 'en' ? 'en' : 'ko';
 let imgObserver: IntersectionObserver | null = null;
-let pageRevealed = false;
 let finderController: { setLang: (lang: Lang) => void } | null = null;
 let cardObserver: IntersectionObserver | null = null;
+let indexMounted = false;
+let indexLoadPromise: Promise<void> | null = null;
 
 const toastTimers = new WeakMap<HTMLElement, number>();
 
@@ -273,27 +274,21 @@ function escapeHTML(value: string): string {
     }
   });
 }
-
 function originalImageSrc(ismId: string, file: string): string {
-  return `${IMAGE_BASE_URL}/${ismId}/${file}`;
+  return `${IMAGE_BASE_URL}/${ismId}/${file}?v=${IMAGE_VERSION}`;
 }
-
 function thumbnailFile(file: string): string {
   return file.replace(/\.[^.]+$/, '.webp');
 }
-
 function thumbImageSrc(ismId: string, file: string): string {
-  return `${THUMB_BASE_URL}/${ismId}/${thumbnailFile(file)}`;
+  return `${THUMB_BASE_URL}/${ismId}/${thumbnailFile(file)}?v=${IMAGE_VERSION}`;
 }
-
 function getDesc(ism: DesignIsm): string {
   return currentLang === 'en' && ism.descriptionEn ? ism.descriptionEn : ism.description;
 }
-
 function getHistory(ism: DesignIsm): string {
   return ism.history || '';
 }
-
 function listHTML(items: string[], className: string): string {
   return '<ul class="' + className + '">' + items.map(item => '<li>' + escapeHTML(item) + '</li>').join('') + '</ul>';
 }
@@ -326,31 +321,31 @@ async function toggleGuidePanel(ismId: string): Promise<void> {
 
   panel.innerHTML = '<div class="guide-panel-header">' + t('guideBtn') + '</div>' + AppGuides.renderPanel(guide, key => t(key as UIStringKey));
 }
-async function init(): Promise<void> {
-  const [res] = await Promise.all([
-    fetch(DATA_URL),
-    AppGuides.load(GUIDE_URL) // preload so the modal implementation block renders synchronously
-  ]);
-  allIsms = parseIsms(await res.json() as unknown);
-
-  queryRequired<HTMLElement>('.header-count').textContent = `${allIsms.length} isms`;
-  buildFilters();
-  render();
-  setupLightbox();
-  setupScrollTop();
-  setupModal();
-  setupCardExamplesToggle();
-  setupLangToggle();
-  setupImageLazy();
-  const fRoot = document.getElementById('style-finder-mount');
-  const fDlg = document.getElementById('finder-dialog') as HTMLDialogElement | null;
-  if (fRoot && fDlg) {
-    finderController = DesignFinder.mount({ root: fRoot, isms: allIsms as unknown as Parameters<typeof DesignFinder.mount>[0]['isms'], guides: (await AppGuides.load(GUIDE_URL)) as unknown as Record<string, Record<string, unknown>> | null, getLang: () => currentLang, openModal });
-    document.getElementById('finder-trigger')?.addEventListener('click', () => fDlg.showModal());
-    document.getElementById('finder-dialog-close')?.addEventListener('click', () => fDlg.close());
-    fDlg.addEventListener('click', (e: MouseEvent) => { if (e.target === fDlg) fDlg.close(); });
-  }
-  dismissLoading();
+function loadAndRenderIndex(): Promise<void> {
+  if (indexLoadPromise) return indexLoadPromise;
+  indexLoadPromise = (async () => {
+    const [res] = await Promise.all([fetch(DATA_URL), AppGuides.load(GUIDE_URL)]);
+    if (!res.ok) throw new Error(`ISM request failed with status ${res.status}`);
+    allIsms = parseIsms(await res.json() as unknown);
+    queryRequired<HTMLElement>('.header-count').textContent = `${allIsms.length} isms`;
+    buildFilters();
+    render();
+    setupImageLazy();
+    const fRoot = document.getElementById('style-finder-mount');
+    if (fRoot) {
+      finderController = DesignFinder.mount({ root: fRoot, isms: allIsms as unknown as Parameters<typeof DesignFinder.mount>[0]['isms'], guides: (await AppGuides.load(GUIDE_URL)) as unknown as Record<string, Record<string, unknown>> | null, getLang: () => currentLang, openModal });
+    }
+    dismissLoading();
+  })().catch(error => {
+    console.error('[isms] failed to initialize', error);
+    AppRuntime.dismissLoadingOverlay();
+    AppRuntime.renderFatal(getRequired<HTMLElement>('masonry'), {
+      title: currentLang === 'ko' ? 'ISM을 불러오지 못했습니다' : 'Could not load ISMs',
+      body: currentLang === 'ko' ? '연결을 확인한 뒤 다시 시도해 주세요.' : 'Check the connection and try again.',
+      retry: currentLang === 'ko' ? '다시 시도' : 'Try again'
+    }, () => { void loadAndRenderIndex(); });
+  }).finally(() => { indexLoadPromise = null; });
+  return indexLoadPromise;
 }
 
 function setupImageLazy(): void {
@@ -384,14 +379,14 @@ function dismissLoading(): void {
   let loaded = 0;
   const total = Math.min(firstImages.length, 6);
   if (total === 0) {
-    revealPage();
+    AppRuntime.dismissLoadingOverlay();
     return;
   }
 
   function check(): void {
     loaded += 1;
     if (loaded >= total) {
-      revealPage();
+      AppRuntime.dismissLoadingOverlay();
     }
   }
 
@@ -404,22 +399,7 @@ function dismissLoading(): void {
     img.addEventListener('error', check);
   });
 
-  window.setTimeout(revealPage, 3000);
-}
-
-function revealPage(): void {
-  if (pageRevealed) {
-    return;
-  }
-
-  pageRevealed = true;
-  document.body.classList.remove('is-loading');
-
-  const overlay = document.getElementById('loading-overlay');
-  if (overlay) {
-    overlay.classList.add('fade-out');
-    overlay.addEventListener('transitionend', () => overlay.remove());
-  }
+  window.setTimeout(() => AppRuntime.dismissLoadingOverlay(), 3000);
 }
 
 function buildFilters(): void {
@@ -432,6 +412,7 @@ function buildFilters(): void {
   ].filter(keyword => keywords.has(keyword));
 
   const row = queryRequired<HTMLElement>('.filter-row');
+  row.querySelectorAll('.filter-btn:not([data-keyword="all"])').forEach(button => button.remove());
   popular.forEach(keyword => {
     const btn = document.createElement('button');
     btn.className = 'filter-btn';
@@ -583,12 +564,11 @@ function cardHTML(ism: DesignIsm, index: number): string {
       ? `src="${src}"`
       : `src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy="${src}"`;
     return `
-      <div class="ism-img-wrap" data-src="${originalSrc}">
+      <button type="button" class="ism-img-wrap" data-src="${originalSrc}" aria-label="Open ${escapeHTML(image.label)} image">
         <img ${imgAttr} alt="${ism.name} - ${image.label}"
-             loading="lazy"
-             onerror="this.parentElement.outerHTML='<div class=\\'ism-img-placeholder\\'>${image.label} — generating...</div>'">
+             loading="lazy" data-fallback-label="${escapeHTML(image.label)}">
         <span class="ism-img-label">${image.label}</span>
-      </div>`;
+      </button>`;
   }).join('');
 
   const keywordsHTML = ism.keywords.map(keyword =>
@@ -632,6 +612,8 @@ function cardHTML(ism: DesignIsm, index: number): string {
 
 function setupCardExamplesToggle(): void {
   document.querySelectorAll<HTMLButtonElement>('.ism-examples-toggle').forEach(btn => {
+    if (btn.dataset.bound === 'true') return;
+    btn.dataset.bound = 'true';
     btn.addEventListener('click', event => {
       event.stopPropagation();
       const container = btn.closest<HTMLElement>('.ism-examples');
@@ -711,16 +693,29 @@ function setupScrollTop(): void {
   });
 }
 
-queryRequired<HTMLInputElement>('.search-input').addEventListener('input', event => {
-  if (event.target instanceof HTMLInputElement) {
-    searchQuery = event.target.value;
-    render();
-  }
-});
+function mountIndexOnce(): void {
+  if (indexMounted) return;
+  indexMounted = true;
+  setupLightbox();
+  setupScrollTop();
+  setupModal();
+  setupLangToggle();
+  queryRequired<HTMLInputElement>('.search-input').addEventListener('input', event => {
+    if (event.target instanceof HTMLInputElement) { searchQuery = event.target.value; render(); }
+  });
+  const dialog = document.getElementById('finder-dialog') as HTMLDialogElement | null;
+  document.getElementById('finder-trigger')?.addEventListener('click', () => dialog?.showModal());
+  document.getElementById('finder-dialog-close')?.addEventListener('click', () => dialog?.close());
+  dialog?.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+  document.addEventListener('error', event => {
+    const image = event.target;
+    if (image instanceof HTMLImageElement && image.dataset.fallbackLabel) {
+      AppRuntime.replaceBrokenImage(image, image.dataset.fallbackLabel);
+    }
+  }, true);
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-  void init();
-});
+document.addEventListener('DOMContentLoaded', () => { mountIndexOnce(); void loadAndRenderIndex(); });
 
 function getRelatedIsms(target: DesignIsm, max = 5): DesignIsm[] {
   if (target.kind === 'anti-pattern') {
@@ -763,21 +758,23 @@ function renderModalContent(ism: DesignIsm): string {
     const promptBlock = subPrompt
       ? '<div class="modal-prompt"><span class="modal-prompt-label">Prompt</span>' + subPrompt + '</div>'
       : '';
+    const collapsibleId = 'modal-collapsible-' + index;
     collapsiblesHTML += '<div class="modal-collapsible">' +
-      '<div class="modal-collapsible-header">' +
+      '<button type="button" class="modal-collapsible-header" aria-expanded="false" aria-controls="' + collapsibleId + '">' +
       '<span class="modal-collapsible-arrow">▶</span> ' + image.label +
-      '</div>' +
-      '<div class="modal-collapsible-body"><div class="modal-collapsible-inner">' +
-      '<img src="' + thumbImageSrc(ism.id, image.file) + '" data-src="' + originalImageSrc(ism.id, image.file) + '" alt="' + ism.name + ' - ' + image.label + '" data-lightbox="true" loading="lazy">' +
+      '</button>' +
+      '<div class="modal-collapsible-body" id="' + collapsibleId + '" aria-hidden="true"><div class="modal-collapsible-inner">' +
+      '<button type="button" class="modal-image-button" data-lightbox-src="' + originalImageSrc(ism.id, image.file) + '" aria-label="' + image.label + ' 확대">' +
+      '<img src="' + thumbImageSrc(ism.id, image.file) + '" alt="' + ism.name + ' - ' + image.label + '" data-fallback-label="' + ism.name + ' - ' + image.label + '" loading="lazy"></button>' +
       promptBlock +
       '</div></div></div>';
   }
 
   let paletteHTML = '';
   ism.palette.forEach(color => {
-    paletteHTML += '<div class="modal-swatch" data-color="' + color + '">' +
+    paletteHTML += '<button type="button" class="modal-swatch" data-color="' + color + '" aria-label="' + color + ' 복사">' +
       '<div class="modal-swatch-color" style="background:' + color + '"></div>' +
-      '<span class="modal-swatch-hex">' + color + '</span></div>';
+      '<span class="modal-swatch-hex">' + color + '</span></button>';
   });
 
   let keywordsHTML = '';
@@ -808,9 +805,9 @@ function renderModalContent(ism: DesignIsm): string {
 
   let relatedHTML = '';
   related.forEach(relatedIsm => {
-    relatedHTML += '<div class="modal-related-card" data-related-id="' + relatedIsm.id + '">' +
+    relatedHTML += '<button type="button" class="modal-related-card" data-related-id="' + relatedIsm.id + '">' +
       '<div class="modal-related-name">' + relatedIsm.name + '</div>' +
-      '<div class="modal-related-tagline">' + relatedIsm.tagline + '</div></div>';
+      '<div class="modal-related-tagline">' + relatedIsm.tagline + '</div></button>';
   });
 
   const subNameHtml = currentLang === 'en' ? '<span class="modal-title-kr">' + ism.nameKr + '</span>' : '';
@@ -832,7 +829,8 @@ function renderModalContent(ism: DesignIsm): string {
   }
 
   html += '<div class="modal-desc">' + modalDesc + '</div>' +
-    '<div class="modal-main-image"><img src="' + thumbImageSrc(ism.id, mainImg.file) + '" data-src="' + originalImageSrc(ism.id, mainImg.file) + '" alt="' + mainLabel + '" data-lightbox="true"></div>' +
+    '<div class="modal-main-image"><button type="button" class="modal-image-button" data-lightbox-src="' + originalImageSrc(ism.id, mainImg.file) + '" aria-label="' + mainLabel + ' 확대">' +
+    '<img src="' + thumbImageSrc(ism.id, mainImg.file) + '" alt="' + mainLabel + '" data-fallback-label="' + mainLabel + '"></button></div>' +
     '<div class="modal-main-label">' + mainLabel + '</div>' +
     (mainPrompt ? '<div class="modal-prompt modal-prompt-main"><span class="modal-prompt-label">Prompt</span>' + mainPrompt + '</div>' : '') +
     collapsiblesHTML +
@@ -882,9 +880,8 @@ function openModal(ismId: string, trigger?: HTMLElement | null): void {
   const content = getRequired<HTMLElement>('modal-content');
   content.innerHTML = renderModalContent(ism);
   content.scrollTop = 0;
-
   overlay.classList.add('active');
-  history.replaceState(null, '', '#' + ismId);
+  AppRuntime.replaceHistory('#' + ismId);
 
   if (!AppDialogA11y.isOpen(overlay)) {
     AppDialogA11y.open({
@@ -895,22 +892,27 @@ function openModal(ismId: string, trigger?: HTMLElement | null): void {
       onRequestClose: closeModal
     });
   }
-
-  content.querySelectorAll<HTMLElement>('.modal-collapsible-header').forEach(h => {
-    h.addEventListener('click', () => { h.parentElement?.classList.toggle('open'); });
+  content.querySelectorAll<HTMLButtonElement>('.modal-collapsible-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const collapsible = header.closest<HTMLElement>('.modal-collapsible');
+      const body = document.getElementById(header.getAttribute('aria-controls') ?? '');
+      const open = collapsible?.classList.toggle('open') ?? false;
+      header.setAttribute('aria-expanded', String(open));
+      body?.setAttribute('aria-hidden', String(!open));
+    });
   });
-
-  content.querySelectorAll<HTMLImageElement>('img[data-lightbox]').forEach(img => {
-    img.addEventListener('click', e => { e.stopPropagation(); openLightbox(img.dataset.src || img.src); });
+  content.querySelectorAll<HTMLButtonElement>('.modal-image-button[data-lightbox-src]').forEach(button => {
+    button.addEventListener('click', event => {
+      event.stopPropagation(); const src = button.dataset.lightboxSrc;
+      if (src) openLightbox(src);
+    });
   });
-
   content.querySelectorAll<HTMLElement>('.modal-swatch').forEach(swatch => {
     swatch.addEventListener('click', () => {
       const color = swatch.dataset.color;
       if (color) void DesignExport.copyText(color, 'Copied ' + color);
     });
   });
-
   content.querySelectorAll<HTMLElement>('.modal-related-card').forEach(card => {
     card.addEventListener('click', () => { const id = card.dataset.relatedId; if (id) openModal(id); });
   });
@@ -955,7 +957,7 @@ function closeModal(): void {
   const panel = document.getElementById('guide-panel');
   if (panel) panel.innerHTML = '';
   AppDialogA11y.close(overlay);
-  history.replaceState(null, '', location.pathname + location.search);
+  AppRuntime.replaceHistory(location.pathname + location.search);
 }
 
 function showToast(msg: string): void {
@@ -1020,7 +1022,7 @@ function setupLangToggle(): void {
 
   toggle.addEventListener('click', () => {
     currentLang = currentLang === 'ko' ? 'en' : 'ko';
-    localStorage.setItem('design-isms-lang', currentLang);
+    AppRuntime.writeStorage('design-isms-lang', currentLang);
     updateLangUI();
     render();
     finderController?.setLang(currentLang);

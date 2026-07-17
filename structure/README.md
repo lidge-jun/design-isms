@@ -19,8 +19,11 @@
 
 ## Source and Build
 
+<!-- data-sot:structure-counts:start -->Catalog source-of-truth counts: 49 ISMs / 64 effects / 18 FAQ answers.<!-- data-sot:structure-counts:end -->
+
 ```text
 src/app.ts           -> assets/js/app.js
+src/app-runtime.ts   -> assets/js/app-runtime.js
 src/effects-demos.ts -> assets/js/effects-demos.js
 src/effects-docs.ts  -> assets/js/effects-docs.js
 src/effects.ts       -> assets/js/effects.js
@@ -28,7 +31,7 @@ src/effects.ts       -> assets/js/effects.js
 
 - TypeScript source is the editable logic layer.
 - `assets/js/*.js` is committed because GitHub Pages serves static files directly.
-- Run `npm run verify` before claiming implementation is complete.
+- Run `npm run build` after TypeScript edits; `npm run verify` is non-emitting and byte-checks every generated JS file.
 - Do not edit generated browser JS without making the matching `src/*.ts` source change and rebuilding.
 
 ## Assets
@@ -38,17 +41,20 @@ assets/images/{ism-id}/*.png
 assets/images/thumbs/{ism-id}/*.webp
 assets/images/effects/{effect-id}/guide.png
 assets/images/thumbs/effects/{effect-id}/guide.webp
+assets/data/image-pairs-manifest.json
 ```
 
 - ISM cards use generated thumbnails and original PNG lightbox views.
 - Effects cards use CSS demos.
 - Effects demo registry provides one dedicated demo type per 64 entries (46 patterns + 18 visual effects).
 - Effects modal guide previews and ISM card previews use WebP and keep original PNGs for source/lightbox use.
+- The 211-pair image manifest records source and preview SHA-256, dimensions, and the independent sRGB pixel-relation contract; the thumbnail generator owns atomic updates.
 - Effect demo styling is split between `assets/css/effects.css`, `assets/css/effects-docs.css`, `assets/css/effects-demos.css`, and `assets/css/effects-demos-candidates.css`.
 - Shared static navigation styling lives in `assets/css/nav.css`.
 - Atlas shell tokens and shared primitives live in `assets/css/theme-atlas.css` (after `style.css`, before `nav.css`).
 - FAQ page: `assets/data/faq.json` (data), `src/faq.ts` → `assets/js/faq.js` (renderer), `assets/css/faq.css` (styles), `assets/icons/faq-*.svg` (category icons).
 - Dialog accessibility: `src/app-dialog.ts` → `assets/js/app-dialog.js` (global `AppDialogA11y`), loaded before `assets/js/app.js` in `index.html`.
+- Runtime resilience: `src/app-runtime.ts` → `assets/js/app-runtime.js` (global `AppRuntime`) plus `assets/css/runtime-states.css`; loaded before the page renderer on index, effects, and FAQ.
 - ISM guide data: `src/app-guides.ts` → `assets/js/app-guides.js` (global `AppGuides`), loaded before `assets/js/app.js`; `assets/data/dev-guides.json` (49 keys, each with layout/typography/color/motion/dos/donts/implementation) is the single guide SoT.
 - ISM catalog validator: `scripts/verify-isms.mjs` (`npm run verify:isms`) — 49 entries/guides, 147 image pairs, sourcing, anti-pattern uniqueness, `src/app.ts` ≤1050 lines.
 - Brand mark: `assets/icons/atlas-mark.svg` (currentColor line mark; no emoji glyphs in shell UI).
@@ -64,8 +70,11 @@ assets/images/thumbs/effects/{effect-id}/guide.webp
 - Shared navigation: `index.html`, `effects.html`, and `faq.html` expose the six axes Isms / Effects / FAQ / GitHub / Lang / Count in identical order; `scripts/verify-nav.mjs` (via `npm run verify:nav`) enforces order, single `aria-current`, GitHub disclosure, typed lang button, count labels, skip link, and main landmark.
 - FAQ: 3 categories × 6 items = 18 bilingual answers with per-item sources and review dates in `assets/data/faq.json`; renderer validates counts/locales/URLs and fails visibly.
 - Verification for visual changes: `npm run verify`, plus browser desktop/mobile checks for card count, unique demo classes, horizontal overflow, and console errors.
-- Verification for image changes: `npm run images:thumbs` before `npm run verify`.
-- Image pipeline: `scripts/generate-thumbnails.mjs` (sharp, 768×512 WebP, `--force`/`--scope`), `scripts/audit-effect-guides.mjs` (`npm run images:audit`, dimensions/freshness/hash/orphan gate), `scripts/build-effect-guide-contact-sheet.mjs` (disposable `.tmp/` review sheet).
+- Verification for image changes: candidate generation and review are recorded in `092_image_generation_attempts/`; approved originals, previews, prompt records, and manifest rows are applied together before `npm run verify`.
+- Image pipeline: `scripts/generate-thumbnails.mjs` (sharp, 768×512 WebP, `--force`/`--scope`), four complete contact-sheet builders (three 7×7 ISM sheets plus one 8×8 Effects sheet), `scripts/audit-effect-guides.mjs` (manifest-bound dimensions/hash/orphan gate), and `scripts/verify-image-quality.mjs` (211-slot baseline/final/non-target gate).
+- The completion audit replaced exactly `minimalism/landing.png` and `indie-web/landing.png`; all other raster paths are verified against the immutable 422-file baseline.
+- Release integrity: `scripts/sync-sot.mjs`, `verify-generated.mjs`, `verify-content.mjs`, `verify-assets.mjs`, `verify-line-limits.mjs`, and `stage-pages.mjs`; `.pages/manifest.json` is the deterministic public-file receipt.
+- Hosting boundary: `.github/workflows/ci.yml` verifies and stages on branch/PR work; deploy verifies, stages, then uploads `.pages` only.
 
 ## Documentation
 

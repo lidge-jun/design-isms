@@ -36,21 +36,14 @@
   let data: FaqData | null = null;
   let locale: Locale = readLocale();
   let openItemId: string | null = null;
+  let loadPromise: Promise<void> | null = null;
 
   function readLocale(): Locale {
-    try {
-      return localStorage.getItem(localeKey) === 'en' ? 'en' : 'ko';
-    } catch (_error: unknown) {
-      return 'ko';
-    }
+    return AppRuntime.readStorage(localeKey) === 'en' ? 'en' : 'ko';
   }
 
   function saveLocale(nextLocale: Locale): void {
-    try {
-      localStorage.setItem(localeKey, nextLocale);
-    } catch (_error: unknown) {
-      // Storage can be unavailable in privacy modes; the current page still updates.
-    }
+    AppRuntime.writeStorage(localeKey, nextLocale);
   }
 
   function isRecord(value: unknown): value is Record<string, unknown> {
@@ -291,15 +284,31 @@
   }
 
   function showError(error: unknown): void {
-    const block = document.createElement('div');
-    block.className = 'faq-error';
-    block.setAttribute('role', 'alert');
-    block.textContent = locale === 'ko'
-      ? 'FAQ를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.'
-      : 'The FAQ could not be loaded. Please try again later.';
-    mount.replaceChildren(block);
     mount.setAttribute('aria-busy', 'false');
     console.error('FAQ load failed:', error);
+    AppRuntime.renderFatal(mount, locale === 'ko'
+      ? { title: 'FAQ를 불러오지 못했습니다', body: '연결을 확인한 뒤 다시 시도해 주세요.', retry: '다시 시도' }
+      : { title: 'Could not load the FAQ', body: 'Check the connection and try again.', retry: 'Try again' },
+    () => { void loadFaq(); });
+  }
+
+  function loadFaq(): Promise<void> {
+    if (loadPromise) return loadPromise;
+    mount.setAttribute('aria-busy', 'true');
+    loadPromise = fetch('./assets/data/faq.json')
+      .then((response: Response) => {
+        if (!response.ok) throw new Error(`FAQ request failed with status ${response.status}`);
+        return response.json() as Promise<unknown>;
+      })
+      .then((value: unknown) => {
+        validateData(value);
+        data = value;
+        render();
+        updateLocaleToggle();
+      })
+      .catch(showError)
+      .finally(() => { loadPromise = null; });
+    return loadPromise;
   }
 
   const langToggle = document.getElementById('lang-toggle');
@@ -311,16 +320,5 @@
   });
 
   updateLocaleToggle();
-  fetch('./assets/data/faq.json')
-    .then((response: Response) => {
-      if (!response.ok) throw new Error(`FAQ request failed with status ${response.status}`);
-      return response.json() as Promise<unknown>;
-    })
-    .then((value: unknown) => {
-      validateData(value);
-      data = value;
-      render();
-      updateLocaleToggle();
-    })
-    .catch(showError);
+  void loadFaq();
 })();

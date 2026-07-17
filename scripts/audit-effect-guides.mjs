@@ -2,23 +2,26 @@
  * audit-effect-guides.mjs — machine audit for effect guide image pairs.
  * Derives the ID set from assets/data/effects.json (single source of truth),
  * then verifies original PNG / preview WebP existence, dimensions, format,
- * freshness, duplicate hashes, and orphan directories.
+ * manifest-bound hashes, duplicate hashes, and orphan directories.
  *
  * Flags: --json  emit full JSON results
  */
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const effectsPath = join(root, 'assets/data/effects.json');
+const manifestPath = join(root, 'assets/data/image-pairs-manifest.json');
 const originalsRoot = join(root, 'assets/images/effects');
 const previewsRoot = join(root, 'assets/images/thumbs/effects');
 const wantJson = process.argv.includes('--json');
 
 const effects = JSON.parse(readFileSync(effectsPath, 'utf8'));
+const imageManifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+const pairBySource = new Map(imageManifest.pairs.map((pair) => [pair.source, pair]));
 const errors = [];
 const results = [];
 
@@ -74,11 +77,13 @@ for (const effect of effects) {
   }
   if ((prevMeta.pages ?? 1) > 1) errors.push(`${effect.id}: preview is animated`);
 
-  if (statSync(previewPath).mtimeMs < statSync(originalPath).mtimeMs) {
-    errors.push(`${effect.id}: preview older than original (stale)`);
-  }
-
   const origHash = sha256(originalPath);
+  const sourceRel = `assets/images/effects/${effect.id}/${guideFile}`;
+  const previewRel = `assets/images/thumbs/effects/${effect.id}/guide.webp`;
+  const pair = pairBySource.get(sourceRel);
+  if (!pair || pair.preview !== previewRel || pair.sourceSha256 !== origHash || pair.previewSha256 !== sha256(previewPath)) {
+    errors.push(`${effect.id}: image pair manifest mismatch`);
+  }
   if (originalHashes.has(origHash)) {
     errors.push(`${effect.id}: original hash duplicates ${originalHashes.get(origHash)}`);
   }
@@ -110,6 +115,6 @@ if (wantJson) {
   console.error('effect guide audit failed:');
   for (const e of errors) console.error(`  - ${e}`);
 } else {
-  console.log(`effect guides ok: ${results.length} pairs, 0 invalid, 0 stale, 0 orphan`);
+  console.log(`effect guides ok: ${results.length} pairs, hashes manifest-bound, 0 invalid, 0 orphan`);
 }
 process.exit(errors.length > 0 ? 1 : 0);

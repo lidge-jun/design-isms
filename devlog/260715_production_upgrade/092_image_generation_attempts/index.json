@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "runId": "design-isms-20260717-02",
+  "baselineSha256": "3bc029e1b0a2c0214a8d70594792a835b747326fb111d4ba0b9ef2ed3b8a90ba",
+  "shards": [
+    "shard-001.jsonl"
+  ],
+  "maxAttempt": 6,
+  "openTargets": []
+}

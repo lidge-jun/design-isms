@@ -32,7 +32,7 @@ var EffectsFilters;
                     next.delete(key);
             }
             const qs = next.toString();
-            history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : '') + window.location.hash);
+            AppRuntime.replaceHistory(window.location.pathname + (qs ? '?' + qs : '') + window.location.hash);
         }
         function renderRow(row, values, active, kind) {
             row.innerHTML = ['all', ...values].map(value => {
@@ -82,6 +82,10 @@ var EffectsFilters;
                 state.device = 'all';
                 state.query = '';
                 emit();
+            },
+            destroy() {
+                mounts.familyRow.removeEventListener('click', handleClick);
+                mounts.deviceRow.removeEventListener('click', handleClick);
             }
         };
     }

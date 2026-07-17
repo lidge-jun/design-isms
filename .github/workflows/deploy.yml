@@ -28,9 +28,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run verify
+      - run: npm run pages:stage
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: '.pages'
       - id: deployment
         uses: actions/deploy-pages@v4

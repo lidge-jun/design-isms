@@ -3,6 +3,19 @@ node_modules/
 
 # local temp / review artifacts (contact sheets, prompt files, verify output)
 .tmp/
+.pages/
+coverage/
+qa-artifacts/
+*.swp
+*.swo
+*.bak
+*~
+.sot-transaction.json*
+*.sot-tmp
+*.sot-backup
 
 # OS metadata
 .DS_Store
+
+# codexclaw session state
+.codexclaw/

@@ -78,8 +78,8 @@
     "prompts": [
       {
         "file": "landing.png",
-        "prompt": "A minimalist landing page screenshot. Expansive white space, thin sans-serif typography, single hero image with restrained color palette of white and charcoal. Clean grid layout, no decorative elements, content breathes in open space. Clean mockup, no browser chrome, realistic UI elements.",
-        "model": "gpt-image-2",
+        "prompt": "A polished minimalist ecommerce landing page screenshot rendered edge-to-edge as the webpage itself. Use a warm white background, generous asymmetrical whitespace, a restrained black sans-serif wordmark, one refined editorial product photograph, concise typography, a thin hairline divider, and a single understated call-to-action. The composition should feel premium, calm, contemporary, and fully usable, with realistic web UI details and impeccable spacing. No browser frame, no tabs, no address bar, no toolbar, no operating-system window controls, no device mockup, no desktop wallpaper, and no surrounding scene. Fill the entire 3:2 canvas with the website content.",
+        "model": "gpt-5.6-sol",
         "quality": "high",
         "size": "1536x1024"
       },
@@ -3512,8 +3512,8 @@
     "prompts": [
       {
         "file": "landing.png",
-        "prompt": "An indie web personal homepage screenshot. Handmade quirky aesthetic on warm cream (#FFF8E7) background, hand-drawn doodles, personality-rich layout. Mix of playful fonts, retro web counter, guestbook link, 88x31 pixel buttons, authentic personal expression, deliberately non-corporate. Clean mockup, no browser chrome, realistic UI elements.",
-        "model": "gpt-image-2",
+        "prompt": "An expressive indie-web personal homepage rendered edge-to-edge as the webpage itself. Build a handmade cream-paper canvas with playful hand-drawn doodles, irregular colorful borders, a compact personal intro, a tiny guestbook panel, a webring navigation strip, pixel-art accents, several authentic 88x31 web buttons, and intentionally imperfect but readable typography. Keep the layout dense, personal, charming, and coherent while preserving clear hierarchy and realistic interactive labels. No browser chrome, no browser window, no title bar, no tabs, no address bar, no toolbar, no operating-system controls, no device frame, no desktop wallpaper, and no surrounding scene. Fill the entire 3:2 canvas with the website content.",
+        "model": "gpt-5.6-sol",
         "quality": "high",
         "size": "1536x1024"
       },

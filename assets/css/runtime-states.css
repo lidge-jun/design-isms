@@ -1,0 +1,47 @@
+.page-error-state {
+  grid-column: 1 / -1;
+  width: min(680px, 100%);
+  margin: 36px auto;
+  padding: clamp(22px, 5vw, 42px);
+  border: 1px solid var(--atlas-rule, var(--border));
+  border-left: 4px solid var(--atlas-signal, var(--accent));
+  border-radius: 4px;
+  background: var(--atlas-surface, var(--card-bg));
+  color: var(--atlas-ink, var(--ink));
+}
+.page-error-state h2 { margin: 0 0 8px; font: 700 clamp(20px, 3vw, 28px)/1.2 var(--font-display); }
+.page-error-state p { margin: 0; color: var(--atlas-muted, var(--ink-light)); }
+.page-error-retry {
+  min-height: 44px;
+  margin-top: 18px;
+  padding: 10px 16px;
+  border: 1px solid var(--atlas-ink, var(--ink));
+  border-radius: 3px;
+  background: var(--atlas-ink, var(--ink));
+  color: #fff;
+  cursor: pointer;
+}
+.ism-img-wrap,
+.modal-image-button,
+.modal-swatch,
+.modal-related-card,
+.modal-collapsible-header {
+  appearance: none;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+}
+.ism-img-wrap,
+.modal-image-button { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
+.modal-swatch { padding: 0; border: 0; background: transparent; cursor: pointer; }
+.modal-related-card { width: 100%; cursor: pointer; }
+.modal-collapsible-header { width: 100%; border: 0; cursor: pointer; }
+.ism-img-placeholder { display: grid; min-height: 140px; place-items: center; padding: 18px; text-align: center; }
+.ism-img-wrap:focus-visible,
+.modal-image-button:focus-visible,
+.modal-swatch:focus-visible,
+.modal-related-card:focus-visible,
+.modal-collapsible-header:focus-visible { outline: 3px solid var(--atlas-focus, #005fcc); outline-offset: 2px; }
+@media (max-width: 640px) {
+  .page-error-retry, .modal-swatch, .modal-related-card, .modal-collapsible-header { min-height: 44px; }
+}

@@ -1,6 +1,7 @@
 "use strict";
 (() => {
-    const DATA_VERSION = '2026-07-15-atlas64';
+    const DATA_VERSION = '2026-07-17-production';
+    const IMAGE_VERSION = '2026-07-17-quality';
     const EFFECTS_DATA_URL = `./assets/data/effects.json?v=${DATA_VERSION}`;
     const EFFECT_GUIDE_BASE_URL = './assets/images/effects';
     const MOTION_QUERY = '(prefers-reduced-motion: reduce)';
@@ -10,29 +11,42 @@
     let filterState = { family: 'all', device: 'all', query: '' };
     let interactions = null;
     let cardObserver = null;
+    let staticInteractionsMounted = false;
+    let loadPromise = null;
     document.addEventListener('DOMContentLoaded', () => {
-        void initEffectsPage();
-    });
-    async function initEffectsPage() {
         const elements = getPageElements();
-        setupStaticInteractions(elements);
-        try {
-            allEffects = await loadEffects();
-            effectDocs = await EffectsDocs.load();
-            filtersController = EffectsFilters.create(allEffects, { familyRow: elements.familyRow, deviceRow: elements.deviceRow }, state => { filterState = state; renderEffectCards(elements); });
-            filterState = filtersController.getState();
-            elements.searchInput.value = filterState.query;
-            interactions = EffectsInteractions.mount(elements.grid);
-            renderEffectCards(elements);
-            hydrateHash(elements);
-        }
-        catch (error) {
-            console.error('[effects] failed to initialize', error);
-            renderError(elements, '효과 데이터를 불러오지 못했습니다. 잠시 후 다시 열어 주세요.');
-        }
-        finally {
-            revealPage();
-        }
+        mountStaticInteractionsOnce(elements);
+        void loadAndRender(elements);
+    });
+    function loadAndRender(elements) {
+        if (loadPromise)
+            return loadPromise;
+        loadPromise = (async () => {
+            interactions?.destroy();
+            interactions = null;
+            filtersController?.destroy();
+            filtersController = null;
+            cardObserver?.disconnect();
+            cardObserver = null;
+            try {
+                allEffects = await loadEffects();
+                effectDocs = await EffectsDocs.load();
+                filtersController = EffectsFilters.create(allEffects, { familyRow: elements.familyRow, deviceRow: elements.deviceRow }, state => { filterState = state; renderEffectCards(elements); });
+                filterState = filtersController.getState();
+                elements.searchInput.value = filterState.query;
+                interactions = EffectsInteractions.mount(elements.grid);
+                renderEffectCards(elements);
+                hydrateHash(elements);
+            }
+            catch (error) {
+                console.error('[effects] failed to initialize', error);
+                renderError(elements);
+            }
+            finally {
+                AppRuntime.dismissLoadingOverlay(320);
+            }
+        })().finally(() => { loadPromise = null; });
+        return loadPromise;
     }
     function getPageElements() {
         return {
@@ -129,7 +143,10 @@
         const record = asRecord(value, `${effectId}.guide`);
         return { file: readString(record, 'file'), alt: readString(record, 'alt'), prompt: readString(record, 'prompt') };
     }
-    function setupStaticInteractions(elements) {
+    function mountStaticInteractionsOnce(elements) {
+        if (staticInteractionsMounted)
+            return;
+        staticInteractionsMounted = true;
         elements.searchInput.addEventListener('input', () => {
             filtersController?.setQuery(elements.searchInput.value);
         });
@@ -155,7 +172,7 @@
         const toggle = document.querySelector('#lang-toggle');
         if (!toggle)
             return;
-        let currentLang = localStorage.getItem('design-isms-lang') === 'en' ? 'en' : 'ko';
+        let currentLang = AppRuntime.readStorage('design-isms-lang') === 'en' ? 'en' : 'ko';
         const sync = () => {
             document.documentElement.lang = currentLang;
             toggle.querySelectorAll('.lang-option').forEach((option) => {
@@ -164,7 +181,7 @@
         };
         toggle.addEventListener('click', () => {
             currentLang = currentLang === 'ko' ? 'en' : 'ko';
-            localStorage.setItem('design-isms-lang', currentLang);
+            AppRuntime.writeStorage('design-isms-lang', currentLang);
             sync();
         });
         sync();
@@ -235,9 +252,8 @@
             return;
         elements.modalContent.innerHTML = renderEffectModal(effect);
         elements.modalOverlay.classList.add('active');
-        document.body.classList.add('modal-open');
         if (window.location.hash !== `#${effect.id}`) {
-            history.replaceState(null, '', `#${effect.id}`);
+            AppRuntime.replaceHistory(`#${effect.id}`);
         }
         if (!AppDialogA11y.isOpen(elements.modalOverlay)) {
             AppDialogA11y.open({
@@ -276,8 +292,8 @@
     function renderGuide(effect) {
         if (!effect.guide)
             return '';
-        const pngSrc = `${EFFECT_GUIDE_BASE_URL}/${effect.id}/${effect.guide.file}`;
-        const webpSrc = pngSrc.replace('/images/effects/', '/images/thumbs/effects/').replace(/\.png$/i, '.webp');
+        const pngSrc = `${EFFECT_GUIDE_BASE_URL}/${effect.id}/${effect.guide.file}?v=${IMAGE_VERSION}`;
+        const webpSrc = pngSrc.replace('/images/effects/', '/images/thumbs/effects/').replace(/\.png(?=\?)/i, '.webp');
         return `<figure class="effect-guide-frame"><picture class="effect-guide-picture"><source srcset="${escapeAttr(webpSrc)}" type="image/webp"><img class="effect-guide-image" src="${escapeAttr(pngSrc)}" data-original-src="${escapeAttr(pngSrc)}" alt="${escapeAttr(effect.guide.alt)}" loading="lazy" decoding="async"></picture>
       <figcaption class="effect-guide-caption">${escapeHtml(effect.guide.alt)}
       <button class="effect-copy-prompt" type="button" data-prompt="${escapeAttr(effect.guide.prompt)}">프롬프트 복사</button></figcaption></figure>`;
@@ -318,9 +334,8 @@
         closeLightbox(elements);
         elements.modalOverlay.classList.remove('active');
         elements.modalContent.innerHTML = '';
-        document.body.classList.remove('modal-open');
         if (window.location.hash) {
-            history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+            AppRuntime.replaceHistory(`${window.location.pathname}${window.location.search}`);
         }
         AppDialogA11y.close(elements.modalOverlay);
     }
@@ -353,15 +368,13 @@
             openEffectModal(effectId, elements);
         }
     }
-    function renderError(elements, message) {
+    function renderError(elements) {
         elements.resultCount.textContent = 'Error';
-        elements.grid.innerHTML = `<div class="effects-empty">${escapeHtml(message)}</div>`;
-    }
-    function revealPage() {
-        window.setTimeout(() => {
-            document.body.classList.remove('is-loading');
-            document.querySelector('#loading-overlay')?.classList.add('fade-out');
-        }, 320);
+        AppRuntime.renderFatal(elements.grid, {
+            title: '효과 데이터를 불러오지 못했습니다',
+            body: '연결을 확인한 뒤 다시 시도해 주세요.',
+            retry: '다시 시도'
+        }, () => { void loadAndRender(elements); });
     }
     function escapeHtml(value) {
         return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');

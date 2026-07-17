@@ -18,19 +18,22 @@
 - Korean/English UI toggle
 - Frontend UI Candidates page with 46 mobile, desktop, and shared patterns
 - 46 dedicated live demo animation types for the candidate cards and modals
-- 46 guide images under `assets/images/effects/`
-- 46 guide WebP previews under `assets/images/thumbs/effects/`
+- 64 guide images under `assets/images/effects/`
+- 64 guide WebP previews under `assets/images/thumbs/effects/`
 - Long-form effect documentation in `assets/data/effects-docs.json`
 - 8 newly added ima2-generated ISM styles: Editorial Typography, Variable Typography, Monospace / Terminal UI, Pixel Art UI, De Stijl, Constructivism, Isometric 3D UI, and Pop Art
 - Grok research prompts and ima2 prompt manifests for the ISM/effects expansion batch
 
 ## Implementation Principles
 
+<!-- data-sot:readme-counts:start -->Catalog source-of-truth counts: 49 ISMs / 64 effects / 18 FAQ answers.<!-- data-sot:readme-counts:end -->
+
 - README, `AGENTS.md`, `structure/README.md`, and `devlog/` must stay aligned with the shipped behavior.
 - `src/*.ts` is the editable source; `assets/js/*.js` is generated output and still committed because GitHub Pages serves static files directly.
 - The site uses plain static scripts, not `script type="module"`. Keep script order explicit in HTML.
 - The shared top navigation is duplicated in static HTML across `index.html`, `effects.html`, and `faq.html`; all three expose the same six axes (Isms / Effects / FAQ / GitHub / Lang / Count) in identical order, validated by `npm run verify:nav`.
 - FAQ content lives in `assets/data/faq.json` (bilingual, source-linked, 18 answers) and renders through `src/faq.ts` → `assets/js/faq.js`; `faq.html` is a thin entry document with no inline styles or scripts.
+- Shared storage/history guards, loading dismissal, retryable fatal states, and broken-image fallbacks live in `src/app-runtime.ts` → `assets/js/app-runtime.js`; all three pages load it before their page renderer and share `assets/css/runtime-states.css`.
 - The visual shell uses the Annotated Specimen Atlas system: shared tokens live in `assets/css/theme-atlas.css`, loaded after `style.css` and before `nav.css` on every page.
 - The ISM modal on `index.html` uses `AppDialogA11y` (`src/app-dialog.ts`) for focus trap, Escape layering, scroll lock, and focus restore; `assets/js/app-dialog.js` must load before `assets/js/app.js`.
 - The ISM modal is implemented: history appears under the title, the main prompt is always visible, secondary prompts are collapsible, example sites show 3 first and expand to the rest, and related ISMs are computed from keyword overlap.
@@ -39,6 +42,10 @@
 - Effects long-form writing lives in `assets/data/effects-docs.json` and renders through `src/effects-docs.ts`. Keep `assets/data/effects.json` compact for operational card/demo data.
 - Every effects guide image keeps the original PNG at `assets/images/effects/{effect-id}/guide.png` and uses a generated WebP preview at `assets/images/thumbs/effects/{effect-id}/guide.webp`.
 - New ISM images keep originals at `assets/images/{ism-id}/` and runtime previews under `assets/images/thumbs/{ism-id}/`.
+- `assets/data/image-pairs-manifest.json` locks all 211 PNG/WebP pairs by path, dimensions, SHA-256, and an independent source-resize/preview pixel-relation limit; `npm run images:thumbs` updates it atomically and does not rely on mtimes.
+- The production image-quality gate audits all 211 canonical slots in four complete contact sheets. `npm run verify:image-quality` checks the immutable baseline, per-slot rubric ledger, generation attempts, approved prompt changes, final sheets, and non-target byte stability.
+- `npm run verify` is non-emitting: edit TypeScript, run `npm run build`, then verify committed JS parity and all content/asset/release gates.
+- `npm run pages:stage` creates the only deployable tree at `.pages/`; Pages workflows upload that allowlisted tree, never the repository root.
 - Do not publish a separate reference/backlog page; generated visual styles belong in the ISMS catalog or the Effects catalog.
 - Any visual or image pipeline change must run `npm run verify`; image changes must also run `npm run images:thumbs` (sharp-based, `--force` / `--scope effects|isms|all`) and pass `npm run images:audit`.
 - Effect guide regeneration is provenance-tracked: audit ledger `devlog/260715_production_upgrade/031_effect_guide_audit.csv`, manifest `devlog/260715_production_upgrade/032_effect_guide_manifest.jsonl`.
@@ -61,6 +68,7 @@
 │   │   ├── isms.json
 │   │   ├── effects.json
 │   │   ├── effects-docs.json
+│   │   ├── image-pairs-manifest.json
 │   │   └── research-prompts.json
 │   ├── images/{ism-id}/*.png
 │   ├── images/effects/{effect-id}/guide.png
@@ -69,14 +77,20 @@
 │   └── js/
 │       ├── effects-demos.js
 │       ├── effects-docs.js
+│       ├── app-runtime.js
 │       ├── app.js
 │       └── effects.js
 ├── src/
 │   ├── app.ts
+│   ├── app-runtime.ts
 │   ├── effects-demos.ts
 │   ├── effects-docs.ts
 │   └── effects.ts
 ├── scripts/generate-thumbnails.mjs
+├── scripts/verify-generated.mjs
+├── scripts/verify-content.mjs
+├── scripts/verify-assets.mjs
+├── scripts/stage-pages.mjs
 ├── scripts/prepare-expansion-data.mjs
 ├── structure/
 ├── devlog/
@@ -88,9 +102,10 @@
 
 ```bash
 npm install
-npm run verify
 npm run typecheck
 npm run build
+npm run verify
+npm run pages:stage
 ```
 
 The browser entry files are generated for GitHub Pages:
@@ -104,7 +119,7 @@ The browser entry files are generated for GitHub Pages:
 npm run images:thumbs
 ```
 
-The static pages use WebP thumbnails/previews for card and modal image loading. The original 1536x1024 PNG files are kept for click-to-zoom lightbox views and source preservation.
+The static pages use WebP thumbnails/previews for card and modal image loading. The original 1536x1024 PNG files are kept for click-to-zoom lightbox views and source preservation. The thumbnail command updates the 211-pair SHA manifest after every successful run.
 
 Expansion image batches are generated from deterministic manifests. The current ima2 command shape is:
 
@@ -113,7 +128,7 @@ ima2 ping
 ima2 gen --stdin -q high -s 1536x1024 -o <target.png> --json --timeout 300
 ```
 
-The current expansion batch generated 24 new ISM PNG originals and `npm run images:thumbs` generated matching WebP previews.
+The current expansion batch generated 24 new ISM PNG originals and `npm run images:thumbs` generated matching WebP previews. The production completion audit later replaced only the two rubric-failed landing images (`minimalism`, `indie-web`) using ima2 with `gpt-5.6-sol`, high reasoning, and high image quality; the other 209 slots remain byte-identical to their captured baseline.
 
 ## Data
 

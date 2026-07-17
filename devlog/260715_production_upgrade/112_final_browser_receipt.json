@@ -1,0 +1,514 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-07-17T08:50:48.622Z",
+  "governedTreeSha256": "fee116e9965ee106f1c016955499dc808e58f2a5150682195cbbdbb5d956ea34",
+  "stagedManifestSha256": "41a026fc97fa477b1b1e5408d3141c0c9853ac80fddf37d24290a4008f3a3f9a",
+  "widths": [
+    1440,
+    1180,
+    1024,
+    860,
+    640,
+    390
+  ],
+  "pages": [
+    {
+      "id": "index",
+      "count": 49
+    },
+    {
+      "id": "effects",
+      "count": 64
+    },
+    {
+      "id": "faq",
+      "count": 18
+    }
+  ],
+  "rows": [
+    {
+      "page": "index",
+      "width": 1440,
+      "count": 49,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "effects",
+      "width": 1440,
+      "count": 64,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "faq",
+      "width": 1440,
+      "count": 18,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "index",
+      "width": 1180,
+      "count": 49,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "effects",
+      "width": 1180,
+      "count": 64,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "faq",
+      "width": 1180,
+      "count": 18,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "index",
+      "width": 1024,
+      "count": 49,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "effects",
+      "width": 1024,
+      "count": 64,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "faq",
+      "width": 1024,
+      "count": 18,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "index",
+      "width": 860,
+      "count": 49,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "effects",
+      "width": 860,
+      "count": 64,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "faq",
+      "width": 860,
+      "count": 18,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "index",
+      "width": 640,
+      "count": 49,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "effects",
+      "width": 640,
+      "count": 64,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "faq",
+      "width": 640,
+      "count": 18,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "index",
+      "width": 390,
+      "count": 49,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "effects",
+      "width": 390,
+      "count": 64,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "faq",
+      "width": 390,
+      "count": 18,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    }
+  ],
+  "flows": [
+    {
+      "id": "index",
+      "empty": true,
+      "searchReset": true,
+      "finderThree": true,
+      "modal": true,
+      "relatedFive": true,
+      "promptPresent": true,
+      "previewWebp": true,
+      "previewDimensions": true,
+      "copyFeedback": true,
+      "lightbox": true,
+      "lightboxPng": true,
+      "lightboxDimensions": true,
+      "escapeOrder": true,
+      "focusReturn": true
+    },
+    {
+      "id": "effects",
+      "reduced": true,
+      "familiesExact": true,
+      "filterReset": true,
+      "empty": true,
+      "searchReset": true,
+      "stateToggle": true,
+      "modal": true,
+      "docsEight": true,
+      "refsTwo": true,
+      "previewWebp": true,
+      "previewDimensions": true,
+      "lightbox": true,
+      "lightboxPng": true,
+      "lightboxDimensions": true,
+      "copyFeedback": true,
+      "focusReturn": true,
+      "devicesExact": true,
+      "reducedCards": true,
+      "reducedOverflow": true,
+      "reducedDurations": true
+    },
+    {
+      "id": "faq",
+      "expanded": true,
+      "sources": true,
+      "arrowDown": true,
+      "end": true,
+      "home": true,
+      "localePreserved": true,
+      "translated": true,
+      "collapsed": true,
+      "arrowUp": true
+    },
+    {
+      "id": "index-error-retry",
+      "alert": true,
+      "restored": true,
+      "recovered": true,
+      "errorRemoved": true,
+      "loadingRemoved": true,
+      "cleanDiagnostics": true,
+      "width": 390
+    },
+    {
+      "id": "effects-error-retry",
+      "alert": true,
+      "restored": true,
+      "recovered": true,
+      "errorRemoved": true,
+      "loadingRemoved": true,
+      "cleanDiagnostics": true,
+      "width": 390
+    },
+    {
+      "id": "faq-error-retry",
+      "alert": true,
+      "restored": true,
+      "recovered": true,
+      "errorRemoved": true,
+      "loadingRemoved": true,
+      "cleanDiagnostics": true,
+      "width": 390
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "devlog/260715_production_upgrade/qa/final-index-1440.png",
+      "sha256": "1ab6a82a925c8b76a138e1666b29d4f65be9de8fb7a2f95e4abe01c5d7edd5bf",
+      "width": 1440,
+      "height": 900,
+      "page": "index",
+      "viewportWidth": 1440,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/260715_production_upgrade/qa/final-effects-1440.png",
+      "sha256": "10c7d0f58fcb5fdbbfeee1f4ca88a6ce1e7d4fe955591c5ddf62f7a6cb435deb",
+      "width": 1440,
+      "height": 900,
+      "page": "effects",
+      "viewportWidth": 1440,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/260715_production_upgrade/qa/final-faq-1440.png",
+      "sha256": "6fa266234947c7d19496b3764ceea1078a9429e14d3458fe5d9250855d0c62b2",
+      "width": 1440,
+      "height": 900,
+      "page": "faq",
+      "viewportWidth": 1440,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/260715_production_upgrade/qa/final-index-390.png",
+      "sha256": "ea57f97cbf72db75be69b4f358ccaf0711fe4b5c0060bbbc6795d4b8b0003920",
+      "width": 390,
+      "height": 900,
+      "page": "index",
+      "viewportWidth": 390,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/260715_production_upgrade/qa/final-effects-390.png",
+      "sha256": "b8758c0a76d6454eb9d38815556113c794cdc0fc2669e9ccfba16e07c64b706a",
+      "width": 390,
+      "height": 900,
+      "page": "effects",
+      "viewportWidth": 390,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/260715_production_upgrade/qa/final-faq-390.png",
+      "sha256": "2c5cc178042944ad4680e8e625e291c2efd2732d16423ad0983e0ac6e05e3f0c",
+      "width": 390,
+      "height": 900,
+      "page": "faq",
+      "viewportWidth": 390,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/260715_production_upgrade/qa/final-index-error-390.png",
+      "sha256": "bb3a492867d849cd3b052956a234afe80faf05e16fb1775081ceab4566fb5a50",
+      "width": 390,
+      "height": 900,
+      "page": "index",
+      "viewportWidth": 390,
+      "state": "error"
+    },
+    {
+      "path": "devlog/260715_production_upgrade/qa/final-effects-error-390.png",
+      "sha256": "e3fafb3c3f7be66b75dfb7c694bd2c2c3bd5b5e4b848e2b7b248321f431ceeff",
+      "width": 390,
+      "height": 900,
+      "page": "effects",
+      "viewportWidth": 390,
+      "state": "error"
+    },
+    {
+      "path": "devlog/260715_production_upgrade/qa/final-faq-error-390.png",
+      "sha256": "2bc72d838c604d2e72c108c78e4f2054fe92f16e150b411c68a5cd546646d14c",
+      "width": 390,
+      "height": 900,
+      "page": "faq",
+      "viewportWidth": 390,
+      "state": "error"
+    }
+  ],
+  "teardown": {
+    "serverExitCode": 0,
+    "browserStopExitCode": 0,
+    "serverPortClosed": true,
+    "cdpPortClosed": true,
+    "profileRemoved": true,
+    "serverSignal": null,
+    "serverForced": false,
+    "browserSessions": 24,
+    "finishedAt": "2026-07-17T08:50:48.622Z"
+  }
+}

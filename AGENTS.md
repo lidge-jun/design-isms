@@ -4,7 +4,7 @@
 49개 디자인 ism의 시각적 레퍼런스 보드와 64개 프런트엔드 UI 패턴/이펙트 카탈로그. GitHub Pages 배포.
 - **라이브**: https://lidge-jun.github.io/design-isms/
 - **스택**: 정적 HTML/CSS + TypeScript source → browser JS build
-- **이미지**: GPT Image 2 (gpt-image-2, 1536x1024, high quality)
+- **이미지**: ima2 (`gpt-5.6-sol`, reasoning high, 1536x1024, high quality)
 
 ## 디렉토리 구조
 ```
@@ -57,13 +57,22 @@
 
 ## 현재 구현 불변 조건
 
+<!-- data-sot:agents-counts:start -->카탈로그 source-of-truth 카운트: 49 ISMs / 64 effects / 18 FAQ answers.<!-- data-sot:agents-counts:end -->
+
 - README, `AGENTS.md`, `structure/README.md`, `devlog/`의 설명은 실제 구현과 어긋나면 안 된다.
 - 소스는 `src/*.ts`, 브라우저 산출물은 `assets/js/*.js`다. GitHub Pages가 static file을 직접 배포하므로 JS 산출물도 커밋 대상이다.
 - HTML은 non-module script를 사용한다. `effects.html`은 `assets/js/effects-demos.js`를 먼저, `assets/js/effects.js`를 나중에 로드해야 한다.
 - 상단 메뉴는 `index.html`, `effects.html`, `faq.html` 세 페이지에서 `Isms / Effects / FAQ / GitHub / Lang / Count` 6축을 같은 순서로 유지한다. static HTML이라 공통 컴포넌트가 없으므로 세 페이지를 함께 수정하고, `npm run verify:nav`(`scripts/verify-nav.mjs`)가 축 순서/단일 `aria-current`/count 라벨/skip link를 검증한다.
 - 페이지 전용 CSS는 inline `<style>`이 아니라 `assets/css/*.css` 파일로 둔다. FAQ는 `assets/data/faq.json` + `src/faq.ts` + `assets/css/faq.css`로 렌더링하며 `faq.html`은 thin entry 문서다.
 - 셸 토큰은 `assets/css/theme-atlas.css`가 소유한다(로드 순서: `style.css` → `theme-atlas.css` → `nav.css` → 페이지 CSS). 셸 UI에 이모지 글리프를 쓰지 않는다(브랜드 마크는 `assets/icons/atlas-mark.svg`).
-- `index.html`은 `assets/js/app-dialog.js`(전역 `AppDialogA11y`)를 `assets/js/app.js`보다 먼저 로드해야 한다.
+- `index.html`은 `assets/js/app-dialog.js`(전역 `AppDialogA11y`)와 `assets/js/app-runtime.js`(전역 `AppRuntime`)를 `assets/js/app.js`보다 먼저 로드해야 한다. `effects.html`, `faq.html`도 페이지 렌더러보다 `app-runtime.js`를 먼저 로드한다.
+- 세 페이지의 안전한 storage/history 접근, loading overlay 종료, 재시도 가능한 치명 오류, 이미지 fallback은 `src/app-runtime.ts`와 `assets/css/runtime-states.css`가 공통 소유한다.
+- `npm run verify`는 파일을 생성하지 않는다. `src/*.ts`를 수정하면 먼저 `npm run build`로 `assets/js/*.js`를 갱신한 뒤 verify를 실행한다.
+- `data-sot:*` 마커는 `scripts/sync-sot.mjs`만 수정한다. `npm run sot:check`는 49/64/18 값을 데이터에서 유도하고, `npm run sot:sync`는 검증된 마커 내부만 원자적으로 갱신한다.
+- 전체 211 PNG/WebP 쌍의 해시 SoT는 `assets/data/image-pairs-manifest.json`이다. `npm run images:thumbs`가 source/preview SHA와 독립 픽셀 관계(MAE ≤18)를 기준으로 재생성 여부를 결정하고 manifest를 원자 갱신한다.
+- 완성판 이미지 품질 SoT는 `091_image_quality_audit.csv`, `092_image_generation_attempts/`, immutable 093–097 baseline, 그리고 098 final sheet receipt다. `npm run verify:image-quality`는 211개 슬롯, 승인된 교체, 프롬프트 provenance, 비대상 byte 안정성을 비생성 방식으로 검증한다.
+- `--bootstrap-manifest`는 감사된 최초 이관 전용이며 기존 manifest가 있으면 거부된다. manifest 누락을 일반 생성으로 재신뢰하지 않는다.
+- 공개 배포 입력은 `npm run pages:stage`가 만드는 `.pages/`뿐이다. `.github/workflows/deploy.yml`은 verify와 stage 이후 `.pages`만 업로드한다.
 - 신규 파일은 500줄 이하를 유지한다. 초과하면 역할별 파일로 분리한다.
 - 커밋/푸시는 사용자가 같은 턴에서 명시적으로 요청한 경우에만 실행한다.
 
@@ -107,6 +116,7 @@
 - 현재 확인된 생성 명령은 `ima2 gen --stdin -q high -s 1536x1024 -o <target.png> --json --timeout 300`이다.
 - 여러 job은 deterministic manifest에서 target path를 먼저 확정한 뒤 병렬 실행한다.
 - 생성 후 `npm run images:thumbs`로 WebP preview를 만들고 원본 PNG와 WebP preview 존재 여부를 모두 검증한다.
+- `npm run images:thumbs` 후 `assets/data/image-pairs-manifest.json`의 해당 source/preview SHA가 갱신되었는지 확인한다.
 - runtime grid/card/modal preview는 WebP 우선이다. PNG는 lightbox/source asset 용도다.
 
 ---

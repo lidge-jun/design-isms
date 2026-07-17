@@ -9,21 +9,12 @@
     let data = null;
     let locale = readLocale();
     let openItemId = null;
+    let loadPromise = null;
     function readLocale() {
-        try {
-            return localStorage.getItem(localeKey) === 'en' ? 'en' : 'ko';
-        }
-        catch (_error) {
-            return 'ko';
-        }
+        return AppRuntime.readStorage(localeKey) === 'en' ? 'en' : 'ko';
     }
     function saveLocale(nextLocale) {
-        try {
-            localStorage.setItem(localeKey, nextLocale);
-        }
-        catch (_error) {
-            // Storage can be unavailable in privacy modes; the current page still updates.
-        }
+        AppRuntime.writeStorage(localeKey, nextLocale);
     }
     function isRecord(value) {
         return typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -258,15 +249,31 @@
         });
     }
     function showError(error) {
-        const block = document.createElement('div');
-        block.className = 'faq-error';
-        block.setAttribute('role', 'alert');
-        block.textContent = locale === 'ko'
-            ? 'FAQ를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.'
-            : 'The FAQ could not be loaded. Please try again later.';
-        mount.replaceChildren(block);
         mount.setAttribute('aria-busy', 'false');
         console.error('FAQ load failed:', error);
+        AppRuntime.renderFatal(mount, locale === 'ko'
+            ? { title: 'FAQ를 불러오지 못했습니다', body: '연결을 확인한 뒤 다시 시도해 주세요.', retry: '다시 시도' }
+            : { title: 'Could not load the FAQ', body: 'Check the connection and try again.', retry: 'Try again' }, () => { void loadFaq(); });
+    }
+    function loadFaq() {
+        if (loadPromise)
+            return loadPromise;
+        mount.setAttribute('aria-busy', 'true');
+        loadPromise = fetch('./assets/data/faq.json')
+            .then((response) => {
+            if (!response.ok)
+                throw new Error(`FAQ request failed with status ${response.status}`);
+            return response.json();
+        })
+            .then((value) => {
+            validateData(value);
+            data = value;
+            render();
+            updateLocaleToggle();
+        })
+            .catch(showError)
+            .finally(() => { loadPromise = null; });
+        return loadPromise;
     }
     const langToggle = document.getElementById('lang-toggle');
     langToggle?.addEventListener('click', () => {
@@ -276,17 +283,5 @@
         updateLocaleToggle();
     });
     updateLocaleToggle();
-    fetch('./assets/data/faq.json')
-        .then((response) => {
-        if (!response.ok)
-            throw new Error(`FAQ request failed with status ${response.status}`);
-        return response.json();
-    })
-        .then((value) => {
-        validateData(value);
-        data = value;
-        render();
-        updateLocaleToggle();
-    })
-        .catch(showError);
+    void loadFaq();
 })();

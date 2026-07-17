@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-07-17T08:50:42.741Z",
+  "commands": [
+    {
+      "id": "npm-ci",
+      "command": [
+        "npm",
+        "ci"
+      ],
+      "startedAt": "2026-07-17T08:50:24.580Z",
+      "finishedAt": "2026-07-17T08:50:25.223Z",
+      "exitCode": 0,
+      "signal": null,
+      "outputSha256": "a7000c1edb3a8568ea78f83d7f2ba87da182e2f7b306a311c8fc0cc149a39f85",
+      "outputTail": "\nadded 7 packages, and audited 8 packages in 573ms\n\n3 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\n"
+    },
+    {
+      "id": "verify",
+      "command": [
+        "npm",
+        "run",
+        "verify"
+      ],
+      "startedAt": "2026-07-17T08:50:25.224Z",
+      "finishedAt": "2026-07-17T08:50:41.433Z",
+      "exitCode": 0,
+      "signal": null,
+      "outputSha256": "90df12ab08eb65476427a5b548ca6699016ffe59128389f523acaeab6250fc0b",
+      "outputTail": "\n> design-isms@0.1.0 verify\n> npm run typecheck && npm run verify:generated && npm run verify:nav && npm run verify:isms && npm run verify:effects && npm run verify:snippets && npm run verify:finder && npm run verify:content && npm run verify:assets && npm run verify:image-quality && npm run verify:lines\n\n\n> design-isms@0.1.0 typecheck\n> tsc -p tsconfig.json --noEmit\n\n\n> design-isms@0.1.0 verify:generated\n> node scripts/verify-generated.mjs\n\ngenerated ok: 12 TypeScript outputs match committed browser JS\n\n> design-isms@0.1.0 verify:nav\n> node scripts/verify-nav.mjs\n\nnav ok: index.html, effects.html, faq.html; axes=6; order consistent\n\n> design-isms@0.1.0 verify:isms\n> node scripts/verify-isms.mjs\n\nisms ok: 49 entries, 49 guides, 147 png, 147 webp, 6 sourced additions, 1 anti-pattern\n\n> design-isms@0.1.0 verify:effects\n> node scripts/verify-effects.mjs\n\neffects ok: 64 entries, 64 docs, 64 png, 64 webp, 7 families\n\n> design-isms@0.1.0 verify:snippets\n> node scripts/verify-snippets.mjs\n\nsnippets ok: 64 ids, 64 html, 64 css, 50 js, 0 unsafe, 0 unscoped\n\n> design-isms@0.1.0 verify:finder\n> node scripts/verify-finder.mjs\n\nfinder ok: 3 questions, 16 options, 144 combinations, 432 deterministic results, 49 prompt packs\n\n> design-isms@0.1.0 verify:content\n> node scripts/verify-content.mjs\n\ncontent ok: 3 pages, 18 FAQ items, local references and metadata verified\n\n> design-isms@0.1.0 verify:assets\n> node scripts/verify-assets.mjs\n\nassets ok: 211 PNG/WebP pairs, hashes and dimensions verified\n\n> design-isms@0.1.0 verify:image-quality\n> node scripts/verify-image-quality.mjs\n\nimage quality ok: 211 audited, 2 replaced, 4 final sheets, no unapproved drift\n\n> design-isms@0.1.0 verify:lines\n> node scripts/verify-line-limits.mjs\n\nlines ok: 58 governed files, 3 explicit legacy ceilings\n"
+    },
+    {
+      "id": "images-audit",
+      "command": [
+        "npm",
+        "run",
+        "images:audit"
+      ],
+      "startedAt": "2026-07-17T08:50:41.433Z",
+      "finishedAt": "2026-07-17T08:50:41.746Z",
+      "exitCode": 0,
+      "signal": null,
+      "outputSha256": "6f23fb561e4ed47a6c04977cd3b5f14681c3e27683af50489e6d34735e639933",
+      "outputTail": "\n> design-isms@0.1.0 images:audit\n> node scripts/audit-effect-guides.mjs\n\neffect guides ok: 64 pairs, hashes manifest-bound, 0 invalid, 0 orphan\n"
+    },
+    {
+      "id": "pages-stage",
+      "command": [
+        "npm",
+        "run",
+        "pages:stage"
+      ],
+      "startedAt": "2026-07-17T08:50:41.746Z",
+      "finishedAt": "2026-07-17T08:50:42.459Z",
+      "exitCode": 0,
+      "signal": null,
+      "outputSha256": "91296213abd811065bcaaa46dbab351b8443debcccabec470bf0d716201dfc1b",
+      "outputTail": "\n> design-isms@0.1.0 pages:stage\n> node scripts/stage-pages.mjs\n\npages staged: 3 HTML, 211 PNG, 211 WebP, 0 forbidden; 464 files + manifest\n"
+    },
+    {
+      "id": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "startedAt": "2026-07-17T08:50:42.459Z",
+      "finishedAt": "2026-07-17T08:50:42.499Z",
+      "exitCode": 0,
+      "signal": null,
+      "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "outputTail": ""
+    }
+  ],
+  "stage": {
+    "counts": {
+      "html": 3,
+      "png": 211,
+      "webp": 211,
+      "forbidden": 0
+    },
+    "files": 464,
+    "manifestSha256": "41a026fc97fa477b1b1e5408d3141c0c9853ac80fddf37d24290a4008f3a3f9a"
+  },
+  "governedTreeSha256": "fee116e9965ee106f1c016955499dc808e58f2a5150682195cbbdbb5d956ea34",
+  "governedFileCount": 600
+}

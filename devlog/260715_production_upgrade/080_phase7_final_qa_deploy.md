@@ -1,445 +1,213 @@
-# 080 — Final QA, Source-of-Truth Sync, and GitHub Pages Deploy
+# 080 — Release Integrity and Public Pages Staging
 
-## Outcome
+## Loop specification
 
-Turn all phase checks into one release gate, verify the three production pages at 1440px and 390px, stage only public files, synchronize counts/features, commit and push the reviewed branch, and prove that the Pages run for the merged commit succeeded.
+- Archetype: repair and hardening
+- Trigger: Phases 020–070 and the completion-pass runtime residual phase are implemented, but
+  the release surface still lacks parity, content/asset/hygiene, and public-artifact gates.
+- Goal: make `npm run verify` prove the committed static runtime and make GitHub Pages upload
+  an allowlisted `.pages/` tree instead of the repository root.
+- Non-goals: no visual redesign, catalog replacement, image generation, Playwright/Python
+  dependency, commit, push, workflow dispatch, or deployment.
+- Verifier: focused script activation checks, `npm run verify`, `npm run pages:stage`,
+  `git diff --check`, and inspection of `.pages/manifest.json`.
+- Stop: all new gates pass with current 49/64/18/422 contracts and `.pages/` contains no source,
+  devlog, tests, dependencies, or VCS metadata.
+- Memory: this document, `009_2_gpt_pro_artifact_provenance.md`, goalplan ledger.
+- Escalation: two identical validator failures enter root-cause mode; a dependency need or a
+  proposed weakening of current invariants is `NEEDS_HUMAN`.
+- HOTL bounds: local repo and `/tmp` writes only; existing npm dependencies only; one PABCD
+  cycle; no remote state change.
 
-```text
-49 ISMs · 49 ISM guides · 64 effects · 64 effect docs · 64 snippets
-147 ISM PNG + 147 ISM WebP · 64 effect PNG + 64 effect WebP
-18 FAQ answers · 3 public pages · 6 navigation axes per page
-```
+## Stale-check findings
 
-## Dependencies
+The old 080 plan incorrectly said the current deploy workflow lacked Node/npm verification.
+The live workflow already uses Node 20, `npm ci`, and `npm run verify`; its real gap is
+`upload-pages-artifact path: '.'`. GPT's overlay correctly identifies the missing hardening
+class, but its runtime rewrites, SVG placeholders, and Python Playwright harness are rejected.
 
-- **Requires:** 010, 011, and every implementation phase 020–070.
-- **Final phase:** any failure returns to the owning phase; no post-deploy count patch is acceptable.
-
-GitHub Pages custom workflows should configure Pages, upload a dedicated artifact, and deploy that artifact; stop uploading the whole repository root. [Source: https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages]
-
-Playwright’s web-server configuration supplies the local static site, and assertions should auto-wait rather than use arbitrary sleeps. [Source: https://playwright.dev/docs/test-webserver] [Source: https://playwright.dev/docs/test-assertions]
-
-## Release preflight
-
-The local loop workspace is authoritative. Do not fetch/rebase over accumulated phase commits
-or user changes. Verify branch/state and the observed deployment baseline:
-
-```bash
-git status --short
-test -n "$(git branch --show-current)"
-git log --oneline --decorate --max-count=8
-npm ci
-```
-
-Required: named `codex/` branch (create it before the first phase commit if detached), complete
-image tree, and reviewed local changes. The current deploy workflow has checkout/configure/
-upload/deploy only; this phase adds Node 20, `npm ci`, verify, browser QA, and staging.
-
-## File operations
-
-| Marker | Exact paths | Purpose |
-|---|---|---|
-| **MODIFY** | `.gitignore` | Extend the Phase 030 file: dependencies, `.pages`, browser reports, caches, and OS metadata. |
-| **NEW** | `.github/workflows/ci.yml` | Pull-request verify + Chromium gate. |
-| **NEW** | `scripts/sync-sot.mjs` | Marked `--write` / `--check` count synchronization. |
-| **NEW** | `scripts/verify-content.mjs`, `scripts/verify-assets.mjs` | Final cross-data/count/reference and image-pair verification. |
-| **NEW** | `scripts/verify-generated.mjs`, `scripts/verify-line-limits.mjs` | Committed JS parity and repository constraints. |
-| **NEW** | `scripts/stage-pages.mjs`, `scripts/serve-static.mjs` | Allowlisted Pages artifact and local test server. |
-| **NEW** | `playwright.config.ts`, `tests/site.spec.ts` | Desktop/mobile release tests. |
-| **MODIFY** | `.github/workflows/deploy.yml` | Verify, browser-test, stage `.pages`, upload, deploy. |
-| **MODIFY** | `package.json`, `package-lock.json` | Final scripts and exact Playwright dependency. |
-| **MODIFY** | `index.html`, `effects.html`, `faq.html` | Final counts, metadata, cache version, and SoT markers. |
-| **MODIFY** | `README.md`, `AGENTS.md`, `structure/README.md` | Final 49/64/18 features, invariants, and tree. |
-| **MODIFY** | `scripts/verify-nav.mjs`, `scripts/audit-effect-guides.mjs`, `scripts/verify-isms.mjs`, `scripts/verify-effects.mjs`, `scripts/verify-snippets.mjs`, `scripts/verify-finder.mjs` | Reuse/export checks; remove contradictory count constants. |
-| **DELETE** | `.DS_Store`, `assets/.DS_Store`, `devlog/.DS_Store` | Remove tracked macOS metadata. |
-| **DELETE** | audit-identified orphan/rejected assets only | Keep every data-referenced accepted pair. |
-
-## 1. Source-of-truth markers
-
-Mark intentionally hardcoded public values:
-
-```html
-<meta name="description" data-sot="ism-count" content="49개 디자인 ism의 ...">
-<span class="header-count" data-nav-axis="count" data-sot-count="isms">49 isms</span>
-<p data-sot-count="effects">64 patterns ...</p>
-```
-
-Markdown uses bounded regions:
-
-```md
-<!-- sot:counts:start -->
-49 design ISMs · 64 effects · 18 FAQ answers
-<!-- sot:counts:end -->
-```
-
-`scripts/sync-sot.mjs` reads JSON and supports:
-
-```bash
-node scripts/sync-sot.mjs --write
-node scripts/sync-sot.mjs --check
-```
-
-It may edit only marked regions in `index.html`, `effects.html`, `faq.html`, `README.md`, `AGENTS.md`, and `structure/README.md`; no broad prose replacement. Labels are DERIVED from JSON lengths (`{isms.length} isms`, `{effects.length} effects`, `{faq items} answers`) so the synchronizer survives catalog growth; `49/64/18` are this phase's acceptance expectations, not constants embedded in the script. Clearly dated devlog baselines may retain old values.
-
-## 2. Final content verifier
-
-`scripts/verify-content.mjs` calls/reuses phase validators and prints:
+Current release gaps:
 
 ```text
-content ok: 49 isms, 49 guides, 64 effects, 64 effect docs, 64 snippets, 18 faq answers
+.github/workflows/ci.yml                 absent
+scripts/sync-sot.mjs                     absent
+scripts/verify-content.mjs               absent
+scripts/verify-assets.mjs                absent
+scripts/verify-generated.mjs             absent
+scripts/verify-line-limits.mjs           absent
+scripts/stage-pages.mjs                  absent
+scripts/serve-static.mjs                 absent
+effects.html OG/Twitter count            stale at 46
+.github/workflows/deploy.yml upload path  repository root
 ```
 
-It must enforce:
-
-1. every JSON file parses; IDs/keys are unique;
-2. ISM IDs equal guide IDs and contain the six planned additions;
-3. effect IDs equal docs, snippets, and demo-type IDs; every `id === demo.type`;
-4. only `ai-slop` is an anti-pattern and Finder never boosts/returns it positively;
-5. FAQ has 3 categories, 18 unique bilingual items, sources, and none of Phase 020’s stale headings/unsupported metrics;
-6. each public page has canonical/description/OG/Twitter/favicons and one current nav item;
-7. every local `href`, `src`, data URL, icon, guide, and thumbnail resolves in the staged site;
-8. no production `http:` URL except explicit loopback test/docs examples;
-9. no `javascript:` URL, authored inline `on*=` handler, or snippet execution surface;
-10. no `TODO`, `TBD`, `lorem ipsum`, `generating...`, or “guide coming soon” in shipped data/UI;
-11. `sync-sot --check` passes; cache/data versions use one release convention;
-12. README/AGENTS/structure describe shipped behavior, not the roadmap.
-
-Do not fetch third-party example sites in CI; validate HTTPS syntax/uniqueness automatically and retain Phase 040’s dated manual review.
-
-## 3. Final asset verifier
-
-`scripts/verify-assets.mjs` prints:
-
-```text
-assets ok: 147 ism png, 147 ism webp, 64 effect png, 64 effect webp, 0 invalid, 0 stale, 0 orphan
-```
-
-Rules: derive expectations from all 49 `images[]` and all 64 `guide.file` values; originals are PNG `1536×1024`; previews are WebP `768×512` and fresh; reject missing/extra/orphan/zero-byte/corrupt/duplicate-hash originals **within the scoped catalog roots only** — orphan detection scans exactly `assets/images/{ism-id}/`, `assets/images/effects/`, and their `assets/images/thumbs/` mirrors, with an explicit allowlist for shared non-catalog rasters (verify the actual allowlist against the tree at implementation time; anything outside the scoped roots is ignored, not failed); catalog previews use WebP and lightboxes use originals; filenames stay lowercase and inside expected roots; print aggregate bytes and ten largest files. Fail closed when `assets/images` is missing.
-
-## 4. Generated JS parity
-
-`scripts/verify-generated.mjs` creates `.tmp/verify-js`, compiles with the repository's actual `tsconfig.json` (overriding only `outDir`, never module/target/strict flags — reconstructing a config would emit different output), byte-compares its JS set with `assets/js`, reports missing/stale files, and removes temp output in `finally`.
-
-```text
-generated js ok: N source files, N committed browser files, 0 stale
-```
-
-Do not use Git staging state or compare minified output.
-
-## 5. Line limits and hygiene
-
-`scripts/verify-line-limits.mjs` enforces:
-
-- `src/app.ts <= 1050` lines (the Phase 040 extraction target; the final gate must not permit regression against it);
-- every file introduced by this roadmap is below 500 physical lines;
-- compact `finder-config.json` and `effects-snippets.json` are below 500 lines;
-- no `.DS_Store`, swap/backup files, accidental executables, committed dependency/caches, `.pages`, `.tmp`, Playwright reports, or test results.
-
-`.gitignore`:
-
-```gitignore
-node_modules/
-.pages/
-.tmp/
-playwright-report/
-test-results/
-coverage/
-dist/
-build/
-.next/
-.turbo/
-.venv/
-venv/
-__pycache__/
-.pytest_cache/
-.DS_Store
-*.swp
-*.tmp
-```
-
-## 6. Final package scripts
-
-```json
-{
-  "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "images:thumbs": "node scripts/generate-thumbnails.mjs",
-    "sot:sync": "node scripts/sync-sot.mjs --write",
-    "sot:check": "node scripts/sync-sot.mjs --check",
-    "verify:generated": "node scripts/verify-generated.mjs",
-    "verify:nav": "node scripts/verify-nav.mjs",
-    "verify:content": "node scripts/verify-content.mjs",
-    "verify:assets": "node scripts/verify-assets.mjs",
-    "verify:snippets": "node scripts/verify-snippets.mjs",
-    "verify:finder": "node scripts/verify-finder.mjs",
-    "verify:lines": "node scripts/verify-line-limits.mjs",
-    "verify": "npm run typecheck && npm run build && npm run verify:generated && npm run verify:nav && npm run verify:content && npm run verify:assets && npm run verify:snippets && npm run verify:finder && npm run verify:lines",
-    "serve": "node scripts/serve-static.mjs --root . --port 4173",
-    "qa:e2e": "playwright test",
-    "pages:stage": "node scripts/stage-pages.mjs",
-    "qa:release": "npm run verify && npm run qa:e2e && npm run pages:stage"
-  }
-}
-```
-
-Install/lock the actual current test dependency instead of inventing a version:
-
-```bash
-npm install --save-dev --save-exact @playwright/test
-npx playwright install chromium
-```
-
-## 7. Static server
-
-`scripts/serve-static.mjs` parses `--root/--port`, binds `127.0.0.1`, maps `/` to `index.html`, rejects traversal/directory listing, serves correct MIME types for HTML/CSS/JS/JSON/SVG/PNG/WebP, supports `HEAD`, sends `Cache-Control: no-store`, returns clear 404/405, and closes on SIGINT/SIGTERM.
-
-Expected ready line:
-
-```text
-static server ready: http://127.0.0.1:4173 (root=.)
-```
-
-## 8. Playwright configuration
-
-```ts
-export default defineConfig({
-  testDir: './tests',
-  fullyParallel: false,
-  retries: process.env.CI ? 1 : 0,
-  reporter: process.env.CI ? [['line'], ['html', { open: 'never' }]] : 'line',
-  use: {
-    baseURL: process.env.BASE_URL ?? 'http://127.0.0.1:4173',
-    trace: 'retain-on-failure',
-    screenshot: 'only-on-failure'
-  },
-  projects: [
-    { name: 'desktop-1440', use: { browserName: 'chromium', viewport: { width: 1440, height: 900 } } },
-    { name: 'tablet-1024', use: { browserName: 'chromium', viewport: { width: 1024, height: 900 } } },
-    { name: 'mobile-boundary-640', use: { browserName: 'chromium', viewport: { width: 640, height: 900 } } },
-    { name: 'mobile-390', use: { browserName: 'chromium', viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true } }
-  ],
-  // BASE_URL set (production smoke) → no local server; otherwise serve the repo root.
-  webServer: process.env.BASE_URL ? undefined : {
-    command: 'node scripts/serve-static.mjs --root . --port 4173',
-    url: 'http://127.0.0.1:4173/index.html',
-    reuseExistingServer: !process.env.CI
-  }
-});
-```
-
-Chromium is the required release gate; do not claim unrun cross-browser coverage.
-
-## 9. Browser test matrix
-
-`tests/site.spec.ts` covers all four configured viewports:
-
-```text
-/index.html, /effects.html, /faq.html × 1440 / 1024 / 640 / 390
-```
-
-Every matrix case attaches console/pageerror/same-origin request-failure listeners before navigation; waits on page-specific readiness; checks title/main/header/footer; checks exact six-axis nav order and one current item; checks `49 isms` / `64 effects` / `18 answers`; verifies `scrollWidth <= innerWidth`; verifies visible images have nonzero natural dimensions and first controls show visible focus; and finishes with zero collected errors.
-
-### Index tests
-
-- 49 cards; card modal dialog/focus trap/Escape/focus return;
-- CSS/Tailwind/JSON export, copied JSON parses, stable light/dark token output;
-- three representative Finder combinations produce three unique non-`ai-slop` IDs;
-- Finder-result modal returns focus;
-- AI Slop shows anti-pattern label and De-slop Audit Prompt;
-- prompt/copy dispatches success, plus a rejected clipboard test shows manual-copy fallback.
-
-### Effects tests
-
-- 64 cards; family/device/search filters update result count;
-- one effect from each of seven families has docs, guide, HTML/CSS and copy;
-- pointer effect is static on mobile/coarse pointer;
-- view-transition effect succeeds or falls back without error;
-- reduced-motion emulation leaves final content visible and pauses ambient loops.
-
-### FAQ tests
-
-- 18 questions; first toggles `aria-expanded`/visibility;
-- ArrowDown/Home/End work;
-- locale switch preserves expanded ID and changes text;
-- source links have safe external attributes.
-
-## 10. Stage only public Pages files
-
-`scripts/stage-pages.mjs` deletes/recreates `.pages` and copies only:
-
-```text
-index.html, effects.html, faq.html, favicon.svg
-assets/css/**, assets/data/**, assets/js/**, assets/images/**
-CNAME and robots.txt only if present; create .nojekyll if absent
-```
-
-Reject symlinks/traversal, `.DS_Store`, temp/rejected variants, and dotfiles except `.nojekyll`. Preserve paths/case; validate references against `.pages`; assert no `src`, `scripts`, `tests`, `docs`, `devlog`, `.git`, `node_modules`, manifests, TS config, reports, or caches.
-
-Expected summary defines raster images separately from shared SVG icons:
-
-```text
-pages stage ok: 3 html, N css, N js, N json, 422 raster images, 4 shared svg icons, 0 forbidden
-```
-
-`422 = 147 + 147 + 64 + 64`; favicon is reported separately.
-
-## 11. GitHub Actions
-
-### **NEW** `.github/workflows/ci.yml`
-
-```yaml
-name: Verify
-on:
-  pull_request:
-    branches: [main]
-permissions:
-  contents: read
-concurrency:
-  group: verify-${{ github.ref }}
-  cancel-in-progress: true
-jobs:
-  verify:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 20.x, cache: npm }
-      - run: npm ci
-      - run: npm run verify
-      - run: npx playwright install --with-deps chromium
-      - run: npm run qa:e2e
-```
-
-### **MODIFY** `.github/workflows/deploy.yml`
-
-Retain Pages permissions/environment/main trigger and extend the actual current steps (which
-do not yet set up Node or run verify):
-
-```diff
-  - uses: actions/checkout@v4
-+ - uses: actions/setup-node@v4
-+   with: { node-version: 20.x, cache: npm }
-+ - run: npm ci
-+ - run: npm run verify
-+ - run: npx playwright install --with-deps chromium
-+ - run: npm run qa:e2e
-+ - run: npm run pages:stage
- - uses: actions/configure-pages@v5
- - uses: actions/upload-pages-artifact@v3
-   with:
--    path: '.'
-+    path: '.pages'
- - id: deployment
-   uses: actions/deploy-pages@v4
-```
-
-Feature branches run PR CI; Pages deploy remains `main`/manual only.
-
-## 12. Final documentation sync
-
-`README.md` must show current badges/status, Live/Effects/FAQ/Repo links, Finder/export/prompt/snippet/anti-pattern features, authored/generated workflow, image totals, release commands, and honest Chromium 1440/390 scope. Do not claim a license unless a root license exists or deployment success before it occurs.
-
-`AGENTS.md` freezes non-module load order, TS→committed-JS rule, line limits, six nav axes, 49/64/18 invariants, `id === demo.type`, image pairs/dimensions, anti-pattern recommendation exclusion, verification, generated-file rule, and Pages allowlist.
-
-`structure/README.md` shows source versus generated JS, data owners, 49×3 ISM assets, 64×1 effect guides, export/Finder files, validators/tests/workflows, and `.pages` as ignored temporary output.
-
-## 13. Local release sequence
-
-```bash
-npm ci
-npm run sot:sync
-npm run images:thumbs -- --force
-npm run build
-npm run verify
-npx playwright install chromium
-npm run qa:e2e
-npm run pages:stage
-git diff --check
-git status --short
-```
-
-Expected: build exit 0; verify prints all final summaries; all four Playwright projects (desktop-1440, tablet-1024, mobile-boundary-640, mobile-390) pass; staging reports expected public files/0 forbidden; no whitespace error or ignored output staged.
-
-Inspect before commit:
-
-```bash
-git diff --stat
-git diff -- README.md AGENTS.md structure/README.md
-git status --short | grep -E '(node_modules|\.pages|\.tmp|test-results|playwright-report)' && exit 1 || true
-```
-
-## 14. Commit, push, merge, and deploy proof
-
-Keep the phase commits from `00_plan.md` or equivalent focused commits. Final commit/push:
-
-```bash
-git add index.html effects.html faq.html assets src scripts tests package.json \
-  package-lock.json README.md AGENTS.md structure .github .gitignore devlog/260715_production_upgrade
-git status --short
-git commit -m "test: add production QA and sync documentation"
-git push -u origin HEAD
-```
-
-When project policy uses PRs:
-
-```bash
-gh pr create --fill --base main --head "$(git branch --show-current)"
-gh pr checks --watch
-gh pr merge --squash --delete-branch
-MERGE_SHA="$(gh api repos/lidge-jun/design-isms/commits/main --jq .sha)"
-```
-
-Watch the deploy run for **that SHA**, not merely the latest green run:
-
-```bash
-for attempt in {1..20}; do
-  RUN_ID="$(gh run list --workflow deploy.yml --branch main --limit 30 \
-    --json databaseId,headSha,event,createdAt --jq --arg sha "$MERGE_SHA" \
-    '.[] | select(.headSha == $sha) | .databaseId' | head -1)"
-  test -n "$RUN_ID" && break
-  sleep 3
-done
-test -n "$RUN_ID"
-gh run watch "$RUN_ID" --exit-status
-gh run view "$RUN_ID" --json headSha,conclusion,url --jq .
-```
-
-Expected: `headSha == MERGE_SHA`, `conclusion == success`.
-
-Verify live responses:
-
-```bash
-for path in '' 'effects.html' 'faq.html'; do
-  curl --fail --silent --show-error --location \
-    "https://lidge-jun.github.io/design-isms/$path" >/dev/null
-done
-```
-
-Run the defined production smoke project (no local webServer when BASE_URL is supplied):
-
-```bash
-BASE_URL=https://lidge-jun.github.io/design-isms/ npm run qa:e2e -- --grep @smoke
-```
-
-Confirm 49/64/18 and one new asset per feature return 200.
-
-## 15. Failure and rollback policy
-
-- Static/data failure: fix the owning phase; never bypass a verifier.
-- Image failure: restore/regenerate/re-review the pair; never delete JSON to pass counts.
-- 390px overflow, console error, or broken focus: release blocker.
-- Deploy failure: inspect configure/upload/deploy steps; do not push unrelated retrigger commits.
-- Live mismatch after green deploy: inspect staged artifact/cache version; revert the offending phase or merge.
-- Emergency rollback commands (requires the same explicit push authority already granted):
-  `git revert <merge-sha>`, `git push origin main`, capture `ROLLBACK_SHA=$(git rev-parse HEAD)`,
-  locate/watch the deploy run for that exact SHA with the bounded loop above, then rerun the
-  live curl and `@smoke` checks. Never force-push `main`.
-- Record failed run URL, root cause, fix SHA, and successful run in the PR/release record.
+## Scope boundary
+
+IN: release scripts, package scripts, count markers/metadata, ignored stage output, CI workflow,
+and Pages staging path. OUT: browser test framework, runtime feature code, image content,
+catalog JSON replacement, generated prompt registry, vendored TypeScript, `dist/`, deployment.
+This phase depends on `100_phase9_ui_residuals.md`; the new content gate therefore starts from a
+tree where inline `onerror` and `generating...` have already been removed.
+
+## Diff-level path manifest
+
+| Marker | Exact path | Before → after |
+| --- | --- | --- |
+| MODIFY | `.gitignore` | only `node_modules`, `.tmp`, `.DS_Store` → also ignore `.pages/`, QA captures, coverage, swap/backup files |
+| NEW | `scripts/sync-sot.mjs` | no bounded count checker → derive 49/64/18 from JSON; require exactly one non-nested start/end pair per marker, reject malformed layouts before mutation, and make atomic `--write` changes only inside `data-sot-*` regions while proving outside-region hashes unchanged |
+| NEW | `scripts/verify-content.mjs` | validators are separate → `--root <fixture-root>` capable cross-file checks for FAQ parity, metadata counts, local references, forbidden placeholder prose/inline handlers |
+| NEW | `scripts/verify-assets.mjs` | effect audit only → `--root <fixture-root>` capable check of all 147 ISM and 64 Effect PNG/WebP pairs, dimensions, exact source/preview hashes against the 211-row provenance manifest, safe paths, and scoped orphan scan; never use mtimes as freshness evidence |
+| MODIFY | `scripts/generate-thumbnails.mjs` | mtime freshness only → compare current PNG/preview hashes with the manifest, regenerate when source or preview hash drifts, and atomically rewrite the complete sorted manifest after success |
+| NEW | `assets/data/image-pairs-manifest.json` | no all-pair provenance → sorted 211 records with relative PNG/WebP paths, source SHA-256, preview SHA-256, dimensions, manifest schema, and future thumbnail contract; it does not falsely claim which historical encoder produced an existing preview |
+| NEW | `scripts/verify-generated.mjs` | no committed-output parity → accept `--root <fixture-root>`, compile every fixture `src/*.ts` with the installed compiler to OS temp, byte-compare expected `assets/js/*.js`, always clean temp |
+| NEW | `scripts/verify-line-limits.mjs` | limits are prose/partial script checks → governed path table: all `src/*.ts`, `scripts/*.mjs`, `assets/css/*.css` <=500 except explicit existing owners `src/app.ts` 1050, `src/effects.ts` 450, `assets/css/style.css` 1000; tracked hygiene |
+| NEW | `scripts/stage-pages.mjs` | Pages receives entire repo → accept `--root <source-root> --out <stage-dir>`; before deletion reject output equal/ancestor/descendant intersection with allowlisted source and every symlinked component; then recreate stage, copy public allowlist, skip ignored `.DS_Store`, reject symlinks/other unsafe dotfiles and names, write deterministic hashes to `manifest.json` |
+| NEW | `scripts/serve-static.mjs` | no local HTTP harness → loopback-bound GET/HEAD-only server that validates the raw request target before URL normalization, safely decodes and enforces canonical containment, returns MIME/404/405/400, emits `Allow: GET, HEAD`, omits HEAD bodies, and closes gracefully |
+| MODIFY | `package.json` | seven existing verify scripts → add `sot:check`, `sot:sync`, four release validators, `pages:stage`, `serve`; `verify:generated` runs before all other non-emitting checks and `verify` no longer runs emitting `build` |
+| MODIFY | `package-lock.json` | package metadata only if npm updates it; dependency graph must remain byte-equivalent |
+| MODIFY | `index.html`, `effects.html`, `faq.html` | unmarked count text and stale 46 metadata → bounded SoT markers and current 49/64/18 metadata only |
+| MODIFY | `src/app.ts`, `assets/js/app.js` | `Guide coming soon` placeholder fallback → explicit unavailable-state copy; rebuild committed browser output before parity checks |
+| MODIFY | `README.md`, `AGENTS.md`, `structure/README.md` | current runtime docs → add release owners, `.pages/` boundary, and commands; no generated-output claims before proof |
+| NEW | `.github/workflows/ci.yml` | no PR gate → Node 20, `npm ci`, `npm run verify`, `npm run pages:stage`; least-privilege contents read |
+| MODIFY | `.github/workflows/deploy.yml` | verify then upload `.` → verify, stage, upload `.pages`; retain trigger, environment, permissions, deploy step |
+
+No `playwright.config.ts`, `tests/site.spec.ts`, `requirements-dev.txt`, Python harness,
+`asset-mode.json`, SVG placeholders, or replacement runtime files are created.
+
+## Script contracts
+
+### Source-of-truth
+
+Markers are explicit and bounded. Each named marker must have exactly one start and one end,
+in order, with no duplicate, nesting, overlap, or unbalanced token. Validate every target before
+any write. `--write` builds all outputs in memory, proves the before/after text outside marked
+spans is byte-identical, writes sibling temporary files, then atomically renames them. A transient
+transaction journal records `prepared` versus `committed`: startup completely rolls back the
+former and only cleans up backups for the latter, so termination during backup cleanup cannot mix
+old and new files. Any ordinary error leaves every target untouched. `--write` may edit only marked count/metadata values in the three
+HTML files and bounded count blocks added to README/AGENTS/structure. Dated devlogs are immutable.
+The check derives values from `isms.json`, `effects.json`, and flattened FAQ items; it never
+contains 49/64/18 as replacement constants. Fixtures cover duplicate, nested, reversed,
+unbalanced, and stale-but-valid markers plus outside-span before/after hashes.
+
+### Content
+
+Reuse the existing focused validators rather than duplicating their full schemas. Add only
+cross-owner assertions: 18 FAQ items, current metadata/counts, all local runtime references
+resolve, classic-script order remains valid, no authored inline `on*=` handlers, no
+`javascript:`, and no `generating...`, `coming soon`, `TODO`, `TBD`, or lorem in shipped UI/data.
+Phase 100 removed the inline image fallback and `generating...`; this phase also replaces the
+one residual `Guide coming soon` fallback before enabling the new content gate.
+
+### Assets
+
+Derive expected files from `isms[].images[]` and `effects[].guide.file`. Verify PNG
+1536×1024, WebP 768×512, parseability, non-animation, lowercase safe paths, and duplicate
+original hashes. For freshness, require exactly one sorted manifest record per expected pair and
+match both current PNG and WebP SHA-256 plus dimensions; reject missing/extra/duplicate records.
+Independently resize the PNG to 768×512 and compare decoded sRGB pixels to the WebP; mean absolute
+error must be ≤18, so a self-edited manifest cannot bless an unrelated preview while historical
+encoder differences remain valid.
+The thumbnail generator uses the same source-hash mapping to decide regeneration and atomically
+rewrites the manifest only after all outputs succeed. Record the manifest-tool version and the
+production 768×512 cover/centre, WebP quality 72, effort 6, smartSubsample contract for future
+regeneration, but do not attribute a current tool version to historical preview bytes or demand
+byte identity across different historical encoder versions. Do not inspect
+mtimes. Orphan detection is scoped to the 49 ISM directories,
+`assets/images/effects`, and matching thumb mirrors; shared icons are not raster orphans.
+After the audited initial migration, a missing manifest is a hard failure; an explicit
+`--bootstrap-manifest` is one-time only and refuses to overwrite an existing manifest.
+
+### Generated output
+
+Use the installed TypeScript binary and the selected root's real `tsconfig.json`, overriding only
+`outDir`. `npm run verify` begins with `typecheck` then `verify:generated` and never emits files;
+`npm run build` remains the explicit authoring command developers run before verification.
+Compare the complete basename set and bytes. Missing source output, extra committed generated
+output, or stale bytes fail. Temporary output lives under OS temp, not the worktree.
+
+### Public stage
+
+Allowlist: three HTML files, `favicon.svg`, optional `robots.txt`/`sitemap.xml`/`CNAME`, and
+`assets/{css,data,icons,images,js}`. Before removing output, resolve existing path components and
+reject output equal to root, ancestral to root, inside any allowlisted source, or reached through
+a symlinked output/parent component. Inside the repository, only the canonical `.pages` path is
+allowed; filesystem `dev+ino` identity catches case-insensitive aliases before deletion. Optional
+public files are copied only when they are regular non-symlink files. Add `.nojekyll` and a sorted manifest containing path,
+bytes, SHA-256. Assert exactly 3 HTML, 211 PNG, 211 WebP, and no forbidden top-level source.
+
+## Conditional-path activation matrix
+
+| Path | Trigger | Observable proof |
+| --- | --- | --- |
+| stale JS | copy minimum source/config/generated fixture to `/tmp`, alter only fixture JS, run `verify-generated --root` | exact stale fixture path, nonzero; live worktree hashes unchanged |
+| stale metadata | copy minimum HTML/data fixture to `/tmp`, set fixture metadata to `46`, run `verify-content --root` | exact marker error, no live rewrite |
+| missing/corrupt/stale asset | copy manifest plus one malformed/missing pair or alter a fixture source/preview hash, run `verify-assets --root` | exact data owner/path/hash record; live assets unchanged |
+| unsafe stage entry | temporary source fixture with symlink and `.evil` dotfile; output fixtures for `out=root`, `out=assets`, symlink output, and symlink parent | rejection before any deletion/manifest; ignored `.DS_Store` is never copied |
+| traversal/unsupported method | probe raw `..`, `%2e%2e`, `%252e%252e`, `%2f`, `%5c`, malformed encoding, HEAD, and POST | traversal 404, malformed 400, GET/HEAD 200, HEAD body empty, POST 405 with `Allow: GET, HEAD` |
+| line ceiling | fixture adds a 501-line governed file and separately exercises explicit legacy exceptions | governed file fails by exact path; app/effects/style pass only at their declared ceilings |
+| workflow staging | parse workflow after edit | upload path is `.pages` and staging precedes upload |
+
+No activation test alters a live source/generated/asset file. Every destructive case uses a
+minimum copied fixture under OS temp and the explicit `--root`/`--out` seam; before/after hashes
+of the user's effects files prove the live worktree stayed unchanged.
 
 ## Acceptance criteria
 
-Phase 080 completes only when build/verify pass; Playwright passes 1440/1024/640/390 for all
-pages with zero console errors/overflow; `.pages` is allowlisted; README/AGENTS/structure agree;
-only reviewed paths are staged; exact merge SHA has a successful Pages run; and live smoke
-proves index/effects/FAQ with 49/64/18. Do not claim completion before live verification.
+```text
+npm run verify
+  -> non-emitting typecheck/generated parity plus nav/isms/effects/snippets/finder/content/assets/lines all exit 0
+npm run pages:stage
+  -> 3 HTML, 211 PNG, 211 WebP, 0 forbidden, manifest written
+git diff --check
+  -> exit 0
+```
+
+`find .pages` must show no `.git`, `.github`, `src`, `scripts`, `tests`, `docs`, `devlog`,
+`node_modules`, package files, TypeScript config, `.codexclaw`, or user archives. The workflow
+is not run and no deploy success is claimed in this work-phase.
+
+## Implementation evidence — 2026-07-17
+
+Implemented against the existing static tree without adopting the GPT scaffold. `npm run verify`
+is now non-emitting and checks 12 TypeScript/browser-JS pairs before the existing catalog gates.
+The asset manifest contains 211 sorted PNG/WebP records and the thumbnail pipeline reported
+`0 generated, 211 fresh, 211 manifested` during the migration-preserving run.
+
+Fresh positive checks:
+
+```text
+npm run verify
+  -> exit 0; 49 ISMs, 64 effects, 18 FAQ answers, 12 generated outputs
+npm run pages:stage
+  -> 3 HTML, 211 PNG, 211 WebP, 0 forbidden; 464 files + manifest
+.pages/manifest.json audit
+  -> sorted=true, hashes=true, forbidden=[]
+git diff --check
+  -> exit 0
+```
+
+Activated negative paths in OS-temp fixtures:
+
+```text
+stale generated app.js       -> exit 1, exact stale assets/js/app.js; live effects hashes unchanged
+stale SoT count              -> exit 1, effects.html:effects-nav-count
+malformed duplicate marker  -> exit 1; all six target hashes unchanged
+valid SoT sync               -> write/check exit 0; outside-marker hashes unchanged
+preview hash drift           -> exit 1, exact ai-slop dashboard.webp preview hash drift
+501-line governed file       -> exit 1, exact src/too-long.ts 501 > 500
+out=root / out=assets        -> rejected before deletion
+out=src                      -> rejected; repository-internal output is limited to exact `.pages`
+symlink output parent        -> rejected before deletion
+assets/css/.evil             -> rejected; live ignored .DS_Store files were not staged
+case alias ASSETS            -> rejected by dev+ino identity; source sentinel preserved
+optional robots.txt symlink  -> rejected before copy
+unrelated red/blue pair      -> manifest hashes matched but pixel relation forced regeneration
+interrupted SoT sidecars     -> startup rollback restored originals and removed transaction files
+exact 500 / 501 lines        -> 500 passed; 501 failed by exact governed path
+GET / and HEAD /             -> 200; HEAD body 0 bytes
+POST /                       -> 405, Allow: GET, HEAD
+raw/encoded/double traversal -> 404; encoded separators/backslash 404; malformed encoding 400
+```
+
+No commit, push, workflow dispatch, upload, or deployment was performed.

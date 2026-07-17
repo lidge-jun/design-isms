@@ -1,5 +1,5 @@
 "use strict";
-const DATA_VERSION = '2026-07-15-atlas49';
+const DATA_VERSION = '2026-07-17-production', IMAGE_VERSION = '2026-07-17-quality';
 const DATA_URL = `./assets/data/isms.json?v=${DATA_VERSION}`;
 const GUIDE_URL = `./assets/data/dev-guides.json?v=${DATA_VERSION}`;
 const IMAGE_BASE_URL = './assets/images';
@@ -53,7 +53,7 @@ const UI_STRINGS = {
         guideDont: "Don't",
         guideLoading: 'Loading guide...',
         guideError: 'Failed to load guide.',
-        guidePending: 'Guide coming soon',
+        guidePending: 'Guide unavailable',
         footerTitle: 'Design -isms Reference Board',
         footerGen: 'Images generated with GPT Image 2'
     }
@@ -61,11 +61,12 @@ const UI_STRINGS = {
 let allIsms = [];
 let activeFilter = 'all';
 let searchQuery = '';
-let currentLang = localStorage.getItem('design-isms-lang') === 'en' ? 'en' : 'ko';
+let currentLang = AppRuntime.readStorage('design-isms-lang') === 'en' ? 'en' : 'ko';
 let imgObserver = null;
-let pageRevealed = false;
 let finderController = null;
 let cardObserver = null;
+let indexMounted = false;
+let indexLoadPromise = null;
 const toastTimers = new WeakMap();
 function t(key, vars = {}) {
     let str = UI_STRINGS[currentLang][key] || UI_STRINGS.en[key] || key;
@@ -205,13 +206,13 @@ function escapeHTML(value) {
     });
 }
 function originalImageSrc(ismId, file) {
-    return `${IMAGE_BASE_URL}/${ismId}/${file}`;
+    return `${IMAGE_BASE_URL}/${ismId}/${file}?v=${IMAGE_VERSION}`;
 }
 function thumbnailFile(file) {
     return file.replace(/\.[^.]+$/, '.webp');
 }
 function thumbImageSrc(ismId, file) {
-    return `${THUMB_BASE_URL}/${ismId}/${thumbnailFile(file)}`;
+    return `${THUMB_BASE_URL}/${ismId}/${thumbnailFile(file)}?v=${IMAGE_VERSION}`;
 }
 function getDesc(ism) {
     return currentLang === 'en' && ism.descriptionEn ? ism.descriptionEn : ism.description;
@@ -247,31 +248,33 @@ async function toggleGuidePanel(ismId) {
     }
     panel.innerHTML = '<div class="guide-panel-header">' + t('guideBtn') + '</div>' + AppGuides.renderPanel(guide, key => t(key));
 }
-async function init() {
-    const [res] = await Promise.all([
-        fetch(DATA_URL),
-        AppGuides.load(GUIDE_URL) // preload so the modal implementation block renders synchronously
-    ]);
-    allIsms = parseIsms(await res.json());
-    queryRequired('.header-count').textContent = `${allIsms.length} isms`;
-    buildFilters();
-    render();
-    setupLightbox();
-    setupScrollTop();
-    setupModal();
-    setupCardExamplesToggle();
-    setupLangToggle();
-    setupImageLazy();
-    const fRoot = document.getElementById('style-finder-mount');
-    const fDlg = document.getElementById('finder-dialog');
-    if (fRoot && fDlg) {
-        finderController = DesignFinder.mount({ root: fRoot, isms: allIsms, guides: (await AppGuides.load(GUIDE_URL)), getLang: () => currentLang, openModal });
-        document.getElementById('finder-trigger')?.addEventListener('click', () => fDlg.showModal());
-        document.getElementById('finder-dialog-close')?.addEventListener('click', () => fDlg.close());
-        fDlg.addEventListener('click', (e) => { if (e.target === fDlg)
-            fDlg.close(); });
-    }
-    dismissLoading();
+function loadAndRenderIndex() {
+    if (indexLoadPromise)
+        return indexLoadPromise;
+    indexLoadPromise = (async () => {
+        const [res] = await Promise.all([fetch(DATA_URL), AppGuides.load(GUIDE_URL)]);
+        if (!res.ok)
+            throw new Error(`ISM request failed with status ${res.status}`);
+        allIsms = parseIsms(await res.json());
+        queryRequired('.header-count').textContent = `${allIsms.length} isms`;
+        buildFilters();
+        render();
+        setupImageLazy();
+        const fRoot = document.getElementById('style-finder-mount');
+        if (fRoot) {
+            finderController = DesignFinder.mount({ root: fRoot, isms: allIsms, guides: (await AppGuides.load(GUIDE_URL)), getLang: () => currentLang, openModal });
+        }
+        dismissLoading();
+    })().catch(error => {
+        console.error('[isms] failed to initialize', error);
+        AppRuntime.dismissLoadingOverlay();
+        AppRuntime.renderFatal(getRequired('masonry'), {
+            title: currentLang === 'ko' ? 'ISM을 불러오지 못했습니다' : 'Could not load ISMs',
+            body: currentLang === 'ko' ? '연결을 확인한 뒤 다시 시도해 주세요.' : 'Check the connection and try again.',
+            retry: currentLang === 'ko' ? '다시 시도' : 'Try again'
+        }, () => { void loadAndRenderIndex(); });
+    }).finally(() => { indexLoadPromise = null; });
+    return indexLoadPromise;
 }
 function setupImageLazy() {
     if (imgObserver) {
@@ -300,13 +303,13 @@ function dismissLoading() {
     let loaded = 0;
     const total = Math.min(firstImages.length, 6);
     if (total === 0) {
-        revealPage();
+        AppRuntime.dismissLoadingOverlay();
         return;
     }
     function check() {
         loaded += 1;
         if (loaded >= total) {
-            revealPage();
+            AppRuntime.dismissLoadingOverlay();
         }
     }
     firstImages.forEach(img => {
@@ -317,19 +320,7 @@ function dismissLoading() {
         img.addEventListener('load', check);
         img.addEventListener('error', check);
     });
-    window.setTimeout(revealPage, 3000);
-}
-function revealPage() {
-    if (pageRevealed) {
-        return;
-    }
-    pageRevealed = true;
-    document.body.classList.remove('is-loading');
-    const overlay = document.getElementById('loading-overlay');
-    if (overlay) {
-        overlay.classList.add('fade-out');
-        overlay.addEventListener('transitionend', () => overlay.remove());
-    }
+    window.setTimeout(() => AppRuntime.dismissLoadingOverlay(), 3000);
 }
 function buildFilters() {
     const keywords = new Set();
@@ -339,6 +330,7 @@ function buildFilters() {
         '3D', 'retro', 'geometric', 'rounded', 'playful'
     ].filter(keyword => keywords.has(keyword));
     const row = queryRequired('.filter-row');
+    row.querySelectorAll('.filter-btn:not([data-keyword="all"])').forEach(button => button.remove());
     popular.forEach(keyword => {
         const btn = document.createElement('button');
         btn.className = 'filter-btn';
@@ -469,12 +461,11 @@ function cardHTML(ism, index) {
             ? `src="${src}"`
             : `src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy="${src}"`;
         return `
-      <div class="ism-img-wrap" data-src="${originalSrc}">
+      <button type="button" class="ism-img-wrap" data-src="${originalSrc}" aria-label="Open ${escapeHTML(image.label)} image">
         <img ${imgAttr} alt="${ism.name} - ${image.label}"
-             loading="lazy"
-             onerror="this.parentElement.outerHTML='<div class=\\'ism-img-placeholder\\'>${image.label} — generating...</div>'">
+             loading="lazy" data-fallback-label="${escapeHTML(image.label)}">
         <span class="ism-img-label">${image.label}</span>
-      </div>`;
+      </button>`;
     }).join('');
     const keywordsHTML = ism.keywords.map(keyword => `<span class="ism-kw">${keyword}</span>`).join('');
     const visibleCount = 3;
@@ -510,6 +501,9 @@ function cardHTML(ism, index) {
 }
 function setupCardExamplesToggle() {
     document.querySelectorAll('.ism-examples-toggle').forEach(btn => {
+        if (btn.dataset.bound === 'true')
+            return;
+        btn.dataset.bound = 'true';
         btn.addEventListener('click', event => {
             event.stopPropagation();
             const container = btn.closest('.ism-examples');
@@ -582,15 +576,33 @@ function setupScrollTop() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
-queryRequired('.search-input').addEventListener('input', event => {
-    if (event.target instanceof HTMLInputElement) {
-        searchQuery = event.target.value;
-        render();
-    }
-});
-document.addEventListener('DOMContentLoaded', () => {
-    void init();
-});
+function mountIndexOnce() {
+    if (indexMounted)
+        return;
+    indexMounted = true;
+    setupLightbox();
+    setupScrollTop();
+    setupModal();
+    setupLangToggle();
+    queryRequired('.search-input').addEventListener('input', event => {
+        if (event.target instanceof HTMLInputElement) {
+            searchQuery = event.target.value;
+            render();
+        }
+    });
+    const dialog = document.getElementById('finder-dialog');
+    document.getElementById('finder-trigger')?.addEventListener('click', () => dialog?.showModal());
+    document.getElementById('finder-dialog-close')?.addEventListener('click', () => dialog?.close());
+    dialog?.addEventListener('click', event => { if (event.target === dialog)
+        dialog.close(); });
+    document.addEventListener('error', event => {
+        const image = event.target;
+        if (image instanceof HTMLImageElement && image.dataset.fallbackLabel) {
+            AppRuntime.replaceBrokenImage(image, image.dataset.fallbackLabel);
+        }
+    }, true);
+}
+document.addEventListener('DOMContentLoaded', () => { mountIndexOnce(); void loadAndRenderIndex(); });
 function getRelatedIsms(target, max = 5) {
     if (target.kind === 'anti-pattern') {
         return [];
@@ -629,20 +641,22 @@ function renderModalContent(ism) {
         const promptBlock = subPrompt
             ? '<div class="modal-prompt"><span class="modal-prompt-label">Prompt</span>' + subPrompt + '</div>'
             : '';
+        const collapsibleId = 'modal-collapsible-' + index;
         collapsiblesHTML += '<div class="modal-collapsible">' +
-            '<div class="modal-collapsible-header">' +
+            '<button type="button" class="modal-collapsible-header" aria-expanded="false" aria-controls="' + collapsibleId + '">' +
             '<span class="modal-collapsible-arrow">▶</span> ' + image.label +
-            '</div>' +
-            '<div class="modal-collapsible-body"><div class="modal-collapsible-inner">' +
-            '<img src="' + thumbImageSrc(ism.id, image.file) + '" data-src="' + originalImageSrc(ism.id, image.file) + '" alt="' + ism.name + ' - ' + image.label + '" data-lightbox="true" loading="lazy">' +
+            '</button>' +
+            '<div class="modal-collapsible-body" id="' + collapsibleId + '" aria-hidden="true"><div class="modal-collapsible-inner">' +
+            '<button type="button" class="modal-image-button" data-lightbox-src="' + originalImageSrc(ism.id, image.file) + '" aria-label="' + image.label + ' 확대">' +
+            '<img src="' + thumbImageSrc(ism.id, image.file) + '" alt="' + ism.name + ' - ' + image.label + '" data-fallback-label="' + ism.name + ' - ' + image.label + '" loading="lazy"></button>' +
             promptBlock +
             '</div></div></div>';
     }
     let paletteHTML = '';
     ism.palette.forEach(color => {
-        paletteHTML += '<div class="modal-swatch" data-color="' + color + '">' +
+        paletteHTML += '<button type="button" class="modal-swatch" data-color="' + color + '" aria-label="' + color + ' 복사">' +
             '<div class="modal-swatch-color" style="background:' + color + '"></div>' +
-            '<span class="modal-swatch-hex">' + color + '</span></div>';
+            '<span class="modal-swatch-hex">' + color + '</span></button>';
     });
     let keywordsHTML = '';
     ism.keywords.forEach(keyword => {
@@ -670,9 +684,9 @@ function renderModalContent(ism) {
     examplesSection += '</div>';
     let relatedHTML = '';
     related.forEach(relatedIsm => {
-        relatedHTML += '<div class="modal-related-card" data-related-id="' + relatedIsm.id + '">' +
+        relatedHTML += '<button type="button" class="modal-related-card" data-related-id="' + relatedIsm.id + '">' +
             '<div class="modal-related-name">' + relatedIsm.name + '</div>' +
-            '<div class="modal-related-tagline">' + relatedIsm.tagline + '</div></div>';
+            '<div class="modal-related-tagline">' + relatedIsm.tagline + '</div></button>';
     });
     const subNameHtml = currentLang === 'en' ? '<span class="modal-title-kr">' + ism.nameKr + '</span>' : '';
     let html = '<div class="modal-number">' + num + '</div>' +
@@ -690,7 +704,8 @@ function renderModalContent(ism) {
         html += '<div class="modal-history">' + modalHistory + '</div>';
     }
     html += '<div class="modal-desc">' + modalDesc + '</div>' +
-        '<div class="modal-main-image"><img src="' + thumbImageSrc(ism.id, mainImg.file) + '" data-src="' + originalImageSrc(ism.id, mainImg.file) + '" alt="' + mainLabel + '" data-lightbox="true"></div>' +
+        '<div class="modal-main-image"><button type="button" class="modal-image-button" data-lightbox-src="' + originalImageSrc(ism.id, mainImg.file) + '" aria-label="' + mainLabel + ' 확대">' +
+        '<img src="' + thumbImageSrc(ism.id, mainImg.file) + '" alt="' + mainLabel + '" data-fallback-label="' + mainLabel + '"></button></div>' +
         '<div class="modal-main-label">' + mainLabel + '</div>' +
         (mainPrompt ? '<div class="modal-prompt modal-prompt-main"><span class="modal-prompt-label">Prompt</span>' + mainPrompt + '</div>' : '') +
         collapsiblesHTML +
@@ -731,7 +746,7 @@ function openModal(ismId, trigger) {
     content.innerHTML = renderModalContent(ism);
     content.scrollTop = 0;
     overlay.classList.add('active');
-    history.replaceState(null, '', '#' + ismId);
+    AppRuntime.replaceHistory('#' + ismId);
     if (!AppDialogA11y.isOpen(overlay)) {
         AppDialogA11y.open({
             overlay,
@@ -741,11 +756,22 @@ function openModal(ismId, trigger) {
             onRequestClose: closeModal
         });
     }
-    content.querySelectorAll('.modal-collapsible-header').forEach(h => {
-        h.addEventListener('click', () => { h.parentElement?.classList.toggle('open'); });
+    content.querySelectorAll('.modal-collapsible-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const collapsible = header.closest('.modal-collapsible');
+            const body = document.getElementById(header.getAttribute('aria-controls') ?? '');
+            const open = collapsible?.classList.toggle('open') ?? false;
+            header.setAttribute('aria-expanded', String(open));
+            body?.setAttribute('aria-hidden', String(!open));
+        });
     });
-    content.querySelectorAll('img[data-lightbox]').forEach(img => {
-        img.addEventListener('click', e => { e.stopPropagation(); openLightbox(img.dataset.src || img.src); });
+    content.querySelectorAll('.modal-image-button[data-lightbox-src]').forEach(button => {
+        button.addEventListener('click', event => {
+            event.stopPropagation();
+            const src = button.dataset.lightboxSrc;
+            if (src)
+                openLightbox(src);
+        });
     });
     content.querySelectorAll('.modal-swatch').forEach(swatch => {
         swatch.addEventListener('click', () => {
@@ -798,7 +824,7 @@ function closeModal() {
     if (panel)
         panel.innerHTML = '';
     AppDialogA11y.close(overlay);
-    history.replaceState(null, '', location.pathname + location.search);
+    AppRuntime.replaceHistory(location.pathname + location.search);
 }
 function showToast(msg) {
     const toast = getRequired('toast');
@@ -853,7 +879,7 @@ function setupLangToggle() {
     updateLangUI();
     toggle.addEventListener('click', () => {
         currentLang = currentLang === 'ko' ? 'en' : 'ko';
-        localStorage.setItem('design-isms-lang', currentLang);
+        AppRuntime.writeStorage('design-isms-lang', currentLang);
         updateLangUI();
         render();
         finderController?.setLang(currentLang);

@@ -25,6 +25,7 @@ namespace EffectsFilters {
     getState(): State;
     setQuery(query: string): void;
     reset(): void;
+    destroy(): void;
   }
 
   interface Mounts {
@@ -59,7 +60,7 @@ namespace EffectsFilters {
         else next.delete(key);
       }
       const qs = next.toString();
-      history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : '') + window.location.hash);
+      AppRuntime.replaceHistory(window.location.pathname + (qs ? '?' + qs : '') + window.location.hash);
     }
 
     function renderRow(row: HTMLElement, values: string[], active: string, kind: 'family' | 'device'): void {
@@ -111,6 +112,10 @@ namespace EffectsFilters {
         state.device = 'all';
         state.query = '';
         emit();
+      },
+      destroy(): void {
+        mounts.familyRow.removeEventListener('click', handleClick);
+        mounts.deviceRow.removeEventListener('click', handleClick);
       }
     };
   }

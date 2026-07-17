@@ -114,3 +114,22 @@
   기록하고 스킵.
 - 000 배경 서술의 리서치 인용은 문서 001~003이 이 사이클 B에서 착지해야 감사
   가능해진다. B 종료 기준에 001~003 착지를 포함한다.
+
+## 2026-07-17 completion continuation
+
+Phases 020–070 are implemented at `769fa78` and remain the baseline. A GPT Pro completion
+pass was recovered from web-ai session `01KXNJZ0G94PQJME5DVFT7FMX7`; it is a standalone
+scaffold, not a replacement checkout. The continuation therefore adds these dependency-ordered
+cycles without reopening completed slices:
+
+| WP | Document | Outcome |
+| --- | --- | --- |
+| wp000-roadmap-lock | `009_1`, `009_2`, amended `080`–`110` | Docs-only provenance and diff-level roadmap lock |
+| wp100-ui-residuals | `100_phase9_ui_residuals.md` | Page-level retry and keyboard/semantic residuals |
+| wp080-release-hardening | `080_phase7_final_qa_deploy.md` | Static release gates, public staging, CI/deploy correction after runtime cleanup |
+| wp090-image-quality | `090_phase8_image_quality.md` | Visual audit and rubric-governed GPT Image 2 replacement for every failed slot |
+| wp110-final-qa | `110_phase10_final_qa.md` | Fresh full verification and six-width browser evidence |
+
+Current-turn scope supersedes the original release scope: local file changes are authorized;
+commit, push, workflow dispatch, and deployment are not. No new Playwright dependency or
+Python browser package is introduced. Browser proof uses the enabled browser runtime.

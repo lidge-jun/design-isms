@@ -243,7 +243,6 @@
 }
 
 /* ── Effects Page: modal content ── */
-body.modal-open { overflow: hidden; }
 .effect-modal-container {
   width: min(860px, 94vw);
 }
