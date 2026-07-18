@@ -19,7 +19,9 @@ for (const [id, command, args] of steps) {
   if (evidence.exitCode !== 0) throw new Error(`${id} failed with ${evidence.exitCode}`);
 }
 const manifest = JSON.parse(readFileSync(join(root, '.pages/manifest.json'), 'utf8'));
-const expectedCounts = { html: 3, png: 211, webp: 211, forbidden: 0 };
+// Counts derive from the governed sources of truth (7 public pages, image-pairs manifest).
+const expectedPairs = JSON.parse(readFileSync(join(root, 'assets/data/image-pairs-manifest.json'), 'utf8')).pairs.length;
+const expectedCounts = { html: 7, png: expectedPairs, webp: expectedPairs, forbidden: 0 };
 if (JSON.stringify(manifest.counts) !== JSON.stringify(expectedCounts)) throw new Error(`stage counts drift: ${JSON.stringify(manifest.counts)}`);
 const tree = treeFingerprint(root);
 const receipt = { schemaVersion: 1, createdAt: new Date().toISOString(), commands,

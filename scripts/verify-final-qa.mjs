@@ -11,8 +11,8 @@ const read = name => { const path = join(evidenceRoot, name); if (!existsSync(pa
 const browser = read('112_final_browser_receipt.json'); const server = read('113_final_server_receipt.json');
 const preservationStart = read('114_final_preservation_start.json'); const preservation = read('114_final_preservation_final.json'); const staticReceipt = read('115_final_static_receipt.json');
 const errors = []; const fail = message => errors.push(message);
-const pages = new Map([['index', 49], ['effects', 64], ['faq', 18]]); const widths = [1440, 1180, 1024, 860, 640, 390];
-if (browser.schemaVersion !== 1 || browser.rows?.length !== 18) fail('browser receipt must contain 18 rows');
+const pages = new Map([['index', 49], ['effects', 94], ['faq', 18], ['color', 25], ['typography', 20], ['layout', 25], ['motion', 20]]); const widths = [1440, 1180, 1024, 860, 640, 390];
+if (browser.schemaVersion !== 1 || browser.rows?.length !== 42) fail('browser receipt must contain 42 rows');
 const rowKeys = new Set();
 const diagnosticKeys = ['badResponses', 'consoleErrors', 'exceptions', 'failedRequests', 'logErrors'];
 for (const row of browser.rows ?? []) {
@@ -22,14 +22,16 @@ for (const row of browser.rows ?? []) {
   if (Object.values(diagnostics).some(value => !Array.isArray(value) || value.length)) fail(`browser diagnostics nonzero ${row.page}/${row.width}`);
 }
 for (const [page] of pages) for (const width of widths) if (!rowKeys.has(`${page}:${width}`)) fail(`missing browser row ${page}/${width}`);
-const expectedFlows = ['index', 'effects', 'faq', 'index-error-retry', 'effects-error-retry', 'faq-error-retry'];
+const expectedFlows = ['index', 'effects', 'faq', 'crosslink', 'index-error-retry', 'effects-error-retry', 'faq-error-retry', 'color-error-retry', 'typography-error-retry', 'layout-error-retry', 'motion-error-retry'];
 if (stableJson(browser.flows?.map(value => value.id)) !== stableJson(expectedFlows)) fail('browser flow set invalid');
 const errorKeys = ['alert', 'cleanDiagnostics', 'errorRemoved', 'id', 'loadingRemoved', 'recovered', 'restored', 'width'];
 const expectedFlowKeys = new Map([
   ['index', ['copyFeedback', 'empty', 'escapeOrder', 'finderThree', 'focusReturn', 'id', 'lightbox', 'lightboxDimensions', 'lightboxPng', 'modal', 'previewDimensions', 'previewWebp', 'promptPresent', 'relatedFive', 'searchReset']],
   ['effects', ['copyFeedback', 'devicesExact', 'docsEight', 'empty', 'familiesExact', 'filterReset', 'focusReturn', 'id', 'lightbox', 'lightboxDimensions', 'lightboxPng', 'modal', 'previewDimensions', 'previewWebp', 'reduced', 'reducedCards', 'reducedDurations', 'reducedOverflow', 'refsTwo', 'searchReset', 'stateToggle']],
   ['faq', ['arrowDown', 'arrowUp', 'collapsed', 'end', 'expanded', 'home', 'id', 'localePreserved', 'sources', 'translated']],
-  ['index-error-retry', errorKeys], ['effects-error-retry', errorKeys], ['faq-error-retry', errorKeys]
+  ['crosslink', ['chips', 'forwardLink', 'id', 'reverseLink', 'roundTrip']],
+  ['index-error-retry', errorKeys], ['effects-error-retry', errorKeys], ['faq-error-retry', errorKeys],
+  ['color-error-retry', errorKeys], ['typography-error-retry', errorKeys], ['layout-error-retry', errorKeys], ['motion-error-retry', errorKeys]
 ]);
 for (const flow of browser.flows ?? []) {
   if (stableJson(Object.keys(flow).sort()) !== stableJson(expectedFlowKeys.get(flow.id)?.slice().sort())) fail(`browser flow schema invalid ${flow.id}`);
@@ -38,7 +40,7 @@ for (const flow of browser.flows ?? []) {
   }
   if (flow.id.endsWith('-error-retry') && flow.width !== 390) fail(`browser error flow width invalid ${flow.id}`);
 }
-if (browser.screenshots?.length !== 9) fail('browser receipt must contain nine screenshots');
+if (browser.screenshots?.length !== 21) fail('browser receipt must contain 21 screenshots');
 const expectedShots = new Map([...pages.keys()].flatMap(page => [
   [`${evidenceRel}/final-${page}-1440.png`, { page, width: 1440, state: 'ready' }],
   [`${evidenceRel}/final-${page}-390.png`, { page, width: 390, state: 'ready' }],
@@ -51,8 +53,8 @@ for (const shot of browser.screenshots ?? []) {
   const path = resolve(root, shot.path); if (dirname(path) !== qaRoot || !existsSync(path) || !lstatSync(path).isFile() || lstatSync(path).isSymbolicLink() || realpathSync(path) !== path || shaFile(path) !== shot.sha256) { fail(`screenshot drift or unsafe path ${shot.path}`); continue; }
   const meta = await sharp(path, { failOn: 'error' }).metadata(); if (meta.format !== 'png' || meta.width !== shot.width || meta.height !== shot.height || meta.width !== shot.viewportWidth) fail(`screenshot dimensions invalid ${shot.path}`);
 }
-if (seenShots.size !== 9) fail('screenshot topology incomplete');
-if (browser.teardown?.browserSessions !== 24 || browser.teardown?.serverExitCode !== 0 || browser.teardown?.serverSignal !== null || browser.teardown?.serverForced || !browser.teardown?.serverPortClosed || !browser.teardown?.cdpPortClosed || !browser.teardown?.profileRemoved || browser.teardown?.browserStopExitCode !== 0) fail('browser owned-process teardown invalid');
+if (seenShots.size !== 21) fail('screenshot topology incomplete');
+if (browser.teardown?.browserSessions !== 53 || browser.teardown?.serverExitCode !== 0 || browser.teardown?.serverSignal !== null || browser.teardown?.serverForced || !browser.teardown?.serverPortClosed || !browser.teardown?.cdpPortClosed || !browser.teardown?.profileRemoved || browser.teardown?.browserStopExitCode !== 0) fail('browser owned-process teardown invalid');
 if (server.schemaVersion !== 1 || server.host !== '127.0.0.1' || server.root !== realpathSync(join(root, '.pages')) || server.probes?.length !== 7 || server.exitCode !== 0 || server.exitSignal !== null || server.forced || !server.portClosed) fail('server receipt header/teardown invalid');
 const expectedProbes = new Map([
   ['get-index', { method: 'GET', path: '/index.html', status: 200 }],
@@ -81,7 +83,8 @@ const expectedCommands = [
   { id: 'diff-check', command: ['git', 'diff', '--check'] }
 ];
 if (staticReceipt.schemaVersion !== 1 || stableJson(staticReceipt.commands?.map(({ id, command }) => ({ id, command }))) !== stableJson(expectedCommands) || staticReceipt.commands?.some(value => value.exitCode !== 0 || value.signal !== null)) fail('static command receipt invalid');
-if (stableJson(staticReceipt.stage?.counts) !== stableJson({ html: 3, png: 211, webp: 211, forbidden: 0 })) fail('static stage counts invalid');
+const expectedPairCount = JSON.parse(readFileSync(join(root, 'assets/data/image-pairs-manifest.json'), 'utf8')).pairs.length;
+if (stableJson(staticReceipt.stage?.counts) !== stableJson({ html: 7, png: expectedPairCount, webp: expectedPairCount, forbidden: 0 })) fail('static stage counts invalid');
 const currentManifestSha = shaFile(join(root, '.pages/manifest.json'));
 if (staticReceipt.stage?.manifestSha256 !== currentManifestSha || browser.stagedManifestSha256 !== currentManifestSha) fail('staged manifest binding invalid');
 const tree = treeFingerprint(root); if (tree.sha256 !== staticReceipt.governedTreeSha256 || tree.files.length !== staticReceipt.governedFileCount) fail('static receipt is stale for governed tree');
@@ -91,4 +94,4 @@ const times = [preservationStart.capturedAt, staticReceipt.createdAt, browser.cr
 if (times.some(value => !Number.isFinite(value)) || times.some((value, index) => index > 0 && value < times[index - 1])) fail('QA receipt chronology invalid');
 if (errors.length) { console.error('final QA verification failed:'); for (const error of errors) console.error(`  - ${error}`); process.exit(1); }
 const inputs = ['112_final_browser_receipt.json', '113_final_server_receipt.json', '114_final_preservation_final.json', '115_final_static_receipt.json'].map(name => ({ name, sha256: shaFile(join(evidenceRoot, name)) }));
-console.log(`final qa ok: rows=18 screenshots=9 server=7 preservation=true tree=${tree.sha256} receiptSha=${shaBytes(stableJson(inputs))}`);
+console.log(`final qa ok: rows=42 screenshots=21 server=7 preservation=true tree=${tree.sha256} receiptSha=${shaBytes(stableJson(inputs))}`);
