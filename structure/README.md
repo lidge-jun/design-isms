@@ -48,7 +48,7 @@ assets/data/image-pairs-manifest.json
 - Effects cards use CSS demos.
 - Effects demo registry provides one dedicated demo type per 94 entries (46 patterns + 48 visual effects).
 - Effects modal guide previews and ISM card previews use WebP and keep original PNGs for source/lightbox use.
-- The 211-pair image manifest records source and preview SHA-256, dimensions, and the independent sRGB pixel-relation contract; the thumbnail generator owns atomic updates.
+- The 331-pair image manifest (211 immutable legacy + 120 catalog additions) records source and preview SHA-256, dimensions, and the independent sRGB pixel-relation contract; the thumbnail generator owns atomic updates.
 - Effect demo styling is split between `assets/css/effects.css`, `assets/css/effects-docs.css`, `assets/css/effects-demos.css`, and `assets/css/effects-demos-candidates.css`.
 - Shared static navigation styling lives in `assets/css/nav.css`.
 - Atlas shell tokens and shared primitives live in `assets/css/theme-atlas.css` (after `style.css`, before `nav.css`).
@@ -72,7 +72,7 @@ assets/data/image-pairs-manifest.json
 - FAQ: 3 categories × 6 items = 18 bilingual answers with per-item sources and review dates in `assets/data/faq.json`; renderer validates counts/locales/URLs and fails visibly.
 - Verification for visual changes: `npm run verify`, plus browser desktop/mobile checks for card count, unique demo classes, horizontal overflow, and console errors.
 - Verification for image changes: candidate generation and review are recorded in `092_image_generation_attempts/`; approved originals, previews, prompt records, and manifest rows are applied together before `npm run verify`.
-- Image pipeline: `scripts/generate-thumbnails.mjs` (sharp, 768×512 WebP, `--force`/`--scope`), four complete contact-sheet builders (three 7×7 ISM sheets plus one 8×8 Effects sheet), `scripts/audit-effect-guides.mjs` (manifest-bound dimensions/hash/orphan gate), and `scripts/verify-image-quality.mjs` (211-slot baseline/final/non-target gate).
+- Image pipeline: `scripts/generate-thumbnails.mjs` (sharp, 768×512 WebP, `--force`/`--scope`), four complete contact-sheet builders (three 7×7 ISM sheets plus one 8×8 Effects sheet), `scripts/audit-effect-guides.mjs` (manifest-bound dimensions/hash/orphan gate), and `scripts/verify-image-quality.mjs` (211-slot immutable legacy baseline + catalog-addition live-hash gate).
 - The completion audit replaced exactly `minimalism/landing.png` and `indie-web/landing.png`; all other raster paths are verified against the immutable 422-file baseline.
 - Release integrity: `scripts/sync-sot.mjs`, `verify-generated.mjs`, `verify-content.mjs`, `verify-assets.mjs`, `verify-line-limits.mjs`, and `stage-pages.mjs`; `.pages/manifest.json` is the deterministic public-file receipt.
 - Hosting boundary: `.github/workflows/ci.yml` verifies and stages on branch/PR work; deploy verifies, stages, then uploads `.pages` only.

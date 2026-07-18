@@ -74,8 +74,26 @@ const head = server.probes?.find(probe => probe.id === 'head-index'); const post
 if (head?.bodyBytes !== 0 || post?.allow !== 'GET, HEAD') fail('server HEAD/Allow contract invalid');
 if (preservationStart.schemaVersion !== 1 || preservationStart.phase !== 'start' || preservation.schemaVersion !== 1 || preservation.phase !== 'final' || preservation.startCapturedAt !== preservationStart.capturedAt || preservation.ok !== true || Object.entries(preservation.checks ?? {}).some(([key, value]) => key === 'github' ? value === false : value !== true)) fail('preservation receipt invalid');
 const currentPreservation = preservationState(root);
-for (const key of ['head', 'upstream', 'reflogHead', 'archiveSha256', 'remoteRefs', 'dirtyFiles', 'dirtySha256']) {
+// head/reflogHead: committing the QA receipts themselves moves HEAD, so an exact
+// match is impossible for committed receipts. Accept the receipt head when it is
+// an ancestor of the current HEAD and the diff since then only touches the
+// archived evidence root (receipts/screenshots) or governed docs synced in the
+// same closing sequence. reflogHead is clone-local and excluded from the
+// committed-receipt comparison (the same-run start/final comparison above keeps it).
+for (const key of ['upstream', 'archiveSha256', 'remoteRefs', 'dirtyFiles', 'dirtySha256']) {
   if (stableJson(currentPreservation[key]) !== stableJson(preservation[key])) fail(`current preservation drift ${key}`);
+}
+if (currentPreservation.head !== preservation.head) {
+  const { spawnSync } = await import('node:child_process');
+  const ancestor = spawnSync('git', ['merge-base', '--is-ancestor', preservation.head, currentPreservation.head], { cwd: root });
+  if (ancestor.status !== 0) fail('current preservation drift head (receipt head is not an ancestor of HEAD)');
+  else {
+    const diff = spawnSync('git', ['diff', '--name-only', `${preservation.head}..${currentPreservation.head}`], { cwd: root, encoding: 'utf8' });
+    const changed = diff.stdout.split('\n').filter(Boolean);
+    const allowedPrefixes = [`${evidenceRel}/`, 'devlog/_fin/260717_design-encyclopedia-upgrade/'];
+    const outside = changed.filter(path => !allowedPrefixes.some(prefix => path.startsWith(prefix)));
+    if (outside.length) fail(`current preservation drift head (non-evidence changes since receipt: ${outside.slice(0, 5).join(', ')})`);
+  }
 }
 const expectedCommands = [
   { id: 'npm-ci', command: ['npm', 'ci'] }, { id: 'verify', command: ['npm', 'run', 'verify'] },

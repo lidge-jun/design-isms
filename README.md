@@ -44,13 +44,13 @@ Catalog 드롭다운으로 이어지는 네 개의 자매 카탈로그가 백과
 - Effects long-form writing lives in `assets/data/effects-docs.json` and renders through `src/effects-docs.ts`. Keep `assets/data/effects.json` compact for operational card/demo data.
 - Every effects guide image keeps the original PNG at `assets/images/effects/{effect-id}/guide.png` and uses a generated WebP preview at `assets/images/thumbs/effects/{effect-id}/guide.webp`.
 - New ISM images keep originals at `assets/images/{ism-id}/` and runtime previews under `assets/images/thumbs/{ism-id}/`.
-- `assets/data/image-pairs-manifest.json` locks all 211 PNG/WebP pairs by path, dimensions, SHA-256, and an independent source-resize/preview pixel-relation limit; `npm run images:thumbs` updates it atomically and does not rely on mtimes.
-- The production image-quality gate audits all 211 canonical slots in four complete contact sheets. `npm run verify:image-quality` checks the immutable baseline, per-slot rubric ledger, generation attempts, approved prompt changes, final sheets, and non-target byte stability.
+- `assets/data/image-pairs-manifest.json` locks all 331 PNG/WebP pairs (211 legacy + 30 effects expansion + 25 color + 20 typography + 25 layout + 20 motion) by path, dimensions, SHA-256, and an independent source-resize/preview pixel-relation limit; `npm run images:thumbs` updates it atomically and does not rely on mtimes.
+- The production image-quality gate audits the 211 immutable legacy slots in four complete contact sheets; catalog additions are admitted by live hash and validated by `verify-catalog` domain ledgers. `npm run verify:image-quality` checks the immutable baseline, per-slot rubric ledger, generation attempts, approved prompt changes, final sheets, and non-target byte stability.
 - `npm run verify` is non-emitting: edit TypeScript, run `npm run build`, then verify committed JS parity and all content/asset/release gates.
 - `npm run pages:stage` creates the only deployable tree at `.pages/`; Pages workflows upload that allowlisted tree, never the repository root.
 - Do not publish a separate reference/backlog page; generated visual styles belong in the ISMS catalog or the Effects catalog.
-- Any visual or image pipeline change must run `npm run verify`; image changes must also run `npm run images:thumbs` (sharp-based, `--force` / `--scope effects|isms|all`) and pass `npm run images:audit`.
-- Effect guide regeneration is provenance-tracked: audit ledger `devlog/260715_production_upgrade/031_effect_guide_audit.csv`, manifest `devlog/260715_production_upgrade/032_effect_guide_manifest.jsonl`.
+- Any visual or image pipeline change must run `npm run verify`; image changes must also run `npm run images:thumbs` (sharp-based, `--force` / `--scope effects|isms|color|typography|layout|motion|all`) and pass `npm run images:audit`.
+- Effect guide regeneration is provenance-tracked: audit ledger `devlog/_fin/260715_production_upgrade/031_effect_guide_audit.csv`, manifest `devlog/_fin/260715_production_upgrade/032_effect_guide_manifest.jsonl`; sister-catalog guides use per-domain ledgers under `devlog/_fin/260717_design-encyclopedia-upgrade/`.
 
 ## Project Structure
 
@@ -121,7 +121,7 @@ The browser entry files are generated for GitHub Pages:
 npm run images:thumbs
 ```
 
-The static pages use WebP thumbnails/previews for card and modal image loading. The original 1536x1024 PNG files are kept for click-to-zoom lightbox views and source preservation. The thumbnail command updates the 211-pair SHA manifest after every successful run.
+The static pages use WebP thumbnails/previews for card and modal image loading. The original 1536x1024 PNG files are kept for click-to-zoom lightbox views and source preservation. The thumbnail command updates the 331-pair SHA manifest after every successful run.
 
 Expansion image batches are generated from deterministic manifests. The current ima2 command shape is:
 

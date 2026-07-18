@@ -74,8 +74,8 @@
 - 세 페이지의 안전한 storage/history 접근, loading overlay 종료, 재시도 가능한 치명 오류, 이미지 fallback은 `src/app-runtime.ts`와 `assets/css/runtime-states.css`가 공통 소유한다.
 - `npm run verify`는 파일을 생성하지 않는다. `src/*.ts`를 수정하면 먼저 `npm run build`로 `assets/js/*.js`를 갱신한 뒤 verify를 실행한다.
 - `data-sot:*` 마커는 `scripts/sync-sot.mjs`만 수정한다. `npm run sot:check`는 49/94/18 값을 데이터에서 유도하고, `npm run sot:sync`는 검증된 마커 내부만 원자적으로 갱신한다.
-- 전체 211 PNG/WebP 쌍의 해시 SoT는 `assets/data/image-pairs-manifest.json`이다. `npm run images:thumbs`가 source/preview SHA와 독립 픽셀 관계(MAE ≤18)를 기준으로 재생성 여부를 결정하고 manifest를 원자 갱신한다.
-- 완성판 이미지 품질 SoT는 `091_image_quality_audit.csv`, `092_image_generation_attempts/`, immutable 093–097 baseline, 그리고 098 final sheet receipt다. `npm run verify:image-quality`는 211개 슬롯, 승인된 교체, 프롬프트 provenance, 비대상 byte 안정성을 비생성 방식으로 검증한다.
+- 전체 331 PNG/WebP 쌍(211 legacy + 신규 카탈로그 120)의 해시 SoT는 `assets/data/image-pairs-manifest.json`이다. `npm run images:thumbs`가 source/preview SHA와 독립 픽셀 관계(MAE ≤18)를 기준으로 재생성 여부를 결정하고 manifest를 원자 갱신한다.
+- 완성판 이미지 품질 SoT는 `091_image_quality_audit.csv`, `092_image_generation_attempts/`, immutable 093–097 baseline, 그리고 098 final sheet receipt다. `npm run verify:image-quality`는 immutable legacy 211개 슬롯과 catalog-addition 쌍(live hash), 승인된 교체, 프롬프트 provenance, 비대상 byte 안정성을 비생성 방식으로 검증한다.
 - `--bootstrap-manifest`는 감사된 최초 이관 전용이며 기존 manifest가 있으면 거부된다. manifest 누락을 일반 생성으로 재신뢰하지 않는다.
 - 공개 배포 입력은 `npm run pages:stage`가 만드는 `.pages/`뿐이다. `.github/workflows/deploy.yml`은 verify와 stage 이후 `.pages`만 업로드한다.
 - 신규 파일은 500줄 이하를 유지한다. 초과하면 역할별 파일로 분리한다.
@@ -101,7 +101,7 @@
 - 후보군마다 카드/모달에서 식별 가능한 전용 CSS demo animation을 둔다. 확장 demo 스타일은 `assets/css/effects-demos-candidates.css`에 둔다.
 - guide 원본은 `assets/images/effects/{effect-id}/guide.png`, WebP preview는 `assets/images/thumbs/effects/{effect-id}/guide.webp`다.
 - guide 이미지를 생성/교체하면 `npm run images:thumbs`로 WebP preview를 갱신하고 `npm run verify`를 통과시킨다.
-- guide 재생성은 감사 기록을 남긴다: `devlog/260715_production_upgrade/031_effect_guide_audit.csv`에 감사 행, `032_effect_guide_manifest.jsonl`에 프롬프트/명령/해시 provenance 행을 추가하고 `npm run images:audit`를 통과시킨다. 썸네일 파이프라인은 sharp 기반(`--force`, `--scope effects|isms|all`)이며 시스템 `cwebp` 의존은 제거됐다.
+- guide 재생성은 감사 기록을 남긴다: `devlog/_fin/260715_production_upgrade/031_effect_guide_audit.csv`에 감사 행, `032_effect_guide_manifest.jsonl`에 프롬프트/명령/해시 provenance 행을 추가하고 `npm run images:audit`를 통과시킨다(경로는 `devlog/_fin/260715_production_upgrade/`). 썸네일 파이프라인은 sharp 기반(`--force`, `--scope effects|isms|color|typography|layout|motion|all`)이며 시스템 `cwebp` 의존은 제거됐다.
 - 데스크탑과 모바일 모두에서 카드 수 94개, demo type 94개, horizontal overflow 없음, console error 없음까지 확인해야 완료로 보고한다.
 
 ## ISMS 확장 원칙
