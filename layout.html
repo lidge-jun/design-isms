@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Layout Patterns — Design -isms</title>
-<meta name="description" content="반응형 섹션 패턴 카탈로그. 준비 중인 카탈로그입니다.">
+<meta name="description" content="반응형 섹션 패턴 카탈로그. Hero·그리드·콘텐츠·내비게이션·폼 25종 패턴을 데스크탑/태블릿/모바일 3단 비교와 코드 스니펫으로 제공합니다.">
 <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +14,9 @@
 <link rel="stylesheet" href="./assets/css/theme-atlas.css?v=20260718-encyc">
 <link rel="stylesheet" href="./assets/css/nav.css?v=20260718-encyc">
 <link rel="stylesheet" href="./assets/css/catalog.css?v=20260718-encyc">
+<link rel="stylesheet" href="./assets/css/effects.css?v=20260718-encyc">
+<link rel="stylesheet" href="./assets/css/layout.css?v=20260718-encyc">
+<link rel="stylesheet" href="./assets/css/layout-wireframes.css?v=20260718-encyc">
 <link rel="stylesheet" href="./assets/css/runtime-states.css?v=20260718-encyc">
 </head>
 <body>
@@ -34,7 +37,7 @@
         <li><a href="./effects.html" data-catalog-target="effects">Effects</a></li>
         <li><a href="./color.html" data-catalog-target="color">Color</a></li>
         <li><a href="./typography.html" data-catalog-target="typography">Typography</a></li>
-        <li><a href="./layout.html" data-catalog-target="layout" data-catalog-current="true" aria-disabled="true">Layout <span class="nav-dropdown-badge">준비 중</span></a></li>
+        <li><a href="./layout.html" data-catalog-target="layout" data-catalog-current="true">Layout</a></li>
         <li><a href="./motion.html" data-catalog-target="motion" aria-disabled="true">Motion <span class="nav-dropdown-badge">준비 중</span></a></li>
         </ul>
       </div>
@@ -47,7 +50,7 @@
         <span class="lang-divider" aria-hidden="true">/</span>
         <span class="lang-option" data-lang="en">EN</span>
       </button>
-      <span class="header-count" data-nav-axis="count">0 layouts</span>
+      <!-- data-sot:layout-nav-count:start --><span class="header-count" data-nav-axis="count">25 layouts</span><!-- data-sot:layout-nav-count:end -->
     </nav>
   </div>
 </header>
@@ -55,13 +58,35 @@
 <main id="main-content">
   <section class="catalog-hero" aria-labelledby="catalog-title">
     <h1 id="catalog-title">Layout Patterns <span class="catalog-title-kr">레이아웃 패턴</span></h1>
-    <p>반응형 섹션 패턴 카탈로그.</p>
+    <p>반응형 섹션 패턴 카탈로그. 데스크탑/태블릿/모바일 3단 비교와 복붙 가능한 코드 스니펫을 제공합니다.</p>
   </section>
-  <section class="catalog-empty-state" aria-label="준비 상태 안내">
-    <h2>준비 중입니다</h2>
-    <p>이 카탈로그는 현재 제작 중입니다. 완성되면 이 페이지에서 카드를 탐색할 수 있습니다.</p>
-    <a class="catalog-empty-link" href="./effects.html">Effects 카탈로그 먼저 보기</a>
-  </section>
+
+  <div class="layout-toolbar">
+    <input type="search" id="layout-search" placeholder="패턴 검색 (히어로, 벤토, 설정…)" aria-label="패턴 검색">
+    <div class="layout-filter-row" id="layout-family-filter" role="group" aria-label="분류 필터">
+      <button type="button" class="active" data-family="all">All</button>
+      <button type="button" data-family="Hero">Hero</button>
+      <button type="button" data-family="Card Grid">Card Grid</button>
+      <button type="button" data-family="Content Section">Content</button>
+      <button type="button" data-family="Navigation">Navigation</button>
+      <button type="button" data-family="Form & Input">Form</button>
+    </div>
+    <span class="layout-result-count" id="layout-result-count" aria-live="polite"></span>
+  </div>
+
+  <section class="layout-grid" id="layout-grid" aria-label="패턴 카탈로그" aria-busy="true"></section>
+
+  <div class="modal-overlay" id="layout-modal-overlay" aria-hidden="true">
+    <div class="modal-container" id="layout-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="layout-modal-title" tabindex="-1">
+      <button class="modal-close" id="layout-modal-close" type="button" aria-label="닫기">✕</button>
+      <div class="modal-scroll" id="layout-modal-content"></div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="layout-lightbox" role="dialog" aria-modal="true" aria-label="Guide image preview" aria-hidden="true">
+    <button class="lightbox-close" id="layout-lightbox-close" type="button" aria-label="닫기">✕</button>
+    <img class="lightbox-image" id="layout-lightbox-image" alt="">
+  </div>
 </main>
 
 <footer class="site-footer">
@@ -69,9 +94,12 @@
   <span>Layout Patterns catalog</span>
 </footer>
 
+<script src="./assets/js/app-dialog.js?v=20260718-encyc"></script>
 <script src="./assets/js/app-runtime.js?v=20260718-encyc"></script>
 <script src="./assets/js/nav-dropdown.js?v=20260718-encyc"></script>
 <script src="./assets/js/catalog-shell.js?v=20260718-encyc"></script>
-<script>CatalogShell.setupLangToggle();</script>
+<script src="./assets/js/app-export.js?v=20260718-encyc"></script>
+<script src="./assets/js/layout-wireframes.js?v=20260718-encyc"></script>
+<script src="./assets/js/layout.js?v=20260718-encyc"></script>
 </body>
 </html>

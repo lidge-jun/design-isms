@@ -1,0 +1,170 @@
+namespace LayoutWireframes {
+  export const wireframeTypes = [
+    'layout-hero-centered', 'layout-hero-split', 'layout-hero-full-media', 'layout-hero-interactive', 'layout-hero-video-bg',
+    'layout-grid-equal', 'layout-grid-masonry', 'layout-grid-bento', 'layout-grid-featured', 'layout-grid-magazine',
+    'layout-content-zigzag', 'layout-content-timeline', 'layout-content-comparison', 'layout-content-testimonial', 'layout-content-pricing',
+    'layout-nav-top-bar', 'layout-nav-sidebar', 'layout-nav-bottom', 'layout-nav-command-palette', 'layout-nav-breadcrumb',
+    'layout-form-multi-step', 'layout-form-settings', 'layout-form-search-results', 'layout-form-filter-list', 'layout-form-auth'
+  ] as const;
+
+  export type WireframeType = typeof wireframeTypes[number];
+  export type Viewport = 'desktop' | 'tablet' | 'mobile';
+
+  export function isWireframeType(value: string): value is WireframeType {
+    return (wireframeTypes as readonly string[]).includes(value);
+  }
+
+  type Structures = Record<Viewport, string>;
+
+  const structures: Record<string, Structures> = {
+    'layout-hero-centered': {
+      desktop: group('center', block('copy', 'b') + block('actions') + block('media', 'div')),
+      tablet: group('center-compact', block('copy', 'b') + block('media', 'div') + block('actions')),
+      mobile: group('stack', block('copy', 'b') + block('actions', 'div') + block('media', 'div'))
+    },
+    'layout-hero-split': {
+      desktop: group('row', group('copy-column', block('copy', 'b') + block('actions')) + block('media', 'div')),
+      tablet: group('row-compact', block('copy', 'b') + block('media', 'div') + block('actions')),
+      mobile: group('stack', block('copy', 'b') + block('actions', 'div') + block('media', 'div'))
+    },
+    'layout-hero-full-media': {
+      desktop: group('overlay-wide', block('media', 'div') + block('scrim', 'i') + block('copy', 'b') + block('actions')),
+      tablet: group('overlay-compact', block('media', 'div') + block('scrim', 'i') + group('inset', block('copy', 'b') + block('actions'))),
+      mobile: group('overlay-short', block('media', 'div') + block('scrim', 'i') + group('stack', block('copy', 'b') + block('actions', 'div')))
+    },
+    'layout-hero-interactive': {
+      desktop: group('row', group('copy-column', block('copy', 'b') + block('actions')) + region('stage', block('fallback'))),
+      tablet: group('row-compact', block('copy', 'b') + region('stage', block('fallback')) + block('actions')),
+      mobile: group('stack', block('copy', 'b') + block('actions', 'div') + block('fallback', 'div') + region('stage', repeat('i', 'stage', 2)))
+    },
+    'layout-hero-video-bg': {
+      desktop: group('overlay-wide', block('video', 'div') + block('scrim') + block('copy', 'b') + block('controls')),
+      tablet: group('overlay-compact', block('video', 'div') + block('scrim') + group('inset', block('copy', 'b') + block('controls'))),
+      mobile: group('overlay-short', block('video', 'div') + block('scrim') + group('stack', block('copy', 'b') + block('controls', 'div')))
+    },
+    'layout-grid-equal': {
+      desktop: block('heading', 'b') + region('cards', repeat('i', 'card', 8)),
+      tablet: group('compact', block('heading', 'b') + region('cards', repeat('i', 'card', 6))),
+      mobile: group('stack', block('heading', 'b') + region('cards', repeat('div', 'card', 4)))
+    },
+    'layout-grid-masonry': {
+      desktop: block('heading', 'b') + region('gallery', repeat('i', 'item', 7)),
+      tablet: group('compact', block('heading', 'b') + region('gallery', repeat('i', 'item', 6))),
+      mobile: group('stack', block('heading', 'b') + region('gallery', repeat('div', 'item', 4)))
+    },
+    'layout-grid-bento': {
+      desktop: block('primary', 'div') + repeat('i', 'metric', 2) + block('chart', 'div') + block('activity', 'div'),
+      tablet: group('compact', block('primary', 'div') + block('chart', 'div') + repeat('i', 'metric', 2) + block('activity', 'div')),
+      mobile: group('stack', block('primary', 'div') + block('metric', 'div') + block('chart', 'div') + block('activity', 'div'))
+    },
+    'layout-grid-featured': {
+      desktop: region('featured', block('media', 'div') + block('meta', 'b')) + region('secondary', repeat('i', 'meta', 4)),
+      tablet: group('stack-leading', region('featured', block('media', 'div') + block('meta', 'b')) + region('secondary', repeat('i', 'meta', 4))),
+      mobile: group('stack', region('featured', block('media', 'div') + block('meta', 'b')) + region('secondary', repeat('div', 'meta', 3)))
+    },
+    'layout-grid-magazine': {
+      desktop: region('headline', block('media', 'div') + block('stories', 'b')) + region('rail', repeat('i', 'stories', 4)) + region('stories', repeat('i', 'media', 3)),
+      tablet: group('stack-leading', region('headline', block('media', 'div') + block('stories', 'b')) + region('stories', repeat('i', 'media', 4)) + region('rail', repeat('i', 'stories', 3))),
+      mobile: group('stack', region('headline', block('media', 'div') + block('stories', 'b')) + region('stories', repeat('div', 'media', 3)) + region('rail', repeat('i', 'stories', 2)))
+    },
+    'layout-content-zigzag': {
+      desktop: region('section', group('row', block('copy', 'b') + block('media', 'div')) + group('row-reverse', block('copy', 'b') + block('media', 'div'))),
+      tablet: region('section', group('row-compact', block('copy', 'b') + block('media', 'div')) + group('row-reverse', block('copy', 'b') + block('media', 'div'))),
+      mobile: region('section', group('stack', block('copy', 'b') + block('media', 'div') + block('copy', 'b') + block('media', 'div')))
+    },
+    'layout-content-timeline': {
+      desktop: block('rail', 'div') + repeat('div', 'event', 4) + repeat('b', 'date', 4) + repeat('i', 'content', 4),
+      tablet: group('compact', block('rail', 'div') + repeat('div', 'event', 3) + repeat('b', 'date', 3) + repeat('i', 'content', 3)),
+      mobile: group('timeline-stack', block('rail', 'div') + repeat('div', 'event', 3) + repeat('b', 'date', 3) + repeat('i', 'content', 3))
+    },
+    'layout-content-comparison': {
+      desktop: region('scroll', block('header', 'b') + region('labels', repeat('i', 'labels', 4)) + region('plans', repeat('i', 'plans', 12))),
+      tablet: group('overflow', region('scroll', block('header', 'b') + region('labels', repeat('i', 'labels', 4)) + region('plans', repeat('i', 'plans', 12)))),
+      mobile: group('overflow-narrow', region('scroll', block('header', 'b') + region('labels', repeat('div', 'labels', 4)) + region('plans', repeat('i', 'plans', 8))))
+    },
+    'layout-content-testimonial': {
+      desktop: region('featured', block('attribution', 'b')) + region('secondary', repeat('i', 'attribution', 3)),
+      tablet: group('stack-leading', region('featured', block('attribution', 'b')) + region('secondary', repeat('i', 'attribution', 3))),
+      mobile: group('stack', region('featured', block('attribution', 'b')) + region('secondary', repeat('div', 'attribution', 3)))
+    },
+    'layout-content-pricing': {
+      desktop: region('plans', block('features', 'i') + region('recommended', block('features', 'i')) + block('features', 'i')) + block('compare', 'b'),
+      tablet: group('stack-leading', region('recommended', block('features', 'i')) + region('plans', repeat('i', 'features', 2)) + block('compare', 'b')),
+      mobile: group('stack', region('recommended', block('features', 'div')) + region('plans', repeat('div', 'features', 2)) + block('compare', 'b'))
+    },
+    'layout-nav-top-bar': {
+      desktop: block('brand', 'b') + region('primary', repeat('i', 'primary', 4)) + block('utility') + block('menu'),
+      tablet: group('bar-compact', block('brand', 'b') + region('primary', repeat('i', 'primary', 3)) + block('menu') + block('utility')),
+      mobile: group('bar-mobile', block('brand', 'b') + block('utility') + region('menu', repeat('div', 'primary', 3)))
+    },
+    'layout-nav-sidebar': {
+      desktop: region('sidebar', repeat('i', 'sidebar', 5)) + region('main', block('content', 'div')) + block('trigger'),
+      tablet: group('rail', region('sidebar', repeat('i', 'sidebar', 5)) + region('main', block('content', 'div')) + block('trigger')),
+      mobile: group('stack', block('trigger', 'b') + region('main', block('content', 'div')) + region('sidebar', repeat('i', 'sidebar', 3)))
+    },
+    'layout-nav-bottom': {
+      desktop: region('top', repeat('i', 'destination', 4)) + region('main', block('main', 'div')) + block('bottom'),
+      tablet: group('compact', region('top', repeat('i', 'destination', 3)) + region('main', block('main', 'div')) + block('bottom')),
+      mobile: group('app-shell', region('main', block('main', 'div')) + region('bottom', repeat('b', 'destination', 4)) + block('top'))
+    },
+    'layout-nav-command-palette': {
+      desktop: block('backdrop', 'div') + region('dialog', block('query', 'b') + region('results', repeat('i', 'results', 5))) + block('trigger'),
+      tablet: group('overlay-compact', block('backdrop', 'div') + region('dialog', block('query', 'b') + region('results', repeat('i', 'results', 4))) + block('trigger')),
+      mobile: group('sheet', block('backdrop', 'div') + block('trigger', 'b') + region('dialog', block('query', 'b') + region('results', repeat('div', 'results', 4))))
+    },
+    'layout-nav-breadcrumb': {
+      desktop: region('ancestors', block('root', 'b') + repeat('i', 'ancestors', 3) + block('current', 'b')) + block('content', 'div'),
+      tablet: group('compact', region('ancestors', block('root', 'b') + repeat('i', 'ancestors', 2) + block('current', 'b')) + block('content', 'div')),
+      mobile: group('stack', region('ancestors', block('root', 'b') + block('ancestors') + block('current', 'b')) + block('content', 'div'))
+    },
+    'layout-form-multi-step': {
+      desktop: region('steps', repeat('i', 'steps', 4)) + region('form', block('actions', 'b')) + region('summary', repeat('i', 'summary', 3)) + block('progress'),
+      tablet: group('form-grid', block('progress', 'b') + region('form', block('actions', 'b')) + region('summary', repeat('i', 'summary', 2)) + block('steps')),
+      mobile: group('stack', block('progress', 'b') + region('form', repeat('i', 'form', 3) + block('actions', 'b')) + region('summary', block('summary')) + block('steps'))
+    },
+    'layout-form-settings': {
+      desktop: region('section-nav', repeat('i', 'section-nav', 4)) + region('groups', repeat('div', 'field', 5) + block('actions', 'b')),
+      tablet: group('settings-compact', region('section-nav', repeat('i', 'section-nav', 4)) + region('groups', repeat('div', 'field', 4) + block('actions', 'b'))),
+      mobile: group('stack', region('section-nav', repeat('b', 'section-nav', 3)) + region('groups', repeat('div', 'field', 4)) + block('actions', 'b'))
+    },
+    'layout-form-search-results': {
+      desktop: block('query', 'b') + region('facets', repeat('i', 'facets', 5)) + block('sort') + region('results', repeat('div', 'results', 4)) + block('filter-trigger'),
+      tablet: group('search-compact', block('query', 'b') + region('facets', repeat('i', 'facets', 4)) + block('sort') + region('results', repeat('div', 'results', 3)) + block('filter-trigger')),
+      mobile: group('stack', block('query', 'b') + block('filter-trigger', 'b') + block('sort') + region('results', repeat('div', 'results', 4)) + block('facets'))
+    },
+    'layout-form-filter-list': {
+      desktop: region('filters', repeat('i', 'filters', 5)) + region('list', block('chips', 'b') + repeat('div', 'item', 5)) + block('trigger'),
+      tablet: group('filter-compact', region('filters', repeat('i', 'filters', 4)) + region('list', block('chips', 'b') + repeat('div', 'item', 4)) + block('trigger')),
+      mobile: group('stack', block('chips', 'b') + block('trigger', 'b') + region('list', repeat('div', 'item', 4)) + block('filters'))
+    },
+    'layout-form-auth': {
+      desktop: region('brand', block('media', 'div')) + region('form', block('error') + repeat('i', 'form', 3) + block('actions', 'b')),
+      tablet: group('auth-compact', region('brand', block('media', 'div')) + region('form', block('error') + repeat('i', 'form', 3) + block('actions', 'b'))),
+      mobile: group('stack', region('form', block('error', 'b') + repeat('div', 'form', 3) + block('actions', 'b')) + block('brand') + block('media'))
+    }
+  };
+
+  export function render(type: string, viewport: 'desktop' | 'tablet' | 'mobile'): string {
+    const structure = structures[type];
+    if (!structure) return '';
+    const suffix = type.slice('layout-'.length);
+    return `<div class="layout-wireframe-root layout-wireframe-${suffix} is-${viewport}" data-layout-wireframe="${type}" data-viewport="${viewport}"><div class="layout-wireframe-canvas" aria-hidden="true">${structure[viewport]}</div></div>`;
+  }
+
+  function block(role: string, tag: 'div' | 'i' | 'b' = 'i'): string {
+    return `<${tag} class="layout-wireframe-slot layout-wireframe-${role}"></${tag}>`;
+  }
+
+  function repeat(tag: 'div' | 'i' | 'b', role: string, count: number): string {
+    return Array.from({ length: count }, () => block(role, tag)).join('');
+  }
+
+  function region(role: string, content: string): string {
+    return `<div class="layout-wireframe-slot layout-wireframe-region layout-wireframe-${role}">${content}</div>`;
+  }
+
+  function group(kind: string, content: string): string {
+    return `<div class="layout-wireframe-group layout-wireframe-group-${kind}">${content}</div>`;
+  }
+}
+

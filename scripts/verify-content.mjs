@@ -51,7 +51,7 @@ const requiredOrder = {
   'faq.html': ['assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/faq.js'],
   'color.html': ['assets/js/app-dialog.js', 'assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/catalog-shell.js', 'assets/js/color.js'],
   'typography.html': ['assets/js/app-dialog.js', 'assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/catalog-shell.js', 'assets/js/typography-fonts.js', 'assets/js/typography.js'],
-  'layout.html': ['assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/catalog-shell.js'],
+  'layout.html': ['assets/js/app-dialog.js', 'assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/catalog-shell.js', 'assets/js/app-export.js', 'assets/js/layout-wireframes.js', 'assets/js/layout.js'],
   'motion.html': ['assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/catalog-shell.js']
 };
 for (const [page, order] of Object.entries(requiredOrder)) {

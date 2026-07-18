@@ -36,7 +36,7 @@
         <li><a href="./effects.html" data-catalog-target="effects">Effects</a></li>
         <li><a href="./color.html" data-catalog-target="color" data-catalog-current="true">Color</a></li>
         <li><a href="./typography.html" data-catalog-target="typography">Typography</a></li>
-        <li><a href="./layout.html" data-catalog-target="layout" aria-disabled="true">Layout <span class="nav-dropdown-badge">준비 중</span></a></li>
+        <li><a href="./layout.html" data-catalog-target="layout">Layout</a></li>
         <li><a href="./motion.html" data-catalog-target="motion" aria-disabled="true">Motion <span class="nav-dropdown-badge">준비 중</span></a></li>
         </ul>
       </div>
@@ -75,15 +75,15 @@
   <section class="color-grid" id="color-grid" aria-label="팔레트 카탈로그" aria-busy="true"></section>
 
   <div class="modal-overlay" id="color-modal-overlay" aria-hidden="true">
-    <div class="modal-dialog" id="color-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="color-modal-title">
-      <button class="modal-close" id="color-modal-close" type="button" aria-label="닫기">×</button>
-      <div class="modal-content" id="color-modal-content"></div>
+    <div class="modal-container" id="color-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="color-modal-title" tabindex="-1">
+      <button class="modal-close" id="color-modal-close" type="button" aria-label="닫기">✕</button>
+      <div class="modal-scroll" id="color-modal-content"></div>
     </div>
   </div>
 
-  <div class="effect-lightbox" id="color-lightbox" aria-hidden="true">
-    <button class="effect-lightbox-close" id="color-lightbox-close" type="button" aria-label="닫기">×</button>
-    <img id="color-lightbox-image" alt="">
+  <div class="lightbox" id="color-lightbox" role="dialog" aria-modal="true" aria-label="Guide image preview" aria-hidden="true">
+    <button class="lightbox-close" id="color-lightbox-close" type="button" aria-label="닫기">✕</button>
+    <img class="lightbox-image" id="color-lightbox-image" alt="">
   </div>
 </main>
 

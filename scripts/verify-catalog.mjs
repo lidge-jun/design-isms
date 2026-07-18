@@ -150,10 +150,46 @@ function validateTypographyDomain(items) {
   validateGuideLedger({ domain: 'typography', expectedCount: 20, manifestName: '041_typography_guide_manifest.jsonl', auditName: '042_typography_guide_audit.csv', items });
 }
 
+function validateLayoutDomain(items) {
+  if (items.length !== 25) errors.push(`layout: expected 25 cards, found ${items.length}`);
+  const familyCounts = new Map();
+  for (const card of items) familyCounts.set(card.family, (familyCounts.get(card.family) ?? 0) + 1);
+  for (const family of ['Hero', 'Card Grid', 'Content Section', 'Navigation', 'Form & Input']) {
+    if (familyCounts.get(family) !== 5) errors.push(`layout: family ${family} count ${familyCounts.get(family) ?? 0} != 5`);
+  }
+  const wireframeSrc = readFileSync(join(root, 'src/layout-wireframes.ts'), 'utf8');
+  const registryBlock = wireframeSrc.match(/wireframeTypes = \[([\s\S]*?)\] as const/);
+  const registryIds = new Set(registryBlock ? [...registryBlock[1].matchAll(/'([a-z0-9-]+)'/g)].map((m) => m[1]) : []);
+  if (registryIds.size !== 25) errors.push(`layout: wireframeTypes registry has ${registryIds.size} ids != 25`);
+  const htmlBanned = [/<script\b/i, /<iframe\b/i, /<object\b/i, /<embed\b/i, /<style\b/i, /\sstyle\s*=/i, /\son[a-z][\w:-]*\s*=/i, /javascript:/i, /data:text\/html/i];
+  const cssBanned = [/@import\b/i, /url\(/i, /expression\(/i, /javascript:/i, /@font-face\b/i];
+  for (const card of items) {
+    const label = `layout:${card.id}`;
+    if (card.wireframe?.type !== card.id) errors.push(`${label}: wireframe.type must equal id`);
+    if (!registryIds.has(card.id)) errors.push(`${label}: missing from LayoutWireframes registry`);
+    const rootClass = `layout-example-${card.id.replace(/^layout-/, '')}`;
+    if (!card.snippet?.html?.includes(rootClass)) errors.push(`${label}: snippet html missing root class .${rootClass}`);
+    for (const pattern of htmlBanned) if (pattern.test(card.snippet?.html ?? '')) errors.push(`${label}: snippet html banned token ${pattern}`);
+    for (const pattern of cssBanned) if (pattern.test(card.snippet?.css ?? '')) errors.push(`${label}: snippet css banned token ${pattern}`);
+    // Every top-level CSS selector arm must be scoped under the root class.
+    const css = card.snippet?.css ?? '';
+    for (const match of css.matchAll(/(^|\})\s*([^@{}]+)\{/g)) {
+      const selectors = match[2].split(',');
+      for (const selector of selectors) {
+        const trimmed = selector.trim();
+        if (!trimmed) continue;
+        if (!trimmed.includes(rootClass)) errors.push(`${label}: unscoped css selector "${trimmed.slice(0, 40)}"`);
+      }
+    }
+    if (!Array.isArray(card.responsive) || card.responsive.length !== 2) errors.push(`${label}: responsive must have exactly 2 rules`);
+  }
+  validateGuideLedger({ domain: 'layout', expectedCount: 25, manifestName: '051_layout_guide_manifest.jsonl', auditName: '051_layout_guide_audit.csv', items });
+}
+
 const registry = [
   { name: 'color', dataPath: 'assets/data/color.json', imageRoot: 'assets/images/color', schemaPath: 'assets/data/schema/color.schema.json', idPattern: /^[a-z0-9]+(-[a-z0-9]+)*$/, family: null, validateDomain: validateColorDomain },
   { name: 'typography', dataPath: 'assets/data/typography.json', imageRoot: 'assets/images/typography', schemaPath: 'assets/data/schema/typography.schema.json', idPattern: /^[a-z0-9]+(-[a-z0-9]+)*$/, family: 'Typography Pairing', validateDomain: validateTypographyDomain },
-  { name: 'layout', dataPath: 'assets/data/layout.json', imageRoot: 'assets/images/layout', schemaPath: 'assets/data/schema/layout.schema.json', idPattern: /^layout-[a-z0-9]+(-[a-z0-9]+)*$/, family: null },
+  { name: 'layout', dataPath: 'assets/data/layout.json', imageRoot: 'assets/images/layout', schemaPath: 'assets/data/schema/layout.schema.json', idPattern: /^layout-[a-z0-9]+(-[a-z0-9]+)*$/, family: null, validateDomain: validateLayoutDomain },
   { name: 'motion', dataPath: 'assets/data/motion.json', imageRoot: 'assets/images/motion', schemaPath: 'assets/data/schema/motion.schema.json', idPattern: /^motion-[a-z0-9]+(-[a-z0-9]+)*$/, family: 'Motion Preset' }
 ];
 
