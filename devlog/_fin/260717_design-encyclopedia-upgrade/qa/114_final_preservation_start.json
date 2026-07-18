@@ -1,8 +1,8 @@
 {
-  "capturedAt": "2026-07-18T17:25:00.563Z",
-  "head": "930f3779b776a6890d2199898807d7c2590731ec",
+  "capturedAt": "2026-07-18T17:28:42.584Z",
+  "head": "507f8875f99a7ca45c0746e9e2de13cd3d8af036",
   "upstream": "355da277ec194b0e6fca15b0a9c5447134c60c50",
-  "reflogHead": "930f3779b776a6890d2199898807d7c2590731ec commit: docs(wp10): archive design-encyclopedia-upgrade unit to devlog/_fin",
+  "reflogHead": "507f8875f99a7ca45c0746e9e2de13cd3d8af036 commit: docs(wp10): sync README/AGENTS/structure with the four sister catalogs",
   "archiveSha256": "1973aa16c30b4f2fa292f14bae4c325ea4d92daefec5ac675f950d4235f124a2",
   "remoteRefs": [
     "refs/remotes/origin/HEAD 355da277ec194b0e6fca15b0a9c5447134c60c50",
