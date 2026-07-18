@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lidge-jun.github.io/design-isms/assets/data/schema/layout.schema.json",
+  "title": "Layout Pattern Card",
+  "description": "assets/data/layout.json 항목 계약(050 doc §5가 SoT). wireframe.type === id, family별 5개 분포, snippet 안전성(inline event/script/iframe/@import/전역 selector 금지), relatedEffects/relatedIsms 실존성, renderer registry 전단사는 verify-catalog.mjs 런타임 검증 소유.",
+  "allOf": [{ "$ref": "./catalog-common.schema.json" }],
+  "type": "object",
+  "required": ["family", "breakpoints", "composition", "responsive", "bestFor", "avoidWhen", "snippet", "wireframe"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^layout-[a-z0-9]+(-[a-z0-9]+)*$" },
+    "family": { "enum": ["Hero", "Card Grid", "Content Section", "Navigation", "Form & Input"] },
+    "breakpoints": {
+      "type": "object",
+      "required": ["desktop", "tablet", "mobile"],
+      "properties": {
+        "desktop": {
+          "type": "object",
+          "required": ["minWidth", "referenceWidth", "composition"],
+          "properties": {
+            "minWidth": { "const": 1025 },
+            "referenceWidth": { "const": 1440 },
+            "composition": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        },
+        "tablet": {
+          "type": "object",
+          "required": ["minWidth", "maxWidth", "referenceWidth", "composition"],
+          "properties": {
+            "minWidth": { "const": 641 },
+            "maxWidth": { "const": 1024 },
+            "referenceWidth": { "const": 1024 },
+            "composition": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        },
+        "mobile": {
+          "type": "object",
+          "required": ["maxWidth", "referenceWidth", "composition"],
+          "properties": {
+            "maxWidth": { "const": 640 },
+            "referenceWidth": { "const": 390 },
+            "composition": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "composition": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "required": ["role", "labelKr", "required"],
+        "properties": {
+          "role": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+          "labelKr": { "type": "string", "minLength": 1 },
+          "required": { "type": "boolean" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "responsive": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "rule"],
+        "properties": {
+          "from": { "enum": ["desktop", "tablet"] },
+          "to": { "enum": ["tablet", "mobile"] },
+          "rule": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "bestFor": { "type": "array", "minItems": 2, "maxItems": 4, "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "avoidWhen": { "type": "array", "minItems": 2, "maxItems": 4, "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "snippet": {
+      "type": "object",
+      "required": ["html", "css"],
+      "properties": {
+        "html": { "type": "string", "minLength": 1 },
+        "css": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "wireframe": {
+      "type": "object",
+      "required": ["type", "label"],
+      "properties": {
+        "type": { "type": "string", "pattern": "^layout-[a-z0-9]+(-[a-z0-9]+)*$" },
+        "label": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "unevaluatedProperties": false
+}

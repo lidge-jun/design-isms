@@ -3,10 +3,11 @@ import { existsSync, lstatSync, readFileSync, realpathSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
-import { preservationState, shaBytes, shaFile, stableJson, treeFingerprint } from './final-qa-lib.mjs';
+import { evidenceRootAbs, evidenceRootRel, preservationState, shaBytes, shaFile, stableJson, treeFingerprint } from './final-qa-lib.mjs';
 
-const root = resolve(dirname(fileURLToPath(import.meta.url)), '..'); const devlog = join(root, 'devlog/260715_production_upgrade');
-const read = name => { const path = join(devlog, name); if (!existsSync(path)) throw new Error(`missing ${name}`); return JSON.parse(readFileSync(path, 'utf8')); };
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const evidenceRoot = evidenceRootAbs(root); const evidenceRel = evidenceRootRel(root);
+const read = name => { const path = join(evidenceRoot, name); if (!existsSync(path)) throw new Error(`missing ${name}`); return JSON.parse(readFileSync(path, 'utf8')); };
 const browser = read('112_final_browser_receipt.json'); const server = read('113_final_server_receipt.json');
 const preservationStart = read('114_final_preservation_start.json'); const preservation = read('114_final_preservation_final.json'); const staticReceipt = read('115_final_static_receipt.json');
 const errors = []; const fail = message => errors.push(message);
@@ -39,11 +40,11 @@ for (const flow of browser.flows ?? []) {
 }
 if (browser.screenshots?.length !== 9) fail('browser receipt must contain nine screenshots');
 const expectedShots = new Map([...pages.keys()].flatMap(page => [
-  [`devlog/260715_production_upgrade/qa/final-${page}-1440.png`, { page, width: 1440, state: 'ready' }],
-  [`devlog/260715_production_upgrade/qa/final-${page}-390.png`, { page, width: 390, state: 'ready' }],
-  [`devlog/260715_production_upgrade/qa/final-${page}-error-390.png`, { page, width: 390, state: 'error' }]
+  [`${evidenceRel}/final-${page}-1440.png`, { page, width: 1440, state: 'ready' }],
+  [`${evidenceRel}/final-${page}-390.png`, { page, width: 390, state: 'ready' }],
+  [`${evidenceRel}/final-${page}-error-390.png`, { page, width: 390, state: 'error' }]
 ]));
-const seenShots = new Set(); const qaRoot = realpathSync(join(devlog, 'qa'));
+const seenShots = new Set(); const qaRoot = realpathSync(evidenceRoot);
 for (const shot of browser.screenshots ?? []) {
   const expected = expectedShots.get(shot.path);
   if (!expected || seenShots.has(shot.path) || shot.page !== expected.page || shot.viewportWidth !== expected.width || shot.state !== expected.state) { fail(`screenshot topology invalid ${shot.path}`); continue; } seenShots.add(shot.path);
@@ -89,5 +90,5 @@ if (server.governedTreeSha256 !== tree.sha256) fail('server receipt is stale for
 const times = [preservationStart.capturedAt, staticReceipt.createdAt, browser.createdAt, server.createdAt, preservation.capturedAt].map(value => Date.parse(value));
 if (times.some(value => !Number.isFinite(value)) || times.some((value, index) => index > 0 && value < times[index - 1])) fail('QA receipt chronology invalid');
 if (errors.length) { console.error('final QA verification failed:'); for (const error of errors) console.error(`  - ${error}`); process.exit(1); }
-const inputs = ['112_final_browser_receipt.json', '113_final_server_receipt.json', '114_final_preservation_final.json', '115_final_static_receipt.json'].map(name => ({ name, sha256: shaFile(join(devlog, name)) }));
+const inputs = ['112_final_browser_receipt.json', '113_final_server_receipt.json', '114_final_preservation_final.json', '115_final_static_receipt.json'].map(name => ({ name, sha256: shaFile(join(evidenceRoot, name)) }));
 console.log(`final qa ok: rows=18 screenshots=9 server=7 preservation=true tree=${tree.sha256} receiptSha=${shaBytes(stableJson(inputs))}`);

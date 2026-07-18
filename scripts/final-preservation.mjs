@@ -1,14 +1,15 @@
 #!/usr/bin/env node
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
-import { preservationState, stableJson, writeJsonAtomic } from './final-qa-lib.mjs';
+import { evidenceRootAbs, preservationState, stableJson, writeJsonAtomic } from './final-qa-lib.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..'); const action = process.argv[2];
 if (!['start', 'final', 'check'].includes(action)) throw new Error('usage: final-preservation.mjs start|final|check');
-const devlog = join(root, 'devlog/260715_production_upgrade'); const startPath = join(devlog, '114_final_preservation_start.json');
-const finalPath = join(devlog, '114_final_preservation_final.json');
+const evidenceRoot = evidenceRootAbs(root); mkdirSync(evidenceRoot, { recursive: true });
+const startPath = join(evidenceRoot, '114_final_preservation_start.json');
+const finalPath = join(evidenceRoot, '114_final_preservation_final.json');
 function optional(command, args) {
   const result = spawnSync(command, args, { cwd: root, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
   return result.status === 0 ? result.stdout.trim() : null;

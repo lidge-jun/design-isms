@@ -11,7 +11,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const tmpRoot = join(root, '.tmp/image-quality');
 const lockPath = join(tmpRoot, 'apply.lock');
 const journalPath = join(tmpRoot, 'apply-transaction.json');
-const baseline = JSON.parse(readFileSync(join(root, 'devlog/260715_production_upgrade/095_image_baseline_sheet_receipts.json'), 'utf8')).header;
+const baseline = JSON.parse(readFileSync(join(root, 'devlog/_fin/260715_production_upgrade/095_image_baseline_sheet_receipts.json'), 'utf8')).header;
 const inventory = new Map(loadInventory(root).map(item => [item.key, item]));
 const ids = process.argv.slice(2).flatMap((value, index, args) => value === '--attempt' ? [args[index + 1]] : []);
 if (!ids.length) throw new Error('usage: apply-image-candidates.mjs --attempt img-000001 [--attempt ...]');
@@ -57,8 +57,8 @@ function recover() {
   const journal = JSON.parse(readFileSync(journalPath, 'utf8'));
   const allowedTargets = new Set([...inventory.values()].flatMap(item => [join(root, item.source), join(root, item.preview)]).concat([
     join(root, 'assets/data/isms.json'), join(root, 'assets/data/effects.json'), join(root, 'assets/data/image-pairs-manifest.json'),
-    join(root, 'devlog/260715_production_upgrade/091_image_quality_audit.csv'), join(root, 'devlog/260715_production_upgrade/031_effect_guide_audit.csv'),
-    join(root, 'devlog/260715_production_upgrade/032_effect_guide_manifest.jsonl')
+    join(root, 'devlog/_fin/260715_production_upgrade/091_image_quality_audit.csv'), join(root, 'devlog/_fin/260715_production_upgrade/031_effect_guide_audit.csv'),
+    join(root, 'devlog/_fin/260715_production_upgrade/032_effect_guide_manifest.jsonl')
   ]));
   if (journal.schemaVersion !== 1 || !Number.isInteger(journal.generation) || journal.generation < 1 || journal.runId !== baseline.runId || journal.baselineSha256 !== baseline.aggregateSha256 ||
       dirname(journal.txDir) !== tmpRoot || !/^apply-\d+-\d+$/.test(journal.txDir.slice(tmpRoot.length + 1))) throw new Error('unsafe apply journal identity');
@@ -116,9 +116,9 @@ try {
 
   const ismsPath = join(root, 'assets/data/isms.json'); const effectsPath = join(root, 'assets/data/effects.json');
   const manifestPath = join(root, 'assets/data/image-pairs-manifest.json');
-  const auditPath = join(root, 'devlog/260715_production_upgrade/091_image_quality_audit.csv');
-  const effectAuditPath = join(root, 'devlog/260715_production_upgrade/031_effect_guide_audit.csv');
-  const effectManifestPath = join(root, 'devlog/260715_production_upgrade/032_effect_guide_manifest.jsonl');
+  const auditPath = join(root, 'devlog/_fin/260715_production_upgrade/091_image_quality_audit.csv');
+  const effectAuditPath = join(root, 'devlog/_fin/260715_production_upgrade/031_effect_guide_audit.csv');
+  const effectManifestPath = join(root, 'devlog/_fin/260715_production_upgrade/032_effect_guide_manifest.jsonl');
   for (const path of [ismsPath, effectsPath, manifestPath, auditPath, effectAuditPath, effectManifestPath, ...selected.flatMap(({ item }) => [join(root, item.source), join(root, item.preview)])]) assertContainedRegular(root, path);
   const txDir = join(tmpRoot, `apply-${Date.now()}-${process.pid}`); const replacements = join(txDir, 'replacements'); const backups = join(txDir, 'backups');
   mkdirSync(replacements, { recursive: true }); mkdirSync(backups, { recursive: true });

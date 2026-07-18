@@ -90,7 +90,7 @@ export function loadInventory(root) {
 }
 
 export function verifyBaseline(root) {
-  const devlog = join(root, 'devlog/260715_production_upgrade');
+  const devlog = join(root, 'devlog/_fin/260715_production_upgrade');
   const receiptPath = join(devlog, '095_image_baseline_sheet_receipts.json');
   const receipt = JSON.parse(readFileSync(receiptPath, 'utf8')); const header = receipt.header ?? {};
   if (header.schemaVersion !== 1 || header.sheetCount !== 4 || header.cellCount !== 211 || receipt.sheets?.length !== 4 || !header.sharp || !header.vips) throw new Error('baseline receipt header invalid');
@@ -161,7 +161,7 @@ export async function buildSheet(root, spec, outDir) {
 }
 
 export function attemptRows(root) {
-  const dir = join(root, 'devlog/260715_production_upgrade/092_image_generation_attempts');
+  const dir = join(root, 'devlog/_fin/260715_production_upgrade/092_image_generation_attempts');
   if (!existsSync(dir)) return [];
   const indexPath = assertContainedRegular(root, join(dir, 'index.json'), dir); const index = JSON.parse(readFileSync(indexPath, 'utf8'));
   const actual = readdirSync(dir).filter(file => /^shard-\d{3}\.jsonl$/.test(file)).sort();

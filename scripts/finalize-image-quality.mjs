@@ -7,7 +7,7 @@ import { spawnSync } from 'node:child_process';
 import { AUDIT_COLUMNS, attemptRows, buildSheet, loadInventory, parseCsv, sha256Bytes, sha256File, sheetSpecs, stableJson, verifyBaseline } from './image-quality-lib.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const devlog = join(root, 'devlog/260715_production_upgrade');
+const devlog = join(root, 'devlog/_fin/260715_production_upgrade');
 const receiptPath = join(devlog, '098_image_final_sheet_receipts.json');
 const finalDir = join(devlog, '095_image_sheets/final');
 const baseline = verifyBaseline(root).receipt.header;

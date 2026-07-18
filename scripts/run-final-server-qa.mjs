@@ -1,12 +1,13 @@
 #!/usr/bin/env node
-import { realpathSync } from 'node:fs';
+import { mkdirSync, realpathSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawn } from 'node:child_process';
-import { treeFingerprint, writeJsonAtomic } from './final-qa-lib.mjs';
+import { evidenceRootAbs, treeFingerprint, writeJsonAtomic } from './final-qa-lib.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const receiptPath = join(root, 'devlog/260715_production_upgrade/113_final_server_receipt.json');
+const evidenceRoot = evidenceRootAbs(root); mkdirSync(evidenceRoot, { recursive: true });
+const receiptPath = join(evidenceRoot, '113_final_server_receipt.json');
 const expectedRoot = realpathSync(join(root, '.pages'));
 const child = spawn(process.execPath, ['scripts/serve-static.mjs', '--root', '.pages', '--host', '127.0.0.1', '--port', '0'], { cwd: root, stdio: ['ignore', 'pipe', 'pipe'] });
 let output = '';

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lidge-jun.github.io/design-isms/assets/data/schema/typography.schema.json",
+  "title": "Typography Pairing Card",
+  "description": "assets/data/typography.json 항목 계약(040 doc §4가 SoT). category 분포(6/4/4/3/3), 선언 weight와 Google Fonts URL 요청 weight 일치, relatedIsms 실존성은 verify-catalog.mjs 런타임 검증 소유.",
+  "allOf": [{ "$ref": "./catalog-common.schema.json" }],
+  "type": "object",
+  "required": ["family", "category", "heading", "body", "scale", "supportsKorean", "webfonts", "specimen", "relatedIsms"],
+  "properties": {
+    "family": { "const": "Typography Pairing" },
+    "category": { "enum": ["Korean", "English Classic", "Modern Sans", "Editorial", "ISM Linked"] },
+    "heading": { "$ref": "#/$defs/fontRole" },
+    "body": { "$ref": "#/$defs/fontRole" },
+    "mono": { "$ref": "#/$defs/fontRole" },
+    "scale": {
+      "type": "object",
+      "required": ["name", "ratio"],
+      "properties": {
+        "name": { "enum": ["Minor Third", "Major Third", "Perfect Fourth", "Augmented Fourth"] },
+        "ratio": { "enum": [1.2, 1.25, 1.333, 1.414] }
+      },
+      "additionalProperties": false
+    },
+    "supportsKorean": { "type": "boolean" },
+    "webfonts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["family", "source", "url", "strategy"],
+        "properties": {
+          "family": { "type": "string", "minLength": 1 },
+          "source": { "enum": ["google-fonts", "pretendard-cdn", "system"] },
+          "url": {
+            "oneOf": [
+              { "type": "null" },
+              { "type": "string", "pattern": "^https://(fonts\\.googleapis\\.com/css2|cdn\\.jsdelivr\\.net/)" }
+            ]
+          },
+          "strategy": { "enum": ["base", "viewport-text-subset", "modal-text-subset", "system-only"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "specimen": {
+      "type": "object",
+      "required": ["headingKo", "headingEn", "bodyKo", "bodyEn"],
+      "properties": {
+        "headingKo": { "type": "string", "minLength": 1 },
+        "headingEn": { "type": "string", "minLength": 1 },
+        "bodyKo": { "type": "string", "minLength": 1 },
+        "bodyEn": { "type": "string", "minLength": 1 },
+        "mono": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "unevaluatedProperties": false,
+  "$defs": {
+    "fontRole": {
+      "type": "object",
+      "required": ["family", "weight", "fallback"],
+      "properties": {
+        "family": { "type": "string", "minLength": 1 },
+        "weight": { "enum": [400, 500, 600, 700] },
+        "fallback": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -2,10 +2,12 @@
 import { readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { run, shaFile, treeFingerprint, writeJsonAtomic } from './final-qa-lib.mjs';
+import { mkdirSync } from 'node:fs';
+import { evidenceRootAbs, run, shaFile, treeFingerprint, writeJsonAtomic } from './final-qa-lib.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const receiptPath = join(root, 'devlog/260715_production_upgrade/115_final_static_receipt.json');
+const evidenceRoot = evidenceRootAbs(root); mkdirSync(evidenceRoot, { recursive: true });
+const receiptPath = join(evidenceRoot, '115_final_static_receipt.json');
 const steps = [
   ['npm-ci', 'npm', ['ci']], ['verify', 'npm', ['run', 'verify']], ['images-audit', 'npm', ['run', 'images:audit']],
   ['pages-stage', 'npm', ['run', 'pages:stage']], ['diff-check', 'git', ['diff', '--check']]

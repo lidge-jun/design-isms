@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lidge-jun.github.io/design-isms/assets/data/schema/catalog-common.schema.json",
+  "title": "Catalog Common Card",
+  "description": "design-isms 카탈로그 공통 카드 계약. 도메인 스키마가 allOf로 참조한다. 배열 전체의 id 고유성, 크로스링크 실존성, role 집합 동일성 같은 데이터 간 제약은 scripts/verify-catalog.mjs 런타임 검증이 소유한다.",
+  "type": "object",
+  "required": ["id", "name", "nameKr", "family", "category", "summary", "guide"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "name": { "type": "string", "minLength": 1 },
+    "nameKr": { "type": "string", "minLength": 1 },
+    "family": { "type": "string", "minLength": 1 },
+    "category": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string", "minLength": 10 },
+    "guide": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "required": ["file", "alt", "prompt"],
+          "properties": {
+            "file": { "const": "guide.png" },
+            "alt": { "type": "string", "minLength": 1 },
+            "prompt": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "relatedIsms": { "$ref": "#/$defs/idArray" },
+    "relatedEffects": { "$ref": "#/$defs/idArray" },
+    "relatedColor": { "$ref": "#/$defs/idArray" },
+    "relatedTypography": { "$ref": "#/$defs/idArray" },
+    "relatedLayout": { "$ref": "#/$defs/idArray" },
+    "relatedMotion": { "$ref": "#/$defs/idArray" }
+  },
+  "$defs": {
+    "idArray": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+      "uniqueItems": true
+    }
+  }
+}

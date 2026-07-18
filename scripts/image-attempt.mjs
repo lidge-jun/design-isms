@@ -9,7 +9,7 @@ import { loadInventory, promptSha, sha256File, stem } from './image-quality-lib.
 
 const args = process.argv.slice(2); const action = args[0];
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const devlog = join(root, 'devlog/260715_production_upgrade');
+const devlog = join(root, 'devlog/_fin/260715_production_upgrade');
 const ledgerDir = join(devlog, '092_image_generation_attempts');
 const indexPath = join(ledgerDir, 'index.json');
 const lockPath = join(root, '.tmp/image-quality/ledger.lock');

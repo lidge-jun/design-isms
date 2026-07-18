@@ -8,7 +8,7 @@ const args = process.argv.slice(2); const runIndex = args.indexOf('--run-id');
 if (runIndex < 0 || !/^[a-z0-9][a-z0-9-]{5,80}$/.test(args[runIndex + 1] ?? '')) throw new Error('--run-id is required (lowercase letters, digits, hyphen)');
 const runId = args[runIndex + 1];
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const devlog = join(root, 'devlog/260715_production_upgrade');
+const devlog = join(root, 'devlog/_fin/260715_production_upgrade');
 const paths = {
   assets: join(devlog, '093_image_baseline_assets.jsonl'), pairs: join(devlog, '094_image_baseline_pairs.json'),
   sheets: join(devlog, '095_image_baseline_sheet_receipts.json'), runtime: join(devlog, '096_image_baseline_runtime.json'),

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lidge-jun.github.io/design-isms/assets/data/schema/motion.schema.json",
+  "title": "Motion Preset Card",
+  "description": "assets/data/motion.json 항목 계약(060 doc §5가 SoT). relatedEffects 실존성, category 분포(6/4/4/3/3), snippet.css의 reduced-motion rule 포함 여부 정밀 검증은 verify-catalog.mjs 런타임 검증 소유.",
+  "allOf": [{ "$ref": "./catalog-common.schema.json" }],
+  "type": "object",
+  "required": ["family", "category", "easing", "duration", "trigger", "intensity", "snippet", "reducedMotion", "relatedEffects"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^motion-[a-z0-9]+(-[a-z0-9]+)*$" },
+    "family": { "const": "Motion Preset" },
+    "category": { "enum": ["Easing Curve", "Entry & Exit", "Loading Feedback", "Scroll-based", "State Transition"] },
+    "easing": { "type": "string", "pattern": "^(cubic-bezier\\(|linear\\()" },
+    "duration": { "type": "integer", "minimum": 80, "maximum": 5000 },
+    "trigger": { "enum": ["hover", "scroll", "click", "load"] },
+    "intensity": { "enum": ["subtle", "normal", "dramatic"] },
+    "snippet": {
+      "type": "object",
+      "required": ["css"],
+      "properties": { "css": { "type": "string", "minLength": 1 } },
+      "additionalProperties": false
+    },
+    "reducedMotion": {
+      "type": "object",
+      "required": ["strategy", "css", "noteKr"],
+      "properties": {
+        "strategy": { "enum": ["static-end", "instant", "preserve-progress"] },
+        "css": { "type": "string", "minLength": 1 },
+        "noteKr": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "unevaluatedProperties": false
+}

@@ -4,10 +4,10 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawn, spawnSync } from 'node:child_process';
 import sharp from 'sharp';
-import { shaFile, treeFingerprint, writeJsonAtomic } from './final-qa-lib.mjs';
+import { evidenceRootAbs, relativePath, shaFile, treeFingerprint, writeJsonAtomic } from './final-qa-lib.mjs';
 
-const root = resolve(dirname(fileURLToPath(import.meta.url)), '..'); const devlog = join(root, 'devlog/260715_production_upgrade');
-const qaDir = join(devlog, 'qa'); const receiptPath = join(devlog, '112_final_browser_receipt.json');
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..'); const evidenceRoot = evidenceRootAbs(root);
+const qaDir = evidenceRoot; const receiptPath = join(evidenceRoot, '112_final_browser_receipt.json');
 const pages = [{ id: 'index', selector: '.ism-card', count: 49, data: 'assets/data/isms.json' },
   { id: 'effects', selector: '.effect-card', count: 64, data: 'assets/data/effects.json' },
   { id: 'faq', selector: '.faq-item', count: 18, data: 'assets/data/faq.json' }];
@@ -71,7 +71,7 @@ async function screenshot(cdp, page, width, state) {
   const name = state === 'ready' ? `final-${page}-${width}.png` : `final-${page}-error-${width}.png`; const path = join(qaDir, name);
   const capture = await cdp.call('Page.captureScreenshot', { format: 'png', fromSurface: true }); writeFileSync(path, Buffer.from(capture.data, 'base64'));
   const fd = openSync(path, 'r'); try { fsyncSync(fd); } finally { closeSync(fd); }
-  const meta = await sharp(path, { failOn: 'error' }).metadata(); return { path: `devlog/260715_production_upgrade/qa/${name}`, sha256: shaFile(path), width: meta.width, height: meta.height, page, viewportWidth: width, state };
+  const meta = await sharp(path, { failOn: 'error' }).metadata(); return { path: relativePath(root, path), sha256: shaFile(path), width: meta.width, height: meta.height, page, viewportWidth: width, state };
 }
 async function stopChild(child) {
   if (child.exitCode !== null) return { code: child.exitCode, signal: child.signalCode, forced: false };

@@ -6,7 +6,7 @@ import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { AUDIT_COLUMNS, RUBRICS, assertContainedRegular, attemptRows, buildSheet, loadInventory, parseCsv, promptSha, sha256Bytes, sha256File, sheetSpecs, stableJson, verifyBaseline } from './image-quality-lib.mjs';
 
-const root = resolve(dirname(fileURLToPath(import.meta.url)), '..'); const devlog = join(root, 'devlog/260715_production_upgrade');
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..'); const devlog = join(root, 'devlog/_fin/260715_production_upgrade');
 const preFinal = process.argv.includes('--pre-final');
 const errors = []; const fail = message => errors.push(message);
 const baselineState = verifyBaseline(root); const baselineReceipt = baselineState.receipt;

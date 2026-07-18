@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lidge-jun.github.io/design-isms/assets/data/schema/color.schema.json",
+  "title": "Color System Card",
+  "description": "assets/data/color.json 항목 계약(030 doc §4가 SoT). light/dark role 집합 동일성, contrast role 실존성, relatedIsms 실존성/ai-slop 금지, family별 분포(7/8/5/5)는 verify-catalog.mjs 런타임 검증 소유.",
+  "allOf": [{ "$ref": "./catalog-common.schema.json" }],
+  "type": "object",
+  "required": ["family", "category", "tone", "useCases", "palette", "contrast", "darkVariant", "relatedIsms", "sources", "reviewedOn"],
+  "properties": {
+    "family": { "enum": ["Service", "ISM", "Technique", "System"] },
+    "tone": { "enum": ["warm", "cool", "neutral", "mixed"] },
+    "useCases": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 2, "maxItems": 5, "uniqueItems": true },
+    "palette": { "$ref": "#/$defs/palette" },
+    "contrast": { "$ref": "#/$defs/contrastInfo" },
+    "darkVariant": {
+      "type": "object",
+      "required": ["palette", "contrast"],
+      "properties": {
+        "palette": { "$ref": "#/$defs/palette" },
+        "contrast": { "$ref": "#/$defs/contrastInfo" }
+      },
+      "additionalProperties": false
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "url"],
+        "properties": {
+          "label": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "pattern": "^https://" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "reviewedOn": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+  },
+  "unevaluatedProperties": false,
+  "$defs": {
+    "palette": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "required": ["role", "hex", "labelKr"],
+        "properties": {
+          "role": {
+            "enum": ["background", "surface", "surface-muted", "text", "text-muted", "primary", "on-primary", "secondary", "on-secondary", "accent", "border", "info", "success", "warning", "danger"]
+          },
+          "hex": { "type": "string", "pattern": "^#[0-9A-F]{6}$" },
+          "labelKr": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "contrastInfo": {
+      "type": "object",
+      "required": ["checks", "notes"],
+      "properties": {
+        "checks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["foregroundRole", "backgroundRole", "usage"],
+            "properties": {
+              "foregroundRole": { "type": "string", "minLength": 1 },
+              "backgroundRole": { "type": "string", "minLength": 1 },
+              "usage": { "enum": ["normal-text", "large-text", "non-text"] }
+            },
+            "additionalProperties": false
+          }
+        },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    }
+  }
+}

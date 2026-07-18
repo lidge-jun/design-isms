@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { closeSync, existsSync, fsyncSync, lstatSync, openSync, readFileSync, renameSync, statSync, writeSync } from 'node:fs';
-import { dirname, join, relative, resolve } from 'node:path';
+import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 import { spawnSync } from 'node:child_process';
 
 export function shaBytes(value) { return createHash('sha256').update(value).digest('hex'); }
@@ -27,12 +27,33 @@ export function git(root, args, allowFailure = false) {
   if (result.status !== 0 && !allowFailure) throw new Error(`git ${args.join(' ')} failed: ${result.stderr}`);
   return result.status === 0 ? result.stdout.trim() : null;
 }
-export const FINAL_ALLOWLIST = [
-  /^devlog\/260715_production_upgrade\/(111_final_verification\.md|11[2-5]_final_.*\.json)$/,
-  /^devlog\/260715_production_upgrade\/qa\/final-.*\.png$/,
-  /^\.codexclaw\/goalplans\/design-isms-gpt-pro-zip-main-diff-020-070-phase\/(goalplan\.json|ledger\.jsonl)$/
-];
-export function finalAllowed(path) { return FINAL_ALLOWLIST.some(pattern => pattern.test(path)); }
+// Evidence root contract (010, design-encyclopedia-upgrade): QA receipts and
+// screenshots live under a runtime-selected repo-relative root. The default is
+// the active unit's qa/ directory; DESIGN_ISMS_EVIDENCE_ROOT overrides it
+// (e.g. after the unit is archived to devlog/_fin) without any source change,
+// preserving the governed-tree SHA contract.
+export const EVIDENCE_ROOT_DEFAULT = 'devlog/_plan/260717_design-encyclopedia-upgrade/qa';
+export function evidenceRootRel(root) {
+  const raw = process.env.DESIGN_ISMS_EVIDENCE_ROOT ?? EVIDENCE_ROOT_DEFAULT;
+  if (isAbsolute(raw)) throw new Error('DESIGN_ISMS_EVIDENCE_ROOT must be repo-relative');
+  const boundary = resolve(root);
+  const absolute = resolve(boundary, raw);
+  if (absolute === boundary || !absolute.startsWith(boundary + sep)) throw new Error(`evidence root escapes repository: ${raw}`);
+  const rel = relative(boundary, absolute).split(sep).join('/');
+  if (rel.split('/').some(part => part === '..' || part === '')) throw new Error(`unsafe evidence root: ${raw}`);
+  let cursor = boundary;
+  for (const part of rel.split('/')) {
+    cursor = join(cursor, part);
+    if (existsSync(cursor) && lstatSync(cursor).isSymbolicLink()) throw new Error(`symlinked evidence root component: ${cursor}`);
+  }
+  return rel;
+}
+export function evidenceRootAbs(root) { return join(root, evidenceRootRel(root)); }
+export function finalAllowed(root, path) {
+  const rel = evidenceRootRel(root);
+  if (path === rel || path.startsWith(`${rel}/`)) return true;
+  return /^\.codexclaw\/goalplans\/[^/]+\/(goalplan\.json|ledger\.jsonl)$/.test(path);
+}
 function listed(root, args) {
   const result = spawnSync('git', args, { cwd: root, encoding: 'buffer', maxBuffer: 64 * 1024 * 1024 });
   if (result.status !== 0) throw new Error(`git ${args.join(' ')} failed`);
@@ -40,12 +61,12 @@ function listed(root, args) {
 }
 export function governedFiles(root) {
   const files = listed(root, ['ls-files', '--cached', '--others', '--exclude-standard', '-z']);
-  return files.filter(path => !path.startsWith('.codexclaw/') && path !== 'Archive.zip' && !finalAllowed(path)).sort();
+  return files.filter(path => !path.startsWith('.codexclaw/') && path !== 'Archive.zip' && !finalAllowed(root, path)).sort();
 }
 export function dirtyFiles(root) {
   const names = new Set(listed(root, ['ls-files', '--modified', '--deleted', '--others', '--exclude-standard', '-z']));
   for (const path of listed(root, ['diff', '--cached', '--name-only', '-z'])) names.add(path);
-  return [...names].filter(path => !path.startsWith('.tmp/') && !path.startsWith('.pages/') && !finalAllowed(path)).sort();
+  return [...names].filter(path => !path.startsWith('.tmp/') && !path.startsWith('.pages/') && !finalAllowed(root, path)).sort();
 }
 export function fileMap(root, paths) {
   return paths.map(path => {
