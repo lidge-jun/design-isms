@@ -1,0 +1,1093 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-07-18T17:24:13.564Z",
+  "governedTreeSha256": "8d0958209c7f56ed86980eb17ae9b4214ee59f0f670eff5e521eec76e377491a",
+  "stagedManifestSha256": "6964e7a59f2308244f1d45f68719af00e2f4e23161853527071048ea4ab0531a",
+  "widths": [
+    1440,
+    1180,
+    1024,
+    860,
+    640,
+    390
+  ],
+  "pages": [
+    {
+      "id": "index",
+      "count": 49
+    },
+    {
+      "id": "effects",
+      "count": 94
+    },
+    {
+      "id": "faq",
+      "count": 18
+    },
+    {
+      "id": "color",
+      "count": 25
+    },
+    {
+      "id": "typography",
+      "count": 20
+    },
+    {
+      "id": "layout",
+      "count": 25
+    },
+    {
+      "id": "motion",
+      "count": 20
+    }
+  ],
+  "rows": [
+    {
+      "page": "index",
+      "width": 1440,
+      "count": 49,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "effects",
+      "width": 1440,
+      "count": 94,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "faq",
+      "width": 1440,
+      "count": 18,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "color",
+      "width": 1440,
+      "count": 25,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "typography",
+      "width": 1440,
+      "count": 20,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "layout",
+      "width": 1440,
+      "count": 25,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "motion",
+      "width": 1440,
+      "count": 20,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "index",
+      "width": 1180,
+      "count": 49,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "effects",
+      "width": 1180,
+      "count": 94,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "faq",
+      "width": 1180,
+      "count": 18,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "color",
+      "width": 1180,
+      "count": 25,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "typography",
+      "width": 1180,
+      "count": 20,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "layout",
+      "width": 1180,
+      "count": 25,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "motion",
+      "width": 1180,
+      "count": 20,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "index",
+      "width": 1024,
+      "count": 49,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "effects",
+      "width": 1024,
+      "count": 94,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "faq",
+      "width": 1024,
+      "count": 18,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "color",
+      "width": 1024,
+      "count": 25,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "typography",
+      "width": 1024,
+      "count": 20,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "layout",
+      "width": 1024,
+      "count": 25,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "motion",
+      "width": 1024,
+      "count": 20,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "index",
+      "width": 860,
+      "count": 49,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "effects",
+      "width": 860,
+      "count": 94,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "faq",
+      "width": 860,
+      "count": 18,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "color",
+      "width": 860,
+      "count": 25,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "typography",
+      "width": 860,
+      "count": 20,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "layout",
+      "width": 860,
+      "count": 25,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "motion",
+      "width": 860,
+      "count": 20,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "index",
+      "width": 640,
+      "count": 49,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "effects",
+      "width": 640,
+      "count": 94,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "faq",
+      "width": 640,
+      "count": 18,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "color",
+      "width": 640,
+      "count": 25,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "typography",
+      "width": 640,
+      "count": 20,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "layout",
+      "width": 640,
+      "count": 25,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "motion",
+      "width": 640,
+      "count": 20,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "index",
+      "width": 390,
+      "count": 49,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "effects",
+      "width": 390,
+      "count": 94,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "faq",
+      "width": 390,
+      "count": 18,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "color",
+      "width": 390,
+      "count": 25,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "typography",
+      "width": 390,
+      "count": 20,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "layout",
+      "width": 390,
+      "count": 25,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    },
+    {
+      "page": "motion",
+      "width": 390,
+      "count": 20,
+      "nav": 6,
+      "current": 1,
+      "overflow": 0,
+      "badImages": 0,
+      "diagnostics": {
+        "exceptions": [],
+        "consoleErrors": [],
+        "logErrors": [],
+        "failedRequests": [],
+        "badResponses": []
+      },
+      "ok": true
+    }
+  ],
+  "flows": [
+    {
+      "id": "index",
+      "empty": true,
+      "searchReset": true,
+      "finderThree": true,
+      "modal": true,
+      "relatedFive": true,
+      "promptPresent": true,
+      "previewWebp": true,
+      "previewDimensions": true,
+      "copyFeedback": true,
+      "lightbox": true,
+      "lightboxPng": true,
+      "lightboxDimensions": true,
+      "escapeOrder": true,
+      "focusReturn": true
+    },
+    {
+      "id": "effects",
+      "reduced": true,
+      "familiesExact": true,
+      "filterReset": true,
+      "empty": true,
+      "searchReset": true,
+      "stateToggle": true,
+      "modal": true,
+      "docsEight": true,
+      "refsTwo": true,
+      "previewWebp": true,
+      "previewDimensions": true,
+      "lightbox": true,
+      "lightboxPng": true,
+      "lightboxDimensions": true,
+      "copyFeedback": true,
+      "focusReturn": true,
+      "devicesExact": true,
+      "reducedCards": true,
+      "reducedOverflow": true,
+      "reducedDurations": true
+    },
+    {
+      "id": "faq",
+      "expanded": true,
+      "sources": true,
+      "arrowDown": true,
+      "end": true,
+      "home": true,
+      "localePreserved": true,
+      "translated": true,
+      "collapsed": true,
+      "arrowUp": true
+    },
+    {
+      "id": "crosslink",
+      "chips": true,
+      "forwardLink": true,
+      "reverseLink": true,
+      "roundTrip": true
+    },
+    {
+      "id": "index-error-retry",
+      "alert": true,
+      "restored": true,
+      "recovered": true,
+      "errorRemoved": true,
+      "loadingRemoved": true,
+      "cleanDiagnostics": true,
+      "width": 390
+    },
+    {
+      "id": "effects-error-retry",
+      "alert": true,
+      "restored": true,
+      "recovered": true,
+      "errorRemoved": true,
+      "loadingRemoved": true,
+      "cleanDiagnostics": true,
+      "width": 390
+    },
+    {
+      "id": "faq-error-retry",
+      "alert": true,
+      "restored": true,
+      "recovered": true,
+      "errorRemoved": true,
+      "loadingRemoved": true,
+      "cleanDiagnostics": true,
+      "width": 390
+    },
+    {
+      "id": "color-error-retry",
+      "alert": true,
+      "restored": true,
+      "recovered": true,
+      "errorRemoved": true,
+      "loadingRemoved": true,
+      "cleanDiagnostics": true,
+      "width": 390
+    },
+    {
+      "id": "typography-error-retry",
+      "alert": true,
+      "restored": true,
+      "recovered": true,
+      "errorRemoved": true,
+      "loadingRemoved": true,
+      "cleanDiagnostics": true,
+      "width": 390
+    },
+    {
+      "id": "layout-error-retry",
+      "alert": true,
+      "restored": true,
+      "recovered": true,
+      "errorRemoved": true,
+      "loadingRemoved": true,
+      "cleanDiagnostics": true,
+      "width": 390
+    },
+    {
+      "id": "motion-error-retry",
+      "alert": true,
+      "restored": true,
+      "recovered": true,
+      "errorRemoved": true,
+      "loadingRemoved": true,
+      "cleanDiagnostics": true,
+      "width": 390
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-index-1440.png",
+      "sha256": "62a49260209467d427517b6e8780f92b753dc9ff59ef2601c7bc29618425891d",
+      "width": 1440,
+      "height": 900,
+      "page": "index",
+      "viewportWidth": 1440,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-effects-1440.png",
+      "sha256": "de9ba8bbb93c45ca6487db9fb9d9ed626adcad6a5f388b46a1d431984e356c6f",
+      "width": 1440,
+      "height": 900,
+      "page": "effects",
+      "viewportWidth": 1440,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-faq-1440.png",
+      "sha256": "55f7f70db08776da257d879c7d52e893fbba7b0fc9798fd5b9587c9cfe17571a",
+      "width": 1440,
+      "height": 900,
+      "page": "faq",
+      "viewportWidth": 1440,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-color-1440.png",
+      "sha256": "ef6310eae3d2699dcb50a595f69458917ba9858955dee9153963f5e26f6357b0",
+      "width": 1440,
+      "height": 900,
+      "page": "color",
+      "viewportWidth": 1440,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-typography-1440.png",
+      "sha256": "3dc974593ec0a38d5475a4b10aa2733e64ad58bec1e757fce0d613f6d63bf44b",
+      "width": 1440,
+      "height": 900,
+      "page": "typography",
+      "viewportWidth": 1440,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-layout-1440.png",
+      "sha256": "268cab4aa584ffa47a67cdb270125b52b0e32b48dcb73adc3b834d1ab033bdcc",
+      "width": 1440,
+      "height": 900,
+      "page": "layout",
+      "viewportWidth": 1440,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-motion-1440.png",
+      "sha256": "757aa9254637d1bc34b4a4dea8c29bf30f7a416c15bac13b224394e1832a5ee0",
+      "width": 1440,
+      "height": 900,
+      "page": "motion",
+      "viewportWidth": 1440,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-index-390.png",
+      "sha256": "ccde795c732eb7a26b24391f7b54413dfa5f7ac9e09152ded67150b5d5eed951",
+      "width": 390,
+      "height": 900,
+      "page": "index",
+      "viewportWidth": 390,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-effects-390.png",
+      "sha256": "ead8c98bc8f947cf0fa26f1d400ad596e2a1eb4cad2055ff054ded67948c4466",
+      "width": 390,
+      "height": 900,
+      "page": "effects",
+      "viewportWidth": 390,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-faq-390.png",
+      "sha256": "8e0e177a58a0dfcb358c148aed8cf190f050f3ab921dc43961f646a5d48e4344",
+      "width": 390,
+      "height": 900,
+      "page": "faq",
+      "viewportWidth": 390,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-color-390.png",
+      "sha256": "7b9ff80388dc182044f1be92a3259267fd511609fe6e3313609b10e0b3f094cd",
+      "width": 390,
+      "height": 900,
+      "page": "color",
+      "viewportWidth": 390,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-typography-390.png",
+      "sha256": "d87b593283302bb7e86be3dafa34bbc393e9dca154918a42d30795358c8b2c6d",
+      "width": 390,
+      "height": 900,
+      "page": "typography",
+      "viewportWidth": 390,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-layout-390.png",
+      "sha256": "ad1043cb7c1a0377d27bb27f082af51b673739030cacb8eb6129750f1e69d74d",
+      "width": 390,
+      "height": 900,
+      "page": "layout",
+      "viewportWidth": 390,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-motion-390.png",
+      "sha256": "a066cc0120ead0cc3c0112700e65237e23448178d3c0f22095338ec5714e3150",
+      "width": 390,
+      "height": 900,
+      "page": "motion",
+      "viewportWidth": 390,
+      "state": "ready"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-index-error-390.png",
+      "sha256": "b379e872e0fa21c4847e2a4c93dcc8570aae00bd0aad70d5082c055a08c73daf",
+      "width": 390,
+      "height": 900,
+      "page": "index",
+      "viewportWidth": 390,
+      "state": "error"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-effects-error-390.png",
+      "sha256": "9093cbd4ce632211c69168f13c33b6047bd7ce359df445daf4f1a07a9aee89ba",
+      "width": 390,
+      "height": 900,
+      "page": "effects",
+      "viewportWidth": 390,
+      "state": "error"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-faq-error-390.png",
+      "sha256": "390fdb4a800abb7d0e72f6eea8654dd5f1f0c7e59c465b41852bcb100493788b",
+      "width": 390,
+      "height": 900,
+      "page": "faq",
+      "viewportWidth": 390,
+      "state": "error"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-color-error-390.png",
+      "sha256": "bfb6fdb9a9cf3aaf27ea4a5eed4e2dac779a1a75c5aee9d770e1122ea329a0f1",
+      "width": 390,
+      "height": 900,
+      "page": "color",
+      "viewportWidth": 390,
+      "state": "error"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-typography-error-390.png",
+      "sha256": "7bb42be17c7dedd2ad023119b7386e9fb39bf55ecd08fd018a1ea10efa5b0311",
+      "width": 390,
+      "height": 900,
+      "page": "typography",
+      "viewportWidth": 390,
+      "state": "error"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-layout-error-390.png",
+      "sha256": "81ffb54a13300dab6aa5e38e16ee2ada553b0a768545bc4a283df97b9e356577",
+      "width": 390,
+      "height": 900,
+      "page": "layout",
+      "viewportWidth": 390,
+      "state": "error"
+    },
+    {
+      "path": "devlog/_plan/260717_design-encyclopedia-upgrade/qa/final-motion-error-390.png",
+      "sha256": "6e31228eccffd3a57013be950e13d6c1faee226a694848bcdc4f19e945c2ca11",
+      "width": 390,
+      "height": 900,
+      "page": "motion",
+      "viewportWidth": 390,
+      "state": "error"
+    }
+  ],
+  "teardown": {
+    "serverExitCode": 0,
+    "browserStopExitCode": 0,
+    "serverPortClosed": true,
+    "cdpPortClosed": true,
+    "profileRemoved": true,
+    "serverSignal": null,
+    "serverForced": false,
+    "browserSessions": 53,
+    "finishedAt": "2026-07-18T17:24:13.563Z"
+  }
+}

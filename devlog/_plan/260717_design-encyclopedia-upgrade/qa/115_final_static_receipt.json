@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-07-18T17:22:24.842Z",
+  "commands": [
+    {
+      "id": "npm-ci",
+      "command": [
+        "npm",
+        "ci"
+      ],
+      "startedAt": "2026-07-18T17:22:08.116Z",
+      "finishedAt": "2026-07-18T17:22:08.560Z",
+      "exitCode": 0,
+      "signal": null,
+      "outputSha256": "226f27ee8a669576dc72300f5f792a69045c6bb4b3df4a2741600041b17eb776",
+      "outputTail": "\nadded 7 packages, and audited 8 packages in 392ms\n\n3 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\n"
+    },
+    {
+      "id": "verify",
+      "command": [
+        "npm",
+        "run",
+        "verify"
+      ],
+      "startedAt": "2026-07-18T17:22:08.562Z",
+      "finishedAt": "2026-07-18T17:22:23.569Z",
+      "exitCode": 0,
+      "signal": null,
+      "outputSha256": "bc0e5223b1077b08cc3ed4dae273a11530249dae0a774381219a0f28987fdb2d",
+      "outputTail": "\n> design-isms@0.1.0 verify\n> npm run typecheck && npm run verify:generated && npm run verify:nav && npm run verify:isms && npm run verify:effects && npm run verify:snippets && npm run verify:finder && npm run verify:content && npm run verify:catalog && npm run verify:assets && npm run verify:image-quality && npm run verify:lines\n\n\n> design-isms@0.1.0 typecheck\n> tsc -p tsconfig.json --noEmit\n\n\n> design-isms@0.1.0 verify:generated\n> node scripts/verify-generated.mjs\n\ngenerated ok: 22 TypeScript outputs match committed browser JS\n\n> design-isms@0.1.0 verify:nav\n> node scripts/verify-nav.mjs\n\nnav ok: index.html, effects.html, faq.html, color.html, typography.html, layout.html, motion.html; axes=6; order consistent\n\n> design-isms@0.1.0 verify:isms\n> node scripts/verify-isms.mjs\n\nisms ok: 49 entries, 49 guides, 147 png, 147 webp, 6 sourced additions, 1 anti-pattern\n\n> design-isms@0.1.0 verify:effects\n> node scripts/verify-effects.mjs\n\neffects ok: 94 entries, 94 docs, 94 png, 94 webp, 7 families\n\n> design-isms@0.1.0 verify:snippets\n> node scripts/verify-snippets.mjs\n\nsnippets ok: 94 ids, 94 html, 94 css, 63 js, 0 unsafe, 0 unscoped\n\n> design-isms@0.1.0 verify:finder\n> node scripts/verify-finder.mjs\n\nfinder ok: 3 questions, 16 options, 144 combinations, 432 deterministic results, 49 prompt packs\n\n> design-isms@0.1.0 verify:content\n> node scripts/verify-content.mjs\n\ncontent ok: 7 pages, 18 FAQ items, local references and metadata verified\n\n> design-isms@0.1.0 verify:catalog\n> node scripts/verify-catalog.mjs\n\ncatalog ok: 4 domains verified, 0 pending (no data yet)\n\n> design-isms@0.1.0 verify:assets\n> node scripts/verify-assets.mjs\n\nassets ok: 331 PNG/WebP pairs, hashes and dimensions verified\n\n> design-isms@0.1.0 verify:image-quality\n> node scripts/verify-image-quality.mjs\n\nimage quality ok: 211 audited, 2 replaced, 4 final sheets, no unapproved drift\n\n> design-isms@0.1.0 verify:lines\n> node scripts/verify-line-limits.mjs\n\nlines ok: 83 governed files, 3 explicit legacy ceilings\n"
+    },
+    {
+      "id": "images-audit",
+      "command": [
+        "npm",
+        "run",
+        "images:audit"
+      ],
+      "startedAt": "2026-07-18T17:22:23.569Z",
+      "finishedAt": "2026-07-18T17:22:23.796Z",
+      "exitCode": 0,
+      "signal": null,
+      "outputSha256": "8cf5dc895724ead7a4dcbd789ed10f6b224f5288cf7c7c69a486e247563d0f38",
+      "outputTail": "\n> design-isms@0.1.0 images:audit\n> node scripts/audit-effect-guides.mjs\n\neffect guides ok: 94 pairs, hashes manifest-bound, 0 invalid, 0 orphan\n"
+    },
+    {
+      "id": "pages-stage",
+      "command": [
+        "npm",
+        "run",
+        "pages:stage"
+      ],
+      "startedAt": "2026-07-18T17:22:23.796Z",
+      "finishedAt": "2026-07-18T17:22:24.540Z",
+      "exitCode": 0,
+      "signal": null,
+      "outputSha256": "10fb04a0e0789ada201bf7f1510d4a2a804a52e5767def728db5616b835dd2d4",
+      "outputTail": "\n> design-isms@0.1.0 pages:stage\n> node scripts/stage-pages.mjs\n\npages staged: 7 HTML, 331 PNG, 331 WebP, 0 forbidden; 741 files + manifest\n"
+    },
+    {
+      "id": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "startedAt": "2026-07-18T17:22:24.540Z",
+      "finishedAt": "2026-07-18T17:22:24.549Z",
+      "exitCode": 0,
+      "signal": null,
+      "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "outputTail": ""
+    }
+  ],
+  "stage": {
+    "counts": {
+      "html": 7,
+      "png": 331,
+      "webp": 331,
+      "forbidden": 0
+    },
+    "files": 741,
+    "manifestSha256": "6964e7a59f2308244f1d45f68719af00e2f4e23161853527071048ea4ab0531a"
+  },
+  "governedTreeSha256": "8d0958209c7f56ed86980eb17ae9b4214ee59f0f670eff5e521eec76e377491a",
+  "governedFileCount": 942
+}
