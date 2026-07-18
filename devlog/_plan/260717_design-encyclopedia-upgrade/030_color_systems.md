@@ -9,6 +9,12 @@
 > 6) 페이지 스크립트 로드 순서는 `app-runtime.js` → `nav-dropdown.js` → `catalog-shell.js` → 도메인 렌더러 — 이 문서의 script 순서 표기에 `nav-dropdown.js`가 빠져 있으면 이 계약을 따른다.
 > 7) 이 문서 안의 `generate-thumbnails.mjs`/타 도메인 count 관련 '변경 없음' 행은 변경 맵이 아니라 UNCHANGED 참고로 읽는다. manifest allowlist는 '이 도메인 행만 추가'가 아니라 '기존 additive registry(선행 사이클의 신규 행 포함)를 보존하며 이 도메인 행을 추가'로 읽는다.
 
+> **[WP5 A-감사 fold-back — 이 3개 계약이 본문을 override한다]**
+> 1) **대비 판정은 normative**: `contrast.checks`는 승인된 사용 조합이며 light/dark 전 check가 raw ratio 기준 normal-text≥4.5 / large-text≥3.0 / non-text≥3.0을 **통과해야 verify PASS**. AAA는 정보 badge만. 실패 예시는 checks가 아니라 notes에. 대표 HEX 초안 중 `#EA580C`(3.56:1)/`#0D9488`(3.74:1)/`#EAB308`(1.92:1)은 흰 텍스트 normal-text로 못 쓰므로 role 확장 시 on-primary를 카드별 검수.
+> 2) **전용 verifier 금지**: `verify-color-systems.mjs`/`verify:colors`는 만들지 않는다(010 Canonical Registry 준수). Color 심층 검증(25 ID 순서, 7/8/5/5, role 집합 동일성, 대비 계약, ledger 25행 대응)은 `verify-catalog.mjs`의 registry `validateColor()` 분기가 소유.
+> 3) **ledger/인벤토리 소유권**: image-quality의 additive 집합은 effects 전용(031/032 대응). Color 25쌍은 manifest 허용 집합에만 추가하는 `catalogAdditions` 클래스로 분리하고, 030_color_guide_audit.csv/manifest.jsonl 내용 검증(25 고유 id, decision=pass, promptSha 일치, PNG/WebP SHA)은 verify-catalog Color 분기가 소유. verify-assets에 Color registry 추가. run-final-static-qa 하드코딩 3/211도 manifest 유도로 전환. guide 이미지는 무드/구성 참고용 — caption "정확한 색상 값과 대비 판정은 role/HEX 표 기준" 명시, 이미지 픽셀을 색상 SoT로 쓰지 않음.
+
+
 
 의존: 010 스키마 확정 + 015 Catalog nav/shared shell 완료 후  
 목표: `color.html` placeholder를 25개 팔레트 카드, 검색/필터, 역할별 스와치, WCAG 대비 검사,

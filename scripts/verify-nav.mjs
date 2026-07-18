@@ -16,7 +16,7 @@ const catalogTargets = ['effects', 'color', 'typography', 'layout', 'motion'];
 // Pages whose aria-current lives on the Catalog dropdown trigger.
 const catalogPages = new Set(['effects.html', 'color.html', 'typography.html', 'layout.html', 'motion.html']);
 // Catalog entries that are live (not "준비 중"). Update as content cycles land.
-const readyTargets = new Set(['effects']);
+const readyTargets = new Set(['effects', 'color']);
 
 // Expected counts derive from the data sources of truth, not hardcoded labels.
 const ismCount = JSON.parse(readFileSync(resolve(root, 'assets/data/isms.json'), 'utf8')).length;

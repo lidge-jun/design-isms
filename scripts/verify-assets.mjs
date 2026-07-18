@@ -59,6 +59,16 @@ for (const effect of effects) {
   const file = effect.guide?.file ?? 'guide.png';
   expected.push({ source: `assets/images/effects/${effect.id}/${file}`, preview: `assets/images/thumbs/effects/${effect.id}/guide.webp` });
 }
+// New catalog domains (guide.png per card) join the expected inventory once their data lands.
+const catalogDomains = ['color', 'typography', 'layout', 'motion'];
+for (const domain of catalogDomains) {
+  const dataPath = join(root, `assets/data/${domain}.json`);
+  if (!existsSync(dataPath)) continue;
+  for (const card of readJson(`assets/data/${domain}.json`)) {
+    if (!card.guide) continue;
+    expected.push({ source: `assets/images/${domain}/${card.id}/guide.png`, preview: `assets/images/thumbs/${domain}/${card.id}/guide.webp` });
+  }
+}
 expected.sort((a, b) => a.source.localeCompare(b.source));
 
 if (manifest.schemaVersion !== 1 || manifest.hashAlgorithm !== 'sha256') errors.push('manifest schema/hash contract invalid');
@@ -114,6 +124,10 @@ for (const ism of isms) {
 }
 collect(join(root, 'assets/images/effects'), '.png', actual);
 collect(join(root, 'assets/images/thumbs/effects'), '.webp', actual);
+for (const domain of catalogDomains) {
+  collect(join(root, 'assets/images', domain), '.png', actual);
+  collect(join(root, 'assets/images/thumbs', domain), '.webp', actual);
+}
 const expectedPaths = new Set(expected.flatMap(pair => [pair.source, pair.preview]));
 for (const path of actual) if (!expectedPaths.has(path)) errors.push(`orphan raster ${path}`);
 

@@ -16,6 +16,20 @@ const inventory = loadInventory(root); const inventoryMap = new Map(inventory.ma
 const additiveInventory = loadAdditiveInventory(root);
 const additiveByKey = new Map(additiveInventory.map(item => [item.key, item]));
 const additiveSources = new Set(additiveInventory.map(item => item.source));
+// Catalog additions from non-effects domains (color/typography/layout/motion):
+// their guide pairs live in the shared manifest but are audited by verify-catalog,
+// not by the effects ledger. Here we only admit their manifest rows by live hash.
+const catalogDomains = ['color', 'typography', 'layout', 'motion'];
+const catalogAdditions = [];
+for (const domain of catalogDomains) {
+  const dataPath = join(root, `assets/data/${domain}.json`);
+  if (!existsSync(dataPath)) continue;
+  for (const card of JSON.parse(readFileSync(dataPath, 'utf8'))) {
+    if (!card.guide) continue;
+    catalogAdditions.push({ id: card.id, domain, source: `assets/images/${domain}/${card.id}/guide.png`, preview: `assets/images/thumbs/${domain}/${card.id}/guide.webp` });
+  }
+}
+const catalogAdditionSources = new Set(catalogAdditions.map(item => item.source));
 
 const baselineAssets = readFileSync(join(devlog, '093_image_baseline_assets.jsonl'), 'utf8').split('\n').filter(Boolean).map(JSON.parse);
 if (baselineAssets.length !== 422 || new Set(baselineAssets.map(row => row.path)).size !== 422) fail('baseline asset inventory must contain 422 unique paths');
@@ -106,6 +120,12 @@ const baselinePairs = JSON.parse(readFileSync(join(devlog, '094_image_baseline_p
 const currentManifest = JSON.parse(readFileSync(join(root, 'assets/data/image-pairs-manifest.json'), 'utf8'));
 const baselinePairMap = new Map(baselinePairs.pairs.map(pair => [pair.source, pair]));
 for (const pair of currentManifest.pairs) {
+  if (catalogAdditionSources.has(pair.source)) {
+    const item = catalogAdditions.find(entry => entry.source === pair.source);
+    if (!existsSync(join(root, item.source)) || !existsSync(join(root, item.preview))) { fail(`${pair.source}: catalog pair files missing`); continue; }
+    if (pair.sourceSha256 !== sha256File(join(root, item.source)) || pair.previewSha256 !== sha256File(join(root, item.preview))) fail(`${pair.source}: catalog manifest hashes drift`);
+    continue;
+  }
   if (additiveSources.has(pair.source)) {
     // Additive catalog pair: verify live hashes instead of the immutable baseline.
     const additiveItem = additiveInventory.find(entry => entry.source === pair.source);
@@ -118,10 +138,11 @@ for (const pair of currentManifest.pairs) {
   else if (!acceptedByKey.has(item.key) && stableJson(pair) !== stableJson(baselinePair)) fail(`${item.key}: non-target manifest row drift`);
   else if (acceptedByKey.has(item.key) && (pair.sourceSha256 !== sha256File(join(root, item.source)) || pair.previewSha256 !== sha256File(join(root, item.preview)))) fail(`${item.key}: target manifest hashes drift`);
 }
-const expectedPairCount = 211 + additiveInventory.length;
-if (currentManifest.pairs.length !== expectedPairCount) fail(`current pair manifest must contain ${expectedPairCount} rows (211 legacy + ${additiveInventory.length} additive)`);
+const expectedPairCount = 211 + additiveInventory.length + catalogAdditions.length;
+if (currentManifest.pairs.length !== expectedPairCount) fail(`current pair manifest must contain ${expectedPairCount} rows (211 legacy + ${additiveInventory.length} effects additive + ${catalogAdditions.length} catalog)`);
 const manifestSources = new Set(currentManifest.pairs.map(pair => pair.source));
 for (const item of additiveInventory) if (!manifestSources.has(item.source)) fail(`${item.key}: additive pair missing from manifest`);
+for (const item of catalogAdditions) if (!manifestSources.has(item.source)) fail(`${item.domain}:${item.id}: catalog pair missing from manifest`);
 
 const baselineRuntime = JSON.parse(readFileSync(join(devlog, '096_image_baseline_runtime.json'), 'utf8'));
 const currentIsms = JSON.parse(readFileSync(join(root, 'assets/data/isms.json'), 'utf8')); const currentEffects = JSON.parse(readFileSync(join(root, 'assets/data/effects.json'), 'utf8'));

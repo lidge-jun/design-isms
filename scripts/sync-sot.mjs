@@ -16,7 +16,11 @@ function loadCounts() {
   const effects = JSON.parse(readFileSync(join(root, 'assets/data/effects.json'), 'utf8')).length;
   const faq = JSON.parse(readFileSync(join(root, 'assets/data/faq.json'), 'utf8'));
   const answers = faq.categories.reduce((sum, category) => sum + category.items.length, 0);
-  return { isms, effects, answers };
+  const catalogLength = (file) => {
+    const path = join(root, `assets/data/${file}`);
+    return existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')).length : null;
+  };
+  return { isms, effects, answers, color: catalogLength('color.json'), typography: catalogLength('typography.json'), layout: catalogLength('layout.json'), motion: catalogLength('motion.json') };
 }
 
 const counts = loadCounts();
@@ -31,6 +35,12 @@ const specs = [
   ['AGENTS.md', 'agents-counts', () => `카탈로그 source-of-truth 카운트: ${counts.isms} ISMs / ${counts.effects} effects / ${counts.answers} FAQ answers.`],
   ['structure/README.md', 'structure-counts', () => `Catalog source-of-truth counts: ${counts.isms} ISMs / ${counts.effects} effects / ${counts.answers} FAQ answers.`]
 ];
+// New catalog nav counts join the marker system once their data lands.
+for (const [domain, unit] of [['color', 'colors'], ['typography', 'pairings'], ['layout', 'layouts'], ['motion', 'motions']]) {
+  if (counts[domain] !== null) {
+    specs.push([`${domain}.html`, `${domain}-nav-count`, () => `<span class="header-count" data-nav-axis="count">${counts[domain]} ${unit}</span>`]);
+  }
+}
 
 const byFile = new Map();
 for (const spec of specs) {

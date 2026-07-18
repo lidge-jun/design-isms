@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Color Systems — Design -isms</title>
-<meta name="description" content="역할 기반 팔레트 세트 카탈로그. 준비 중인 카탈로그입니다.">
+<meta name="description" content="역할 기반 팔레트 세트 카탈로그. 서비스·ISM·기법·시스템 팔레트 25종과 WCAG 대비 검사, 다크 변형을 제공합니다.">
 <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +14,8 @@
 <link rel="stylesheet" href="./assets/css/theme-atlas.css?v=20260718-encyc">
 <link rel="stylesheet" href="./assets/css/nav.css?v=20260718-encyc">
 <link rel="stylesheet" href="./assets/css/catalog.css?v=20260718-encyc">
+<link rel="stylesheet" href="./assets/css/effects.css?v=20260718-encyc">
+<link rel="stylesheet" href="./assets/css/color.css?v=20260718-encyc">
 <link rel="stylesheet" href="./assets/css/runtime-states.css?v=20260718-encyc">
 </head>
 <body>
@@ -32,7 +34,7 @@
         <button class="nav-link nav-dropdown-trigger" type="button" data-catalog-trigger aria-expanded="false" aria-controls="catalog-nav-list" aria-current="page">Catalog <span class="nav-dropdown-caret" aria-hidden="true">▾</span></button>
         <ul class="nav-dropdown-list" id="catalog-nav-list" role="list">
         <li><a href="./effects.html" data-catalog-target="effects">Effects</a></li>
-        <li><a href="./color.html" data-catalog-target="color" data-catalog-current="true" aria-disabled="true">Color <span class="nav-dropdown-badge">준비 중</span></a></li>
+        <li><a href="./color.html" data-catalog-target="color" data-catalog-current="true">Color</a></li>
         <li><a href="./typography.html" data-catalog-target="typography" aria-disabled="true">Typography <span class="nav-dropdown-badge">준비 중</span></a></li>
         <li><a href="./layout.html" data-catalog-target="layout" aria-disabled="true">Layout <span class="nav-dropdown-badge">준비 중</span></a></li>
         <li><a href="./motion.html" data-catalog-target="motion" aria-disabled="true">Motion <span class="nav-dropdown-badge">준비 중</span></a></li>
@@ -47,7 +49,7 @@
         <span class="lang-divider" aria-hidden="true">/</span>
         <span class="lang-option" data-lang="en">EN</span>
       </button>
-      <span class="header-count" data-nav-axis="count">0 colors</span>
+      <!-- data-sot:color-nav-count:start --><span class="header-count" data-nav-axis="count">25 colors</span><!-- data-sot:color-nav-count:end -->
     </nav>
   </div>
 </header>
@@ -55,13 +57,34 @@
 <main id="main-content">
   <section class="catalog-hero" aria-labelledby="catalog-title">
     <h1 id="catalog-title">Color Systems <span class="catalog-title-kr">컬러 시스템</span></h1>
-    <p>역할 기반 팔레트 세트 카탈로그.</p>
+    <p>역할 기반 팔레트 세트 카탈로그. 서비스·ISM·기법·시스템 팔레트와 WCAG 대비 검사, 다크 변형을 제공합니다.</p>
   </section>
-  <section class="catalog-empty-state" aria-label="준비 상태 안내">
-    <h2>준비 중입니다</h2>
-    <p>이 카탈로그는 현재 제작 중입니다. 완성되면 이 페이지에서 카드를 탐색할 수 있습니다.</p>
-    <a class="catalog-empty-link" href="./effects.html">Effects 카탈로그 먼저 보기</a>
-  </section>
+
+  <div class="color-toolbar">
+    <input type="search" id="color-search" placeholder="팔레트 검색 (SaaS, 모노크롬, Material…)" aria-label="팔레트 검색">
+    <div class="color-filter-row" id="color-family-filter" role="group" aria-label="분류 필터">
+      <button type="button" class="active" data-family="all">All</button>
+      <button type="button" data-family="Service">Service</button>
+      <button type="button" data-family="ISM">ISM</button>
+      <button type="button" data-family="Technique">Technique</button>
+      <button type="button" data-family="System">System</button>
+    </div>
+    <span class="color-result-count" id="color-result-count" aria-live="polite"></span>
+  </div>
+
+  <section class="color-grid" id="color-grid" aria-label="팔레트 카탈로그" aria-busy="true"></section>
+
+  <div class="modal-overlay" id="color-modal-overlay" aria-hidden="true">
+    <div class="modal-dialog" id="color-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="color-modal-title">
+      <button class="modal-close" id="color-modal-close" type="button" aria-label="닫기">×</button>
+      <div class="modal-content" id="color-modal-content"></div>
+    </div>
+  </div>
+
+  <div class="effect-lightbox" id="color-lightbox" aria-hidden="true">
+    <button class="effect-lightbox-close" id="color-lightbox-close" type="button" aria-label="닫기">×</button>
+    <img id="color-lightbox-image" alt="">
+  </div>
 </main>
 
 <footer class="site-footer">
@@ -69,9 +92,10 @@
   <span>Color Systems catalog</span>
 </footer>
 
+<script src="./assets/js/app-dialog.js?v=20260718-encyc"></script>
 <script src="./assets/js/app-runtime.js?v=20260718-encyc"></script>
 <script src="./assets/js/nav-dropdown.js?v=20260718-encyc"></script>
 <script src="./assets/js/catalog-shell.js?v=20260718-encyc"></script>
-<script>CatalogShell.setupLangToggle();</script>
+<script src="./assets/js/color.js?v=20260718-encyc"></script>
 </body>
 </html>
