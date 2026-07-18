@@ -2,6 +2,14 @@
 
 의존: 030~060 전부 완료 후 (이 로드맵의 순차 실행 순서상 070 시점에는 4개 카탈로그가 모두 존재하며, 수용 기준의 왕복 시나리오는 Color를 고정 참조한다)
 
+
+> **[WP9 A-감사 fold-back — 활성 diff 축소]** WP8 완료 트리 기준으로 순방향 링크·dangling 검증은 이미 구현됨.
+> 이 사이클의 실제 변경: NEW `src/app-crosslinks.ts`+`assets/js/app-crosslinks.js`+`assets/css/app-crosslinks.css`,
+> MODIFY `src/app.ts`(862행 대체 1줄+881행 뒤 1줄 — 1050 상한 정확히 유지)/`assets/js/app.js`/`index.html`(finder dialog와
+> filter-bar 사이 catalog-entry 섹션+스크립트 순서)/`scripts/verify-content.mjs`(index 행에 app-crosslinks).
+> 데이터 4파일·catalog-shell·도메인 렌더러·verify-catalog은 UNCHANGED. 역인덱스는 첫 모달 hydrate에서 4 JSON 병렬 지연
+> 로드+캐시(실패 시 retry 가능, 섹션만 error). 정식 browser receipt 편입은 080, 이 사이클은 focused agbrowse 왕복 증거만.
+
 ## 목적
 
 개별 카탈로그를 하나의 백과사전으로 연결한다.

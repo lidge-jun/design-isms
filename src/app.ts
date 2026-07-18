@@ -859,7 +859,7 @@ function renderModalContent(ism: DesignIsm): string {
       '<div class="modal-related">' + relatedHTML + '</div>';
   }
 
-  html += AppGuides.renderDevSection(ism.id, key => t(key as UIStringKey));
+  html += AppCrosslinks.renderMount(ism.id) + AppGuides.renderDevSection(ism.id, key => t(key as UIStringKey));
 
   html += '<section class="ism-export-mount" id="ism-export-mount" aria-label="Style code export"></section>';
 
@@ -876,9 +876,9 @@ function openModal(ismId: string, trigger?: HTMLElement | null): void {
     return;
   }
 
-  const overlay = getRequired<HTMLElement>('modal-overlay');
-  const content = getRequired<HTMLElement>('modal-content');
+  const overlay = getRequired<HTMLElement>('modal-overlay'); const content = getRequired<HTMLElement>('modal-content');
   content.innerHTML = renderModalContent(ism);
+  void AppCrosslinks.hydrate(content, ism.id);
   content.scrollTop = 0;
   overlay.classList.add('active');
   AppRuntime.replaceHistory('#' + ismId);

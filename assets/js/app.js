@@ -729,7 +729,7 @@ function renderModalContent(ism) {
         html += '<div class="modal-section-title">' + t('relatedIsms') + '</div>' +
             '<div class="modal-related">' + relatedHTML + '</div>';
     }
-    html += AppGuides.renderDevSection(ism.id, key => t(key));
+    html += AppCrosslinks.renderMount(ism.id) + AppGuides.renderDevSection(ism.id, key => t(key));
     html += '<section class="ism-export-mount" id="ism-export-mount" aria-label="Style code export"></section>';
     html += '<button class="guide-toggle-btn" id="guide-toggle-btn" data-ism-id="' + ism.id + '">' +
         '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg> ' +
@@ -744,6 +744,7 @@ function openModal(ismId, trigger) {
     const overlay = getRequired('modal-overlay');
     const content = getRequired('modal-content');
     content.innerHTML = renderModalContent(ism);
+    void AppCrosslinks.hydrate(content, ism.id);
     content.scrollTop = 0;
     overlay.classList.add('active');
     AppRuntime.replaceHistory('#' + ismId);

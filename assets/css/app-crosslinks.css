@@ -1,0 +1,82 @@
+/* ── ISM modal reverse catalog links + index catalog entry section ── */
+
+.ism-catalog-links { margin: 18px 0 4px; }
+
+.crosslink-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.crosslink-domain {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted, #888);
+  min-width: 88px;
+}
+
+.crosslink-chip {
+  display: inline-block;
+  padding: 4px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--line, #d5d1c8);
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--ink, #171513);
+}
+
+.crosslink-chip:hover { background: var(--surface, #f4f2ec); }
+
+#ism-catalog-links[data-crosslinks-state='loading'],
+#ism-catalog-links[data-crosslinks-state='error'] { display: none; }
+
+/* index.html catalog entry */
+.catalog-entry {
+  max-width: 1400px;
+  margin: 8px auto 20px;
+  padding: 20px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  justify-content: space-between;
+}
+
+.catalog-entry-copy h2 {
+  margin: 2px 0 4px;
+  font-size: 18px;
+}
+
+.catalog-entry-copy p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-muted, #777);
+}
+
+.catalog-entry-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.catalog-entry-links a {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line, #d5d1c8);
+  text-decoration: none;
+  color: var(--ink, #171513);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.catalog-entry-links a:hover {
+  background: var(--ink, #171513);
+  color: var(--paper, #fff);
+}
+
+@media (max-width: 640px) {
+  .catalog-entry { padding: 16px; }
+}
