@@ -1,0 +1,83 @@
+/* WP4 view-family demo expansion */
+.effect-demo-flip-card-reveal .effect-phone,
+.effect-demo-accordion-morph-expand .effect-phone,
+.effect-demo-list-reorder-flip .effect-phone,
+.effect-demo-page-turn-transition .effect-phone,
+.effect-demo-hero-expand-navigation .effect-phone {
+  width: 168px;
+  height: 126px;
+  border-width: 5px;
+  border-radius: 18px;
+}
+
+.demo-flip-reveal-stage { perspective: 260px; background: #e9ece8; }
+.demo-flip-reveal-card { position: relative; width: 92px; height: 68px; transform-style: preserve-3d; animation: wp4FlipReveal 3.6s ease-in-out infinite; }
+.demo-flip-reveal-card section { position: absolute; inset: 0; display: grid; align-content: center; gap: 8px; padding: 14px; border-radius: 11px; backface-visibility: hidden; background: #fff; box-shadow: 0 8px 14px rgba(34,34,34,.12); }
+.demo-flip-reveal-card section.back { background: #416f64; color: #fff; transform: rotateY(180deg); }
+.demo-flip-reveal-card i, .demo-flip-reveal-card span { display: block; height: 7px; border-radius: 999px; background: rgba(34,34,34,.16); }
+.demo-flip-reveal-card section.back span { background: rgba(255,255,255,.35); }
+.demo-flip-reveal-card strong { font: 800 13px/1 Outfit, sans-serif; letter-spacing: 1px; }
+
+.demo-morph-accordion-stage { background: #f3efe7; }
+.demo-morph-accordion-list { width: 112px; }
+.demo-morph-accordion-list section { position: relative; height: 18px; margin: 5px 0; padding: 5px 8px; overflow: hidden; border-radius: 6px; background: #dcd8cf; transform-origin: top; }
+.demo-morph-accordion-list section.active { height: 48px; background: #fff; animation: wp4MorphAccordion 3.4s ease-in-out infinite; }
+.demo-morph-accordion-list b { display: block; width: 44px; height: 5px; border-radius: 99px; background: #59655f; }
+.demo-morph-accordion-list i { position: absolute; top: 6px; right: 8px; width: 6px; height: 6px; border-right: 2px solid #59655f; border-bottom: 2px solid #59655f; transform: rotate(45deg); }
+.demo-morph-accordion-list span { display: block; width: 82%; height: 5px; margin-top: 7px; border-radius: 99px; background: #d0ccc3; animation: wp4AccordionCopy 3.4s ease-in-out infinite; }
+.demo-morph-accordion-list span:last-child { width: 58%; margin-top: 5px; }
+
+.demo-reorder-flip-stage { background: #e7ece9; }
+.demo-reorder-flip-list { position: relative; width: 104px; height: 76px; }
+.demo-reorder-flip-list i { position: absolute; left: 0; right: 0; height: 22px; display: grid; place-items: center; border-radius: 7px; background: #fff; color: #365e55; font: 800 10px/1 "SF Mono", monospace; box-shadow: 0 3px 8px rgba(34,34,34,.08); }
+.demo-reorder-flip-list i:nth-child(1) { top: 0; animation: wp4ReorderA 3.2s ease-in-out infinite; }
+.demo-reorder-flip-list i:nth-child(2) { top: 27px; background: #c9714c; color: #fff; animation: wp4ReorderB 3.2s ease-in-out infinite; }
+.demo-reorder-flip-list i:nth-child(3) { top: 54px; animation: wp4ReorderC 3.2s ease-in-out infinite; }
+
+.demo-page-turn-stage { perspective: 300px; background: #d9d4ca; }
+.demo-page-turn-book { position: relative; width: 104px; height: 72px; transform-style: preserve-3d; }
+.demo-page-turn-book section { position: absolute; inset: 0; padding: 14px; border-radius: 5px 10px 10px 5px; background: #faf7ef; box-shadow: 4px 5px 0 rgba(34,34,34,.1); transform-origin: left center; backface-visibility: hidden; }
+.demo-page-turn-book section.turning { animation: wp4PageTurn 3.8s ease-in-out infinite; }
+.demo-page-turn-book strong { color: #a95e3f; font: 800 16px/1 Outfit, sans-serif; }
+.demo-page-turn-book i { display: block; height: 6px; margin-top: 8px; border-radius: 99px; background: #d7d1c6; }
+.demo-page-turn-book i:last-child { width: 60%; }
+
+.demo-hero-nav-expand-stage { display: block; background: #202a2f; }
+.demo-hero-nav-expand-nav { position: absolute; top: 9px; left: 50%; z-index: 2; display: flex; align-items: center; gap: 10px; width: 104px; height: 24px; padding: 0 9px; border-radius: 999px; background: #f6f2e9; transform-origin: center; animation: wp4HeroNavExpand 3.5s ease-in-out infinite; }
+.demo-hero-nav-expand-nav b { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.demo-hero-nav-expand-nav span { color: #273238; font: 700 7px/1 Outfit, sans-serif; animation: wp4HeroNavItem 3.5s ease-in-out infinite; }
+.demo-hero-nav-expand-hero { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; animation: wp4HeroPanelExpand 3.5s ease-in-out infinite; }
+.demo-hero-nav-expand-hero strong { font: 800 19px/1 Outfit, sans-serif; letter-spacing: 3px; }
+.demo-hero-nav-expand-hero i { position: absolute; width: 54px; height: 54px; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; }
+
+@keyframes wp4FlipReveal { 0%, 18%, 100% { transform: rotateY(0); } 48%, 78% { transform: rotateY(180deg); } }
+@keyframes wp4MorphAccordion { 0%, 18%, 100% { transform: scaleY(.38); opacity: .72; } 46%, 78% { transform: scaleY(1); opacity: 1; } }
+@keyframes wp4AccordionCopy { 0%, 24%, 100% { transform: translateY(-8px); opacity: 0; } 46%, 78% { transform: translateY(0); opacity: 1; } }
+@keyframes wp4ReorderA { 0%, 18%, 100% { transform: translateY(0); } 48%, 78% { transform: translateY(54px); } }
+@keyframes wp4ReorderB { 0%, 18%, 100% { transform: translateY(0) scale(1); } 34% { transform: translateY(-7px) scale(1.06); } 48%, 78% { transform: translateY(-27px) scale(1); } }
+@keyframes wp4ReorderC { 0%, 18%, 100% { transform: translateY(0); } 48%, 78% { transform: translateY(-27px); } }
+@keyframes wp4PageTurn { 0%, 18%, 100% { transform: rotateY(0); opacity: 1; } 62%, 82% { transform: rotateY(-168deg); opacity: .42; } }
+@keyframes wp4HeroNavExpand { 0%, 16%, 100% { transform: translateX(-50%) scaleX(.28); } 46%, 78% { transform: translateX(-50%) scaleX(1); } }
+@keyframes wp4HeroNavItem { 0%, 24%, 100% { opacity: 0; transform: translateY(-4px); } 48%, 78% { opacity: 1; transform: translateY(0); } }
+@keyframes wp4HeroPanelExpand { 0%, 18%, 100% { transform: scale(.82); opacity: .55; } 50%, 80% { transform: scale(1); opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .effect-demo-flip-card-reveal .demo-flip-reveal-card,
+  .effect-demo-accordion-morph-expand .demo-morph-accordion-list section.active,
+  .effect-demo-accordion-morph-expand .demo-morph-accordion-list span,
+  .effect-demo-list-reorder-flip .demo-reorder-flip-list i,
+  .effect-demo-page-turn-transition .demo-page-turn-book section.turning,
+  .effect-demo-hero-expand-navigation .demo-hero-nav-expand-nav,
+  .effect-demo-hero-expand-navigation .demo-hero-nav-expand-nav span,
+  .effect-demo-hero-expand-navigation .demo-hero-nav-expand-hero { animation: none; }
+  .effect-demo-flip-card-reveal .demo-flip-reveal-card { transform: rotateY(180deg); }
+  .effect-demo-accordion-morph-expand .demo-morph-accordion-list section.active { opacity: 1; transform: none; }
+  .effect-demo-accordion-morph-expand .demo-morph-accordion-list span { opacity: 1; transform: none; }
+  .effect-demo-list-reorder-flip .demo-reorder-flip-list i:nth-child(1) { transform: translateY(54px); }
+  .effect-demo-list-reorder-flip .demo-reorder-flip-list i:nth-child(2) { transform: translateY(-27px); }
+  .effect-demo-list-reorder-flip .demo-reorder-flip-list i:nth-child(3) { transform: translateY(-27px); }
+  .effect-demo-page-turn-transition .demo-page-turn-book section.turning { opacity: .42; transform: rotateY(-168deg); }
+  .effect-demo-hero-expand-navigation .demo-hero-nav-expand-nav { transform: translateX(-50%); }
+  .effect-demo-hero-expand-navigation .demo-hero-nav-expand-nav span { opacity: 1; transform: none; }
+  .effect-demo-hero-expand-navigation .demo-hero-nav-expand-hero { opacity: 1; transform: none; }
+}

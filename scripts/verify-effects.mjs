@@ -13,10 +13,16 @@ const docs = JSON.parse(readFileSync(join(root, 'assets/data/effects-docs.json')
 const demosSrc = readFileSync(join(root, 'src/effects-demos.ts'), 'utf8');
 
 // Deliberate catalog contract (update consciously when the catalog grows).
-const EXPECTED_EFFECTS = 64;
+const EXPECTED_EFFECTS = 94;
 const FAMILIES = new Set(['Interface Pattern', 'Scroll & Parallax', 'Text Motion', 'Hero & Background', 'Cursor & Pointer', 'View Transition', 'Micro-interaction']);
 const DEVICES = new Set(['Mobile', 'Desktop', 'Shared']);
-const NEW_IDS = ['scroll-progress-indicator', 'layered-parallax', 'horizontal-scroll-gallery', 'split-text-reveal', 'text-scramble', 'number-ticker', 'aurora-mesh-background', 'spotlight-grid-background', 'grain-noise-drift', 'magnetic-button', 'cursor-trail', 'tilt-hover-card', 'crossfade-view-transition', 'shared-element-transition', 'route-wipe-transition', 'favorite-burst', 'success-checkmark', 'copy-confirmation'];
+const LEGACY_VISUAL_IDS = ['scroll-progress-indicator', 'layered-parallax', 'horizontal-scroll-gallery', 'split-text-reveal', 'text-scramble', 'number-ticker', 'aurora-mesh-background', 'spotlight-grid-background', 'grain-noise-drift', 'magnetic-button', 'cursor-trail', 'tilt-hover-card', 'crossfade-view-transition', 'shared-element-transition', 'route-wipe-transition', 'favorite-burst', 'success-checkmark', 'copy-confirmation'];
+const WP4_IDS = ['sticky-section-reveal', 'scroll-snap-carousel', 'scroll-zoom-hero', 'parallax-depth-cards', 'scroll-linked-progress-sections', 'typewriter-caret', 'word-rotate-swap', 'gradient-text-sweep', 'glitch-text-flicker', 'marquee-text-loop', 'svg-wave-divider', 'gradient-morph-blob', 'dot-grid-pulse', 'floating-particles-field', 'video-scrim-hero', 'spotlight-follow', 'hover-ripple-feedback', 'pointer-glow-border', 'drag-affordance-cursor', 'lens-zoom-hover', 'flip-card-reveal', 'accordion-morph-expand', 'list-reorder-flip', 'page-turn-transition', 'hero-expand-navigation', 'toggle-switch-morph', 'confetti-success-burst', 'shake-validation-error', 'progress-ring-completion', 'long-press-context-reveal'];
+const NEW_IDS = [...LEGACY_VISUAL_IDS, ...WP4_IDS];
+const EXPECTED_FAMILY_COUNTS = new Map([
+  ['Interface Pattern', 46], ['Scroll & Parallax', 8], ['Text Motion', 8], ['Hero & Background', 8],
+  ['Cursor & Pointer', 8], ['View Transition', 8], ['Micro-interaction', 8]
+]);
 
 const errors = [];
 const ids = effects.map((e) => e.id);

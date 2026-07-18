@@ -1,7 +1,7 @@
 # AGENTS.md — Design -isms 프로젝트 가이드
 
 ## 프로젝트 개요
-49개 디자인 ism의 시각적 레퍼런스 보드와 64개 프런트엔드 UI 패턴/이펙트 카탈로그. GitHub Pages 배포.
+49개 디자인 ism의 시각적 레퍼런스 보드와 94개 프런트엔드 UI 패턴/이펙트 카탈로그. GitHub Pages 배포.
 - **라이브**: https://lidge-jun.github.io/design-isms/
 - **스택**: 정적 HTML/CSS + TypeScript source → browser JS build
 - **이미지**: ima2 (`gpt-5.6-sol`, reasoning high, 1536x1024, high quality)
@@ -19,7 +19,7 @@
 │   ├── css/effects.css           # UX 효과 페이지 전용 스타일
 │   ├── css/effects-docs.css      # 효과별 장문 문서 섹션
 │   ├── css/effects-demos.css     # 초기 공통 UX demo/animation
-│   ├── css/effects-demos-candidates.css # 18개 비주얼 이펙트 demo (46개 패턴 demo는 effects-demos-patterns.css)
+│   ├── css/effects-demos-candidates.css # 18개 legacy 비주얼 demo (46 패턴=patterns.css, WP4 신규 30개=effects-demos-expansion-*.css 6파일)
 │   ├── js/app.js                 # 메인 로직 (src/app.ts build 산출물)
 │   ├── js/effects-demos.js       # 효과 demo renderer (src/effects-demos.ts build 산출물)
 │   ├── js/effects-docs.js        # 효과 문서 renderer (src/effects-docs.ts build 산출물)
@@ -57,7 +57,7 @@
 
 ## 현재 구현 불변 조건
 
-<!-- data-sot:agents-counts:start -->카탈로그 source-of-truth 카운트: 49 ISMs / 64 effects / 18 FAQ answers.<!-- data-sot:agents-counts:end -->
+<!-- data-sot:agents-counts:start -->카탈로그 source-of-truth 카운트: 49 ISMs / 94 effects / 18 FAQ answers.<!-- data-sot:agents-counts:end -->
 
 - README, `AGENTS.md`, `structure/README.md`, `devlog/`의 설명은 실제 구현과 어긋나면 안 된다.
 - 소스는 `src/*.ts`, 브라우저 산출물은 `assets/js/*.js`다. GitHub Pages가 static file을 직접 배포하므로 JS 산출물도 커밋 대상이다.
@@ -68,7 +68,7 @@
 - `index.html`은 `assets/js/app-dialog.js`(전역 `AppDialogA11y`)와 `assets/js/app-runtime.js`(전역 `AppRuntime`)를 `assets/js/app.js`보다 먼저 로드해야 한다. `effects.html`, `faq.html`도 페이지 렌더러보다 `app-runtime.js`를 먼저 로드한다.
 - 세 페이지의 안전한 storage/history 접근, loading overlay 종료, 재시도 가능한 치명 오류, 이미지 fallback은 `src/app-runtime.ts`와 `assets/css/runtime-states.css`가 공통 소유한다.
 - `npm run verify`는 파일을 생성하지 않는다. `src/*.ts`를 수정하면 먼저 `npm run build`로 `assets/js/*.js`를 갱신한 뒤 verify를 실행한다.
-- `data-sot:*` 마커는 `scripts/sync-sot.mjs`만 수정한다. `npm run sot:check`는 49/64/18 값을 데이터에서 유도하고, `npm run sot:sync`는 검증된 마커 내부만 원자적으로 갱신한다.
+- `data-sot:*` 마커는 `scripts/sync-sot.mjs`만 수정한다. `npm run sot:check`는 49/94/18 값을 데이터에서 유도하고, `npm run sot:sync`는 검증된 마커 내부만 원자적으로 갱신한다.
 - 전체 211 PNG/WebP 쌍의 해시 SoT는 `assets/data/image-pairs-manifest.json`이다. `npm run images:thumbs`가 source/preview SHA와 독립 픽셀 관계(MAE ≤18)를 기준으로 재생성 여부를 결정하고 manifest를 원자 갱신한다.
 - 완성판 이미지 품질 SoT는 `091_image_quality_audit.csv`, `092_image_generation_attempts/`, immutable 093–097 baseline, 그리고 098 final sheet receipt다. `npm run verify:image-quality`는 211개 슬롯, 승인된 교체, 프롬프트 provenance, 비대상 byte 안정성을 비생성 방식으로 검증한다.
 - `--bootstrap-manifest`는 감사된 최초 이관 전용이며 기존 manifest가 있으면 거부된다. manifest 누락을 일반 생성으로 재신뢰하지 않는다.
@@ -88,16 +88,16 @@
 
 ## Effects 후보군 원칙
 
-- `effects.html`은 모바일 전용 목록이 아니라 7개 family(Interface Pattern + 6개 비주얼 이펙트 family)로 구성된 64개 카탈로그다.
+- `effects.html`은 모바일 전용 목록이 아니라 7개 family(Interface Pattern 46 + 비주얼 이펙트 family 6×8)로 구성된 94개 카탈로그다.
 - `assets/data/effects.json`의 각 항목은 `demo.type`을 가져야 하며 값은 해당 effect `id`와 같아야 한다.
 - 긴 배경 설명, 히스토리, 사용 시점, 예시는 `assets/data/effects-docs.json`에 둔다. `effects.json`은 카드/데모/운영 필드 중심으로 작게 유지한다.
 - 효과 문서는 `src/effects-docs.ts`의 `EffectsDocs` namespace로 로드/검증/렌더링하고, `effects.html`에서 `assets/js/effects-docs.js`를 `assets/js/effects.js`보다 먼저 로드한다.
-- `src/effects-demos.ts` registry에는 64개 effect id가 모두 있어야 한다. 새 후보군을 기존 12개 seed animation에 재사용으로 연결하지 않는다.
+- `src/effects-demos.ts` registry에는 94개 effect id가 모두 있어야 한다. 새 후보군을 기존 12개 seed animation에 재사용으로 연결하지 않는다.
 - 후보군마다 카드/모달에서 식별 가능한 전용 CSS demo animation을 둔다. 확장 demo 스타일은 `assets/css/effects-demos-candidates.css`에 둔다.
 - guide 원본은 `assets/images/effects/{effect-id}/guide.png`, WebP preview는 `assets/images/thumbs/effects/{effect-id}/guide.webp`다.
 - guide 이미지를 생성/교체하면 `npm run images:thumbs`로 WebP preview를 갱신하고 `npm run verify`를 통과시킨다.
 - guide 재생성은 감사 기록을 남긴다: `devlog/260715_production_upgrade/031_effect_guide_audit.csv`에 감사 행, `032_effect_guide_manifest.jsonl`에 프롬프트/명령/해시 provenance 행을 추가하고 `npm run images:audit`를 통과시킨다. 썸네일 파이프라인은 sharp 기반(`--force`, `--scope effects|isms|all`)이며 시스템 `cwebp` 의존은 제거됐다.
-- 데스크탑과 모바일 모두에서 카드 수 64개, demo type 64개, horizontal overflow 없음, console error 없음까지 확인해야 완료로 보고한다.
+- 데스크탑과 모바일 모두에서 카드 수 94개, demo type 94개, horizontal overflow 없음, console error 없음까지 확인해야 완료로 보고한다.
 
 ## ISMS 확장 원칙
 
@@ -107,7 +107,7 @@
 - Grok 리서치 프롬프트와 ima2 이미지 프롬프트는 `assets/data/research-prompts.json`과 `devlog/260510_nav_taxonomy_effect_docs/grok_research_prompts.md`에 같이 남긴다.
 - 새 ISM 이미지는 PNG 원본을 보관하고 runtime에서는 `assets/images/thumbs/{ism-id}/*.webp`를 우선 로드한다.
 - ISMS를 늘리면 `assets/data/isms.json`, 이미지 원본, WebP 썸네일, README, AGENTS, structure, devlog를 함께 확인한다.
-- ISM 스키마 확장 필드: `kind`(`style`|`anti-pattern`, 생략 시 style), `sources`(신규 항목은 https 소스 2개 이상), `reviewedOn`(YYYY-MM-DD). `anti-pattern`은 `ai-slop` 하나만 허용되고 추천/관련 ISM에 절대 노출되지 않는다. 카운트 불변 조건은 49 ISMs / 64 effects이며 `npm run verify:isms`가 강제한다.
+- ISM 스키마 확장 필드: `kind`(`style`|`anti-pattern`, 생략 시 style), `sources`(신규 항목은 https 소스 2개 이상), `reviewedOn`(YYYY-MM-DD). `anti-pattern`은 `ai-slop` 하나만 허용되고 추천/관련 ISM에 절대 노출되지 않는다. 카운트 불변 조건은 49 ISMs / 94 effects이며 `npm run verify:isms`가 강제한다.
 - ISM 구현 가이드의 단일 SoT는 `assets/data/dev-guides.json`(`implementation` 블록 포함)이다. `src/app.ts`에 가이드 데이터를 임베드하지 않는다(1050줄 상한).
 
 ## ima2 / WebP batch 원칙

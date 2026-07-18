@@ -57,9 +57,7 @@ export function safeRelativePath(value) {
   return typeof value === 'string' && !isAbsolute(value) && !value.split('/').some(part => !part || part === '.' || part === '..') && value.split('/').every(part => /^[A-Za-z0-9._-]+$/.test(part));
 }
 
-export function loadInventory(root) {
-  const isms = JSON.parse(readFileSync(join(root, 'assets/data/isms.json'), 'utf8'));
-  const effects = JSON.parse(readFileSync(join(root, 'assets/data/effects.json'), 'utf8'));
+function buildInventoryEntries(root, isms, effects) {
   const inventory = [];
   for (const ism of isms) {
     if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(ism.id)) throw new Error(`unsafe ism id ${ism.id}`);
@@ -81,12 +79,56 @@ export function loadInventory(root) {
     if (!prompt) throw new Error(`${effect.id}/${file}: prompt missing`);
     inventory.push({ key: `effect:${effect.id}:guide:${file}`, catalog: 'effect', id: effect.id, slot: 'guide', file, source: `assets/images/effects/${effect.id}/${file}`, preview: `assets/images/thumbs/effects/${effect.id}/guide.webp`, prompt });
   }
-  if (inventory.length !== 211 || new Set(inventory.map(item => item.key)).size !== 211) throw new Error(`canonical inventory ${inventory.length}/211 or duplicate key`);
   for (const item of inventory) for (const rel of [item.source, item.preview]) {
     if (!safeRelativePath(rel)) throw new Error(`${item.key}: unsafe ${rel}`);
     assertContainedRegular(root, join(root, rel));
   }
   return inventory;
+}
+
+function readCatalogs(root) {
+  return {
+    isms: JSON.parse(readFileSync(join(root, 'assets/data/isms.json'), 'utf8')),
+    effects: JSON.parse(readFileSync(join(root, 'assets/data/effects.json'), 'utf8'))
+  };
+}
+
+function baselineIdSets(root) {
+  const runtime = JSON.parse(readFileSync(join(root, 'devlog/_fin/260715_production_upgrade/096_image_baseline_runtime.json'), 'utf8'));
+  return { ismIds: new Set(runtime.isms.map(item => item.id)), effectIds: new Set(runtime.effects.map(item => item.id)) };
+}
+
+// Legacy inventory: the immutable 211-slot audit universe (49 ISMs x 3 + 64 legacy
+// effects), derived from the immutable 096 baseline runtime id sets. Catalog entries
+// added after the baseline are intentionally excluded (loadAdditiveInventory covers them).
+export function loadLegacyInventory(root) {
+  const { isms, effects } = readCatalogs(root);
+  const { ismIds, effectIds } = baselineIdSets(root);
+  for (const id of ismIds) if (!isms.some(item => item.id === id)) throw new Error(`legacy ism missing ${id}`);
+  for (const id of effectIds) if (!effects.some(item => item.id === id)) throw new Error(`legacy effect missing ${id}`);
+  const legacyIsms = isms.filter(item => ismIds.has(item.id));
+  if (legacyIsms.length !== isms.length) throw new Error(`unexpected non-baseline isms: ${isms.filter(item => !ismIds.has(item.id)).map(item => item.id).join(', ')}`);
+  const legacyEffects = effects.filter(item => effectIds.has(item.id));
+  const inventory = buildInventoryEntries(root, legacyIsms, legacyEffects);
+  if (inventory.length !== 211 || new Set(inventory.map(item => item.key)).size !== 211) throw new Error(`canonical legacy inventory ${inventory.length}/211 or duplicate key`);
+  return inventory;
+}
+
+// Additive inventory: effects added after the immutable baseline (e.g. WP4 expansion).
+export function loadAdditiveInventory(root) {
+  const { effects } = readCatalogs(root);
+  const { effectIds } = baselineIdSets(root);
+  return buildInventoryEntries(root, [], effects.filter(item => !effectIds.has(item.id)));
+}
+
+// Full current inventory (legacy + additive).
+export function loadCurrentInventory(root) {
+  return [...loadLegacyInventory(root), ...loadAdditiveInventory(root)];
+}
+
+// Back-compat alias: baseline/audit tooling operates on the legacy 211 universe.
+export function loadInventory(root) {
+  return loadLegacyInventory(root);
 }
 
 export function verifyBaseline(root) {

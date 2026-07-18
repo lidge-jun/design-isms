@@ -1,0 +1,77 @@
+/* WP4 hero-family demo expansion */
+.effect-demo-svg-wave-divider .effect-phone,
+.effect-demo-gradient-morph-blob .effect-phone,
+.effect-demo-dot-grid-pulse .effect-phone,
+.effect-demo-floating-particles-field .effect-phone,
+.effect-demo-video-scrim-hero .effect-phone {
+  width: 168px;
+  height: 126px;
+  border-width: 5px;
+  border-radius: 18px;
+}
+
+.demo-wave-divider-stage { display: block; background: #f4efe6; }
+.demo-wave-divider-copy { position: absolute; top: 20px; left: 18px; z-index: 2; }
+.demo-wave-divider-copy span { display: block; width: 58px; height: 7px; margin-bottom: 7px; border-radius: 999px; background: rgba(34,34,34,.18); }
+.demo-wave-divider-copy span:nth-child(2) { width: 38px; }
+.demo-wave-divider-svg { position: absolute; left: -8px; bottom: -3px; width: 180px; fill: #4f8576; animation: wp4WaveDivider 3.2s ease-in-out infinite; }
+
+.demo-morph-blob-stage { background: #202b30; }
+.demo-morph-blob { position: absolute; width: 92px; height: 72px; border-radius: 48% 52% 64% 36%; opacity: .72; }
+.demo-morph-blob.one { background: linear-gradient(135deg,#dd7854,#e0b86b); animation: wp4MorphBlobOne 3.8s ease-in-out infinite; }
+.demo-morph-blob.two { width: 72px; height: 82px; background: linear-gradient(135deg,#4b9a8d,#6c789d); mix-blend-mode: screen; animation: wp4MorphBlobTwo 3.8s ease-in-out infinite; }
+.demo-morph-blob-copy { position: relative; z-index: 2; color: #fff; font: 800 17px/1 Outfit, sans-serif; letter-spacing: 3px; }
+
+.demo-dot-pulse-stage { background: #e7ece9; }
+.demo-dot-pulse-grid { display: grid; grid-template-columns: repeat(3,14px); gap: 12px; }
+.demo-dot-pulse-grid i { width: 9px; height: 9px; border-radius: 50%; background: #37665a; opacity: .28; animation: wp4DotPulse 2.7s ease-in-out infinite; }
+.demo-dot-pulse-grid i:nth-child(2), .demo-dot-pulse-grid i:nth-child(4) { animation-delay: .18s; }
+.demo-dot-pulse-grid i:nth-child(3), .demo-dot-pulse-grid i:nth-child(5), .demo-dot-pulse-grid i:nth-child(7) { animation-delay: .36s; }
+.demo-dot-pulse-grid i:nth-child(6), .demo-dot-pulse-grid i:nth-child(8) { animation-delay: .54s; }
+.demo-dot-pulse-grid i:nth-child(9) { animation-delay: .72s; }
+
+.demo-particle-field-stage { background: #172228; }
+.demo-particle-field-stage strong { position: relative; z-index: 2; color: #f7f3e9; font: 800 18px/1 Outfit, sans-serif; letter-spacing: 3px; }
+.demo-particle-field { position: absolute; inset: 0; }
+.demo-particle-field i { position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; border-radius: 50%; background: #e5ad66; opacity: 0; animation: wp4ParticleFloat 3.4s ease-in-out infinite; }
+.demo-particle-field i:nth-child(2) { animation-delay: .35s; transform-origin: 30px -22px; }
+.demo-particle-field i:nth-child(3) { animation-delay: .7s; transform-origin: -36px 8px; }
+.demo-particle-field i:nth-child(4) { animation-delay: 1.05s; transform-origin: 18px 29px; }
+.demo-particle-field i:nth-child(5) { animation-delay: 1.4s; transform-origin: -22px -28px; }
+.demo-particle-field i:nth-child(6) { animation-delay: 1.75s; transform-origin: 42px 10px; }
+.demo-particle-field i:nth-child(7) { animation-delay: 2.1s; transform-origin: -43px 21px; }
+
+.demo-video-scrim-stage { display: block; background: #25343a; }
+.demo-video-scrim-frame { position: absolute; inset: -8px; background: #5d766d; animation: wp4VideoFrame 4s ease-in-out infinite; }
+.demo-video-scrim-frame i { position: absolute; border-radius: 50% 50% 12px 12px; background: #b7cbbd; }
+.demo-video-scrim-frame i:nth-child(1) { width: 104px; height: 58px; left: 7px; bottom: 6px; }
+.demo-video-scrim-frame i:nth-child(2) { width: 72px; height: 76px; right: 4px; bottom: -8px; background: #304f48; }
+.demo-video-scrim-frame i:nth-child(3) { width: 18px; height: 18px; right: 24px; top: 18px; background: #e0bb74; }
+.demo-video-scrim-shade { position: absolute; inset: 0; background: rgba(18,28,31,.72); animation: wp4VideoScrim 4s ease-in-out infinite; }
+.demo-video-scrim-copy { position: absolute; left: 15px; right: 15px; bottom: 13px; z-index: 2; color: #fff; }
+.demo-video-scrim-copy strong { display: block; font: 800 14px/1 Outfit, sans-serif; letter-spacing: 1px; }
+.demo-video-scrim-copy span { display: block; margin-top: 7px; font: 600 9px/1 "SF Mono", monospace; opacity: .72; }
+
+@keyframes wp4WaveDivider { 0%, 100% { transform: translateX(-8px) translateY(3px) scaleX(1.05); } 50% { transform: translateX(7px) translateY(-4px) scaleX(.98); } }
+@keyframes wp4MorphBlobOne { 0%, 100% { transform: translate(-22px,5px) rotate(-8deg) scale(.92,1.08); } 50% { transform: translate(17px,-5px) rotate(25deg) scale(1.18,.82); } }
+@keyframes wp4MorphBlobTwo { 0%, 100% { transform: translate(20px,-8px) rotate(18deg) scale(1.05,.9); } 50% { transform: translate(-16px,9px) rotate(-24deg) scale(.8,1.2); } }
+@keyframes wp4DotPulse { 0%, 100% { opacity: .25; transform: scale(.55); } 44%, 62% { opacity: 1; transform: scale(1.35); } }
+@keyframes wp4ParticleFloat { 0%, 100% { opacity: 0; transform: rotate(0) translateX(10px) scale(.45); } 22% { opacity: .8; } 72% { opacity: .45; transform: rotate(210deg) translateX(48px) scale(1); } }
+@keyframes wp4VideoFrame { 0%, 100% { transform: scale(1.02) translateX(-2px); } 50% { transform: scale(1.12) translateX(4px); } }
+@keyframes wp4VideoScrim { 0%, 100% { opacity: .88; } 50% { opacity: .58; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .effect-demo-svg-wave-divider .demo-wave-divider-svg,
+  .effect-demo-gradient-morph-blob .demo-morph-blob,
+  .effect-demo-dot-grid-pulse .demo-dot-pulse-grid i,
+  .effect-demo-floating-particles-field .demo-particle-field i,
+  .effect-demo-video-scrim-hero .demo-video-scrim-frame,
+  .effect-demo-video-scrim-hero .demo-video-scrim-shade { animation: none; }
+  .effect-demo-svg-wave-divider .demo-wave-divider-svg { transform: none; }
+  .effect-demo-gradient-morph-blob .demo-morph-blob.one { transform: translate(-14px,2px) rotate(12deg); }
+  .effect-demo-gradient-morph-blob .demo-morph-blob.two { transform: translate(14px,-3px) rotate(-12deg); }
+  .effect-demo-dot-grid-pulse .demo-dot-pulse-grid i { opacity: .75; transform: none; }
+  .effect-demo-floating-particles-field .demo-particle-field i { opacity: .55; transform: rotate(35deg) translateX(42px); }
+  .effect-demo-video-scrim-hero .demo-video-scrim-frame { transform: scale(1.05); }
+  .effect-demo-video-scrim-hero .demo-video-scrim-shade { opacity: .68; }
+}

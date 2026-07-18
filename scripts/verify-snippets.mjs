@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const errors = [];
 const MAX_SNIPPET_BYTES = 12 * 1024;
-const EXPECTED_EFFECTS = 64;
+const EXPECTED_EFFECTS = 94;
 
 // Effects that REQUIRE JavaScript for their core interaction
 const JS_REQUIRED = new Set([
@@ -24,8 +24,14 @@ const JS_REQUIRED = new Set([
   'mega-menu', 'split-pane', 'kanban-board', 'filter-sidebar',
   'master-detail', 'image-lightbox', 'inline-validation',
   'mobile-stepper-form', 'desktop-wizard', 'progress-stepper',
+  // WP4 expansion (interaction requires JS)
+  'spotlight-follow', 'hover-ripple-feedback', 'pointer-glow-border',
+  'drag-affordance-cursor', 'lens-zoom-hover', 'flip-card-reveal',
+  'list-reorder-flip', 'page-turn-transition', 'hero-expand-navigation',
+  'confetti-success-burst', 'shake-validation-error', 'progress-ring-completion',
+  'long-press-context-reveal',
 ]);
-const MAX_TRANSFER_BYTES = 180 * 1024; // 180 KiB uncompressed
+const MAX_TRANSFER_BYTES = 280 * 1024; // 280 KiB uncompressed — raised consciously for the 94-effect catalog (WP4 expansion, was 180 KiB at 64 effects)
 
 
 function readText(relativePath) {

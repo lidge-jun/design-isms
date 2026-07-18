@@ -1,0 +1,87 @@
+/* WP4 scroll-family demo expansion */
+.effect-demo-sticky-section-reveal .effect-phone,
+.effect-demo-scroll-snap-carousel .effect-phone,
+.effect-demo-scroll-zoom-hero .effect-phone,
+.effect-demo-parallax-depth-cards .effect-phone,
+.effect-demo-scroll-linked-progress-sections .effect-phone {
+  width: 168px;
+  height: 126px;
+  border-width: 5px;
+  border-radius: 18px;
+}
+
+.demo-sticky-reveal-stage { display: block; padding: 10px 12px; background: #e9ece8; }
+.demo-sticky-reveal-stack { position: absolute; inset: 10px 12px; }
+.demo-sticky-reveal-stack i { position: absolute; left: 0; right: 0; height: 34px; border-radius: 9px; background: #fff; box-shadow: 0 5px 12px rgba(34,34,34,.08); transform-origin: top center; animation: wp4StickyReveal 3.2s ease-in-out infinite; }
+.demo-sticky-reveal-stack i:nth-child(1) { top: 0; }
+.demo-sticky-reveal-stack i:nth-child(2) { top: 27px; animation-delay: .12s; background: #d3dfd7; }
+.demo-sticky-reveal-stack i:nth-child(3) { top: 54px; animation-delay: .24s; background: #9eb7a8; }
+.demo-sticky-reveal-pin { position: absolute; top: 16px; left: 20px; z-index: 2; font: 700 10px/1 Outfit, sans-serif; color: #294b39; animation: wp4StickyPin 3.2s ease-in-out infinite; }
+
+.demo-snap-carousel-stage { display: block; padding-top: 13px; background: #f2eee7; }
+.demo-snap-carousel-track { display: flex; gap: 8px; width: max-content; animation: wp4SnapCarousel 3.4s cubic-bezier(.65,0,.35,1) infinite; }
+.demo-snap-carousel-track i { width: 88px; height: 70px; border-radius: 10px; background: #c66f45; }
+.demo-snap-carousel-track i:nth-child(2) { background: #466e69; }
+.demo-snap-carousel-track i:nth-child(3) { background: #6d7890; }
+.demo-snap-carousel-dots { position: absolute; left: 50%; bottom: 7px; display: flex; gap: 5px; transform: translateX(-50%); }
+.demo-snap-carousel-dots i { width: 5px; height: 5px; border-radius: 50%; background: rgba(34,34,34,.18); animation: wp4SnapDot 3.4s ease-in-out infinite; }
+.demo-snap-carousel-dots i:nth-child(2) { animation-delay: .22s; }
+.demo-snap-carousel-dots i:nth-child(3) { animation-delay: .44s; }
+
+.demo-zoom-hero-stage { background: #172329; }
+.demo-zoom-hero-media { position: absolute; inset: 8px; border-radius: 10px; background: radial-gradient(circle at 64% 35%, #d9c493 0 12%, #687e72 13% 34%, #253941 35% 100%); animation: wp4ZoomHero 3.6s ease-in-out infinite; }
+.demo-zoom-hero-copy { position: relative; color: #fff; font: 800 18px/1 Outfit, sans-serif; letter-spacing: 2px; animation: wp4ZoomCopy 3.6s ease-in-out infinite; }
+
+.demo-depth-cards-stage { perspective: 220px; background: #e7e4dd; }
+.demo-depth-card { position: absolute; width: 78px; height: 56px; border-radius: 10px; border: 1px solid rgba(34,34,34,.08); box-shadow: 0 8px 14px rgba(34,34,34,.12); }
+.demo-depth-card.back { background: #b7c2d1; animation: wp4DepthBack 3.1s ease-in-out infinite; }
+.demo-depth-card.middle { background: #83a295; animation: wp4DepthMiddle 3.1s ease-in-out infinite; }
+.demo-depth-card.front { background: #f8f4ea; animation: wp4DepthFront 3.1s ease-in-out infinite; }
+
+.demo-section-progress-stage { display: block; padding: 14px 16px; background: #f6f2ea; }
+.demo-section-progress-rail { position: absolute; top: 12px; bottom: 12px; left: 16px; width: 8px; }
+.demo-section-progress-rail::before { content: ''; position: absolute; top: 0; bottom: 0; left: 3px; width: 2px; background: rgba(34,34,34,.12); }
+.demo-section-progress-rail i { position: absolute; left: 0; width: 8px; height: 8px; border-radius: 50%; background: #bbb7ae; }
+.demo-section-progress-rail i:nth-child(1) { top: 0; }
+.demo-section-progress-rail i:nth-child(2) { top: 36px; }
+.demo-section-progress-rail i:nth-child(3) { top: 72px; }
+.demo-section-progress-rail b { position: absolute; top: 0; left: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: wp4SectionMarker 3.8s ease-in-out infinite; }
+.demo-section-progress-copy { margin-left: 22px; }
+.demo-section-progress-copy span { display: block; height: 18px; margin-bottom: 10px; border-radius: 6px; background: #ded9cf; animation: wp4SectionCopy 3.8s ease-in-out infinite; }
+.demo-section-progress-copy span:nth-child(2) { animation-delay: .18s; }
+.demo-section-progress-copy span:nth-child(3) { animation-delay: .36s; }
+
+@keyframes wp4StickyReveal { 0%, 14%, 100% { opacity: .45; transform: translateY(34px) scale(.92); } 42%, 78% { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes wp4StickyPin { 0%, 24%, 100% { opacity: 0; transform: translateY(12px); } 42%, 78% { opacity: 1; transform: translateY(0); } }
+@keyframes wp4SnapCarousel { 0%, 16% { transform: translateX(34px); } 44%, 60% { transform: translateX(-54px); } 82%, 100% { transform: translateX(-146px); } }
+@keyframes wp4SnapDot { 0%, 18%, 100% { opacity: .25; transform: scale(.7); } 34%, 58% { opacity: 1; transform: scale(1.45); } }
+@keyframes wp4ZoomHero { 0%, 15%, 100% { transform: scale(1); opacity: .78; } 58%, 82% { transform: scale(1.34); opacity: 1; } }
+@keyframes wp4ZoomCopy { 0%, 18%, 100% { transform: scale(.86); opacity: .55; } 56%, 82% { transform: scale(1.08); opacity: 1; } }
+@keyframes wp4DepthBack { 0%, 100% { transform: translate3d(-30px,-15px,-50px) rotate(-8deg); opacity: .5; } 50% { transform: translate3d(26px,-12px,-50px) rotate(5deg); opacity: .75; } }
+@keyframes wp4DepthMiddle { 0%, 100% { transform: translate3d(17px,2px,-18px) rotate(5deg); opacity: .72; } 50% { transform: translate3d(-18px,-3px,-18px) rotate(-4deg); opacity: .9; } }
+@keyframes wp4DepthFront { 0%, 100% { transform: translate3d(-8px,19px,18px) rotate(-2deg); } 50% { transform: translate3d(11px,14px,30px) rotate(3deg) scale(1.08); } }
+@keyframes wp4SectionMarker { 0%, 15% { transform: translateY(0); } 45%, 58% { transform: translateY(36px); } 88%, 100% { transform: translateY(72px); } }
+@keyframes wp4SectionCopy { 0%, 20%, 100% { opacity: .34; transform: translateX(0); } 36%, 64% { opacity: 1; transform: translateX(4px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .effect-demo-sticky-section-reveal .demo-sticky-reveal-stack i,
+  .effect-demo-sticky-section-reveal .demo-sticky-reveal-pin,
+  .effect-demo-scroll-snap-carousel .demo-snap-carousel-track,
+  .effect-demo-scroll-snap-carousel .demo-snap-carousel-dots i,
+  .effect-demo-scroll-zoom-hero .demo-zoom-hero-media,
+  .effect-demo-scroll-zoom-hero .demo-zoom-hero-copy,
+  .effect-demo-parallax-depth-cards .demo-depth-card,
+  .effect-demo-scroll-linked-progress-sections .demo-section-progress-rail b,
+  .effect-demo-scroll-linked-progress-sections .demo-section-progress-copy span { animation: none; }
+  .effect-demo-sticky-section-reveal .demo-sticky-reveal-stack i { opacity: 1; transform: none; }
+  .effect-demo-sticky-section-reveal .demo-sticky-reveal-pin { opacity: 1; transform: none; }
+  .effect-demo-scroll-snap-carousel .demo-snap-carousel-track { transform: translateX(-54px); }
+  .effect-demo-scroll-snap-carousel .demo-snap-carousel-dots i:nth-child(2) { opacity: 1; transform: scale(1.45); }
+  .effect-demo-scroll-zoom-hero .demo-zoom-hero-media { opacity: 1; transform: scale(1.15); }
+  .effect-demo-scroll-zoom-hero .demo-zoom-hero-copy { opacity: 1; transform: none; }
+  .effect-demo-parallax-depth-cards .demo-depth-card.back { transform: translate3d(-30px,-15px,-50px) rotate(-8deg); }
+  .effect-demo-parallax-depth-cards .demo-depth-card.middle { transform: translate3d(17px,2px,-18px) rotate(5deg); }
+  .effect-demo-parallax-depth-cards .demo-depth-card.front { transform: translate3d(-8px,19px,18px) rotate(-2deg); }
+  .effect-demo-scroll-linked-progress-sections .demo-section-progress-rail b { transform: translateY(72px); }
+  .effect-demo-scroll-linked-progress-sections .demo-section-progress-copy span { opacity: 1; transform: none; }
+}

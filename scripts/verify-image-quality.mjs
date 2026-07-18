@@ -4,7 +4,7 @@ import { mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { AUDIT_COLUMNS, RUBRICS, assertContainedRegular, attemptRows, buildSheet, loadInventory, parseCsv, promptSha, sha256Bytes, sha256File, sheetSpecs, stableJson, verifyBaseline } from './image-quality-lib.mjs';
+import { AUDIT_COLUMNS, RUBRICS, assertContainedRegular, attemptRows, buildSheet, loadAdditiveInventory, loadInventory, parseCsv, promptSha, sha256Bytes, sha256File, sheetSpecs, stableJson, verifyBaseline } from './image-quality-lib.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..'); const devlog = join(root, 'devlog/_fin/260715_production_upgrade');
 const preFinal = process.argv.includes('--pre-final');
@@ -13,6 +13,9 @@ const baselineState = verifyBaseline(root); const baselineReceipt = baselineStat
 const finalReceipt = preFinal ? null : JSON.parse(readFileSync(join(devlog, '098_image_final_sheet_receipts.json'), 'utf8'));
 const baselineRun = baselineReceipt.header.runId; const baselineSha = baselineReceipt.header.aggregateSha256;
 const inventory = loadInventory(root); const inventoryMap = new Map(inventory.map(item => [item.key, item]));
+const additiveInventory = loadAdditiveInventory(root);
+const additiveByKey = new Map(additiveInventory.map(item => [item.key, item]));
+const additiveSources = new Set(additiveInventory.map(item => item.source));
 
 const baselineAssets = readFileSync(join(devlog, '093_image_baseline_assets.jsonl'), 'utf8').split('\n').filter(Boolean).map(JSON.parse);
 if (baselineAssets.length !== 422 || new Set(baselineAssets.map(row => row.path)).size !== 422) fail('baseline asset inventory must contain 422 unique paths');
@@ -103,32 +106,79 @@ const baselinePairs = JSON.parse(readFileSync(join(devlog, '094_image_baseline_p
 const currentManifest = JSON.parse(readFileSync(join(root, 'assets/data/image-pairs-manifest.json'), 'utf8'));
 const baselinePairMap = new Map(baselinePairs.pairs.map(pair => [pair.source, pair]));
 for (const pair of currentManifest.pairs) {
+  if (additiveSources.has(pair.source)) {
+    // Additive catalog pair: verify live hashes instead of the immutable baseline.
+    const additiveItem = additiveInventory.find(entry => entry.source === pair.source);
+    if (!existsSync(join(root, additiveItem.source)) || !existsSync(join(root, additiveItem.preview))) { fail(`${pair.source}: additive pair files missing`); continue; }
+    if (pair.sourceSha256 !== sha256File(join(root, additiveItem.source)) || pair.previewSha256 !== sha256File(join(root, additiveItem.preview))) fail(`${pair.source}: additive manifest hashes drift`);
+    continue;
+  }
   const item = inventory.find(entry => entry.source === pair.source); const baselinePair = baselinePairMap.get(pair.source);
   if (!item || !baselinePair) fail(`${pair.source}: pair is outside baseline inventory`);
   else if (!acceptedByKey.has(item.key) && stableJson(pair) !== stableJson(baselinePair)) fail(`${item.key}: non-target manifest row drift`);
   else if (acceptedByKey.has(item.key) && (pair.sourceSha256 !== sha256File(join(root, item.source)) || pair.previewSha256 !== sha256File(join(root, item.preview)))) fail(`${item.key}: target manifest hashes drift`);
 }
-if (currentManifest.pairs.length !== 211) fail('current pair manifest must contain 211 rows');
+const expectedPairCount = 211 + additiveInventory.length;
+if (currentManifest.pairs.length !== expectedPairCount) fail(`current pair manifest must contain ${expectedPairCount} rows (211 legacy + ${additiveInventory.length} additive)`);
+const manifestSources = new Set(currentManifest.pairs.map(pair => pair.source));
+for (const item of additiveInventory) if (!manifestSources.has(item.source)) fail(`${item.key}: additive pair missing from manifest`);
 
 const baselineRuntime = JSON.parse(readFileSync(join(devlog, '096_image_baseline_runtime.json'), 'utf8'));
 const currentIsms = JSON.parse(readFileSync(join(root, 'assets/data/isms.json'), 'utf8')); const currentEffects = JSON.parse(readFileSync(join(root, 'assets/data/effects.json'), 'utf8'));
+// Legacy runtime comparison operates on the baseline id universe, reconstructed in
+// baseline order so additive effects (inserted anywhere) cannot disturb it.
+const currentEffectsById = new Map(currentEffects.map(effect => [effect.id, effect]));
+const currentLegacyEffects = baselineRuntime.effects.map(effect => {
+  const current = currentEffectsById.get(effect.id);
+  if (!current) fail(`legacy effect missing ${effect.id}`);
+  return current;
+});
 for (const [key] of acceptedByKey) {
   const item = inventoryMap.get(key);
   if (item.catalog === 'ism') {
     const baselineIsm = baselineRuntime.isms.find(value => value.id === item.id); const currentIsm = currentIsms.find(value => value.id === item.id);
     const indexValue = baselineIsm.prompts.findIndex(value => value.file === item.file); baselineIsm.prompts[indexValue] = currentIsm.prompts.find(value => value.file === item.file);
   } else {
-    const baselineEffect = baselineRuntime.effects.find(value => value.id === item.id); const currentEffect = currentEffects.find(value => value.id === item.id);
+    const baselineEffect = baselineRuntime.effects.find(value => value.id === item.id); const currentEffect = currentEffectsById.get(item.id);
     baselineEffect.guide.prompt = currentEffect.guide.prompt;
   }
 }
-if (stableJson(baselineRuntime) !== stableJson({ runId: baselineRun, isms: currentIsms, effects: currentEffects })) fail('runtime data changed outside approved prompt records');
+if (stableJson(baselineRuntime) !== stableJson({ runId: baselineRun, isms: currentIsms, effects: currentLegacyEffects })) fail('legacy runtime data changed outside approved prompt records');
+// Additive effects: full structural guide verification (path/prompt binding).
+for (const item of additiveInventory) {
+  const effect = currentEffectsById.get(item.id);
+  if (!effect?.guide?.prompt || effect.guide.file !== 'guide.png' || !effect.guide.alt) fail(`${item.id}: additive guide contract violated`);
+}
 const acceptedEffects = [...acceptedByKey.entries()].filter(([key]) => key.startsWith('effect:'));
+const additiveIds = new Set(additiveInventory.map(item => item.id));
 for (const [baselineName, currentName, kind] of [['031.before.csv', '031_effect_guide_audit.csv', 'csv'], ['032.before.jsonl', '032_effect_guide_manifest.jsonl', 'jsonl']]) {
   const before = readFileSync(join(devlog, '097_effect_ledger_baseline', baselineName), 'utf8'); const current = readFileSync(join(devlog, currentName), 'utf8');
   if (!current.startsWith(before)) { fail(`${currentName}: baseline prefix drift`); continue; }
-  const appended = current.slice(before.length).split('\n').filter(Boolean);
-  if (appended.length !== acceptedEffects.length) { fail(`${currentName}: append count does not match accepted effects`); continue; }
+  const appendedAll = current.slice(before.length).split('\n').filter(Boolean);
+  // Two append classes: approved legacy replacements + additive catalog additions (kind=catalog-addition).
+  const isAdditionLine = kind === 'csv'
+    ? (line) => parseCsv(line)[0]?.[1] === 'catalog-addition'
+    : (line) => { try { return JSON.parse(line).kind === 'catalog-addition'; } catch { return false; } };
+  const appended = appendedAll.filter(line => !isAdditionLine(line));
+  const additions = appendedAll.filter(isAdditionLine);
+  if (appended.length !== acceptedEffects.length) { fail(`${currentName}: replacement append count does not match accepted effects`); continue; }
+  if (additions.length !== additiveIds.size) fail(`${currentName}: catalog-addition append count ${additions.length} != ${additiveIds.size}`);
+  const additionIds = new Set();
+  for (const line of additions) {
+    if (kind === 'csv') {
+      const values = parseCsv(line)[0];
+      const id = values?.[0]; additionIds.add(id);
+      if (values?.length !== 6 || !additiveIds.has(id) || values[1] !== 'catalog-addition' || values[2] !== 'accepted' ||
+          !/^\d{4}-\d{2}-\d{2}$/.test(values[4]) || !values[5].includes('kind=catalog-addition')) fail(`${currentName}: invalid catalog-addition audit row for ${id}`);
+    } else {
+      const value = JSON.parse(line); additionIds.add(value.id);
+      const item = additiveInventory.find(entry => entry.id === value.id);
+      if (!item || value.kind !== 'catalog-addition' || value.sourcePromptSha256 !== promptSha(item.prompt) ||
+          value.original?.sha256 !== sha256File(join(root, item.source)) || value.preview?.sha256 !== sha256File(join(root, item.preview)) ||
+          value.machineStatus !== 'pass' || typeof value.command !== 'string' || !value.command.includes('ima2')) fail(`${currentName}: invalid catalog-addition provenance row for ${value.id}`);
+    }
+  }
+  for (const id of additiveIds) if (!additionIds.has(id)) fail(`${currentName}: catalog-addition append missing ${id}`);
   const appendedIds = new Set();
   for (const line of appended) {
     if (kind === 'csv') {

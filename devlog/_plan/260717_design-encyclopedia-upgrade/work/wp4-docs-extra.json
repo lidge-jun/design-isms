@@ -1,0 +1,182 @@
+{
+  "sticky-section-reveal": {
+    "anatomy": ["sticky visual frame", "semantic step sections", "active-step marker", "static flow fallback", "reduced-motion state"],
+    "misuse": ["짧아서 단계 구분이 불필요한 콘텐츠", "고정 프레임이 본문이나 조작을 가리는 작은 화면", "스크롤 위치만으로 핵심 정보를 전달하는 경우"],
+    "implementationNotes": ["sticky 프레임과 semantic section의 DOM 순서를 읽기 순서와 일치시킨다.", "IntersectionObserver로 활성 단계만 갱신하고 관찰 실패 시 모든 단계를 일반 흐름에 표시한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 스티키 섹션 리빌을 점진적으로 강화한다.", "prefers-reduced-motion에서는 고정과 전환을 제거하고 모든 단계를 즉시 표시한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN position", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/position"}, {"label": "MDN Intersection Observer API", "url": "https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "scroll-snap-carousel": {
+    "anatomy": ["scroll container", "snap-aligned cards", "previous and next controls", "position indicator", "reduced-motion state"],
+    "misuse": ["핵심 항목을 화면 밖에 숨기는 탐색", "긴 텍스트나 표를 카드로 강제 분절하는 경우", "키보드와 버튼 대안이 없는 포인터 전용 캐러셀"],
+    "implementationNotes": ["overflow 컨테이너와 카드에 scroll-snap 계약을 두고 자연 스크롤을 기본 동작으로 유지한다.", "이전·다음 버튼과 현재 위치 표시를 제공하며 끝 항목에서 제어 상태를 정확히 갱신한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 스크롤 스냅 캐러셀을 점진적으로 강화한다.", "prefers-reduced-motion에서는 smooth scroll을 제거하고 대상 카드로 즉시 이동한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN CSS scroll snap", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll_snap"}, {"label": "MDN Element scrollIntoView", "url": "https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "scroll-zoom-hero": {
+    "anatomy": ["scroll progress source", "hero media layer", "scale boundary", "static hero fallback", "reduced-motion state"],
+    "misuse": ["확대가 텍스트와 CTA를 가리는 히어로", "긴 스크롤 동안 과도한 배율을 유지하는 경우", "전정기관 민감 사용자를 고려하지 않은 전체 화면 확대"],
+    "implementationNotes": ["짧은 스크롤 범위를 작은 scale 구간으로 정규화하고 제목과 CTA는 확대 레이어 밖에 둔다.", "화면 밖에서는 진행 계산을 멈추고 정적 최종 프레임을 항상 사용할 수 있게 한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 스크롤 줌 히어로를 점진적으로 강화한다.", "prefers-reduced-motion에서는 확대와 페이드를 제거하고 최종 크기의 정적 히어로를 표시한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN Scroll-driven animations", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll-driven_animations"}, {"label": "MDN CSS transforms", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transforms"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "parallax-depth-cards": {
+    "anatomy": ["scroll progress source", "depth-tokenized cards", "static stacking order", "content-safe foreground", "reduced-motion state"],
+    "misuse": ["조밀한 데이터 카드 목록", "카드 겹침이 조작 요소를 가리는 경우", "큰 이동 차이로 멀미를 유발하는 긴 구간"],
+    "implementationNotes": ["카드별 깊이 토큰을 작은 translate 비율로 매핑하고 DOM 순서는 시각적 앞뒤 순서와 맞춘다.", "보이는 구간만 갱신하며 정적 겹침 배치를 기능 가능한 기본 상태로 둔다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 패럴랙스 깊이 카드를 점진적으로 강화한다.", "prefers-reduced-motion에서는 시차 이동을 제거하고 읽기 쉬운 정적 스택을 유지한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN Scroll-driven animations", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll-driven_animations"}, {"label": "MDN Intersection Observer API", "url": "https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "scroll-linked-progress-sections": {
+    "anatomy": ["semantic sections", "linked table of contents", "active-section marker", "overall progress meter", "reduced-motion state"],
+    "misuse": ["섹션 경계가 불명확한 짧은 문서", "실제 읽기 진척과 무관한 장식용 완료율", "현재 위치를 색상만으로 표시하는 목차"],
+    "implementationNotes": ["각 section과 목차 anchor를 안정적인 id로 연결하고 현재 항목에 aria-current를 적용한다.", "IntersectionObserver 또는 scroll timeline으로 진행 상태를 갱신하되 기본 앵커 탐색은 항상 유지한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 섹션 연동 진행 표시를 점진적으로 강화한다.", "prefers-reduced-motion에서는 부드러운 이동을 제거하고 현재 섹션과 진행값을 즉시 갱신한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN Scroll-driven animations", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll-driven_animations"}, {"label": "MDN Intersection Observer API", "url": "https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "typewriter-caret": {
+    "anatomy": ["complete source text", "visual reveal layer", "typing index", "decorative caret", "reduced-motion state"],
+    "misuse": ["긴 본문이나 필수 안내", "중간 글자를 라이브 영역에서 반복 발표하는 경우", "입력을 기다리는 실제 필드처럼 오인되는 장식"],
+    "implementationNotes": ["완성 문장을 DOM과 접근성 이름에 먼저 제공하고 시각 레이어만 단계적으로 공개한다.", "단일 타이머로 글자 인덱스와 캐럿을 관리하며 완성 문장은 한 번만 알린다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 타이프라이터 캐럿을 점진적으로 강화한다.", "prefers-reduced-motion에서는 타이핑과 캐럿 점멸을 제거하고 전체 문장을 즉시 표시한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN CSS animations", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations"}, {"label": "MDN ARIA live regions", "url": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "word-rotate-swap": {
+    "anatomy": ["stable sentence frame", "rotating word slot", "current and next words", "reserved layout width", "reduced-motion state"],
+    "misuse": ["핵심 문장의 의미가 순환 단어마다 달라지는 경우", "레이아웃 이동을 일으키는 가변 폭 슬롯", "라이브 영역에서 반복 발표되는 무한 교대"],
+    "implementationNotes": ["문장의 고정 부분과 교대 슬롯을 분리하고 가장 긴 단어에 맞춰 공간을 예약한다.", "현재·다음 단어 두 개만 유지하며 문서 비활성화와 요소 제거 시 순환을 중단한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 단어 교대 스왑을 점진적으로 강화한다.", "prefers-reduced-motion에서는 대표 단어 하나를 고정 표시하고 자동 교대를 시작하지 않는다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN CSS animations", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations"}, {"label": "MDN Page Visibility API", "url": "https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "gradient-text-sweep": {
+    "anatomy": ["readable text layer", "gradient fill", "clipping boundary", "single-run sweep trigger", "reduced-motion state"],
+    "misuse": ["본문 전체에 반복 적용하는 경우", "그라디언트 일부 구간의 대비가 부족한 텍스트", "상태나 링크를 광택만으로 구분하는 경우"],
+    "implementationNotes": ["읽기 가능한 단색 color를 기본값으로 두고 지원 환경에서만 background-clip:text를 적용한다.", "짧은 강조 시점에만 배경 위치를 한 번 이동시키고 모든 색 구간의 대비를 확인한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 그라디언트 텍스트 스윕을 점진적으로 강화한다.", "prefers-reduced-motion에서는 스윕을 제거하고 단색 또는 정적 그라디언트를 표시한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN background-clip", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip"}, {"label": "MDN CSS gradients", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_images/Using_CSS_gradients"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "glitch-text-flicker": {
+    "anatomy": ["stable source text", "decorative duplicate layers", "bounded offset keyframes", "single-run trigger", "reduced-motion state"],
+    "misuse": ["빠른 점멸을 반복하는 제목", "오류나 경고의 유일한 표현", "긴 문장이나 읽기 중심 화면"],
+    "implementationNotes": ["원본 텍스트를 고정하고 aria-hidden 복제 레이어의 작은 transform과 opacity만 바꾼다.", "사용자 행동 뒤 짧게 한 번 실행하고 점멸 빈도와 색 분리 폭을 엄격히 제한한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 글리치 텍스트 플리커를 점진적으로 강화한다.", "prefers-reduced-motion에서는 복제 레이어와 플리커를 제거하고 원본 텍스트만 표시한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN CSS animations", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations"}, {"label": "W3C WCAG Three Flashes", "url": "https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "marquee-text-loop": {
+    "anatomy": ["semantic text set", "aria-hidden duplicate set", "clipped track", "pause control", "reduced-motion state"],
+    "misuse": ["필수 정보나 긴 공지", "중복 문구를 보조 기술에 모두 노출하는 경우", "멈춤 수단이 없는 빠른 무한 루프"],
+    "implementationNotes": ["중복 없는 원문 한 세트만 접근성 트리에 두고 복제 트랙은 aria-hidden으로 처리한다.", "hover와 focus에서 일시 정지할 수 있게 하며 화면 밖이나 비활성 탭에서는 루프를 멈춘다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 마키 텍스트 루프를 점진적으로 강화한다.", "prefers-reduced-motion에서는 루프를 중단하고 줄바꿈 가능한 정적 문구를 표시한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN CSS animations", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations"}, {"label": "MDN Page Visibility API", "url": "https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "svg-wave-divider": {
+    "anatomy": ["section boundary", "decorative SVG", "compatible wave paths", "static path fallback", "reduced-motion state"],
+    "misuse": ["섹션 의미를 장식 경계에만 맡기는 경우", "복잡한 path를 다수 동시에 변형하는 화면", "본문과 겹쳐 대비나 읽기 흐름을 해치는 디바이더"],
+    "implementationNotes": ["SVG에 viewBox를 명시하고 장식 요소는 aria-hidden으로 접근성 트리에서 제외한다.", "호환되는 path 쌍만 짧게 보간하며 정적 path를 완전한 기본 경계로 둔다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 SVG 웨이브 디바이더를 점진적으로 강화한다.", "prefers-reduced-motion에서는 path 변형을 제거하고 정적 웨이브를 표시한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN SVG", "url": "https://developer.mozilla.org/en-US/docs/Web/SVG"}, {"label": "MDN CSS animations", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "gradient-morph-blob": {
+    "anatomy": ["static blob shape", "gradient fill", "bounded morph keyframes", "content scrim", "reduced-motion state"],
+    "misuse": ["텍스트 대비를 흔드는 큰 색 변화", "저사양 기기에서 과도한 블러와 다중 레이어", "핵심 정보와 같은 시각 우선순위를 갖는 장식"],
+    "implementationNotes": ["정적 SVG 또는 CSS 도형과 고정 scrim을 먼저 제공하고 형태·색 변화 범위를 작게 제한한다.", "블롭 수와 블러 반경에 상한을 두고 저사양 환경에서는 정적 자산을 사용한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 그라디언트 모프 블롭을 점진적으로 강화한다.", "prefers-reduced-motion에서는 형태와 색 전환을 제거하고 정적 프레임을 표시한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN CSS gradients", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_images/Using_CSS_gradients"}, {"label": "web.dev animation performance", "url": "https://web.dev/articles/animations-guide"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "dot-grid-pulse": {
+    "anatomy": ["static dot grid", "pulse mask", "bounded luminance range", "content-safe foreground", "reduced-motion state"],
+    "misuse": ["빠른 점멸이나 큰 휘도 변화", "수백 개 DOM 노드로 점을 만드는 구현", "작은 본문 뒤에서 대비를 방해하는 배경"],
+    "implementationNotes": ["CSS radial-gradient 또는 작은 반복 SVG로 정적 격자를 먼저 만든다.", "단일 마스크의 밝기만 느리게 바꾸고 개별 점의 레이아웃이나 색을 매 프레임 갱신하지 않는다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 도트 그리드 펄스를 점진적으로 강화한다.", "prefers-reduced-motion에서는 펄스를 제거하고 정적 도트 그리드만 표시한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN CSS gradients", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_images/Using_CSS_gradients"}, {"label": "MDN CSS animations", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "floating-particles-field": {
+    "anatomy": ["decorative canvas", "bounded particle pool", "animation frame loop", "static background fallback", "reduced-motion state"],
+    "misuse": ["입자 움직임이 정보나 상태를 나타내는 경우", "입자 수와 devicePixelRatio에 상한이 없는 구현", "본문 가독성을 해치는 고대비 연결선과 속도"],
+    "implementationNotes": ["aria-hidden canvas를 콘텐츠 뒤에 두고 입자 수·속도·연결선·devicePixelRatio에 상한을 둔다.", "뷰포트 밖이나 비활성 탭에서는 프레임 요청을 취소하고 canvas 실패 시 정적 배경으로 수렴한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 플로팅 파티클 필드를 점진적으로 강화한다.", "prefers-reduced-motion에서는 애니메이션 루프를 시작하지 않고 정적 배경만 표시한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN Canvas API", "url": "https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API"}, {"label": "MDN requestAnimationFrame", "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "video-scrim-hero": {
+    "anatomy": ["poster fallback", "background video", "contrast scrim", "playback control", "reduced-motion state"],
+    "misuse": ["일시 정지 수단이 없는 자동 재생 영상", "텍스트 대비를 보장하지 못하는 동적 배경", "큰 미디어를 필수 정보보다 먼저 내려받는 경우"],
+    "implementationNotes": ["poster와 muted·playsinline 속성을 제공하고 전경 텍스트 아래에 고정 scrim을 둔다.", "재생 실패·save-data·비활성 탭·화면 밖 상태에서는 포스터로 전환하고 명시적 재생 제어를 제공한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 비디오 스크림 히어로를 점진적으로 강화한다.", "prefers-reduced-motion에서는 자동 재생을 시작하지 않고 포스터와 정적 스크림을 표시한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN video element", "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"}, {"label": "MDN HTMLMediaElement play", "url": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "spotlight-follow": {
+    "anatomy": ["pointer coordinate source", "bounded spotlight layer", "content surface", "keyboard focus fallback", "reduced-motion state"],
+    "misuse": ["터치 중심 화면에서 필수 피드백으로 사용하는 경우", "글로우 때문에 텍스트 대비가 변하는 표면", "여러 요소가 동시에 pointermove를 처리하는 구현"],
+    "implementationNotes": ["요소 로컬 좌표를 CSS 변수로 전달하고 fine pointer와 hover 지원 환경에서만 추적을 켠다.", "키보드 focus-visible에는 포인터 위치와 무관한 정적 테두리를 제공한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 스포트라이트 팔로우를 점진적으로 강화한다.", "prefers-reduced-motion에서는 추적 이동을 제거하고 고정된 hover·focus 강조만 사용한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "W3C Pointer Events", "url": "https://www.w3.org/TR/pointerevents3/"}, {"label": "MDN pointer media feature", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/pointer"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "hover-ripple-feedback": {
+    "anatomy": ["semantic control", "pointer origin", "reusable ripple layer", "focus and active fallback", "reduced-motion state"],
+    "misuse": ["리플을 클릭 성공의 유일한 확인으로 사용하는 경우", "입력마다 새 DOM 노드를 누적하는 구현", "작고 조밀한 컨트롤에서 과도한 확산 효과"],
+    "implementationNotes": ["semantic 컨트롤 내부의 aria-hidden 레이어 하나를 재사용하고 포인터 시작점을 CSS 변수로 전달한다.", "한 번에 하나의 파동만 실행하며 focus-visible과 active 상태는 정적 형태로 별도 제공한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 호버 리플 피드백을 점진적으로 강화한다.", "prefers-reduced-motion에서는 확산을 제거하고 즉시 나타나는 배경 강조로 대체한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "W3C Pointer Events", "url": "https://www.w3.org/TR/pointerevents3/"}, {"label": "MDN hover media feature", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/hover"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "pointer-glow-border": {
+    "anatomy": ["base border", "pointer coordinate source", "masked glow layer", "focus and selection fallback", "reduced-motion state"],
+    "misuse": ["글로우가 선택·포커스의 유일한 표시인 경우", "큰 box-shadow를 여러 카드에서 계속 재페인트하는 구현", "밝은 배경에서 경계를 흐리는 저대비 효과"],
+    "implementationNotes": ["기본 border를 유지하고 별도 pseudo-element의 마스크 중심만 fine pointer 환경에서 갱신한다.", "현재 hover된 요소 하나만 animation frame 단위로 처리하고 focus 상태는 정적 테두리로 표시한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 포인터 글로우 보더를 점진적으로 강화한다.", "prefers-reduced-motion에서는 포인터 추적을 제거하고 균일한 정적 테두리 강조를 사용한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "W3C Pointer Events", "url": "https://www.w3.org/TR/pointerevents3/"}, {"label": "MDN hover media feature", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/hover"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "drag-affordance-cursor": {
+    "anatomy": ["draggable surface", "visible drag handle", "grab and grabbing cursor", "keyboard controls", "reduced-motion state"],
+    "misuse": ["드래그만으로 가능한 필수 조작", "시스템 커서를 완전히 숨기는 구현", "pointer capture 해제 뒤에도 드래그 상태가 남는 경우"],
+    "implementationNotes": ["시스템 grab/grabbing 커서와 보이는 핸들을 기본 단서로 두고 키보드 버튼으로 같은 조작을 제공한다.", "fine pointer에서만 보조 커서 레이블을 추적하고 pointerup·pointercancel·capture 종료에서 상태를 초기화한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 드래그 어포던스 커서를 점진적으로 강화한다.", "prefers-reduced-motion에서는 레이블 추적을 제거하고 시스템 커서와 정적 안내만 유지한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "W3C Pointer Events", "url": "https://www.w3.org/TR/pointerevents3/"}, {"label": "MDN touch-action", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "lens-zoom-hover": {
+    "anatomy": ["source image", "high-resolution image", "bounded zoom lens", "focusable zoom fallback", "reduced-motion state"],
+    "misuse": ["확대 렌즈만으로 중요한 세부 정보를 제공하는 경우", "터치·키보드 대안이 없는 hover 전용 확대", "사용자 의도 전에 대용량 원본을 내려받는 구현"],
+    "implementationNotes": ["원본과 고해상도 이미지의 좌표 비율을 계산하고 렌즈를 이미지 경계 안으로 제한한다.", "fine pointer에서만 렌즈를 활성화하고 터치·키보드에는 초점 가능한 확대 보기 버튼을 제공한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 렌즈 줌 호버를 점진적으로 강화한다.", "prefers-reduced-motion에서는 렌즈 추적을 제거하고 클릭으로 여는 정적 확대 보기를 사용한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "W3C Pointer Events", "url": "https://www.w3.org/TR/pointerevents3/"}, {"label": "MDN pointer media feature", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/pointer"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "flip-card-reveal": {
+    "anatomy": ["semantic toggle button", "front face", "back face", "perspective card stage", "reduced-motion state"],
+    "misuse": ["hover만으로 뒤집혀 키보드에서 접근할 수 없는 카드", "숨은 면의 조작 요소가 탭 순서에 남는 경우", "긴 콘텐츠나 핵심 내비게이션을 뒷면에 숨기는 경우"],
+    "implementationNotes": ["명시적 button으로 앞·뒤 상태를 바꾸고 aria-expanded와 숨은 면의 포커스 가능 여부를 동기화한다.", "고정된 stage 안에서 perspective와 rotateY를 적용하며 전환이 끝나면 비활성 면을 접근성 트리에서 제외한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 플립 카드 리빌을 점진적으로 강화한다.", "prefers-reduced-motion에서는 3D 회전을 제거하고 즉시 교체 또는 짧은 crossfade를 사용한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN CSS transforms", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transforms"}, {"label": "MDN aria-expanded", "url": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "accordion-morph-expand": {
+    "anatomy": ["accordion trigger", "controlled content region", "measured expansion surface", "open-state indicator", "reduced-motion state"],
+    "misuse": ["중첩 아코디언으로 정보 구조를 감추는 경우", "열린 콘텐츠로 포커스를 강제 이동하는 구현", "콘텐츠 변경 중 고정 높이로 내용이 잘리는 경우"],
+    "implementationNotes": ["button과 region을 aria-expanded·aria-controls로 연결하고 즉시 열고 닫히는 상태를 기본 동작으로 둔다.", "전환 시작 시 크기를 한 번 측정하고 ResizeObserver 갱신과 중단된 전환을 안전하게 처리한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 아코디언 모프 확장을 점진적으로 강화한다.", "prefers-reduced-motion에서는 크기 모프를 제거하고 패널을 즉시 열고 닫는다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN details element", "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details"}, {"label": "MDN Resize Observer API", "url": "https://developer.mozilla.org/en-US/docs/Web/API/Resize_Observer_API"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "list-reorder-flip": {
+    "anatomy": ["stable keyed items", "first and last measurements", "inverted transforms", "final DOM order", "reduced-motion state"],
+    "misuse": ["항목 key가 불안정한 실시간 목록", "정렬 결과보다 애니메이션이 늦게 끝나는 긴 전환", "현재 정렬 기준과 결과를 텍스트로 알리지 않는 경우"],
+    "implementationNotes": ["안정적인 key로 변경 전후 rect를 측정하고 새 DOM 순서를 먼저 확정한 뒤 차이 transform을 역적용한다.", "레이아웃 읽기와 쓰기를 분리하고 중단 시 모든 항목을 즉시 최종 위치로 수렴시킨다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 리스트 재정렬 FLIP을 점진적으로 강화한다.", "prefers-reduced-motion에서는 위치 보간을 제거하고 새 순서와 정렬 레이블을 즉시 표시한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN Web Animations API", "url": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API"}, {"label": "MDN CSS transforms", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transforms"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "page-turn-transition": {
+    "anatomy": ["page stage", "current page face", "next page face", "previous and next controls", "reduced-motion state"],
+    "misuse": ["빠른 탐색이 중요한 생산성 화면", "현재 페이지 번호나 제목이 없는 전환", "여러 페이지 면과 큰 그림자를 동시에 렌더링하는 경우"],
+    "implementationNotes": ["현재·다음 두 페이지와 명시적 이전·다음 버튼을 기본 탐색 구조로 둔다.", "짧은 rotateY와 제한된 음영만 적용하고 중단·탭 전환 시 목적 페이지 상태로 즉시 수렴한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 페이지 턴 전환을 점진적으로 강화한다.", "prefers-reduced-motion에서는 3D 회전을 제거하고 즉시 교체 또는 짧은 crossfade를 사용한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN CSS transforms", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transforms"}, {"label": "MDN transform-style", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/transform-style"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "hero-expand-navigation": {
+    "anatomy": ["source card link", "shared hero media", "stable transition name", "destination heading", "reduced-motion state"],
+    "misuse": ["서로 무관한 카드와 목적지를 연결하는 전환", "일반 링크 탐색과 브라우저 history를 깨뜨리는 구현", "한 화면에 중복 transition name을 두는 경우"],
+    "implementationNotes": ["일반 anchor 탐색을 기본으로 두고 출발 카드와 목적지 히어로에 안정적인 transition name을 연결한다.", "중복 이름·뒤로 가기·이미지 비율 차이를 처리하고 도착 후 상세 제목에 논리적 포커스를 둔다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 히어로 확장 내비게이션을 점진적으로 강화한다.", "prefers-reduced-motion에서는 공유 요소 확장을 제거하고 일반 이동 또는 짧은 crossfade를 사용한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN View Transition API", "url": "https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API"}, {"label": "MDN @view-transition", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@view-transition"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "toggle-switch-morph": {
+    "anatomy": ["semantic switch input", "visible label", "track and thumb", "current-state text", "reduced-motion state"],
+    "misuse": ["제출이 필요한 설정을 즉시 적용 토글처럼 보이는 경우", "켜짐·꺼짐을 색상과 위치만으로 전달하는 컨트롤", "서버 저장 실패 뒤 시각 상태를 되돌리지 않는 구현"],
+    "implementationNotes": ["checkbox 또는 switch 역할의 semantic 입력을 상태 SoT로 두고 항상 보이는 레이블과 상태 문구를 연결한다.", "저장 실패 시 입력과 시각 트랙을 원래 값으로 되돌리고 텍스트 오류를 표시한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 토글 스위치 모프를 점진적으로 강화한다.", "prefers-reduced-motion에서는 손잡이 이동과 아이콘 모프를 제거하고 상태를 즉시 전환한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "W3C WAI-ARIA switch role", "url": "https://www.w3.org/TR/wai-aria-1.2/#switch"}, {"label": "MDN CSS transitions", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions/Using_CSS_transitions"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "confetti-success-burst": {
+    "anatomy": ["confirmed success state", "decorative particle layer", "bounded particle pool", "static success message", "reduced-motion state"],
+    "misuse": ["서버 확정 전에 성공을 축하하는 경우", "사소한 반복 행동마다 실행하는 컨페티", "성공 결과를 입자 효과로만 전달하는 경우"],
+    "implementationNotes": ["확정된 성공 뒤에만 aria-hidden 장식 레이어를 한 번 생성하고 입자 수·수명·devicePixelRatio에 상한을 둔다.", "정적 성공 아이콘과 문구를 먼저 표시하고 같은 화면에서 중복 실행하지 않는다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 컨페티 성공 버스트를 점진적으로 강화한다.", "prefers-reduced-motion에서는 컨페티를 생성하지 않고 정적 성공 상태만 표시한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "MDN Canvas API", "url": "https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API"}, {"label": "MDN requestAnimationFrame", "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "shake-validation-error": {
+    "anatomy": ["invalid field group", "linked error message", "bounded shake keyframes", "focus target", "reduced-motion state"],
+    "misuse": ["오류 원인과 해결 문구 없이 흔들기만 하는 경우", "입력할 때마다 반복되는 큰 이동", "전체 폼이나 화면을 흔들어 다른 콘텐츠까지 방해하는 구현"],
+    "implementationNotes": ["검증 결과를 aria-describedby 오류 문구와 연결하고 첫 오류 필드로 논리적 포커스를 이동한다.", "오류가 있는 그룹에만 작은 transform을 2~3회 적용하고 종료 뒤 클래스를 제거해 재검증을 허용한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 셰이크 유효성 오류를 점진적으로 강화한다.", "prefers-reduced-motion에서는 흔들림을 제거하고 오류 테두리·아이콘·문구를 즉시 표시한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "W3C WCAG Error Identification", "url": "https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html"}, {"label": "MDN aria-describedby", "url": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "progress-ring-completion": {
+    "anatomy": ["progress value source", "SVG progress ring", "numeric label", "confirmed completion icon", "reduced-motion state"],
+    "misuse": ["실제 작업 값과 무관한 가짜 진행률", "숫자나 상태 문구 없이 원형 그래픽만 표시하는 경우", "100% 전에 성공 아이콘으로 전환하는 구현"],
+    "implementationNotes": ["실제 0~100 값으로 SVG stroke와 보이는 숫자 및 progressbar 속성을 함께 갱신한다.", "100%와 서버 완료가 모두 확인된 뒤에만 체크 아이콘으로 전환하고 실패 상태는 별도로 표시한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 프로그레스 링 완료를 점진적으로 강화한다.", "prefers-reduced-motion에서는 링 채우기와 아이콘 모프를 제거하고 최신 값과 완료 상태를 즉시 표시한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "W3C WAI-ARIA progressbar role", "url": "https://www.w3.org/TR/wai-aria-1.2/#progressbar"}, {"label": "MDN SVG circle", "url": "https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  },
+  "long-press-context-reveal": {
+    "anatomy": ["press target", "hold-progress cue", "cancellable press timer", "context action menu", "visible button fallback"],
+    "misuse": ["롱프레스만으로 접근 가능한 필수 작업", "스크롤·이동·pointercancel에서 타이머를 취소하지 않는 구현", "브라우저 기본 제스처와 충돌하는 넓은 대상"],
+    "implementationNotes": ["pointerdown 뒤 제한 시간을 측정하되 이동 임계값 초과·스크롤·pointerup·pointercancel에서 즉시 취소한다.", "완료 시 semantic 메뉴를 열고 키보드와 스위치 입력이 사용할 수 있는 보이는 더보기 버튼을 항상 제공한다.", "기본 콘텐츠와 조작을 먼저 제공하고 지원 환경에서만 롱프레스 컨텍스트 리빌을 점진적으로 강화한다.", "prefers-reduced-motion에서는 누름 진행 애니메이션을 제거하고 시간 충족 뒤 메뉴를 즉시 표시한다.", "요소 제거, 상태 변경, 애니메이션 완료 시 observer, listener, timer와 임시 DOM을 정리한다."],
+    "researchRefs": [{"label": "W3C Pointer Events", "url": "https://www.w3.org/TR/pointerevents3/"}, {"label": "MDN touch-action", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action"}, {"label": "MDN prefers-reduced-motion", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"}]
+  }
+}

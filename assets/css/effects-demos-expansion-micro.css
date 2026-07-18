@@ -1,0 +1,95 @@
+/* WP4 micro-family demo expansion */
+.effect-demo-toggle-switch-morph .effect-phone,
+.effect-demo-confetti-success-burst .effect-phone,
+.effect-demo-shake-validation-error .effect-phone,
+.effect-demo-progress-ring-completion .effect-phone,
+.effect-demo-long-press-context-reveal .effect-phone {
+  width: 168px;
+  height: 126px;
+  border-width: 5px;
+  border-radius: 18px;
+}
+
+.demo-toggle-morph-stage { grid-template-columns: auto; align-content: center; gap: 10px; background: #e8edea; }
+.demo-toggle-morph-control { position: relative; width: 70px; height: 34px; border: 0; border-radius: 999px; background: #b9c3be; }
+.demo-toggle-morph-control i { position: absolute; inset: 0; border-radius: inherit; background: #3f7969; opacity: 0; animation: wp4ToggleTrack 2.8s ease-in-out infinite; }
+.demo-toggle-morph-control b { position: absolute; top: 4px; left: 4px; width: 26px; height: 26px; border-radius: 50%; background: #fff; box-shadow: 0 3px 8px rgba(34,34,34,.18); animation: wp4ToggleKnob 2.8s ease-in-out infinite; }
+.demo-toggle-morph-stage > span { color: #3c5b52; font: 700 9px/1 "SF Mono", monospace; letter-spacing: 2px; animation: wp4ToggleLabel 2.8s ease-in-out infinite; }
+
+.demo-confetti-burst-stage { background: #f3efe7; }
+.demo-confetti-burst-check { position: relative; z-index: 2; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: #3f7b61; animation: wp4ConfettiCheck 3.2s ease-in-out infinite; }
+.demo-confetti-burst-check i { width: 19px; height: 10px; border-left: 4px solid #fff; border-bottom: 4px solid #fff; transform: rotate(-45deg) translate(1px,-2px); }
+.demo-confetti-burst-pieces { position: absolute; inset: 0; }
+.demo-confetti-burst-pieces i { position: absolute; left: 50%; top: 50%; width: 6px; height: 12px; border-radius: 2px; background: #d76f4c; opacity: 0; animation: wp4ConfettiPiece 3.2s ease-out infinite; }
+.demo-confetti-burst-pieces i:nth-child(2) { animation-delay: .1s; background: #e0b45d; transform-origin: 35px -12px; }
+.demo-confetti-burst-pieces i:nth-child(3) { animation-delay: .2s; background: #4d8b7c; transform-origin: -38px 4px; }
+.demo-confetti-burst-pieces i:nth-child(4) { animation-delay: .3s; background: #697ca0; transform-origin: 18px 34px; }
+.demo-confetti-burst-pieces i:nth-child(5) { animation-delay: .4s; background: #d76f4c; transform-origin: -24px -31px; }
+.demo-confetti-burst-pieces i:nth-child(6) { animation-delay: .5s; background: #e0b45d; transform-origin: 42px 22px; }
+
+.demo-validation-shake-stage { align-content: center; gap: 8px; background: #f6f1e9; }
+.demo-validation-shake-field { position: relative; width: 110px; height: 32px; display: flex; align-items: center; padding: 0 10px; border: 2px solid #bd584d; border-radius: 8px; color: #6f625c; font: 600 9px/1 Outfit, sans-serif; animation: wp4ValidationShake 2.6s ease-in-out infinite; }
+.demo-validation-shake-field i { position: absolute; right: 8px; width: 7px; height: 7px; border-radius: 50%; background: #bd584d; animation: wp4ValidationDot 2.6s ease-in-out infinite; }
+.demo-validation-shake-stage p { margin: 0; color: #a94d44; font: 700 8px/1 "SF Mono", monospace; animation: wp4ValidationMessage 2.6s ease-in-out infinite; }
+
+.demo-completion-ring-stage { background: #e7ece9; }
+.demo-completion-ring { position: relative; width: 74px; height: 74px; display: grid; place-items: center; }
+.demo-completion-ring > i { position: absolute; left: 33px; top: 2px; width: 8px; height: 18px; border-radius: 99px; background: #3d7867; transform-origin: 4px 35px; opacity: .18; animation: wp4RingSegment 3.8s ease-in-out infinite; }
+.demo-completion-ring > i:nth-child(1) { transform: rotate(0); }
+.demo-completion-ring > i:nth-child(2) { transform: rotate(45deg); animation-delay: .16s; }
+.demo-completion-ring > i:nth-child(3) { transform: rotate(90deg); animation-delay: .32s; }
+.demo-completion-ring > i:nth-child(4) { transform: rotate(135deg); animation-delay: .48s; }
+.demo-completion-ring > i:nth-child(5) { transform: rotate(180deg); animation-delay: .64s; }
+.demo-completion-ring > i:nth-child(6) { transform: rotate(225deg); animation-delay: .8s; }
+.demo-completion-ring > i:nth-child(7) { transform: rotate(270deg); animation-delay: .96s; }
+.demo-completion-ring > i:nth-child(8) { transform: rotate(315deg); animation-delay: 1.12s; }
+.demo-completion-ring strong { color: #2e5d51; font: 800 15px/1 Outfit, sans-serif; animation: wp4RingNumber 3.8s ease-in-out infinite; }
+
+.demo-long-press-stage { background: #f0ece4; }
+.demo-long-press-target { position: relative; z-index: 2; width: 58px; height: 38px; border: 0; border-radius: 10px; background: #333f44; color: #fff; font: 700 10px/1 Outfit, sans-serif; animation: wp4LongPressTarget 3.5s ease-in-out infinite; }
+.demo-long-press-progress { position: absolute; width: 68px; height: 48px; border: 2px solid var(--accent); border-radius: 13px; opacity: 0; animation: wp4LongPressProgress 3.5s ease-in-out infinite; }
+.demo-long-press-menu { position: absolute; top: 14px; right: 9px; display: grid; gap: 4px; width: 54px; padding: 7px; border-radius: 8px; background: #fff; box-shadow: 0 6px 14px rgba(34,34,34,.14); opacity: 0; animation: wp4LongPressMenu 3.5s ease-in-out infinite; }
+.demo-long-press-menu span { padding: 3px 4px; border-radius: 3px; color: #46534e; font: 700 7px/1 Outfit, sans-serif; background: #e9ece8; }
+
+@keyframes wp4ToggleTrack { 0%, 24%, 100% { opacity: 0; } 48%, 78% { opacity: 1; } }
+@keyframes wp4ToggleKnob { 0%, 24%, 100% { transform: translateX(0) scale(1); } 38% { transform: translateX(18px) scale(1.18,.82); } 50%, 78% { transform: translateX(36px) scale(1); } }
+@keyframes wp4ToggleLabel { 0%, 24%, 100% { opacity: .35; transform: translateY(2px); } 50%, 78% { opacity: 1; transform: translateY(0); } }
+@keyframes wp4ConfettiCheck { 0%, 20%, 100% { opacity: .25; transform: scale(.55); } 42%, 78% { opacity: 1; transform: scale(1); } 50% { transform: scale(1.12); } }
+@keyframes wp4ConfettiPiece { 0%, 28% { opacity: 0; transform: rotate(0) translateX(8px) scale(.4); } 42% { opacity: 1; } 76%, 100% { opacity: 0; transform: rotate(190deg) translateX(54px) scale(1); } }
+@keyframes wp4ValidationShake { 0%, 20%, 48%, 100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 30% { transform: translateX(6px); } 35% { transform: translateX(-4px); } 40% { transform: translateX(4px); } }
+@keyframes wp4ValidationDot { 0%, 18%, 100% { opacity: .3; transform: scale(.6); } 30%, 64% { opacity: 1; transform: scale(1.25); } }
+@keyframes wp4ValidationMessage { 0%, 22%, 100% { opacity: 0; transform: translateY(-5px); } 38%, 68% { opacity: 1; transform: translateY(0); } }
+@keyframes wp4RingSegment { 0%, 14%, 100% { opacity: .18; } 34%, 82% { opacity: 1; } }
+@keyframes wp4RingNumber { 0%, 26%, 100% { opacity: .3; transform: scale(.82); } 58%, 82% { opacity: 1; transform: scale(1); } }
+@keyframes wp4LongPressTarget { 0%, 22%, 100% { transform: scale(1); } 36%, 60% { transform: scale(.93); } 72% { transform: scale(1.03); } }
+@keyframes wp4LongPressProgress { 0%, 20%, 100% { opacity: 0; transform: scale(.76); } 36%, 58% { opacity: .9; transform: scale(1); } 70% { opacity: 0; transform: scale(1.16); } }
+@keyframes wp4LongPressMenu { 0%, 54%, 100% { opacity: 0; transform: translateX(-8px) scale(.9); } 68%, 86% { opacity: 1; transform: translateX(0) scale(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .effect-demo-toggle-switch-morph .demo-toggle-morph-control i,
+  .effect-demo-toggle-switch-morph .demo-toggle-morph-control b,
+  .effect-demo-toggle-switch-morph .demo-toggle-morph-stage > span,
+  .effect-demo-confetti-success-burst .demo-confetti-burst-check,
+  .effect-demo-confetti-success-burst .demo-confetti-burst-pieces i,
+  .effect-demo-shake-validation-error .demo-validation-shake-field,
+  .effect-demo-shake-validation-error .demo-validation-shake-field i,
+  .effect-demo-shake-validation-error .demo-validation-shake-stage p,
+  .effect-demo-progress-ring-completion .demo-completion-ring > i,
+  .effect-demo-progress-ring-completion .demo-completion-ring strong,
+  .effect-demo-long-press-context-reveal .demo-long-press-target,
+  .effect-demo-long-press-context-reveal .demo-long-press-progress,
+  .effect-demo-long-press-context-reveal .demo-long-press-menu { animation: none; }
+  .effect-demo-toggle-switch-morph .demo-toggle-morph-control i { opacity: 1; }
+  .effect-demo-toggle-switch-morph .demo-toggle-morph-control b { transform: translateX(36px); }
+  .effect-demo-toggle-switch-morph .demo-toggle-morph-stage > span { opacity: 1; transform: none; }
+  .effect-demo-confetti-success-burst .demo-confetti-burst-check { opacity: 1; transform: none; }
+  .effect-demo-confetti-success-burst .demo-confetti-burst-pieces i { opacity: .65; transform: rotate(35deg) translateX(48px); }
+  .effect-demo-shake-validation-error .demo-validation-shake-field { transform: none; }
+  .effect-demo-shake-validation-error .demo-validation-shake-field i { opacity: 1; transform: none; }
+  .effect-demo-shake-validation-error .demo-validation-shake-stage p { opacity: 1; transform: none; }
+  .effect-demo-progress-ring-completion .demo-completion-ring > i { opacity: 1; }
+  .effect-demo-progress-ring-completion .demo-completion-ring strong { opacity: 1; transform: none; }
+  .effect-demo-long-press-context-reveal .demo-long-press-target { transform: scale(.96); }
+  .effect-demo-long-press-context-reveal .demo-long-press-progress { opacity: .45; transform: none; }
+  .effect-demo-long-press-context-reveal .demo-long-press-menu { opacity: 1; transform: none; }
+}

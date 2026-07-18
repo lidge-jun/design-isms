@@ -22,11 +22,12 @@ Interface Pattern 46개는 건드리지 않음.
 | NEW | `assets/images/thumbs/effects/{id}/guide.webp` ×30 | `npm run images:thumbs` |
 | MODIFY | `scripts/verify-effects.mjs` | `EXPECTED_EFFECTS` 64→94, `NEW_IDS`에 30개 추가 |
 | MODIFY | `scripts/verify-snippets.mjs` | `EXPECTED_EFFECTS` 갱신, JS_REQUIRED 재분류 |
+| MODIFY | `scripts/verify-finder.mjs` | effects 64 하드코딩(109행) → 94 갱신(감사 R1 fold-back) |
 | MODIFY | `scripts/image-quality-lib.mjs` | 211 고정 inventory를 legacy 슬롯 집합(id 스냅샷)으로 전환 — 신규 30개는 immutable baseline 비대상 allowlist (010 Canonical Registry) |
 | MODIFY | `scripts/verify-image-quality.mjs` | manifest 211행 고정 → legacy 211 + 신규 30 구분 검증. baseline runtime 비교(현행 113/125행 부근)도 기존 64 Effects id 집합만 immutable subset으로 비교하고, 신규 30개는 별도 additive 계약(경로/해시/치수/쌍 존재)으로 완전 검증. 또한 126-146행의 audit CSV/JSONL append 검증을 분리: baseline 이후 행 = (승인된 legacy 교체 행) + (신규 카탈로그 추가 행 — `kind=catalog-addition` 마커로 구분)이 되도록 두 append 클래스를 각각 계수 |
 | MODIFY | `assets/data/image-pairs-manifest.json` | +30쌍(thumbs 파이프라인이 원자 갱신) |
 | MODIFY | AGENTS.md/README/structure sot 마커 | `npm run sot:sync`로 64→94 반영 |
-| MODIFY | `devlog/_fin/260715_production_upgrade/031_effect_guide_audit.csv`, `032_effect_guide_manifest.jsonl` | 신규 guide 감사/provenance 행(010에서 이전된 경로 기준) |
+| MODIFY | `devlog/_fin/260715_production_upgrade/031_effect_guide_audit.csv`, `032_effect_guide_manifest.jsonl` | 신규 guide 감사/provenance 행(010에서 이전된 경로 기준). **catalog-addition encoding 확정(감사 R1)**: 031은 기존 6열 header/immutable prefix 보존, `baseline` 열=`catalog-addition`, notes에 `kind=catalog-addition`; 032 JSONL row에는 명시적 `"kind":"catalog-addition"` + command/requestId/promptSha/PNG·WebP SHA/dimensions/machineStatus=pass |
 
 ## IN / OUT
 

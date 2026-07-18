@@ -1,0 +1,73 @@
+/* WP4 pointer-family demo expansion */
+.effect-demo-spotlight-follow .effect-phone,
+.effect-demo-hover-ripple-feedback .effect-phone,
+.effect-demo-pointer-glow-border .effect-phone,
+.effect-demo-drag-affordance-cursor .effect-phone,
+.effect-demo-lens-zoom-hover .effect-phone {
+  width: 168px;
+  height: 126px;
+  border-width: 5px;
+  border-radius: 18px;
+}
+
+.demo-follow-spot-stage { background: #172126; }
+.demo-follow-spot-grid { display: grid; grid-template-columns: repeat(2,48px); gap: 8px; }
+.demo-follow-spot-grid i { height: 32px; border: 1px solid rgba(255,255,255,.16); border-radius: 8px; background: rgba(255,255,255,.04); }
+.demo-follow-spot-light { position: absolute; width: 58px; height: 58px; border-radius: 50%; background: radial-gradient(circle,rgba(244,191,108,.56),rgba(244,191,108,0) 70%); animation: wp4FollowSpot 3.2s ease-in-out infinite; }
+.demo-follow-spot-pointer { position: absolute; width: 8px; height: 8px; border: 2px solid #fff; border-radius: 50%; animation: wp4FollowPointer 3.2s ease-in-out infinite; }
+
+.demo-ripple-feedback-stage { background: #e7ece9; }
+.demo-ripple-feedback-button { position: relative; z-index: 2; border: 0; border-radius: 9px; padding: 10px 21px; background: #356c5d; color: #fff; font: 700 11px/1 Outfit, sans-serif; animation: wp4RippleButton 2.8s ease-in-out infinite; }
+.demo-ripple-feedback-ring { position: absolute; width: 72px; height: 42px; border: 2px solid #356c5d; border-radius: 12px; opacity: 0; animation: wp4RippleRing 2.8s ease-out infinite; }
+.demo-ripple-feedback-ring.two { animation-delay: .28s; }
+
+.demo-glow-border-stage { background: #20282d; }
+.demo-glow-border-card { position: relative; width: 100px; height: 68px; overflow: hidden; padding: 16px; border: 1px solid rgba(255,255,255,.25); border-radius: 12px; background: #27343a; }
+.demo-glow-border-card span { display: block; height: 7px; margin-bottom: 9px; border-radius: 999px; background: rgba(255,255,255,.2); }
+.demo-glow-border-card span:nth-child(2) { width: 62%; }
+.demo-glow-border-orbit { position: absolute; left: 50%; top: 50%; width: 42px; height: 42px; margin: -21px; border-radius: 50%; border: 2px solid #e9ae67; opacity: .8; animation: wp4GlowBorder 3.5s linear infinite; }
+
+.demo-drag-cursor-stage { background: #f2eee6; }
+.demo-drag-cursor-list { width: 94px; }
+.demo-drag-cursor-list i { display: block; height: 19px; margin: 5px 0; border-radius: 6px; background: #d7d3ca; }
+.demo-drag-cursor-list i:nth-child(2) { background: #cc744d; animation: wp4DragItem 3.1s ease-in-out infinite; }
+.demo-drag-cursor-pointer { position: absolute; width: 18px; height: 22px; fill: #222; filter: drop-shadow(0 2px 1px rgba(255,255,255,.8)); animation: wp4DragPointer 3.1s ease-in-out infinite; }
+
+.demo-lens-zoom-stage { background: #d8dfdb; }
+.demo-lens-zoom-image { position: absolute; inset: 9px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 5px; padding: 7px; border-radius: 9px; background: #718c82; }
+.demo-lens-zoom-image i { border-radius: 5px; background: #c8a86f; }
+.demo-lens-zoom-image i:nth-child(2) { background: #395f57; }
+.demo-lens-zoom-image i:nth-child(3) { grid-column: 1 / -1; height: 18px; background: #e7ded0; }
+.demo-lens-zoom-lens { position: absolute; width: 52px; height: 52px; overflow: hidden; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 5px 14px rgba(34,34,34,.24); background: #c8a86f; animation: wp4LensMove 3.7s ease-in-out infinite; }
+.demo-lens-zoom-lens b { position: absolute; inset: 8px; border: 6px solid #395f57; border-radius: 50%; animation: wp4LensDetail 3.7s ease-in-out infinite; }
+
+@keyframes wp4FollowSpot { 0%, 100% { transform: translate(-43px,-23px) scale(.8); opacity: .55; } 45% { transform: translate(39px,-7px) scale(1.05); opacity: 1; } 72% { transform: translate(7px,29px) scale(.9); opacity: .75; } }
+@keyframes wp4FollowPointer { 0%, 100% { transform: translate(-41px,-22px); } 45% { transform: translate(41px,-6px); } 72% { transform: translate(9px,30px); } }
+@keyframes wp4RippleButton { 0%, 28%, 100% { transform: scale(1); } 36%, 44% { transform: scale(.94); } 56% { transform: scale(1.03); } }
+@keyframes wp4RippleRing { 0%, 30% { opacity: 0; transform: scale(.72); } 42% { opacity: .7; } 76%, 100% { opacity: 0; transform: scale(1.55); } }
+@keyframes wp4GlowBorder { 0% { transform: rotate(0) translateX(52px) scale(.35); opacity: .35; } 50% { opacity: 1; } 100% { transform: rotate(360deg) translateX(52px) scale(.35); opacity: .35; } }
+@keyframes wp4DragItem { 0%, 18%, 100% { transform: translateY(0) scale(1); opacity: 1; } 42%, 58% { transform: translateY(25px) scale(1.04); opacity: .9; } 78% { transform: translateY(-25px) scale(1.02); } }
+@keyframes wp4DragPointer { 0%, 18%, 100% { transform: translate(35px,-22px) scale(.85); } 42%, 58% { transform: translate(37px,4px) scale(1); } 78% { transform: translate(35px,-46px) scale(.9); } }
+@keyframes wp4LensMove { 0%, 100% { transform: translate(-37px,-18px) scale(.9); } 50% { transform: translate(34px,17px) scale(1.08); } }
+@keyframes wp4LensDetail { 0%, 100% { transform: translate(6px,4px) scale(1.1); } 50% { transform: translate(-5px,-3px) scale(1.45); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .effect-demo-spotlight-follow .demo-follow-spot-light,
+  .effect-demo-spotlight-follow .demo-follow-spot-pointer,
+  .effect-demo-hover-ripple-feedback .demo-ripple-feedback-button,
+  .effect-demo-hover-ripple-feedback .demo-ripple-feedback-ring,
+  .effect-demo-pointer-glow-border .demo-glow-border-orbit,
+  .effect-demo-drag-affordance-cursor .demo-drag-cursor-list i,
+  .effect-demo-drag-affordance-cursor .demo-drag-cursor-pointer,
+  .effect-demo-lens-zoom-hover .demo-lens-zoom-lens,
+  .effect-demo-lens-zoom-hover .demo-lens-zoom-lens b { animation: none; }
+  .effect-demo-spotlight-follow .demo-follow-spot-light { opacity: .8; transform: translate(18px,-8px); }
+  .effect-demo-spotlight-follow .demo-follow-spot-pointer { transform: translate(20px,-6px); }
+  .effect-demo-hover-ripple-feedback .demo-ripple-feedback-button { transform: none; }
+  .effect-demo-hover-ripple-feedback .demo-ripple-feedback-ring.one { opacity: .35; transform: scale(1.25); }
+  .effect-demo-pointer-glow-border .demo-glow-border-orbit { opacity: .8; transform: translateX(52px) scale(.35); }
+  .effect-demo-drag-affordance-cursor .demo-drag-cursor-list i:nth-child(2) { transform: translateY(25px); }
+  .effect-demo-drag-affordance-cursor .demo-drag-cursor-pointer { transform: translate(37px,4px); }
+  .effect-demo-lens-zoom-hover .demo-lens-zoom-lens { transform: translate(24px,10px); }
+  .effect-demo-lens-zoom-hover .demo-lens-zoom-lens b { transform: scale(1.35); }
+}

@@ -112,7 +112,7 @@ try {
   const config = readJson(paths.config);
   const finderSource = readFileSync(paths.finderJs, 'utf8');
 
-  assert.equal(effects.length, 64, 'effects.json must contain 64 effects');
+  assert.equal(effects.length, 94, 'effects.json must contain 94 effects');
   assert.equal(isms.length, 49, 'isms.json must contain 49 prompt packs');
   assert.ok(finderSource.length > 0, 'assets/js/finder.js is empty');
 

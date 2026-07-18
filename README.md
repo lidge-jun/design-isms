@@ -2,7 +2,7 @@
 
 49개 디자인 ism을 한 번에 훑어보는 시각 레퍼런스 보드입니다. 각 스타일은 AI mockup 이미지, 역사/맥락, 컬러 팔레트, 실제 사이트 예시, 이미지 생성 프롬프트, 관련 ISM, 그리고 팝업 하단의 개발 가이드까지 함께 제공합니다.
 
-별도 페이지 `effects.html`에서는 모바일과 데스크탑 프런트엔드 UI 후보군을 이름을 몰라도 찾아볼 수 있게 정리합니다. 카드별 미니 데모, 상세 모달, 접근성 체크, 성능 체크, 64개 전체 ima2 guide 이미지와 WebP preview, 그리고 효과별 배경/히스토리/사용 시점 문서를 포함합니다.
+별도 페이지 `effects.html`에서는 모바일과 데스크탑 프런트엔드 UI 후보군을 이름을 몰라도 찾아볼 수 있게 정리합니다. 카드별 미니 데모, 상세 모달, 접근성 체크, 성능 체크, 94개 전체 ima2 guide 이미지와 WebP preview, 그리고 효과별 배경/히스토리/사용 시점 문서를 포함합니다.
 
 [Live Site](https://lidge-jun.github.io/design-isms/) · [Repository](https://github.com/lidge-jun/design-isms)
 
@@ -18,15 +18,15 @@
 - Korean/English UI toggle
 - Frontend UI Candidates page with 46 mobile, desktop, and shared patterns
 - 46 dedicated live demo animation types for the candidate cards and modals
-- 64 guide images under `assets/images/effects/`
-- 64 guide WebP previews under `assets/images/thumbs/effects/`
+- 94 guide images under `assets/images/effects/`
+- 94 guide WebP previews under `assets/images/thumbs/effects/`
 - Long-form effect documentation in `assets/data/effects-docs.json`
 - 8 newly added ima2-generated ISM styles: Editorial Typography, Variable Typography, Monospace / Terminal UI, Pixel Art UI, De Stijl, Constructivism, Isometric 3D UI, and Pop Art
 - Grok research prompts and ima2 prompt manifests for the ISM/effects expansion batch
 
 ## Implementation Principles
 
-<!-- data-sot:readme-counts:start -->Catalog source-of-truth counts: 49 ISMs / 64 effects / 18 FAQ answers.<!-- data-sot:readme-counts:end -->
+<!-- data-sot:readme-counts:start -->Catalog source-of-truth counts: 49 ISMs / 94 effects / 18 FAQ answers.<!-- data-sot:readme-counts:end -->
 
 - README, `AGENTS.md`, `structure/README.md`, and `devlog/` must stay aligned with the shipped behavior.
 - `src/*.ts` is the editable source; `assets/js/*.js` is generated output and still committed because GitHub Pages serves static files directly.
@@ -37,7 +37,7 @@
 - The visual shell uses the Annotated Specimen Atlas system: shared tokens live in `assets/css/theme-atlas.css`, loaded after `style.css` and before `nav.css` on every page.
 - The ISM modal on `index.html` uses `AppDialogA11y` (`src/app-dialog.ts`) for focus trap, Escape layering, scroll lock, and focus restore; `assets/js/app-dialog.js` must load before `assets/js/app.js`.
 - The ISM modal is implemented: history appears under the title, the main prompt is always visible, secondary prompts are collapsible, example sites show 3 first and expand to the rest, and related ISMs are computed from keyword overlap.
-- The effects page is a 64-entry catalog: 46 interface patterns plus 18 visual effects across 7 families (scroll, text motion, hero background, cursor, view transition, micro-interaction).
+- The effects page is a 94-entry catalog: 46 interface patterns plus 48 visual effects across 7 families (scroll, text motion, hero background, cursor, view transition, micro-interaction).
 - Every effects candidate must have a dedicated `demo.type` equal to its effect `id`, and that type must exist in `src/effects-demos.ts`. Do not reuse a generic seed demo for a new candidate.
 - Effects long-form writing lives in `assets/data/effects-docs.json` and renders through `src/effects-docs.ts`. Keep `assets/data/effects.json` compact for operational card/demo data.
 - Every effects guide image keeps the original PNG at `assets/images/effects/{effect-id}/guide.png` and uses a generated WebP preview at `assets/images/thumbs/effects/{effect-id}/guide.webp`.
