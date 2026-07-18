@@ -25,6 +25,33 @@ function contrastRatio(fgHex, bgHex) {
 const CONTRAST_THRESHOLD = { 'normal-text': 4.5, 'large-text': 3.0, 'non-text': 3.0 };
 const REQUIRED_COLOR_ROLES = ['background', 'surface', 'text', 'text-muted', 'primary', 'on-primary', 'border', 'success'];
 
+// Shared guide provenance ledger validation (WP5 pattern, generalized in WP6).
+function validateGuideLedger({ domain, expectedCount, manifestName, auditName, items }) {
+  const unitDir = join(root, 'devlog/_plan/260717_design-encyclopedia-upgrade');
+  const finDir = join(root, 'devlog/_fin/260717_design-encyclopedia-upgrade');
+  const ledgerDir = existsSync(join(unitDir, manifestName)) ? unitDir : finDir;
+  const auditPath = join(ledgerDir, auditName);
+  const manifestPath = join(ledgerDir, manifestName);
+  if (!existsSync(auditPath) || !existsSync(manifestPath)) { errors.push(`${domain}: guide audit/manifest ledger missing`); return; }
+  const auditRows = readFileSync(auditPath, 'utf8').split('\n').filter(Boolean).slice(1);
+  const manifestRows = readFileSync(manifestPath, 'utf8').split('\n').filter(Boolean).map((line) => JSON.parse(line));
+  const cardIds = new Set(items.map((card) => card.id));
+  if (auditRows.length !== expectedCount) errors.push(`${domain}: audit ledger rows ${auditRows.length} != ${expectedCount}`);
+  if (manifestRows.length !== expectedCount) errors.push(`${domain}: manifest ledger rows ${manifestRows.length} != ${expectedCount}`);
+  const auditIds = new Set(auditRows.map((row) => row.split(',')[0]));
+  for (const id of cardIds) if (!auditIds.has(id)) errors.push(`${domain}: audit ledger missing ${id}`);
+  for (const row of auditRows) if (!row.includes(',pass,') && !row.includes(',accepted,')) errors.push(`${domain}: audit row not accepted: ${row.slice(0, 60)}`);
+  for (const row of manifestRows) {
+    const card = items.find((item) => item.id === row.id);
+    if (!card) { errors.push(`${domain}: manifest ledger unknown id ${row.id}`); continue; }
+    if (row.sourcePromptSha256 !== sha256Text(card.guide.prompt)) errors.push(`${domain}:${row.id}: manifest prompt sha mismatch`);
+    const png = join(root, `assets/images/${domain}/${row.id}/guide.png`);
+    const webp = join(root, `assets/images/thumbs/${domain}/${row.id}/guide.webp`);
+    if (!existsSync(png) || sha256File(png) !== row.original?.sha256) errors.push(`${domain}:${row.id}: manifest png sha mismatch`);
+    if (!existsSync(webp) || sha256File(webp) !== row.preview?.sha256) errors.push(`${domain}:${row.id}: manifest webp sha mismatch`);
+  }
+}
+
 function validateColorDomain(items) {
   if (items.length !== 25) errors.push(`color: expected 25 cards, found ${items.length}`);
   const familyCounts = new Map();
@@ -60,35 +87,72 @@ function validateColorDomain(items) {
       errors.push(`${label}: System card needs at least one https source`);
     }
   }
-  // Guide provenance ledger (WP5): 25 rows, decision pass, prompt SHA binding.
-  const unitDir = join(root, 'devlog/_plan/260717_design-encyclopedia-upgrade');
-  const finDir = join(root, 'devlog/_fin/260717_design-encyclopedia-upgrade');
-  const ledgerDir = existsSync(join(unitDir, '030_color_guide_manifest.jsonl')) ? unitDir : finDir;
-  const auditPath = join(ledgerDir, '030_color_guide_audit.csv');
-  const manifestPath = join(ledgerDir, '030_color_guide_manifest.jsonl');
-  if (!existsSync(auditPath) || !existsSync(manifestPath)) { errors.push('color: guide audit/manifest ledger missing'); return; }
-  const auditRows = readFileSync(auditPath, 'utf8').split('\n').filter(Boolean).slice(1);
-  const manifestRows = readFileSync(manifestPath, 'utf8').split('\n').filter(Boolean).map((line) => JSON.parse(line));
-  const cardIds = new Set(items.map((card) => card.id));
-  if (auditRows.length !== 25) errors.push(`color: audit ledger rows ${auditRows.length} != 25`);
-  if (manifestRows.length !== 25) errors.push(`color: manifest ledger rows ${manifestRows.length} != 25`);
-  const auditIds = new Set(auditRows.map((row) => row.split(',')[0]));
-  for (const id of cardIds) if (!auditIds.has(id)) errors.push(`color: audit ledger missing ${id}`);
-  for (const row of auditRows) if (!row.includes(',pass,') && !row.includes(',accepted,')) errors.push(`color: audit row not accepted: ${row.slice(0, 60)}`);
-  for (const row of manifestRows) {
-    const card = items.find((item) => item.id === row.id);
-    if (!card) { errors.push(`color: manifest ledger unknown id ${row.id}`); continue; }
-    if (row.sourcePromptSha256 !== sha256Text(card.guide.prompt)) errors.push(`color:${row.id}: manifest prompt sha mismatch`);
-    const png = join(root, `assets/images/color/${row.id}/guide.png`);
-    const webp = join(root, `assets/images/thumbs/color/${row.id}/guide.webp`);
-    if (!existsSync(png) || sha256File(png) !== row.original?.sha256) errors.push(`color:${row.id}: manifest png sha mismatch`);
-    if (!existsSync(webp) || sha256File(webp) !== row.preview?.sha256) errors.push(`color:${row.id}: manifest webp sha mismatch`);
+  validateGuideLedger({ domain: 'color', expectedCount: 25, manifestName: '030_color_guide_manifest.jsonl', auditName: '030_color_guide_audit.csv', items });
+}
+
+function validateTypographyDomain(items) {
+  if (items.length !== 20) errors.push(`typography: expected 20 cards, found ${items.length}`);
+  const categoryCounts = new Map();
+  for (const card of items) categoryCounts.set(card.category, (categoryCounts.get(card.category) ?? 0) + 1);
+  for (const [category, expectedCount] of [['Korean', 6], ['English Classic', 4], ['Modern Sans', 4], ['Editorial', 3], ['ISM Linked', 3]]) {
+    if (categoryCounts.get(category) !== expectedCount) errors.push(`typography: category ${category} count ${categoryCounts.get(category) ?? 0} != ${expectedCount}`);
   }
+  const KOREAN_CAPABLE = ['Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans CJK KR', 'Noto Serif CJK KR', 'Noto Sans KR', 'Noto Serif KR', 'AppleMyungjo', 'Batang', 'Gowun Batang', 'Black Han Sans', 'Song Myung', 'Nanum Myeongjo', 'Nanum Gothic'];
+  for (const card of items) {
+    const label = `typography:${card.id}`;
+    // Google Fonts URL structural validation (static — no network).
+    const googleFamilies = new Map();
+    for (const webfont of card.webfonts ?? []) {
+      if (webfont.source === 'system') { if (webfont.url !== null) errors.push(`${label}: system webfont must have url null`); continue; }
+      if (typeof webfont.url !== 'string') { errors.push(`${label}: webfont url missing for ${webfont.family}`); continue; }
+      let parsed;
+      try { parsed = new URL(webfont.url); } catch { errors.push(`${label}: invalid webfont url ${webfont.url}`); continue; }
+      if (webfont.source === 'google-fonts') {
+        if (parsed.protocol !== 'https:' || parsed.hostname !== 'fonts.googleapis.com' || parsed.pathname !== '/css2') errors.push(`${label}: google url structure invalid`);
+        if (parsed.searchParams.has('text')) errors.push(`${label}: stored google url must not pin text=`);
+        if (parsed.searchParams.get('display') !== 'swap') errors.push(`${label}: google url missing display=swap`);
+        for (const familyParam of parsed.searchParams.getAll('family')) {
+          const [familyName, axes] = familyParam.split(':');
+          const canonical = familyName.replace(/\+/g, ' ');
+          const weights = new Set();
+          if (!axes) weights.add(400);
+          else {
+            const axisNames = axes.split('@')[0].split(',');
+            const wghtIndex = axisNames.indexOf('wght');
+            for (const tuple of (axes.split('@')[1] ?? '').split(';')) {
+              const parts = tuple.split(',');
+              const raw = wghtIndex >= 0 ? parts[wghtIndex] : parts[0];
+              if (!raw) continue;
+              if (raw.includes('..')) { const [lo, hi] = raw.split('..').map(Number); for (let w = 100; w <= 900; w += 100) if (w >= lo && w <= hi) weights.add(w); }
+              else weights.add(Number(raw));
+            }
+          }
+          googleFamilies.set(canonical, weights);
+        }
+      } else if (parsed.hostname !== 'cdn.jsdelivr.net') {
+        errors.push(`${label}: non-google webfont must be jsdelivr (${parsed.hostname})`);
+      }
+    }
+    for (const roleName of ['heading', 'body', 'mono']) {
+      const role = card[roleName];
+      if (!role) continue;
+      const weights = googleFamilies.get(role.family);
+      if (weights && !weights.has(role.weight)) errors.push(`${label}: ${roleName} weight ${role.weight} not requested in google url for ${role.family}`);
+      const generics = ['sans-serif', 'serif', 'monospace'];
+      const lastFallback = role.fallback?.[role.fallback.length - 1];
+      if (!generics.includes(lastFallback)) errors.push(`${label}: ${roleName} fallback must end with a generic family`);
+    }
+    if (card.supportsKorean === false) {
+      const bodyStack = card.body?.fallback ?? [];
+      if (!bodyStack.some((family) => KOREAN_CAPABLE.includes(family))) errors.push(`${label}: supportsKorean=false requires a Korean-capable body fallback`);
+    }
+  }
+  validateGuideLedger({ domain: 'typography', expectedCount: 20, manifestName: '041_typography_guide_manifest.jsonl', auditName: '042_typography_guide_audit.csv', items });
 }
 
 const registry = [
   { name: 'color', dataPath: 'assets/data/color.json', imageRoot: 'assets/images/color', schemaPath: 'assets/data/schema/color.schema.json', idPattern: /^[a-z0-9]+(-[a-z0-9]+)*$/, family: null, validateDomain: validateColorDomain },
-  { name: 'typography', dataPath: 'assets/data/typography.json', imageRoot: 'assets/images/typography', schemaPath: 'assets/data/schema/typography.schema.json', idPattern: /^[a-z0-9]+(-[a-z0-9]+)*$/, family: 'Typography Pairing' },
+  { name: 'typography', dataPath: 'assets/data/typography.json', imageRoot: 'assets/images/typography', schemaPath: 'assets/data/schema/typography.schema.json', idPattern: /^[a-z0-9]+(-[a-z0-9]+)*$/, family: 'Typography Pairing', validateDomain: validateTypographyDomain },
   { name: 'layout', dataPath: 'assets/data/layout.json', imageRoot: 'assets/images/layout', schemaPath: 'assets/data/schema/layout.schema.json', idPattern: /^layout-[a-z0-9]+(-[a-z0-9]+)*$/, family: null },
   { name: 'motion', dataPath: 'assets/data/motion.json', imageRoot: 'assets/images/motion', schemaPath: 'assets/data/schema/motion.schema.json', idPattern: /^motion-[a-z0-9]+(-[a-z0-9]+)*$/, family: 'Motion Preset' }
 ];

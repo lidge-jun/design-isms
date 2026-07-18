@@ -50,7 +50,7 @@ const requiredOrder = {
   'effects.html': ['assets/js/app-dialog.js', 'assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/catalog-shell.js', 'assets/js/app-export.js', 'assets/js/effects-filters.js', 'assets/js/effects-interactions.js', 'assets/js/effects-demos.js', 'assets/js/effects-docs.js', 'assets/js/effects.js'],
   'faq.html': ['assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/faq.js'],
   'color.html': ['assets/js/app-dialog.js', 'assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/catalog-shell.js', 'assets/js/color.js'],
-  'typography.html': ['assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/catalog-shell.js'],
+  'typography.html': ['assets/js/app-dialog.js', 'assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/catalog-shell.js', 'assets/js/typography-fonts.js', 'assets/js/typography.js'],
   'layout.html': ['assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/catalog-shell.js'],
   'motion.html': ['assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/catalog-shell.js']
 };

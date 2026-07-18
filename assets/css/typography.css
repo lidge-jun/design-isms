@@ -1,0 +1,245 @@
+/* ── Typography Pairings catalog page ── */
+
+.typo-toolbar {
+  max-width: 1400px;
+  margin: 24px auto 8px;
+  padding: 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.typo-toolbar input[type='search'] {
+  flex: 1 1 240px;
+  min-width: 200px;
+  padding: 10px 14px;
+  border: 1px solid var(--line, #d5d1c8);
+  border-radius: 10px;
+  font: inherit;
+  background: var(--paper, #fff);
+}
+
+.typo-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.typo-filter-row button {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line, #d5d1c8);
+  background: var(--paper, #fff);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.typo-filter-row button.active {
+  background: var(--ink, #171513);
+  color: var(--paper, #fff);
+  border-color: var(--ink, #171513);
+}
+
+.typo-result-count {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--ink-muted, #777);
+  font-family: 'SF Mono', ui-monospace, monospace;
+}
+
+.typo-grid {
+  max-width: 1400px;
+  margin: 12px auto 80px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+}
+
+.typo-card {
+  border: 1px solid var(--line, #d5d1c8);
+  border-radius: 14px;
+  background: var(--paper, #fff);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.typo-card:hover,
+.typo-card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(20, 18, 15, 0.1);
+}
+
+.typo-card-specimen {
+  padding: 20px 18px 14px;
+  border-bottom: 1px solid var(--line, #eee9e0);
+  min-height: 108px;
+}
+
+.typo-card-heading {
+  margin: 0 0 8px;
+  font-size: 22px;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.typo-card-body {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-soft, #555);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.typo-card-meta { padding: 12px 18px 16px; }
+
+.typo-card-kicker {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted, #888);
+  margin-bottom: 6px;
+}
+
+.typo-card-title { margin: 0 0 2px; font-size: 16px; }
+
+.typo-card-kr {
+  margin: 0;
+  font-size: 12px;
+  color: var(--ink-muted, #777);
+}
+
+.typo-empty {
+  grid-column: 1 / -1;
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--ink-muted, #777);
+}
+
+/* modal */
+.typo-summary { color: var(--ink-soft, #555); }
+
+.typo-font-status {
+  font-size: 12px;
+  color: var(--ink-muted, #888);
+  margin: 4px 0 14px;
+}
+
+.typo-specimen-panel {
+  border: 1px solid var(--line, #d5d1c8);
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin-bottom: 20px;
+}
+
+.typo-specimen-heading {
+  margin: 0 0 6px;
+  font-size: clamp(24px, 4vw, 34px);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.typo-specimen-heading.en { color: var(--ink-soft, #444); }
+
+.typo-specimen-body {
+  margin: 10px 0 0;
+  font-size: 15px;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.typo-specimen-mono {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  font-size: 13px;
+  background: var(--surface, #f6f4ef);
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.typo-korean-note {
+  margin: 14px 0 0;
+  font-size: 12px;
+  color: var(--ink-muted, #888);
+  border-top: 1px dashed var(--line, #d5d1c8);
+  padding-top: 10px;
+}
+
+.typo-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.typo-detail-grid h3 {
+  font-size: 14px;
+  margin: 0 0 8px;
+}
+
+.typo-font-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  display: grid;
+  gap: 6px;
+}
+
+.typo-scale-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.typo-scale-table td {
+  padding: 4px 6px;
+  border-bottom: 1px solid rgba(128, 122, 110, 0.2);
+}
+
+.typo-related { margin-top: 20px; }
+
+.typo-related h3 { font-size: 14px; margin: 0 0 8px; }
+
+.typo-related a {
+  display: inline-block;
+  margin: 0 8px 6px 0;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line, #d5d1c8);
+  text-decoration: none;
+  color: var(--ink, #171513);
+  font-size: 12px;
+}
+
+.typo-guide-frame { margin: 22px 0 0; }
+
+.typo-guide-image {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--line, #d5d1c8);
+  cursor: zoom-in;
+}
+
+.typo-guide-frame figcaption {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--ink-muted, #777);
+}
+
+@media (max-width: 860px) {
+  .typo-detail-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .typo-grid { grid-template-columns: 1fr; gap: 12px; padding: 0 16px; }
+  .typo-toolbar { padding: 0 16px; }
+  .typo-specimen-panel { padding: 16px; }
+}

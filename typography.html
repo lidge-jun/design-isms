@@ -4,16 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Typography Pairings — Design -isms</title>
-<meta name="description" content="헤딩·본문 폰트 페어링 카탈로그. 준비 중인 카탈로그입니다.">
+<meta name="description" content="헤딩·본문 폰트 페어링 카탈로그. 한글 중심·영문 클래식·모던 산세리프·에디토리얼·ISM 연계 페어링 20종과 라이브 스페시멘을 제공합니다.">
 <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./assets/css/style.css?v=20260718-encyc">
 <link rel="stylesheet" href="./assets/css/theme-atlas.css?v=20260718-encyc">
 <link rel="stylesheet" href="./assets/css/nav.css?v=20260718-encyc">
 <link rel="stylesheet" href="./assets/css/catalog.css?v=20260718-encyc">
+<link rel="stylesheet" href="./assets/css/effects.css?v=20260718-encyc">
+<link rel="stylesheet" href="./assets/css/typography.css?v=20260718-encyc">
 <link rel="stylesheet" href="./assets/css/runtime-states.css?v=20260718-encyc">
 </head>
 <body>
@@ -33,7 +36,7 @@
         <ul class="nav-dropdown-list" id="catalog-nav-list" role="list">
         <li><a href="./effects.html" data-catalog-target="effects">Effects</a></li>
         <li><a href="./color.html" data-catalog-target="color">Color</a></li>
-        <li><a href="./typography.html" data-catalog-target="typography" data-catalog-current="true" aria-disabled="true">Typography <span class="nav-dropdown-badge">준비 중</span></a></li>
+        <li><a href="./typography.html" data-catalog-target="typography" data-catalog-current="true">Typography</a></li>
         <li><a href="./layout.html" data-catalog-target="layout" aria-disabled="true">Layout <span class="nav-dropdown-badge">준비 중</span></a></li>
         <li><a href="./motion.html" data-catalog-target="motion" aria-disabled="true">Motion <span class="nav-dropdown-badge">준비 중</span></a></li>
         </ul>
@@ -47,7 +50,7 @@
         <span class="lang-divider" aria-hidden="true">/</span>
         <span class="lang-option" data-lang="en">EN</span>
       </button>
-      <span class="header-count" data-nav-axis="count">0 pairings</span>
+      <!-- data-sot:typography-nav-count:start --><span class="header-count" data-nav-axis="count">20 pairings</span><!-- data-sot:typography-nav-count:end -->
     </nav>
   </div>
 </header>
@@ -55,13 +58,35 @@
 <main id="main-content">
   <section class="catalog-hero" aria-labelledby="catalog-title">
     <h1 id="catalog-title">Typography Pairings <span class="catalog-title-kr">타이포그래피 페어링</span></h1>
-    <p>헤딩·본문 폰트 페어링 카탈로그.</p>
+    <p>헤딩·본문 폰트 페어링 카탈로그. 라이브 스페시멘, 타입 스케일, 한글 지원 정보를 함께 제공합니다.</p>
   </section>
-  <section class="catalog-empty-state" aria-label="준비 상태 안내">
-    <h2>준비 중입니다</h2>
-    <p>이 카탈로그는 현재 제작 중입니다. 완성되면 이 페이지에서 카드를 탐색할 수 있습니다.</p>
-    <a class="catalog-empty-link" href="./effects.html">Effects 카탈로그 먼저 보기</a>
-  </section>
+
+  <div class="typo-toolbar">
+    <input type="search" id="typography-search" placeholder="페어링 검색 (명조, serif, 코딩…)" aria-label="페어링 검색">
+    <div class="typo-filter-row" id="typography-category-filter" role="group" aria-label="분류 필터">
+      <button type="button" class="active" data-category="all">All</button>
+      <button type="button" data-category="Korean">Korean</button>
+      <button type="button" data-category="English Classic">English Classic</button>
+      <button type="button" data-category="Modern Sans">Modern Sans</button>
+      <button type="button" data-category="Editorial">Editorial</button>
+      <button type="button" data-category="ISM Linked">ISM Linked</button>
+    </div>
+    <span class="typo-result-count" id="typography-result-count" aria-live="polite"></span>
+  </div>
+
+  <section class="typo-grid" id="typography-grid" aria-label="페어링 카탈로그" aria-busy="true"></section>
+
+  <div class="modal-overlay" id="typography-modal-overlay" aria-hidden="true">
+    <div class="modal-dialog" id="typography-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="typography-modal-title">
+      <button class="modal-close" id="typography-modal-close" type="button" aria-label="닫기">×</button>
+      <div class="modal-content" id="typography-modal-content"></div>
+    </div>
+  </div>
+
+  <div class="effect-lightbox" id="typography-lightbox" aria-hidden="true">
+    <button class="effect-lightbox-close" id="typography-lightbox-close" type="button" aria-label="닫기">×</button>
+    <img id="typography-lightbox-image" alt="">
+  </div>
 </main>
 
 <footer class="site-footer">
@@ -69,9 +94,11 @@
   <span>Typography Pairings catalog</span>
 </footer>
 
+<script src="./assets/js/app-dialog.js?v=20260718-encyc"></script>
 <script src="./assets/js/app-runtime.js?v=20260718-encyc"></script>
 <script src="./assets/js/nav-dropdown.js?v=20260718-encyc"></script>
 <script src="./assets/js/catalog-shell.js?v=20260718-encyc"></script>
-<script>CatalogShell.setupLangToggle();</script>
+<script src="./assets/js/typography-fonts.js?v=20260718-encyc"></script>
+<script src="./assets/js/typography.js?v=20260718-encyc"></script>
 </body>
 </html>
