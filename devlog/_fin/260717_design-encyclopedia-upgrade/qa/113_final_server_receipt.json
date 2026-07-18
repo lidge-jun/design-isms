@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "createdAt": "2026-07-18T17:31:02.467Z",
-  "governedTreeSha256": "d0b233f52e31164721f4ee7fad77b52633f7989caeee76c81008cc1f1d1a9258",
-  "pid": 78783,
+  "createdAt": "2026-07-18T17:38:08.964Z",
+  "governedTreeSha256": "c491111d1e22d0532c5f447f1c722870c6bcf062deb5aa0709f7118cb1ad8033",
+  "pid": 97798,
   "host": "127.0.0.1",
-  "port": 49924,
+  "port": 54583,
   "root": "/Users/jun/Developer/new/701_design-isms/.pages",
   "probes": [
     {

@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "phase": "final",
-  "startCapturedAt": "2026-07-18T17:28:42.584Z",
-  "capturedAt": "2026-07-18T17:31:06.606Z",
-  "head": "507f8875f99a7ca45c0746e9e2de13cd3d8af036",
+  "startCapturedAt": "2026-07-18T17:35:48.173Z",
+  "capturedAt": "2026-07-18T17:38:13.117Z",
+  "head": "74c60c6fb31e39f214a8a29ae697b0834db27b88",
   "upstream": "355da277ec194b0e6fca15b0a9c5447134c60c50",
-  "reflogHead": "507f8875f99a7ca45c0746e9e2de13cd3d8af036 commit: docs(wp10): sync README/AGENTS/structure with the four sister catalogs",
+  "reflogHead": "74c60c6fb31e39f214a8a29ae697b0834db27b88 commit: fix(wp10): ancestor-aware preservation head check + 331/211 doc split",
   "archiveSha256": "1973aa16c30b4f2fa292f14bae4c325ea4d92daefec5ac675f950d4235f124a2",
   "remoteRefs": [
     "refs/remotes/origin/HEAD 355da277ec194b0e6fca15b0a9c5447134c60c50",

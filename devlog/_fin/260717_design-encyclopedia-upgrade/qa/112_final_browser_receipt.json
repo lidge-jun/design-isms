@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "createdAt": "2026-07-18T17:30:52.730Z",
-  "governedTreeSha256": "d0b233f52e31164721f4ee7fad77b52633f7989caeee76c81008cc1f1d1a9258",
+  "createdAt": "2026-07-18T17:37:59.016Z",
+  "governedTreeSha256": "c491111d1e22d0532c5f447f1c722870c6bcf062deb5aa0709f7118cb1ad8033",
   "stagedManifestSha256": "6964e7a59f2308244f1d45f68719af00e2f4e23161853527071048ea4ab0531a",
   "widths": [
     1440,
@@ -891,7 +891,7 @@
   "screenshots": [
     {
       "path": "devlog/_fin/260717_design-encyclopedia-upgrade/qa/final-index-1440.png",
-      "sha256": "62a49260209467d427517b6e8780f92b753dc9ff59ef2601c7bc29618425891d",
+      "sha256": "d90bc6211dda28d268f945a166e3fe9708ef15ac6d202f75273b2c7403e951f5",
       "width": 1440,
       "height": 900,
       "page": "index",
@@ -900,7 +900,7 @@
     },
     {
       "path": "devlog/_fin/260717_design-encyclopedia-upgrade/qa/final-effects-1440.png",
-      "sha256": "ea7c940a457c614e07b22a2406a3fa7fd73e9cf125a31ba99b5081be39dd2806",
+      "sha256": "c3e5c599f3501d4d23fb049b18b1869ae8eb67c78755752d5df9fb98d3ce9fb6",
       "width": 1440,
       "height": 900,
       "page": "effects",
@@ -963,7 +963,7 @@
     },
     {
       "path": "devlog/_fin/260717_design-encyclopedia-upgrade/qa/final-effects-390.png",
-      "sha256": "53548e241f1045a69e67698e719cbf1779ebb8e035dccead53e123682dcc5742",
+      "sha256": "112c0c505be0f9641665d6df3db3baeb5a4ee83bc028604ad4a75fa47a3d81d9",
       "width": 390,
       "height": 900,
       "page": "effects",
@@ -1088,6 +1088,6 @@
     "serverSignal": null,
     "serverForced": false,
     "browserSessions": 53,
-    "finishedAt": "2026-07-18T17:30:52.730Z"
+    "finishedAt": "2026-07-18T17:37:59.015Z"
   }
 }
