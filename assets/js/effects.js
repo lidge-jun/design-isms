@@ -13,6 +13,7 @@
     let cardObserver = null;
     let staticInteractionsMounted = false;
     let loadPromise = null;
+    let shell = null;
     document.addEventListener('DOMContentLoaded', () => {
         const elements = getPageElements();
         mountStaticInteractionsOnce(elements);
@@ -36,7 +37,7 @@
                 elements.searchInput.value = filterState.query;
                 interactions = EffectsInteractions.mount(elements.grid);
                 renderEffectCards(elements);
-                hydrateHash(elements);
+                shell?.hydrateHash();
             }
             catch (error) {
                 console.error('[effects] failed to initialize', error);
@@ -67,11 +68,7 @@
         };
     }
     function getRequiredElement(selector) {
-        const element = document.querySelector(selector);
-        if (!element) {
-            throw new Error(`Missing required element: ${selector}`);
-        }
-        return element;
+        return CatalogShell.getRequiredElement(selector);
     }
     async function loadEffects() {
         try {
@@ -147,6 +144,27 @@
         if (staticInteractionsMounted)
             return;
         staticInteractionsMounted = true;
+        shell = CatalogShell.mount({
+            elements: {
+                grid: elements.grid,
+                resultCount: elements.resultCount,
+                modalOverlay: elements.modalOverlay,
+                modalDialog: elements.modalDialog,
+                modalClose: elements.modalClose,
+                modalContent: elements.modalContent,
+                lightbox: elements.lightbox,
+                lightboxClose: elements.lightboxClose,
+                lightboxImage: elements.lightboxImage
+            },
+            getItems: () => allEffects,
+            getHashId: (effect) => effect.id,
+            renderModal: (effect) => renderEffectModal(effect),
+            onModalOpen: (effect) => {
+                const codeMount = elements.modalContent.querySelector('#effect-code-mount');
+                if (codeMount)
+                    void DesignExport.mountEffect(codeMount, effect.id);
+            }
+        });
         elements.searchInput.addEventListener('input', () => {
             filtersController?.setQuery(elements.searchInput.value);
         });
@@ -157,34 +175,13 @@
             event.preventDefault();
             openCardFromEvent(event, elements);
         });
-        elements.modalClose.addEventListener('click', () => closeEffectModal(elements));
         elements.modalContent.addEventListener('click', (event) => handleModalContentClick(event, elements));
         elements.modalContent.addEventListener('error', handleGuideImageError, true);
-        elements.lightboxClose.addEventListener('click', () => closeLightbox(elements));
         elements.scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
         window.addEventListener('scroll', () => {
             elements.scrollTop.classList.toggle('visible', window.scrollY > 560);
         }, { passive: true });
-        window.addEventListener('hashchange', () => hydrateHash(elements));
-        setupLangToggle();
-    }
-    function setupLangToggle() {
-        const toggle = document.querySelector('#lang-toggle');
-        if (!toggle)
-            return;
-        let currentLang = AppRuntime.readStorage('design-isms-lang') === 'en' ? 'en' : 'ko';
-        const sync = () => {
-            document.documentElement.lang = currentLang;
-            toggle.querySelectorAll('.lang-option').forEach((option) => {
-                option.classList.toggle('active', option.dataset.lang === currentLang);
-            });
-        };
-        toggle.addEventListener('click', () => {
-            currentLang = currentLang === 'ko' ? 'en' : 'ko';
-            AppRuntime.writeStorage('design-isms-lang', currentLang);
-            sync();
-        });
-        sync();
+        CatalogShell.setupLangToggle();
     }
     function renderEffectCards(elements) {
         const visibleEffects = allEffects.filter(effect => EffectsFilters.matches(effect, filterState));
@@ -233,7 +230,7 @@
         }, { rootMargin: '80px 0px', threshold: 0.1 });
         cards.forEach((card) => cardObserver?.observe(card));
     }
-    function openCardFromEvent(event, elements) {
+    function openCardFromEvent(event, _elements) {
         const target = event.target;
         if (!(target instanceof Element))
             return;
@@ -244,33 +241,18 @@
             return;
         const effectId = card.dataset.effectId;
         if (effectId)
-            openEffectModal(effectId, elements);
+            openEffectModal(effectId);
     }
-    function openEffectModal(effectId, elements) {
+    function openEffectModal(effectId) {
         const effect = allEffects.find((item) => item.id === effectId);
         if (!effect)
             return;
-        elements.modalContent.innerHTML = renderEffectModal(effect);
-        elements.modalOverlay.classList.add('active');
-        if (window.location.hash !== `#${effect.id}`) {
-            AppRuntime.replaceHistory(`#${effect.id}`);
-        }
-        if (!AppDialogA11y.isOpen(elements.modalOverlay)) {
-            AppDialogA11y.open({
-                overlay: elements.modalOverlay,
-                dialog: elements.modalDialog,
-                initialFocus: elements.modalContent.querySelector('#effect-modal-title') ?? elements.modalDialog,
-                onRequestClose: () => closeEffectModal(elements)
-            });
-        }
-        const codeMount = elements.modalContent.querySelector('#effect-code-mount');
-        if (codeMount)
-            void DesignExport.mountEffect(codeMount, effect.id);
+        shell?.openModal(effect);
     }
     function renderEffectModal(effect) {
         return `<div class="effect-modal-hero"><div>
       <span class="modal-number">${escapeHtml(effect.priority)} · ${escapeHtml(effect.category)}</span>
-      <h2 class="modal-title" id="effect-modal-title" tabindex="-1">${escapeHtml(effect.name)} <span class="modal-title-kr">${escapeHtml(effect.nameKr)}</span></h2>
+      <h2 class="modal-title" id="effect-modal-title" data-shell-initial-focus tabindex="-1">${escapeHtml(effect.name)} <span class="modal-title-kr">${escapeHtml(effect.nameKr)}</span></h2>
       <div class="effect-aliases">${renderChips(effect.alsoCalled)}</div><p class="effect-summary">${escapeHtml(effect.summary)}</p>
       </div>${renderEffectDemo(effect)}</div><div class="effect-check-grid">
       ${renderCheckCard('언제 쓰나', effect.bestFor)}${renderCheckCard('피해야 할 때', effect.avoidWhen)}</div>
@@ -311,7 +293,7 @@
         }
         const image = target.closest('.effect-guide-image');
         if (image instanceof HTMLImageElement) {
-            openLightbox(image.dataset.originalSrc || image.currentSrc || image.src, image.alt, elements);
+            shell?.openLightbox(image.dataset.originalSrc || image.currentSrc || image.src, image.alt);
             return;
         }
         const copyButton = target.closest('.effect-copy-prompt');
@@ -328,46 +310,6 @@
     async function copyPrompt(prompt, _elements) {
         void DesignExport.copyText(prompt, '프롬프트를 복사했습니다.');
     }
-    function closeEffectModal(elements) {
-        if (!elements.modalOverlay.classList.contains('active'))
-            return;
-        closeLightbox(elements);
-        elements.modalOverlay.classList.remove('active');
-        elements.modalContent.innerHTML = '';
-        if (window.location.hash) {
-            AppRuntime.replaceHistory(`${window.location.pathname}${window.location.search}`);
-        }
-        AppDialogA11y.close(elements.modalOverlay);
-    }
-    function openLightbox(src, alt, elements) {
-        elements.lightboxImage.src = src;
-        elements.lightboxImage.alt = alt;
-        elements.lightbox.classList.add('active');
-        AppDialogA11y.open({
-            overlay: elements.lightbox,
-            initialFocus: elements.lightboxClose,
-            onRequestClose: () => closeLightbox(elements)
-        });
-    }
-    function closeLightbox(elements) {
-        if (!elements.lightbox.classList.contains('active'))
-            return;
-        elements.lightbox.classList.remove('active');
-        elements.lightboxImage.removeAttribute('src');
-        elements.lightboxImage.alt = '';
-        AppDialogA11y.close(elements.lightbox);
-    }
-    function hydrateHash(elements) {
-        const effectId = decodeURIComponent(window.location.hash.replace(/^#/, ''));
-        if (!effectId) {
-            if (elements.modalOverlay.classList.contains('active'))
-                closeEffectModal(elements);
-            return;
-        }
-        if (allEffects.some((effect) => effect.id === effectId)) {
-            openEffectModal(effectId, elements);
-        }
-    }
     function renderError(elements) {
         elements.resultCount.textContent = 'Error';
         AppRuntime.renderFatal(elements.grid, {
@@ -377,7 +319,7 @@
         }, () => { void loadAndRender(elements); });
     }
     function escapeHtml(value) {
-        return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+        return CatalogShell.escapeHtml(value);
     }
     function escapeAttr(value) { return escapeHtml(value); }
 })();

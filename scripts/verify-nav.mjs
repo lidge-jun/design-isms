@@ -1,26 +1,42 @@
 #!/usr/bin/env node
 /**
- * verify-nav.mjs — six-axis navigation validator (Phase 020).
+ * verify-nav.mjs — six-axis navigation validator (Phase 020, extended 015-encyclopedia).
  * Parses public HTML pages without a browser and enforces the shared
- * Isms / Effects / FAQ / GitHub / Lang / Count contract.
+ * Isms / Catalog / FAQ / GitHub / Lang / Count contract, including the
+ * Catalog dropdown (Effects / Color / Typography / Layout / Motion).
  */
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const pages = ['index.html', 'effects.html', 'faq.html'];
-const expectedAxes = ['isms', 'effects', 'faq', 'github', 'lang', 'count'];
+const pages = ['index.html', 'effects.html', 'faq.html', 'color.html', 'typography.html', 'layout.html', 'motion.html'];
+const expectedAxes = ['isms', 'catalog', 'faq', 'github', 'lang', 'count'];
+const catalogTargets = ['effects', 'color', 'typography', 'layout', 'motion'];
+// Pages whose aria-current lives on the Catalog dropdown trigger.
+const catalogPages = new Set(['effects.html', 'color.html', 'typography.html', 'layout.html', 'motion.html']);
+// Catalog entries that are live (not "준비 중"). Update as content cycles land.
+const readyTargets = new Set(['effects']);
 
 // Expected counts derive from the data sources of truth, not hardcoded labels.
 const ismCount = JSON.parse(readFileSync(resolve(root, 'assets/data/isms.json'), 'utf8')).length;
 const effectCount = JSON.parse(readFileSync(resolve(root, 'assets/data/effects.json'), 'utf8')).length;
 const faqData = JSON.parse(readFileSync(resolve(root, 'assets/data/faq.json'), 'utf8'));
 const faqCount = faqData.categories.reduce((sum, c) => sum + c.items.length, 0);
+function catalogCount(file, unit) {
+  const path = resolve(root, `assets/data/${file}`);
+  if (!existsSync(path)) return new RegExp(`^0 ${unit}$`);
+  const length = JSON.parse(readFileSync(path, 'utf8')).length;
+  return new RegExp(`^${length} ${unit}$`);
+}
 const expectedCounts = {
   'index.html': new RegExp(`^${ismCount} isms$`),
   'effects.html': new RegExp(`^${effectCount} effects$`),
-  'faq.html': new RegExp(`^${faqCount} answers$`)
+  'faq.html': new RegExp(`^${faqCount} answers$`),
+  'color.html': catalogCount('color.json', 'colors'),
+  'typography.html': catalogCount('typography.json', 'pairings'),
+  'layout.html': catalogCount('layout.json', 'layouts'),
+  'motion.html': catalogCount('motion.json', 'motions')
 };
 
 const errors = [];
@@ -43,6 +59,41 @@ for (const page of pages) {
   const current = [...html.matchAll(/aria-current="page"/g)];
   if (current.length !== 1) {
     errors.push(`${page}: aria-current="page" count ${current.length} != 1`);
+  }
+
+  // 2b. aria-current owner matches the page's expected axis
+  const expectedOwner = catalogPages.has(page) ? 'catalog-trigger' : page === 'faq.html' ? 'faq' : 'isms';
+  if (expectedOwner === 'catalog-trigger') {
+    const trigger = html.match(/<button[^>]*data-catalog-trigger[^>]*>/);
+    if (!trigger) errors.push(`${page}: catalog dropdown trigger missing`);
+    else if (!trigger[0].includes('aria-current="page"')) errors.push(`${page}: aria-current must live on the catalog trigger`);
+  } else {
+    const owner = html.match(new RegExp(`<a[^>]*data-nav-axis="${expectedOwner}"[^>]*>`));
+    if (!owner || !owner[0].includes('aria-current="page"')) errors.push(`${page}: aria-current must live on the ${expectedOwner} nav link`);
+  }
+
+  // 2c. catalog dropdown contract: trigger wiring + exactly one link per target
+  const trigger = html.match(/<button[^>]*data-catalog-trigger[^>]*>/);
+  if (!trigger) {
+    errors.push(`${page}: catalog dropdown trigger missing`);
+  } else {
+    if (!trigger[0].includes('type="button"')) errors.push(`${page}: catalog trigger lacks type="button"`);
+    if (!/aria-expanded="(true|false)"/.test(trigger[0])) errors.push(`${page}: catalog trigger lacks aria-expanded`);
+    if (!trigger[0].includes('aria-controls="catalog-nav-list"')) errors.push(`${page}: catalog trigger lacks aria-controls`);
+  }
+  if (!html.includes('id="catalog-nav-list"')) errors.push(`${page}: catalog-nav-list missing`);
+  for (const target of catalogTargets) {
+    const links = [...html.matchAll(new RegExp(`<a[^>]*data-catalog-target="${target}"[^>]*>`, 'g'))];
+    if (links.length !== 1) {
+      errors.push(`${page}: catalog target ${target} count ${links.length} != 1`);
+      continue;
+    }
+    const link = links[0][0];
+    if (!link.includes(`href="./${target}.html"`)) errors.push(`${page}: catalog target ${target} href mismatch`);
+    const disabled = link.includes('aria-disabled="true"');
+    if (readyTargets.has(target) && disabled) errors.push(`${page}: catalog target ${target} should be enabled`);
+    if (!readyTargets.has(target) && !disabled) errors.push(`${page}: catalog target ${target} must carry aria-disabled="true" until its cycle lands`);
+    if (!existsSync(resolve(root, `${target}.html`))) errors.push(`${page}: catalog target ${target}.html does not exist`);
   }
 
   // 3. GitHub link disclosure
@@ -79,7 +130,7 @@ for (const page of pages) {
   }
 
   // 7. local nav targets exist
-  const localTargets = [...html.matchAll(/data-nav-axis="(?:isms|effects|faq)"[^>]*href="\.\/([^"]+)"/g)].map((m) => m[1]);
+  const localTargets = [...html.matchAll(/data-nav-axis="(?:isms|faq)"[^>]*href="\.\/([^"]+)"/g)].map((m) => m[1]);
   for (const target of localTargets) {
     if (!existsSync(resolve(root, target))) {
       errors.push(`${page}: nav target ${target} does not exist`);

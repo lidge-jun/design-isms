@@ -31,7 +31,7 @@
 - README, `AGENTS.md`, `structure/README.md`, and `devlog/` must stay aligned with the shipped behavior.
 - `src/*.ts` is the editable source; `assets/js/*.js` is generated output and still committed because GitHub Pages serves static files directly.
 - The site uses plain static scripts, not `script type="module"`. Keep script order explicit in HTML.
-- The shared top navigation is duplicated in static HTML across `index.html`, `effects.html`, and `faq.html`; all three expose the same six axes (Isms / Effects / FAQ / GitHub / Lang / Count) in identical order, validated by `npm run verify:nav`.
+- The shared top navigation is duplicated in static HTML across all seven public pages (`index.html`, `effects.html`, `faq.html`, `color.html`, `typography.html`, `layout.html`, `motion.html`); every page exposes the same six axes (Isms / Catalog / FAQ / GitHub / Lang / Count) in identical order, with the Catalog dropdown listing Effects / Color / Typography / Layout / Motion, validated by `npm run verify:nav`.
 - FAQ content lives in `assets/data/faq.json` (bilingual, source-linked, 18 answers) and renders through `src/faq.ts` → `assets/js/faq.js`; `faq.html` is a thin entry document with no inline styles or scripts.
 - Shared storage/history guards, loading dismissal, retryable fatal states, and broken-image fallbacks live in `src/app-runtime.ts` → `assets/js/app-runtime.js`; all three pages load it before their page renderer and share `assets/css/runtime-states.css`.
 - The visual shell uses the Annotated Specimen Atlas system: shared tokens live in `assets/css/theme-atlas.css`, loaded after `style.css` and before `nav.css` on every page.

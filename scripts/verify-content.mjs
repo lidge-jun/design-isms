@@ -9,7 +9,7 @@ const rootIndex = args.indexOf('--root');
 const hostRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const root = resolve(rootIndex >= 0 ? args[rootIndex + 1] : hostRoot);
 const errors = [];
-const pages = ['index.html', 'effects.html', 'faq.html'];
+const pages = ['index.html', 'effects.html', 'faq.html', 'color.html', 'typography.html', 'layout.html', 'motion.html'];
 
 function read(rel) {
   const path = join(root, rel);
@@ -46,9 +46,13 @@ const sotResult = spawnSync(process.execPath, [join(hostRoot, 'scripts/sync-sot.
 if (sotResult.status !== 0) errors.push((sotResult.stderr || sotResult.stdout || 'SoT check failed').trim());
 
 const requiredOrder = {
-  'index.html': ['assets/js/app-dialog.js', 'assets/js/app-runtime.js', 'assets/js/app.js'],
-  'effects.html': ['assets/js/app-dialog.js', 'assets/js/app-runtime.js', 'assets/js/app-export.js', 'assets/js/effects-filters.js', 'assets/js/effects-interactions.js', 'assets/js/effects-demos.js', 'assets/js/effects-docs.js', 'assets/js/effects.js'],
-  'faq.html': ['assets/js/app-runtime.js', 'assets/js/faq.js']
+  'index.html': ['assets/js/app-dialog.js', 'assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/app.js'],
+  'effects.html': ['assets/js/app-dialog.js', 'assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/catalog-shell.js', 'assets/js/app-export.js', 'assets/js/effects-filters.js', 'assets/js/effects-interactions.js', 'assets/js/effects-demos.js', 'assets/js/effects-docs.js', 'assets/js/effects.js'],
+  'faq.html': ['assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/faq.js'],
+  'color.html': ['assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/catalog-shell.js'],
+  'typography.html': ['assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/catalog-shell.js'],
+  'layout.html': ['assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/catalog-shell.js'],
+  'motion.html': ['assets/js/app-runtime.js', 'assets/js/nav-dropdown.js', 'assets/js/catalog-shell.js']
 };
 for (const [page, order] of Object.entries(requiredOrder)) {
   const html = htmlByPage.get(page) ?? '';

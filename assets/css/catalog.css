@@ -1,0 +1,71 @@
+/* ── Shared catalog page styles (color/typography/layout/motion) ── */
+
+.catalog-hero {
+  max-width: 760px;
+  margin: 48px auto 12px;
+  padding: 0 24px;
+}
+
+.catalog-hero h1 {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.2;
+  margin: 0 0 12px;
+  text-wrap: balance;
+}
+
+.catalog-title-kr {
+  display: block;
+  font-size: 0.55em;
+  font-weight: 500;
+  color: var(--ink-muted, #666);
+  margin-top: 6px;
+}
+
+.catalog-hero p {
+  color: var(--ink-muted, #555);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.catalog-empty-state {
+  max-width: 560px;
+  margin: 56px auto 96px;
+  padding: 40px 32px;
+  text-align: center;
+  border: 1px dashed var(--line, #d5d1c8);
+  border-radius: 14px;
+  background: var(--surface, #fbfaf7);
+}
+
+.catalog-empty-state h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.catalog-empty-state p {
+  margin: 0 0 20px;
+  color: var(--ink-muted, #555);
+  text-wrap: balance;
+}
+
+.catalog-empty-link {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--ink, #171513);
+  color: var(--ink, #171513);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.catalog-empty-link:hover {
+  background: var(--ink, #171513);
+  color: var(--paper, #fff);
+}
+
+@media (max-width: 640px) {
+  .catalog-hero { margin-top: 28px; }
+  .catalog-empty-state { margin: 36px 16px 72px; padding: 32px 20px; }
+}

@@ -4,11 +4,11 @@
  *
  * Flags:
  *   --force           rebuild every preview
- *   --scope <name>    effects | isms | all (default all)
+ *   --scope <name>    effects | isms | color | typography | layout | motion | all (default all)
  *   --bootstrap-manifest  audited one-time migration only; refuses overwrite
  */
 import { mkdirSync, readdirSync, statSync, renameSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
-import { basename, dirname, extname, join, relative } from 'node:path';
+import { basename, dirname, extname, join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import sharp from 'sharp';
@@ -28,17 +28,27 @@ const force = args.includes('--force');
 const bootstrapManifest = args.includes('--bootstrap-manifest');
 const scopeIndex = args.indexOf('--scope');
 const scope = scopeIndex !== -1 ? (args[scopeIndex + 1] ?? 'all') : 'all';
-if (!['effects', 'isms', 'all'].includes(scope)) {
-  console.error(`unknown --scope "${scope}" (expected effects | isms | all)`);
+const catalogScopes = ['effects', 'color', 'typography', 'layout', 'motion'];
+if (![...catalogScopes, 'isms', 'all'].includes(scope)) {
+  console.error(`unknown --scope "${scope}" (expected ${catalogScopes.join(' | ')} | isms | all)`);
   process.exit(1);
 }
 
-function inScope(sourcePath) {
+// Explicit top-level root classification (010 Canonical Registry): a root is a
+// catalog namespace when it matches a known scope; every other root must be an
+// actual ISM id. Unknown roots fail loudly instead of silently counting as isms.
+const ismIds = new Set(JSON.parse(readFileSync(join(root, 'assets/data/isms.json'), 'utf8')).map((ism) => ism.id));
+function classifyRoot(sourcePath) {
   const rel = relative(sourceDir, sourcePath);
-  const isEffects = rel.startsWith('effects/');
-  if (scope === 'effects') return isEffects;
-  if (scope === 'isms') return !isEffects;
-  return true;
+  const top = rel.split(sep)[0];
+  if (catalogScopes.includes(top)) return top;
+  if (ismIds.has(top)) return 'isms';
+  throw new Error(`unclassified image root "${top}" (${rel}); register it as a catalog scope or ISM id`);
+}
+
+function inScope(sourcePath) {
+  if (scope === 'all') return true;
+  return classifyRoot(sourcePath) === scope;
 }
 
 function collectPngs(dir, acc = []) {

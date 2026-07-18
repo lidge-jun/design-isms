@@ -14,7 +14,7 @@ const outInput = resolve(outIndex >= 0 ? args[outIndex + 1] : join(rootInput, '.
 const out = outInput === rootInput || outInput.startsWith(rootInput + sep)
   ? resolve(root, relative(rootInput, outInput))
   : outInput;
-const publicFiles = ['index.html', 'effects.html', 'faq.html', 'favicon.svg'];
+const publicFiles = ['index.html', 'effects.html', 'faq.html', 'color.html', 'typography.html', 'layout.html', 'motion.html', 'favicon.svg'];
 const optionalFiles = ['robots.txt', 'sitemap.xml', 'CNAME'];
 const assetDirs = ['css', 'data', 'icons', 'images', 'js'].map(name => join(root, 'assets', name));
 
@@ -106,8 +106,11 @@ const entries = staged.map(path => {
 const htmlCount = entries.filter(entry => entry.path.endsWith('.html')).length;
 const pngCount = entries.filter(entry => entry.path.endsWith('.png')).length;
 const webpCount = entries.filter(entry => entry.path.endsWith('.webp')).length;
-if (htmlCount !== 3 || pngCount !== 211 || webpCount !== 211) {
-  throw new Error(`stage counts ${htmlCount} HTML/${pngCount} PNG/${webpCount} WebP != 3/211/211`);
+// HTML count follows publicFiles; PNG/WebP counts derive from the verified image-pairs manifest.
+const expectedHtml = publicFiles.filter(file => file.endsWith('.html')).length;
+const expectedPairs = JSON.parse(readFileSync(join(root, 'assets/data/image-pairs-manifest.json'), 'utf8')).pairs.length;
+if (htmlCount !== expectedHtml || pngCount !== expectedPairs || webpCount !== expectedPairs) {
+  throw new Error(`stage counts ${htmlCount} HTML/${pngCount} PNG/${webpCount} WebP != ${expectedHtml}/${expectedPairs}/${expectedPairs}`);
 }
 const forbiddenTop = new Set(['.git', '.github', 'src', 'scripts', 'tests', 'docs', 'devlog', 'node_modules', 'package.json', 'package-lock.json', 'tsconfig.json', '.codexclaw', 'Archive.zip']);
 for (const entry of entries) if (forbiddenTop.has(entry.path.split('/')[0])) throw new Error(`forbidden staged path ${entry.path}`);

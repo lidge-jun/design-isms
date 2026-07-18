@@ -20,7 +20,7 @@
 | MODIFY | `scripts/generate-thumbnails.mjs` | `--scope` enum을 010 Canonical Registry(`effects\|isms\|color\|typography\|layout\|motion\|all`)로 확장, isms 판정을 명시적 루트 목록으로 변경 |
 | NEW | `scripts/verify-catalog.mjs` | 범용 카탈로그 검증기(데이터 존재 시 카드 수=JSON 길이, demo/guide 계약) |
 | MODIFY | `package.json` | `verify:catalog` 스크립트 추가, `verify` 체인에 포함 |
-| MODIFY | `scripts/stage-pages.mjs` | `publicFiles`에 4개 신규 HTML 추가 |
+| MODIFY | `scripts/stage-pages.mjs` | `publicFiles`에 4개 신규 HTML 추가 + hardcoded stage count 3→7 갱신(106행 부근, 감사 fold-back) |
 | MODIFY | `scripts/run-final-static-qa.mjs`, `scripts/run-final-server-qa.mjs`, `scripts/run-final-browser-qa.mjs`, `scripts/verify-final-qa.mjs` | pages 목록을 7페이지로 확장할 수 있는 구조(receipt 계약 수치는 080에서 최종 갱신) |
 
 ## 설계 결정
@@ -43,6 +43,13 @@
   `getHashId(item)` — 010 Canonical Registry의 lifecycle 계약과 동일
 - Effects는 `EffectsFilters`/`EffectsInteractions`를 유지한 채 셸 계약에 맞춰 재배선
   (동일 DOM id 유지 — 기존 CSS/QA 계약 보존)
+- **filter/search 소유권 고정(감사 fold-back)**: CatalogShell은 debounce/rerender 요청/UI
+  lifecycle만 소유. 도메인 adapter가 query/filter state와 `matches(item)` 소유. Effects
+  adapter는 EffectsFilters에 위임. 같은 search input에 Shell과 도메인이 이중 listener 금지.
+- **aria-current 배치**: index=Isms 링크, faq=FAQ 링크, effects+신규 4페이지=Catalog 드롭다운
+  trigger 버튼. 내부 메뉴 항목은 `data-catalog-target`+`data-catalog-current`(중복 aria-current 금지).
+- placeholder count 라벨: `0 colors` / `0 pairings` / `0 layouts` / `0 motions` (콘텐츠 사이클에서 갱신).
+- placeholder는 renderer 스텁/JSON fetch 없이 static 빈 상태만(030~060 NEW 계약 보존).
 
 ### 동적 불변조건
 - `scripts/verify-effects.mjs`의 `EXPECTED_EFFECTS = 64` 하드코딩은 020 사이클에서

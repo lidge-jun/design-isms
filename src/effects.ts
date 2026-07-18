@@ -28,6 +28,7 @@
   let cardObserver: IntersectionObserver | null = null;
   let staticInteractionsMounted = false;
   let loadPromise: Promise<void> | null = null;
+  let shell: CatalogShell.Controller<UxEffect> | null = null;
 
   document.addEventListener('DOMContentLoaded', () => {
     const elements = getPageElements();
@@ -53,7 +54,7 @@
         elements.searchInput.value = filterState.query;
         interactions = EffectsInteractions.mount(elements.grid);
         renderEffectCards(elements);
-        hydrateHash(elements);
+        shell?.hydrateHash();
       } catch (error) {
         console.error('[effects] failed to initialize', error);
         renderError(elements);
@@ -84,11 +85,7 @@
   }
 
   function getRequiredElement<T extends Element>(selector: string): T {
-    const element = document.querySelector<T>(selector);
-    if (!element) {
-      throw new Error(`Missing required element: ${selector}`);
-    }
-    return element;
+    return CatalogShell.getRequiredElement<T>(selector);
   }
 
   async function loadEffects(): Promise<UxEffect[]> {
@@ -171,6 +168,26 @@
   function mountStaticInteractionsOnce(elements: PageElements): void {
     if (staticInteractionsMounted) return;
     staticInteractionsMounted = true;
+    shell = CatalogShell.mount<UxEffect>({
+      elements: {
+        grid: elements.grid,
+        resultCount: elements.resultCount,
+        modalOverlay: elements.modalOverlay,
+        modalDialog: elements.modalDialog,
+        modalClose: elements.modalClose,
+        modalContent: elements.modalContent,
+        lightbox: elements.lightbox,
+        lightboxClose: elements.lightboxClose,
+        lightboxImage: elements.lightboxImage
+      },
+      getItems: () => allEffects,
+      getHashId: (effect) => effect.id,
+      renderModal: (effect) => renderEffectModal(effect),
+      onModalOpen: (effect) => {
+        const codeMount = elements.modalContent.querySelector<HTMLElement>('#effect-code-mount');
+        if (codeMount) void DesignExport.mountEffect(codeMount, effect.id);
+      }
+    });
     elements.searchInput.addEventListener('input', () => {
       filtersController?.setQuery(elements.searchInput.value);
     });
@@ -182,34 +199,13 @@
       openCardFromEvent(event, elements);
     });
 
-    elements.modalClose.addEventListener('click', () => closeEffectModal(elements));
     elements.modalContent.addEventListener('click', (event) => handleModalContentClick(event, elements));
     elements.modalContent.addEventListener('error', handleGuideImageError, true);
-    elements.lightboxClose.addEventListener('click', () => closeLightbox(elements));
     elements.scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     window.addEventListener('scroll', () => {
       elements.scrollTop.classList.toggle('visible', window.scrollY > 560);
     }, { passive: true });
-    window.addEventListener('hashchange', () => hydrateHash(elements));
-    setupLangToggle();
-  }
-
-  function setupLangToggle(): void {
-    const toggle = document.querySelector<HTMLButtonElement>('#lang-toggle');
-    if (!toggle) return;
-    let currentLang = AppRuntime.readStorage('design-isms-lang') === 'en' ? 'en' : 'ko';
-    const sync = (): void => {
-      document.documentElement.lang = currentLang;
-      toggle.querySelectorAll<HTMLElement>('.lang-option').forEach((option) => {
-        option.classList.toggle('active', option.dataset.lang === currentLang);
-      });
-    };
-    toggle.addEventListener('click', () => {
-      currentLang = currentLang === 'ko' ? 'en' : 'ko';
-      AppRuntime.writeStorage('design-isms-lang', currentLang);
-      sync();
-    });
-    sync();
+    CatalogShell.setupLangToggle();
   }
 
   function renderEffectCards(elements: PageElements): void {
@@ -265,39 +261,25 @@
     cards.forEach((card) => cardObserver?.observe(card));
   }
 
-  function openCardFromEvent(event: Event, elements: PageElements): void {
+  function openCardFromEvent(event: Event, _elements: PageElements): void {
     const target = event.target;
     if (!(target instanceof Element)) return;
     if (target.closest('[data-demo-action]')) return; // interactive demo controls stay in-card
     const card = target.closest('.effect-card');
     if (!(card instanceof HTMLElement)) return;
     const effectId = card.dataset.effectId;
-    if (effectId) openEffectModal(effectId, elements);
+    if (effectId) openEffectModal(effectId);
   }
 
-  function openEffectModal(effectId: string, elements: PageElements): void {
+  function openEffectModal(effectId: string): void {
     const effect = allEffects.find((item) => item.id === effectId);
     if (!effect) return;
-    elements.modalContent.innerHTML = renderEffectModal(effect);
-    elements.modalOverlay.classList.add('active');
-    if (window.location.hash !== `#${effect.id}`) {
-      AppRuntime.replaceHistory(`#${effect.id}`);
-    }
-    if (!AppDialogA11y.isOpen(elements.modalOverlay)) {
-      AppDialogA11y.open({
-        overlay: elements.modalOverlay,
-        dialog: elements.modalDialog,
-        initialFocus: elements.modalContent.querySelector<HTMLElement>('#effect-modal-title') ?? elements.modalDialog,
-        onRequestClose: () => closeEffectModal(elements)
-      });
-    }
-    const codeMount = elements.modalContent.querySelector<HTMLElement>('#effect-code-mount');
-    if (codeMount) void DesignExport.mountEffect(codeMount, effect.id);
+    shell?.openModal(effect);
   }
   function renderEffectModal(effect: UxEffect): string {
     return `<div class="effect-modal-hero"><div>
       <span class="modal-number">${escapeHtml(effect.priority)} · ${escapeHtml(effect.category)}</span>
-      <h2 class="modal-title" id="effect-modal-title" tabindex="-1">${escapeHtml(effect.name)} <span class="modal-title-kr">${escapeHtml(effect.nameKr)}</span></h2>
+      <h2 class="modal-title" id="effect-modal-title" data-shell-initial-focus tabindex="-1">${escapeHtml(effect.name)} <span class="modal-title-kr">${escapeHtml(effect.nameKr)}</span></h2>
       <div class="effect-aliases">${renderChips(effect.alsoCalled)}</div><p class="effect-summary">${escapeHtml(effect.summary)}</p>
       </div>${renderEffectDemo(effect)}</div><div class="effect-check-grid">
       ${renderCheckCard('언제 쓰나', effect.bestFor)}${renderCheckCard('피해야 할 때', effect.avoidWhen)}</div>
@@ -342,7 +324,7 @@
     }
     const image = target.closest('.effect-guide-image');
     if (image instanceof HTMLImageElement) {
-      openLightbox(image.dataset.originalSrc || image.currentSrc || image.src, image.alt, elements);
+      shell?.openLightbox(image.dataset.originalSrc || image.currentSrc || image.src, image.alt);
       return;
     }
     const copyButton = target.closest('.effect-copy-prompt');
@@ -362,47 +344,6 @@
     void DesignExport.copyText(prompt, '프롬프트를 복사했습니다.');
   }
 
-  function closeEffectModal(elements: PageElements): void {
-    if (!elements.modalOverlay.classList.contains('active')) return;
-    closeLightbox(elements);
-    elements.modalOverlay.classList.remove('active');
-    elements.modalContent.innerHTML = '';
-    if (window.location.hash) {
-      AppRuntime.replaceHistory(`${window.location.pathname}${window.location.search}`);
-    }
-    AppDialogA11y.close(elements.modalOverlay);
-  }
-
-  function openLightbox(src: string, alt: string, elements: PageElements): void {
-    elements.lightboxImage.src = src;
-    elements.lightboxImage.alt = alt;
-    elements.lightbox.classList.add('active');
-    AppDialogA11y.open({
-      overlay: elements.lightbox,
-      initialFocus: elements.lightboxClose,
-      onRequestClose: () => closeLightbox(elements)
-    });
-  }
-
-  function closeLightbox(elements: PageElements): void {
-    if (!elements.lightbox.classList.contains('active')) return;
-    elements.lightbox.classList.remove('active');
-    elements.lightboxImage.removeAttribute('src');
-    elements.lightboxImage.alt = '';
-    AppDialogA11y.close(elements.lightbox);
-  }
-
-  function hydrateHash(elements: PageElements): void {
-    const effectId = decodeURIComponent(window.location.hash.replace(/^#/, ''));
-    if (!effectId) {
-      if (elements.modalOverlay.classList.contains('active')) closeEffectModal(elements);
-      return;
-    }
-    if (allEffects.some((effect) => effect.id === effectId)) {
-      openEffectModal(effectId, elements);
-    }
-  }
-
   function renderError(elements: PageElements): void {
     elements.resultCount.textContent = 'Error';
     AppRuntime.renderFatal(elements.grid, {
@@ -413,7 +354,7 @@
   }
 
   function escapeHtml(value: string): string {
-    return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+    return CatalogShell.escapeHtml(value);
   }
 
   function escapeAttr(value: string): string { return escapeHtml(value); }

@@ -37,7 +37,16 @@
     </a>
     <nav class="header-right" aria-label="Primary navigation">
       <a class="nav-link" data-nav-axis="isms" href="./index.html" aria-current="page">Isms</a>
-      <a class="nav-link" data-nav-axis="effects" href="./effects.html">Effects</a>
+      <div class="nav-dropdown" data-nav-axis="catalog">
+        <button class="nav-link nav-dropdown-trigger" type="button" data-catalog-trigger aria-expanded="false" aria-controls="catalog-nav-list">Catalog <span class="nav-dropdown-caret" aria-hidden="true">▾</span></button>
+        <ul class="nav-dropdown-list" id="catalog-nav-list" role="list">
+        <li><a href="./effects.html" data-catalog-target="effects">Effects</a></li>
+        <li><a href="./color.html" data-catalog-target="color" aria-disabled="true">Color <span class="nav-dropdown-badge">준비 중</span></a></li>
+        <li><a href="./typography.html" data-catalog-target="typography" aria-disabled="true">Typography <span class="nav-dropdown-badge">준비 중</span></a></li>
+        <li><a href="./layout.html" data-catalog-target="layout" aria-disabled="true">Layout <span class="nav-dropdown-badge">준비 중</span></a></li>
+        <li><a href="./motion.html" data-catalog-target="motion" aria-disabled="true">Motion <span class="nav-dropdown-badge">준비 중</span></a></li>
+        </ul>
+      </div>
       <a class="nav-link" data-nav-axis="faq" href="./faq.html">FAQ</a>
       <a class="nav-link nav-link--external" data-nav-axis="github" href="https://github.com/lidge-jun/design-isms" target="_blank" rel="noopener">
         GitHub <span aria-hidden="true">↗</span>
@@ -103,6 +112,7 @@
 
 <script src="./assets/js/app-dialog.js?v=20260717-production"></script>
 <script src="./assets/js/app-runtime.js?v=20260717-complete"></script>
+<script src="./assets/js/nav-dropdown.js?v=20260718-encyc"></script>
 <script src="./assets/js/app-guides.js?v=20260717-production"></script>
 <script src="./assets/js/app-export.js?v=20260717-production"></script>
 <script src="./assets/js/finder.js?v=20260717-production"></script>
