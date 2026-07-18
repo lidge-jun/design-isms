@@ -186,11 +186,66 @@ function validateLayoutDomain(items) {
   validateGuideLedger({ domain: 'layout', expectedCount: 25, manifestName: '051_layout_guide_manifest.jsonl', auditName: '051_layout_guide_audit.csv', items });
 }
 
+function parseEasingMjs(value) {
+  const source = value.trim();
+  const cubicMatch = /^cubic-bezier\(\s*(-?\d*\.?\d+)\s*,\s*(-?\d*\.?\d+)\s*,\s*(-?\d*\.?\d+)\s*,\s*(-?\d*\.?\d+)\s*\)$/.exec(source);
+  if (cubicMatch) {
+    const [x1, y1, x2, y2] = cubicMatch.slice(1).map(Number);
+    if (![x1, y1, x2, y2].every(Number.isFinite)) return null;
+    if (x1 < 0 || x1 > 1 || x2 < 0 || x2 > 1) return null;
+    return { kind: 'cubic', x1, y1, x2, y2 };
+  }
+  if (!source.startsWith('linear(') || !source.endsWith(')')) return null;
+  const parts = source.slice(7, -1).split(',');
+  if (parts.length < 2) return null;
+  const stops = [];
+  for (const part of parts) {
+    const match = /^(-?\d*\.?\d+)\s+(-?\d*\.?\d+)%$/.exec(part.trim());
+    if (!match) return null;
+    const stop = { value: Number(match[1]), percent: Number(match[2]) };
+    if (!Number.isFinite(stop.value) || !Number.isFinite(stop.percent)) return null;
+    const previous = stops[stops.length - 1];
+    if (previous && stop.percent <= previous.percent) return null;
+    stops.push(stop);
+  }
+  if (stops[0]?.percent !== 0 || stops[stops.length - 1]?.percent !== 100) return null;
+  return { kind: 'linear', stops };
+}
+
+function validateMotionDomain(items) {
+  if (items.length !== 20) errors.push(`motion: expected 20 cards, found ${items.length}`);
+  const categoryCounts = new Map();
+  for (const card of items) categoryCounts.set(card.category, (categoryCounts.get(card.category) ?? 0) + 1);
+  for (const [category, expectedCount] of [['Easing Curve', 6], ['Entry & Exit', 4], ['Loading Feedback', 4], ['Scroll-based', 3], ['State Transition', 3]]) {
+    if (categoryCounts.get(category) !== expectedCount) errors.push(`motion: category ${category} count ${categoryCounts.get(category) ?? 0} != ${expectedCount}`);
+  }
+  // Golden parser cases keep the grammar strict.
+  if (!parseEasingMjs('cubic-bezier(0.34, 1.56, 0.64, 1)')) errors.push('motion: parser golden positive cubic failed');
+  if (!parseEasingMjs('linear(0 0%, 1.08 36%, 1 100%)')) errors.push('motion: parser golden positive linear failed');
+  for (const bad of ['ease', 'linear', 'cubic-bezier(bad)', 'cubic-bezier(2,0,0.5,1)', 'linear(0, 1)', 'spring(1)']) {
+    if (parseEasingMjs(bad)) errors.push(`motion: parser golden negative accepted "${bad}"`);
+  }
+  const demosSrc = readFileSync(join(root, 'src/motion-demos.ts'), 'utf8');
+  const registryBlock = demosSrc.match(/demoTypes = \[([\s\S]*?)\] as const/);
+  const registryIds = new Set(registryBlock ? [...registryBlock[1].matchAll(/'([a-z0-9-]+)'/g)].map((m) => m[1]) : []);
+  if (registryIds.size !== 20) errors.push(`motion: demoTypes registry has ${registryIds.size} ids != 20`);
+  for (const card of items) {
+    const label = `motion:${card.id}`;
+    if (!registryIds.has(card.id)) errors.push(`${label}: missing from MotionDemos registry`);
+    if (!parseEasingMjs(card.easing)) errors.push(`${label}: easing "${card.easing}" fails strict grammar`);
+    if (!Number.isInteger(card.duration) || card.duration < 80 || card.duration > 5000) errors.push(`${label}: duration out of range`);
+    if (!card.snippet?.css?.includes('prefers-reduced-motion')) errors.push(`${label}: snippet.css missing reduced-motion rule`);
+    if (!card.reducedMotion?.css?.includes('prefers-reduced-motion')) errors.push(`${label}: reducedMotion.css missing media query`);
+    if (!['static-end', 'instant', 'preserve-progress'].includes(card.reducedMotion?.strategy)) errors.push(`${label}: invalid reducedMotion.strategy`);
+  }
+  validateGuideLedger({ domain: 'motion', expectedCount: 20, manifestName: '061_motion_guide_manifest.jsonl', auditName: '061_motion_guide_audit.csv', items });
+}
+
 const registry = [
   { name: 'color', dataPath: 'assets/data/color.json', imageRoot: 'assets/images/color', schemaPath: 'assets/data/schema/color.schema.json', idPattern: /^[a-z0-9]+(-[a-z0-9]+)*$/, family: null, validateDomain: validateColorDomain },
   { name: 'typography', dataPath: 'assets/data/typography.json', imageRoot: 'assets/images/typography', schemaPath: 'assets/data/schema/typography.schema.json', idPattern: /^[a-z0-9]+(-[a-z0-9]+)*$/, family: 'Typography Pairing', validateDomain: validateTypographyDomain },
   { name: 'layout', dataPath: 'assets/data/layout.json', imageRoot: 'assets/images/layout', schemaPath: 'assets/data/schema/layout.schema.json', idPattern: /^layout-[a-z0-9]+(-[a-z0-9]+)*$/, family: null, validateDomain: validateLayoutDomain },
-  { name: 'motion', dataPath: 'assets/data/motion.json', imageRoot: 'assets/images/motion', schemaPath: 'assets/data/schema/motion.schema.json', idPattern: /^motion-[a-z0-9]+(-[a-z0-9]+)*$/, family: 'Motion Preset' }
+  { name: 'motion', dataPath: 'assets/data/motion.json', imageRoot: 'assets/images/motion', schemaPath: 'assets/data/schema/motion.schema.json', idPattern: /^motion-[a-z0-9]+(-[a-z0-9]+)*$/, family: 'Motion Preset', validateDomain: validateMotionDomain }
 ];
 
 const ismIds = new Set(JSON.parse(readFileSync(join(root, 'assets/data/isms.json'), 'utf8')).map((ism) => ism.id));

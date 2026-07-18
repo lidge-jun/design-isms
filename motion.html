@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Motion Presets — Design -isms</title>
-<meta name="description" content="전환·애니메이션 레시피 카탈로그. 준비 중인 카탈로그입니다.">
+<meta name="description" content="전환·애니메이션 레시피 카탈로그. Easing 곡선·진입/퇴장·로딩·스크롤·상태 전환 20종 레시피를 라이브 데모와 reduced-motion 대응과 함께 제공합니다.">
 <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +14,9 @@
 <link rel="stylesheet" href="./assets/css/theme-atlas.css?v=20260718-encyc">
 <link rel="stylesheet" href="./assets/css/nav.css?v=20260718-encyc">
 <link rel="stylesheet" href="./assets/css/catalog.css?v=20260718-encyc">
+<link rel="stylesheet" href="./assets/css/effects.css?v=20260718-encyc">
+<link rel="stylesheet" href="./assets/css/motion.css?v=20260718-encyc">
+<link rel="stylesheet" href="./assets/css/motion-demos.css?v=20260718-encyc">
 <link rel="stylesheet" href="./assets/css/runtime-states.css?v=20260718-encyc">
 </head>
 <body>
@@ -35,7 +38,7 @@
         <li><a href="./color.html" data-catalog-target="color">Color</a></li>
         <li><a href="./typography.html" data-catalog-target="typography">Typography</a></li>
         <li><a href="./layout.html" data-catalog-target="layout">Layout</a></li>
-        <li><a href="./motion.html" data-catalog-target="motion" data-catalog-current="true" aria-disabled="true">Motion <span class="nav-dropdown-badge">준비 중</span></a></li>
+        <li><a href="./motion.html" data-catalog-target="motion" data-catalog-current="true">Motion</a></li>
         </ul>
       </div>
       <a class="nav-link" data-nav-axis="faq" href="./faq.html">FAQ</a>
@@ -47,7 +50,7 @@
         <span class="lang-divider" aria-hidden="true">/</span>
         <span class="lang-option" data-lang="en">EN</span>
       </button>
-      <span class="header-count" data-nav-axis="count">0 motions</span>
+      <!-- data-sot:motion-nav-count:start --><span class="header-count" data-nav-axis="count">20 motions</span><!-- data-sot:motion-nav-count:end -->
     </nav>
   </div>
 </header>
@@ -55,13 +58,35 @@
 <main id="main-content">
   <section class="catalog-hero" aria-labelledby="catalog-title">
     <h1 id="catalog-title">Motion Presets <span class="catalog-title-kr">모션 프리셋</span></h1>
-    <p>전환·애니메이션 레시피 카탈로그.</p>
+    <p>전환·애니메이션 레시피 카탈로그. 라이브 데모, easing 곡선, reduced-motion 대응 코드를 함께 제공합니다.</p>
   </section>
-  <section class="catalog-empty-state" aria-label="준비 상태 안내">
-    <h2>준비 중입니다</h2>
-    <p>이 카탈로그는 현재 제작 중입니다. 완성되면 이 페이지에서 카드를 탐색할 수 있습니다.</p>
-    <a class="catalog-empty-link" href="./effects.html">Effects 카탈로그 먼저 보기</a>
-  </section>
+
+  <div class="motion-toolbar">
+    <input type="search" id="motion-search" placeholder="레시피 검색 (스프링, 로딩, 탭…)" aria-label="레시피 검색">
+    <div class="motion-filter-row" id="motion-category-filter" role="group" aria-label="분류 필터">
+      <button type="button" class="active" data-category="all">All</button>
+      <button type="button" data-category="Easing Curve">Easing</button>
+      <button type="button" data-category="Entry &amp; Exit">Entry/Exit</button>
+      <button type="button" data-category="Loading Feedback">Loading</button>
+      <button type="button" data-category="Scroll-based">Scroll</button>
+      <button type="button" data-category="State Transition">State</button>
+    </div>
+    <span class="motion-result-count" id="motion-result-count" aria-live="polite"></span>
+  </div>
+
+  <section class="motion-grid" id="motion-grid" aria-label="레시피 카탈로그" aria-busy="true"></section>
+
+  <div class="modal-overlay" id="motion-modal-overlay" aria-hidden="true">
+    <div class="modal-container" id="motion-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="motion-modal-title" tabindex="-1">
+      <button class="modal-close" id="motion-modal-close" type="button" aria-label="닫기">✕</button>
+      <div class="modal-scroll" id="motion-modal-content"></div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="motion-lightbox" role="dialog" aria-modal="true" aria-label="Guide image preview" aria-hidden="true">
+    <button class="lightbox-close" id="motion-lightbox-close" type="button" aria-label="닫기">✕</button>
+    <img class="lightbox-image" id="motion-lightbox-image" alt="">
+  </div>
 </main>
 
 <footer class="site-footer">
@@ -69,9 +94,11 @@
   <span>Motion Presets catalog</span>
 </footer>
 
+<script src="./assets/js/app-dialog.js?v=20260718-encyc"></script>
 <script src="./assets/js/app-runtime.js?v=20260718-encyc"></script>
 <script src="./assets/js/nav-dropdown.js?v=20260718-encyc"></script>
 <script src="./assets/js/catalog-shell.js?v=20260718-encyc"></script>
-<script>CatalogShell.setupLangToggle();</script>
+<script src="./assets/js/motion-demos.js?v=20260718-encyc"></script>
+<script src="./assets/js/motion.js?v=20260718-encyc"></script>
 </body>
 </html>

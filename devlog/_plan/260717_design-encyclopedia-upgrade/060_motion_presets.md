@@ -8,6 +8,7 @@
 > 5) sot 마커 네이밍은 `data-sot:{domain}-count`.
 > 6) 페이지 스크립트 로드 순서는 `app-runtime.js` → `nav-dropdown.js` → `catalog-shell.js` → 도메인 렌더러 — 이 문서의 script 순서 표기에 `nav-dropdown.js`가 빠져 있으면 이 계약을 따른다.
 > 7) 이 문서 안의 `generate-thumbnails.mjs`/타 도메인 count 관련 '변경 없음' 행은 변경 맵이 아니라 UNCHANGED 참고로 읽는다. manifest allowlist는 '이 도메인 행만 추가'가 아니라 '기존 additive registry(선행 사이클의 신규 행 포함)를 보존하며 이 도메인 행을 추가'로 읽는다.
+> 8) [WP8 감사 fold-back] ledger 파일명 확정: `061_motion_guide_audit.csv` + `061_motion_guide_manifest.jsonl` (validateGuideLedger helper 사용). 전용 verify-motion.mjs/verify:motion 금지. easing은 validateMotionDomain에서 완전 파싱(cubic-bezier 4-number/x∈0..1, linear() stop 규칙). reduce 환경에서 재생 버튼도 정적 미리보기로 전환(예외 없음). 카드 demo 기본 paused+IntersectionObserver, 무한 루프는 skeleton/spinner/pulse 3개만.
 
 
 의존: 010 `assets/data/schema/motion.schema.json` 확정 + 015 `CatalogShell`/`motion.html` placeholder 완료
