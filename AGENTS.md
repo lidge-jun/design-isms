@@ -1,7 +1,8 @@
 # AGENTS.md — Design -isms 프로젝트 가이드
 
 ## 프로젝트 개요
-49개 디자인 ism의 시각적 레퍼런스 보드와 94개 프런트엔드 UI 패턴/이펙트 카탈로그. GitHub Pages 배포.
+49개 디자인 ism의 시각적 레퍼런스 보드와 94개 프런트엔드 UI 패턴/이펙트 카탈로그, 그리고 4개 자매 카탈로그(Color 25 / Typography 20 / Layout 25 / Motion 20). GitHub Pages 배포.
+각 신규 카탈로그는 `assets/data/{color,typography,layout,motion}.json` + `src/{도메인}.ts`(CatalogShell 위 어댑터) + `assets/css/{도메인}.css` + `assets/images/{도메인}/{id}/guide.png` 구조를 따르고, `scripts/verify-catalog.mjs`의 validateDomain 분기와 guide ledger(030/041·042/051/061)가 검증한다.
 - **라이브**: https://lidge-jun.github.io/design-isms/
 - **스택**: 정적 HTML/CSS + TypeScript source → browser JS build
 - **이미지**: ima2 (`gpt-5.6-sol`, reasoning high, 1536x1024, high quality)
@@ -10,7 +11,11 @@
 ```
 701_design-isms/
 ├── index.html                    # 메인 페이지
-├── effects.html                  # 모바일/데스크탑 UI 후보군 페이지
+├── effects.html                  # 모바일/데스크탑 UI 후보군 페이지 (94)
+├── color.html                    # Color Systems 카탈로그 (25)
+├── typography.html               # Typography Pairings 카탈로그 (20)
+├── layout.html                   # Layout Patterns 카탈로그 (25)
+├── motion.html                   # Motion Presets 카탈로그 (20)
 ├── AGENTS.md                     # 이 파일
 ├── README.md
 ├── assets/

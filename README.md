@@ -4,6 +4,8 @@
 
 별도 페이지 `effects.html`에서는 모바일과 데스크탑 프런트엔드 UI 후보군을 이름을 몰라도 찾아볼 수 있게 정리합니다. 카드별 미니 데모, 상세 모달, 접근성 체크, 성능 체크, 94개 전체 ima2 guide 이미지와 WebP preview, 그리고 효과별 배경/히스토리/사용 시점 문서를 포함합니다.
 
+Catalog 드롭다운으로 이어지는 네 개의 자매 카탈로그가 백과사전을 완성합니다: `color.html`(역할 기반 팔레트 25종 — light/dark 변형과 WCAG AA 대비 검사), `typography.html`(폰트 페어링 20종 — 라이브 웹폰트 스페시멘과 타입 스케일), `layout.html`(반응형 섹션 패턴 25종 — 데스크탑/태블릿/모바일 3단 와이어프레임 비교와 코드 스니펫), `motion.html`(모션 레시피 20종 — easing 곡선 시각화, 라이브 데모, reduced-motion 대응). ISM 모달의 "관련 카탈로그" 섹션과 각 카탈로그 모달의 관련 ISM/Effects 링크가 서로를 잇습니다.
+
 [Live Site](https://lidge-jun.github.io/design-isms/) · [Repository](https://github.com/lidge-jun/design-isms)
 
 ## What It Shows
