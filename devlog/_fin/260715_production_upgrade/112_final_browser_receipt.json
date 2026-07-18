@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "createdAt": "2026-07-17T08:50:48.622Z",
-  "governedTreeSha256": "fee116e9965ee106f1c016955499dc808e58f2a5150682195cbbdbb5d956ea34",
+  "createdAt": "2026-07-17T08:58:12.658Z",
+  "governedTreeSha256": "1fdc69de7ec1e072a23ef83e1224b9f2e8ff88697df81f105b39c2fc4a5f0eb3",
   "stagedManifestSha256": "41a026fc97fa477b1b1e5408d3141c0c9853ac80fddf37d24290a4008f3a3f9a",
   "widths": [
     1440,
@@ -429,7 +429,7 @@
     },
     {
       "path": "devlog/260715_production_upgrade/qa/final-effects-1440.png",
-      "sha256": "10c7d0f58fcb5fdbbfeee1f4ca88a6ce1e7d4fe955591c5ddf62f7a6cb435deb",
+      "sha256": "58b623b5dde8ce7c0921e347731515251cc80529dfcf376599d99f40c8f0cc91",
       "width": 1440,
       "height": 900,
       "page": "effects",
@@ -456,7 +456,7 @@
     },
     {
       "path": "devlog/260715_production_upgrade/qa/final-effects-390.png",
-      "sha256": "b8758c0a76d6454eb9d38815556113c794cdc0fc2669e9ccfba16e07c64b706a",
+      "sha256": "71fe1e670cfe0b3c4c945c7577e0a1c08c3965293a67d4869c539c372da9ee89",
       "width": 390,
       "height": 900,
       "page": "effects",
@@ -509,6 +509,6 @@
     "serverSignal": null,
     "serverForced": false,
     "browserSessions": 24,
-    "finishedAt": "2026-07-17T08:50:48.622Z"
+    "finishedAt": "2026-07-17T08:58:12.657Z"
   }
 }

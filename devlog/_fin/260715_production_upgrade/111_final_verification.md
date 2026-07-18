@@ -55,12 +55,7 @@ All nine PNGs are 900px high, have the exact recorded viewport width, and must m
 
 ## Preservation and boundaries
 
-The start receipt recorded:
-
-- HEAD and upstream: `769fa78b3fd602d695bae1f47bffb7554a525211`
-- reflog head: the same commit, `fix: equal 3-column grid, refined finder trigger button`
-- `Archive.zip`: `1973aa16c30b4f2fa292f14bae4c325ea4d92daefec5ac675f950d4235f124a2`
-- the complete dirty checkout file map and aggregate SHA-256
+`114_final_preservation_start.json` is the single source of truth for the bounded QA window's HEAD, upstream, reflog head, remote refs, `Archive.zip` SHA-256, and complete dirty-checkout map. The matching final receipt records the same fields after all QA commands; dynamic commit and aggregate values are intentionally not duplicated here.
 
 Final preservation must reproduce those values, remote refs, and the dirty-file map. The existing Effects modal ownership remains intact: no `modal-open` token occurs in `src/effects.ts`, `assets/js/effects.js`, or `assets/css/effects.css`. No SVG placeholder tree exists under `assets/images`, and `package.json` contains only TypeScript and Sharp development dependencies—no Playwright or Python runtime was added.
 
