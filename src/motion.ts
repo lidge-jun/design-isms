@@ -3,6 +3,7 @@
   const DATA_URL = `./assets/data/motion.json?v=${DATA_VERSION}`;
   const GUIDE_BASE = './assets/images/motion';
   const MOTION_QUERY = '(prefers-reduced-motion: reduce)';
+  const DEMO_PLAYBACK_RATE = 0.4;
 
   interface MotionPreset {
     id: string; name: string; nameKr: string; family: string; category: string; summary: string;
@@ -91,7 +92,7 @@
       if (image) shell?.openLightbox(image.dataset.originalSrc || image.src, image.alt);
     });
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden) grid.querySelectorAll('.motion-demo.is-active').forEach((demo) => demo.classList.remove('is-active'));
+      if (document.hidden) grid.querySelectorAll<HTMLElement>('.motion-demo.is-active').forEach((demo) => setDemoActive(demo, false));
     });
     reducedMedia.addEventListener('change', () => render(grid));
     CatalogShell.setupLangToggle();
@@ -111,12 +112,19 @@
     if (reducedMedia.matches || !('IntersectionObserver' in window)) return;
     cardObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        const demo = entry.target.querySelector('.motion-demo');
+        const demo = entry.target.querySelector<HTMLElement>('.motion-demo');
         if (!demo) return;
-        demo.classList.toggle('is-active', entry.isIntersecting);
+        setDemoActive(demo, entry.isIntersecting);
       });
     }, { rootMargin: '40px 0px', threshold: 0.25 });
     grid.querySelectorAll('.motion-card').forEach((card) => cardObserver?.observe(card));
+  }
+
+  function setDemoActive(demo: HTMLElement, active: boolean): void {
+    demo.classList.toggle('is-active', active);
+    demo.getAnimations({ subtree: true }).forEach((animation) => {
+      animation.playbackRate = DEMO_PLAYBACK_RATE;
+    });
   }
 
   function render(grid: HTMLElement): void {
@@ -151,7 +159,8 @@
       return;
     }
     button.addEventListener('click', () => {
-      const active = demo.classList.toggle('is-active');
+      const active = !demo.classList.contains('is-active');
+      setDemoActive(demo, active);
       button.textContent = active ? '일시정지' : '재생';
     });
   }

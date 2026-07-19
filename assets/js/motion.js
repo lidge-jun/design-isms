@@ -4,6 +4,7 @@
     const DATA_URL = `./assets/data/motion.json?v=${DATA_VERSION}`;
     const GUIDE_BASE = './assets/images/motion';
     const MOTION_QUERY = '(prefers-reduced-motion: reduce)';
+    const DEMO_PLAYBACK_RATE = 0.4;
     let allPresets = [];
     let categoryFilter = 'all';
     let query = '';
@@ -87,7 +88,7 @@
         });
         document.addEventListener('visibilitychange', () => {
             if (document.hidden)
-                grid.querySelectorAll('.motion-demo.is-active').forEach((demo) => demo.classList.remove('is-active'));
+                grid.querySelectorAll('.motion-demo.is-active').forEach((demo) => setDemoActive(demo, false));
         });
         reducedMedia.addEventListener('change', () => render(grid));
         CatalogShell.setupLangToggle();
@@ -111,10 +112,16 @@
                 const demo = entry.target.querySelector('.motion-demo');
                 if (!demo)
                     return;
-                demo.classList.toggle('is-active', entry.isIntersecting);
+                setDemoActive(demo, entry.isIntersecting);
             });
         }, { rootMargin: '40px 0px', threshold: 0.25 });
         grid.querySelectorAll('.motion-card').forEach((card) => cardObserver?.observe(card));
+    }
+    function setDemoActive(demo, active) {
+        demo.classList.toggle('is-active', active);
+        demo.getAnimations({ subtree: true }).forEach((animation) => {
+            animation.playbackRate = DEMO_PLAYBACK_RATE;
+        });
     }
     function render(grid) {
         const visible = allPresets.filter(matches);
@@ -147,7 +154,8 @@
             return;
         }
         button.addEventListener('click', () => {
-            const active = demo.classList.toggle('is-active');
+            const active = !demo.classList.contains('is-active');
+            setDemoActive(demo, active);
             button.textContent = active ? '일시정지' : '재생';
         });
     }
