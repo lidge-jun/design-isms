@@ -87,7 +87,7 @@
         });
         document.addEventListener('visibilitychange', () => {
             if (document.hidden)
-                grid.querySelectorAll('.motion-demo-stage.is-active').forEach((stage) => stage.classList.remove('is-active'));
+                grid.querySelectorAll('.motion-demo.is-active').forEach((demo) => demo.classList.remove('is-active'));
         });
         reducedMedia.addEventListener('change', () => render(grid));
         CatalogShell.setupLangToggle();
@@ -108,10 +108,10 @@
             return;
         cardObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                const stage = entry.target.querySelector('.motion-demo-stage');
-                if (!stage)
+                const demo = entry.target.querySelector('.motion-demo');
+                if (!demo)
                     return;
-                stage.classList.toggle('is-active', entry.isIntersecting);
+                demo.classList.toggle('is-active', entry.isIntersecting);
             });
         }, { rootMargin: '40px 0px', threshold: 0.25 });
         grid.querySelectorAll('.motion-card').forEach((card) => cardObserver?.observe(card));
@@ -137,9 +137,9 @@
       </div></article>`;
     }
     function wireModalControls(dialog) {
-        const stage = dialog.querySelector('.motion-modal-stage .motion-demo-stage');
+        const demo = dialog.querySelector('.motion-modal-stage .motion-demo');
         const button = dialog.querySelector('.motion-play-toggle');
-        if (!stage || !button)
+        if (!demo || !button)
             return;
         if (reducedMedia.matches) {
             button.disabled = true;
@@ -147,7 +147,7 @@
             return;
         }
         button.addEventListener('click', () => {
-            const active = stage.classList.toggle('is-active');
+            const active = demo.classList.toggle('is-active');
             button.textContent = active ? '일시정지' : '재생';
         });
     }

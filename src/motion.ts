@@ -91,7 +91,7 @@
       if (image) shell?.openLightbox(image.dataset.originalSrc || image.src, image.alt);
     });
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden) grid.querySelectorAll('.motion-demo-stage.is-active').forEach((stage) => stage.classList.remove('is-active'));
+      if (document.hidden) grid.querySelectorAll('.motion-demo.is-active').forEach((demo) => demo.classList.remove('is-active'));
     });
     reducedMedia.addEventListener('change', () => render(grid));
     CatalogShell.setupLangToggle();
@@ -111,9 +111,9 @@
     if (reducedMedia.matches || !('IntersectionObserver' in window)) return;
     cardObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        const stage = entry.target.querySelector('.motion-demo-stage');
-        if (!stage) return;
-        stage.classList.toggle('is-active', entry.isIntersecting);
+        const demo = entry.target.querySelector('.motion-demo');
+        if (!demo) return;
+        demo.classList.toggle('is-active', entry.isIntersecting);
       });
     }, { rootMargin: '40px 0px', threshold: 0.25 });
     grid.querySelectorAll('.motion-card').forEach((card) => cardObserver?.observe(card));
@@ -142,16 +142,16 @@
   }
 
   function wireModalControls(dialog: HTMLElement): void {
-    const stage = dialog.querySelector<HTMLElement>('.motion-modal-stage .motion-demo-stage');
+    const demo = dialog.querySelector<HTMLElement>('.motion-modal-stage .motion-demo');
     const button = dialog.querySelector<HTMLButtonElement>('.motion-play-toggle');
-    if (!stage || !button) return;
+    if (!demo || !button) return;
     if (reducedMedia.matches) {
       button.disabled = true;
       button.textContent = '정적 미리보기 (모션 감소 설정 활성)';
       return;
     }
     button.addEventListener('click', () => {
-      const active = stage.classList.toggle('is-active');
+      const active = demo.classList.toggle('is-active');
       button.textContent = active ? '일시정지' : '재생';
     });
   }
