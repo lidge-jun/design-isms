@@ -1,0 +1,9 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "epicsagas",
+  "owner": { "name": "epicsagas", "url": "https://github.com/epicsagas" },
+  "metadata": { "description": "Handcrafted plugins for serious AI-assisted work." },
+  "plugins": [
+    { "name": "design-isms", "source": { "source": "url", "url": "https://github.com/epicsagas/design-isms.git" }, "description": "49 design isms + 94 UI effects as queryable skills." }
+  ]
+}

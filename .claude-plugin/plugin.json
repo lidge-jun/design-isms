@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "design-isms",
+  "version": "0.1.0",
+  "description": "49 design isms + 94 UI effects as queryable skills. Palettes, font pairings, grids, motion recipes, and runnable HTML/CSS/JS snippets from the design-isms dataset.",
+  "author": { "name": "epicsagas", "url": "https://github.com/epicsagas" },
+  "homepage": "https://github.com/epicsagas/design-isms",
+  "repository": "https://github.com/epicsagas/design-isms",
+  "license": "MIT",
+  "keywords": ["design", "design-system", "ui-patterns", "palettes", "font-pairing", "effects", "reference"],
+  "skills": "./skills/",
+  "commands": "./commands/"
+}

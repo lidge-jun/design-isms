@@ -1,0 +1,6 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "design-isms",
+  "version": "0.1.0",
+  "description": "49 design isms + 94 UI effects as queryable skills — palettes, font pairings, grids, motion recipes, and runnable HTML/CSS/JS snippets."
+}
