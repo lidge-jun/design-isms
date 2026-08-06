@@ -13,8 +13,8 @@ Catalog 드롭다운으로 이어지는 네 개의 자매 카탈로그가 백과
 이 저장소는 Claude Code · Codex · agy용 플러그인이기도 합니다. 사이트와 같은 데이터셋을 에이전트가 직접 질의해 팔레트·폰트·그리드 수치와 실행 가능한 UI 코드를 반환합니다.
 
 ```bash
-claude plugin marketplace add epicsagas/design-isms
-claude plugin install design-isms@epicsagas
+claude plugin marketplace add lidge-jun/design-isms
+claude plugin install design-isms@lidge-jun
 ```
 
 설치·스킬 사용법·문제 해결은 [docs/PLUGIN.md](docs/PLUGIN.md)를 참고하세요.

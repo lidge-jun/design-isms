@@ -11,8 +11,8 @@
 ### Claude Code
 
 ```bash
-claude plugin marketplace add epicsagas/design-isms
-claude plugin install design-isms@epicsagas
+claude plugin marketplace add lidge-jun/design-isms
+claude plugin install design-isms@lidge-jun
 ```
 
 설치 확인:
@@ -29,14 +29,14 @@ Component inventory
 ### Codex
 
 ```bash
-codex plugin marketplace add epicsagas/design-isms
-codex plugin add design-isms@epicsagas
+codex plugin marketplace add lidge-jun/design-isms
+codex plugin add design-isms@lidge-jun
 ```
 
 ### agy
 
 ```bash
-agy plugin install https://github.com/epicsagas/design-isms
+agy plugin install https://github.com/lidge-jun/design-isms
 agy plugin enable design-isms
 ```
 
@@ -53,7 +53,7 @@ claude --plugin-dir=/절대/경로/design-isms
 
 ```bash
 claude plugin uninstall design-isms
-claude plugin marketplace remove epicsagas
+claude plugin marketplace remove lidge-jun
 ```
 
 ---
@@ -233,7 +233,7 @@ claude --plugin-dir="$HOME/fork/design-isms"
 `.claude-plugin/marketplace.json`의 `source`가 맨 URL 문자열이면 거부됩니다. 객체 형태를 쓰세요.
 
 ```json
-"source": { "source": "url", "url": "https://github.com/epicsagas/design-isms.git" }
+"source": { "source": "url", "url": "https://github.com/lidge-jun/design-isms.git" }
 ```
 
 같은 저장소 안에서 자기 자신을 가리킬 때는 `"./"`도 유효합니다.
