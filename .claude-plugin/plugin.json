@@ -6,7 +6,6 @@
   "author": { "name": "lidge-jun", "url": "https://github.com/lidge-jun" },
   "homepage": "https://github.com/lidge-jun/design-isms",
   "repository": "https://github.com/lidge-jun/design-isms",
-  "license": "MIT",
   "keywords": ["design", "design-system", "ui-patterns", "palettes", "font-pairing", "effects", "reference"],
   "skills": "./skills/",
   "commands": "./commands/"

@@ -253,9 +253,3 @@ claude --plugin-dir="$HOME/fork/design-isms"
 | effect 호출 시 | ~1.5k tok |
 
 always-on은 두 스킬의 `description`만 계산된 값이며, 본문은 실제 호출될 때만 로드됩니다.
-
----
-
-## 라이선스
-
-MIT
