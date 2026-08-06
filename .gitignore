@@ -19,7 +19,3 @@ qa-artifacts/
 
 # codexclaw session state
 .codexclaw/
-
-# claudy-injected local tooling (not part of this plugin)
-.claude.json
-skills/analytics-insights/
