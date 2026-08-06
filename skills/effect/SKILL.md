@@ -1,5 +1,5 @@
 ---
-name: design-isms-effect
+name: effect
 description: >-
   Find frontend UI effects and interaction patterns and return runnable code.
   Use when the user asks for a UI pattern or effect — e.g. "build a bottom
@@ -12,7 +12,7 @@ description: >-
   usage docs straight from assets/data/ JSON. Narrows scope by P0/P1/P2/P3.
 ---
 
-# design-isms-effect
+# effect — frontend UI patterns
 
 Query 94 frontend UI effects and return runnable code. The same dataset that
 renders the site is the source of truth — read the JSON directly, never copy it.

@@ -1,5 +1,5 @@
 ---
-name: design-isms-style
+name: style
 description: >-
   Query and recommend design isms (styles). Use when the user asks about design
   styles, movements, or their concrete build tokens — e.g. "minimalism site",
@@ -12,7 +12,7 @@ description: >-
   and duration) straight from assets/data/ JSON, returning ready-to-use tokens.
 ---
 
-# design-isms-style
+# style — design isms
 
 Query the visual and technical knowledge of 49 design isms. The same dataset that
 renders the site is the source of truth — read the JSON directly, never copy it.
