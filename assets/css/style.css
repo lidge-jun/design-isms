@@ -262,6 +262,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 20px; font-weight: 700;
   letter-spacing: -0.5px;
   color: var(--ink);
+  text-wrap: balance;
 }
 .ism-name-kr {
   font-size: 13px;
@@ -275,12 +276,14 @@ a { color: inherit; text-decoration: none; }
   color: var(--accent-text);
   letter-spacing: 0.3px;
   margin-bottom: 8px;
+  text-wrap: balance;
 }
 .ism-desc {
   font-size: 14px;
   color: var(--ink-light);
   line-height: 1.7;
   word-break: keep-all;
+  text-wrap: pretty;
 }
 
 /* ── Palette ── */
@@ -530,6 +533,7 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--font-display);
   font-size: 28px; font-weight: 800;
   letter-spacing: -1px; line-height: 1.2;
+  text-wrap: balance;
 }
 .modal-title-kr {
   font-size: 15px; color: var(--ink-muted);
@@ -551,6 +555,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 13px; line-height: 1.8;
   color: var(--ink-light);
   word-break: keep-all;
+  text-wrap: pretty;
 }
 
 /* ── Modal: Description ── */
@@ -558,6 +563,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 15px; line-height: 1.8;
   color: var(--ink); margin-bottom: 24px;
   word-break: keep-all;
+  text-wrap: pretty;
 }
 
 /* ── Modal: Main Image ── */

@@ -91,6 +91,7 @@
   font-size: 13px;
   line-height: 1.6;
   color: var(--ink-soft, #555);
+  word-break: keep-all;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

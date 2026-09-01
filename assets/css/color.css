@@ -112,6 +112,7 @@
   font-size: 13px;
   line-height: 1.55;
   color: var(--ink-soft, #555);
+  word-break: keep-all;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
