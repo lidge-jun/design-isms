@@ -18,7 +18,7 @@
   animation: loading-pulse 1.2s ease-in-out infinite;
 }
 .loading-text {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-display);
   font-size: 18px; font-weight: 700;
   letter-spacing: -0.5px; color: #2C2C2C;
   margin-bottom: 16px;
@@ -60,7 +60,7 @@ body.is-loading .filter-bar { opacity: 0; }
   --radius: 12px;
   --font-sans: 'Pretendard Variable', 'Pretendard', -apple-system, system-ui, sans-serif;
   --font-display: 'Outfit', sans-serif;
-  --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  --font-mono: 'SF Mono', ui-monospace, 'Menlo', 'Consolas', monospace;
   --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
 }
 

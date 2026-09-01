@@ -10,7 +10,7 @@
    margin-bottom: 1.5rem;
  }
  .style-finder-header .atlas-kicker {
-   font-family: 'SF Mono', monospace;
+   font-family: var(--font-mono);
    font-size: 0.6875rem;
    letter-spacing: 0.08em;
    text-transform: uppercase;
@@ -18,7 +18,7 @@
    margin: 0 0 0.25rem;
  }
  .style-finder-header h1 {
-   font-family: 'Outfit', sans-serif;
+   font-family: var(--font-display);
    font-size: 1.5rem;
    font-weight: 700;
    margin: 0 0 0.375rem;
@@ -42,7 +42,7 @@
    padding: 0;
  }
  .finder-legend {
-   font-family: 'Outfit', sans-serif;
+   font-family: var(--font-display);
    font-size: 0.8125rem;
    font-weight: 600;
    letter-spacing: 0.04em;
@@ -107,7 +107,7 @@
    align-items: center;
  }
  .finder-submit {
-   font-family: 'Outfit', sans-serif;
+   font-family: var(--font-display);
    font-size: 0.8125rem;
    font-weight: 600;
    letter-spacing: 0.04em;
@@ -123,7 +123,7 @@
  .finder-submit:disabled { opacity: 0.4; cursor: not-allowed; }
  .finder-submit:focus-visible { outline: 2px solid var(--atlas-accent, #FF4D1F); outline-offset: 2px; }
  .finder-reset {
-   font-family: 'Outfit', sans-serif;
+   font-family: var(--font-display);
    font-size: 0.75rem;
    font-weight: 600;
    padding: 0.5rem 1rem;
@@ -136,7 +136,7 @@
  
  /* ── results ─────────────────────────────────────────────────── */
  .finder-summary {
-   font-family: 'Outfit', sans-serif;
+   font-family: var(--font-display);
    font-size: 0.8125rem;
    font-weight: 600;
    letter-spacing: 0.04em;
@@ -151,7 +151,7 @@
    border-top: 1px solid var(--atlas-rule, #d0cdc6);
  }
  .finder-result-num {
-   font-family: 'SF Mono', monospace;
+   font-family: var(--font-mono);
    font-size: 0.875rem;
    font-weight: 700;
    color: var(--atlas-accent, #FF4D1F);
@@ -160,7 +160,7 @@
  }
  .finder-result-body { flex: 1; min-width: 0; }
  .finder-result-name {
-   font-family: 'Outfit', sans-serif;
+   font-family: var(--font-display);
    font-size: 1rem;
    font-weight: 700;
    color: var(--atlas-ink, #1a1a1a);
@@ -187,7 +187,7 @@
    margin-bottom: 0.5rem;
  }
  .finder-result-open {
-   font-family: 'Outfit', sans-serif;
+   font-family: var(--font-display);
    font-size: 0.75rem;
    font-weight: 600;
    padding: 0.375rem 1rem;
@@ -203,7 +203,7 @@
  .finder-error { text-align: center; padding: 2rem 0; }
  .finder-error p { margin: 0 0 0.5rem; font-size: 0.875rem; color: var(--atlas-ink-muted, #7a7a7a); }
  .finder-retry-btn {
-   font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 600;
+   font-family: var(--font-display); font-size: 0.75rem; font-weight: 600;
    padding: 0.375rem 1rem; background: var(--atlas-ink, #1a1a1a);
    color: var(--atlas-paper, #f3f0e8); border: none; cursor: pointer;
  }
