@@ -1,0 +1,243 @@
+diff --git a/assets/css/catalog.css b/assets/css/catalog.css
+index eeb34dc..b20fe3c 100644
+--- a/assets/css/catalog.css
++++ b/assets/css/catalog.css
+@@ -7,7 +7,7 @@
+ }
+ 
+ .catalog-hero h1 {
+-  font-family: var(--font-display, 'Outfit', sans-serif);
++  font-family: var(--font-display);
+   font-size: clamp(28px, 4vw, 40px);
+   line-height: 1.2;
+   margin: 0 0 12px;
+diff --git a/assets/css/color.css b/assets/css/color.css
+index c4bd50c..8be3764 100644
+--- a/assets/css/color.css
++++ b/assets/css/color.css
+@@ -46,7 +46,7 @@
+   margin-left: auto;
+   font-size: 12px;
+   color: var(--ink-muted, #777);
+-  font-family: 'SF Mono', ui-monospace, monospace;
++  font-family: var(--font-mono);
+ }
+ 
+ .color-grid {
+diff --git a/assets/css/effects-demos-candidates.css b/assets/css/effects-demos-candidates.css
+index 19e3712..e886963 100644
+--- a/assets/css/effects-demos-candidates.css
++++ b/assets/css/effects-demos-candidates.css
+@@ -429,7 +429,7 @@
+ .demo-success-label {
+   position: absolute;
+   bottom: 10px;
+-  font-family: var(--font-mono, monospace);
++  font-family: var(--font-mono);
+   font-size: 11px;
+   color: var(--ink, #222);
+ }
+diff --git a/assets/css/export.css b/assets/css/export.css
+index 8764acd..ff2e5d4 100644
+--- a/assets/css/export.css
++++ b/assets/css/export.css
+@@ -9,7 +9,7 @@
+  }
+  
+  .export-title {
+-   font-family: 'Outfit', sans-serif;
++   font-family: var(--font-display);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+@@ -32,7 +32,7 @@
+  
+  .export-tab {
+    flex-shrink: 0;
+-   font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
++   font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1;
+    padding: 0.5rem 0.875rem;
+@@ -65,7 +65,7 @@
+    background: var(--atlas-paper-alt, #f7f5f0);
+    border-left: 1px solid var(--atlas-rule, #d0cdc6);
+    border-right: 1px solid var(--atlas-rule, #d0cdc6);
+-   font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
++   font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: var(--atlas-ink, #1a1a1a);
+@@ -82,7 +82,7 @@
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+-   font-family: 'Outfit', sans-serif;
++   font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+@@ -142,7 +142,7 @@
+    color: var(--atlas-ink-muted, #7a7a7a);
+  }
+  .export-retry-btn {
+-   font-family: 'Outfit', sans-serif;
++   font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.375rem 1rem;
+diff --git a/assets/css/finder.css b/assets/css/finder.css
+index 6d53b21..57544a8 100644
+--- a/assets/css/finder.css
++++ b/assets/css/finder.css
+@@ -10,7 +10,7 @@
+    margin-bottom: 1.5rem;
+  }
+  .style-finder-header .atlas-kicker {
+-   font-family: 'SF Mono', monospace;
++   font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+@@ -18,7 +18,7 @@
+    margin: 0 0 0.25rem;
+  }
+  .style-finder-header h1 {
+-   font-family: 'Outfit', sans-serif;
++   font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 0.375rem;
+@@ -42,7 +42,7 @@
+    padding: 0;
+  }
+  .finder-legend {
+-   font-family: 'Outfit', sans-serif;
++   font-family: var(--font-display);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+@@ -107,7 +107,7 @@
+    align-items: center;
+  }
+  .finder-submit {
+-   font-family: 'Outfit', sans-serif;
++   font-family: var(--font-display);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+@@ -123,7 +123,7 @@
+  .finder-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+  .finder-submit:focus-visible { outline: 2px solid var(--atlas-accent, #FF4D1F); outline-offset: 2px; }
+  .finder-reset {
+-   font-family: 'Outfit', sans-serif;
++   font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+@@ -136,7 +136,7 @@
+  
+  /* ── results ─────────────────────────────────────────────────── */
+  .finder-summary {
+-   font-family: 'Outfit', sans-serif;
++   font-family: var(--font-display);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+@@ -151,7 +151,7 @@
+    border-top: 1px solid var(--atlas-rule, #d0cdc6);
+  }
+  .finder-result-num {
+-   font-family: 'SF Mono', monospace;
++   font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--atlas-accent, #FF4D1F);
+@@ -160,7 +160,7 @@
+  }
+  .finder-result-body { flex: 1; min-width: 0; }
+  .finder-result-name {
+-   font-family: 'Outfit', sans-serif;
++   font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--atlas-ink, #1a1a1a);
+@@ -187,7 +187,7 @@
+    margin-bottom: 0.5rem;
+  }
+  .finder-result-open {
+-   font-family: 'Outfit', sans-serif;
++   font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.375rem 1rem;
+@@ -203,7 +203,7 @@
+  .finder-error { text-align: center; padding: 2rem 0; }
+  .finder-error p { margin: 0 0 0.5rem; font-size: 0.875rem; color: var(--atlas-ink-muted, #7a7a7a); }
+  .finder-retry-btn {
+-   font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 600;
++   font-family: var(--font-display); font-size: 0.75rem; font-weight: 600;
+    padding: 0.375rem 1rem; background: var(--atlas-ink, #1a1a1a);
+    color: var(--atlas-paper, #f3f0e8); border: none; cursor: pointer;
+  }
+diff --git a/assets/css/layout.css b/assets/css/layout.css
+index 221a933..b3e7e3b 100644
+--- a/assets/css/layout.css
++++ b/assets/css/layout.css
+@@ -42,7 +42,7 @@
+   margin-left: auto;
+   font-size: 12px;
+   color: var(--ink-muted, #777);
+-  font-family: 'SF Mono', ui-monospace, monospace;
++  font-family: var(--font-mono);
+ }
+ 
+ .layout-grid {
+diff --git a/assets/css/motion.css b/assets/css/motion.css
+index 83c95bc..7e9ec2b 100644
+--- a/assets/css/motion.css
++++ b/assets/css/motion.css
+@@ -42,7 +42,7 @@
+   margin-left: auto;
+   font-size: 12px;
+   color: var(--ink-muted, #777);
+-  font-family: 'SF Mono', ui-monospace, monospace;
++  font-family: var(--font-mono);
+ }
+ 
+ .motion-grid {
+diff --git a/assets/css/style.css b/assets/css/style.css
+index 1db8cdd..e64a45e 100644
+--- a/assets/css/style.css
++++ b/assets/css/style.css
+@@ -18,7 +18,7 @@
+   animation: loading-pulse 1.2s ease-in-out infinite;
+ }
+ .loading-text {
+-  font-family: 'Outfit', sans-serif;
++  font-family: var(--font-display);
+   font-size: 18px; font-weight: 700;
+   letter-spacing: -0.5px; color: #2C2C2C;
+   margin-bottom: 16px;
+@@ -60,7 +60,7 @@ body.is-loading .filter-bar { opacity: 0; }
+   --radius: 12px;
+   --font-sans: 'Pretendard Variable', 'Pretendard', -apple-system, system-ui, sans-serif;
+   --font-display: 'Outfit', sans-serif;
+-  --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
++  --font-mono: 'SF Mono', ui-monospace, 'Menlo', 'Consolas', monospace;
+   --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+ }
+ 
+diff --git a/assets/css/typography.css b/assets/css/typography.css
+index 44ec97b..c77641a 100644
+--- a/assets/css/typography.css
++++ b/assets/css/typography.css
+@@ -46,7 +46,7 @@
+   margin-left: auto;
+   font-size: 12px;
+   color: var(--ink-muted, #777);
+-  font-family: 'SF Mono', ui-monospace, monospace;
++  font-family: var(--font-mono);
+ }
+ 
+ .typo-grid {

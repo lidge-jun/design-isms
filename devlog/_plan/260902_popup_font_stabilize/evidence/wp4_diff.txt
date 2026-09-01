@@ -1,0 +1,25 @@
+ assets/css/catalog.css                  | 10 +++++++++-
+ assets/css/color.css                    |  9 +--------
+ assets/css/effects-demos-candidates.css |  2 +-
+ assets/css/export.css                   | 10 +++++-----
+ assets/css/finder.css                   | 20 ++++++++++----------
+ assets/css/layout.css                   |  9 +--------
+ assets/css/motion.css                   |  9 +--------
+ assets/css/style.css                    |  6 +++---
+ assets/css/typography.css               |  9 +--------
+ assets/js/app-dialog.js                 |  6 ++++++
+ assets/js/color.js                      |  2 +-
+ assets/js/layout.js                     |  2 +-
+ assets/js/motion.js                     |  2 +-
+ assets/js/typography.js                 |  2 +-
+ color.html                              | 20 ++++++++++----------
+ layout.html                             | 20 ++++++++++----------
+ motion.html                             | 20 ++++++++++----------
+ scripts/verify-nav.mjs                  |  8 ++++++++
+ src/app-dialog.ts                       |  6 ++++++
+ src/color.ts                            |  2 +-
+ src/layout.ts                           |  2 +-
+ src/motion.ts                           |  2 +-
+ src/typography.ts                       |  2 +-
+ typography.html                         | 20 ++++++++++----------
+ 24 files changed, 100 insertions(+), 100 deletions(-)

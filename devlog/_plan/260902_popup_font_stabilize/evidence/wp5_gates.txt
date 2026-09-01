@@ -1,0 +1,6 @@
+# L1 shell gate
+       0
+# L1 fallback gate
+       0
+# V2
+pages staged: 7 HTML, 331 PNG, 331 WebP, 0 forbidden; 741 files + manifest

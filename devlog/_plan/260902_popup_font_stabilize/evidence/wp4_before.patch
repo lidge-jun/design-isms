@@ -1,0 +1,87 @@
+diff --git a/assets/css/catalog.css b/assets/css/catalog.css
+index eeb34dc..b20fe3c 100644
+--- a/assets/css/catalog.css
++++ b/assets/css/catalog.css
+@@ -7,7 +7,7 @@
+ }
+ 
+ .catalog-hero h1 {
+-  font-family: var(--font-display, 'Outfit', sans-serif);
++  font-family: var(--font-display);
+   font-size: clamp(28px, 4vw, 40px);
+   line-height: 1.2;
+   margin: 0 0 12px;
+diff --git a/assets/css/color.css b/assets/css/color.css
+index c4bd50c..8be3764 100644
+--- a/assets/css/color.css
++++ b/assets/css/color.css
+@@ -46,7 +46,7 @@
+   margin-left: auto;
+   font-size: 12px;
+   color: var(--ink-muted, #777);
+-  font-family: 'SF Mono', ui-monospace, monospace;
++  font-family: var(--font-mono);
+ }
+ 
+ .color-grid {
+diff --git a/assets/css/layout.css b/assets/css/layout.css
+index 221a933..b3e7e3b 100644
+--- a/assets/css/layout.css
++++ b/assets/css/layout.css
+@@ -42,7 +42,7 @@
+   margin-left: auto;
+   font-size: 12px;
+   color: var(--ink-muted, #777);
+-  font-family: 'SF Mono', ui-monospace, monospace;
++  font-family: var(--font-mono);
+ }
+ 
+ .layout-grid {
+diff --git a/assets/css/motion.css b/assets/css/motion.css
+index 83c95bc..7e9ec2b 100644
+--- a/assets/css/motion.css
++++ b/assets/css/motion.css
+@@ -42,7 +42,7 @@
+   margin-left: auto;
+   font-size: 12px;
+   color: var(--ink-muted, #777);
+-  font-family: 'SF Mono', ui-monospace, monospace;
++  font-family: var(--font-mono);
+ }
+ 
+ .motion-grid {
+diff --git a/assets/css/style.css b/assets/css/style.css
+index 1db8cdd..e64a45e 100644
+--- a/assets/css/style.css
++++ b/assets/css/style.css
+@@ -18,7 +18,7 @@
+   animation: loading-pulse 1.2s ease-in-out infinite;
+ }
+ .loading-text {
+-  font-family: 'Outfit', sans-serif;
++  font-family: var(--font-display);
+   font-size: 18px; font-weight: 700;
+   letter-spacing: -0.5px; color: #2C2C2C;
+   margin-bottom: 16px;
+@@ -60,7 +60,7 @@ body.is-loading .filter-bar { opacity: 0; }
+   --radius: 12px;
+   --font-sans: 'Pretendard Variable', 'Pretendard', -apple-system, system-ui, sans-serif;
+   --font-display: 'Outfit', sans-serif;
+-  --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
++  --font-mono: 'SF Mono', ui-monospace, 'Menlo', 'Consolas', monospace;
+   --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+ }
+ 
+diff --git a/assets/css/typography.css b/assets/css/typography.css
+index 44ec97b..c77641a 100644
+--- a/assets/css/typography.css
++++ b/assets/css/typography.css
+@@ -46,7 +46,7 @@
+   margin-left: auto;
+   font-size: 12px;
+   color: var(--ink-muted, #777);
+-  font-family: 'SF Mono', ui-monospace, monospace;
++  font-family: var(--font-mono);
+ }
+ 
+ .typo-grid {

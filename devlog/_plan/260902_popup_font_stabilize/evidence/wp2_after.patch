@@ -1,0 +1,199 @@
+diff --git a/assets/js/app-dialog.js b/assets/js/app-dialog.js
+index 2941d88..245ffe8 100644
+--- a/assets/js/app-dialog.js
++++ b/assets/js/app-dialog.js
+@@ -57,11 +57,17 @@ var AppDialogA11y;
+         if (stack.length !== (inert ? 1 : 0)) {
+             return;
+         }
++        const top = stack[stack.length - 1];
+         for (const selector of ['header.site-header', 'main', 'footer.site-footer']) {
+             const landmark = document.querySelector(selector);
+             if (!landmark) {
+                 continue;
+             }
++            // A landmark that wraps the open overlay must stay live, otherwise the
++            // dialog itself becomes inert and its close paths stop working.
++            if (inert && top && landmark.contains(top.overlay)) {
++                continue;
++            }
+             if (inert) {
+                 landmark.setAttribute('inert', '');
+             }
+diff --git a/color.html b/color.html
+index 7fed3d2..2ecfd47 100644
+--- a/color.html
++++ b/color.html
+@@ -73,19 +73,19 @@
+   </div>
+ 
+   <section class="color-grid" id="color-grid" aria-label="팔레트 카탈로그" aria-busy="true"></section>
++</main>
+ 
+-  <div class="modal-overlay" id="color-modal-overlay" aria-hidden="true">
+-    <div class="modal-container" id="color-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="color-modal-title" tabindex="-1">
+-      <button class="modal-close" id="color-modal-close" type="button" aria-label="닫기">✕</button>
+-      <div class="modal-scroll" id="color-modal-content"></div>
+-    </div>
++<div class="modal-overlay" id="color-modal-overlay" aria-hidden="true">
++  <div class="modal-container" id="color-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="color-modal-title" tabindex="-1">
++    <button class="modal-close" id="color-modal-close" type="button" aria-label="닫기">✕</button>
++    <div class="modal-scroll" id="color-modal-content"></div>
+   </div>
++</div>
+ 
+-  <div class="lightbox" id="color-lightbox" role="dialog" aria-modal="true" aria-label="Guide image preview" aria-hidden="true">
+-    <button class="lightbox-close" id="color-lightbox-close" type="button" aria-label="닫기">✕</button>
+-    <img class="lightbox-image" id="color-lightbox-image" alt="">
+-  </div>
+-</main>
++<div class="lightbox" id="color-lightbox" role="dialog" aria-modal="true" aria-label="Guide image preview" aria-hidden="true">
++  <button class="lightbox-close" id="color-lightbox-close" type="button" aria-label="닫기">✕</button>
++  <img class="lightbox-image" id="color-lightbox-image" alt="">
++</div>
+ 
+ <footer class="site-footer">
+   <span>Design -isms Reference Board</span>
+diff --git a/layout.html b/layout.html
+index 47853b9..b4846c5 100644
+--- a/layout.html
++++ b/layout.html
+@@ -75,19 +75,19 @@
+   </div>
+ 
+   <section class="layout-grid" id="layout-grid" aria-label="패턴 카탈로그" aria-busy="true"></section>
++</main>
+ 
+-  <div class="modal-overlay" id="layout-modal-overlay" aria-hidden="true">
+-    <div class="modal-container" id="layout-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="layout-modal-title" tabindex="-1">
+-      <button class="modal-close" id="layout-modal-close" type="button" aria-label="닫기">✕</button>
+-      <div class="modal-scroll" id="layout-modal-content"></div>
+-    </div>
++<div class="modal-overlay" id="layout-modal-overlay" aria-hidden="true">
++  <div class="modal-container" id="layout-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="layout-modal-title" tabindex="-1">
++    <button class="modal-close" id="layout-modal-close" type="button" aria-label="닫기">✕</button>
++    <div class="modal-scroll" id="layout-modal-content"></div>
+   </div>
++</div>
+ 
+-  <div class="lightbox" id="layout-lightbox" role="dialog" aria-modal="true" aria-label="Guide image preview" aria-hidden="true">
+-    <button class="lightbox-close" id="layout-lightbox-close" type="button" aria-label="닫기">✕</button>
+-    <img class="lightbox-image" id="layout-lightbox-image" alt="">
+-  </div>
+-</main>
++<div class="lightbox" id="layout-lightbox" role="dialog" aria-modal="true" aria-label="Guide image preview" aria-hidden="true">
++  <button class="lightbox-close" id="layout-lightbox-close" type="button" aria-label="닫기">✕</button>
++  <img class="lightbox-image" id="layout-lightbox-image" alt="">
++</div>
+ 
+ <footer class="site-footer">
+   <span>Design -isms Reference Board</span>
+diff --git a/motion.html b/motion.html
+index d2ab60a..49e55c3 100644
+--- a/motion.html
++++ b/motion.html
+@@ -75,19 +75,19 @@
+   </div>
+ 
+   <section class="motion-grid" id="motion-grid" aria-label="레시피 카탈로그" aria-busy="true"></section>
++</main>
+ 
+-  <div class="modal-overlay" id="motion-modal-overlay" aria-hidden="true">
+-    <div class="modal-container" id="motion-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="motion-modal-title" tabindex="-1">
+-      <button class="modal-close" id="motion-modal-close" type="button" aria-label="닫기">✕</button>
+-      <div class="modal-scroll" id="motion-modal-content"></div>
+-    </div>
++<div class="modal-overlay" id="motion-modal-overlay" aria-hidden="true">
++  <div class="modal-container" id="motion-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="motion-modal-title" tabindex="-1">
++    <button class="modal-close" id="motion-modal-close" type="button" aria-label="닫기">✕</button>
++    <div class="modal-scroll" id="motion-modal-content"></div>
+   </div>
++</div>
+ 
+-  <div class="lightbox" id="motion-lightbox" role="dialog" aria-modal="true" aria-label="Guide image preview" aria-hidden="true">
+-    <button class="lightbox-close" id="motion-lightbox-close" type="button" aria-label="닫기">✕</button>
+-    <img class="lightbox-image" id="motion-lightbox-image" alt="">
+-  </div>
+-</main>
++<div class="lightbox" id="motion-lightbox" role="dialog" aria-modal="true" aria-label="Guide image preview" aria-hidden="true">
++  <button class="lightbox-close" id="motion-lightbox-close" type="button" aria-label="닫기">✕</button>
++  <img class="lightbox-image" id="motion-lightbox-image" alt="">
++</div>
+ 
+ <footer class="site-footer">
+   <span>Design -isms Reference Board</span>
+diff --git a/scripts/verify-nav.mjs b/scripts/verify-nav.mjs
+index 19cb85a..a7b6776 100644
+--- a/scripts/verify-nav.mjs
++++ b/scripts/verify-nav.mjs
+@@ -140,6 +140,14 @@ for (const page of pages) {
+   // 8. skip link + main landmark
+   if (!html.includes('class="skip-link"')) errors.push(`${page}: skip link missing`);
+   if (!html.includes('id="main-content"')) errors.push(`${page}: main-content landmark missing`);
++
++  // 9. dialogs live outside <main>: a nested overlay goes inert with the landmark
++  const mainClose = html.indexOf('</main>');
++  for (const dialog of html.matchAll(/<div class="(?:modal-overlay|lightbox)[^"]*"/g)) {
++    if (mainClose !== -1 && dialog.index < mainClose) {
++      errors.push(`${page}: dialog ${dialog[0]} is nested inside <main>`);
++    }
++  }
+ }
+ 
+ if (errors.length > 0) {
+diff --git a/src/app-dialog.ts b/src/app-dialog.ts
+index 57ff11d..fccb97b 100644
+--- a/src/app-dialog.ts
++++ b/src/app-dialog.ts
+@@ -83,11 +83,17 @@ namespace AppDialogA11y {
+     if (stack.length !== (inert ? 1 : 0)) {
+       return;
+     }
++    const top = stack[stack.length - 1];
+     for (const selector of ['header.site-header', 'main', 'footer.site-footer']) {
+       const landmark = document.querySelector(selector);
+       if (!landmark) {
+         continue;
+       }
++      // A landmark that wraps the open overlay must stay live, otherwise the
++      // dialog itself becomes inert and its close paths stop working.
++      if (inert && top && landmark.contains(top.overlay)) {
++        continue;
++      }
+       if (inert) {
+         landmark.setAttribute('inert', '');
+       } else {
+diff --git a/typography.html b/typography.html
+index 786e349..b186564 100644
+--- a/typography.html
++++ b/typography.html
+@@ -75,19 +75,19 @@
+   </div>
+ 
+   <section class="typo-grid" id="typography-grid" aria-label="페어링 카탈로그" aria-busy="true"></section>
++</main>
+ 
+-  <div class="modal-overlay" id="typography-modal-overlay" aria-hidden="true">
+-    <div class="modal-container" id="typography-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="typography-modal-title" tabindex="-1">
+-      <button class="modal-close" id="typography-modal-close" type="button" aria-label="닫기">✕</button>
+-      <div class="modal-scroll" id="typography-modal-content"></div>
+-    </div>
++<div class="modal-overlay" id="typography-modal-overlay" aria-hidden="true">
++  <div class="modal-container" id="typography-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="typography-modal-title" tabindex="-1">
++    <button class="modal-close" id="typography-modal-close" type="button" aria-label="닫기">✕</button>
++    <div class="modal-scroll" id="typography-modal-content"></div>
+   </div>
++</div>
+ 
+-  <div class="lightbox" id="typography-lightbox" role="dialog" aria-modal="true" aria-label="Guide image preview" aria-hidden="true">
+-    <button class="lightbox-close" id="typography-lightbox-close" type="button" aria-label="닫기">✕</button>
+-    <img class="lightbox-image" id="typography-lightbox-image" alt="">
+-  </div>
+-</main>
++<div class="lightbox" id="typography-lightbox" role="dialog" aria-modal="true" aria-label="Guide image preview" aria-hidden="true">
++  <button class="lightbox-close" id="typography-lightbox-close" type="button" aria-label="닫기">✕</button>
++  <img class="lightbox-image" id="typography-lightbox-image" alt="">
++</div>
+ 
+ <footer class="site-footer">
+   <span>Design -isms Reference Board</span>

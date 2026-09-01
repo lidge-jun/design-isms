@@ -1,0 +1,8 @@
+ assets/js/app-dialog.js |  6 ++++++
+ color.html              | 20 ++++++++++----------
+ layout.html             | 20 ++++++++++----------
+ motion.html             | 20 ++++++++++----------
+ scripts/verify-nav.mjs  |  8 ++++++++
+ src/app-dialog.ts       |  6 ++++++
+ typography.html         | 20 ++++++++++----------
+ 7 files changed, 60 insertions(+), 40 deletions(-)

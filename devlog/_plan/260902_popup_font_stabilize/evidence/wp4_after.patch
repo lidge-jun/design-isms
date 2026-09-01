@@ -1,0 +1,265 @@
+diff --git a/assets/css/catalog.css b/assets/css/catalog.css
+index eeb34dc..e00415f 100644
+--- a/assets/css/catalog.css
++++ b/assets/css/catalog.css
+@@ -7,7 +7,7 @@
+ }
+ 
+ .catalog-hero h1 {
+-  font-family: var(--font-display, 'Outfit', sans-serif);
++  font-family: var(--font-display);
+   font-size: clamp(28px, 4vw, 40px);
+   line-height: 1.2;
+   margin: 0 0 12px;
+@@ -60,6 +60,14 @@
+   font-size: 14px;
+ }
+ 
++/* search-empty: the filter matched nothing (light, sits inline in the grid) */
++.catalog-search-empty {
++  grid-column: 1 / -1;
++  padding: 48px 24px;
++  text-align: center;
++  color: var(--ink-muted);
++}
++
+ .catalog-empty-link:hover {
+   background: var(--ink, #171513);
+   color: var(--paper, #fff);
+diff --git a/assets/css/color.css b/assets/css/color.css
+index c4bd50c..12fb1af 100644
+--- a/assets/css/color.css
++++ b/assets/css/color.css
+@@ -46,7 +46,7 @@
+   margin-left: auto;
+   font-size: 12px;
+   color: var(--ink-muted, #777);
+-  font-family: 'SF Mono', ui-monospace, monospace;
++  font-family: var(--font-mono);
+ }
+ 
+ .color-grid {
+@@ -119,13 +119,6 @@
+   overflow: hidden;
+ }
+ 
+-.color-empty {
+-  grid-column: 1 / -1;
+-  padding: 48px 24px;
+-  text-align: center;
+-  color: var(--ink-muted, #777);
+-}
+-
+ /* modal */
+ .color-summary { color: var(--ink-soft, #555); }
+ 
+diff --git a/assets/css/layout.css b/assets/css/layout.css
+index 221a933..7bb52b9 100644
+--- a/assets/css/layout.css
++++ b/assets/css/layout.css
+@@ -42,7 +42,7 @@
+   margin-left: auto;
+   font-size: 12px;
+   color: var(--ink-muted, #777);
+-  font-family: 'SF Mono', ui-monospace, monospace;
++  font-family: var(--font-mono);
+ }
+ 
+ .layout-grid {
+@@ -103,13 +103,6 @@
+   overflow: hidden;
+ }
+ 
+-.layout-empty {
+-  grid-column: 1 / -1;
+-  padding: 48px 24px;
+-  text-align: center;
+-  color: var(--ink-muted, #777);
+-}
+-
+ /* modal */
+ .layout-summary { color: var(--ink-soft, #555); }
+ 
+diff --git a/assets/css/motion.css b/assets/css/motion.css
+index 83c95bc..880af02 100644
+--- a/assets/css/motion.css
++++ b/assets/css/motion.css
+@@ -42,7 +42,7 @@
+   margin-left: auto;
+   font-size: 12px;
+   color: var(--ink-muted, #777);
+-  font-family: 'SF Mono', ui-monospace, monospace;
++  font-family: var(--font-mono);
+ }
+ 
+ .motion-grid {
+@@ -95,13 +95,6 @@
+ 
+ .motion-card-kr { margin: 0; font-size: 12px; color: var(--ink-muted, #777); }
+ 
+-.motion-empty {
+-  grid-column: 1 / -1;
+-  padding: 48px 24px;
+-  text-align: center;
+-  color: var(--ink-muted, #777);
+-}
+-
+ /* modal */
+ .motion-summary { color: var(--ink-soft, #555); }
+ 
+diff --git a/assets/css/style.css b/assets/css/style.css
+index 1db8cdd..c079533 100644
+--- a/assets/css/style.css
++++ b/assets/css/style.css
+@@ -18,9 +18,9 @@
+   animation: loading-pulse 1.2s ease-in-out infinite;
+ }
+ .loading-text {
+-  font-family: 'Outfit', sans-serif;
++  font-family: var(--font-display);
+   font-size: 18px; font-weight: 700;
+-  letter-spacing: -0.5px; color: #2C2C2C;
++  letter-spacing: -0.5px; color: var(--ink);
+   margin-bottom: 16px;
+ }
+ .loading-bar {
+@@ -60,7 +60,7 @@ body.is-loading .filter-bar { opacity: 0; }
+   --radius: 12px;
+   --font-sans: 'Pretendard Variable', 'Pretendard', -apple-system, system-ui, sans-serif;
+   --font-display: 'Outfit', sans-serif;
+-  --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
++  --font-mono: 'SF Mono', ui-monospace, 'Menlo', 'Consolas', monospace;
+   --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+ }
+ 
+diff --git a/assets/css/typography.css b/assets/css/typography.css
+index 44ec97b..efd85d7 100644
+--- a/assets/css/typography.css
++++ b/assets/css/typography.css
+@@ -46,7 +46,7 @@
+   margin-left: auto;
+   font-size: 12px;
+   color: var(--ink-muted, #777);
+-  font-family: 'SF Mono', ui-monospace, monospace;
++  font-family: var(--font-mono);
+ }
+ 
+ .typo-grid {
+@@ -118,13 +118,6 @@
+   color: var(--ink-muted, #777);
+ }
+ 
+-.typo-empty {
+-  grid-column: 1 / -1;
+-  padding: 48px 24px;
+-  text-align: center;
+-  color: var(--ink-muted, #777);
+-}
+-
+ /* modal */
+ .typo-summary { color: var(--ink-soft, #555); }
+ 
+diff --git a/assets/js/color.js b/assets/js/color.js
+index e485713..8f53eb7 100644
+--- a/assets/js/color.js
++++ b/assets/js/color.js
+@@ -110,7 +110,7 @@
+         const visible = allCards.filter(matches);
+         CatalogShell.getRequiredElement('#color-result-count').textContent = `${visible.length} of ${allCards.length} palettes`;
+         if (visible.length === 0) {
+-            grid.innerHTML = '<div class="color-empty">검색 결과가 없습니다. "SaaS", "모노크롬", "Material"처럼 기억나는 단어로 다시 찾아보세요.</div>';
++            grid.innerHTML = '<div class="catalog-search-empty">검색 결과가 없습니다. "SaaS", "모노크롬", "Material"처럼 기억나는 단어로 다시 찾아보세요.</div>';
+             return;
+         }
+         grid.innerHTML = visible.map(renderCard).join('');
+diff --git a/assets/js/layout.js b/assets/js/layout.js
+index 0fbf5f7..c1db7ab 100644
+--- a/assets/js/layout.js
++++ b/assets/js/layout.js
+@@ -109,7 +109,7 @@
+         const visible = allPatterns.filter(matches);
+         CatalogShell.getRequiredElement('#layout-result-count').textContent = `${visible.length} of ${allPatterns.length} layouts`;
+         if (visible.length === 0) {
+-            grid.innerHTML = '<div class="layout-empty">검색 결과가 없습니다. "히어로", "벤토", "설정"처럼 기억나는 단어로 다시 찾아보세요.</div>';
++            grid.innerHTML = '<div class="catalog-search-empty">검색 결과가 없습니다. "히어로", "벤토", "설정"처럼 기억나는 단어로 다시 찾아보세요.</div>';
+             return;
+         }
+         grid.innerHTML = visible.map(renderCard).join('');
+diff --git a/assets/js/motion.js b/assets/js/motion.js
+index 72512bb..d35735e 100644
+--- a/assets/js/motion.js
++++ b/assets/js/motion.js
+@@ -127,7 +127,7 @@
+         const visible = allPresets.filter(matches);
+         CatalogShell.getRequiredElement('#motion-result-count').textContent = `${visible.length} of ${allPresets.length} motions`;
+         if (visible.length === 0) {
+-            grid.innerHTML = '<div class="motion-empty">검색 결과가 없습니다. "스프링", "로딩", "탭"처럼 기억나는 단어로 다시 찾아보세요.</div>';
++            grid.innerHTML = '<div class="catalog-search-empty">검색 결과가 없습니다. "스프링", "로딩", "탭"처럼 기억나는 단어로 다시 찾아보세요.</div>';
+             return;
+         }
+         grid.innerHTML = visible.map(renderCard).join('');
+diff --git a/assets/js/typography.js b/assets/js/typography.js
+index 74c52f2..7b9e4b1 100644
+--- a/assets/js/typography.js
++++ b/assets/js/typography.js
+@@ -121,7 +121,7 @@
+         const visible = allPairings.filter(matches);
+         CatalogShell.getRequiredElement('#typography-result-count').textContent = `${visible.length} of ${allPairings.length} pairings`;
+         if (visible.length === 0) {
+-            grid.innerHTML = '<div class="typo-empty">검색 결과가 없습니다. "명조", "serif", "코딩"처럼 기억나는 단어로 다시 찾아보세요.</div>';
++            grid.innerHTML = '<div class="catalog-search-empty">검색 결과가 없습니다. "명조", "serif", "코딩"처럼 기억나는 단어로 다시 찾아보세요.</div>';
+             return;
+         }
+         grid.innerHTML = visible.map(renderCard).join('');
+diff --git a/src/color.ts b/src/color.ts
+index 80ab3aa..23da143 100644
+--- a/src/color.ts
++++ b/src/color.ts
+@@ -114,7 +114,7 @@
+     const visible = allCards.filter(matches);
+     CatalogShell.getRequiredElement<HTMLElement>('#color-result-count').textContent = `${visible.length} of ${allCards.length} palettes`;
+     if (visible.length === 0) {
+-      grid.innerHTML = '<div class="color-empty">검색 결과가 없습니다. "SaaS", "모노크롬", "Material"처럼 기억나는 단어로 다시 찾아보세요.</div>';
++      grid.innerHTML = '<div class="catalog-search-empty">검색 결과가 없습니다. "SaaS", "모노크롬", "Material"처럼 기억나는 단어로 다시 찾아보세요.</div>';
+       return;
+     }
+     grid.innerHTML = visible.map(renderCard).join('');
+diff --git a/src/layout.ts b/src/layout.ts
+index 140dfd8..5ede1e7 100644
+--- a/src/layout.ts
++++ b/src/layout.ts
+@@ -118,7 +118,7 @@
+     const visible = allPatterns.filter(matches);
+     CatalogShell.getRequiredElement<HTMLElement>('#layout-result-count').textContent = `${visible.length} of ${allPatterns.length} layouts`;
+     if (visible.length === 0) {
+-      grid.innerHTML = '<div class="layout-empty">검색 결과가 없습니다. "히어로", "벤토", "설정"처럼 기억나는 단어로 다시 찾아보세요.</div>';
++      grid.innerHTML = '<div class="catalog-search-empty">검색 결과가 없습니다. "히어로", "벤토", "설정"처럼 기억나는 단어로 다시 찾아보세요.</div>';
+       return;
+     }
+     grid.innerHTML = visible.map(renderCard).join('');
+diff --git a/src/motion.ts b/src/motion.ts
+index 4482bce..1e83620 100644
+--- a/src/motion.ts
++++ b/src/motion.ts
+@@ -131,7 +131,7 @@
+     const visible = allPresets.filter(matches);
+     CatalogShell.getRequiredElement<HTMLElement>('#motion-result-count').textContent = `${visible.length} of ${allPresets.length} motions`;
+     if (visible.length === 0) {
+-      grid.innerHTML = '<div class="motion-empty">검색 결과가 없습니다. "스프링", "로딩", "탭"처럼 기억나는 단어로 다시 찾아보세요.</div>';
++      grid.innerHTML = '<div class="catalog-search-empty">검색 결과가 없습니다. "스프링", "로딩", "탭"처럼 기억나는 단어로 다시 찾아보세요.</div>';
+       return;
+     }
+     grid.innerHTML = visible.map(renderCard).join('');
+diff --git a/src/typography.ts b/src/typography.ts
+index adf7a5f..828a82b 100644
+--- a/src/typography.ts
++++ b/src/typography.ts
+@@ -129,7 +129,7 @@
+     const visible = allPairings.filter(matches);
+     CatalogShell.getRequiredElement<HTMLElement>('#typography-result-count').textContent = `${visible.length} of ${allPairings.length} pairings`;
+     if (visible.length === 0) {
+-      grid.innerHTML = '<div class="typo-empty">검색 결과가 없습니다. "명조", "serif", "코딩"처럼 기억나는 단어로 다시 찾아보세요.</div>';
++      grid.innerHTML = '<div class="catalog-search-empty">검색 결과가 없습니다. "명조", "serif", "코딩"처럼 기억나는 단어로 다시 찾아보세요.</div>';
+       return;
+     }
+     grid.innerHTML = visible.map(renderCard).join('');

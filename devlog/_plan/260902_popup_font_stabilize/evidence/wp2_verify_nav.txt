@@ -1,0 +1,15 @@
+# RED: HEAD tree (ce7025d HTML) + new verify-nav §9
+nav verification failed:
+  - color.html: dialog <div class="modal-overlay" is nested inside <main>
+  - color.html: dialog <div class="lightbox" is nested inside <main>
+  - typography.html: dialog <div class="modal-overlay" is nested inside <main>
+  - typography.html: dialog <div class="lightbox" is nested inside <main>
+  - layout.html: dialog <div class="modal-overlay" is nested inside <main>
+  - layout.html: dialog <div class="lightbox" is nested inside <main>
+  - motion.html: dialog <div class="modal-overlay" is nested inside <main>
+  - motion.html: dialog <div class="lightbox" is nested inside <main>
+exit=1
+
+# GREEN: working tree after move
+nav ok: index.html, effects.html, faq.html, color.html, typography.html, layout.html, motion.html; axes=6; order consistent
+exit=0

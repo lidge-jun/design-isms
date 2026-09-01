@@ -1,0 +1,10 @@
+ assets/css/catalog.css                  |  2 +-
+ assets/css/color.css                    |  2 +-
+ assets/css/effects-demos-candidates.css |  2 +-
+ assets/css/export.css                   | 10 +++++-----
+ assets/css/finder.css                   | 20 ++++++++++----------
+ assets/css/layout.css                   |  2 +-
+ assets/css/motion.css                   |  2 +-
+ assets/css/style.css                    |  4 ++--
+ assets/css/typography.css               |  2 +-
+ 9 files changed, 23 insertions(+), 23 deletions(-)
