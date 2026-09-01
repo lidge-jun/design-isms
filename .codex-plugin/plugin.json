@@ -1,0 +1,19 @@
+{
+  "name": "design-isms",
+  "version": "0.1.0",
+  "description": "49 design isms + 94 UI effects as queryable skills.",
+  "author": { "name": "lidge-jun", "url": "https://github.com/lidge-jun" },
+  "homepage": "https://github.com/lidge-jun/design-isms",
+  "repository": "https://github.com/lidge-jun/design-isms",
+  "keywords": ["design", "ui-patterns", "palettes", "effects"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "design-isms",
+    "shortDescription": "Design isms + UI effects knowledge base",
+    "longDescription": "Query 49 design styles (palettes, font pairings, grids, motion) and 94 frontend UI effects (runnable HTML/CSS/JS, accessibility, P0/P1/P2/P3 priority).",
+    "developerName": "lidge-jun",
+    "category": "Design & Creativity",
+    "capabilities": ["Read"],
+    "websiteURL": "https://github.com/lidge-jun/design-isms"
+  }
+}
