@@ -106,6 +106,7 @@ var CatalogShell;
         let currentLang = AppRuntime.readStorage('design-isms-lang') === 'en' ? 'en' : 'ko';
         const sync = () => {
             document.documentElement.lang = currentLang;
+            toggle.setAttribute('aria-label', currentLang === 'ko' ? 'Switch language to English' : '언어를 한국어로 전환');
             toggle.querySelectorAll('.lang-option').forEach((option) => {
                 option.classList.toggle('active', option.dataset.lang === currentLang);
             });

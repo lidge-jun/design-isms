@@ -14,6 +14,9 @@
   --atlas-rule: #B8B9B0;
   --atlas-signal: #FF4D1F;
   --atlas-signal-soft: #FFE9E1;
+  /* Text-safe signal: #FF4D1F is 2.925:1 on paper and fails WCAG AA.
+     Use --atlas-signal for borders, backgrounds and marks; use this for read text. */
+  --atlas-signal-text: #B82E06;
   --atlas-cobalt: #2B50E8;
   --atlas-focus: #005FCC;
   --atlas-radius-xs: 2px;
@@ -25,9 +28,10 @@
   --bg-warm: #E9E9E1;
   --ink: var(--atlas-ink);
   --ink-light: var(--atlas-muted);
-  --ink-muted: #8A8C83;
+  --ink-muted: #62645D;
   --accent: var(--atlas-signal);
   --accent-soft: var(--atlas-signal-soft);
+  --accent-text: var(--atlas-signal-text);
   --border: var(--atlas-rule);
   --card-bg: var(--atlas-surface);
   --card-shadow: none;
@@ -115,7 +119,7 @@ a { color: inherit; }
   border-bottom-color: var(--atlas-ink);
 }
 .nav-link[aria-current="page"] {
-  color: var(--atlas-signal);
+  color: var(--atlas-signal-text);
   border-bottom-color: var(--atlas-signal);
 }
 .nav-link--external { color: var(--atlas-muted); }
@@ -145,7 +149,7 @@ a { color: inherit; }
   transition: border-color 0.15s;
 }
 .lang-toggle:hover { border-color: var(--atlas-ink); }
-.lang-option.active { color: var(--atlas-signal); font-weight: 700; }
+.lang-option.active { color: var(--atlas-signal-text); font-weight: 700; }
 
 /* ── Controls: square-ish, ink-rule interaction ── */
 .filter-btn,
@@ -187,7 +191,7 @@ a { color: inherit; }
   font: inherit;
   color: inherit;
 }
-.ism-name-btn:hover { color: var(--atlas-signal); }
+.ism-name-btn:hover { color: var(--atlas-signal-text); }
 
 /* anti-pattern semantics (ai-slop) */
 .ism-kind-label {
@@ -195,7 +199,7 @@ a { color: inherit; }
   font-size: 10px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--atlas-signal);
+  color: var(--atlas-signal-text);
   border: 1px solid var(--atlas-signal);
   border-radius: var(--atlas-radius-xs);
   display: inline-block;

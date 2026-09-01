@@ -47,6 +47,29 @@ var AppDialogA11y;
         document.body.style.overflow = savedBodyOverflow;
         document.body.style.paddingRight = savedBodyPaddingRight;
     }
+    /**
+     * Hide the page landmarks from assistive technology while a dialog is open.
+     * The Tab trap already blocks keyboard escape; this closes the virtual-cursor
+     * route that would otherwise let a screen reader read the page behind a modal.
+     * Only the outermost layer toggles it, so stacked dialogs stay consistent.
+     */
+    function setBackgroundInert(inert) {
+        if (stack.length !== (inert ? 1 : 0)) {
+            return;
+        }
+        for (const selector of ['header.site-header', 'main', 'footer.site-footer']) {
+            const landmark = document.querySelector(selector);
+            if (!landmark) {
+                continue;
+            }
+            if (inert) {
+                landmark.setAttribute('inert', '');
+            }
+            else {
+                landmark.removeAttribute('inert');
+            }
+        }
+    }
     function handleKeydown(event) {
         const top = stack[stack.length - 1];
         if (!top) {
@@ -127,6 +150,7 @@ var AppDialogA11y;
         stack.push(layer);
         options.overlay.setAttribute('aria-hidden', 'false');
         lockScroll();
+        setBackgroundInert(true);
         if (!keydownBound) {
             document.addEventListener('keydown', handleKeydown, true);
             keydownBound = true;
@@ -152,6 +176,7 @@ var AppDialogA11y;
         }
         layer.overlay.setAttribute('aria-hidden', 'true');
         unlockScroll();
+        setBackgroundInert(false);
         if (keydownBound && stack.length === 0) {
             document.removeEventListener('keydown', handleKeydown, true);
             keydownBound = false;

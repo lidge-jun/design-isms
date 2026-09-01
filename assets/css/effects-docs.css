@@ -21,7 +21,7 @@
 .effect-docs-block h4 {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .effect-docs-header h3 {
@@ -90,7 +90,7 @@
 
 .effect-docs-refs a:hover {
   border-color: rgba(192, 107, 43, 0.52);
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .effect-docs-missing {

@@ -812,7 +812,7 @@ function renderModalContent(ism: DesignIsm): string {
 
   const subNameHtml = currentLang === 'en' ? '<span class="modal-title-kr">' + ism.nameKr + '</span>' : '';
   let html = '<div class="modal-number">' + num + '</div>' +
-    '<div class="modal-title" id="ism-modal-title">' + ism.name + subNameHtml + '</div>' +
+    '<h2 class="modal-title" id="ism-modal-title">' + ism.name + subNameHtml + '</h2>' +
     '<div class="modal-tagline">' + ism.tagline + '</div>';
 
   if (ism.kind === 'anti-pattern') {
@@ -1036,7 +1036,7 @@ function updateLangUI(): void {
 
   queryRequired<HTMLInputElement>('.search-input').placeholder = t('search');
   document.documentElement.lang = currentLang;
-
+  queryRequired<HTMLElement>('#lang-toggle').setAttribute('aria-label', currentLang === 'ko' ? 'Switch language to English' : '언어를 한국어로 전환');
   const footer = queryRequired<HTMLElement>('.site-footer');
   const title = footer.children.item(0);
   const generator = footer.children.item(1);
