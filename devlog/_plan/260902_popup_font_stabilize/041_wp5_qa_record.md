@@ -46,7 +46,10 @@ wp1 시점 재현 결과(`wp1_repro_modal_prefix.json`)와 대비: 당시 button
 
 spawn 인자는 모두 `gpt-5.6-sol medium priority`. 실제 라우팅 모델은 이 저장소에서 검증 불가(002 참고).
 
-## 사용자 확인 대기
+## 배포 (사용자 전체 허용 후)
 
-커밋 / 푸시 / 배포 여부. 승인 시 순서는 040 §배포.
+커밋 4개: `7c2bb87` fix(wp2) → `d40588f` style(wp3) → `5202b76` style(wp4) → `71bd246` docs(wp5). `git push origin main` →
+Actions "Deploy to GitHub Pages" run 33555680637 success (headSha 71bd246).
 
+라이브 재확인 (`evidence/wp5_live.json`, `wp5_live_mono.json`): 카탈로그 4페이지 × button/backdrop/escape 12/12 닫힘(`overlayInert=false`),
+7페이지 display/mono computed == 토큰, 배포된 `app-dialog.js`에 가드 포함, `color.html` overlay가 `</main>` 뒤.
