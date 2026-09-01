@@ -41,9 +41,8 @@
   align-items: center;
   gap: 4px;
   background: none;
-  border: none;
   cursor: pointer;
-  font: inherit;
+  /* typography comes from .nav-link (theme-atlas); do not reset it here */
 }
 
 .nav-dropdown-caret {
