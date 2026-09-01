@@ -58,6 +58,31 @@ assets/data/image-pairs-manifest.json
 - ISM guide data: `src/app-guides.ts` → `assets/js/app-guides.js` (global `AppGuides`), loaded before `assets/js/app.js`; `assets/data/dev-guides.json` (49 keys, each with layout/typography/color/motion/dos/donts/implementation) is the single guide SoT.
 - ISM catalog validator: `scripts/verify-isms.mjs` (`npm run verify:isms`) — 49 entries/guides, 147 image pairs, sourcing, anti-pattern uniqueness, `src/app.ts` ≤1050 lines.
 - Brand mark: `assets/icons/atlas-mark.svg` (currentColor line mark; no emoji glyphs in shell UI).
+
+## Agent Plugin Surface
+
+저장소는 정적 사이트인 동시에 멀티호스트 에이전트 플러그인이다. 사이트를 렌더링하는
+`assets/data/*.json`을 스킬이 그대로 읽으므로 데이터 사본이 존재하지 않는다.
+
+```text
+plugin.json                  # agy 매니페스트
+.claude-plugin/plugin.json   # Claude Code 매니페스트
+.claude-plugin/marketplace.json
+.codex-plugin/plugin.json    # Codex 매니페스트
+skills/style/SKILL.md        # SoT — ism 49종 질의
+skills/effect/SKILL.md       # SoT — UI 패턴 94종 질의
+.claude/skills/style  -> ../../skills/style    # 발견용 심링크 (git mode 120000)
+.claude/skills/effect -> ../../skills/effect
+commands/                    # 예약(비어 있음)
+docs/PLUGIN.md               # 설치·사용·문제 해결
+```
+
+- `skills/`가 유일한 SoT이고 `.claude/skills/`는 심링크다. 문서를 복제하지 않는다.
+- 플러그인 파일은 `scripts/stage-pages.mjs`의 허용목록 밖이라 배포 트리에 들어가지
+  않는다. `assetDirs`는 `assets/{css,data,icons,images,js}`뿐이고 `copyTree`는 저장소
+  루트를 순회하지 않으며, `docs`는 `forbiddenTop`에도 등재돼 있다.
+- 스킬이 인용하는 필드명은 실제 JSON과 일치해야 한다. `dev-guides.json`의
+  `implementation`은 문자열이 아니라 `{summary, components, build, checks}` 객체다.
 - Effects guide images are generated for all 94 entries and shown in the modal only.
 - The current ISMS expansion generated 24 candidate UI mockups for 8 newly added ISMS, plus matching WebP previews.
 

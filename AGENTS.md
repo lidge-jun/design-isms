@@ -10,6 +10,12 @@
 ## 디렉토리 구조
 ```
 701_design-isms/
+├── plugin.json                   # agy 플러그인 매니페스트
+├── .claude-plugin/               # Claude Code 매니페스트 + 마켓플레이스 등록
+├── .codex-plugin/plugin.json     # Codex 매니페스트
+├── skills/                       # 에이전트 스킬 SoT (style / effect)
+├── .claude/skills/               # 발견용 심링크 → ../../skills/
+├── commands/                     # 예약(비어 있음)
 ├── index.html                    # 메인 페이지
 ├── effects.html                  # 모바일/데스크탑 UI 후보군 페이지 (94)
 ├── color.html                    # Color Systems 카탈로그 (25)
@@ -80,6 +86,11 @@
 - 공개 배포 입력은 `npm run pages:stage`가 만드는 `.pages/`뿐이다. `.github/workflows/deploy.yml`은 verify와 stage 이후 `.pages`만 업로드한다.
 - 신규 파일은 500줄 이하를 유지한다. 초과하면 역할별 파일로 분리한다.
 - 커밋/푸시는 사용자가 같은 턴에서 명시적으로 요청한 경우에만 실행한다.
+- 이 저장소는 정적 사이트인 동시에 멀티호스트 에이전트 플러그인이다. `skills/`가 SoT이고
+  `.claude/skills/`는 심링크다(git mode 120000). 스킬은 `assets/data/*.json`을 읽기만 하며
+  데이터를 복제하지 않으므로, 데이터 필드명을 바꾸면 두 SKILL.md의 필드 목록도 함께 고친다.
+- 플러그인 파일은 `npm run pages:stage` 허용목록 밖이라 배포 트리에 들어가지 않는다.
+  허용목록(`publicFiles`/`assetDirs`)을 넓힐 때 이 불변 조건을 함께 확인한다.
 
 ## 메인 ISM 모달 원칙
 

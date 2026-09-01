@@ -29,7 +29,7 @@ All paths are relative to the plugin root (`${CLAUDE_PLUGIN_ROOT}/assets/data/`)
   - `typography`: `fontPairing`, `sizeHierarchy`, `lineHeight`, `letterSpacing`, `weightStrategy`
   - `color`: `usage`, `bgFg`, `contrast`
   - `motion`: `easing`, `duration`, `hover`, `scroll`, `transition`
-  - `dos[]`, `donts[]`, `implementation` (string)
+  - `dos[]`, `donts[]`, `implementation` (object: `summary`, `components`, `build`, `checks`)
 - Companion catalogs: `color.json` (25 role-based palettes), `typography.json`
   (20 font pairings), `layout.json` (25 layout patterns), `motion.json` (20 motion
   recipes). Not keyed by ism id, but offer them when the user wants concrete patterns.

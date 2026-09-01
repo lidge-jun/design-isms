@@ -45,7 +45,7 @@ All paths are relative to the plugin root (`${CLAUDE_PLUGIN_ROOT}/assets/data/`)
 
 ## Matching rules
 
-- Ids are kebab-case (`bottom-sheet`, `scroll-reveal`, `sticky-cta`).
+- Ids are kebab-case (`bottom-sheet`, `scroll-reveal`, `sticky-cta-bar`).
 - When the user gives a Korean name (`nameKr`/`alsoCalled`) or a description,
   keyword-match `summary`/`bestFor`/`alsoCalled` to resolve the real `id`.
 - For scoped asks ("P0 only", "mobile"), filter on `priority`/`category` first,
