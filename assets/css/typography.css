@@ -118,13 +118,6 @@
   color: var(--ink-muted, #777);
 }
 
-.typo-empty {
-  grid-column: 1 / -1;
-  padding: 48px 24px;
-  text-align: center;
-  color: var(--ink-muted, #777);
-}
-
 /* modal */
 .typo-summary { color: var(--ink-soft, #555); }
 

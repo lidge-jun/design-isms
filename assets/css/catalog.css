@@ -60,6 +60,14 @@
   font-size: 14px;
 }
 
+/* search-empty: the filter matched nothing (light, sits inline in the grid) */
+.catalog-search-empty {
+  grid-column: 1 / -1;
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--ink-muted);
+}
+
 .catalog-empty-link:hover {
   background: var(--ink, #171513);
   color: var(--paper, #fff);

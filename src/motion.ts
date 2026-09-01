@@ -131,7 +131,7 @@
     const visible = allPresets.filter(matches);
     CatalogShell.getRequiredElement<HTMLElement>('#motion-result-count').textContent = `${visible.length} of ${allPresets.length} motions`;
     if (visible.length === 0) {
-      grid.innerHTML = '<div class="motion-empty">검색 결과가 없습니다. "스프링", "로딩", "탭"처럼 기억나는 단어로 다시 찾아보세요.</div>';
+      grid.innerHTML = '<div class="catalog-search-empty">검색 결과가 없습니다. "스프링", "로딩", "탭"처럼 기억나는 단어로 다시 찾아보세요.</div>';
       return;
     }
     grid.innerHTML = visible.map(renderCard).join('');

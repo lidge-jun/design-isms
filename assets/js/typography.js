@@ -121,7 +121,7 @@
         const visible = allPairings.filter(matches);
         CatalogShell.getRequiredElement('#typography-result-count').textContent = `${visible.length} of ${allPairings.length} pairings`;
         if (visible.length === 0) {
-            grid.innerHTML = '<div class="typo-empty">검색 결과가 없습니다. "명조", "serif", "코딩"처럼 기억나는 단어로 다시 찾아보세요.</div>';
+            grid.innerHTML = '<div class="catalog-search-empty">검색 결과가 없습니다. "명조", "serif", "코딩"처럼 기억나는 단어로 다시 찾아보세요.</div>';
             return;
         }
         grid.innerHTML = visible.map(renderCard).join('');

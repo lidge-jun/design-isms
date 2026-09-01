@@ -110,7 +110,7 @@
         const visible = allCards.filter(matches);
         CatalogShell.getRequiredElement('#color-result-count').textContent = `${visible.length} of ${allCards.length} palettes`;
         if (visible.length === 0) {
-            grid.innerHTML = '<div class="color-empty">검색 결과가 없습니다. "SaaS", "모노크롬", "Material"처럼 기억나는 단어로 다시 찾아보세요.</div>';
+            grid.innerHTML = '<div class="catalog-search-empty">검색 결과가 없습니다. "SaaS", "모노크롬", "Material"처럼 기억나는 단어로 다시 찾아보세요.</div>';
             return;
         }
         grid.innerHTML = visible.map(renderCard).join('');

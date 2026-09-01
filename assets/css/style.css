@@ -20,7 +20,7 @@
 .loading-text {
   font-family: var(--font-display);
   font-size: 18px; font-weight: 700;
-  letter-spacing: -0.5px; color: #2C2C2C;
+  letter-spacing: -0.5px; color: var(--ink);
   margin-bottom: 16px;
 }
 .loading-bar {

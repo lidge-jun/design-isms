@@ -119,13 +119,6 @@
   overflow: hidden;
 }
 
-.color-empty {
-  grid-column: 1 / -1;
-  padding: 48px 24px;
-  text-align: center;
-  color: var(--ink-muted, #777);
-}
-
 /* modal */
 .color-summary { color: var(--ink-soft, #555); }
 

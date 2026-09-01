@@ -95,13 +95,6 @@
 
 .motion-card-kr { margin: 0; font-size: 12px; color: var(--ink-muted, #777); }
 
-.motion-empty {
-  grid-column: 1 / -1;
-  padding: 48px 24px;
-  text-align: center;
-  color: var(--ink-muted, #777);
-}
-
 /* modal */
 .motion-summary { color: var(--ink-soft, #555); }
 
