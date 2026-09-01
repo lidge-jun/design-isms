@@ -140,6 +140,14 @@ for (const page of pages) {
   // 8. skip link + main landmark
   if (!html.includes('class="skip-link"')) errors.push(`${page}: skip link missing`);
   if (!html.includes('id="main-content"')) errors.push(`${page}: main-content landmark missing`);
+
+  // 9. dialogs live outside <main>: a nested overlay goes inert with the landmark
+  const mainClose = html.indexOf('</main>');
+  for (const dialog of html.matchAll(/<div class="(?:modal-overlay|lightbox)[^"]*"/g)) {
+    if (mainClose !== -1 && dialog.index < mainClose) {
+      errors.push(`${page}: dialog ${dialog[0]} is nested inside <main>`);
+    }
+  }
 }
 
 if (errors.length > 0) {

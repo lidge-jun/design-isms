@@ -57,9 +57,15 @@ var AppDialogA11y;
         if (stack.length !== (inert ? 1 : 0)) {
             return;
         }
+        const top = stack[stack.length - 1];
         for (const selector of ['header.site-header', 'main', 'footer.site-footer']) {
             const landmark = document.querySelector(selector);
             if (!landmark) {
+                continue;
+            }
+            // A landmark that wraps the open overlay must stay live, otherwise the
+            // dialog itself becomes inert and its close paths stop working.
+            if (inert && top && landmark.contains(top.overlay)) {
                 continue;
             }
             if (inert) {
