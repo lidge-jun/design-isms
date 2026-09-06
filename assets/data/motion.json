@@ -10,10 +10,20 @@
     "duration": 240,
     "trigger": "hover",
     "intensity": "subtle",
-    "snippet": {"css": ".motion-example-linear { transition: transform 240ms cubic-bezier(0, 0, 1, 1); }\n.motion-example-linear:hover { transform: translateX(24px); }\n@media (prefers-reduced-motion: reduce) { .motion-example-linear { transition: none; transform: translateX(24px); } }"},
-    "reducedMotion": {"strategy": "static-end", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-linear { transition: none; transform: translateX(24px); } }", "noteKr": "이동 과정 없이 완료 위치를 즉시 표시합니다."},
+    "snippet": {
+      "css": ".motion-example-linear { transition: transform 240ms cubic-bezier(0, 0, 1, 1); }\n.motion-example-linear:hover { transform: translateX(24px); }\n@media (prefers-reduced-motion: reduce) { .motion-example-linear { transition: none; transform: translateX(24px); } }"
+    },
+    "reducedMotion": {
+      "strategy": "static-end",
+      "css": "@media (prefers-reduced-motion: reduce) { .motion-example-linear { transition: none; transform: translateX(24px); } }",
+      "noteKr": "이동 과정 없이 완료 위치를 즉시 표시합니다."
+    },
     "relatedEffects": [],
-    "guide": {"file": "guide.png", "alt": "선형 진행의 전·중·후 상태와 정적 대안을 비교한 가이드", "prompt": "Create one instructional UI motion recipe plate for Linear in three chronological frames labeled Before, During, and After. Show progress moving from 0 to 1 with no overshoot over 240ms on hover, include the exact cubic-bezier(0, 0, 1, 1) easing curve, and add a reduced-motion alternative that displays the static end position without travel."}
+    "guide": {
+      "file": "guide.png",
+      "alt": "선형 진행의 전·중·후 상태와 정적 대안을 비교한 가이드",
+      "prompt": "Create one instructional UI motion recipe plate for Linear in three chronological frames labeled Before, During, and After. Show progress moving from 0 to 1 with no overshoot over 240ms on hover, include the exact cubic-bezier(0, 0, 1, 1) easing curve, and add a reduced-motion alternative that displays the static end position without travel."
+    }
   },
   {
     "id": "motion-ease-in-out",
@@ -26,10 +36,20 @@
     "duration": 320,
     "trigger": "hover",
     "intensity": "normal",
-    "snippet": {"css": ".motion-example-ease-in-out { transition: transform 320ms cubic-bezier(0.42, 0, 0.58, 1); }\n.motion-example-ease-in-out:hover { transform: translateX(24px); }\n@media (prefers-reduced-motion: reduce) { .motion-example-ease-in-out { transition: none; transform: translateX(24px); } }"},
-    "reducedMotion": {"strategy": "instant", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-ease-in-out { transition: none; transform: translateX(24px); } }", "noteKr": "가감속 구간을 생략하고 hover 결과를 즉시 반영합니다."},
+    "snippet": {
+      "css": ".motion-example-ease-in-out { transition: transform 320ms cubic-bezier(0.42, 0, 0.58, 1); }\n.motion-example-ease-in-out:hover { transform: translateX(24px); }\n@media (prefers-reduced-motion: reduce) { .motion-example-ease-in-out { transition: none; transform: translateX(24px); } }"
+    },
+    "reducedMotion": {
+      "strategy": "instant",
+      "css": "@media (prefers-reduced-motion: reduce) { .motion-example-ease-in-out { transition: none; transform: translateX(24px); } }",
+      "noteKr": "가감속 구간을 생략하고 hover 결과를 즉시 반영합니다."
+    },
     "relatedEffects": [],
-    "guide": {"file": "guide.png", "alt": "대칭 가감속의 전·중·후 상태와 정적 대안을 비교한 가이드", "prompt": "Create one instructional UI motion recipe plate for Ease In Out in three chronological frames labeled Before, During, and After. Show symmetric acceleration and deceleration with a zero-millisecond hold over 320ms on hover, include the exact cubic-bezier(0.42, 0, 0.58, 1) easing curve, and add a reduced-motion alternative that switches instantly to the final state."}
+    "guide": {
+      "file": "guide.png",
+      "alt": "대칭 가감속의 전·중·후 상태와 정적 대안을 비교한 가이드",
+      "prompt": "Create one instructional UI motion recipe plate for Ease In Out in three chronological frames labeled Before, During, and After. Show symmetric acceleration and deceleration with a zero-millisecond hold over 320ms on hover, include the exact cubic-bezier(0.42, 0, 0.58, 1) easing curve, and add a reduced-motion alternative that switches instantly to the final state."
+    }
   },
   {
     "id": "motion-spring",
@@ -37,15 +57,27 @@
     "nameKr": "스프링",
     "family": "Motion Preset",
     "category": "Easing Curve",
-    "summary": "작게 눌린 요소가 목표 크기를 살짝 넘었다가 정착해 탄성 있는 클릭 반응을 만듭니다. 반복 사용하거나 큰 면적에 적용하면 시각 피로가 커지므로 핵심 조작 피드백에만 씁니다.",
+    "summary": "작게 눌린 요소가 목표 크기를 살짝 넘었다가 정착하는 클릭 피드백이다. 이 예제는 scale .92에서 1로 움직이며 실제 최대 배율은 약 1.008이다. 베지어 제어점 1.56을 확대 배율로 읽으면 안 된다. 반복 노출이나 큰 면적보다 짧은 조작 피드백에 쓴다.",
     "easing": "cubic-bezier(0.34, 1.56, 0.64, 1)",
     "duration": 500,
     "trigger": "click",
     "intensity": "normal",
-    "snippet": {"css": ".motion-example-spring.is-active { animation: motion-example-spring 500ms cubic-bezier(0.34, 1.56, 0.64, 1) 1 both; }\n@keyframes motion-example-spring { from { transform: scale(.92); } to { transform: scale(1); } }\n@media (prefers-reduced-motion: reduce) { .motion-example-spring.is-active { animation: none; transform: scale(1); } }"},
-    "reducedMotion": {"strategy": "instant", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-spring.is-active { animation: none; transform: scale(1); } }", "noteKr": "탄성 확대를 제거하고 클릭 결과 크기를 즉시 적용합니다."},
-    "relatedEffects": ["press-scale"],
-    "guide": {"file": "guide.png", "alt": "스프링 스케일의 전·중·후 상태와 정적 대안을 비교한 가이드", "prompt": "Create one instructional UI motion recipe plate for Spring in three chronological frames labeled Before, During, and After. Show a clicked control scaling from 0.92 through a 1.56 overshoot response to a settled scale of 1 over 500ms, include the exact cubic-bezier(0.34, 1.56, 0.64, 1) easing curve, and add a reduced-motion alternative that shows the settled state instantly."}
+    "snippet": {
+      "css": ".motion-example-spring.is-active { animation: motion-example-spring 500ms cubic-bezier(0.34, 1.56, 0.64, 1) 1 both; }\n@keyframes motion-example-spring { from { transform: scale(.92); } to { transform: scale(1); } }\n@media (prefers-reduced-motion: reduce) { .motion-example-spring.is-active { animation: none; transform: scale(1); } }"
+    },
+    "reducedMotion": {
+      "strategy": "instant",
+      "css": "@media (prefers-reduced-motion: reduce) { .motion-example-spring.is-active { animation: none; transform: scale(1); } }",
+      "noteKr": "탄성 확대를 제거하고 클릭 결과 크기를 즉시 적용합니다."
+    },
+    "relatedEffects": [
+      "press-scale"
+    ],
+    "guide": {
+      "file": "guide.png",
+      "alt": "Spring: scale .92 → 약 1.008 → 1.00과 모션 감소 대안. 도형은 개념 설명이며 정확한 배율은 수치와 CSS를 따른다.",
+      "prompt": "Create a precise 1536x1024 landscape technical guide for a frontend motion catalog. NON-NEGOTIABLE SURFACE: the entire canvas must be solid opaque WHITE, like a flat printed engineering textbook page viewed straight-on under uniform light. Every part of the background is #FFFFFF or a flat near-white #FAFAFA. Main text is near-black #151515. No transparency, alpha background, translucent glass, photographic backdrop, gradients, dark haze, smoke, bloom, shadows across the canvas, spotlights, blur, fog, glowing circles or reflective materials anywhere. This instruction overrides any stylistic association with glass. We are documenting motion on paper; we are not demonstrating a glass material. The preceding attempt failed because it drew dark haze and unreadable dark text; eliminate that defect completely.\n\nSubject: a subtle spring-like response of one flat Save button. The exact CSS motion is scale(0.92) to scale(1), duration 500ms, easing cubic-bezier(0.34, 1.56, 0.64, 1). The control-point coordinate 1.56 is NOT a physical scale of1.56. Actual peak scale is approximately1.007824, rounded1.008. Draw three identical Save buttons in a sequence, with their sizes consistent with0.92,1.008,1.00: first about8 percent smaller, second and third practically the same. No button grows by56 percent. This numerical and geometric accuracy is more important than visual drama.\n\nComposition: strict left-aligned technical editorial grid with48px outer margins. Top-left title 'Spring response' in a clean black sans-serif approximately48px. Below, 'A small overshoot, then a stable resting state.' in dark gray24px. Top-right '500 ms' in black. A thin gray rule separates heading from the sequence. Do not add a hero illustration, decorative icon, badge or logo.\n\nThe middle sequence uses three equal columns. Their headings are 'Pressed', 'Overshoot', 'Settled', in black28px. Below each heading draw a single flat charcoal Save button with white text and modest10px corner radius. The only boundary reference is a light dashed rectangle showing the settled button footprint. Under the buttons print the exact captions 'scale 0.92', 'scale 1.008', 'scale 1.00' in dark monospaced22px. Thin graphite arrows connect the columns. Buttons have no glossy coating, no drop shadows and no outlined capsule within a capsule.\n\nThe lower section contains a flat light-gray technical note area, with no shadow and no glass. Literal code line: 'cubic-bezier(0.34, 1.56, 0.64, 1)'. Explanation: 'Control points shape progress. They are not scale values.' Formula: 'Scale = 0.92 + 0.08 × progress'. Make all of this DARK, HIGH-CONTRAST AND LEGIBLE. Do not add a graph, axes, timing table or fabricated sampled numbers. Keep the code large enough to read at half resolution.\n\nAt the bottom, a thin rule introduces 'Reduced motion'. A small settled Save button appears beside the sentence 'Show scale 1 immediately. Keep the action and focus.' The button can have a thin cobalt focus ring. One muted orange accent may be used for a short top rule or step numeral, but no glowing fill, orange aura or colored background field. The visual impression is a professional printed standards manual, completely opaque, restrained and crisp. No browser chrome, no device frame, no photos, no brands, no watermarks. All specified labels must be spelled correctly. Produce one finished guide image, not a collage or a photograph of a sheet."
+    }
   },
   {
     "id": "motion-bounce",
@@ -58,10 +90,22 @@
     "duration": 700,
     "trigger": "click",
     "intensity": "dramatic",
-    "snippet": {"css": ".motion-example-bounce.is-active { animation: motion-example-bounce 700ms linear(0 0%, 0.72 20%, 1.08 36%, 0.88 52%, 1.04 68%, 0.98 84%, 1 100%) 1 both; }\n@keyframes motion-example-bounce { from { transform: scale(0); } to { transform: scale(1); } }\n@media (prefers-reduced-motion: reduce) { .motion-example-bounce.is-active { animation: none; transform: scale(1); } }"},
-    "reducedMotion": {"strategy": "instant", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-bounce.is-active { animation: none; transform: scale(1); } }", "noteKr": "세 번의 반동을 생략하고 완료 상태를 즉시 보여 줍니다."},
-    "relatedEffects": ["favorite-burst"],
-    "guide": {"file": "guide.png", "alt": "감쇠 바운스의 전·중·후 상태와 정적 대안을 비교한 가이드", "prompt": "Create one instructional UI motion recipe plate for Bounce in three chronological frames labeled Before, During, and After. Show three damped rebounds with a peak scale of 1.08 over 700ms after click, include the exact linear(0 0%, 0.72 20%, 1.08 36%, 0.88 52%, 1.04 68%, 0.98 84%, 1 100%) easing curve, and add a reduced-motion alternative that shows the final scale without rebounds."}
+    "snippet": {
+      "css": ".motion-example-bounce.is-active { animation: motion-example-bounce 700ms linear(0 0%, 0.72 20%, 1.08 36%, 0.88 52%, 1.04 68%, 0.98 84%, 1 100%) 1 both; }\n@keyframes motion-example-bounce { from { transform: scale(0); } to { transform: scale(1); } }\n@media (prefers-reduced-motion: reduce) { .motion-example-bounce.is-active { animation: none; transform: scale(1); } }"
+    },
+    "reducedMotion": {
+      "strategy": "instant",
+      "css": "@media (prefers-reduced-motion: reduce) { .motion-example-bounce.is-active { animation: none; transform: scale(1); } }",
+      "noteKr": "세 번의 반동을 생략하고 완료 상태를 즉시 보여 줍니다."
+    },
+    "relatedEffects": [
+      "favorite-burst"
+    ],
+    "guide": {
+      "file": "guide.png",
+      "alt": "감쇠 바운스의 전·중·후 상태와 정적 대안을 비교한 가이드",
+      "prompt": "Create one instructional UI motion recipe plate for Bounce in three chronological frames labeled Before, During, and After. Show three damped rebounds with a peak scale of 1.08 over 700ms after click, include the exact linear(0 0%, 0.72 20%, 1.08 36%, 0.88 52%, 1.04 68%, 0.98 84%, 1 100%) easing curve, and add a reduced-motion alternative that shows the final scale without rebounds."
+    }
   },
   {
     "id": "motion-elastic",
@@ -74,10 +118,22 @@
     "duration": 900,
     "trigger": "click",
     "intensity": "dramatic",
-    "snippet": {"css": ".motion-example-elastic.is-active { animation: motion-example-elastic 900ms linear(0 0%, 1.22 18%, 0.86 32%, 1.1 46%, 0.94 60%, 1.04 74%, 0.98 88%, 1 100%) 1 both; }\n@keyframes motion-example-elastic { from { transform: scale(0); } to { transform: scale(1); } }\n@media (prefers-reduced-motion: reduce) { .motion-example-elastic.is-active { animation: none; transform: scale(1); } }"},
-    "reducedMotion": {"strategy": "instant", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-elastic.is-active { animation: none; transform: scale(1); } }", "noteKr": "진동을 제거하고 결과 상태로 즉시 전환합니다."},
-    "relatedEffects": ["favorite-burst"],
-    "guide": {"file": "guide.png", "alt": "엘라스틱 진동의 전·중·후 상태와 정적 대안을 비교한 가이드", "prompt": "Create one instructional UI motion recipe plate for Elastic in three chronological frames labeled Before, During, and After. Show six damped oscillations with a peak scale of 1.22 over 900ms after click, include the exact linear(0 0%, 1.22 18%, 0.86 32%, 1.1 46%, 0.94 60%, 1.04 74%, 0.98 88%, 1 100%) easing curve, and add a reduced-motion alternative that presents the settled result without oscillation."}
+    "snippet": {
+      "css": ".motion-example-elastic.is-active { animation: motion-example-elastic 900ms linear(0 0%, 1.22 18%, 0.86 32%, 1.1 46%, 0.94 60%, 1.04 74%, 0.98 88%, 1 100%) 1 both; }\n@keyframes motion-example-elastic { from { transform: scale(0); } to { transform: scale(1); } }\n@media (prefers-reduced-motion: reduce) { .motion-example-elastic.is-active { animation: none; transform: scale(1); } }"
+    },
+    "reducedMotion": {
+      "strategy": "instant",
+      "css": "@media (prefers-reduced-motion: reduce) { .motion-example-elastic.is-active { animation: none; transform: scale(1); } }",
+      "noteKr": "진동을 제거하고 결과 상태로 즉시 전환합니다."
+    },
+    "relatedEffects": [
+      "favorite-burst"
+    ],
+    "guide": {
+      "file": "guide.png",
+      "alt": "엘라스틱 진동의 전·중·후 상태와 정적 대안을 비교한 가이드",
+      "prompt": "Create one instructional UI motion recipe plate for Elastic in three chronological frames labeled Before, During, and After. Show six damped oscillations with a peak scale of 1.22 over 900ms after click, include the exact linear(0 0%, 1.22 18%, 0.86 32%, 1.1 46%, 0.94 60%, 1.04 74%, 0.98 88%, 1 100%) easing curve, and add a reduced-motion alternative that presents the settled result without oscillation."
+    }
   },
   {
     "id": "motion-back",
@@ -85,15 +141,27 @@
     "nameKr": "백 오버슈트",
     "family": "Motion Preset",
     "category": "Easing Curve",
-    "summary": "진행 방향의 반대로 잠깐 예비 동작을 만든 뒤 목표를 넘어 정착하는 극적인 곡선입니다. anticipation -0.6과 overshoot 1.6은 hover 대상이 충분한 여백을 가질 때만 사용합니다.",
+    "summary": "처음에는 진행 방향의 반대로 조금 움직인 뒤 목표를 넘어 정착하는 곡선이다. -0.6과 1.6은 베지어 제어점의 y 좌표이며 픽셀 이동량이 아니다. 이 예제의 목표는 24px이고 실제 이동은 약 -2.514px와 26.514px를 거쳐 24px에 도착한다. 가장자리에서 잘리지 않도록 여백을 확보한다.",
     "easing": "cubic-bezier(0.68, -0.6, 0.32, 1.6)",
     "duration": 480,
     "trigger": "hover",
     "intensity": "dramatic",
-    "snippet": {"css": ".motion-example-back { transition: transform 480ms cubic-bezier(0.68, -0.6, 0.32, 1.6); }\n.motion-example-back:hover { transform: translateX(24px); }\n@media (prefers-reduced-motion: reduce) { .motion-example-back { transition: none; transform: translateX(24px); } }"},
-    "reducedMotion": {"strategy": "instant", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-back { transition: none; transform: translateX(24px); } }", "noteKr": "예비 동작과 오버슈트를 없애고 hover 결과만 즉시 표시합니다."},
-    "relatedEffects": ["press-scale"],
-    "guide": {"file": "guide.png", "alt": "백 오버슈트의 전·중·후 상태와 정적 대안을 비교한 가이드", "prompt": "Create one instructional UI motion recipe plate for Back in three chronological frames labeled Before, During, and After. Show a hover target anticipating to -0.6, overshooting to 1.6, and settling over 480ms, include the exact cubic-bezier(0.68, -0.6, 0.32, 1.6) easing curve, and add a reduced-motion alternative that jumps directly to the final position."}
+    "snippet": {
+      "css": ".motion-example-back { transition: transform 480ms cubic-bezier(0.68, -0.6, 0.32, 1.6); }\n.motion-example-back:hover { transform: translateX(24px); }\n@media (prefers-reduced-motion: reduce) { .motion-example-back { transition: none; transform: translateX(24px); } }"
+    },
+    "reducedMotion": {
+      "strategy": "instant",
+      "css": "@media (prefers-reduced-motion: reduce) { .motion-example-back { transition: none; transform: translateX(24px); } }",
+      "noteKr": "예비 동작과 오버슈트를 없애고 hover 결과만 즉시 표시합니다."
+    },
+    "relatedEffects": [
+      "press-scale"
+    ],
+    "guide": {
+      "file": "guide.png",
+      "alt": "Back: 실제 이동 0 → -2.514 → 26.514 → 24px. 축척과 무관한 개념도와 모션 감소 대안.",
+      "prompt": "Create a NEW finished 1536x1024 landscape frontend engineering guide on a completely opaque WHITE background. The topic is 'Anticipation + overshoot'. The most important requirement is that the actual drawn button positions clearly demonstrate the stated direction. Previous attempts had correct numeric labels but visually left the anticipation button atzero and overshoot button attarget. Do not repeat this failure. Use a deliberately exaggerated SCHEMATIC layout, explicitly labelled 'Schematic positions — not to scale.' Thus diagram spacing may exaggerate small displacement, but direction must be unmistakable.\n\nThe top half contains FOUR separate equal-width state cells in one horizontal row, each336px wide, with approximate left offsets48,416,784,1152. Each cell shows a horizontal track and the same two fixed vertical dashed position markers. Within every cell, the x=0 marker is at128px from the cell's left edge, and the x=24 marker is at216px from its left edge. Label these markers 'x = 0' and 'x = 24' above the track. Keep these fixed marker positions exactly the same in all four cells. Every button is an identical flat cobalt rounded rectangle100px wide and56px tall, labelled 'Next' in white24px. The positions below refer to each button's CENTER relative to its cell's left edge.\n\nFIRST CELL 'Start': button CENTER at128px, exactly on the x=0 marker. Caption 'Actual: 0 px'.\nSECOND CELL 'Anticipate': button CENTER at64px, dramatically LEFT of the x=0 marker at128px. The entire right edge of the button is114px, clearly to the left of the x=0 marker. Add a short visible LEFTWARD arrow from the x=0 marker toward the button. Caption 'Actual: -2.514 px'. This leftward displacement MUST be visible; do not center the button on the zero line.\nTHIRD CELL 'Overshoot': button CENTER at280px, clearly RIGHT of the x=24 marker at216px. The entire left edge of the button is230px, to the right of the target marker. Add a short RIGHTWARD arrow from target toward the button. Caption 'Actual: 26.514 px'. This is beyond the target; do not center the button on the target line.\nFOURTH CELL 'Settle': button CENTER at216px, exactly aligned with the x=24 marker. Add a small LEFTWARD arrow arriving from the overshoot side. Caption 'Actual: 24 px'. The final position must remain right of the initial zero position.\n\nPlace the phrase 'Schematic positions — not to scale.' prominently immediately below this sequence. It is essential: the large visual shifts describe direction, while the captions report actual CSS property values. Do not replace this phrase with 'enlarged' or omit it. Do not pretend the drawn pixel distances equal the real movements. The marker labels and actual captions must be precisely spelled.\n\nAt the top-left put the title 'Anticipation + overshoot' in clean black sans-serif48px. Subtitle 'Move to a new position, then settle.' in darkgray24px. Top-right '480 ms'. Use disciplined48px margins, graphite thin rules, strong readable black typography, tabular monospaced technical labels, and a single restrained cobalt accent. No gradients, photographs, hazy backgrounds, glass, shadows, glow,3Dicons, purplewash or watermark. This should resemble a high-quality standards manual, not a startup landing page.\n\nThe lower half has one flat pale-gray technical section. Literal line: 'cubic-bezier(0.68, -0.6, 0.32, 1.6)'. Following line: 'Control points are not pixel values.' Formula: 'Position = 24 px × progress'. Do not draw an easing graph or time table. Mathematical context: easing progress extrema are about-0.104743 and1.104743, so24px interpolation produces-2.513836px and26.513836px. You do not need to print these extra numbers; the four captions are enough.\n\nA bottom strip titled 'Reduced motion' shows only a settled Next button aligned with a clearly marked x=24 target. Its text says 'Apply the final position without the transition.' A small 'transition: none' code line and a visible keyboard focus ring on this button are appropriate. Preserve the action and finalposition, not a false zero reset.\n\nEverything must be legible at768x512. Prioritize correct button placement over decorative styling. No real logos, browser chrome, device frames or extra content. Output one complete opaque crisp guide image."
+    }
   },
   {
     "id": "motion-fade",
@@ -106,10 +174,22 @@
     "duration": 220,
     "trigger": "load",
     "intensity": "subtle",
-    "snippet": {"css": ".motion-example-fade { opacity: 0; animation: motion-example-fade 220ms cubic-bezier(0.22, 1, 0.36, 1) 1 forwards; }\n@keyframes motion-example-fade { to { opacity: 1; } }\n@media (prefers-reduced-motion: reduce) { .motion-example-fade { animation: none; opacity: 1; } }"},
-    "reducedMotion": {"strategy": "static-end", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-fade { animation: none; opacity: 1; } }", "noteKr": "페이드 없이 콘텐츠를 완전히 보이는 상태로 렌더링합니다."},
-    "relatedEffects": ["crossfade-view-transition"],
-    "guide": {"file": "guide.png", "alt": "페이드 진입과 퇴장의 전·중·후 상태 및 정적 대안 가이드", "prompt": "Create one instructional UI motion recipe plate for Fade In/Out in three chronological frames labeled Before, During, and After. Show opacity changing between 0 and 1 in enter and exit modes over 220ms on load, include the exact cubic-bezier(0.22, 1, 0.36, 1) easing curve, and add a reduced-motion alternative with the content fully visible in its final state."}
+    "snippet": {
+      "css": ".motion-example-fade { opacity: 0; animation: motion-example-fade 220ms cubic-bezier(0.22, 1, 0.36, 1) 1 forwards; }\n@keyframes motion-example-fade { to { opacity: 1; } }\n@media (prefers-reduced-motion: reduce) { .motion-example-fade { animation: none; opacity: 1; } }"
+    },
+    "reducedMotion": {
+      "strategy": "static-end",
+      "css": "@media (prefers-reduced-motion: reduce) { .motion-example-fade { animation: none; opacity: 1; } }",
+      "noteKr": "페이드 없이 콘텐츠를 완전히 보이는 상태로 렌더링합니다."
+    },
+    "relatedEffects": [
+      "crossfade-view-transition"
+    ],
+    "guide": {
+      "file": "guide.png",
+      "alt": "페이드 진입과 퇴장의 전·중·후 상태 및 정적 대안 가이드",
+      "prompt": "Create one instructional UI motion recipe plate for Fade In/Out in three chronological frames labeled Before, During, and After. Show opacity changing between 0 and 1 in enter and exit modes over 220ms on load, include the exact cubic-bezier(0.22, 1, 0.36, 1) easing curve, and add a reduced-motion alternative with the content fully visible in its final state."
+    }
   },
   {
     "id": "motion-slide",
@@ -122,10 +202,23 @@
     "duration": 320,
     "trigger": "load",
     "intensity": "normal",
-    "snippet": {"css": ".motion-example-slide { opacity: 0; transform: translateY(16px); animation: motion-example-slide 320ms cubic-bezier(0.22, 1, 0.36, 1) 1 forwards; }\n@keyframes motion-example-slide { to { opacity: 1; transform: translateY(0); } }\n@media (prefers-reduced-motion: reduce) { .motion-example-slide { animation: none; opacity: 1; transform: none; } }"},
-    "reducedMotion": {"strategy": "static-end", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-slide { animation: none; opacity: 1; transform: none; } }", "noteKr": "방향 이동 없이 최종 위치와 불투명도로 표시합니다."},
-    "relatedEffects": ["drawer-navigation", "bottom-sheet"],
-    "guide": {"file": "guide.png", "alt": "슬라이드 진입과 퇴장의 전·중·후 상태 및 정적 대안 가이드", "prompt": "Create one instructional UI motion recipe plate for Slide In/Out in three chronological frames labeled Before, During, and After. Show one-axis movement with selectable x or y direction, a signed direction multiplier, and a 16px distance over 320ms on load, include the exact cubic-bezier(0.22, 1, 0.36, 1) easing curve, and add a reduced-motion alternative at the final position with no travel."}
+    "snippet": {
+      "css": ".motion-example-slide { opacity: 0; transform: translateY(16px); animation: motion-example-slide 320ms cubic-bezier(0.22, 1, 0.36, 1) 1 forwards; }\n@keyframes motion-example-slide { to { opacity: 1; transform: translateY(0); } }\n@media (prefers-reduced-motion: reduce) { .motion-example-slide { animation: none; opacity: 1; transform: none; } }"
+    },
+    "reducedMotion": {
+      "strategy": "static-end",
+      "css": "@media (prefers-reduced-motion: reduce) { .motion-example-slide { animation: none; opacity: 1; transform: none; } }",
+      "noteKr": "방향 이동 없이 최종 위치와 불투명도로 표시합니다."
+    },
+    "relatedEffects": [
+      "drawer-navigation",
+      "bottom-sheet"
+    ],
+    "guide": {
+      "file": "guide.png",
+      "alt": "슬라이드 진입과 퇴장의 전·중·후 상태 및 정적 대안 가이드",
+      "prompt": "Create one instructional UI motion recipe plate for Slide In/Out in three chronological frames labeled Before, During, and After. Show one-axis movement with selectable x or y direction, a signed direction multiplier, and a 16px distance over 320ms on load, include the exact cubic-bezier(0.22, 1, 0.36, 1) easing curve, and add a reduced-motion alternative at the final position with no travel."
+    }
   },
   {
     "id": "motion-scale",
@@ -138,10 +231,23 @@
     "duration": 240,
     "trigger": "click",
     "intensity": "normal",
-    "snippet": {"css": ".motion-example-scale { opacity: 0; transform: scale(.94); transform-origin: center; }\n.motion-example-scale.is-open { opacity: 1; transform: scale(1); transition: transform 240ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 240ms cubic-bezier(0.34, 1.56, 0.64, 1); }\n@media (prefers-reduced-motion: reduce) { .motion-example-scale.is-open { transition: none; opacity: 1; transform: scale(1); } }"},
-    "reducedMotion": {"strategy": "instant", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-scale.is-open { transition: none; opacity: 1; transform: scale(1); } }", "noteKr": "확대 과정을 생략하고 열린 표면을 최종 크기로 즉시 표시합니다."},
-    "relatedEffects": ["press-scale", "modal-dialog"],
-    "guide": {"file": "guide.png", "alt": "스케일 진입과 퇴장의 전·중·후 상태 및 정적 대안 가이드", "prompt": "Create one instructional UI motion recipe plate for Scale In/Out in three chronological frames labeled Before, During, and After. Show a centered click target scaling between 0.94 and 1 over 240ms, include the exact cubic-bezier(0.34, 1.56, 0.64, 1) easing curve, and add a reduced-motion alternative that opens immediately at full scale."}
+    "snippet": {
+      "css": ".motion-example-scale { opacity: 0; transform: scale(.94); transform-origin: center; }\n.motion-example-scale.is-open { opacity: 1; transform: scale(1); transition: transform 240ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 240ms cubic-bezier(0.34, 1.56, 0.64, 1); }\n@media (prefers-reduced-motion: reduce) { .motion-example-scale.is-open { transition: none; opacity: 1; transform: scale(1); } }"
+    },
+    "reducedMotion": {
+      "strategy": "instant",
+      "css": "@media (prefers-reduced-motion: reduce) { .motion-example-scale.is-open { transition: none; opacity: 1; transform: scale(1); } }",
+      "noteKr": "확대 과정을 생략하고 열린 표면을 최종 크기로 즉시 표시합니다."
+    },
+    "relatedEffects": [
+      "press-scale",
+      "modal-dialog"
+    ],
+    "guide": {
+      "file": "guide.png",
+      "alt": "스케일 진입과 퇴장의 전·중·후 상태 및 정적 대안 가이드",
+      "prompt": "Create one instructional UI motion recipe plate for Scale In/Out in three chronological frames labeled Before, During, and After. Show a centered click target scaling between 0.94 and 1 over 240ms, include the exact cubic-bezier(0.34, 1.56, 0.64, 1) easing curve, and add a reduced-motion alternative that opens immediately at full scale."
+    }
   },
   {
     "id": "motion-blur-reveal",
@@ -154,10 +260,23 @@
     "duration": 420,
     "trigger": "scroll",
     "intensity": "subtle",
-    "snippet": {"css": ".motion-example-blur-reveal { opacity: 0; filter: blur(12px); transform: translateY(8px); }\n.motion-example-blur-reveal.is-visible { opacity: 1; filter: blur(0); transform: translateY(0); transition: filter 420ms cubic-bezier(0.22, 1, 0.36, 1), transform 420ms cubic-bezier(0.22, 1, 0.36, 1), opacity 420ms cubic-bezier(0.22, 1, 0.36, 1); }\n@media (prefers-reduced-motion: reduce) { .motion-example-blur-reveal { transition: none; opacity: 1; filter: none; transform: none; } }"},
-    "reducedMotion": {"strategy": "static-end", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-blur-reveal { transition: none; opacity: 1; filter: none; transform: none; } }", "noteKr": "흐림과 이동을 제거하고 선명한 완료 상태를 항상 노출합니다."},
-    "relatedEffects": ["scroll-reveal", "split-text-reveal"],
-    "guide": {"file": "guide.png", "alt": "블러 리빌의 전·중·후 상태와 정적 대안을 비교한 가이드", "prompt": "Create one instructional UI motion recipe plate for Blur Reveal in three chronological frames labeled Before, During, and After. Show blur decreasing from 12px to 0, opacity rising from 0 to 1, and vertical offset moving from 8px to 0 over 420ms on scroll, include the exact cubic-bezier(0.22, 1, 0.36, 1) easing curve, and add a reduced-motion alternative with sharp content at the final position."}
+    "snippet": {
+      "css": ".motion-example-blur-reveal { opacity: 0; filter: blur(12px); transform: translateY(8px); }\n.motion-example-blur-reveal.is-visible { opacity: 1; filter: blur(0); transform: translateY(0); transition: filter 420ms cubic-bezier(0.22, 1, 0.36, 1), transform 420ms cubic-bezier(0.22, 1, 0.36, 1), opacity 420ms cubic-bezier(0.22, 1, 0.36, 1); }\n@media (prefers-reduced-motion: reduce) { .motion-example-blur-reveal { transition: none; opacity: 1; filter: none; transform: none; } }"
+    },
+    "reducedMotion": {
+      "strategy": "static-end",
+      "css": "@media (prefers-reduced-motion: reduce) { .motion-example-blur-reveal { transition: none; opacity: 1; filter: none; transform: none; } }",
+      "noteKr": "흐림과 이동을 제거하고 선명한 완료 상태를 항상 노출합니다."
+    },
+    "relatedEffects": [
+      "scroll-reveal",
+      "split-text-reveal"
+    ],
+    "guide": {
+      "file": "guide.png",
+      "alt": "블러 리빌의 전·중·후 상태와 정적 대안을 비교한 가이드",
+      "prompt": "Create one instructional UI motion recipe plate for Blur Reveal in three chronological frames labeled Before, During, and After. Show blur decreasing from 12px to 0, opacity rising from 0 to 1, and vertical offset moving from 8px to 0 over 420ms on scroll, include the exact cubic-bezier(0.22, 1, 0.36, 1) easing curve, and add a reduced-motion alternative with sharp content at the final position."
+    }
   },
   {
     "id": "motion-skeleton-shimmer",
@@ -170,10 +289,22 @@
     "duration": 1200,
     "trigger": "load",
     "intensity": "subtle",
-    "snippet": {"css": ".motion-example-skeleton::after { content: \"\"; transform: translateX(-120%); animation: motion-example-shimmer 1200ms cubic-bezier(0.4, 0, 0.2, 1) infinite; }\n@keyframes motion-example-shimmer { to { transform: translateX(220%); } }\n@media (prefers-reduced-motion: reduce) { .motion-example-skeleton::after { animation: none; opacity: 0; } }"},
-    "reducedMotion": {"strategy": "static-end", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-skeleton::after { animation: none; opacity: 0; } }", "noteKr": "광택 이동을 제거하고 placeholder 형태만 유지합니다."},
-    "relatedEffects": ["skeleton-loading"],
-    "guide": {"file": "guide.png", "alt": "스켈레톤 시머의 이동 전·중·후 상태와 정적 대안 가이드", "prompt": "Create one instructional UI motion recipe plate for Skeleton Shimmer Recipe in three chronological frames labeled Before, During, and After. Show a 36-percent highlight band moving from x -120 percent through the placeholder to x 220 percent in a 1200ms loading loop, include the exact cubic-bezier(0.4, 0, 0.2, 1) easing curve, and add a reduced-motion alternative with a static placeholder and no highlight band."}
+    "snippet": {
+      "css": ".motion-example-skeleton::after { content: \"\"; transform: translateX(-120%); animation: motion-example-shimmer 1200ms cubic-bezier(0.4, 0, 0.2, 1) infinite; }\n@keyframes motion-example-shimmer { to { transform: translateX(220%); } }\n@media (prefers-reduced-motion: reduce) { .motion-example-skeleton::after { animation: none; opacity: 0; } }"
+    },
+    "reducedMotion": {
+      "strategy": "static-end",
+      "css": "@media (prefers-reduced-motion: reduce) { .motion-example-skeleton::after { animation: none; opacity: 0; } }",
+      "noteKr": "광택 이동을 제거하고 placeholder 형태만 유지합니다."
+    },
+    "relatedEffects": [
+      "skeleton-loading"
+    ],
+    "guide": {
+      "file": "guide.png",
+      "alt": "스켈레톤 시머의 이동 전·중·후 상태와 정적 대안 가이드",
+      "prompt": "Create one instructional UI motion recipe plate for Skeleton Shimmer Recipe in three chronological frames labeled Before, During, and After. Show a 36-percent highlight band moving from x -120 percent through the placeholder to x 220 percent in a 1200ms loading loop, include the exact cubic-bezier(0.4, 0, 0.2, 1) easing curve, and add a reduced-motion alternative with a static placeholder and no highlight band."
+    }
   },
   {
     "id": "motion-spinner",
@@ -186,10 +317,22 @@
     "duration": 800,
     "trigger": "load",
     "intensity": "normal",
-    "snippet": {"css": ".motion-example-spinner { border: 3px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: motion-example-spin 800ms cubic-bezier(0.5, 0, 0.5, 1) infinite; }\n@keyframes motion-example-spin { to { transform: rotate(1turn); } }\n@media (prefers-reduced-motion: reduce) { .motion-example-spinner { animation: none; opacity: .75; } }"},
-    "reducedMotion": {"strategy": "static-end", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-spinner { animation: none; opacity: .75; } }", "noteKr": "회전을 멈추고 접근 가능한 로딩 문구와 함께 정적 아이콘을 표시합니다."},
-    "relatedEffects": ["pull-to-refresh"],
-    "guide": {"file": "guide.png", "alt": "스피너 회전의 전·중·후 상태와 정적 대안을 비교한 가이드", "prompt": "Create one instructional UI motion recipe plate for Spinner Recipe in three chronological frames labeled Before, During, and After. Show a three-pixel open circular stroke rotating one turn in an 800ms loading loop, include the exact cubic-bezier(0.5, 0, 0.5, 1) easing curve, and add a reduced-motion alternative with a static loading glyph and visible status text."}
+    "snippet": {
+      "css": ".motion-example-spinner { border: 3px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: motion-example-spin 800ms cubic-bezier(0.5, 0, 0.5, 1) infinite; }\n@keyframes motion-example-spin { to { transform: rotate(1turn); } }\n@media (prefers-reduced-motion: reduce) { .motion-example-spinner { animation: none; opacity: .75; } }"
+    },
+    "reducedMotion": {
+      "strategy": "static-end",
+      "css": "@media (prefers-reduced-motion: reduce) { .motion-example-spinner { animation: none; opacity: .75; } }",
+      "noteKr": "회전을 멈추고 접근 가능한 로딩 문구와 함께 정적 아이콘을 표시합니다."
+    },
+    "relatedEffects": [
+      "pull-to-refresh"
+    ],
+    "guide": {
+      "file": "guide.png",
+      "alt": "스피너 회전의 전·중·후 상태와 정적 대안을 비교한 가이드",
+      "prompt": "Create one instructional UI motion recipe plate for Spinner Recipe in three chronological frames labeled Before, During, and After. Show a three-pixel open circular stroke rotating one turn in an 800ms loading loop, include the exact cubic-bezier(0.5, 0, 0.5, 1) easing curve, and add a reduced-motion alternative with a static loading glyph and visible status text."
+    }
   },
   {
     "id": "motion-progress",
@@ -197,15 +340,28 @@
     "nameKr": "진행률 레시피",
     "family": "Motion Preset",
     "category": "Loading Feedback",
-    "summary": "왼쪽 원점에서 scaleX를 0에서 1로 늘려 알려진 작업 진행률을 시각화합니다. 애니메이션과 별개로 실제 숫자 상태를 함께 갱신해 위치만으로 정보를 전달하지 않습니다.",
+    "summary": "값이 정해진 작업의 진행률을 보여준다. 슬라이더로 목표값을 바꾸면 숫자와 aria-valuenow는 즉시 갱신하고 막대만 따라 움직인다. 실제 요청에서는 서버가 보낸 진행률을 사용한다. JavaScript로 --progress(0~1)와 접근성 값을 함께 갱신해야 한다.",
     "easing": "cubic-bezier(0.65, 0, 0.35, 1)",
     "duration": 1600,
     "trigger": "load",
     "intensity": "normal",
-    "snippet": {"css": ".motion-example-progress { transform: scaleX(0); transform-origin: left; animation: motion-example-progress 1600ms cubic-bezier(0.65, 0, 0.35, 1) 1 forwards; }\n@keyframes motion-example-progress { to { transform: scaleX(1); } }\n@media (prefers-reduced-motion: reduce) { .motion-example-progress { animation: none; transform: scaleX(var(--progress, .6)); } }"},
-    "reducedMotion": {"strategy": "preserve-progress", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-progress { animation: none; transform: scaleX(var(--progress, .6)); } }", "noteKr": "움직임 없이 현재 숫자 진행률에 맞는 길이를 보존합니다."},
-    "relatedEffects": ["progress-stepper", "scroll-progress-indicator"],
-    "guide": {"file": "guide.png", "alt": "진행률 확대의 전·중·후 상태와 현재값 보존 대안 가이드", "prompt": "Create one instructional UI motion recipe plate for Progress Recipe in three chronological frames labeled Before, During, and After. Show a left-origin bar scaling on the x axis from 0 to 1 over 1600ms with a numeric progress value beside it, include the exact cubic-bezier(0.65, 0, 0.35, 1) easing curve, and add a reduced-motion alternative that preserves the current progress position without animation."}
+    "snippet": {
+      "css": ".motion-example-progress { overflow: hidden; background: #d9dcd5; }\n.motion-example-progress > span {\n  display: block; height: 8px; background: #242622;\n  transform: scaleX(var(--progress, 0)); transform-origin: left;\n  transition: transform 1600ms cubic-bezier(.65, 0, .35, 1);\n}\n@media (prefers-reduced-motion: reduce) {\n  .motion-example-progress > span { transition: none; }\n}"
+    },
+    "reducedMotion": {
+      "strategy": "preserve-progress",
+      "css": "@media (prefers-reduced-motion: reduce) {\n  .motion-example-progress > span { transition: none; }\n}",
+      "noteKr": "이동만 없애고 실제 진행률은 그대로 표시한다. 값이 불명확한 작업에 임의 퍼센트를 붙이지 않는다."
+    },
+    "relatedEffects": [
+      "progress-stepper",
+      "scroll-progress-indicator"
+    ],
+    "guide": {
+      "file": "guide.png",
+      "alt": "진행률 확대의 전·중·후 상태와 현재값 보존 대안 가이드",
+      "prompt": "Create one instructional UI motion recipe plate for Progress Recipe in three chronological frames labeled Before, During, and After. Show a left-origin bar scaling on the x axis from 0 to 1 over 1600ms with a numeric progress value beside it, include the exact cubic-bezier(0.65, 0, 0.35, 1) easing curve, and add a reduced-motion alternative that preserves the current progress position without animation."
+    }
   },
   {
     "id": "motion-pulse",
@@ -218,10 +374,22 @@
     "duration": 1200,
     "trigger": "load",
     "intensity": "subtle",
-    "snippet": {"css": ".motion-example-pulse { animation: motion-example-pulse 1200ms cubic-bezier(0.4, 0, 0.6, 1) infinite alternate; }\n@keyframes motion-example-pulse { from { opacity: .55; transform: scale(.98); } to { opacity: 1; transform: scale(1); } }\n@media (prefers-reduced-motion: reduce) { .motion-example-pulse { animation: none; opacity: 1; transform: scale(1); } }"},
-    "reducedMotion": {"strategy": "static-end", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-pulse { animation: none; opacity: 1; transform: scale(1); } }", "noteKr": "맥박 반복을 제거하고 완전한 불투명도의 정적 상태를 유지합니다."},
-    "relatedEffects": ["notification-center"],
-    "guide": {"file": "guide.png", "alt": "펄스의 전·중·후 상태와 정적 대안을 비교한 가이드", "prompt": "Create one instructional UI motion recipe plate for Pulse Recipe in three chronological frames labeled Before, During, and After. Show opacity alternating from 0.55 to 1 and scale from 0.98 to 1 in a 1200ms loading loop, include the exact cubic-bezier(0.4, 0, 0.6, 1) easing curve, and add a reduced-motion alternative at full opacity and scale with no pulsing."}
+    "snippet": {
+      "css": ".motion-example-pulse { animation: motion-example-pulse 1200ms cubic-bezier(0.4, 0, 0.6, 1) infinite alternate; }\n@keyframes motion-example-pulse { from { opacity: .55; transform: scale(.98); } to { opacity: 1; transform: scale(1); } }\n@media (prefers-reduced-motion: reduce) { .motion-example-pulse { animation: none; opacity: 1; transform: scale(1); } }"
+    },
+    "reducedMotion": {
+      "strategy": "static-end",
+      "css": "@media (prefers-reduced-motion: reduce) { .motion-example-pulse { animation: none; opacity: 1; transform: scale(1); } }",
+      "noteKr": "맥박 반복을 제거하고 완전한 불투명도의 정적 상태를 유지합니다."
+    },
+    "relatedEffects": [
+      "notification-center"
+    ],
+    "guide": {
+      "file": "guide.png",
+      "alt": "펄스의 전·중·후 상태와 정적 대안을 비교한 가이드",
+      "prompt": "Create one instructional UI motion recipe plate for Pulse Recipe in three chronological frames labeled Before, During, and After. Show opacity alternating from 0.55 to 1 and scale from 0.98 to 1 in a 1200ms loading loop, include the exact cubic-bezier(0.4, 0, 0.6, 1) easing curve, and add a reduced-motion alternative at full opacity and scale with no pulsing."
+    }
   },
   {
     "id": "motion-scroll-timeline",
@@ -234,10 +402,23 @@
     "duration": 600,
     "trigger": "scroll",
     "intensity": "normal",
-    "snippet": {"css": ".motion-example-scroll-timeline { transform: scaleX(1); transform-origin: left; }\n@supports (animation-timeline: view()) { .motion-example-scroll-timeline { animation: motion-example-scroll-timeline cubic-bezier(0, 0, 1, 1) both; animation-timeline: view(); animation-range: entry 0% cover 100%; } @keyframes motion-example-scroll-timeline { from { transform: scaleX(0); } to { transform: scaleX(1); } } }\n@media (prefers-reduced-motion: reduce) { .motion-example-scroll-timeline { animation: none; transform: scaleX(1); } }"},
-    "reducedMotion": {"strategy": "preserve-progress", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-scroll-timeline { animation: none; transform: scaleX(var(--scroll-progress, 1)); } }", "noteKr": "스크롤 위치 정보는 유지하되 보간 애니메이션 없이 현재 진행 상태를 표시합니다."},
-    "relatedEffects": ["scroll-progress-indicator", "layered-parallax"],
-    "guide": {"file": "guide.png", "alt": "스크롤 타임라인의 전·중·후 상태와 진행값 보존 대안 가이드", "prompt": "Create one instructional UI motion recipe plate for Scroll Timeline in three chronological frames labeled Before, During, and After. Map scroll progress from 0 to 1 across animation-range entry 0 percent to cover 100 percent and show a 600ms fallback preview, include the exact cubic-bezier(0, 0, 1, 1) easing curve, and add a reduced-motion alternative that preserves the current progress as a static state."}
+    "snippet": {
+      "css": ".motion-example-scroll-timeline { transform: scaleX(1); transform-origin: left; }\n@supports (animation-timeline: view()) { .motion-example-scroll-timeline { animation: motion-example-scroll-timeline cubic-bezier(0, 0, 1, 1) both; animation-timeline: view(); animation-range: entry 0% cover 100%; } @keyframes motion-example-scroll-timeline { from { transform: scaleX(0); } to { transform: scaleX(1); } } }\n@media (prefers-reduced-motion: reduce) { .motion-example-scroll-timeline { animation: none; transform: scaleX(1); } }"
+    },
+    "reducedMotion": {
+      "strategy": "preserve-progress",
+      "css": "@media (prefers-reduced-motion: reduce) { .motion-example-scroll-timeline { animation: none; transform: scaleX(var(--scroll-progress, 1)); } }",
+      "noteKr": "스크롤 위치 정보는 유지하되 보간 애니메이션 없이 현재 진행 상태를 표시합니다."
+    },
+    "relatedEffects": [
+      "scroll-progress-indicator",
+      "layered-parallax"
+    ],
+    "guide": {
+      "file": "guide.png",
+      "alt": "스크롤 타임라인의 전·중·후 상태와 진행값 보존 대안 가이드",
+      "prompt": "Create one instructional UI motion recipe plate for Scroll Timeline in three chronological frames labeled Before, During, and After. Map scroll progress from 0 to 1 across animation-range entry 0 percent to cover 100 percent and show a 600ms fallback preview, include the exact cubic-bezier(0, 0, 1, 1) easing curve, and add a reduced-motion alternative that preserves the current progress as a static state."
+    }
   },
   {
     "id": "motion-scroll-reveal",
@@ -245,15 +426,27 @@
     "nameKr": "스크롤 리빌 레시피",
     "family": "Motion Preset",
     "category": "Scroll-based",
-    "summary": "요소가 viewport에 15% 들어오면 아래 20px에서 최종 위치로 한 번 드러나는 레시피입니다. rootMargin을 아래 -10%로 제한하고 콘텐츠 자체는 관찰 실패 시에도 접근 가능해야 합니다.",
+    "summary": "스크롤 영역에 실제로 진입한 내용을 한 번만 드러낸다. 기본 상태는 보이게 두고 IntersectionObserver가 연결된 항목에만 대기 클래스를 붙인다. 예제 영역을 직접 스크롤해 확인한다. 관찰 API가 없거나 모션 감소 설정이면 전체 내용을 즉시 보여준다.",
     "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
     "duration": 420,
     "trigger": "scroll",
     "intensity": "subtle",
-    "snippet": {"css": ".motion-example-scroll-reveal { opacity: 0; transform: translateY(20px); }\n.motion-example-scroll-reveal.is-visible { opacity: 1; transform: none; transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1), opacity 420ms cubic-bezier(0.22, 1, 0.36, 1); }\n@media (prefers-reduced-motion: reduce) { .motion-example-scroll-reveal { transition: none; opacity: 1; transform: none; } }"},
-    "reducedMotion": {"strategy": "static-end", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-scroll-reveal { transition: none; opacity: 1; transform: none; } }", "noteKr": "관찰자와 이동을 생략하고 콘텐츠를 최종 위치에서 항상 표시합니다."},
-    "relatedEffects": ["scroll-reveal"],
-    "guide": {"file": "guide.png", "alt": "스크롤 리빌의 전·중·후 상태와 정적 대안을 비교한 가이드", "prompt": "Create one instructional UI motion recipe plate for Scroll Reveal Recipe in three chronological frames labeled Before, During, and After. Show an element entering from 20px below when viewport intersection reaches threshold 0.15 with root margin 0px 0px -10 percent, over 420ms, include the exact cubic-bezier(0.22, 1, 0.36, 1) easing curve, and add a reduced-motion alternative with content visible at its final position."}
+    "snippet": {
+      "css": ".motion-example-scroll-reveal { opacity: 1; transform: none; }\n.motion-example-scroll-reveal.is-observed {\n  transition: opacity 420ms cubic-bezier(.22, 1, .36, 1),\n              transform 420ms cubic-bezier(.22, 1, .36, 1);\n}\n.motion-example-scroll-reveal.is-observed:not(.is-visible) {\n  opacity: 0; transform: translateY(16px);\n}\n@media (prefers-reduced-motion: reduce) {\n  .motion-example-scroll-reveal.is-observed:not(.is-visible) {\n    opacity: 1; transform: none;\n  }\n  .motion-example-scroll-reveal.is-observed { transition: none; }\n}"
+    },
+    "reducedMotion": {
+      "strategy": "static-end",
+      "css": "@media (prefers-reduced-motion: reduce) {\n  .motion-example-scroll-reveal.is-observed:not(.is-visible) {\n    opacity: 1; transform: none;\n  }\n  .motion-example-scroll-reveal.is-observed { transition: none; }\n}",
+      "noteKr": "등장 지연과 이동을 없애고 모든 내용을 보여준다. JavaScript 실패나 관찰 API 미지원 상태에서도 기본 콘텐츠는 숨기지 않는다."
+    },
+    "relatedEffects": [
+      "scroll-reveal"
+    ],
+    "guide": {
+      "file": "guide.png",
+      "alt": "스크롤 리빌의 전·중·후 상태와 정적 대안을 비교한 가이드",
+      "prompt": "Create one instructional UI motion recipe plate for Scroll Reveal Recipe in three chronological frames labeled Before, During, and After. Show an element entering from 20px below when viewport intersection reaches threshold 0.15 with root margin 0px 0px -10 percent, over 420ms, include the exact cubic-bezier(0.22, 1, 0.36, 1) easing curve, and add a reduced-motion alternative with content visible at its final position."
+    }
   },
   {
     "id": "motion-sticky-transition",
@@ -266,10 +459,23 @@
     "duration": 600,
     "trigger": "scroll",
     "intensity": "normal",
-    "snippet": {"css": ".motion-example-sticky { animation: motion-example-sticky cubic-bezier(0.42, 0, 0.58, 1) both; animation-timeline: view(); animation-range: 0px 240px; }\n@keyframes motion-example-sticky { from { opacity: 1; transform: scale(1); } to { opacity: .7; transform: scale(.92); } }\n@media (prefers-reduced-motion: reduce) { .motion-example-sticky { animation: none; opacity: 1; transform: none; } }"},
-    "reducedMotion": {"strategy": "preserve-progress", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-sticky { animation: none; opacity: 1; transform: none; } }", "noteKr": "sticky 배치는 유지할 수 있지만 scale과 opacity 변화는 제거합니다."},
-    "relatedEffects": ["sticky-cta-bar", "sticky-table-header"],
-    "guide": {"file": "guide.png", "alt": "스티키 구간 전·중·후 상태와 정적 대안을 비교한 가이드", "prompt": "Create one instructional UI motion recipe plate for Sticky Transition in three chronological frames labeled Before, During, and After. Show a 0-to-240px sticky range where scale changes from 1 to 0.92 and opacity from 1 to 0.7 with a 600ms fallback preview, include the exact cubic-bezier(0.42, 0, 0.58, 1) easing curve, and add a reduced-motion alternative that keeps the sticky content fully opaque and unscaled."}
+    "snippet": {
+      "css": ".motion-example-sticky { animation: motion-example-sticky cubic-bezier(0.42, 0, 0.58, 1) both; animation-timeline: view(); animation-range: 0px 240px; }\n@keyframes motion-example-sticky { from { opacity: 1; transform: scale(1); } to { opacity: .7; transform: scale(.92); } }\n@media (prefers-reduced-motion: reduce) { .motion-example-sticky { animation: none; opacity: 1; transform: none; } }"
+    },
+    "reducedMotion": {
+      "strategy": "preserve-progress",
+      "css": "@media (prefers-reduced-motion: reduce) { .motion-example-sticky { animation: none; opacity: 1; transform: none; } }",
+      "noteKr": "sticky 배치는 유지할 수 있지만 scale과 opacity 변화는 제거합니다."
+    },
+    "relatedEffects": [
+      "sticky-cta-bar",
+      "sticky-table-header"
+    ],
+    "guide": {
+      "file": "guide.png",
+      "alt": "스티키 구간 전·중·후 상태와 정적 대안을 비교한 가이드",
+      "prompt": "Create one instructional UI motion recipe plate for Sticky Transition in three chronological frames labeled Before, During, and After. Show a 0-to-240px sticky range where scale changes from 1 to 0.92 and opacity from 1 to 0.7 with a 600ms fallback preview, include the exact cubic-bezier(0.42, 0, 0.58, 1) easing curve, and add a reduced-motion alternative that keeps the sticky content fully opaque and unscaled."
+    }
   },
   {
     "id": "motion-expand-collapse",
@@ -277,15 +483,27 @@
     "nameKr": "펼침·접힘",
     "family": "Motion Preset",
     "category": "State Transition",
-    "summary": "콘텐츠 영역을 0fr에서 1fr로 전환하고 opacity를 .4에서 1로 올려 펼침 상태를 설명합니다. DOM과 aria-expanded 상태는 애니메이션 시작 시 즉시 갱신해 내용 접근을 지연하지 않습니다.",
+    "summary": "부가 설명을 펼치고 접을 때 주변 콘텐츠가 함께 이동하는 높이 전환이다. 버튼의 aria-expanded와 연결된 영역의 접근성 상태를 즉시 갱신한다. CSS는 높이 변화만 담당하며, 닫힌 영역의 링크가 탭 순서에 남지 않도록 JavaScript에서 inert·hidden 상태를 관리해야 한다.",
     "easing": "cubic-bezier(0.42, 0, 0.58, 1)",
     "duration": 280,
     "trigger": "click",
     "intensity": "normal",
-    "snippet": {"css": ".motion-example-expand { display: grid; grid-template-rows: 0fr; opacity: .4; transition: grid-template-rows 280ms cubic-bezier(0.42, 0, 0.58, 1), opacity 280ms cubic-bezier(0.42, 0, 0.58, 1); }\n.motion-example-expand.is-open { grid-template-rows: 1fr; opacity: 1; }\n@media (prefers-reduced-motion: reduce) { .motion-example-expand { transition: none; } }"},
-    "reducedMotion": {"strategy": "instant", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-expand { transition: none; } }", "noteKr": "콘텐츠 높이와 접근성 상태를 클릭 즉시 최종값으로 전환합니다."},
-    "relatedEffects": ["accordion"],
-    "guide": {"file": "guide.png", "alt": "펼침과 접힘의 전·중·후 상태 및 즉시 전환 대안 가이드", "prompt": "Create one instructional UI motion recipe plate for Expand and Collapse in three chronological frames labeled Before, During, and After. Show grid rows changing from 0fr to 1fr and opacity from 0.4 to 1 over 280ms after click, include the exact cubic-bezier(0.42, 0, 0.58, 1) easing curve, and add a reduced-motion alternative that switches the expanded state instantly."}
+    "snippet": {
+      "css": ".motion-example-expand-collapse {\n  display: grid; grid-template-rows: 0fr;\n  transition: grid-template-rows 280ms cubic-bezier(.42, 0, .58, 1);\n}\n.motion-example-expand-collapse.is-open { grid-template-rows: 1fr; }\n.motion-example-expand-collapse > div { min-height: 0; overflow: hidden; }\n@media (prefers-reduced-motion: reduce) {\n  .motion-example-expand-collapse { transition: none; }\n}"
+    },
+    "reducedMotion": {
+      "strategy": "instant",
+      "css": "@media (prefers-reduced-motion: reduce) {\n  .motion-example-expand-collapse { transition: none; }\n}",
+      "noteKr": "펼침 여부·버튼 상태·본문 접근성은 유지하고 높이 변화만 즉시 적용한다. 닫힌 콘텐츠의 포커스 가능 요소를 제외한다."
+    },
+    "relatedEffects": [
+      "accordion"
+    ],
+    "guide": {
+      "file": "guide.png",
+      "alt": "펼침과 접힘의 전·중·후 상태 및 즉시 전환 대안 가이드",
+      "prompt": "Create one instructional UI motion recipe plate for Expand and Collapse in three chronological frames labeled Before, During, and After. Show grid rows changing from 0fr to 1fr and opacity from 0.4 to 1 over 280ms after click, include the exact cubic-bezier(0.42, 0, 0.58, 1) easing curve, and add a reduced-motion alternative that switches the expanded state instantly."
+    }
   },
   {
     "id": "motion-tab-transition",
@@ -293,15 +511,28 @@
     "nameKr": "탭 전환",
     "family": "Motion Preset",
     "category": "State Transition",
-    "summary": "새 탭 패널을 x축 8px 거리와 opacity 변화로 짧게 연결하면서 선택 상태는 즉시 갱신합니다. 방향 이동은 패널 순서를 실제로 설명할 때만 사용하고 키보드 포커스를 지연하지 않습니다.",
+    "summary": "선택한 탭의 실제 패널을 바꾸고 새 내용에만 짧은 피드백을 준다. 방향키·Home·End로 탭을 고를 수 있으며 선택하지 않은 패널은 hidden으로 감춘다. JavaScript가 roving tabindex·aria-selected·aria-controls를 함께 갱신하고 포커스는 선택한 탭에 남긴다.",
     "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
     "duration": 220,
     "trigger": "click",
     "intensity": "subtle",
-    "snippet": {"css": ".motion-example-tab-panel { opacity: 0; transform: translateX(8px); }\n.motion-example-tab-panel.is-selected { opacity: 1; transform: none; transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), opacity 220ms cubic-bezier(0.22, 1, 0.36, 1); }\n@media (prefers-reduced-motion: reduce) { .motion-example-tab-panel { transition: none; opacity: 1; transform: none; } }"},
-    "reducedMotion": {"strategy": "instant", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-tab-panel { transition: none; opacity: 1; transform: none; } }", "noteKr": "패널 이동과 페이드를 제거하고 선택 콘텐츠를 즉시 표시합니다."},
-    "relatedEffects": ["tabs", "crossfade-view-transition"],
-    "guide": {"file": "guide.png", "alt": "탭 전환의 전·중·후 상태와 즉시 전환 대안 가이드", "prompt": "Create one instructional UI motion recipe plate for Tab Transition in three chronological frames labeled Before, During, and After. Show the new panel moving from x 8px to 0 while opacity rises from 0 to 1 over 220ms and the tab state updates immediately, include the exact cubic-bezier(0.22, 1, 0.36, 1) easing curve, and add a reduced-motion alternative with an instant panel swap."}
+    "snippet": {
+      "css": ".motion-example-tabs [role=\"tabpanel\"][hidden] { display: none; }\n.motion-example-tabs [role=\"tabpanel\"]:not([hidden]) {\n  animation: motion-tab-enter 220ms cubic-bezier(.22, 1, .36, 1);\n}\n@keyframes motion-tab-enter {\n  from { opacity: 0; transform: translateY(6px); }\n  to { opacity: 1; transform: none; }\n}\n@media (prefers-reduced-motion: reduce) {\n  .motion-example-tabs [role=\"tabpanel\"]:not([hidden]) { animation: none; }\n}"
+    },
+    "reducedMotion": {
+      "strategy": "instant",
+      "css": "@media (prefers-reduced-motion: reduce) {\n  .motion-example-tabs [role=\"tabpanel\"]:not([hidden]) { animation: none; }\n}",
+      "noteKr": "패널 선택은 즉시 반영하고 등장 효과만 없앤다. 선택 탭·키보드 이동·hidden 상태를 그대로 유지한다."
+    },
+    "relatedEffects": [
+      "tabs",
+      "crossfade-view-transition"
+    ],
+    "guide": {
+      "file": "guide.png",
+      "alt": "탭 전환의 전·중·후 상태와 즉시 전환 대안 가이드",
+      "prompt": "Create one instructional UI motion recipe plate for Tab Transition in three chronological frames labeled Before, During, and After. Show the new panel moving from x 8px to 0 while opacity rises from 0 to 1 over 220ms and the tab state updates immediately, include the exact cubic-bezier(0.22, 1, 0.36, 1) easing curve, and add a reduced-motion alternative with an instant panel swap."
+    }
   },
   {
     "id": "motion-list-reorder",
@@ -309,14 +540,26 @@
     "nameKr": "FLIP 목록 재정렬",
     "family": "Motion Preset",
     "category": "State Transition",
-    "summary": "세 항목의 이전·이후 위치 차이를 측정해 최대 96px의 역변환에서 0으로 복귀시키는 FLIP 레시피입니다. 시각 이동과 동시에 DOM 순서와 보조기기 안내를 갱신해야 합니다.",
+    "summary": "정렬 결과에 따라 실제 DOM 순서를 바꾸고 항목의 이전·이후 위치 차이를 FLIP으로 연결한다. JavaScript가 위치를 측정하고 역변환을 적용한 뒤 해제해야 한다. 연속 조작은 이전 애니메이션을 취소하며 포커스와 읽기 순서는 새 목록을 따른다.",
     "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
     "duration": 300,
     "trigger": "click",
     "intensity": "normal",
-    "snippet": {"css": ".motion-example-reorder-item { transform: translateY(var(--flip-delta, 0)); }\n.motion-example-reorder-item.is-reordering { transform: translateY(0); transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1); }\n@media (prefers-reduced-motion: reduce) { .motion-example-reorder-item { transition: none; transform: none; } }"},
-    "reducedMotion": {"strategy": "instant", "css": "@media (prefers-reduced-motion: reduce) { .motion-example-reorder-item { transition: none; transform: none; } }", "noteKr": "FLIP 이동을 생략하고 새 DOM 순서를 즉시 표시합니다."},
-    "relatedEffects": ["drag-reorder"],
-    "guide": {"file": "guide.png", "alt": "FLIP 목록 재정렬의 전·중·후 상태와 즉시 전환 대안 가이드", "prompt": "Create one instructional UI motion recipe plate for FLIP List Reorder in three chronological frames labeled Before, During, and After. Show three list items using a measured position delta up to 96px and returning to zero over 300ms after click, include the exact cubic-bezier(0.22, 1, 0.36, 1) easing curve, and add a reduced-motion alternative that displays the reordered list instantly."}
+    "snippet": {
+      "css": ".motion-example-list-reorder > li {\n  transition: transform 300ms cubic-bezier(.22, 1, .36, 1);\n}\n.motion-example-list-reorder > li.is-inverting {\n  transform: translateY(var(--flip-y, 0px)); transition: none;\n}\n@media (prefers-reduced-motion: reduce) {\n  .motion-example-list-reorder > li,\n  .motion-example-list-reorder > li.is-inverting { transition: none; transform: none; }\n}"
+    },
+    "reducedMotion": {
+      "strategy": "instant",
+      "css": "@media (prefers-reduced-motion: reduce) {\n  .motion-example-list-reorder > li,\n  .motion-example-list-reorder > li.is-inverting { transition: none; transform: none; }\n}",
+      "noteKr": "FLIP 이동을 건너뛰고 실제 DOM 순서를 바로 갱신한다. 선택·포커스·정렬 결과는 유지하며 이전 애니메이션은 취소한다."
+    },
+    "relatedEffects": [
+      "drag-reorder"
+    ],
+    "guide": {
+      "file": "guide.png",
+      "alt": "FLIP 목록 재정렬의 전·중·후 상태와 즉시 전환 대안 가이드",
+      "prompt": "Create one instructional UI motion recipe plate for FLIP List Reorder in three chronological frames labeled Before, During, and After. Show three list items using a measured position delta up to 96px and returning to zero over 300ms after click, include the exact cubic-bezier(0.22, 1, 0.36, 1) easing curve, and add a reduced-motion alternative that displays the reordered list instantly."
+    }
   }
 ]

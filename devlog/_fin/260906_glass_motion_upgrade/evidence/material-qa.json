@@ -1,0 +1,142 @@
+{
+  "ok": true,
+  "rows": [
+    {
+      "width": 1440,
+      "overflow": false,
+      "labOverflow": false,
+      "labWidth": 654,
+      "targets": [
+        {
+          "width": 112.65625,
+          "height": 44
+        },
+        {
+          "width": 112.671875,
+          "height": 44
+        },
+        {
+          "width": 112.65625,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "overflow": false,
+      "labOverflow": false,
+      "labWidth": 654,
+      "targets": [
+        {
+          "width": 112.65625,
+          "height": 44
+        },
+        {
+          "width": 112.671875,
+          "height": 44
+        },
+        {
+          "width": 112.65625,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "labOverflow": false,
+      "labWidth": 640.546875,
+      "targets": [
+        {
+          "width": 112.65625,
+          "height": 44
+        },
+        {
+          "width": 112.671875,
+          "height": 44
+        },
+        {
+          "width": 112.65625,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "labOverflow": false,
+      "labWidth": 348,
+      "targets": [
+        {
+          "width": 102.65625,
+          "height": 44
+        },
+        {
+          "width": 102.671875,
+          "height": 44
+        },
+        {
+          "width": 102.65625,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "overflow": false,
+      "labOverflow": false,
+      "labWidth": 278,
+      "targets": [
+        {
+          "width": 79.328125,
+          "height": 44
+        },
+        {
+          "width": 79.328125,
+          "height": 44
+        },
+        {
+          "width": 79.34375,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "scene": "paper",
+      "pressed": "true",
+      "title": "밝은 바탕 위의 재질",
+      "blur": "blur(14px) saturate(1.15)"
+    },
+    {
+      "scene": "ink",
+      "pressed": "true",
+      "title": "어두운 바탕 위의 재질",
+      "blur": "blur(14px) saturate(1.15)"
+    },
+    {
+      "scene": "checker",
+      "pressed": "true",
+      "title": "복잡한 바탕에서 비교하기",
+      "blur": "blur(14px) saturate(1.15)"
+    },
+    {
+      "media": "prefers-contrast",
+      "value": "more",
+      "solid": true
+    },
+    {
+      "media": "prefers-reduced-transparency",
+      "value": "reduce",
+      "solid": true
+    },
+    {
+      "media": "forced-colors",
+      "value": "active",
+      "solid": true
+    }
+  ],
+  "keyboard": true,
+  "focusReturn": true,
+  "unrelatedIsm": true,
+  "errors": []
+}

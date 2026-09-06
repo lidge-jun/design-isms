@@ -1,15 +1,24 @@
 #!/usr/bin/env node
-import { closeSync, existsSync, fsyncSync, linkSync, lstatSync, mkdirSync, mkdtempSync, openSync, readFileSync, realpathSync, rmSync, unlinkSync, writeSync } from 'node:fs';
+import { closeSync, existsSync, fsyncSync, mkdirSync, mkdtempSync, openSync, readFileSync, realpathSync, rmSync, writeSync } from 'node:fs';
 import { hostname, tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { AUDIT_COLUMNS, attemptRows, buildSheet, loadInventory, parseCsv, sha256Bytes, sha256File, sheetSpecs, stableJson, verifyBaseline } from './image-quality-lib.mjs';
+import { publishFinalReceipt, readFinalizationState } from './image-final-history.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const devlog = join(root, 'devlog/_fin/260715_production_upgrade');
-const receiptPath = join(devlog, '098_image_final_sheet_receipts.json');
-const finalDir = join(devlog, '095_image_sheets/final');
+const args = process.argv.slice(2);
+let supersede = false; let expectedPreviousSha;
+for (let index = 0; index < args.length; index += 1) {
+  if (args[index] === '--supersede' && !supersede) supersede = true;
+  else if (args[index] === '--expected-previous-sha' && expectedPreviousSha === undefined) {
+    expectedPreviousSha = args[++index];
+    if (!/^[a-f0-9]{64}$/.test(expectedPreviousSha ?? '')) throw new Error('invalid --expected-previous-sha');
+  } else throw new Error(`unknown or duplicate finalization argument: ${args[index]}`);
+}
+if (supersede !== (expectedPreviousSha !== undefined)) throw new Error('--supersede and --expected-previous-sha must be supplied together');
 const baseline = verifyBaseline(root).receipt.header;
 const inventory = loadInventory(root); const rows = attemptRows(root);
 const lockPath = join(root, '.tmp/image-quality/finalize.lock'); mkdirSync(dirname(lockPath), { recursive: true });
@@ -24,6 +33,12 @@ for (const row of rows) { const list = groups.get(row.attemptId) ?? []; list.pus
 const accepted = [...groups.values()].filter(states => states.some(row => row.state === 'review' && row.decision === 'accepted'));
 for (const states of accepted) if (!states.some(row => row.state === 'applied')) throw new Error(`${states[0].attemptId}: accepted but not applied`);
 for (const states of groups.values()) if (!states.some(row => row.state === 'review')) throw new Error(`${states[0].attemptId}: open attempt`);
+const approvedAttempts = new Map(accepted.map(states => {
+  const prepared = states.find(row => row.state === 'prepared'); const applied = states.find(row => row.state === 'applied');
+  return [prepared.attemptId, { key: prepared.key, beforeSha256: prepared.beforeSha256, sourceSha256: applied.sourceSha256, previewSha256: applied.previewSha256 }];
+}));
+const publication = { supersede, expectedPreviousSha, approvedAttempts };
+readFinalizationState(root, publication);
 const acceptedKeys = new Set(accepted.map(states => states.find(row => row.state === 'prepared').key));
 const audit = parseCsv(readFileSync(join(devlog, '091_image_quality_audit.csv'), 'utf8')); const headerRow = audit[0];
 if (stableJson(headerRow) !== stableJson(AUDIT_COLUMNS) || audit.length !== 212) throw new Error('audit ledger incomplete');
@@ -38,7 +53,7 @@ if (audited.size !== 211) throw new Error('audit key set incomplete');
 const preflight = spawnSync(process.execPath, [join(root, 'scripts/verify-image-quality.mjs'), '--pre-final'], { cwd: root, encoding: 'utf8' });
 if (preflight.status !== 0) throw new Error(`image quality pre-final verification failed:\n${preflight.stderr || preflight.stdout}`);
 
-const temp = mkdtempSync(join(tmpdir(), 'design-isms-final-sheets-'));
+const temp = mkdtempSync(join(realpathSync(tmpdir()), 'design-isms-final-sheets-'));
 try {
   const sheets = [];
   for (const spec of sheetSpecs(inventory)) sheets.push(await buildSheet(root, spec, temp));
@@ -46,31 +61,7 @@ try {
     acceptedAttempts: accepted.map(states => states[0].attemptId).sort(), sheetCount: sheets.length,
     cellCount: sheets.reduce((sum, sheet) => sum + sheet.maps.length, 0),
     aggregateSha256: sha256Bytes(stableJson(sheets.map(sheet => ({ id: sheet.id, imagePixelSha256: sheet.imagePixelSha256, mapSha256: sheet.mapSha256 })))) };
-  const receipt = { header, sheets };
-  let createReceipt = true;
-  if (existsSync(receiptPath)) {
-    if (lstatSync(receiptPath).isSymbolicLink() || realpathSync(receiptPath) !== receiptPath) throw new Error('unsafe final receipt path');
-    const current = JSON.parse(readFileSync(receiptPath, 'utf8'));
-    if (stableJson(current) !== stableJson(receipt)) throw new Error('final receipt exists with different bytes');
-    for (const sheet of sheets) if (sha256File(join(finalDir, sheet.file)) !== sheet.fileSha256) throw new Error(`${sheet.id}: committed final sheet drift`);
-    console.log(`image quality already finalized: ${header.aggregateSha256}`); createReceipt = false;
-  }
-  if (createReceipt) {
-  mkdirSync(finalDir, { recursive: true });
-  if (lstatSync(finalDir).isSymbolicLink() || realpathSync(finalDir) !== finalDir) throw new Error('unsafe final sheet directory');
-  for (const sheet of sheets) {
-    const target = join(finalDir, sheet.file); const bytes = readFileSync(join(temp, sheet.file));
-    if (existsSync(target)) { if (sha256File(target) !== sheet.fileSha256) throw new Error(`${sheet.id}: conflicting final sheet`); }
-    else { const fd = openSync(target, 'wx'); try { writeSync(fd, bytes); fsyncSync(fd); } finally { closeSync(fd); } }
-  }
-  const sheetDir = openSync(finalDir, 'r'); try { fsyncSync(sheetDir); } finally { closeSync(sheetDir); }
-  const sheetParent = openSync(dirname(finalDir), 'r'); try { fsyncSync(sheetParent); } finally { closeSync(sheetParent); }
-  const text = ['{', `  "header": ${JSON.stringify(header)},`, '  "sheets": [',
-    ...sheets.map((sheet, index) => `    ${JSON.stringify(sheet)}${index + 1 === sheets.length ? '' : ','}`), '  ]', '}', ''].join('\n');
-  const tempReceipt = `${receiptPath}.${process.pid}.tmp`; const fd = openSync(tempReceipt, 'wx');
-  try { writeSync(fd, text); fsyncSync(fd); } finally { closeSync(fd); }
-  try { linkSync(tempReceipt, receiptPath); const dir = openSync(devlog, 'r'); try { fsyncSync(dir); } finally { closeSync(dir); } } finally { unlinkSync(tempReceipt); }
-  console.log(`image quality finalized: ${header.aggregateSha256}, ${header.cellCount} cells`);
-  }
+  const result = publishFinalReceipt(root, { header, sheets }, temp, publication);
+  console.log(`image quality ${result.status === 'unchanged' ? 'already finalized' : 'finalized'}: ${header.aggregateSha256}, ${header.cellCount} cells, receipt=${result.receiptSha256}`);
 } finally { rmSync(temp, { recursive: true, force: true }); }
 } finally { rmSync(lockPath, { force: true }); }

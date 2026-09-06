@@ -1,14 +1,13 @@
-/* WP8 motion candidates: every animation is paused until the owning demo receives .is-active. */
+/* CSS supplies stable timelines; motion.ts owns play/pause/currentTime through Web Animations. */
 .motion-demo{--motion-ink:#242622;--motion-line:#7b8078;--motion-paper:#f1f1eb;--motion-fill:#d9dcd5;--motion-soft:#e8e9e3;--motion-signal:#ff4d1f;width:100%;min-width:0;color:var(--motion-ink)}
 .motion-demo-stage{position:relative;display:grid;place-items:center;width:100%;aspect-ratio:16/10;min-height:8rem;overflow:hidden;border:1px solid var(--motion-line);border-radius:.5rem;background:var(--motion-paper)}
 .motion-demo-stage i,.motion-demo-stage b,.motion-demo-stage span,.motion-demo-stage div{box-sizing:border-box}
 .motion-demo,.motion-demo *,.motion-demo::before,.motion-demo::after,.motion-demo *::before,.motion-demo *::after{animation-play-state:paused!important}
-.motion-demo.is-active,.motion-demo.is-active *,.motion-demo.is-active::before,.motion-demo.is-active::after,.motion-demo.is-active *::before,.motion-demo.is-active *::after{animation-play-state:running!important}
-.motion-demo:not(.is-active) .motion-demo-stage *{opacity:1!important;transform:none!important}
+.motion-demo[data-playback="idle"] .motion-demo-stage *{opacity:1!important;transform:none!important}
 .motion-demo-track{position:relative;width:76%;height:2px;background:var(--motion-line)}
 
-/* Finite recipe previews loop while active; loading loops keep their authored direction. */
-.motion-demo.is-active:is(.motion-demo-linear,.motion-demo-ease-in-out,.motion-demo-spring,.motion-demo-bounce,.motion-demo-elastic,.motion-demo-back,.motion-demo-fade,.motion-demo-slide,.motion-demo-scale,.motion-demo-blur-reveal,.motion-demo-progress,.motion-demo-scroll-timeline,.motion-demo-scroll-reveal,.motion-demo-sticky-transition,.motion-demo-expand-collapse,.motion-demo-tab-transition,.motion-demo-list-reorder) .motion-demo-stage *{animation-iteration-count:infinite;animation-direction:alternate}
+/* Keep loop timing identical while paused; changing iterations/direction changes the held frame. */
+.motion-demo:is(.motion-demo-linear,.motion-demo-ease-in-out,.motion-demo-spring,.motion-demo-bounce,.motion-demo-elastic,.motion-demo-back,.motion-demo-fade,.motion-demo-slide,.motion-demo-scale,.motion-demo-blur-reveal,.motion-demo-progress,.motion-demo-scroll-timeline,.motion-demo-scroll-reveal,.motion-demo-sticky-transition,.motion-demo-expand-collapse,.motion-demo-tab-transition,.motion-demo-list-reorder) .motion-demo-stage *{animation-iteration-count:infinite;animation-direction:alternate}
 
 /* Easing Curve: 6 dedicated demos. */
 .motion-demo-linear .motion-demo-linear-dot{position:absolute;left:0;top:50%;width:14%;height:1rem;border-radius:999px;background:var(--motion-signal);animation:motion-demo-linear-run 240ms cubic-bezier(0,0,1,1) 1 forwards}
@@ -125,7 +124,8 @@
 @keyframes motion-demo-list-reorder-up{from{opacity:.7;transform:translateY(48px)}to{opacity:1;transform:translateY(0)}}
 
 @media (prefers-reduced-motion: reduce){
-  .motion-demo,.motion-demo *,.motion-demo::before,.motion-demo::after,.motion-demo *::before,.motion-demo *::after{animation:none!important;transition:none!important;animation-play-state:paused!important}
+  /* Preserve the held timeline; JS pauses it while these rules display useful static states. */
+  .motion-demo,.motion-demo *,.motion-demo::before,.motion-demo::after,.motion-demo *::before,.motion-demo *::after{transition:none!important;animation-play-state:paused!important}
   .motion-demo-stage *{opacity:1!important;transform:none!important}
   .motion-demo-skeleton-shimmer .motion-demo-skeleton-block::after{opacity:0!important}
   .motion-demo-progress .motion-demo-progress-track i{transform:scaleX(.6)!important}

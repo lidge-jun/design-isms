@@ -5,6 +5,9 @@ import { tmpdir } from 'node:os';
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { AUDIT_COLUMNS, RUBRICS, assertContainedRegular, attemptRows, buildSheet, loadAdditiveInventory, loadInventory, parseCsv, promptSha, sha256Bytes, sha256File, sheetSpecs, stableJson, verifyBaseline } from './image-quality-lib.mjs';
+import { replayEditorialRevisions } from './editorial-revisions.mjs';
+import { validateRecordedImageGeneration } from './image-generation-profiles.mjs';
+import { verifyFinalHistory } from './image-final-history.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..'); const devlog = join(root, 'devlog/_fin/260715_production_upgrade');
 const preFinal = process.argv.includes('--pre-final');
@@ -49,6 +52,8 @@ for (const [attemptId, states] of groups) {
   if (prepared.length !== 1 || result.length !== 1 || review.length !== 1) fail(`${attemptId}: expected one prepared/result/review state`);
   if (states.some(row => !['prepared', 'running', 'result', 'review', 'applied'].includes(row.state))) fail(`${attemptId}: unknown attempt state`);
   const preparedAt = states.findIndex(row => row.state === 'prepared'); const resultAt = states.findIndex(row => row.state === 'result');
+  try { validateRecordedImageGeneration(prepared[0], review[0]?.decision === 'accepted'); }
+  catch (error) { fail(`${attemptId}: ${error.message}`); }
   const reviewAt = states.findIndex(row => row.state === 'review'); const appliedAt = states.findIndex(row => row.state === 'applied');
   if (!(preparedAt === 0 && resultAt > preparedAt && reviewAt > resultAt && (appliedAt < 0 || appliedAt > reviewAt))) fail(`${attemptId}: invalid state order`);
   if (states.some((row, indexValue) => row.state === 'running' && (indexValue <= preparedAt || indexValue >= resultAt))) fail(`${attemptId}: running claim outside generation window`);
@@ -63,8 +68,6 @@ for (const [attemptId, states] of groups) {
   if (review[0]?.decision === 'accepted') {
     if (result[0]?.exitCode !== 0 || !result[0]?.candidateSha256 || applied.length !== 1) fail(`${attemptId}: accepted attempt is not successful and applied exactly once`);
     else {
-      const expectedCommand = ['ima2', 'gen', '--stdin', '-q', 'high', '-s', '1536x1024', '-o', canonicalCandidate, '--json', '--timeout', '300', '--server', 'http://127.0.0.1:3334', '--model', 'oauth/gpt-5.6-sol', '--reasoning-effort', 'high'];
-      if (stableJson(prepared[0].command) !== stableJson(expectedCommand)) fail(`${attemptId}: accepted generation command/model/reasoning drift`);
       if (review[0].candidateSha256 !== result[0].candidateSha256 || applied[0].key !== prepared[0].key || applied[0].sourceSha256 !== result[0].candidateSha256) fail(`${attemptId}: result/review/applied provenance mismatch`);
       if (acceptedByKey.has(prepared[0].key)) fail(`${prepared[0].key}: multiple accepted attempts`);
       acceptedByKey.set(prepared[0].key, { attemptId, prepared: prepared[0], result: result[0], applied: applied[0] });
@@ -144,7 +147,15 @@ const manifestSources = new Set(currentManifest.pairs.map(pair => pair.source));
 for (const item of additiveInventory) if (!manifestSources.has(item.source)) fail(`${item.key}: additive pair missing from manifest`);
 for (const item of catalogAdditions) if (!manifestSources.has(item.source)) fail(`${item.domain}:${item.id}: catalog pair missing from manifest`);
 
-const baselineRuntime = JSON.parse(readFileSync(join(devlog, '096_image_baseline_runtime.json'), 'utf8'));
+const editorialLedgerPath = join(devlog, '099_editorial_revisions.jsonl');
+let editorialLedgerText;
+try { editorialLedgerText = readFileSync(editorialLedgerPath, 'utf8'); }
+catch (error) { if (error.code !== 'ENOENT') throw error; }
+const baselineRuntime = replayEditorialRevisions({
+  baselineRuntime: baselineState.runtime, baselineRunId: baselineRun, baselineAggregateSha256: baselineSha,
+  policy: JSON.parse(readFileSync(join(root, 'scripts/editorial-revision-policy.json'), 'utf8')),
+  ledgerText: editorialLedgerText,
+});
 const currentIsms = JSON.parse(readFileSync(join(root, 'assets/data/isms.json'), 'utf8')); const currentEffects = JSON.parse(readFileSync(join(root, 'assets/data/effects.json'), 'utf8'));
 // Legacy runtime comparison operates on the baseline id universe, reconstructed in
 // baseline order so additive effects (inserted anywhere) cannot disturb it.
@@ -218,6 +229,9 @@ for (const [baselineName, currentName, kind] of [['031.before.csv', '031_effect_
 }
 
 if (!preFinal) {
+  const approvedAttempts = new Map([...acceptedByKey.entries()].map(([key, a]) => [a.attemptId,
+    { key, beforeSha256: a.prepared.beforeSha256, sourceSha256: a.applied.sourceSha256, previewSha256: a.applied.previewSha256 }]));
+  const finalDir = verifyFinalHistory(root, finalReceipt, approvedAttempts);
   if (finalReceipt.header.runId !== baselineRun || finalReceipt.header.baselineSha256 !== baselineSha || finalReceipt.header.cellCount !== 211 || finalReceipt.sheets.length !== 4) fail('final sheet receipt header invalid');
   const expectedAttempts = [...acceptedByKey.values()].map(value => value.attemptId).sort();
   if (stableJson(finalReceipt.header.acceptedAttempts) !== stableJson(expectedAttempts)) fail('final receipt accepted-attempt set mismatch');
@@ -229,7 +243,7 @@ if (!preFinal) {
       const rebuilt = await buildSheet(root, spec, temp); const recorded = finalReceipt.sheets.find(sheet => sheet.id === spec.id);
       if (!recorded || rebuilt.imagePixelSha256 !== recorded.imagePixelSha256 || rebuilt.mapSha256 !== recorded.mapSha256 || stableJson(rebuilt.maps) !== stableJson(recorded.maps)) fail(`${spec.id}: final sheet pixel/map receipt drift`);
       if (!recorded || recorded.file !== `${spec.id}.webp`) fail(`${spec.id}: final sheet identity drift`);
-      else if (sha256File(assertContainedRegular(root, join(devlog, '095_image_sheets/final', recorded.file), join(devlog, '095_image_sheets/final'))) !== recorded.fileSha256) fail(`${spec.id}: committed final sheet bytes drift`);
+      else if (sha256File(assertContainedRegular(root, join(finalDir, recorded.file), finalDir)) !== recorded.fileSha256) fail(`${spec.id}: committed final sheet bytes drift`);
     }
   } finally { await rm(temp, { recursive: true, force: true }); }
 }

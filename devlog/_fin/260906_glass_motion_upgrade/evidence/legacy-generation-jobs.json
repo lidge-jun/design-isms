@@ -1,0 +1,14 @@
+[
+  {
+    "kind": "glass-landing",
+    "attemptId": "img-000007",
+    "candidate": ".tmp/image-candidates/ism/refractive-glass-ui/landing/img-000007/candidate.png",
+    "key": "ism:refractive-glass-ui:0:landing.png"
+  },
+  {
+    "kind": "glass-mobile",
+    "attemptId": "img-000008",
+    "candidate": ".tmp/image-candidates/ism/refractive-glass-ui/mobile-app/img-000008/candidate.png",
+    "key": "ism:refractive-glass-ui:1:mobile-app.png"
+  }
+]

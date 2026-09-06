@@ -1,0 +1,55 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "src": "http://127.0.0.1:4179/assets/images/thumbs/refractive-glass-ui/landing.webp?v=2026-09-06-glass-motion",
+      "width": 768,
+      "height": 512,
+      "alt": "Liquid Glass 디자인 시안",
+      "manifestHash": true
+    },
+    {
+      "src": "http://127.0.0.1:4179/assets/images/refractive-glass-ui/landing.png?v=2026-09-06-glass-motion",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Enlarged view",
+      "manifestHash": true
+    },
+    {
+      "src": "http://127.0.0.1:4179/assets/images/thumbs/refractive-glass-ui/mobile-app.webp?v=2026-09-06-glass-motion",
+      "width": 768,
+      "height": 512,
+      "alt": "Liquid Glass - Mobile App",
+      "manifestHash": true
+    },
+    {
+      "src": "http://127.0.0.1:4179/assets/images/thumbs/motion/motion-spring/guide.webp?v=2026-09-06-guides",
+      "width": 768,
+      "height": 512,
+      "alt": "Spring: scale .92 → 약 1.008 → 1.00과 모션 감소 대안. 도형은 개념 설명이며 정확한 배율은 수치와 CSS를 따른다.",
+      "manifestHash": true
+    },
+    {
+      "src": "http://127.0.0.1:4179/assets/images/motion/motion-spring/guide.png?v=2026-09-06-guides",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Spring: scale .92 → 약 1.008 → 1.00과 모션 감소 대안. 도형은 개념 설명이며 정확한 배율은 수치와 CSS를 따른다.",
+      "manifestHash": true
+    },
+    {
+      "src": "http://127.0.0.1:4179/assets/images/thumbs/motion/motion-back/guide.webp?v=2026-09-06-guides",
+      "width": 768,
+      "height": 512,
+      "alt": "Back: 실제 이동 0 → -2.514 → 26.514 → 24px. 축척과 무관한 개념도와 모션 감소 대안.",
+      "manifestHash": true
+    },
+    {
+      "src": "http://127.0.0.1:4179/assets/images/motion/motion-back/guide.png?v=2026-09-06-guides",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Back: 실제 이동 0 → -2.514 → 26.514 → 24px. 축척과 무관한 개념도와 모션 감소 대안.",
+      "manifestHash": true
+    }
+  ],
+  "errors": []
+}

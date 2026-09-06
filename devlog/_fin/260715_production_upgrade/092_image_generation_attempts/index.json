@@ -5,6 +5,6 @@
   "shards": [
     "shard-001.jsonl"
   ],
-  "maxAttempt": 6,
+  "maxAttempt": 9,
   "openTargets": []
 }

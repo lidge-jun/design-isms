@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "changedRasterPaths": [
+    "assets/images/motion/motion-back/guide.png",
+    "assets/images/motion/motion-spring/guide.png",
+    "assets/images/refractive-glass-ui/landing.png",
+    "assets/images/refractive-glass-ui/mobile-app.png",
+    "assets/images/thumbs/motion/motion-back/guide.webp",
+    "assets/images/thumbs/motion/motion-spring/guide.webp",
+    "assets/images/thumbs/refractive-glass-ui/landing.webp",
+    "assets/images/thumbs/refractive-glass-ui/mobile-app.webp"
+  ],
+  "preservedRasterPaths": 654,
+  "preservedImmutableFiles": 15,
+  "previousReceiptSha": "1391e423b6cad0bb7f032d7b6832a169a9cf2cfbe8684640927fa863c51c4dc2",
+  "currentReceiptSha": "deac17b8bc081e1328fb4a4a5b027dfac7036cf1efa28515896693c8d808b1c7"
+}

@@ -4466,11 +4466,11 @@
   {
     "id": "refractive-glass-ui",
     "kind": "style",
-    "name": "Refractive Glass UI",
-    "nameKr": "굴절 유리 UI",
-    "tagline": "Interfaces shaped by light",
-    "description": "굴절 유리 UI는 배경을 흐리게 비치는 카드에 머물지 않고, 가장자리의 굴절·확대·반사광과 움직임에 따른 재료 변화를 정보 계층으로 사용한다. 명확한 대비 보정과 깊이 규칙을 함께 설계해 내비게이션과 제어가 빛에 반응하는 하나의 재료처럼 느껴지게 한다.",
-    "descriptionEn": "Refractive Glass UI goes beyond a blurred translucent card by using edge refraction, magnification, specular light, and motion-responsive material behavior as information hierarchy. Contrast treatments and depth rules keep navigation and controls legible while the interface behaves like one light-shaped material system.",
+    "name": "Liquid Glass",
+    "nameKr": "리퀴드 글래스",
+    "tagline": "Light, depth, and controls in motion",
+    "description": "Liquid Glass는 Apple이 2025년 소개한 동적 재질이다. 배경을 굴절시키는 가장자리와 반사광으로 내비게이션·제어부를 콘텐츠 위에 띄운다. 2026년 공개한 27 세대 프리뷰는 굴절의 균일함과 대비를 다듬었다. 웹에서는 이 원칙을 응용하되 본문은 안정된 면에 두고, 투명도와 움직임을 줄여도 같은 기능을 쓸 수 있게 만든다.",
+    "descriptionEn": "Liquid Glass is Apple's dynamic material, introduced in 2025. Refraction and highlights separate navigation and controls from the content below. The 27-generation preview in 2026 refines refraction and contrast. Web interpretations keep content on stable surfaces and preserve functionality when transparency or motion is reduced.",
     "keywords": [
       "refraction",
       "translucency",
@@ -4487,44 +4487,44 @@
     ],
     "examples": [
       {
-        "name": "Apple Liquid Glass",
-        "url": "https://developer.apple.com/documentation/technologyoverviews/liquid-glass"
+        "name": "Apple iOS 27 · Native",
+        "url": "https://www.apple.com/os/ios/?os=ios"
       },
       {
-        "name": "BYD Global",
-        "url": "https://www.byd.com/en"
+        "name": "Apple iPadOS 27 · Native",
+        "url": "https://www.apple.com/os/ipados/"
       },
       {
-        "name": "Apple Vision Pro",
-        "url": "https://www.apple.com/apple-vision-pro/"
+        "name": "Apple macOS 27 · Native",
+        "url": "https://www.apple.com/os/macos/"
       },
       {
-        "name": "Silica Plugin",
-        "url": "https://silicaplugin.com/"
+        "name": "Apple watchOS 27 · Native",
+        "url": "https://www.apple.com/os/watchos/"
       },
       {
-        "name": "Liquid Glass HQ",
-        "url": "https://liquidglasshq.com/"
-      },
-      {
-        "name": "GlassUI",
-        "url": "https://glassui.dev/"
-      },
-      {
-        "name": "Kube",
+        "name": "Kube · Refraction playground",
         "url": "https://kube.io/blog/liquid-glass-css-svg/"
       },
       {
-        "name": "design.dev Liquid Glass Generator",
+        "name": "liquidGL · Live lens",
+        "url": "https://liquidgl.naughtyduk.com/"
+      },
+      {
+        "name": "rdev · Liquid Glass React",
+        "url": "https://liquid-glass.maxrovensky.com/"
+      },
+      {
+        "name": "StarKnightt · Pointer lens",
+        "url": "https://starknightt.github.io/liquid-glass/"
+      },
+      {
+        "name": "design.dev · Frosted comparison",
         "url": "https://design.dev/tools/liquid-glass-generator/"
       },
       {
-        "name": "Liquid Glass Pro",
-        "url": "https://www.liquid-glass.pro/examples"
-      },
-      {
-        "name": "liquidGL",
-        "url": "https://liquidgl.naughtyduk.com/"
+        "name": "Aside · Solid alternative",
+        "url": "https://aside.com/"
       }
     ],
     "images": [
@@ -4541,18 +4541,18 @@
         "label": "Dashboard"
       }
     ],
-    "history": "굴절 유리 UI라는 이름은 역사적 운동보다 최근의 플랫폼 재료 시스템과 웹 구현을 묶어 설명하는 동시대적 분류다. 반투명 패널과 블러는 오래전부터 디지털 인터페이스에 쓰였지만, 최근 접근은 콘텐츠 뒤의 빛을 가장자리에서 굴절·확대하고 반사광과 모션으로 층의 위치를 드러내는 데 초점을 둔다. 따라서 정적인 반투명 카드와 배경 블러만 사용하는 글래스모피즘과 달리, 재료가 주변 색과 움직임에 적응하면서도 텍스트 대비를 보정해야 한다. 현재는 운영체제 내비게이션, 미디어 제어, 제품 랜딩과 데이터 위젯에서 떠 있는 제어면을 연결하는 데 쓰인다. 다만 투명도와 왜곡이 과하면 가독성·성능·멀미 문제가 생길 수 있으므로, 핵심 정보에는 안정된 불투명 면과 reduced-motion 대안을 함께 제공해야 한다.",
+    "history": "Apple은 2025년 6월 WWDC25에서 Liquid Glass를 발표했다. 기존 반투명 패널과 달리 빛·굴절·움직임을 제어부의 깊이와 상태를 드러내는 재료로 묶었다. WWDC26에서는 복잡한 배경의 확산, 가장자리 음영과 반사광, 스크롤 중 툴바의 가독성을 다듬었다. 2026년 9월 6일 공식 iOS 페이지는 27을 프리뷰로 안내한다. 이 카탈로그의 웹 예제는 해당 원칙을 응용한 것으로, Apple 네이티브 렌더링과 동일하지 않다. Apple의 재료 가이드는 내비게이션과 제어가 콘텐츠 위의 별도 층을 이루도록 권하며, 본문 패널에는 표준 재료를 사용하도록 구분한다. 풍부한 사진 위의 큰 제어와 글자가 많은 툴바는 같은 투명도를 그대로 공유할 수 없다. 웹으로 옮길 때도 이 역할 구분을 먼저 정하고, 효과를 줄인 상태에서 작업이 그대로 이어지는지 확인해야 한다.",
     "prompts": [
       {
         "file": "landing.png",
-        "prompt": "A premium consumer audio product landing page in a refractive liquid-glass design language: a floating translucent navigation pill that visibly bends and magnifies the imagery behind it with specular edge highlights, layered frosted panels with light refraction at the edges, clear/ice neutral palette with one spectral highlight, dark readable ink text on light surfaces, product photo as the stage. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "prompt": "Render a single finished 1536x1024 consumer product website screenshot for a fictional compact outdoor camera named FIELD 01. Art-direct it as a credible 2026 Liquid Glass web interpretation: photographic content is the stage, while only navigation and a small purchase control use a translucent material. The result is a real product page with readable functions, not a moodboard, a material swatch poster, or a collection of floating cards. No real brand logos. The wordmark FIELD is simple original sans-serif typography.\n\nA beautifully lit graphite compact camera rests on a broad river stone in a shallow stream. The camera has a believable fixed lens, a knurled dial, a subtle textured grip and convincing proportions. Compose the product at a large scale slightly right of center, with the stream, gray stones and a modest patch of green moss extending continuously across the full page. Natural daylight creates soft directional reflections. The palette comes from real material: stone gray, off-white light, graphite, restrained moss green. No neon cyan, rainbow holographic wash, violet gradient, chrome sci-fi pedestal or glowing particles. This is sophisticated product photography with tactile detail and generous calm zones around the interface.\n\nAcross the upper edge place one slender floating navigation bar with a single outer capsule contour and four simple textual regions: FIELD, Camera, Journal, Support. Use dark crisp labels on a mostly opaque light material. There are NO individual outlined capsule rings around each label. The bar has a soft inner edge highlight, a subtle dark lower edge and localized optical bending of the photographic texture directly underneath its boundary. Refraction belongs only to the material edge; the text itself is never distorted, blurred, outlined or embossed. The center of the bar has enough opacity to make every label readable. This is believable adaptive glass, not a rectangle containing a sharp duplicated photograph.\n\nIntegrate a compact editorial heading directly on a calm image area in the upper-left/middle-left: 'FIELD 01' with a smaller line 'A pocket camera. A 28 mm view.' Keep the heading at a realistic product-page scale, approximately 44–56px in a 1536px screenshot. Use a refined plain sans-serif, absolutely no dramatic italic or oversized luxury serif. Do not put the heading and camera into separate left/right boxed panels; the photograph remains one continuous environment. A compact two-line specification below reads '28 mm fixed lens' and 'Weather-sealed body'. These are text, not equal-sized feature cards or floating chips.\n\nNear the lower-left place one dark filled primary button labelled 'Explore Field 01'. It has a comfortable click area and simple rounded corners. No duplicated Buy Now buttons, no extra demo CTA, no glowing arrow, no pricing card grid. Along the lower edge, a quiet white product-information band begins, with the readable text 'Small enough for every day.' and a small 'View specifications' text link, giving the sense of a real scrollable page. The page should look thoughtfully designed, with consistent baseline alignment, real spacing and no filler slogan stacks. Keep content panels stable and opaque. At most two glass surfaces are visible and this design should use only the navigation as its main glass surface.\n\nRender fine light refraction and edge reflections clearly enough to identify the material, but never sacrifice content readability. No browser chrome, no desktop frame, no phones, no people, no fake chat widget, no cookie modal, no badge cloud, no stars, no watermark, no unused background blobs. Every visible control has a clear product purpose. Produce one polished full-bleed website screenshot with legible exact short text and a coherent hierarchy.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
       },
       {
         "file": "mobile-app.png",
-        "prompt": "A mobile music player app screen in a refractive liquid-glass design language: translucent playback controls that refract the album art behind them, layered glass sheets with soft specular rims and depth blur, floating tab bar with light-bending edges, clear/ice neutrals with a single spectral accent, crisp readable typography over the material. Render one finished production website or app screen, full-bleed as if captured from the product. Do not make a moodboard, poster sheet, style guide, comparison board, or multiple labeled variants. Show real navigation, content, controls, states, and responsive layout. No real logos, browser chrome, people, watermark, meaningless microcopy, or decorative labels outside the product UI. 1536x1024 landscape, crisp legible UI text.",
+        "prompt": "Critical correction: all TOP HEADER TEXT including Now playing and TIDE must be DARK GRAPHITE #18242B on the pale sky, never white or light gray. The top back and queue icons may remain white INSIDE their opaque dark circles. Keep the lower track title white only on its dark local scrim. Maximize clear label contrast; a pretty pale background must not erase navigation.\n\nRender one complete 1536x1024 landscape mobile music player screen, designed for a large foldable mobile device in landscape. This is ONE mobile app view, not a desktop dashboard, not three phone mockups, not a browser window, and not several screen variants. No device bezel or exterior frame. The fictional music service is called TIDE. Use a mature, uncluttered Liquid Glass-inspired material system: a stable content image and one floating playback control layer, with no glass over every content panel.\n\nThe background is original album art: a quiet photographic view of a rocky coastline in clear morning light, pale natural sky, muted blue-gray water, charcoal rocks and one understated ochre accent in a small beach structure far away. It should feel like an intentionally chosen album cover rather than a generic blue glacier fantasy. The landscape image runs continuously across most of the screen. It has calm darker zones where white text remains readable, without a blurred full-screen overlay. No rainbow aura, holographic ring, glowing tunnel, artificial nebula, music-note particles or isolated 3D icons.\n\nTop-left is a small near-opaque back control and the text 'Now playing'. Top-right has one simple queue icon button; do not add a left sidebar, Home/Search/Radio navigation list, a permanent up-next column or a desktop settings rail. Navigation is extremely sparse. Use consistent thin custom line icons, never emoji. A small DARK GRAPHITE TIDE wordmark appears in the top center without dominating the screen. The Now playing label is also DARK GRAPHITE. All top header words are dark, in clear contrast with the light sky.\n\nIn the lower-middle area above the controls, set the track title 'Slow Morning' in a crisp substantial but not oversized sans-serif. Beneath it the artist 'Juniper Coast' and the album 'Low Tide'. Keep these labels on the image's calm area with a subtle local darkening scrim if needed, not a separate glass card. Place one modest save/bookmark icon beside the track information, not a large Saved pill. No duplicate track information elsewhere.\n\nThe sole playback surface is a wide low floating translucent toolbar near the bottom, inset evenly from the screen edges. It contains exactly ONE progress track, one elapsed label '1:32', one duration label '4:06', and one set of previous, pause and next controls. The progress knob is around 37 percent of the track. The pause control is the dominant central control; neighboring controls are smaller and clearly spaced for touch. A small volume icon may be present only if it does not form another playback strip. There is no second mini-player at the bottom or side. The overall toolbar is one continuous rounded form with a single exterior contour; no nested capsule outline around each child. Active control fills can be opaque but should not create a row of ringed pills.\n\nMaterial appearance: a very subtle dark lower edge, bright but restrained upper rim, localized refraction of coastline detail along the toolbar perimeter, and a sufficiently opaque neutral body behind text. The album art's line where water meets rock may visibly bend at a small segment of the material edge, demonstrating refraction. Text, icons and hit targets stay geometrically stable and sharp; glass never distorts the controls themselves. No excessive glossy bubbles, lens flare or oil-slick rainbow. Mobile hierarchy and one coherent playback task matter more than ornament. The rest of the content remains a stable image plane.\n\nUse realistic mobile spacing, clear contrast, one intentional accent and readable text. No marketing hero, fake analytics, features grid, tiny illegible text blocks, browser chrome, window buttons, stock logos, watermarks or multiple screens. The final artifact is a polished, believable landscape mobile player that could be operated comfortably, with a single refined Liquid Glass control surface.",
         "model": "gpt-image-2",
         "quality": "high",
         "size": "1536x1024"
@@ -4567,19 +4567,23 @@
     ],
     "sources": [
       {
-        "label": "Apple Developer — Liquid Glass",
-        "url": "https://developer.apple.com/documentation/technologyoverviews/liquid-glass"
+        "label": "Apple HIG — Materials",
+        "url": "https://developer.apple.com/design/human-interface-guidelines/materials"
       },
       {
-        "label": "Rocking Tech — Liquid Glass web design",
-        "url": "https://rockingtech.co.uk/blog/liquid-glass-web-design-2025"
+        "label": "WWDC26 — Platforms State of the Union",
+        "url": "https://developer.apple.com/videos/play/wwdc2026/102/"
       },
       {
-        "label": "Kube — Liquid Glass with CSS and SVG",
-        "url": "https://kube.io/blog/liquid-glass-css-svg/"
+        "label": "Apple — iOS 27 Preview",
+        "url": "https://www.apple.com/os/ios/?os=ios"
+      },
+      {
+        "label": "Apple — Liquid Glass introduction (2025)",
+        "url": "https://www.apple.com/newsroom/2025/06/apple-supercharges-its-tools-and-technologies-for-developers/"
       }
     ],
-    "reviewedOn": "2026-07-15"
+    "reviewedOn": "2026-09-06"
   },
   {
     "id": "spatial-ui",

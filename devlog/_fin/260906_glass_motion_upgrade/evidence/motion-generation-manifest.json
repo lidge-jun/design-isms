@@ -1,0 +1,24 @@
+[
+  {
+    "id": "motion-spring",
+    "prompt": "devlog/_plan/260906_glass_motion_upgrade/evidence/prompts/spring.txt",
+    "candidate": ".tmp/glass-motion-candidates/spring-1.png",
+    "target": "assets/images/motion/motion-spring/guide.png",
+    "model": "oauth/gpt-5.6-sol",
+    "quality": "high",
+    "size": "1536x1024",
+    "reasoningEffort": "high",
+    "status": "prepared"
+  },
+  {
+    "id": "motion-back",
+    "prompt": "devlog/_plan/260906_glass_motion_upgrade/evidence/prompts/back.txt",
+    "candidate": ".tmp/glass-motion-candidates/back-1.png",
+    "target": "assets/images/motion/motion-back/guide.png",
+    "model": "oauth/gpt-5.6-sol",
+    "quality": "high",
+    "size": "1536x1024",
+    "reasoningEffort": "high",
+    "status": "prepared"
+  }
+]

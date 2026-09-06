@@ -1,0 +1,9 @@
+[
+  "npm",
+  "run",
+  "images:finalize-quality",
+  "--",
+  "--supersede",
+  "--expected-previous-sha",
+  "1391e423b6cad0bb7f032d7b6832a169a9cf2cfbe8684640927fa863c51c4dc2"
+]

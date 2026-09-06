@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "allowedFields": {
+    "refractive-glass-ui": [
+      "name",
+      "nameKr",
+      "tagline",
+      "description",
+      "descriptionEn",
+      "history",
+      "sources",
+      "examples",
+      "reviewedOn"
+    ]
+  },
+  "revisionIds": [
+    "glass-editorial-001",
+    "glass-editorial-002"
+  ],
+  "finalRevisionSha256": "b584f6221d17875adbd394d02c0c4ff10c43ed5ea183f095d26007bc9e8e7b1a"
+}

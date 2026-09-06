@@ -1,0 +1,178 @@
+/* One bounded material surface; editorial content stays opaque. */
+.material-lab {
+  margin: 24px 0;
+  color: var(--atlas-ink);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+
+.material-lab-heading {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+.material-lab-intro,
+.material-lab-note {
+  max-width: 65ch;
+  margin: 0 0 16px;
+  color: var(--atlas-muted);
+  font-size: 13px;
+  text-wrap: pretty;
+}
+
+.material-lab-stage {
+  overflow: hidden;
+  border: 1px solid var(--atlas-rule);
+  border-radius: var(--atlas-radius-sm);
+  background: var(--atlas-surface);
+  color: var(--atlas-ink);
+}
+
+.material-lab-copy { padding: 20px; }
+
+.material-lab-scene-title {
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+.material-lab-scene-body {
+  max-width: 60ch;
+  min-height: 5em;
+  margin: 0;
+  font-size: 13px;
+  text-wrap: balance;
+}
+
+.material-lab-field {
+  position: relative;
+  min-height: 180px;
+  background: #e3e4dc;
+}
+
+.material-lab-shapes { position: absolute; inset: 0; overflow: hidden; }
+.material-lab-shapes span { position: absolute; display: block; }
+.material-lab-shapes span:first-child {
+  width: 150px;
+  height: 150px;
+  left: 14%;
+  top: 12px;
+  border-radius: 50%;
+  background: var(--atlas-signal);
+}
+.material-lab-shapes span:last-child {
+  left: 0;
+  right: 0;
+  bottom: 44px;
+  height: 18px;
+  background: #242620;
+}
+
+.material-lab[data-scene='ink'] .material-lab-stage { background: #242620; color: #fafaf6; }
+.material-lab[data-scene='ink'] .material-lab-field { background: #11120f; }
+.material-lab[data-scene='ink'] .material-lab-shapes span:last-child { background: #fafaf6; }
+/* Deliberate contrast test chart, not an ambient gradient. */
+.material-lab[data-scene='checker'] .material-lab-field {
+  background: repeating-linear-gradient(135deg, #11120f 0 16px, #fafaf6 16px 32px);
+}
+.material-lab[data-scene='checker'] .material-lab-shapes { visibility: hidden; }
+
+.material-lab-toolbar {
+  position: absolute;
+  inset-inline: 12px;
+  bottom: 20px;
+  max-width: 360px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  padding: 6px;
+  border: 1px solid #b8b9b0;
+  border-radius: 28px;
+  background: #fafaf6;
+  color: #11120f;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: inset 0 1px 0 #fff, 0 5px 16px rgb(17 18 15 / 0.16);
+}
+
+.material-lab-toolbar button {
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px 4px;
+  border: 0;
+  border-radius: 22px;
+  background: transparent;
+  color: inherit;
+  font: 600 13px/1.3 var(--font-sans);
+  cursor: pointer;
+  transition: transform 120ms ease;
+}
+
+.material-lab-toolbar button:hover { background: #e3e4dc; }
+.material-lab-toolbar button[aria-pressed='true'] { background: #11120f; color: #fafaf6; }
+.material-lab-toolbar button:active { transform: scale(0.97); }
+.material-lab :is(button, input, a):focus-visible {
+  outline: 2px solid var(--atlas-focus);
+  outline-offset: 2px;
+}
+
+.material-lab-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  width: fit-content;
+  margin-top: 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.material-lab-option input { width: 20px; height: 20px; flex-shrink: 0; accent-color: var(--atlas-ink); }
+.material-lab-status { margin: 4px 0 8px; font-size: 13px; text-wrap: balance; }
+.material-lab-mode-glass { display: none; }
+.material-lab-sources { display: flex; flex-wrap: wrap; gap: 4px 20px; margin: 0; font-size: 12px; }
+.material-lab-sources a { display: inline-flex; align-items: center; min-height: 44px; text-underline-offset: 3px; }
+
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .material-lab[data-solid='false'] .material-lab-toolbar {
+    /* 90% tint protects labels even over the darkest stripe, without relying on blur. */
+    background: rgb(250 250 246 / 0.9);
+    -webkit-backdrop-filter: blur(14px) saturate(1.15);
+    backdrop-filter: blur(14px) saturate(1.15);
+  }
+  .material-lab[data-solid='false'] .material-lab-mode-glass { display: inline; }
+  .material-lab[data-solid='false'] .material-lab-mode-solid { display: none; }
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more), (forced-colors: active) {
+  .material-lab[data-solid='false'] .material-lab-toolbar {
+    background: #fafaf6;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: none;
+  }
+  .material-lab[data-solid='false'] .material-lab-mode-glass { display: none; }
+  .material-lab[data-solid='false'] .material-lab-mode-solid { display: inline; }
+}
+
+@media (forced-colors: active) {
+  .material-lab .material-lab-toolbar,
+  .material-lab[data-solid='false'] .material-lab-toolbar { background: Canvas; color: CanvasText; border-color: CanvasText; }
+  .material-lab-toolbar button[aria-pressed='true'] { background: Highlight; color: HighlightText; outline: 2px solid Highlight; }
+  .material-lab :is(button, input, a):focus-visible { outline-color: Highlight; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .material-lab-toolbar button { transition: none; }
+  .material-lab-toolbar button:active { transform: none; }
+}
+
+@media (max-width: 640px) {
+  .material-lab-copy { padding: 16px; }
+  .material-lab-toolbar { inset-inline: 8px; }
+}

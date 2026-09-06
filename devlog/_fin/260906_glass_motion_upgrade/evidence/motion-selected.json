@@ -1,0 +1,56 @@
+[
+  {
+    "id": "motion-spring",
+    "candidate": ".tmp/glass-motion-candidates/spring-2.png",
+    "target": "assets/images/motion/motion-spring/guide.png",
+    "beforeSha256": "9ecf728268a9027f984f924f0e89884f38f40a281b46d2882fb0e8014226a358",
+    "sourceSha256": "1d5509df0738c9d2c5fac5ac32e66752886a7a23bf4fa4eaf0b3e1ce00c0ad2e",
+    "promptFile": "devlog/_plan/260906_glass_motion_upgrade/evidence/prompts/spring-2.txt",
+    "promptSha256": "01001427099104e2a130719f4d28985f3c631dcc1f49d8ca2fd52946cae68c54",
+    "requestId": "req_cli_gen_mtphxq88_mrbr9r",
+    "decision": "accepted",
+    "reviewer": "codex-main+Cicero",
+    "reason": "Correct numeric semantics, legible opaque guide, schematic rendering disclosed; independent acceptance recorded.",
+    "generation": {
+      "ok": true,
+      "requestId": "req_cli_gen_mtphxq88_mrbr9r",
+      "elapsed": 69.3,
+      "images": [
+        {
+          "path": ".tmp/glass-motion-candidates/spring-2.png",
+          "filename": "gpt-5.6-sol_3x2_20260906_Create-a-precise-153_0.png",
+          "requestedSize": "1536x1024",
+          "actualSize": "1536x1024"
+        }
+      ]
+    },
+    "previewSha256": "bdc90420f4351990504a6941854bc48be7713d19fff5166bc43218a379c9fdab"
+  },
+  {
+    "id": "motion-back",
+    "candidate": ".tmp/glass-motion-candidates/back-3.png",
+    "target": "assets/images/motion/motion-back/guide.png",
+    "beforeSha256": "9c9181344f695f9257a7ca9d05f9db409943fd66cf2c95d99e2483eca758ebb1",
+    "sourceSha256": "10f9edb605f423b771f4684ba9865b451f1018d2156ff483893023b0faa6b538",
+    "promptFile": "devlog/_plan/260906_glass_motion_upgrade/evidence/prompts/back-3.txt",
+    "promptSha256": "a20527f5192788cd0be3486d9b0e46f7b3cf4bacba258996e2b332ab8af6707e",
+    "requestId": "req_cli_gen_mtpi61t5_lq7njz",
+    "decision": "accepted",
+    "reviewer": "codex-main+Cicero",
+    "reason": "Correct numeric semantics, legible opaque guide, schematic rendering disclosed; independent acceptance recorded.",
+    "generation": {
+      "ok": true,
+      "requestId": "req_cli_gen_mtpi61t5_lq7njz",
+      "elapsed": 77.6,
+      "images": [
+        {
+          "path": ".tmp/glass-motion-candidates/back-3.png",
+          "filename": "gpt-5.6-sol_3x2_20260906_Create-a-NEW-finishe_0.png",
+          "requestedSize": "1536x1024",
+          "actualSize": "1536x1024"
+        }
+      ]
+    },
+    "previewSha256": "b0041379a315fe3ad22765e9f6b627dd35b5d2e4b6847579b179faa3bb178a4c"
+  }
+]

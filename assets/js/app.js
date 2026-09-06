@@ -1,5 +1,5 @@
 "use strict";
-const DATA_VERSION = '2026-07-17-production', IMAGE_VERSION = '2026-07-17-quality';
+const DATA_VERSION = '2026-09-06-material', IMAGE_VERSION = '2026-09-06-glass-motion';
 const DATA_URL = `./assets/data/isms.json?v=${DATA_VERSION}`;
 const GUIDE_URL = `./assets/data/dev-guides.json?v=${DATA_VERSION}`;
 const IMAGE_BASE_URL = './assets/images';
@@ -816,6 +816,7 @@ function openModal(ismId, trigger) {
             DesignExport.mountIsm(exportMount, { id: ism.id, name: ism.name, palette: ism.palette }, gi);
         }
     }
+    AppMaterials.mount(content, ism.id, currentLang);
 }
 function closeModal() {
     const overlay = getRequired('modal-overlay');

@@ -1,0 +1,133 @@
+{
+  "ok": true,
+  "base": "http://127.0.0.1:4179",
+  "rows": [
+    {
+      "page": "index",
+      "width": 1440,
+      "count": 49,
+      "overflow": false,
+      "badImages": [],
+      "effectTypes": 0,
+      "motionTypes": 0
+    },
+    {
+      "page": "effects",
+      "width": 1440,
+      "count": 94,
+      "overflow": false,
+      "badImages": [],
+      "effectTypes": 94,
+      "motionTypes": 0
+    },
+    {
+      "page": "faq",
+      "width": 1440,
+      "count": 18,
+      "overflow": false,
+      "badImages": [],
+      "effectTypes": 0,
+      "motionTypes": 0
+    },
+    {
+      "page": "color",
+      "width": 1440,
+      "count": 25,
+      "overflow": false,
+      "badImages": [],
+      "effectTypes": 0,
+      "motionTypes": 0
+    },
+    {
+      "page": "typography",
+      "width": 1440,
+      "count": 20,
+      "overflow": false,
+      "badImages": [],
+      "effectTypes": 0,
+      "motionTypes": 0
+    },
+    {
+      "page": "layout",
+      "width": 1440,
+      "count": 25,
+      "overflow": false,
+      "badImages": [],
+      "effectTypes": 0,
+      "motionTypes": 0
+    },
+    {
+      "page": "motion",
+      "width": 1440,
+      "count": 20,
+      "overflow": false,
+      "badImages": [],
+      "effectTypes": 0,
+      "motionTypes": 20
+    },
+    {
+      "page": "index",
+      "width": 390,
+      "count": 49,
+      "overflow": false,
+      "badImages": [],
+      "effectTypes": 0,
+      "motionTypes": 0
+    },
+    {
+      "page": "effects",
+      "width": 390,
+      "count": 94,
+      "overflow": false,
+      "badImages": [],
+      "effectTypes": 94,
+      "motionTypes": 0
+    },
+    {
+      "page": "faq",
+      "width": 390,
+      "count": 18,
+      "overflow": false,
+      "badImages": [],
+      "effectTypes": 0,
+      "motionTypes": 0
+    },
+    {
+      "page": "color",
+      "width": 390,
+      "count": 25,
+      "overflow": false,
+      "badImages": [],
+      "effectTypes": 0,
+      "motionTypes": 0
+    },
+    {
+      "page": "typography",
+      "width": 390,
+      "count": 20,
+      "overflow": false,
+      "badImages": [],
+      "effectTypes": 0,
+      "motionTypes": 0
+    },
+    {
+      "page": "layout",
+      "width": 390,
+      "count": 25,
+      "overflow": false,
+      "badImages": [],
+      "effectTypes": 0,
+      "motionTypes": 0
+    },
+    {
+      "page": "motion",
+      "width": 390,
+      "count": 20,
+      "overflow": false,
+      "badImages": [],
+      "effectTypes": 0,
+      "motionTypes": 20
+    }
+  ],
+  "errors": []
+}

@@ -299,3 +299,23 @@ const popular = [
 - 반응형: 1440px / 1024px / 640px 브레이크포인트
 - 이미지: lazy loading (`loading="lazy"`)
 - 접근성: aria-label, 키보드 네비게이션, prefers-reduced-motion
+
+## Liquid Glass 재질 예제
+
+- `refractive-glass-ui` ID와 기존 hash는 유지하며 표시명은 Liquid Glass다.
+- `src/app-materials.ts`와 `assets/css/app-materials.css`가 ISM 모달의 재질 비교를 소유한다. `app-materials.js`를 `app.js`보다 먼저 로드한다.
+- 제어부만 유리 재질을 사용하고 본문·메뉴는 안정된 면에 둔다. 불투명 선택과 고대비·투명도 감소·모션 감소 상태에서도 기능과 정보가 유지되어야 한다.
+- 기존 093–097 baseline은 수정하지 않는다. 승인한 설명 수정만 editorial revision ledger에서 재생하고 이미지·프롬프트·비대상 데이터 비교는 그대로 유지한다.
+
+## Motion 상세 조작
+
+- `motion-interactions.js`를 `motion.js`보다 먼저 로드한다. 진행률·스크롤 등장·접기·탭·목록 재정렬 다섯 항목만 실제 조작 예제로 바꾸며 나머지는 일반 미리보기를 쓴다.
+- `MotionInteractions.mount(stage,id)`의 controller는 모달 DOM 교체 전에, 그리고 닫을 때 dispose한다. 공유 CatalogShell은 수정하지 않고 기존 콜백을 사용한다.
+- 일시정지는 중간 프레임을 유지하고 이어 재생·처음부터 재생을 구분한다. 숨겨진 탭·모션 감소 설정 변화가 수동 일시정지 의도를 덮어쓰지 않아야 한다.
+
+## 승인 이미지의 후속 교체
+
+- legacy 후보는 `image-attempt.mjs prepare --profile current-local`로 현재 localhost:3333·oauth/gpt-5.6-sol·high 설정을 명시한다. 과거 기록의 명령은 소급 수정하지 않는다.
+- 기존 098을 바꾸려면 `npm run images:finalize-quality -- --supersede --expected-previous-sha <현재098 SHA256>`를 쓴다. 이전 receipt·sheet는 해시별 보관하고 새 sheet는 별도 불변 경로에 저장한다.
+- 093–097과 기존 final sheet는 수정하지 않는다. 후속 receipt는 기존 승인 목록을 보존하고 새 승인 대상 셀만 바꿀 수 있다.
+- `npm run verify:quality-contracts`는 editorial/profile/final-history 회귀 검증이며 `npm run verify`에 포함된다.

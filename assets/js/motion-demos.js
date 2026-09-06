@@ -112,7 +112,7 @@ var MotionDemos;
         'motion-blur-reveal': '<div class="motion-demo-blur-reveal-copy"><b></b><i></i><i></i></div>',
         'motion-skeleton-shimmer': '<div class="motion-demo-skeleton-block"><i></i><i></i><i></i></div>',
         'motion-spinner': '<i class="motion-demo-spinner-ring"></i><span class="motion-demo-spinner-label">Loading</span>',
-        'motion-progress': '<div class="motion-demo-progress-track"><i></i></div><b class="motion-demo-progress-value">60%</b>',
+        'motion-progress': '<div class="motion-demo-progress-track"><i></i></div><b class="motion-demo-progress-value">진행</b>',
         'motion-pulse': '<div class="motion-demo-pulse-status"><i></i><span>Syncing</span></div>',
         'motion-scroll-timeline': '<div class="motion-demo-scroll-timeline-rail"><i></i></div><div class="motion-demo-scroll-timeline-page"><b></b><i></i><i></i></div>',
         'motion-scroll-reveal': '<div class="motion-demo-scroll-reveal-viewport"><i></i><div><b></b><span></span></div></div>',
@@ -125,7 +125,7 @@ var MotionDemos;
         const markup = demoMarkup[type];
         if (!markup)
             return '';
-        return `<div class="motion-demo motion-demo-${type.slice('motion-'.length)}" data-motion-id="${type}"><div class="motion-demo-stage" aria-hidden="true">${markup}</div></div>`;
+        return `<div class="motion-demo motion-demo-${type.slice('motion-'.length)}" data-motion-id="${type}" data-playback="idle"><div class="motion-demo-stage" aria-hidden="true">${markup}</div></div>`;
     }
     MotionDemos.render = render;
     function isDemoType(value) {

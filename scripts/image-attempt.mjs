@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import sharp from 'sharp';
 import { loadInventory, promptSha, sha256File, stem } from './image-quality-lib.mjs';
+import { imageGenerationCommand, validateImageGenerationCommand } from './image-generation-profiles.mjs';
 
 const args = process.argv.slice(2); const action = args[0];
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -73,6 +74,8 @@ function claimedOutput(candidate, value) {
 }
 
 if (action === 'prepare') {
+  const profile = args.includes('--profile') ? option('--profile', '') : undefined;
+  if (args.includes('--profile') && profile !== 'current-local') throw new Error(`unknown image generation profile: ${String(profile)}`);
   const key = option('--key'); const item = inventoryMap.get(key); if (!item) throw new Error(`unknown key ${key}`);
   const promptFile = resolve(option('--prompt-file')); const analysis = option('--analysis'); const negative = option('--negative');
   if (!existsSync(promptFile) || !analysis || !negative) throw new Error('prepare requires --prompt-file, --analysis, --negative');
@@ -87,8 +90,8 @@ if (action === 'prepare') {
     const candidate = `.tmp/image-candidates/${item.catalog}/${item.id}/${stem(item.file)}/${attemptId}/candidate.png`;
     if (existsSync(join(root, candidate))) throw new Error(`immutable candidate already exists ${candidate}`);
     mkdirSync(dirname(join(root, candidate)), { recursive: true });
-    const command = ['ima2', 'gen', '--stdin', '-q', 'high', '-s', '1536x1024', '-o', candidate, '--json', '--timeout', '300', '--server', 'http://127.0.0.1:3334', '--model', 'oauth/gpt-5.6-sol', '--reasoning-effort', 'high'];
-    const row = { state: 'prepared', attemptId, runId: baseline.runId, baselineSha256: baseline.aggregateSha256, key, prompt, promptSha256: promptSha(prompt), negativeConstraints: negative, priorFailureAnalysis: analysis, command, candidate, target: item.source, beforeSha256: sha256File(join(root, item.source)), createdAt: new Date().toISOString() };
+    const command = imageGenerationCommand(candidate, profile);
+    const row = { state: 'prepared', attemptId, ...(profile === undefined ? {} : { profile }), runId: baseline.runId, baselineSha256: baseline.aggregateSha256, key, prompt, promptSha256: promptSha(prompt), negativeConstraints: negative, priorFailureAnalysis: analysis, command, candidate, target: item.source, beforeSha256: sha256File(join(root, item.source)), createdAt: new Date().toISOString() };
     appendRow(row); return row;
   });
   console.log(JSON.stringify(prepared));
@@ -96,6 +99,7 @@ if (action === 'prepare') {
   const attemptId = option('--attempt');
   const claim = withLedger(rows => {
     const states = attemptStates(attemptId, rows); const first = states.find(row => row.state === 'prepared');
+    validateImageGenerationCommand(first);
     if (states.some(row => row.state === 'result')) throw new Error(`attempt already ran ${attemptId}`);
     const prior = states.filter(row => row.state === 'running').at(-1);
     if (prior) {

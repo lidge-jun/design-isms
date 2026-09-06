@@ -84,7 +84,7 @@ docs/PLUGIN.md               # 설치·사용·문제 해결
 - 스킬이 인용하는 필드명은 실제 JSON과 일치해야 한다. `dev-guides.json`의
   `implementation`은 문자열이 아니라 `{summary, components, build, checks}` 객체다.
 - Effects guide images are generated for all 94 entries and shown in the modal only.
-- The current ISMS expansion generated 24 candidate UI mockups for 8 newly added ISMS, plus matching WebP previews.
+- The July 2026 ISMS expansion generated 24 candidate UI mockups for 8 newly added ISMS, plus matching WebP previews.
 
 ## Current Feature Contracts
 
@@ -98,7 +98,7 @@ docs/PLUGIN.md               # 설치·사용·문제 해결
 - Verification for visual changes: `npm run verify`, plus browser desktop/mobile checks for card count, unique demo classes, horizontal overflow, and console errors.
 - Verification for image changes: candidate generation and review are recorded in `092_image_generation_attempts/`; approved originals, previews, prompt records, and manifest rows are applied together before `npm run verify`.
 - Image pipeline: `scripts/generate-thumbnails.mjs` (sharp, 768×512 WebP, `--force`/`--scope`), four complete contact-sheet builders (three 7×7 ISM sheets plus one 8×8 Effects sheet), `scripts/audit-effect-guides.mjs` (manifest-bound dimensions/hash/orphan gate), and `scripts/verify-image-quality.mjs` (211-slot immutable legacy baseline + catalog-addition live-hash gate).
-- The completion audit replaced exactly `minimalism/landing.png` and `indie-web/landing.png`; all other raster paths are verified against the immutable 422-file baseline.
+- The original completion audit replaced `minimalism/landing.png` and `indie-web/landing.png`. The 2026-09-06 upgrade additionally replaces Liquid Glass landing/mobile references through approved attempts and Spring/Back catalog guides through their domain ledger. All non-target rasters retain their recorded hashes.
 - Release integrity: `scripts/sync-sot.mjs`, `verify-generated.mjs`, `verify-content.mjs`, `verify-assets.mjs`, `verify-line-limits.mjs`, and `stage-pages.mjs`; `.pages/manifest.json` is the deterministic public-file receipt.
 - Hosting boundary: `.github/workflows/ci.yml` verifies and stages on branch/PR work; deploy verifies, stages, then uploads `.pages` only.
 
@@ -131,3 +131,23 @@ devlog/260510_nav_taxonomy_effect_docs/
 This phase folder records the Jawdev/PABCD-style plan, GPT Pro review result, and final verification notes for the Frontend UI Candidates release.
 
 The `260510_nav_taxonomy_effect_docs` folder records the follow-up implementation that added shared navigation, long-form effects docs, Grok/ima2 prompt artifacts, and the 24-image ISMS expansion batch. A previously public reference page was removed from the runtime after user correction; official design-system links remain only as source references for effects documentation.
+
+## Liquid Glass specimen (2026-09-06)
+
+- `refractive-glass-ui` keeps its existing identity and hash; its visible name is Liquid Glass.
+- `src/app-materials.ts` → `assets/js/app-materials.js` owns the modal's local scene/solid-material comparison. `assets/css/app-materials.css` owns its bounded material styles. The modal subtree owns its listeners; replacing the subtree removes the specimen.
+- `assets/data/dev-guides.json` remains the guide SoT, distinguishing frosted glassmorphism from Apple's material principles and web approximations.
+- Editorial updates to immutable legacy catalog content use a strictly scoped hash-pinned revision ledger, replayed only into the verifier's baseline copy. Image/prompt approval and whole-object comparison remain separate checks.
+
+## Motion interaction ownership (2026-09-06)
+
+- `src/motion.ts` owns decorative preview playback (pause/resume/replay), grid visibility and modal lifecycle.
+- `src/motion-interactions.ts` → `assets/js/motion-interactions.js` owns five accessible modal interactions: progress, local scroll reveal, disclosure, tabs and actual DOM list reorder. Its `mount(stage,id)` returns a disposable controller or null; `assets/css/motion-interactions.css` owns specimen styling.
+- A modal replacement disposes the old controller before replacing DOM. Close disposes listeners, observers, pending frames and animations. Reduced-motion changes preserve logical state while removing movement.
+- `assets/data/motion.json` retains 20 identities and owns recipe CSS, usage summaries and reduced-motion guidance. Generated guide images remain a separate provenance contract.
+
+## Image revision records
+
+- `scripts/image-generation-profiles.mjs` preserves exact historical generation argv and admits the explicit `current-local` profile for the existing localhost:3333 OAuth Sol/high lane.
+- `scripts/image-final-history.mjs` validates predecessor receipt/sheets and approved-cell continuity. `images:finalize-quality -- --supersede --expected-previous-sha <SHA256>` preserves prior bytes under `098_image_final_history/<SHA256>/`, stores new sheets under `095_image_sheets/final-revisions/<aggregate>/`, and atomically updates 098. Default finalization still rejects differing existing content.
+- `npm run verify:quality-contracts`, included in `verify`, runs editorial, generation-profile and final-history regression tests. Immutable 093–097 baseline files and original final sheets remain unchanged.

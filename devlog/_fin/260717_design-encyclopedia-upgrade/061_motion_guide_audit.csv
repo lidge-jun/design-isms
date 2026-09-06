@@ -1,10 +1,10 @@
 id,baseline,decision,reviewer,reviewedOn,notes
 motion-linear,catalog-addition,accepted,codex-main+wp8-motion,2026-07-18,"kind=catalog-addition; motion recipe guide plate generated and visually accepted"
 motion-ease-in-out,catalog-addition,accepted,codex-main+wp8-motion,2026-07-18,"kind=catalog-addition; motion recipe guide plate generated and visually accepted"
-motion-spring,catalog-addition,accepted,codex-main+wp8-motion,2026-07-18,"kind=catalog-addition; motion recipe guide plate generated and visually accepted"
+motion-spring,catalog-replacement,accepted,codex-main+Cicero,2026-09-06,kind=catalog-replacement; corrected numeric semantics; prior row preserved in260906 evidence; schematic graphic visually reviewed
 motion-bounce,catalog-addition,accepted,codex-main+wp8-motion,2026-07-18,"kind=catalog-addition; motion recipe guide plate generated and visually accepted"
 motion-elastic,catalog-addition,accepted,codex-main+wp8-motion,2026-07-18,"kind=catalog-addition; motion recipe guide plate generated and visually accepted"
-motion-back,catalog-addition,accepted,codex-main+wp8-motion,2026-07-18,"kind=catalog-addition; motion recipe guide plate generated and visually accepted"
+motion-back,catalog-replacement,accepted,codex-main+Cicero,2026-09-06,kind=catalog-replacement; corrected numeric semantics; prior row preserved in260906 evidence; schematic graphic visually reviewed
 motion-fade,catalog-addition,accepted,codex-main+wp8-motion,2026-07-18,"kind=catalog-addition; motion recipe guide plate generated and visually accepted"
 motion-slide,catalog-addition,accepted,codex-main+wp8-motion,2026-07-18,"kind=catalog-addition; motion recipe guide plate generated and visually accepted"
 motion-scale,catalog-addition,accepted,codex-main+wp8-motion,2026-07-18,"kind=catalog-addition; motion recipe guide plate generated and visually accepted"

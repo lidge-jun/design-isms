@@ -1,0 +1,117 @@
+{
+  "date": "2026-09-06",
+  "references": [
+    {
+      "order": 1,
+      "name": "Apple iOS 27 — native material",
+      "url": "https://www.apple.com/os/ios/?os=ios",
+      "class": "native-product-imagery",
+      "observation": "Native toolbar with refracted wallpaper line; same-day earlier browser proof, not live native interaction.",
+      "proof": [
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/examples-ios.png",
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/examples-ios-snapshot.txt"
+      ]
+    },
+    {
+      "order": 2,
+      "name": "Apple iPadOS 27 — native material",
+      "url": "https://www.apple.com/os/ipados/",
+      "class": "native-product-imagery",
+      "observation": "Design refinements card with native control pill and edge highlight; 27 Preview, no release claim.",
+      "proof": [
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/gap-native-0.png",
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/gap-native-0-loaded.txt"
+      ]
+    },
+    {
+      "order": 3,
+      "name": "Apple macOS 27 — native material",
+      "url": "https://www.apple.com/os/macos/",
+      "class": "native-product-imagery",
+      "observation": "Focused material card and adjacent Mail toolbar/sidebar screenshot; 27 Preview.",
+      "proof": [
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/gap-native-1.png",
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/gap-native-1-loaded.txt"
+      ]
+    },
+    {
+      "order": 4,
+      "name": "Apple watchOS 27 — native material",
+      "url": "https://www.apple.com/os/watchos/",
+      "class": "native-product-imagery",
+      "observation": "Control Center buttons and translucent Find My / Smart Stack imagery; material card right edge cropped.",
+      "proof": [
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/gap-watch-material.png",
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/gap-native-2-loaded.txt"
+      ]
+    },
+    {
+      "order": 5,
+      "name": "Kube — interactive refraction playground",
+      "url": "https://kube.io/blog/liquid-glass-css-svg/",
+      "class": "working-web-refraction-demo",
+      "observation": "Embedded playground visibly bends grid lines; surface selector interaction verified in earlier same-day run.",
+      "proof": [
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/examples-7-playground.png",
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/examples-7-playground-snapshot.txt"
+      ]
+    },
+    {
+      "order": 6,
+      "name": "liquidGL — live lens demo",
+      "url": "https://liquidgl.naughtyduk.com/",
+      "class": "working-web-refraction-demo",
+      "observation": "Live lens visibly bends background and compresses text at edges; controls expanded in earlier same-day run.",
+      "proof": [
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/examples-10.png",
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/examples-10-controls-snapshot.txt"
+      ]
+    },
+    {
+      "order": 7,
+      "name": "rdev — Liquid Glass React demo",
+      "url": "https://liquid-glass.maxrovensky.com/",
+      "class": "working-web-refraction-demo",
+      "observation": "Standard to Prominent alone inconclusive. Then keyboard Home/End set blur 0 and displacement 200: background visibly distorted and color-separated. No Safari/Firefox execution proof.",
+      "proof": [
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/gap-max-before.png",
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/gap-max-strong.png",
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/gap-max-strong.txt"
+      ]
+    },
+    {
+      "order": 8,
+      "name": "StarKnightt — pointer lens demo",
+      "url": "https://starknightt.github.io/liquid-glass/",
+      "class": "working-web-refraction-demo",
+      "observation": "Pointer move and click produced changed lens position/shape and bent/magnified text. No measured timing/FPS or isolated ripple claim.",
+      "proof": [
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/gap-third-before.png",
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/gap-third-after.png",
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/gap-third-after.txt"
+      ]
+    },
+    {
+      "order": 9,
+      "name": "design.dev — frosted CSS comparison",
+      "url": "https://design.dev/tools/liquid-glass-generator/",
+      "class": "frosted-comparison",
+      "observation": "Functional scene-switching preview shows blur/tint/rim controls. Refraction not established; explicit comparison reference.",
+      "proof": [
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/examples-8-preview.png",
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/examples-8-preview-snapshot.txt"
+      ]
+    },
+    {
+      "order": 10,
+      "name": "Aside — solid control alternative",
+      "url": "https://aside.com/",
+      "class": "solid-control-alternative",
+      "observation": "White opaque nav after scroll; sampled backdropFilter none. NOT actual refractive glass. Same-day prior measurements reused.",
+      "proof": [
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/07-aside-scroll.png",
+        "/Users/jun/.aside/u/0/research/design-isms-20260906-apple27/07-aside-styles-scroll.json"
+      ]
+    }
+  ]
+}

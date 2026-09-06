@@ -1,0 +1,48 @@
+{
+  "manifestRows": [
+    {
+      "id": "motion-spring",
+      "kind": "catalog-addition",
+      "sourcePromptSha256": "d6c1e8c32501a2be8be6c62a2d645067904245af43bc49213978ad35665ef09c",
+      "command": "ima2 gen --stdin --provider oauth --model gpt-5.6-sol -q high -s 1536x1024 -o assets/images/motion/motion-spring/guide.png --json --timeout 300",
+      "requestId": "req_cli_gen_mrqm62du_q8m0gt",
+      "model": "oauth/gpt-5.6-sol",
+      "quality": "high",
+      "size": "1536x1024",
+      "original": {
+        "path": "assets/images/motion/motion-spring/guide.png",
+        "sha256": "9ecf728268a9027f984f924f0e89884f38f40a281b46d2882fb0e8014226a358"
+      },
+      "preview": {
+        "path": "assets/images/thumbs/motion/motion-spring/guide.webp",
+        "sha256": "3ebd47b0bd2ec5f5cd5cad00251a185928b43c0ab46f85bf7ddf5520a7df6697"
+      },
+      "machineStatus": "pass",
+      "recordedAt": "2026-07-18T17:08:26.049Z"
+    },
+    {
+      "id": "motion-back",
+      "kind": "catalog-addition",
+      "sourcePromptSha256": "b59a31ed62e691d1b2d106006f78981cefa456153b87b716b5a2ca862db8cec5",
+      "command": "ima2 gen --stdin --provider oauth --model gpt-5.6-sol -q high -s 1536x1024 -o assets/images/motion/motion-back/guide.png --json --timeout 300",
+      "requestId": "req_cli_gen_mrqm7tep_woiafe",
+      "model": "oauth/gpt-5.6-sol",
+      "quality": "high",
+      "size": "1536x1024",
+      "original": {
+        "path": "assets/images/motion/motion-back/guide.png",
+        "sha256": "9c9181344f695f9257a7ca9d05f9db409943fd66cf2c95d99e2483eca758ebb1"
+      },
+      "preview": {
+        "path": "assets/images/thumbs/motion/motion-back/guide.webp",
+        "sha256": "96ef87a7164578795d08bdec2c42e680daf6d9f2f97e05bcc802047e5491d3e5"
+      },
+      "machineStatus": "pass",
+      "recordedAt": "2026-07-18T17:08:26.051Z"
+    }
+  ],
+  "auditLines": [
+    "motion-spring,catalog-addition,accepted,codex-main+wp8-motion,2026-07-18,\"kind=catalog-addition; motion recipe guide plate generated and visually accepted\"",
+    "motion-back,catalog-addition,accepted,codex-main+wp8-motion,2026-07-18,\"kind=catalog-addition; motion recipe guide plate generated and visually accepted\""
+  ]
+}

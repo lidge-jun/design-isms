@@ -28,11 +28,12 @@
     "qa:local:preserve:start": "node scripts/final-preservation.mjs start",
     "qa:local:preserve:final": "node scripts/final-preservation.mjs final",
     "verify:local-final": "node scripts/verify-final-qa.mjs",
-    "verify": "npm run typecheck && npm run verify:generated && npm run verify:nav && npm run verify:isms && npm run verify:effects && npm run verify:snippets && npm run verify:finder && npm run verify:content && npm run verify:catalog && npm run verify:assets && npm run verify:image-quality && npm run verify:lines",
+    "verify": "npm run typecheck && npm run verify:generated && npm run verify:nav && npm run verify:isms && npm run verify:effects && npm run verify:snippets && npm run verify:finder && npm run verify:content && npm run verify:catalog && npm run verify:assets && npm run verify:quality-contracts && npm run verify:image-quality && npm run verify:lines",
     "verify:snippets": "node scripts/verify-snippets.mjs",
     "verify:finder": "node scripts/verify-finder.mjs",
     "pages:stage": "node scripts/stage-pages.mjs",
-    "serve": "node scripts/serve-static.mjs"
+    "serve": "node scripts/serve-static.mjs",
+    "verify:quality-contracts": "node --test scripts/editorial-revisions.test.mjs scripts/image-generation-profiles.test.mjs scripts/image-final-history.test.mjs"
   },
   "devDependencies": {
     "sharp": "^0.35.3",

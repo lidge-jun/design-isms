@@ -1,0 +1,87 @@
+{
+  "previews": {
+    "paused": {
+      "before": {
+        "time": 73.33600007340313,
+        "transform": "matrix(1, 0, 0, 1, 120.163, -8)"
+      },
+      "after": {
+        "time": 73.33600007340313,
+        "transform": "matrix(1, 0, 0, 1, 120.163, -8)"
+      },
+      "state": "paused",
+      "pressed": "false"
+    },
+    "replay": {
+      "time": 0,
+      "state": "running"
+    },
+    "manualPauseAfterPreferences": true,
+    "manualPauseAfterVisibility": true
+  },
+  "interactions": [
+    "progress value/ARIA/reduced state",
+    {
+      "scrollReveal": true,
+      "before": [
+        "true",
+        "true",
+        "false",
+        "false",
+        "false"
+      ]
+    },
+    "disclosure changes layout and hidden/expanded state",
+    {
+      "tabs": {
+        "selected": [
+          [
+            "false",
+            -1
+          ],
+          [
+            "true",
+            0
+          ]
+        ],
+        "hidden": [
+          true,
+          false
+        ],
+        "focus": "관람 안내"
+      }
+    },
+    "reorder DOM/rapid input/focus/reduced state",
+    "idempotent dispose cancels effects and listeners",
+    "missing IntersectionObserver exposes all content"
+  ],
+  "viewports": [
+    {
+      "width": 1440,
+      "overflow": false,
+      "stageOverflow": false
+    },
+    {
+      "width": 1024,
+      "overflow": false,
+      "stageOverflow": false
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "stageOverflow": false
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "stageOverflow": false
+    },
+    {
+      "width": 320,
+      "overflow": false,
+      "stageOverflow": false
+    }
+  ],
+  "errors": [],
+  "ok": true
+}

@@ -164,3 +164,22 @@ git add -A
 git commit -m "[agent] feat: update design isms"
 git push origin main
 ```
+
+### Liquid Glass 구현 가이드
+
+`#refractive-glass-ui`에서 Liquid Glass의 배경과 Apple 27 세대 프리뷰의 재질 개선을
+읽을 수 있습니다. 모달의 재질 예제는 장면 선택과 불투명 대안을 직접 비교합니다.
+웹용 CSS 응용이며 Apple 네이티브 굴절 렌더링과는 구별합니다.
+본문은 안정된 면에 두고, 유리 재질은 내비게이션·제어부에 제한합니다.
+
+### 직접 조작하는 모션 레시피
+
+Motion Presets의 진행률·스크롤 등장·접기·탭·목록 재정렬은 상세 화면에서 직접 조작합니다.
+카드의 반복 미리보기는 0.4배속이며, 상세 조작 예제는 레시피의 시간을 사용합니다.
+일반 미리보기는 재생·일시정지·이어 재생·처음부터 재생을 구분합니다.
+CSS 레시피에는 필요한 JavaScript 상태 관리와 모션 감소 대응을 함께 설명합니다.
+재생 제어는 [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Animation),
+키보드 탭은 [WAI-ARIA Tabs Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/)을 참고합니다.
+
+이미지 교체는 원본·WebP·프롬프트·검토 기록을 함께 갱신합니다. 이전 품질 감사 결과는
+해시별 이력으로 보관하며, 후속 결과도 비대상 이미지가 그대로인지 검증합니다.

@@ -1,0 +1,181 @@
+/* Real modal specimens. State and effect lifetimes belong to MotionInteractions. */
+.motion-interaction {
+  width: 100%;
+  max-width: 460px;
+  min-width: 0;
+  color: var(--atlas-ink);
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: left;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.motion-interaction *,
+.motion-interaction *::before { box-sizing: border-box; }
+.motion-interaction [hidden] { display: none !important; }
+.motion-interaction .mi-title { margin: 0; font-size: 17px; text-wrap: balance; }
+.motion-interaction .mi-hint { margin: 5px 0 18px; color: var(--atlas-muted); text-wrap: balance; }
+
+.motion-interaction button {
+  min-height: 44px;
+  min-width: 44px;
+  max-width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--atlas-muted);
+  border-radius: var(--atlas-radius-sm);
+  background: var(--atlas-surface);
+  color: var(--atlas-ink);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.motion-interaction button:hover { background: var(--atlas-paper); }
+.motion-interaction :focus-visible { outline: 2px solid var(--atlas-focus); outline-offset: 3px; }
+
+.motion-interaction .mi-value-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.motion-interaction .mi-value {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+.motion-interaction .mi-progress {
+  height: 14px;
+  overflow: hidden;
+  border: 1px solid var(--atlas-muted);
+  border-radius: var(--atlas-radius-xs);
+  background: var(--atlas-surface);
+}
+
+.motion-interaction .mi-progress-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--atlas-ink);
+  transform-origin: left center;
+}
+
+.motion-interaction .mi-range {
+  display: block;
+  width: 100%;
+  min-width: 44px;
+  height: 44px;
+  margin: 10px 0 0;
+  padding: 0;
+  accent-color: var(--atlas-ink);
+  cursor: pointer;
+}
+
+.motion-interaction .mi-range-ends {
+  display: flex;
+  justify-content: space-between;
+  color: var(--atlas-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.motion-interaction .mi-scroll {
+  height: 244px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  scroll-behavior: auto;
+  border: 1px solid var(--atlas-muted);
+  border-radius: var(--atlas-radius-sm);
+  background: var(--atlas-surface);
+}
+
+.motion-interaction .mi-reveal-list { margin: 0; padding: 0 14px; list-style: none; }
+.motion-interaction .mi-reveal-item {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  min-height: 116px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--atlas-rule);
+}
+
+.motion-interaction .mi-reveal-item:last-child { border-bottom: 0; }
+.motion-interaction .mi-reveal-item p { margin: 5px 0 0; color: var(--atlas-muted); }
+.motion-interaction .mi-step { font: 12px var(--font-mono); color: var(--atlas-muted); }
+.motion-interaction [data-revealed="false"] { opacity: 0; transform: translateY(18px); }
+
+.motion-interaction .mi-disclosure-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.motion-interaction .mi-disclosure-action { color: var(--atlas-muted); font-size: 12px; white-space: nowrap; }
+.motion-interaction .mi-disclosure-shell { overflow: hidden; }
+.motion-interaction .mi-disclosure-body { padding: 16px; background: var(--atlas-surface); }
+.motion-interaction dl { margin: 0; }
+.motion-interaction dl > div { display: flex; flex-wrap: wrap; gap: 4px 12px; padding: 6px 0; }
+.motion-interaction dt { color: var(--atlas-muted); min-width: 5em; }
+.motion-interaction dd { margin: 0; }
+
+.motion-interaction .mi-tabs { display: flex; gap: 6px; padding-bottom: 10px; }
+.motion-interaction .mi-tabs button { flex: 1; padding-inline: 8px; white-space: nowrap; }
+.motion-interaction .mi-tabs [aria-selected="true"] {
+  background: var(--atlas-ink);
+  border-color: var(--atlas-ink);
+  color: var(--atlas-surface);
+}
+
+.motion-interaction .mi-tab-panel {
+  min-height: 148px;
+  padding: 18px 16px;
+  border: 1px solid var(--atlas-rule);
+  border-radius: var(--atlas-radius-sm);
+  background: var(--atlas-surface);
+}
+
+.motion-interaction .mi-tab-panel p { margin: 8px 0 0; color: var(--atlas-muted); }
+.motion-interaction .mi-reorder-list { margin: 16px 0 0; padding: 0; list-style: none; counter-reset: reading; }
+.motion-interaction .mi-reorder-list li {
+  position: relative;
+  counter-increment: reading;
+  padding: 12px 12px 12px 42px;
+  border-bottom: 1px solid var(--atlas-rule);
+  background: var(--atlas-surface);
+}
+
+.motion-interaction .mi-reorder-list li::before {
+  content: counter(reading, decimal-leading-zero);
+  position: absolute;
+  left: 12px;
+  top: 16px;
+  color: var(--atlas-muted);
+  font: 12px var(--font-mono);
+}
+
+.motion-interaction .mi-reorder-list span { display: block; color: var(--atlas-muted); font-size: 12px; }
+.motion-interaction .mi-status { margin: 12px 0 0; font-size: 12px; color: var(--atlas-muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-interaction [data-revealed] { opacity: 1; transform: none; }
+}
+
+@media (forced-colors: active) {
+  .motion-interaction button,
+  .motion-interaction .mi-scroll,
+  .motion-interaction .mi-tab-panel,
+  .motion-interaction .mi-progress { border-color: ButtonText; }
+  .motion-interaction .mi-tabs [aria-selected="true"] { outline: 2px solid Highlight; outline-offset: -4px; }
+  .motion-interaction .mi-progress-fill { background: Highlight; forced-color-adjust: none; }
+  .motion-interaction :focus-visible { outline-color: Highlight; }
+}

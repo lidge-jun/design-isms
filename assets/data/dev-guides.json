@@ -1081,13 +1081,13 @@
   },
   "glassmorphism": {
     "layout": {
-      "grid": "오버랩 카드 그리드",
+      "grid": "콘텐츠 면과 분리한 반투명 제어층",
       "columns": "12열",
       "gutter": "20px",
       "margins": "32px",
-      "spacing": "transparent 24px",
+      "spacing": "24px",
       "symmetry": "비대칭",
-      "geometry": "rounded cards over bg"
+      "geometry": "안정된 본문과 둥근 제어면"
     },
     "typography": {
       "fontPairing": "clean sans-serif (display + body)",
@@ -1097,45 +1097,45 @@
       "weightStrategy": "medium 500"
     },
     "color": {
-      "usage": "투명 + vibrant bg",
-      "bgFg": "rgba(255,255,255,0.15) 카드, vibrant 배경",
-      "contrast": "backdrop 대비"
+      "usage": "중립색 제어면 + 배경의 제한적인 색",
+      "bgFg": "밝은 반투명 제어면, 짙은 본문색, 불투명 대안",
+      "contrast": "가장 복잡한 배경에서도 일반 텍스트 4.5:1 이상"
     },
     "motion": {
-      "easing": "ease",
-      "duration": "300ms",
-      "hover": "lift + blur",
-      "scroll": "parallax bg",
-      "transition": "all 300ms ease"
+      "easing": "cubic-bezier(0.2, 0, 0, 1)",
+      "duration": "180ms (웹 예제 기준)",
+      "hover": "제어부의 작은 transform·opacity 변화",
+      "scroll": "본문은 안정적으로 스크롤",
+      "transition": "transform 180ms, opacity 180ms"
     },
     "dos": [
-      "backdrop-filter: blur(12px) 사용",
-      "투명도 0.1-0.25 rgba",
-      "rounded 16-24px"
+      "작은 제어면에만 backdrop-filter를 점진적으로 적용한다.",
+      "배경과 텍스트 사이에 충분히 불투명한 대비 면을 둔다.",
+      "blur 미지원·고대비·투명도 감소 상태에 불투명 대안을 둔다."
     ],
     "donts": [
-      "불투명 배경",
-      "강한 그림자",
-      "저대비 텍스트"
+      "모든 본문 카드를 유리로 만든다.",
+      "blur나 filter를 계속 애니메이션한다.",
+      "낮은 투명도나 blur만 믿고 텍스트 대비를 생략한다."
     ],
     "implementation": {
-      "summary": "blur, transparency, light border로 떠 있는 표면을 만든다. 배경과 카드 대비를 안전하게 설계해야 한다.",
+      "summary": "반투명 색과 배경 흐림으로 제어층을 구분하는 기법이다. 굴절을 포함한 Apple 네이티브 Liquid Glass와 같은 렌더링은 아니다.",
       "components": [
-        "Glass login",
-        "Floating card",
-        "Mobile control panel",
-        "Weather widget",
-        "Pricing overlay"
+        "Floating toolbar",
+        "Media controls",
+        "Solid fallback",
+        "Opaque menu"
       ],
       "build": [
-        "backdrop blur 뒤에는 충분히 단순한 배경을 둔다.",
-        "glass surface마다 border와 subtle shadow를 함께 둔다.",
-        "투명도는 텍스트 영역보다 wrapper에 적용한다."
+        "기본 배경은 불투명하게 두고 @supports 안에서 작은 제어면에 blur를 추가한다.",
+        "텍스트 자체에 opacity를 적용하지 않고 배경색의 알파를 조절한다.",
+        "제어면에서 열린 메뉴는 불투명하게 두어 유리가 겹치지 않게 한다.",
+        "prefers-reduced-motion에서는 이동 효과를 없애되 선택 상태는 유지한다."
       ],
       "checks": [
-        "blur 미지원 브라우저에서도 텍스트가 읽힌다.",
-        "카드 뒤 이미지가 본문과 충돌하지 않는다.",
-        "contrast fallback 색이 있다."
+        "밝고 어둡고 복잡한 배경에서 텍스트 대비를 확인한다.",
+        "backdrop-filter를 끈 상태에도 같은 기능과 정보가 남는다.",
+        "고대비·투명도 감소 설정에서 제어면이 불투명해진다."
       ]
     }
   },
@@ -2641,13 +2641,13 @@
   },
   "refractive-glass-ui": {
     "layout": {
-      "grid": "빛과 깊이를 따르는 레이어 그리드",
+      "grid": "콘텐츠와 분리한 부유 제어층",
       "columns": "12",
       "gutter": "24px",
       "margins": "32px",
       "spacing": "24px",
       "symmetry": "중심축 + 부유 제어",
-      "geometry": "굴절 가장자리와 안정된 콘텐츠 면"
+      "geometry": "고정된 제어면, 가장자리 음영과 반사광"
     },
     "typography": {
       "fontPairing": "clean sans-serif",
@@ -2657,45 +2657,50 @@
       "weightStrategy": "제목 650, 본문 400"
     },
     "color": {
-      "usage": "ice neutral + spectral accent",
-      "bgFg": "밝은 유리 면 + dark ink",
-      "contrast": "재료 위 텍스트 4.5:1 이상"
+      "usage": "중립색 면 + 절제한 선택 강조색",
+      "bgFg": "안정된 본문 면 + 충분히 불투명한 제어부",
+      "contrast": "실제 배경 합성 결과에서 일반 텍스트 4.5:1 이상"
     },
     "motion": {
-      "easing": "soft spring",
-      "duration": "320ms",
-      "hover": "specular highlight 이동",
-      "scroll": "층별 완만한 parallax",
-      "transition": "transform, filter 320ms"
+      "easing": "cubic-bezier(0.2, 0, 0, 1)",
+      "duration": "180ms (웹 예제 기준)",
+      "hover": "선택 상태의 짧은 transform·opacity 피드백",
+      "scroll": "제어면의 크기는 유지하고 배경 복잡도에 맞춰 가독성 확보",
+      "transition": "transform 180ms, opacity 180ms; filter는 고정"
     },
     "dos": [
-      "굴절은 가장자리와 이동에 반응",
-      "텍스트 뒤에는 대비 보정 면 제공",
-      "reduced-motion에서 재료를 안정화"
+      "유리는 내비게이션과 제어에 쓰고 본문은 안정된 면에 둔다.",
+      "배경이 복잡해져도 제어부의 대비와 크기를 유지한다.",
+      "투명도·모션 감소와 고대비 상태에서도 같은 작업을 지원한다."
     ],
     "donts": [
-      "blur만으로 재료를 표현",
-      "배경에 따라 텍스트 대비 방치",
-      "모든 패널을 투명하게 처리"
+      "본문·데이터 패널까지 모두 유리로 덮는다.",
+      "CSS blur를 Apple의 네이티브 굴절과 동일하다고 설명한다.",
+      "blur·그림자·크기를 동시에 계속 애니메이션한다."
     ],
     "implementation": {
-      "summary": "굴절·반사광·주변색 적응을 하나의 재료 규칙으로 묶고, 불투명 대비층으로 정보 가독성을 지킨다.",
+      "summary": "Apple의 Liquid Glass는 콘텐츠 위에 떠 있는 내비게이션·제어용 재질이다. 27 세대 프리뷰는 굴절과 가독성을 다듬었다. 아래 웹 예제는 제어층과 콘텐츠의 관계를 보여주는 CSS 응용이며 네이티브 광학 효과의 복제는 아니다.",
       "components": [
-        "Refractive nav pill",
-        "Adaptive control sheet",
-        "Specular media card",
-        "Layered data widget",
-        "Opaque fallback panel"
+        "Floating navigation",
+        "Media playback controls",
+        "Adaptive toolbar",
+        "Opaque popup menu",
+        "Solid accessibility alternative"
       ],
       "build": [
-        "배경 샘플에 따라 굴절 강도와 텍스트 scrim을 함께 계산한다.",
-        "가장자리 specular와 내부 blur를 별도 레이어로 구현한다.",
-        "reduced-motion과 저성능 환경에서는 안정된 반투명 면으로 전환한다."
+        "본문과 정보 패널을 먼저 불투명한 면에 배치한다.",
+        "제어면은 불투명 기본색에서 시작하고 @supports로 backdrop-filter 지원 시에만 재질을 더한다.",
+        "작은 제어면에 배경색·고정 blur·가장자리 반사광을 나눠 적용한다. blur 표면 두 개 이하를 웹 예제의 보수적인 시작점으로 삼고 실제 기기에서 확인한다.",
+        "내부 버튼은 선택 색으로 구분하고 중첩한 캡슐 테두리를 피한다. 팝업 메뉴는 불투명하게 만든다.",
+        "prefers-contrast, forced-colors, 지원되는 prefers-reduced-transparency와 사용자가 고른 불투명 상태를 반영한다.",
+        "prefers-reduced-motion에서는 이동을 제거한다. 180ms 같은 수치는 이 웹 예제의 선택이며 Apple 공식 토큰이 아니다."
       ],
       "checks": [
-        "단순 backdrop blur가 아니라 가장자리 굴절이 보인다.",
-        "밝고 어두운 배경 모두에서 본문 대비가 유지된다.",
-        "재료 이동이 콘텐츠 위치나 터치 target을 바꾸지 않는다."
+        "복잡한 배경과 밝고 어두운 배경에서 텍스트·선택·포커스가 구별된다.",
+        "유리 효과를 꺼도 버튼의 위치·크기·이름·기능이 동일하다.",
+        "키보드로 장면을 바꾸고 불투명 대안을 선택할 수 있다.",
+        "모션 감소 상태에서도 제어 결과가 즉시 보인다.",
+        "저성능 기기에서 끊기면 blur 범위부터 줄이고 불투명 제어면으로 전환한다."
       ]
     }
   },
