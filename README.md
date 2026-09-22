@@ -29,8 +29,8 @@ claude plugin install design-isms@lidge-jun
 - Modal detail view with history, prompts, palette, keywords, related ISMs
 - Development guide per ism: fitting components, build method, verification points
 - Korean/English UI toggle
-- Frontend UI Candidates page with 46 mobile, desktop, and shared patterns
-- 46 dedicated live demo animation types for the candidate cards and modals
+- Frontend UI Candidates page with 94 entries: 46 interface patterns and 48 visual effects
+- 94 dedicated live demo types for the candidate cards and modals
 - 94 guide images under `assets/images/effects/`
 - 94 guide WebP previews under `assets/images/thumbs/effects/`
 - Long-form effect documentation in `assets/data/effects-docs.json`
@@ -183,3 +183,17 @@ CSS 레시피에는 필요한 JavaScript 상태 관리와 모션 감소 대응�
 
 이미지 교체는 원본·WebP·프롬프트·검토 기록을 함께 갱신합니다. 이전 품질 감사 결과는
 해시별 이력으로 보관하며, 후속 결과도 비대상 이미지가 그대로인지 검증합니다.
+
+## References and acknowledgements
+
+화면 조합과 에이전트 인터페이스 개선에는 다음 프로젝트의 설계 원칙을 참고합니다.
+각 원본의 확인 버전, 적용 범위와 라이선스 고지는 [출처 기록](docs/ATTRIBUTION.md)에 정리했습니다.
+
+| Project | Reference scope | License |
+| --- | --- | --- |
+| [StyleGallery](https://github.com/changeroa/StyleGallery) · IYEN | 화면 레시피의 필수·교체 가능 요소, 스크롤 책임, 검증 범위 구분 | Code: MIT / documentation: CC BY 4.0 |
+| [Taste Skill](https://github.com/Leonxlnx/taste-skill) · Leonxlnx | 목적에 맞는 디자인 선택, 정보 밀도와 모션의 분리, 기존 디자인 시스템 보존 | MIT |
+| [aside-codemode](https://github.com/lidge-jun/aside-codemode) · lidge-jun | 작은 MCP 도구 설명과 필요할 때 조회하는 상세 API | MIT |
+
+기존 카탈로그 데이터와 이미지의 원본은 이 저장소에 있습니다. 위 프로젝트의 전체 자료나
+프레임워크를 포함한다는 뜻은 아니며, 새 기능의 구현 상태는 해당 PR과 사용 문서를 따릅니다.
