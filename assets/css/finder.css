@@ -111,6 +111,7 @@
    gap: 1.5rem;
  }
  .finder-fieldset {
+   min-width: 0;
    border: none;
    margin: 0;
    padding: 0;
@@ -129,14 +130,14 @@
     lives in a fixed-width dialog, so viewport breakpoints would over-pack. */
  .finder-options {
    display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+   grid-template-columns: repeat(auto-fit, minmax(min(100%, 12.5rem), 1fr));
    gap: 0.5rem;
  }
  
  /* label and hint stack under the radio so option names never break mid-word */
  .finder-option {
    display: grid;
-   grid-template-columns: auto 1fr;
+   grid-template-columns: auto minmax(0, 1fr);
    align-items: baseline;
    column-gap: 0.5rem;
    row-gap: 0.125rem;
@@ -147,7 +148,7 @@
    transition: border-color 0.15s;
  }
  .finder-option:hover {
-   border-color: var(--atlas-ink-muted, #7a7a7a);
+   border-color: var(--atlas-muted, #62645D);
  }
  .finder-radio {
    width: 1rem;
@@ -156,7 +157,7 @@
    accent-color: var(--atlas-signal, #FF4D1F);
  }
  .finder-radio:focus-visible + .finder-option-label {
-   outline: 2px solid var(--atlas-accent, #FF4D1F);
+   outline: 2px solid var(--atlas-focus, #005FCC);
    outline-offset: 2px;
  }
  .finder-option-label {
@@ -168,15 +169,16 @@
    grid-column: 2;
    font-size: 0.75rem;
    line-height: 1.4;
-   color: var(--atlas-ink-muted, #7a7a7a);
+   color: var(--atlas-muted, #62645D);
  }
  .finder-radio:checked ~ .finder-option-label {
-   color: var(--atlas-accent, #FF4D1F);
+   color: var(--atlas-signal-text, #B82E06);
  }
  
  /* ── actions ─────────────────────────────────────────────────── */
  .finder-actions {
    display: flex;
+   flex-wrap: wrap;
    gap: 0.75rem;
    align-items: center;
  }
@@ -193,9 +195,9 @@
    cursor: pointer;
    transition: background 0.15s;
  }
- .finder-submit:hover:not(:disabled) { background: var(--atlas-accent, #FF4D1F); }
+ .finder-submit:hover:not(:disabled) { background: var(--atlas-signal-text, #B82E06); }
  .finder-submit:disabled { opacity: 0.4; cursor: not-allowed; }
- .finder-submit:focus-visible { outline: 2px solid var(--atlas-accent, #FF4D1F); outline-offset: 2px; }
+ .finder-submit:focus-visible { outline: 2px solid var(--atlas-focus, #005FCC); outline-offset: 2px; }
  .finder-reset {
    font-family: var(--font-display);
    font-size: 0.75rem;
@@ -203,7 +205,7 @@
    padding: 0.5rem 1rem;
    background: none;
    border: 1px solid var(--atlas-rule, #d0cdc6);
-   color: var(--atlas-ink-muted, #7a7a7a);
+   color: var(--atlas-muted, #62645D);
    cursor: pointer;
  }
  .finder-reset:hover { border-color: var(--atlas-ink, #1a1a1a); color: var(--atlas-ink, #1a1a1a); }
@@ -215,7 +217,7 @@
    font-weight: 600;
    letter-spacing: 0.04em;
    text-transform: uppercase;
-   color: var(--atlas-ink-muted, #7a7a7a);
+   color: var(--atlas-muted, #62645D);
    margin: 1.5rem 0 0.75rem;
  }
  .finder-result {
@@ -228,7 +230,7 @@
    font-family: var(--font-mono);
    font-size: 0.875rem;
    font-weight: 700;
-   color: var(--atlas-accent, #FF4D1F);
+   color: var(--atlas-signal-text, #B82E06);
    flex-shrink: 0;
    width: 2rem;
  }
@@ -245,7 +247,7 @@
    font-weight: 600;
    text-transform: uppercase;
    letter-spacing: 0.06em;
-   color: var(--atlas-accent, #FF4D1F);
+   color: var(--atlas-signal-text, #B82E06);
    margin-bottom: 0.375rem;
  }
  .finder-result-why {
@@ -256,7 +258,7 @@
  }
  .finder-result-caution {
    font-size: 0.75rem;
-   color: var(--atlas-ink-muted, #7a7a7a);
+   color: var(--atlas-muted, #62645D);
    font-style: italic;
    margin-bottom: 0.5rem;
  }
@@ -270,12 +272,12 @@
    border: none;
    cursor: pointer;
  }
- .finder-result-open:hover { background: var(--atlas-accent, #FF4D1F); }
- .finder-result-open:focus-visible { outline: 2px solid var(--atlas-accent, #FF4D1F); outline-offset: 2px; }
+ .finder-result-open:hover { background: var(--atlas-signal-text, #B82E06); }
+ .finder-result-open:focus-visible { outline: 2px solid var(--atlas-focus, #005FCC); outline-offset: 2px; }
  
  /* ── error/retry ─────────────────────────────────────────────── */
  .finder-error { text-align: center; padding: 2rem 0; }
- .finder-error p { margin: 0 0 0.5rem; font-size: 0.875rem; color: var(--atlas-ink-muted, #7a7a7a); }
+ .finder-error p { margin: 0 0 0.5rem; font-size: 0.875rem; color: var(--atlas-muted, #62645D); }
  .finder-retry-btn {
    font-family: var(--font-display); font-size: 0.75rem; font-weight: 600;
    padding: 0.375rem 1rem; background: var(--atlas-ink, #1a1a1a);
@@ -286,7 +288,7 @@
  @media (max-width: 640px) {
    .finder-trigger {
      padding: 8px 14px;
-     min-height: 40px;
+     min-height: 44px;
    }
    .finder-dialog {
      width: 100vw;
@@ -327,3 +329,8 @@
    .finder-trigger, .finder-dialog-close { background: ButtonFace; color: ButtonText; border: 1px solid ButtonText; }
    .finder-dialog { border: 1px solid CanvasText; }
  }
+
+.finder-dialog-header > div { min-width: 0; }
+.finder-dialog-header h2, .finder-option-label, .finder-option-hint { word-break: keep-all; overflow-wrap: anywhere; text-wrap: balance; }
+.finder-dialog-close, .finder-submit, .finder-reset, .finder-result-open, .finder-retry-btn { min-height: 44px; }
+.finder-dialog-close { min-width: 44px; }

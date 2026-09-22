@@ -163,7 +163,9 @@ var AppDialogA11y;
         }
         const target = options.initialFocus ?? focusableIn(dialog)[0] ?? dialog;
         window.requestAnimationFrame(() => {
-            target.focus();
+            // A rapid close/reopen or a newer layer must supersede this scheduled focus.
+            if (stack[stack.length - 1] === layer && target.isConnected)
+                target.focus();
         });
     }
     AppDialogA11y.open = open;

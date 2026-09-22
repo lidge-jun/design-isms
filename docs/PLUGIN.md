@@ -340,3 +340,19 @@ MCP와 CLI가 같은 연산 레지스트리와 데이터 버전을 사용합니�
 - 게스트에 파일·네트워크·셸·Node API를 제공하지 않습니다. Worker/VM은 신뢰한 로컬 에이전트의 실수를 제한하는 장치이며, 악의적인 JavaScript를 안전하게 실행하는 OS 보안 샌드박스가 아닙니다.
 
 검증: `npm run test:design-core`, `npm run test:mcp`, `npm run verify`.
+
+## 11. 사이트에서 조합 고르기
+
+메인 페이지의 `화면에 맞는 조합 찾기`를 펼치면 MCP의 `design.recipes`와 같은 세 레시피를
+사용할 수 있습니다. 허용된 대안으로 바꾼 뒤 `구현 가이드 복사`를 누르면 현재 언어의
+브리프를 받습니다. 복사가 막히면 아래 전문을 직접 선택할 수 있습니다.
+
+브라우저 QA는 기존 Playwright 런타임을 명시해서 실행합니다. 예를 들어 기존 agbrowse의
+package.json 경로를 DESIGN_QA_RUNTIME에 지정하고 Chrome CDP가 켜진 상태에서 다음을 실행합니다.
+
+```sh
+DESIGN_QA_RUNTIME=/absolute/path/agbrowse/package.json npm run qa:recipes -- http://127.0.0.1:4187/
+```
+
+기본 출력은 qa-artifacts/recipes입니다. 도구가 새 브라우저 드라이버를 설치하지 않으며
+테스트용 context와 탭은 종료합니다. CDP 주소는 DESIGN_QA_CDP로 지정할 수 있습니다.

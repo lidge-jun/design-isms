@@ -159,7 +159,7 @@ The `260510_nav_taxonomy_effect_docs` folder records the follow-up implementatio
 - `scripts/design-core-loader.mjs` is a Node-only adapter over an explicit generated-script allowlist. Its snapshot identity covers the six catalog JSON files, recipes, ISM guides, effect docs and effect snippets. The hash uses exact file bytes and sorted repository-relative paths.
 - Search excludes anti-patterns, has stable domain/id tie ordering and version/query/filter-bound cursors. `get` separates summary, implementation guidance, complete code and raw catalog views.
 - `scripts/design-core.test.mjs` (`npm run test:design-core`, included in verify) exercises invalid inputs, real references, immutability, multilingual search, continuation, view availability, source identity and recipes. Existing Finder logic remains unchanged.
-- Core consumers receive plain immutable data. Node operational scripts and documentation stay outside the Pages allowlist. Browser recipe UI is a separate follow-up layer. MCP/CLI adapters are described below.
+- Core consumers receive plain immutable data. Node operational scripts and documentation stay outside the Pages allowlist. Browser recipe UI is described below. MCP/CLI adapters are described below.
 
 ## Local Code Mode and Unix query transports
 
@@ -170,3 +170,12 @@ The `260510_nav_taxonomy_effect_docs` folder records the follow-up implementatio
 - `DesignRecipes.Composition.lang` survives serialization. A brief is rendered only after exact current-snapshot canonical recomposition; stale and tampered values fail. Contract version design-catalog/2 binds cursors and composition values to this shape.
 - `scripts/mcp/{server,protocol,cli}.test.mjs` run real subprocess transports and negative lifecycle/size tests; `test-client.mjs` is independent of server internals. `npm run test:mcp` is included in verify.
 - Client configuration is documented, never auto-installed. No hosted HTTP surface or MCP operational file is included in the Pages artifact.
+
+## Recipe workbench UI
+
+- `index.html` contains the initially closed `details#recipe-workbench` between the catalog entry links and filters. No additional recipe data is requested until opened. Existing seven-page navigation and catalog count contracts remain unchanged.
+- `src/recipe-data.ts` owns fixed-path fetch, exact-byte hashing and pure-core initialization. `src/recipe-chooser.ts` owns the instance promise/cache, abort/retry, selections, language, copy-generation guard and modal callback. `src/recipe-view.ts` owns safe DOM projection only.
+- `assets/css/recipe-chooser.css` uses Atlas tokens for compact purpose choices, selected preview, alternative controls and readable checks. Mobile hides redundant option descriptions while retaining the selected recipe rationale.
+- `src/app-language.ts` owns language DOM updates; `src/app.ts` owns language state and controller wiring. Finder result opening closes its native dialog before opening the existing ISM overlay and returns focus to the visible Finder trigger.
+- Browser and Node use the same ten-file/version hash. Recipes and selected alternatives survive language changes; clipboard rejection exposes a read-only complete brief, and obsolete clipboard results cannot confirm a newer selection.
+- `scripts/qa-recipes.mjs` drives the actual built page using an explicitly supplied existing Playwright runtime and loopback CDP. It tests 1440/1024/768/390/320 viewports, language, copy/fetch/image failure, Finder/modals, reduced motion and Effects94/94 integrity. The runtime is optional QA tooling, not a production dependency.

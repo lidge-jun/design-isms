@@ -336,3 +336,10 @@ const popular = [
 - NDJSON CLI는 stdout에 한 줄당 결과 하나, stderr에 진단만 쓴다. 잘못된 줄 뒤 정상 줄도 처리하고 오류가 있으면 비정상 종료한다.
 - guest에는 호스트 함수·객체·파일·네트워크 API를 주입하지 않는다. Worker/VM은 신뢰한 에이전트의 실수 제한이며 악성 코드 보안 경계가 아니다.
 - npm run test:mcp는 실제 stdio/CLI·타임아웃·취소·바이트 예산·메타데이터 전용 경로를 검증한다. 운영 파일은 assets 밖에 둔다.
+
+## 화면 조합 도구
+
+- recipe-data는 고정된 원본 바이트를 읽고 해시를 계산한다. recipe-chooser가 pending·성공 캐시와 AbortController를 소유하며 닫힌 초기 상태에서 추가 자료를 읽지 않는다. recipe-view는 안전한 DOM 표시만 맡는다.
+- 선택·언어·상세 펼침·포커스를 보존하고 오래된 복사 응답은 무시한다. 복사 실패 시 전문을 선택할 수 있게 하며 실패를 성공으로 표시하지 않는다.
+- app-language는 표시만, app.ts는 언어와 controller 상태를 맡는다. Finder 결과를 열 때 native dialog를 먼저 닫고 ISM 모달이 닫히면 보이는 Finder 버튼으로 초점을 돌린다.
+- 브라우저 검증은 DESIGN_QA_RUNTIME에 기존 playwright-core 소유 패키지 경로를 지정한 뒤 npm run qa:recipes -- <loopback URL>로 실행한다. 새 드라이버를 자동 설치하지 않는다.
