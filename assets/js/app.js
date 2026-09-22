@@ -64,6 +64,7 @@ let searchQuery = '';
 let currentLang = AppRuntime.readStorage('design-isms-lang') === 'en' ? 'en' : 'ko';
 let imgObserver = null;
 let finderController = null;
+let recipeController = null;
 let cardObserver = null;
 let indexMounted = false;
 let indexLoadPromise = null;
@@ -262,8 +263,15 @@ function loadAndRenderIndex() {
         setupImageLazy();
         const fRoot = document.getElementById('style-finder-mount');
         if (fRoot) {
-            finderController = DesignFinder.mount({ root: fRoot, isms: allIsms, guides: (await AppGuides.load(GUIDE_URL)), getLang: () => currentLang, openModal });
+            finderController = DesignFinder.mount({ root: fRoot, isms: allIsms, guides: (await AppGuides.load(GUIDE_URL)), getLang: () => currentLang, openModal: id => {
+                    document.getElementById('finder-dialog')?.close();
+                    openModal(id, document.getElementById('finder-trigger'));
+                } });
         }
+        recipeController?.dispose();
+        const recipeRoot = document.getElementById('recipe-workbench');
+        if (recipeRoot)
+            recipeController = RecipeChooser.mount({ root: recipeRoot, getLang: () => currentLang, openIsm: openModal });
         dismissLoading();
     })().catch(error => {
         console.error('[isms] failed to initialize', error);
@@ -885,22 +893,13 @@ function setupLangToggle() {
         updateLangUI();
         render();
         finderController?.setLang(currentLang);
+        recipeController?.setLang(currentLang);
     });
 }
 function updateLangUI() {
-    document.querySelectorAll('.lang-option').forEach(element => {
-        element.classList.toggle('active', element.dataset.lang === currentLang);
+    AppLanguage.render({
+        lang: currentLang, searchPlaceholder: t('search'),
+        toggleLabel: currentLang === 'ko' ? 'Switch language to English' : '언어를 한국어로 전환',
+        footerTitle: t('footerTitle'), footerGenerator: t('footerGen')
     });
-    queryRequired('.search-input').placeholder = t('search');
-    document.documentElement.lang = currentLang;
-    queryRequired('#lang-toggle').setAttribute('aria-label', currentLang === 'ko' ? 'Switch language to English' : '언어를 한국어로 전환');
-    const footer = queryRequired('.site-footer');
-    const title = footer.children.item(0);
-    const generator = footer.children.item(1);
-    if (title) {
-        title.textContent = t('footerTitle');
-    }
-    if (generator) {
-        generator.textContent = t('footerGen');
-    }
 }

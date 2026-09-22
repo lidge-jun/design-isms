@@ -89,3 +89,11 @@ Continue with020_codemode_mcp.md. At wp2 P, apply the owner's data-oriented Lisp
 The read-only Code Mode MCP and NDJSON CLI are implemented over one operation registry. Compose values and brief rendering are separate, versioned language-preserving operations. The1053-byte tool description stays below the2000-byte contract. Real process tests and independent probes verified complete wire budgets, continuation, metadata-only operation, cancellation/timeout/EOF recovery and CLI pipelines. Evidence and exact limits are in022_phase2_verification.md; Worker/VM remains explicitly trusted-agent containment.
 
 Continue with030_recipe_experience.md: integrate the existing recipe data into the Atlas index, preserve Finder ownership and language controls, and verify the actual interface at desktop/mobile widths. Use the same contract version2 and selected-value semantics; do not duplicate the node operation registry in the browser UI.
+
+## wp3 conclusion and series delivery
+
+The index nowofferspurpose-ledrecipecompositionwithauthoredalternatives,realstylepreviews,bilingualbriefcopyandexplicitfailure/retry/manualcopy. Theinitialclosedworkbenchdoesnotfetchadditionaldata. ExistingFinderrepairwaspreservedandintegrated; realQAfurtherfixedmodalframefocusand200%Finder/recipeoverflow. AppLanguageownsDOMprojectionandapp.tsremains1046lines.
+
+Bothindependentfunctional andvisualreviewsarePASSwithnoopenfindings; detailedfreshproof/screenshotsin032_phase3_verification.md. ThefinalsitePR closesissues#7/#8/#9 whenlanded; previouslypublishedPRs#10/#11/#12cover#2–#6. Allareordinarymanualdependenciesrootedindev,notnativeGitHubstacks. No merge,mainpush,deploymentorimagegenerationwasperformed. OriginalnativeFindercommitremainsintact.
+
+Theacceptedfour-phaseobjectiveiscompletewhenfinalcurrent-headCIisobservedandallPRsarepublishedready. Issuesremainopenuntilmerge; thisdeliverydoesnotclaimthelivePagesdeploymenthaschanged.
