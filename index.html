@@ -13,9 +13,10 @@
 <link rel="stylesheet" href="./assets/css/style.css?v=20260902-tokens">
 <link rel="stylesheet" href="./assets/css/theme-atlas.css?v=20260902-tokens">
 <link rel="stylesheet" href="./assets/css/nav.css?v=20260902-tokens">
+<link rel="stylesheet" href="./assets/css/recipe-chooser.css?v=20260922-recipes">
 <link rel="stylesheet" href="./assets/css/app-crosslinks.css?v=20260718-encyc">
 <link rel="stylesheet" href="./assets/css/export.css?v=20260902-tokens">
-<link rel="stylesheet" href="./assets/css/finder.css?v=20260902-tokens">
+<link rel="stylesheet" href="./assets/css/finder.css?v=20260922-recipes">
 <link rel="stylesheet" href="./assets/css/runtime-states.css?v=20260717-complete">
 <link rel="stylesheet" href="./assets/css/app-materials.css?v=20260906-material">
 </head>
@@ -91,9 +92,20 @@
     <a href="./motion.html">Motion</a>
   </nav>
 </section>
+<details class="recipe-workbench" id="recipe-workbench" data-state="idle" aria-label="화면에 맞는 조합 찾기">
+  <summary class="recipe-summary">
+    <span class="recipe-summary-copy">
+      <span class="recipe-summary-title">화면에 맞는 조합 찾기</span>
+      <span class="recipe-summary-text">제품 소개, 읽기, 설정 화면에 쓸 재료를 골라보세요.</span>
+    </span>
+    <span class="recipe-summary-action" aria-hidden="true">열기</span>
+  </summary>
+  <div class="recipe-body"></div>
+</details>
 <div class="filter-bar" id="catalog">
   <div class="filter-row">
-    <button class="finder-trigger" id="finder-trigger" type="button">Find a style</button><button class="filter-btn active" data-keyword="all">All</button>
+    <button class="finder-trigger" id="finder-trigger" type="button">Find a style</button>
+    <button class="filter-btn active" data-keyword="all">All</button>
     <input type="text" class="search-input" placeholder="Search isms..." aria-label="ism 검색">
   </div>
 </div>
@@ -127,7 +139,7 @@
   <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
 </button>
 
-<script src="./assets/js/app-dialog.js?v=20260717-production"></script>
+<script src="./assets/js/app-dialog.js?v=20260922-recipes"></script>
 <script src="./assets/js/app-runtime.js?v=20260717-complete"></script>
 <script src="./assets/js/nav-dropdown.js?v=20260718-encyc"></script>
 <script src="./assets/js/app-crosslinks.js?v=20260718-encyc"></script>
@@ -135,6 +147,15 @@
 <script src="./assets/js/app-export.js?v=20260717-production"></script>
 <script src="./assets/js/finder.js?v=20260717-production"></script>
 <script src="./assets/js/app-materials.js?v=20260906-material"></script>
-<script src="./assets/js/app.js?v=20260906-material"></script>
+<script src="./assets/js/design-contracts.js?v=20260922-recipes"></script>
+<script src="./assets/js/design-catalog.js?v=20260922-recipes"></script>
+<script src="./assets/js/design-search.js?v=20260922-recipes"></script>
+<script src="./assets/js/design-views.js?v=20260922-recipes"></script>
+<script src="./assets/js/design-recipes.js?v=20260922-recipes"></script>
+<script src="./assets/js/recipe-data.js?v=20260922-recipes"></script>
+<script src="./assets/js/recipe-view.js?v=20260922-recipes"></script>
+<script src="./assets/js/recipe-chooser.js?v=20260922-recipes"></script>
+<script src="./assets/js/app-language.js?v=20260922-recipes"></script>
+<script src="./assets/js/app.js?v=20260922-recipes"></script>
 </body>
 </html>

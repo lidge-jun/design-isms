@@ -29,8 +29,8 @@ claude plugin install design-isms@lidge-jun
 - Modal detail view with history, prompts, palette, keywords, related ISMs
 - Development guide per ism: fitting components, build method, verification points
 - Korean/English UI toggle
-- Frontend UI Candidates page with 46 mobile, desktop, and shared patterns
-- 46 dedicated live demo animation types for the candidate cards and modals
+- Frontend UI Candidates page with 94 entries: 46 interface patterns and 48 visual effects
+- 94 dedicated live demo types for the candidate cards and modals
 - 94 guide images under `assets/images/effects/`
 - 94 guide WebP previews under `assets/images/thumbs/effects/`
 - Long-form effect documentation in `assets/data/effects-docs.json`
@@ -183,3 +183,55 @@ CSS 레시피에는 필요한 JavaScript 상태 관리와 모션 감소 대응�
 
 이미지 교체는 원본·WebP·프롬프트·검토 기록을 함께 갱신합니다. 이전 품질 감사 결과는
 해시별 이력으로 보관하며, 후속 결과도 비대상 이미지가 그대로인지 검증합니다.
+
+## References and acknowledgements
+
+화면 조합과 에이전트 인터페이스 개선에는 다음 프로젝트의 설계 원칙을 참고합니다.
+각 원본의 확인 버전, 적용 범위와 라이선스 고지는 [출처 기록](docs/ATTRIBUTION.md)에 정리했습니다.
+
+| Project | Reference scope | License |
+| --- | --- | --- |
+| [StyleGallery](https://github.com/changeroa/StyleGallery) · IYEN | 화면 레시피의 필수·교체 가능 요소, 스크롤 책임, 검증 범위 구분 | Code: MIT / documentation: CC BY 4.0 |
+| [Taste Skill](https://github.com/Leonxlnx/taste-skill) · Leonxlnx | 목적에 맞는 디자인 선택, 정보 밀도와 모션의 분리, 기존 디자인 시스템 보존 | MIT |
+| [aside-codemode](https://github.com/lidge-jun/aside-codemode) · lidge-jun | 작은 MCP 도구 설명과 필요할 때 조회하는 상세 API | MIT |
+
+기존 카탈로그 데이터와 이미지의 원본은 이 저장소에 있습니다. 위 프로젝트의 전체 자료나
+프레임워크를 포함한다는 뜻은 아니며, 새 기능의 구현 상태는 해당 PR과 사용 문서를 따릅니다.
+
+## 화면 레시피와 공통 검색 코어
+
+`assets/data/recipes.json`은 제품 소개, 편집형 읽기, 설정 작업 화면의 세 레시피를 담습니다.
+각 레시피는 기존 카탈로그 항목을 참조하며 필수·보조·교체 가능 역할, 허용 대안, 구현 제약과
+확인할 항목을 제공합니다. 완성된 페이지 코드나 제품 검증 결과를 뜻하지 않습니다.
+
+`src/design-*.ts`의 순수 코어는 브라우저와 Node에서 같은 검색·상세 조회·조합 규칙을 사용합니다.
+검색 결과에는 데이터 버전과 다음 커서가 붙고, anti-pattern은 명시적 조회에서만 나옵니다.
+`npm run test:design-core`로 검색·경계 입력·페이지 이동·레시피 계약을 검증합니다.
+MCP와 CLI는 아래 명령으로 사용할 수 있습니다. 사이트에서는 상단의 화면 조합 도구를 펼쳐 같은 레시피를 선택합니다.
+
+## Code Mode MCP와 NDJSON CLI
+
+`node scripts/mcp/server.mjs`는 공개 도구 하나(`execute_code`)로 카탈로그를 조회합니다.
+`actions.find()` / `actions.describe()`로 상세 API를 읽고, `design.search/get/recipes/compose/brief`를
+일반 JavaScript와 조합합니다. 상주 설명은 2,000바이트 이하, 기본 응답은 전체 wire 기준 8KiB입니다.
+
+`node scripts/design-query.mjs`는 같은 연산을 줄 단위 JSON으로 제공합니다. `compose`가 반환한
+값을 `brief`에 넘기면 언어와 데이터 버전을 보존한 Markdown을 얻습니다.
+
+```sh
+printf '%s\n' '{"op":"design.search","args":{"query":"바텀 시트","limit":3}}' | node scripts/design-query.mjs
+node scripts/design-query.mjs --help
+```
+
+설정과 파이프 예시, 크기·실행 제한은 [플러그인 안내](docs/PLUGIN.md#10-작은-연산을-조합하는-mcp--cli)에 있습니다.
+이 MCP는 신뢰한 로컬 에이전트용이며 Worker/VM을 악성 코드용 보안 샌드박스로 취급하지 않습니다.
+
+## 화면에 맞는 조합 찾기
+
+메인 페이지에서 조합 도구를 펼치면 제품 소개·기사 읽기·설정 작업 중 목적을 고를 수 있습니다.
+스타일, 배치, 색상, 서체, 효과와 모션을 허용된 대안으로 바꾸고 실제 레퍼런스를 열어보세요.
+선택한 조합의 구현 제약·확인 항목·출처를 한영 브리프로 복사할 수 있습니다.
+
+자료는 처음 펼칠 때 읽고 재사용합니다. 실패하면 도구 안에서 다시 시도할 수 있으며,
+자동 복사가 막힌 환경에서는 전문을 직접 선택해 복사합니다. 기존 카탈로그 탐색과
+스타일 찾기는 그대로 사용할 수 있습니다.

@@ -120,6 +120,7 @@ let searchQuery = '';
 let currentLang: Lang = AppRuntime.readStorage('design-isms-lang') === 'en' ? 'en' : 'ko';
 let imgObserver: IntersectionObserver | null = null;
 let finderController: { setLang: (lang: Lang) => void } | null = null;
+let recipeController: ReturnType<typeof RecipeChooser.mount> | null = null;
 let cardObserver: IntersectionObserver | null = null;
 let indexMounted = false;
 let indexLoadPromise: Promise<void> | null = null;
@@ -332,8 +333,14 @@ function loadAndRenderIndex(): Promise<void> {
     setupImageLazy();
     const fRoot = document.getElementById('style-finder-mount');
     if (fRoot) {
-      finderController = DesignFinder.mount({ root: fRoot, isms: allIsms as unknown as Parameters<typeof DesignFinder.mount>[0]['isms'], guides: (await AppGuides.load(GUIDE_URL)) as unknown as Record<string, Record<string, unknown>> | null, getLang: () => currentLang, openModal });
+      finderController = DesignFinder.mount({ root: fRoot, isms: allIsms as unknown as Parameters<typeof DesignFinder.mount>[0]['isms'], guides: (await AppGuides.load(GUIDE_URL)) as unknown as Record<string, Record<string, unknown>> | null, getLang: () => currentLang, openModal: id => {
+        (document.getElementById('finder-dialog') as HTMLDialogElement | null)?.close();
+        openModal(id, document.getElementById('finder-trigger'));
+      } });
     }
+    recipeController?.dispose();
+    const recipeRoot = document.getElementById('recipe-workbench');
+    if (recipeRoot) recipeController = RecipeChooser.mount({ root: recipeRoot, getLang: () => currentLang, openIsm: openModal });
     dismissLoading();
   })().catch(error => {
     console.error('[isms] failed to initialize', error);
@@ -1026,24 +1033,14 @@ function setupLangToggle(): void {
     updateLangUI();
     render();
     finderController?.setLang(currentLang);
+    recipeController?.setLang(currentLang);
   });
 }
 
 function updateLangUI(): void {
-  document.querySelectorAll<HTMLElement>('.lang-option').forEach(element => {
-    element.classList.toggle('active', element.dataset.lang === currentLang);
+  AppLanguage.render({
+    lang: currentLang, searchPlaceholder: t('search'),
+    toggleLabel: currentLang === 'ko' ? 'Switch language to English' : '언어를 한국어로 전환',
+    footerTitle: t('footerTitle'), footerGenerator: t('footerGen')
   });
-
-  queryRequired<HTMLInputElement>('.search-input').placeholder = t('search');
-  document.documentElement.lang = currentLang;
-  queryRequired<HTMLElement>('#lang-toggle').setAttribute('aria-label', currentLang === 'ko' ? 'Switch language to English' : '언어를 한국어로 전환');
-  const footer = queryRequired<HTMLElement>('.site-footer');
-  const title = footer.children.item(0);
-  const generator = footer.children.item(1);
-  if (title) {
-    title.textContent = t('footerTitle');
-  }
-  if (generator) {
-    generator.textContent = t('footerGen');
-  }
 }
