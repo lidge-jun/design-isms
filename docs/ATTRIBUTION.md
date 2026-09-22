@@ -14,7 +14,7 @@ StyleGallery code uses MIT; its documentation uses [Creative Commons Attribution
 
 Referenced works: [Primitive To Recipe Matrix](https://github.com/changeroa/StyleGallery/blob/a89117593cbd1e7c5642f2e512a6a7bcf5e4ec0d/recipes/primitive-to-recipe-matrix.md), [Layout contract](https://github.com/changeroa/StyleGallery/blob/a89117593cbd1e7c5642f2e512a6a7bcf5e4ec0d/layout/index.md), and [Webpage Generation Workflow](https://github.com/changeroa/StyleGallery/blob/a89117593cbd1e7c5642f2e512a6a7bcf5e4ec0d/guides/webpage-generation-workflow.md).
 
-Changes: the planned adaptation selects the essential/helper/substitutable role model and expresses it as bilingual recipes referencing this repository's own catalog IDs. It omits the upstream governance workflow and adapts constraints/checks for this site's existing patterns. Imported or adapted recipe prose must keep its source and license fields. No claim of endorsement or universal verification is made.
+Changes: the adaptation selects the essential/helper/substitutable role model and expresses it as bilingual recipes referencing this repository's own catalog IDs. It omits the upstream governance workflow and adapts constraints/checks for this site's existing patterns. Imported or adapted recipe prose must keep its source and license fields. No claim of endorsement or universal verification is made.
 
 ## Research-only browser reference
 
