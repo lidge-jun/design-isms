@@ -327,3 +327,12 @@ const popular = [
 - 데이터 버전은 여섯 카탈로그와 recipes/dev-guides/effects-docs/effects-snippets 열 파일의 정확한 바이트 및 계약 버전으로 계산한다. 커서는 버전·정규화 질의·필터에 묶는다.
 - `scripts/design-core-loader.mjs`는 고정된 생성 파일만 읽는 Node 어댑터다. 클라이언트가 경로를 지정하는 API를 추가하지 않는다. `npm run test:design-core`는 verify에 포함한다.
 - 레시피 출처와 라이선스는 `docs/ATTRIBUTION.md` 및 각 레시피 sources에 유지한다. 코드 예제·설계 가이드·실행 검증을 구분한다.
+
+## 로컬 MCP·CLI 계약
+
+- 외부 MCP 도구는 execute_code 하나이며 description은 UTF-8 2000바이트 이하로 검사한다. 내부 작업 정의는 scripts/mcp/operations.mjs 한곳에서 관리한다.
+- compose는 언어가 포함된 조합 값, brief는 검증한 조합의 Markdown 변환이다. JSON 왕복 후에도 버전·출처·선택 항목을 검증한다.
+- 결과 제한은 최종 JSON-RPC 래퍼·이스케이프·개행을 포함한다. 직접 반환한 원형 검색 페이지만 항목 단위로 줄이고 코드나 복합 결과를 임의로 자르지 않는다.
+- NDJSON CLI는 stdout에 한 줄당 결과 하나, stderr에 진단만 쓴다. 잘못된 줄 뒤 정상 줄도 처리하고 오류가 있으면 비정상 종료한다.
+- guest에는 호스트 함수·객체·파일·네트워크 API를 주입하지 않는다. Worker/VM은 신뢰한 에이전트의 실수 제한이며 악성 코드 보안 경계가 아니다.
+- npm run test:mcp는 실제 stdio/CLI·타임아웃·취소·바이트 예산·메타데이터 전용 경로를 검증한다. 운영 파일은 assets 밖에 둔다.

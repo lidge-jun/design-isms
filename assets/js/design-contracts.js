@@ -2,7 +2,7 @@
 /** Pure catalog contracts. Load before design-catalog/search/views classic scripts. */
 var DesignCatalog;
 (function (DesignCatalog) {
-    DesignCatalog.CONTRACT_VERSION = 'design-catalog/1';
+    DesignCatalog.CONTRACT_VERSION = 'design-catalog/2';
     class CatalogError extends Error {
         constructor(code, message) {
             super(message);

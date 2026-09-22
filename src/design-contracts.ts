@@ -1,6 +1,6 @@
 /** Pure catalog contracts. Load before design-catalog/search/views classic scripts. */
 namespace DesignCatalog {
-  export const CONTRACT_VERSION = 'design-catalog/1';
+  export const CONTRACT_VERSION = 'design-catalog/2';
   export type Domain = 'isms' | 'effects' | 'color' | 'typography' | 'layout' | 'motion';
   export interface Ref { readonly domain: Domain; readonly id: string; }
   export type Entry = Readonly<Record<string, unknown>>;

@@ -210,6 +210,21 @@ test('recipe discovery and English brief expose the authored contract without cl
   const authored = core.source.recipes.recipes.find(item => item.id === recipe.id);
   assert.deepEqual(plain(composition.checks), authored.checks.map(item => item.en));
   assert.ok(recipes.formatBrief(composition, 'en').includes(recipe.title.en));
+  assert.equal(composition.lang, 'en');
+  assert.ok(recipes.formatBrief(plain(composition)).includes('## Composition'));
+  rejects(() => recipes.formatBrief(composition, 'ko'), 'INVALID_LANGUAGE');
+});
+
+test('recipe arguments reject constructor-name getters without invoking them', () => {
+  let calls = 0;
+  const constructor = function () {};
+  Object.defineProperty(constructor, 'name', { get() { calls++; return 'Object'; } });
+  const prototype = Object.create(null);
+  Object.defineProperty(prototype, 'constructor', { value: constructor });
+  const options = Object.assign(Object.create(prototype), { recipeId: 'product-landing' });
+  rejects(() => recipes.compose(snapshot, recipeList, options), 'INVALID_SELECTION');
+  assert.equal(calls, 0);
+  rejects(() => recipes.compose(snapshot, recipeList, { recipeId: 'x'.repeat(129) }), 'RECIPE_NOT_FOUND');
 });
 
 test('all declared slot combinations preserve selected references in both languages', () => {

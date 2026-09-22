@@ -46,3 +46,7 @@ Protocol source proof (opened 2026-09-22): https://modelcontextprotocol.io/speci
 - `AppLanguage.render({lang,searchPlaceholder,toggleLabel,footerTitle,footerGenerator}):void` owns DOM work only. RecipeChooser.mount returns setLang/dispose. Main mounts after ISM data readiness, passes openModal callback, updates language and disposes before remount. No MutationObserver or assumed hashchange handler; do not dispose on pagehide without bfcache restoration.
 
 The core tests and MCP tests must cover recipe discovery, all view availability branches, snapshot changes from each served source class, page shrinking followed by lossless continuation, nested-result rejection, and cross-realm constructor/prototype refusal without injecting host functions. Existing app.ts remains <=1050 lines through the declared language-owner extraction.
+
+## D9/D10 owner-directed refinement
+
+021_phase2_contract.md supersedes the initial MCP compose+brief envelope: Composition is a first-class value with explicit language; brief conversion is a separate canonical/version-checked operation. The same IO-free registry drives Code Mode and the line-oriented CLI. Data version increments to design-catalog/2; neither a new interpreter nor a dependency is introduced.

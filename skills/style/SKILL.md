@@ -17,6 +17,18 @@ description: >-
 Query the visual and technical knowledge of 49 design isms. The same dataset that
 renders the site is the source of truth — read the JSON directly, never copy it.
 
+## Executable query route
+
+When the `design-isms` MCP is attached, use its single `execute_code` tool. Discover
+operations with `actions.find()` / `actions.describe(name)`; `design.search`,
+`design.get`, `design.recipes`, `design.compose`, and `design.brief` return data.
+Request only the needed view (`summary`, `guide`, `code`, `full`), preserve search
+version/completeness/cursor when projecting, and never present clipped code as complete.
+Composition is a value; pass it unchanged to `design.brief({composition})` for Markdown.
+The Node CLI `scripts/design-query.mjs` provides the same operations as NDJSON.
+If MCP is not attached, keep the direct JSON-reading route below; do not install or
+register a server automatically. See `docs/PLUGIN.md` for the local stdio configuration.
+
 ## Data location
 
 All paths are relative to the plugin root (`${CLAUDE_PLUGIN_ROOT}/assets/data/`).
