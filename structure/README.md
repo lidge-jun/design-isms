@@ -151,3 +151,12 @@ The `260510_nav_taxonomy_effect_docs` folder records the follow-up implementatio
 - `scripts/image-generation-profiles.mjs` preserves exact historical generation argv and admits the explicit `current-local` profile for the existing localhost:3333 OAuth Sol/high lane.
 - `scripts/image-final-history.mjs` validates predecessor receipt/sheets and approved-cell continuity. `images:finalize-quality -- --supersede --expected-previous-sha <SHA256>` preserves prior bytes under `098_image_final_history/<SHA256>/`, stores new sheets under `095_image_sheets/final-revisions/<aggregate>/`, and atomically updates 098. Default finalization still rejects differing existing content.
 - `npm run verify:quality-contracts`, included in `verify`, runs editorial, generation-profile and final-history regression tests. Immutable 093–097 baseline files and original final sheets remain unchanged.
+
+## Shared catalog and recipe core
+
+- `src/design-contracts.ts`, `design-catalog.ts`, `design-search.ts`, `design-views.ts` own the pure `DesignCatalog` namespace; `src/design-recipes.ts` owns `DesignRecipes`. Classic-script outputs use the matching `assets/js/` names. No DOM, filesystem or network operations belong in these namespaces.
+- `assets/data/recipes.json` is the source for three authored screen compositions. It contains references and new bilingual guidance, not copies of catalog objects. StyleGallery-derived roles/guidance retain CC BY attribution; no automatic product verification is implied.
+- `scripts/design-core-loader.mjs` is a Node-only adapter over an explicit generated-script allowlist. Its snapshot identity covers the six catalog JSON files, recipes, ISM guides, effect docs and effect snippets. The hash uses exact file bytes and sorted repository-relative paths.
+- Search excludes anti-patterns, has stable domain/id tie ordering and version/query/filter-bound cursors. `get` separates summary, implementation guidance, complete code and raw catalog views.
+- `scripts/design-core.test.mjs` (`npm run test:design-core`, included in verify) exercises invalid inputs, real references, immutability, multilingual search, continuation, view availability, source identity and recipes. Existing Finder logic remains unchanged.
+- Core consumers receive plain immutable data. Node operational scripts and documentation stay outside the Pages allowlist. Browser recipe UI and MCP transport are separate follow-up layers.

@@ -1,0 +1,114 @@
+{
+  "version": 1,
+  "recipes": [
+    {
+      "id": "product-landing",
+      "title": {"ko": "제품 소개와 다음 행동", "en": "Product story and next action"},
+      "summary": {"ko": "하나의 제품 메시지와 실제 사용 장면을 먼저 보여 주고, 방문자가 선택할 다음 행동을 분명하게 둡니다.", "en": "Lead with one product promise and real usage evidence, then make the next action clear."},
+      "slots": [
+        {"id": "style", "label": {"ko": "시각 스타일", "en": "Visual style"}, "role": "substitutable",
+          "default": {"domain": "isms", "id": "minimalism"}, "alternatives": [{"domain": "isms", "id": "bauhaus"}]},
+        {"id": "layout", "label": {"ko": "메시지와 행동 배치", "en": "Message and action layout"}, "role": "essential",
+          "default": {"domain": "layout", "id": "layout-hero-centered"}, "alternatives": [{"domain": "layout", "id": "layout-hero-full-media"}]},
+        {"id": "color", "label": {"ko": "행동색과 표면", "en": "Action colors and surfaces"}, "role": "substitutable",
+          "default": {"domain": "color", "id": "saas-trust-blue"}, "alternatives": [{"domain": "color", "id": "minimalism-neutral"}]},
+        {"id": "typography", "label": {"ko": "제품 제목과 본문", "en": "Product headings and body"}, "role": "essential",
+          "default": {"domain": "typography", "id": "outfit-pretendard-product"}, "alternatives": [{"domain": "typography", "id": "noto-serif-sans-kr-readable"}]},
+        {"id": "effect", "label": {"ko": "다음 행동의 피드백", "en": "Next-action feedback"}, "role": "helper",
+          "default": {"domain": "effects", "id": "sticky-cta-bar"}, "alternatives": [{"domain": "effects", "id": "copy-confirmation"}]},
+        {"id": "motion", "label": {"ko": "콘텐츠 전환", "en": "Content transition"}, "role": "helper",
+          "default": {"domain": "motion", "id": "motion-fade"}, "alternatives": [{"domain": "motion", "id": "motion-ease-in-out"}]}
+      ],
+      "constraints": [
+        {"ko": "소개 문구, 행동, 제품 증거의 읽기 순서를 유지합니다. 선택한 레이아웃의 composition 필수 요소와 responsive 규칙을 구현 기준으로 삼고, 이미지가 핵심 설명을 대신하지 않게 합니다.", "en": "Keep the reading order of message, action, and product evidence. Implement the selected layout's required composition elements and responsive rules; images must not replace the essential explanation."},
+        {"ko": "문서가 주 스크롤을 맡습니다. 고정 CTA를 쓰면 본문과 포커스가 가려지지 않도록 공간과 safe area를 확보하고 본문 끝에도 같은 행동을 둡니다. 전체 미디어 레이아웃을 선택하면 모바일 CTA는 고정하지 않고 문서 흐름에 둡니다.", "en": "Let the document own scrolling. Reserve space and safe-area padding for a sticky CTA and repeat the action at the end of the content. With the full-media layout, keep the mobile CTA in document flow instead of fixing it over the media."},
+        {"ko": "복사 확인으로 바꾸면 고정 구매·문의 행동을 대신할 수 없습니다. 공유 링크나 코드의 실제 복사에만 연결하고, 주요 행동은 본문에 유지하며 복사 실패 시 수동 복사를 안내합니다.", "en": "Copy confirmation cannot replace a purchase or contact action. Attach it only to a real share-link or code copy, retain the primary action in the page, and offer manual copying on failure."},
+        {"ko": "스타일을 바꿔도 행동색, 본문색, 표면색의 의미는 선택한 Color의 역할을 따릅니다. 서체 fallback과 한글 지원을 보존하고, 전체 미디어 배경에는 읽을 수 있는 대비면을 둡니다.", "en": "A style change must preserve the selected color system's action, text, and surface roles. Keep font fallbacks and Korean support; place readable contrast protection behind text over full-media imagery."},
+        {"ko": "페이드는 콘텐츠 진입에만 쓰고 주요 행동을 기다리게 하지 않습니다. 가감속 대안은 hover 피드백에 한정하며 터치에서도 행동이 보이게 합니다. 모션 감소 시 선택한 preset의 reducedMotion 대안을 유지합니다.", "en": "Use fading for content entry without delaying the primary action. The ease-in-out alternative is hover feedback, not an automatic entry sequence; keep actions visible on touch. Preserve the selected preset's reducedMotion alternative."}
+      ],
+      "checks": [
+        {"ko": "좁은 화면과 확대 상태에서 제목, 설명, CTA가 읽기 순서대로 나타나고 가로 넘침이 없는지 확인합니다.", "en": "Check that headings, explanation, and CTA retain reading order without horizontal overflow on narrow screens and when zoomed."},
+        {"ko": "키보드만으로 모든 행동에 도달하고, 고정 영역이 포커스를 가리지 않는지 확인합니다. 전체 미디어 대안에서는 모바일 CTA의 비고정 배치를 확인합니다.", "en": "Reach every action by keyboard and check that fixed regions do not cover focus. For the full-media alternative, check that the mobile CTA is not fixed."},
+        {"ko": "선택한 Color의 contrast 검사 쌍을 실제 배경에서 확인하고 웹폰트를 차단해 한글과 영문 fallback을 확인합니다.", "en": "Check the selected color system's contrast pairs against actual backgrounds, then block webfonts to inspect Korean and English fallbacks."},
+        {"ko": "모션 감소와 JavaScript 실패 상태에서 설명과 행동이 보이는지 확인합니다. 복사 대안은 성공·거부·API 미지원 상태를 각각 실행합니다.", "en": "Check that content and actions remain visible with reduced motion and failed JavaScript. Exercise copy success, denial, and an unavailable Clipboard API when using the alternative."}
+      ],
+      "sources": [
+        {"url": "https://github.com/changeroa/StyleGallery/blob/a89117593cbd1e7c5642f2e512a6a7bcf5e4ec0d/recipes/primitive-to-recipe-matrix.md", "license": "CC BY 4.0", "note": "IYEN / StyleGallery: role and substitution model. Atlas authored these bilingual constraints and catalog selections; no upstream code copied. License: https://creativecommons.org/licenses/by/4.0/"},
+        {"url": "https://github.com/changeroa/StyleGallery/blob/a89117593cbd1e7c5642f2e512a6a7bcf5e4ec0d/guides/webpage-generation-workflow.md", "license": "CC BY 4.0", "note": "IYEN / StyleGallery: content purpose before composition. Adapted as Atlas-specific guidance, not an executed or verified generated page. License: https://creativecommons.org/licenses/by/4.0/"}
+      ]
+    },
+    {
+      "id": "editorial-reading",
+      "title": {"ko": "기사 탐색과 차분한 읽기", "en": "Editorial discovery and quiet reading"},
+      "summary": {"ko": "대표 기사와 보조 기사의 우선순위를 나누고, 작은 화면에서도 내용과 읽기 순서를 유지하는 편집형 화면입니다.", "en": "Establish a lead story and supporting stories while preserving content and reading order on smaller screens."},
+      "slots": [
+        {"id": "style", "label": {"ko": "편집 스타일", "en": "Editorial style"}, "role": "substitutable",
+          "default": {"domain": "isms", "id": "editorial-typography"}, "alternatives": [{"domain": "isms", "id": "minimalism"}]},
+        {"id": "layout", "label": {"ko": "기사의 읽기 순서", "en": "Story reading order"}, "role": "essential",
+          "default": {"domain": "layout", "id": "layout-grid-magazine"}, "alternatives": [{"domain": "layout", "id": "layout-content-timeline"}]},
+        {"id": "color", "label": {"ko": "본문과 편집 강조색", "en": "Reading and editorial colors"}, "role": "substitutable",
+          "default": {"domain": "color", "id": "media-editorial"}, "alternatives": [{"domain": "color", "id": "minimalism-neutral"}]},
+        {"id": "typography", "label": {"ko": "한글 제목과 긴 본문", "en": "Korean headlines and long-form text"}, "role": "essential",
+          "default": {"domain": "typography", "id": "noto-serif-sans-kr-readable"}, "alternatives": [{"domain": "typography", "id": "gowun-batang-pretendard-calm"}]},
+        {"id": "effect", "label": {"ko": "보조 읽기 피드백", "en": "Supporting reading feedback"}, "role": "helper",
+          "default": {"domain": "effects", "id": "scroll-reveal"}, "alternatives": [{"domain": "effects", "id": "tooltip"}]},
+        {"id": "motion", "label": {"ko": "기사 영역 등장", "en": "Story-region entry"}, "role": "helper",
+          "default": {"domain": "motion", "id": "motion-scroll-reveal"}, "alternatives": [{"domain": "motion", "id": "motion-fade"}]}
+      ],
+      "constraints": [
+        {"ko": "선택한 레이아웃의 composition과 responsive를 보존합니다. 매거진은 대표 기사부터 읽히게 하고 모바일에서 보조 레일을 뒤로 이어 붙입니다. 타임라인 대안은 날짜가 있는 시간순 서사에만 쓰며, 동등한 기사 목록의 대체품으로 쓰지 않습니다.", "en": "Preserve the selected layout's composition and responsive rules. Lead with the main story in the magazine and place the supporting rail after it on mobile. Use the timeline alternative only for dated chronological narratives, not as a substitute for an equal-weight story list."},
+        {"ko": "문서가 스크롤을 맡고 본문 안에 별도 스크롤 영역을 만들지 않습니다. 시각적 재배치가 제목 계층, DOM 순서, 링크의 키보드 순서를 바꾸지 않게 합니다.", "en": "Let the document own scrolling without nested scrolling in article text. Visual rearrangement must preserve heading hierarchy, DOM order, and keyboard link order."},
+        {"ko": "본문은 중립적인 텍스트 역할을 사용합니다. 편집 강조색은 섹션과 행동에 한정하고, 명조 제목과 고딕 본문의 역할 및 한글 fallback을 유지합니다.", "en": "Use neutral text roles for reading. Reserve editorial accents for sections and actions, and preserve the serif-heading/sans-body roles with Korean fallbacks."},
+        {"ko": "스크롤 효과와 motion-scroll-reveal을 함께 선택하면 관찰자와 가시 상태의 소유자를 하나로 합칩니다. 기본 콘텐츠는 보이고, 연결된 항목만 한 번 등장시킵니다. 페이드 대안도 같은 가시 상태를 써서 이중 애니메이션과 지연을 피합니다.", "en": "When scroll-reveal and motion-scroll-reveal are selected together, use one observer and one visibility-state owner. Content is visible by default; only connected elements reveal once. The fade alternative must share that visibility state rather than add another animation or delay."},
+        {"ko": "툴팁 대안은 용어의 짧은 보조 설명만 맡습니다. hover와 focus 모두에서 접근할 수 있게 하고, 터치 화면과 본문에도 같은 의미를 제공하며 필수 설명을 툴팁에 숨기지 않습니다. 기사 등장 모션과 툴팁의 열림 상태는 분리합니다.", "en": "The tooltip alternative is only for short supplementary definitions. Support hover and focus, provide the same meaning on touch and in the text, and never hide required information in a tooltip. Keep article-entry motion separate from tooltip open state."}
+      ],
+      "checks": [
+        {"ko": "데스크탑과 모바일에서 기사 누락 없이 대표 기사부터 읽히는지 확인합니다. 타임라인을 선택했다면 날짜와 사건의 DOM 순서가 일치하는지 확인합니다.", "en": "Check that desktop and mobile retain every story and lead with the main story. For a timeline, check that dates and events follow the same chronological DOM order."},
+        {"ko": "긴 한글 제목, 영문 단어, 확대된 글꼴로 넘침과 줄바꿈을 확인하고 웹폰트 실패 시에도 본문을 읽을 수 있는지 확인합니다.", "en": "Check wrapping and overflow with long Korean headlines, English words, and enlarged text, including readability when webfonts fail."},
+        {"ko": "관찰 API 미지원, JavaScript 실패, 모션 감소에서 모든 기사 내용이 보이는지 확인하고 반복 스크롤로 등장 효과가 겹치지 않는지 확인합니다.", "en": "Check that every story remains visible without the observer API, with failed JavaScript, and under reduced motion. Repeated scrolling must not stack entry animations."},
+        {"ko": "툴팁 대안은 키보드와 터치에서 보조 설명에 접근 가능한지 확인합니다. 색상과 애니메이션을 제거해도 기사 구분과 탐색이 유지되어야 합니다.", "en": "For the tooltip alternative, check access to supplementary explanations with keyboard and touch. Story grouping and navigation must survive removal of color and animation."}
+      ],
+      "sources": [
+        {"url": "https://github.com/changeroa/StyleGallery/blob/a89117593cbd1e7c5642f2e512a6a7bcf5e4ec0d/recipes/primitive-to-recipe-matrix.md", "license": "CC BY 4.0", "note": "IYEN / StyleGallery: role and substitution model. Atlas authored the editorial constraints and selections for its own catalogs; no upstream code copied. License: https://creativecommons.org/licenses/by/4.0/"},
+        {"url": "https://github.com/changeroa/StyleGallery/blob/a89117593cbd1e7c5642f2e512a6a7bcf5e4ec0d/layout/index.md", "license": "CC BY 4.0", "note": "IYEN / StyleGallery: explicit layout responsibilities and composition boundaries. Adapted to document-owned scrolling and Atlas responsive references. License: https://creativecommons.org/licenses/by/4.0/"}
+      ]
+    },
+    {
+      "id": "settings-workspace",
+      "title": {"ko": "설정 편집과 저장 상태", "en": "Settings editing and save state"},
+      "summary": {"ko": "설정 그룹과 저장 행동을 한 흐름에 두고, 편집 중인 값과 저장된 값을 혼동하지 않게 만드는 작업 화면입니다.", "en": "Keep settings groups and save actions in one flow while clearly distinguishing current edits from persisted values."},
+      "slots": [
+        {"id": "style", "label": {"ko": "작업 화면 스타일", "en": "Workspace style"}, "role": "substitutable",
+          "default": {"domain": "isms", "id": "minimalism"}, "alternatives": [{"domain": "isms", "id": "bauhaus"}]},
+        {"id": "layout", "label": {"ko": "설정 그룹과 저장 배치", "en": "Settings groups and save layout"}, "role": "essential",
+          "default": {"domain": "layout", "id": "layout-form-settings"}, "alternatives": [{"domain": "layout", "id": "layout-form-multi-step"}]},
+        {"id": "color", "label": {"ko": "상태와 행동 색상", "en": "State and action colors"}, "role": "substitutable",
+          "default": {"domain": "color", "id": "tailwind-slate-blue"}, "alternatives": [{"domain": "color", "id": "github-primer-light"}]},
+        {"id": "typography", "label": {"ko": "설정 레이블과 도움말", "en": "Settings labels and help"}, "role": "essential",
+          "default": {"domain": "typography", "id": "outfit-pretendard-product"}, "alternatives": [{"domain": "typography", "id": "noto-serif-sans-kr-readable"}]},
+        {"id": "effect", "label": {"ko": "작업 결과 피드백", "en": "Operation feedback"}, "role": "helper",
+          "default": {"domain": "effects", "id": "toast"}, "alternatives": [{"domain": "effects", "id": "inline-validation"}]},
+        {"id": "motion", "label": {"ko": "부가 설정 펼침", "en": "Supplementary settings disclosure"}, "role": "helper",
+          "default": {"domain": "motion", "id": "motion-expand-collapse"}, "alternatives": [{"domain": "motion", "id": "motion-fade"}]}
+      ],
+      "constraints": [
+        {"ko": "문서가 스크롤을 맡고 모바일에서는 목차, 설정 그룹, 저장 행동을 한 열로 둡니다. 선택한 레이아웃의 composition과 responsive를 보존하며, 다단계 대안은 실제 순차 과업일 때만 쓰고 단계 이동으로 입력을 잃지 않게 합니다.", "en": "Let the document own scrolling; stack navigation, settings groups, and save actions on mobile. Preserve the selected layout's composition and responsive rules. Use the multi-step alternative only for a genuinely sequential task and retain input across steps."},
+        {"ko": "폼 소유자가 draft, 제출 시점의 값, 마지막 저장 확인값을 분리합니다. A를 제출한 뒤 B로 편집하고 A의 응답을 받아도 B는 미저장 상태로 남겨야 합니다. 실제 저장 확인 전에는 성공으로 표시하지 않습니다.", "en": "The form owner separates the draft, submitted snapshot, and last acknowledged baseline. If A is submitted and the user edits B before A is acknowledged, B remains unsaved. Do not report success before persistence is acknowledged."},
+        {"ko": "토스트는 확인된 결과의 보조 알림입니다. 오류 수정과 저장 상태는 폼에도 남기고 중요한 행동을 토스트에만 두지 않습니다. 인라인 검증 대안은 필드 오류를 맡으며 저장 확인을 대신하지 않습니다.", "en": "A toast supplements an acknowledged result. Keep error recovery and save state in the form, and never place a required action only in a toast. Inline validation handles field errors; it does not replace persistence acknowledgement."},
+        {"ko": "접기 제어부가 aria-expanded, 연결 영역의 hidden·inert, 포커스 복귀를 함께 관리하고 CSS는 전환만 맡습니다. 빠른 재열기는 이전 닫힘을 취소해야 합니다. 페이드 대안도 같은 상태 소유자를 사용하며 필수 필드는 숨기지 않습니다.", "en": "The disclosure controller owns aria-expanded, hidden/inert state, and focus recovery; CSS owns only the transition. Reopening must cancel a pending close. The fade alternative uses the same state owner and must not hide required fields."},
+        {"ko": "색상은 상태 텍스트와 함께 사용하고 한글 레이블의 fallback을 보존합니다. Tailwind 팔레트는 v3.4 HEX 참고값이며 v4 토큰으로 간주하지 않습니다. 스타일을 바꿔도 정보 밀도와 저장 행동의 위계를 유지합니다.", "en": "Pair state colors with text and retain Korean label fallbacks. The Tailwind palette is a v3.4 HEX reference, not v4 tokens. Style changes must preserve information density and the save action's hierarchy."}
+      ],
+      "checks": [
+        {"ko": "A 제출 → B 편집 → A 저장 응답 순서에서 B가 남고 미저장 표시가 유지되는지 확인합니다. 실패·재시도·중복 제출도 실제 저장 연결에서 따로 실행합니다.", "en": "Exercise submit A, edit B, then acknowledge A: B and the unsaved indicator must remain. Separately exercise failure, retry, and duplicate submission against the actual persistence integration."},
+        {"ko": "키보드로 목차, 필드, 저장 행동에 도달하고 접힌 영역이 탭 순서에서 빠지는지 확인합니다. 빠르게 닫고 열어도 마지막 의도와 포커스가 유지되어야 합니다.", "en": "Reach navigation, fields, and save actions by keyboard; collapsed regions must leave the tab order. Rapid close/reopen actions must preserve the final intent and focus."},
+        {"ko": "토스트가 사라져도 저장 상태와 오류 수정 방법이 남는지 확인합니다. 인라인 검증 대안은 오류와 필드의 연결, 검증 시점, 서버 오류 처리도 확인합니다.", "en": "Check that save state and error recovery remain after a toast disappears. For inline validation, check field-error association, validation timing, and server error handling."},
+        {"ko": "모바일 키보드, 확대, 긴 레이블에서도 필드와 저장 버튼이 가려지지 않는지 확인합니다. 모션 감소에서는 접기 상태와 접근성을 유지하며 전환만 생략합니다.", "en": "Check that the mobile keyboard, zoom, and long labels do not obscure fields or save actions. Reduced motion must remove transitions while preserving disclosure state and accessibility."}
+      ],
+      "sources": [
+        {"url": "https://github.com/changeroa/StyleGallery/blob/a89117593cbd1e7c5642f2e512a6a7bcf5e4ec0d/recipes/primitive-to-recipe-matrix.md", "license": "CC BY 4.0", "note": "IYEN / StyleGallery: role and substitution model. Atlas authored the settings constraints and catalog selections; no upstream code copied. License: https://creativecommons.org/licenses/by/4.0/"},
+        {"url": "https://github.com/changeroa/StyleGallery/blob/a89117593cbd1e7c5642f2e512a6a7bcf5e4ec0d/design-engineering/component-contract.md", "license": "CC BY 4.0", "note": "IYEN / StyleGallery: separate draft, submitted snapshot, and persisted baseline. Adapted into consumer checks; these recipes do not implement or verify server persistence. License: https://creativecommons.org/licenses/by/4.0/"},
+        {"url": "https://github.com/changeroa/StyleGallery/blob/a89117593cbd1e7c5642f2e512a6a7bcf5e4ec0d/motion/interaction-recipes.md", "license": "CC BY 4.0", "note": "IYEN / StyleGallery: state ownership and interruption rules. Adapted to Atlas disclosure guidance, not copied animation code. License: https://creativecommons.org/licenses/by/4.0/"}
+      ]
+    }
+  ]
+}

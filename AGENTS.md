@@ -319,3 +319,11 @@ const popular = [
 - 기존 098을 바꾸려면 `npm run images:finalize-quality -- --supersede --expected-previous-sha <현재098 SHA256>`를 쓴다. 이전 receipt·sheet는 해시별 보관하고 새 sheet는 별도 불변 경로에 저장한다.
 - 093–097과 기존 final sheet는 수정하지 않는다. 후속 receipt는 기존 승인 목록을 보존하고 새 승인 대상 셀만 바꿀 수 있다.
 - `npm run verify:quality-contracts`는 editorial/profile/final-history 회귀 검증이며 `npm run verify`에 포함된다.
+
+## 공유 카탈로그·레시피 코어
+
+- `src/design-{contracts,catalog,search,views}.ts`와 `src/design-recipes.ts`는 DOM·IO 없는 classic namespace다. 기존 Finder 점수와 팔레트 계산은 변경하지 않는다.
+- `assets/data/recipes.json`은 기존 ID를 참조하는 화면 조합만 소유한다. anti-pattern은 검색·조합에서 제외하고 명시적 get 조회에서만 허용한다.
+- 데이터 버전은 여섯 카탈로그와 recipes/dev-guides/effects-docs/effects-snippets 열 파일의 정확한 바이트 및 계약 버전으로 계산한다. 커서는 버전·정규화 질의·필터에 묶는다.
+- `scripts/design-core-loader.mjs`는 고정된 생성 파일만 읽는 Node 어댑터다. 클라이언트가 경로를 지정하는 API를 추가하지 않는다. `npm run test:design-core`는 verify에 포함한다.
+- 레시피 출처와 라이선스는 `docs/ATTRIBUTION.md` 및 각 레시피 sources에 유지한다. 코드 예제·설계 가이드·실행 검증을 구분한다.

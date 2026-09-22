@@ -73,3 +73,13 @@ Next direction: wp1 consumes 010_catalog_recipes.md to implement the shared core
 ## Owner steering: dev integration target
 
 The owner directed development to dev after PR #10 was opened. No remote dev branch existed, so dev was created at the unchanged origin/main baseline 28d6611. PR #10 now targets dev; subsequent ordinary PRs keep their manual dependency bases, with dev as the integration root. No main update or deployment is part of this change.
+
+## Owner steering: images and data-oriented tools
+
+The owner explicitly permits ima2 image generation when useful (inspect ima2 --help and ping before use). Approved existing image bytes remain unchanged unless a separately recorded replacement is justified. The owner also requests Lisp/Unix philosophy in MCP: small composable read primitives, first-class operation metadata/data, transparent composition, and pipe-friendly text boundaries. wp2 will provide an NDJSON CLI over the same operation registry; this adds no general-purpose language/runtime or new dependency. The exact wp2 amendment is re-audited at its P boundary; wp1 core interfaces are unchanged.
+
+## wp1 conclusion and next direction
+
+The shared pure catalog/recipe core, Node adapter, canonical source metadata and three authored recipes are implemented and independently reviewed. Eighteen persistent tests include384 bilingual combinations and complete pagination; generated parity reports29 matching outputs. Review-found accessor defects were reproduced and repaired without weakened assertions. Existing catalog/image/navigation contracts remain intact. Detailed evidence is in011_phase1_progress.md.
+
+Continue with020_codemode_mcp.md. At wp2 P, apply the owner's data-oriented Lisp/Unix refinement to a small common operation registry and NDJSON CLI. The selected recipe is an inspectable data value; no automatic page generator or hostile-code sandbox is claimed.
