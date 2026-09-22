@@ -159,4 +159,14 @@ The `260510_nav_taxonomy_effect_docs` folder records the follow-up implementatio
 - `scripts/design-core-loader.mjs` is a Node-only adapter over an explicit generated-script allowlist. Its snapshot identity covers the six catalog JSON files, recipes, ISM guides, effect docs and effect snippets. The hash uses exact file bytes and sorted repository-relative paths.
 - Search excludes anti-patterns, has stable domain/id tie ordering and version/query/filter-bound cursors. `get` separates summary, implementation guidance, complete code and raw catalog views.
 - `scripts/design-core.test.mjs` (`npm run test:design-core`, included in verify) exercises invalid inputs, real references, immutability, multilingual search, continuation, view availability, source identity and recipes. Existing Finder logic remains unchanged.
-- Core consumers receive plain immutable data. Node operational scripts and documentation stay outside the Pages allowlist. Browser recipe UI and MCP transport are separate follow-up layers.
+- Core consumers receive plain immutable data. Node operational scripts and documentation stay outside the Pages allowlist. Browser recipe UI is a separate follow-up layer. MCP/CLI adapters are described below.
+
+## Local Code Mode and Unix query transports
+
+- `scripts/mcp/operations.mjs` owns serializable operation specs and a closure-free registry shared by guest execution and `scripts/design-query.mjs`. Small operations exchange immutable JSON data; compose and brief formatting are distinct operations.
+- `scripts/mcp/server.mjs` and `protocol.mjs` own local stdio JSON-RPC, metadata-only initialization/listing, strict frames/IDs, four-call admission and EOF cancellation. `response-budget.mjs` measures complete serialized responses including escaping/newline.
+- `scripts/mcp/execution.mjs` supervises one bounded Worker per trusted-agent call; `execution-worker.mjs` constructs guest-native functions and data, keeping core namespaces/private continuation metadata out of globals. These are containment limits, not hostile-code sandbox claims.
+- `scripts/design-query.mjs` reads NDJSON invocations and returns one plain value or coded error per line. It processes valid lines after malformed/oversized ones and returns a failing exit status when any line failed. Help and action discovery do not load the catalog.
+- `DesignRecipes.Composition.lang` survives serialization. A brief is rendered only after exact current-snapshot canonical recomposition; stale and tampered values fail. Contract version design-catalog/2 binds cursors and composition values to this shape.
+- `scripts/mcp/{server,protocol,cli}.test.mjs` run real subprocess transports and negative lifecycle/size tests; `test-client.mjs` is independent of server internals. `npm run test:mcp` is included in verify.
+- Client configuration is documented, never auto-installed. No hosted HTTP surface or MCP operational file is included in the Pages artifact.

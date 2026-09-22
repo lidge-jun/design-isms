@@ -20,7 +20,9 @@ var DesignRecipes;
         // Permit JSON objects from another realm as well as null-prototype dictionaries.
         if (proto !== null) {
             const ctor = Object.getOwnPropertyDescriptor(proto, 'constructor')?.value;
-            if (Object.getPrototypeOf(proto) !== null || typeof ctor !== 'function' || ctor.name !== 'Object') {
+            if (Object.getPrototypeOf(proto) !== null || typeof ctor !== 'function'
+                || Object.getOwnPropertyDescriptor(ctor, 'name')?.value !== 'Object'
+                || Object.getOwnPropertyDescriptor(ctor, 'prototype')?.value !== proto) {
                 fail(code, 'Expected a plain object.');
             }
         }
@@ -43,7 +45,7 @@ var DesignRecipes;
     }
     function id(raw, code) {
         const value = string(raw, code);
-        if (!safeId.test(value) || forbiddenKeys.has(value))
+        if (value.length > 128 || !safeId.test(value) || forbiddenKeys.has(value))
             fail(code, 'Invalid identifier.');
         return value;
     }
@@ -167,7 +169,7 @@ var DesignRecipes;
             return Object.freeze({ id: item.id, role: item.role, ref: selected,
                 item: DesignCatalog.summarize(selected.domain, DesignCatalog.resolve(snapshot, selected)) });
         });
-        return Object.freeze({ version: snapshot.version, recipeId: chosen.id, title: chosen.title[lang],
+        return Object.freeze({ version: snapshot.version, recipeId: chosen.id, lang, title: chosen.title[lang],
             slots: Object.freeze(slots), constraints: Object.freeze(chosen.constraints.map(item => item[lang])),
             checks: Object.freeze(chosen.checks.map(item => item[lang])), sources: chosen.sources });
     }
@@ -175,9 +177,11 @@ var DesignRecipes;
     function markdown(value) {
         return value.replace(/[\\`*_{}\[\]()#+.!|>~-]/g, '\\$&').replace(/</g, '&lt;').replace(/\r?\n/g, ' ');
     }
-    /** Format a localized composition. Pass the same language as compose; no truncation. */
-    function formatBrief(composition, lang = 'ko') {
+    /** A composition carries its language through JSON and text pipelines; no truncation. */
+    function formatBrief(composition, lang = composition.lang) {
         language(lang);
+        if (lang !== composition.lang)
+            fail('INVALID_LANGUAGE', 'Brief language must match the composition.');
         const ko = lang === 'ko';
         const roles = ko
             ? { essential: '필수', helper: '보조', substitutable: '교체 가능' }

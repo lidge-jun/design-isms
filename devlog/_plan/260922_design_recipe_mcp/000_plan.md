@@ -83,3 +83,9 @@ The owner explicitly permits ima2 image generation when useful (inspect ima2 --h
 The shared pure catalog/recipe core, Node adapter, canonical source metadata and three authored recipes are implemented and independently reviewed. Eighteen persistent tests include384 bilingual combinations and complete pagination; generated parity reports29 matching outputs. Review-found accessor defects were reproduced and repaired without weakened assertions. Existing catalog/image/navigation contracts remain intact. Detailed evidence is in011_phase1_progress.md.
 
 Continue with020_codemode_mcp.md. At wp2 P, apply the owner's data-oriented Lisp/Unix refinement to a small common operation registry and NDJSON CLI. The selected recipe is an inspectable data value; no automatic page generator or hostile-code sandbox is claimed.
+
+## wp2 conclusion and next direction
+
+The read-only Code Mode MCP and NDJSON CLI are implemented over one operation registry. Compose values and brief rendering are separate, versioned language-preserving operations. The1053-byte tool description stays below the2000-byte contract. Real process tests and independent probes verified complete wire budgets, continuation, metadata-only operation, cancellation/timeout/EOF recovery and CLI pipelines. Evidence and exact limits are in022_phase2_verification.md; Worker/VM remains explicitly trusted-agent containment.
+
+Continue with030_recipe_experience.md: integrate the existing recipe data into the Atlas index, preserve Finder ownership and language controls, and verify the actual interface at desktop/mobile widths. Use the same contract version2 and selected-value semantics; do not duplicate the node operation registry in the browser UI.

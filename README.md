@@ -207,4 +207,21 @@ CSS 레시피에는 필요한 JavaScript 상태 관리와 모션 감소 대응�
 `src/design-*.ts`의 순수 코어는 브라우저와 Node에서 같은 검색·상세 조회·조합 규칙을 사용합니다.
 검색 결과에는 데이터 버전과 다음 커서가 붙고, anti-pattern은 명시적 조회에서만 나옵니다.
 `npm run test:design-core`로 검색·경계 입력·페이지 이동·레시피 계약을 검증합니다.
-MCP와 사이트 선택 화면은 후속 PR에서 연결합니다.
+MCP와 CLI는 아래 명령으로 사용할 수 있습니다. 사이트 선택 화면은 후속 PR에서 연결합니다.
+
+## Code Mode MCP와 NDJSON CLI
+
+`node scripts/mcp/server.mjs`는 공개 도구 하나(`execute_code`)로 카탈로그를 조회합니다.
+`actions.find()` / `actions.describe()`로 상세 API를 읽고, `design.search/get/recipes/compose/brief`를
+일반 JavaScript와 조합합니다. 상주 설명은 2,000바이트 이하, 기본 응답은 전체 wire 기준 8KiB입니다.
+
+`node scripts/design-query.mjs`는 같은 연산을 줄 단위 JSON으로 제공합니다. `compose`가 반환한
+값을 `brief`에 넘기면 언어와 데이터 버전을 보존한 Markdown을 얻습니다.
+
+```sh
+printf '%s\n' '{"op":"design.search","args":{"query":"바텀 시트","limit":3}}' | node scripts/design-query.mjs
+node scripts/design-query.mjs --help
+```
+
+설정과 파이프 예시, 크기·실행 제한은 [플러그인 안내](docs/PLUGIN.md#10-작은-연산을-조합하는-mcp--cli)에 있습니다.
+이 MCP는 신뢰한 로컬 에이전트용이며 Worker/VM을 악성 코드용 보안 샌드박스로 취급하지 않습니다.

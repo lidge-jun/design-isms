@@ -24,7 +24,7 @@ namespace DesignRecipes {
   }
   /** Title/constraints/checks use compose's language (ko by default). */
   export interface Composition {
-    readonly version: string; readonly recipeId: string; readonly title: string;
+    readonly version: string; readonly recipeId: string; readonly lang: Lang; readonly title: string;
     readonly slots: readonly CompositionSlot[]; readonly constraints: readonly string[];
     readonly checks: readonly string[]; readonly sources: readonly Source[];
   }
@@ -42,7 +42,9 @@ namespace DesignRecipes {
     // Permit JSON objects from another realm as well as null-prototype dictionaries.
     if (proto !== null) {
       const ctor = Object.getOwnPropertyDescriptor(proto, 'constructor')?.value as unknown;
-      if (Object.getPrototypeOf(proto) !== null || typeof ctor !== 'function' || ctor.name !== 'Object') {
+      if (Object.getPrototypeOf(proto) !== null || typeof ctor !== 'function'
+        || Object.getOwnPropertyDescriptor(ctor, 'name')?.value !== 'Object'
+        || Object.getOwnPropertyDescriptor(ctor, 'prototype')?.value !== proto) {
         fail(code, 'Expected a plain object.');
       }
     }
@@ -63,7 +65,7 @@ namespace DesignRecipes {
   }
   function id(raw: unknown, code: ErrorCode): string {
     const value = string(raw, code);
-    if (!safeId.test(value) || forbiddenKeys.has(value)) fail(code, 'Invalid identifier.');
+    if (value.length > 128 || !safeId.test(value) || forbiddenKeys.has(value)) fail(code, 'Invalid identifier.');
     return value;
   }
   function array(raw: unknown, code: ErrorCode, nonempty = true): unknown[] {
@@ -170,7 +172,7 @@ namespace DesignRecipes {
       return Object.freeze({ id: item.id, role: item.role, ref: selected,
         item: DesignCatalog.summarize(selected.domain, DesignCatalog.resolve(snapshot, selected)) });
     });
-    return Object.freeze({ version: snapshot.version, recipeId: chosen.id, title: chosen.title[lang],
+    return Object.freeze({ version: snapshot.version, recipeId: chosen.id, lang, title: chosen.title[lang],
       slots: Object.freeze(slots), constraints: Object.freeze(chosen.constraints.map(item => item[lang])),
       checks: Object.freeze(chosen.checks.map(item => item[lang])), sources: chosen.sources });
   }
@@ -178,9 +180,10 @@ namespace DesignRecipes {
   function markdown(value: string): string {
     return value.replace(/[\\`*_{}\[\]()#+.!|>~-]/g, '\\$&').replace(/</g, '&lt;').replace(/\r?\n/g, ' ');
   }
-  /** Format a localized composition. Pass the same language as compose; no truncation. */
-  export function formatBrief(composition: Composition, lang: Lang = 'ko'): string {
+  /** A composition carries its language through JSON and text pipelines; no truncation. */
+  export function formatBrief(composition: Composition, lang: Lang = composition.lang): string {
     language(lang);
+    if (lang !== composition.lang) fail('INVALID_LANGUAGE', 'Brief language must match the composition.');
     const ko = lang === 'ko';
     const roles: Record<Role, string> = ko
       ? { essential: '필수', helper: '보조', substitutable: '교체 가능' }

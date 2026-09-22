@@ -253,3 +253,90 @@ claude --plugin-dir="$HOME/fork/design-isms"
 | effect 호출 시 | ~1.5k tok |
 
 always-on은 두 스킬의 `description`만 계산된 값이며, 본문은 실제 호출될 때만 로드됩니다.
+
+## 10. 작은 연산을 조합하는 MCP / CLI
+
+로컬 체크아웃에서 실행합니다. 새 패키지나 전역 도구 설치는 필요하지 않습니다.
+
+```json
+{
+  "mcpServers": {
+    "design-isms": {
+      "command": "node",
+      "args": ["/absolute/path/design-isms/scripts/mcp/server.mjs"]
+    }
+  }
+}
+```
+
+MCP에 공개되는 도구는 `execute_code` 하나입니다. 도구 설명은 2,000 UTF-8바이트 이하로
+검사하고, 상세 연산 스키마는 `actions.find()`와 `actions.describe(name)`로 읽습니다.
+서버는 로컬 stdio만 사용하며 네트워크 포트를 열지 않습니다.
+
+```js
+return actions.find('code');
+```
+
+```js
+return design.search({query: '아래 팝업', domains: ['effects'], limit: 3});
+```
+
+```js
+return design.get({domain: 'effects', id: 'bottom-sheet', view: 'code'});
+```
+
+| 연산 | 반환 값 |
+| --- | --- |
+| `design.search({query,domains?,limit?,cursor?})` | 버전, 후보, 전체 수, 다음 커서 |
+| `design.get({domain,id,view?})` | summary / guide / code / full 중 선택한 값 |
+| `design.recipes({id?})` | 레시피 목록 또는 기본값·대안을 포함한 상세 |
+| `design.compose({recipeId,selections?,lang?})` | 선택한 재료·역할·제약·검사 항목·출처·언어 |
+| `design.brief({composition})` | 현재 조합을 검증한 뒤 만든 Markdown |
+| `actions.find(query?)`, `actions.describe(name)` | 연산 목록과 실행 가능한 사용 예시 |
+
+연산은 동기 함수입니다. 같은 호출 안에서 일반 JavaScript의 `map`, `filter`, `reduce`로
+값을 가공할 수 있습니다. 조합과 출력 형식을 분리하므로 같은 내용을 두 번 받을 필요가 없습니다.
+
+```js
+const composition = design.compose({recipeId: 'settings-workspace', lang: 'en'});
+return design.brief({composition}).text;
+```
+
+`guide`는 구현 설명입니다. 이미지 생성 프롬프트가 아닙니다. `code`는 Effects/Layout/Motion에서
+제공하며 HTML/CSS/JS를 완전한 값으로 반환합니다. 지원하지 않는 도메인은 `VIEW_UNAVAILABLE`입니다.
+`full`은 원본 카탈로그 항목을 반환합니다. 레시피의 출처는 설계 근거이며 현재 제품에서
+실행 검증을 마쳤다는 뜻은 아닙니다.
+
+### 셸 파이프로 연결하기
+
+`node scripts/design-query.mjs`는 입력 한 줄마다 `{op,args}`를 받고 결과 값 하나를 JSON으로
+출력합니다. `--help`는 연산 스키마를 출력하며 카탈로그를 읽지 않습니다. 오류도 JSON 한 줄로
+반환하고 다음 줄을 계속 처리합니다. 오류가 하나라도 있었으면 종료 코드는 1입니다.
+
+```sh
+printf '%s\n' '{"op":"design.search","args":{"query":"bottom sheet","limit":3}}' | node scripts/design-query.mjs
+```
+
+이미 `jq`가 설치된 환경에서는 조합 값을 다음 연산으로 넘길 수 있습니다.
+
+```sh
+printf '%s\n' '{"op":"design.compose","args":{"recipeId":"settings-workspace","lang":"en"}}' |
+  node scripts/design-query.mjs |
+  jq -c '{op:"design.brief",args:{composition:.}}' |
+  node scripts/design-query.mjs
+```
+
+CLI의 stdout에는 결과만, 진단에는 stderr를 씁니다. CLI는 JavaScript 실행을 받지 않습니다.
+MCP와 CLI가 같은 연산 레지스트리와 데이터 버전을 사용합니다.
+
+### 크기와 실행 경계
+
+- 상주 도구 설명 제한과 응답 제한은 별개입니다.
+- MCP `maxBytes`: 기본 8,192, 범위 1,024–65,536. JSON-RPC ID·래퍼·이스케이프·개행까지 센 값입니다.
+- 원형 검색 페이지를 바로 반환했을 때만 항목 단위로 줄입니다. 실제 보낸 항목 다음의 커서를 반환합니다. 가공·중첩 결과와 코드는 전체를 반환하거나 `RESPONSE_TOO_LARGE`로 거부합니다.
+- CLI 입력·출력은 각각 한 줄당 65,536바이트입니다(출력은 개행 포함). 크기 초과 입력 뒤의 정상 줄은 계속 처리합니다.
+- MCP 코드 입력은 32,768 UTF-8바이트, 실행은 기본 3초·최대 10초, 동시 실행은 4개, 한 호출의 연산은 100회까지입니다.
+- 데이터는 서버에서 처음 실행할 때 고정됩니다. 파일을 수정했다면 서버를 다시 시작하세요. 다른 버전의 커서·조합 값은 거부합니다.
+- 게스트에 파일·네트워크·셸·Node API를 제공하지 않습니다. Worker/VM은 신뢰한 로컬 에이전트의 실수를 제한하는 장치이며, 악의적인 JavaScript를 안전하게 실행하는 OS 보안 샌드박스가 아닙니다.
+
+검증: `npm run test:design-core`, `npm run test:mcp`, `npm run verify`.
