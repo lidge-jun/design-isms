@@ -30,7 +30,7 @@ The catalog already holds useful visual references and implementation material, 
 
 | Phase | Branch / ordinary PR base | Contract | Detailed plan |
 | --- | --- | --- | --- |
-| wp0 | codex/design-foundations / main | researched attribution, issue map, audited roadmap only | 001_sources.md and 003_issues.md |
+| wp0 | codex/design-foundations / dev | researched attribution, issue map, audited roadmap only | 001_sources.md and 003_issues.md |
 | wp1 | codex/design-recipe-core / codex/design-foundations | shared query core and three valid recipes | 010_catalog_recipes.md |
 | wp2 | codex/design-codemode-mcp / codex/design-recipe-core | one executable tool, bounded read operations | 020_codemode_mcp.md |
 | wp3 | codex/design-recipe-experience / codex/design-codemode-mcp | visible recipe workflow, finder repair, browser QA | 030_recipe_experience.md |
@@ -69,3 +69,7 @@ The owner subsequently authorized adding catalog entries freely when useful. The
 The docs-only roadmap is implemented and independently reviewed. Issues #2–#9 and [PR #10](https://github.com/lidge-jun/design-isms/pull/10) are published. Source/license comparison, staged diff checks and sot:check (13 markers, 49/94/18) passed. Hosted PR run 35709477981 at c20faf5 executed verify and pages:stage successfully; later documentation-only follow-up heads need their own current-head check before PR readiness. No application/image changes or deployment occurred.
 
 Next direction: wp1 consumes 010_catalog_recipes.md to implement the shared core and three authored recipes. Existing Finder math stays unchanged. The upstream browser identity is not generalized beyond the confirmed TasteCode research candidate. No hypothesis about automatic page composition or hostile-code isolation is represented as proven.
+
+## Owner steering: dev integration target
+
+The owner directed development to dev after PR #10 was opened. No remote dev branch existed, so dev was created at the unchanged origin/main baseline 28d6611. PR #10 now targets dev; subsequent ordinary PRs keep their manual dependency bases, with dev as the integration root. No main update or deployment is part of this change.
