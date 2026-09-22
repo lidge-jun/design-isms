@@ -63,3 +63,9 @@ Reflection revision 2 folds all six consultant findings: recipe discovery, share
 ## Owner steering: catalog additions allowed
 
 The owner subsequently authorized adding catalog entries freely when useful. The 49/94/18 figures are the verified baseline, not a permanent scope prohibition under this new instruction. Any new catalog entries require a documented P-phase amendment, source/guide provenance, generated assets where required, count-marker owner updates and the corresponding verifier changes. No entries are added merely to increase the number of cards. Existing immutable baseline evidence is still preserved. This authorization does not require unnecessary additions or weaken any validation criterion.
+
+## wp0 conclusion and next direction
+
+The docs-only roadmap is implemented and independently reviewed. Issues #2–#9 and [PR #10](https://github.com/lidge-jun/design-isms/pull/10) are published. Source/license comparison, staged diff checks and sot:check (13 markers, 49/94/18) passed. Hosted PR run 35709477981 at c20faf5 executed verify and pages:stage successfully; later documentation-only follow-up heads need their own current-head check before PR readiness. No application/image changes or deployment occurred.
+
+Next direction: wp1 consumes 010_catalog_recipes.md to implement the shared core and three authored recipes. Existing Finder math stays unchanged. The upstream browser identity is not generalized beyond the confirmed TasteCode research candidate. No hypothesis about automatic page composition or hostile-code isolation is represented as proven.

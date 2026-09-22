@@ -11,3 +11,7 @@ Independent A review follows separately.
 ## Independent A review
 
 A separate inherited reviewer audited the whole roadmap against current sources. All 18 default and 18 alternative references exist in their declared domains and exclude anti-patterns. The reviewer confirmed source/create and resolve/get contracts. Final verdict: PASS, blocking_issues: []. The remaining nine-versus-ten-source wording was corrected to list effects-docs.json explicitly. No runtime behavior is certified by this plan verdict.
+
+## C reader and source review
+
+Independent final-doc review returned PASS at c20faf5. The three MIT notices matched upstream license text exactly (ignoring surrounding whitespace); the CC BY author/source/license/change notice was confirmed; README counts matched data. Public-reader confusion about an unidentified original request was removed from ATTRIBUTION and remains only in the research record. No runtime feature is claimed shipped.

@@ -18,7 +18,7 @@ Changes: the planned adaptation selects the essential/helper/substitutable role 
 
 ## Research-only browser reference
 
-[TasteCode](https://github.com/Leonxlnx/tastecode/tree/3ee7948d8ec9d3f2ac538c7ac9b6c9fa8e345c28), by Leonxlnx and Blueemi, includes a Browser/Design Mode. Its license is Apache-2.0, not MIT. We inspected its preview-settling and DOM-audit workflow; no TasteCode code, branding, assets or runtime is included. The identity of any separate standalone browser intended by the original request remains unconfirmed.
+[TasteCode](https://github.com/Leonxlnx/tastecode/tree/3ee7948d8ec9d3f2ac538c7ac9b6c9fa8e345c28), by Leonxlnx and Blueemi, includes a Browser/Design Mode. Its license is Apache-2.0, not MIT. We inspected its preview-settling and DOM-audit workflow; no TasteCode code, branding, assets or runtime is included.
 
 ## MIT notices
 
